@@ -1,0 +1,111 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out what each station's own solar kit does while the AC is running. Take a 5,000 BTU window AC at its rated CEER of 11 (about 455 W while cooling). The BLUETTI Elite 200 V2 + 2×200 W kit ($1,499) has 400 W of panels. In full sun those panels cover more than the AC's average draw at 50% duty (268 W from the battery), so the battery still gains about 132 W. With the compressor on all the time, the battery loses 135 W, which stretches a full charge to about 15 hours instead of 3.9. None of these results gives cost per usable Wh either.",
+ "standout": 2,
+ "standout_why": "Pages compared: BuyerSheet (cited), GeneratorChecker (cited), StationHours window AC, and ChatGPT's answer. BuyerSheet gives runtimes for an 8,000 BTU unit at 60% duty only, with no solar math and no cost per Wh. GeneratorChecker derives the draw from CEER, but only for 8,000 BTU units, and its only solar example is the DELTA 2 Max with 400 W of panels (about 4.6 h); it has no kit prices and no cost per Wh. StationHours gives refill time at each station's maximum solar input, not from the panel that actually ships in a bundle, and works out no net drain while the AC runs and no cost. ChatGPT's answer has a runtime table but no solar figures and no cost per usable Wh.",
+ "decides": "This supports the 2 kWh class (Elite 200 V2 or C2000 Gen 2) as the value pick when the shopper adds a 400 W solar kit. With a 5,000 BTU AC running half the time, the 400 W kit keeps the Elite 200 V2 charging during full sun, so daytime cooling has no hard limit and the battery is left for the evening (about 7.7 h at 50% duty). Without panels, neither 2 kWh unit gets a 5,000 BTU AC through a full 8-hour night even at 50% duty: the Elite 200 V2 gets about 7.7 h and the C2000 Gen 2 about 7.65 h. That is the case for a 3 kWh station (Elite 300 or DELTA 3 Ultra), but I did not source those two this session.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA 3 Ultra",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "5,000 BTU window AC average draw while cooling (Frigidaire FFRA051WAE)",
+   "value": "about 455 W",
+   "source": "https://www.abt.com/Frigidaire-5-000-BTU-115-V-White-Window-Mounted-Room-Air-Conditioner-FFRA051WAE/p/188326.html",
+   "source_title": "Frigidaire 5,000 BTU 115 V White Window-Mounted Room Air Conditioner - FFRA051WAE (Abt)",
+   "read": "2026-11-17",
+   "note": "The listing gives Cooling BTU 5000, CEER 11, 115 V. W = BTU/h ÷ CEER = 5000 ÷ 11 = 455 W. CEER includes standby power, so the figure is approximate. A search snippet put the maker's spec sheet at 450 W, but the PDF would not render, so I did not use that number."
+  },
+  {
+   "product": "general",
+   "label": "Runtime assumptions used below",
+   "value": "85% of rated Wh usable; duty cycle stated per figure (100% or 50%)",
+   "source": "https://stationhours.com/best-power-station-for-window-ac/",
+   "source_title": "Best Power Station for a Window AC (5,000 BTU): 30 Models Compared | StationHours",
+   "read": "2026-11-17",
+   "note": "StationHours assumes 85% usable energy, inverter losses included, and plans for 60–80% duty on hot days. I use 85% so my figures are directly comparable with StationHours and ChatGPT. The 50% figure is a stated assumption, not a measurement."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00 (Special Sale, pre-order, ships from 11.26); +200 W solar $1,199.00; +2×200 W solar $1,499.00; +350 W solar $1,449.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "The page gives 2,600 W AC and 1,000 W max solar input (12–60 V, 20 A). Its title says 2,073.6 Wh and its body says 2,080 Wh. I use 2,073.6 Wh."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Hours of 5,000 BTU AC on one charge",
+   "value": "about 3.9 h with the compressor always on; about 7.7 h at 50% duty",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "2,073.6 Wh × 0.85 = 1,762.6 Wh usable; 1,762.6 ÷ 455 W = 3.87 h; 1,762.6 ÷ 227.5 W = 7.75 h. Not a full 8-hour night."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cost per usable Wh",
+   "value": "$0.51/Wh standalone; $0.85/Wh for the 2×200 W solar kit",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "$899 ÷ 1,762.6 Wh = $0.51; $1,499 ÷ 1,762.6 Wh = $0.85."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Full-sun net battery flow while the AC runs, 2×200 W kit",
+   "value": "+132 W at 50% duty (gaining charge); −135 W with the compressor always on (about 15.4 h from full)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Battery-side AC draw = 455 ÷ 0.85 = 535 W (always on) or 268 W (50% duty). 400 W rated panels − 268 W = +132 W. 535 − 400 = −135 W, and 2,073.6 Wh ÷ 135 W = 15.4 h. Assumes panels give their full rated 400 W, which is best case; real output is lower."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Full recharge time from the kit's own panels",
+   "value": "about 5.2 h (2×200 W kit); about 10.4 h (200 W kit)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "2,073.6 Wh ÷ 400 W = 5.2 h; 2,073.6 Wh ÷ 200 W = 10.4 h. Best case at full rated panel output. BLUETTI states no solar charge time."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Hours of 5,000 BTU AC on one charge",
+   "value": "about 3.8 h with the compressor always on; about 7.65 h at 50% duty",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "The page gives 2,048 Wh LFP, 2,400 W continuous / 4,000 W peak, 18.9 kg (41.7 lb). 2,048 × 0.85 = 1,740.8 Wh; ÷ 455 W = 3.83 h; ÷ 227.5 W = 7.65 h."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Solar recharge time and maximum solar input",
+   "value": "100% in 3 h at 800 W (Anker's claim); 800 W max input",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Anker lists bundles with 200 W bifacial, 2×200 W bifacial and 400 W panels, but the page shows no prices. With 400 W of panels the math matches the Elite 200 V2: +132 W at 50% duty in full sun, and about 5.1 h to refill (2,048 ÷ 400)."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C2000 Gen 2 price, standalone and bundles: the ankersolix.com page showed no prices, the .json endpoint returned 404, Best Buy search showed no prices, and amzcheck/storecheck could not run (Bash needed approval). So I have no cost per usable Wh for it.",
+  "EcoFlow DELTA 3 Max price: us.ecoflow.com returned HTTP 429 three times. Best Buy search showed $1,119 / $879 / $879 across three DELTA 3 Max listings, but the page did not tie each price to its listing (one includes a 160 W panel), so I did not use these.",
+  "BLUETTI Elite 300, EcoFlow DELTA 3 Ultra and Anker SOLIX F3800 runtimes and prices: the BLUETTI Elite 300 page hit too many redirects, and I ran out of calls before the other two. These are the 3 kWh+ candidates that would cover a full 8-hour night at 50% duty.",
+  "Maker-published watts for a 5,000 BTU window AC: Midea's MAW05R1JWT-B and MAW05M1WWT pages list no electrical ratings, the Frigidaire spec-sheet PDF would not render to text, and support.frigidaire.com redirected to a dead page. I derived the draw from the CEER of 11 on Abt's listing instead.",
+  "Measured usable-Wh (inverter efficiency) for each candidate from a named reviewer: I used StationHours' 85% assumption instead."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0196465
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 300's advertised 4,800 W figure is 'Power Lifting', a mode meant only for resistive loads in which real output stays at 2,400 W and which gives no extra startup allowance for motors or compressors; so a fixed-speed window AC's startup surge has to fit under 2,400 W on that unit.",
+ "standout": 1,
+ "standout_why": "I compared against buyersheet.com and generatorchecker.com (both cited), lightsonlab.com and the top results. generatorchecker.com already makes the same point for the BLUETTI AC200L: its 3,600 W Power Lifting does not apply to motor loads, so size against 2,400 W. It also says Anker SurgePad is meant for heat-producing devices. That makes the mechanism partly known. No rival applies it to the Elite 300 or Elite 200 V2 on our page. buyersheet.com only says the compressor needs 2,100 W to start, and lightsonlab.com does not mention voltage-lowering modes at all. None of the pages gives a surge duration, the compressor's locked-rotor amps (LRA) or a restart delay.",
+ "decides": "This narrows the Elite 300's headroom but does not rule it out. Its real ceiling for a compressor is 2,400 W, while generatorchecker.com estimates about 2,010 W to start a fixed-speed 8,000 BTU Frigidaire FHWC084WB1 and buyersheet.com assumes about 2,100 W. That leaves roughly 300–390 W of margin. The page should show '2,400 W (4,800 W Power Lifting, resistive only)' rather than any '4,800 W surge' label. It should rank units with a true peak rating, such as the Anker SOLIX C2000 Gen 2 (2,400 W, peak 4,000 W, no SurgePad mode on its page), ahead of the Elite 300 when the shopper has a fixed-speed (non-inverter) AC. Inverter window ACs, which generatorchecker.com estimates at 1.1–1.5x running watts to start, are unaffected.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 3 Ultra",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "What the 4,800 W figure is",
+   "value": "4,800 W Power Lifting mode, for resistive loads only; actual output stays at 2,400 W; not a startup allowance for motors or compressors",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3,014Wh, 2,400W, and an 8ms UPS Switchover in a 58-Pound Box (StorageReview, Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "StorageReview quotes BLUETTI's manual: 'the actual output power remains at 2,400W when the mode is engaged'. The mode is off by default and is 'intended only for pure resistive loads rated between 2,400W and 4,800W'. Citing BLUETTI's FAQ, it says motor loads can draw 2–4x their rated power at startup and should be sized against 2,400 W. StorageReview did not run a surge test."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,199.00, in stock",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-17",
+   "note": "Read from the Shopify product data with storecheck.py; the compare-at price is also $1,199."
+  },
+  {
+   "product": "BLUETTI AC200P L",
+   "label": "Power Lifting scope, in BLUETTI's manual",
+   "value": "Resistive loads only, 2,400–3,600 W; operating output stays at 2,400 W",
+   "source": "https://manualslib.mx/manual/899447/Bluetti-Ac200P-L.html?page=21",
+   "source_title": "BLUETTI AC200P L user manual, 9.4 Power Lifting Mode (manualslib mirror)",
+   "read": "2026-11-17",
+   "note": "Quote: 'The Power Lifting Mode is not enabled by default and is only suitable for resistive loads with a power rating between 2,400W-3,600W.' The examples it gives are electric blankets, kettles and hair dryers. This shows BLUETTI's own manual wording for the mode; the AC200P L is a sister model, not one of our picks."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "AC output and peak",
+   "value": "2,400 W rated (120 V, 20 A, NEMA 5-20R and TT-30R), peak 4,000 W; Anker says it runs 'most window and RV A/Cs'",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "The page lists 'Peak Power 4000W' as a plain peak rating, not a voltage-lowering mode, and does not mention SurgePad. It gives no duration for the peak. No price was shown in the fetched content."
+  },
+  {
+   "product": "general",
+   "label": "EcoFlow's own limit on X-Boost (voltage-lowering mode)",
+   "value": "EcoFlow manual: 'It is not recommended to use the RIVER Pro to charge heavy-duty devices, such as air conditioners'; X-Boost changes the voltage, and appliances with strict voltage requirements are 'still not compatible'",
+   "source": "https://manualslib.mx/manual/478591/Ecoflow-River-Pro.html?page=15",
+   "source_title": "EcoFlow RIVER Pro user manual, X-Boost section (manualslib mirror)",
+   "read": "2026-11-17",
+   "note": "This is an older, smaller model and is quoted only for EcoFlow's description of how X-Boost works. Any X-Boost rating on the DELTA 3 Max is a reduced-voltage mode and should not be counted as compressor-starting surge."
+  }
+ ],
+ "unsourced": [
+  "How long any maker's surge or peak rating can be held (ms or s) for the DELTA 3 Max, C2000 Gen 2, Elite 200 V2 or F3800. I checked the Anker product page and searched EcoFlow's and Anker's pages; none states a duration.",
+  "The EcoFlow DELTA 3 Max's 4,800 W surge and X-Boost wattage from EcoFlow's US page: us.ecoflow.com returned HTTP 429 twice, and the DELTA 3 Max manual PDF (vancore.fr mirror) could not be read as text.",
+  "BLUETTI's own wording on Elite 200 V2 Power Lifting (3,900 W, resistive 2,600–3,900 W according to search results): the BLUETTI support PDF could not be read as text, manuals.plus returned 403, and the bluettipower.com product page went into a redirect loop.",
+  "BLUETTI's own spec text for the Elite 300's surge versus lifting rating: the store's product data had no description, and the product page went into a redirect loop.",
+  "Locked-rotor amps (LRA) or measured inrush for a named 5,000 or 8,000 BTU window AC from its maker's spec sheet: not searched, because I ran out of tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2640148000000004
+ }
+}
