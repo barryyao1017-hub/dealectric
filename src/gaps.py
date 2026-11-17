@@ -1716,93 +1716,23 @@ GAP_PAGES = [
  "published": '2026-11-03',
  "checked": '2026-11-17',
  "updated": '2026-11-17'},
-{'slug': 'bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription',
- 'question': 'G90 (Awin brands: bird feeder camera from a Blink or Wyze camera you already own)',
- 'lead_first': True,
- 'product_result': {'slug': 'wasserstein-bird-feeder-camera-case',
-                    'item_id': 'WASSERSTEIN-BIRD-FEEDER-CASE',
-                    'title': 'Wasserstein bird feeder case for Blink, Wyze, Ring',
-                    'description': 'Holds 26.4 oz of seed; fits Blink Outdoor 4, Wyze Cam v3/OG, Ring Stick Up Cam. Camera not included. $50.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/1100/5760/files/1f_Listing.jpg'},
- 'title': 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
- 'h1': 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
- 'desc': "Yes: Wasserstein's Bird Feeder Camera Case ($50.99) holds 26.4 oz of seed and fits the Blink Outdoor 4 and 3, Wyze Cam OG, v3, v3 Pro and Outdoor, "
-         "and Ring Stick Up Cam, with clips kept on the camera's own storage (Wyze microSD, Blink Sync Module 2). Compared with Netvue Birdfy, Birdfy Lite, "
-         'Bird Buddy and Soliom feeders that include a camera and AI bird identification, with what each needs a plan for and the prices seen on 2026-11-03.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Yes. The <strong>Wasserstein Bird Feeder Camera Case</strong> '
-          '({buy:wasserstein-bird-feeder-camera-case}) turns the Blink or Wyze camera you already own into a bird feeder camera without a subscription: $50.99 '
-          'on 2026-11-03 (list $65.99), holding 26.4 oz of seed and fitting the Blink Outdoor 4 and 3, Wyze Cam OG, v3, v3 Pro and Outdoor, and Ring Stick Up '
-          "Cam. Clips follow your camera's own storage; for AI bird identification, Birdfy ($170–250) and Bird Buddy ($199+) are the answer.</p>\n"
-          '<p>What to know: the case is a weatherproof feeder with a camera pocket, nothing more, so the picture, the clips and the alerts are whatever your '
-          'camera already gives you. A Wyze Cam v3 records to its microSD card with no plan, and a Blink Outdoor 4 saves motion clips to a USB drive in a Sync '
-          "Module 2 without a plan (no person detection or extended live view on the free tier). The case does no bird identification; Netvue's Birdfy Feeder "
-          'AI ($249.99 list, $169.98–199 on sale, camera included) bundles lifetime AI ID according to TechRadar while other outlets describe a $4.99-a-month '
-          'plan, Birdfy Lite ($199.99 list, $169.99) adds AI only by plan, and Bird Buddy 2 ($199 MSRP) puts its AI features in a Pro plan. TechRadar found '
-          "Blink's picture in the case slightly sharper than Ring's, and Bob Vila's review (7.8/10) says squirrels are not kept out. Returns are 30 "
-          'days.</p>\n',
- 'columns': [('camera', 'Camera included'), ('id', 'Bird identification'), ('plan', 'Subscription'), ('feed', 'Seed capacity')],
- 'rows': [{'slug': 'wasserstein-bird-feeder-camera-case',
-           'model': 'Wasserstein Bird Feeder Camera Case',
-           'cells': {'camera': 'No: fits Blink Outdoor 4/3, Wyze Cam OG/v3/v3 Pro/Outdoor, Ring Stick Up Cam',
-                     'id': 'None',
-                     'plan': 'None for the case; clips per your camera (Wyze microSD, Blink Sync Module 2)',
-                     'feed': '26.4 oz'}},
-          {'brand': 'Netvue',
-           'model': 'Birdfy Feeder AI',
-           'url': 'https://www.techradar.com/cameras/netvue-birdfy-feeder-ai-review',
-           'cells': {'camera': 'Yes, 1080p',
-                     'id': 'AI (6,000 species)',
-                     'plan': 'Lifetime AI bundled per TechRadar; a $4.99/mo plan per other outlets',
-                     'feed': 'not read',
-                     'price': '$249.99 list; $169.98–199 on sale, 2026-11-03'}},
-          {'brand': 'Netvue',
-           'model': 'Birdfy Lite',
-           'url': 'https://www.techradar.com/cameras/the-best-bird-feeder-camera-in-year-birdwatching-at-home',
-           'cells': {'camera': 'Yes',
-                     'id': 'Only with a plan (about $5/mo)',
-                     'plan': 'Records and alerts without one',
-                     'feed': 'not read',
-                     'price': '$199.99 list; $169.99 sale, 2026-11-03'}},
-          {'brand': 'Bird Buddy',
-           'model': 'Bird Buddy 2',
-           'url': 'https://amp.cnn.com/cnn/cnn-underscored/reviews/bird-buddy-smart-bird-feeder',
-           'cells': {'camera': 'Yes',
-                     'id': 'AI, with Pro features behind a plan',
-                     'plan': 'Free tier; Pro about $6/mo or $60/yr (older review; current price not confirmed)',
-                     'feed': 'not read',
-                     'price': '$199 MSRP; $199.99 at Target against a $279.99 solar-roof list, 2026-11-03'}},
-          {'brand': 'Soliom',
-           'model': 'BF08 AI feeder with 5 W solar',
-           'url': 'https://www.walmart.com/',
-           'cells': {'camera': 'Yes', 'id': 'AI', 'plan': 'not read', 'feed': 'not read', 'price': 'from $129 at Walmart, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>What recording you get with your own camera</h2>\n'
-          "<p>With a Wyze Cam v3 or OG, a microSD card in the camera records continuously or on events with no plan, and the Wyze app's free tier gives "
-          '12-second event clips with a cooldown. With a Blink Outdoor 4, a Sync Module 2 saves motion clips to a USB drive (up to 256 GB) when the account '
-          "has no plan; Blink's local clips skip person detection, extended live view and Moments. Either way the feeder adds nothing to the storage question "
-          'and takes nothing away.</p>\n'
-          '<h2>Mounting and build</h2>\n'
-          "<p>A strap for small trees and poles or a metal wall mount, weatherproof plastic, and a 26.4 oz seed well. TechRadar's review found the Blink "
-          "picture sharper than Ring's in the case and birds not perfectly sharp with either; CNN Underscored called it an affordable way to start, and Bob "
-          'Vila scored it 7.8/10 with the note that it is not critter-proof.</p>\n'
-          '<h2>When a dedicated feeder is the better buy</h2>\n'
-          '<p>If you do not own a Wyze or Blink camera, a Birdfy Lite at $169.99 is within $50 of buying a camera plus the case and comes assembled with its '
-          "own app; if species identification is the point, Birdfy's AI model or Bird Buddy do it and the Wasserstein case cannot.</p>\n"
-          '<h2>Warranty and returns</h2>\n'
-          '<p>The store page states no warranty term for the case; Wasserstein lists 3 months on its accessories. Returns are 30 days.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>Bird Buddy's current Pro price, which Birdfy models include AI identification without a plan (TechRadar, Reviewed and Gizmodo disagree), the "
-          "Soliom's plan terms, and cheaper Amazon feeder cases for Blink and Wyze cameras (none surfaced in search).</p>\n",
- 'sources': [('Wasserstein Bird Feeder Camera Case',
-              'https://wasserstein-home.com/products/wasserstein-bird-feeder-smart-camera-case-compatible-with-ring-blink-and-wyze-cam-bird-feeder-for-bird-watching-with-your-security-cam-saddle-brown'),
-             ('TechRadar: Wasserstein bird feeder camera case review', 'https://www.techradar.com/cameras/wasserstein-bird-feeder-camera-case-review'),
-             ('CNN Underscored: Wasserstein bird feeder camera case', 'https://amp.cnn.com/cnn/cnn-underscored/reviews/wasserstein-bird-feeder-camera-case'),
-             ('Bob Vila: best bird feeder cameras', 'https://www.bobvila.com/lawn-and-garden/best-bird-feeder-cameras.md'),
-             ('Blink support: Sync Module 2 FAQs (local storage)', 'https://support.blinkforhome.com/en_US/faq-sm/sync-module-2-faqs'),
-             ('TechRadar: Netvue Birdfy Feeder AI review', 'https://www.techradar.com/cameras/netvue-birdfy-feeder-ai-review')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription (research method ab-2026-11, 2026-11-17) ----------------
+{"slug": 'bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription',
+ "question": 'G90 (Awin brands: bird feeder camera from a Blink or Wyze camera you already own)',
+ "method": 'ab-2026-11',
+ "angle": 'D',
+ "searched_as": ['Wyze camera microSD continuous recording no subscription official support 2026', 'Blink camera local storage Sync Module 2 USB no subscription official support 2026', 'Wyze camera bird feeder close focus minimum distance outdoor camera'],
+ "title": 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
+ "h1": 'Can I turn the Blink or Wyze camera I already own into a bird feeder camera without a subscription? (2026)',
+ "desc": "Yes. A Wyze records to microSD and a Blink to a Sync Module 2 USB drive, with no plan. Close focus is the real limit: Wyze's feeder lens is sharp at 4–8 in, while Blink tunes motion detection for 7–19 ft.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> Yes. Our pick, the Wasserstein Bird Feeder Camera Case, holds a Blink Outdoor 4 or a Wyze Cam v3, so Blink owners get the Wasserstein case. With no plan, clips save to microSD or a Blink Sync Module 2 drive. It has no close-up lens: perch birds 1–2 ft away. Wyze\'s own feeder lens is sharp at 4–8 in.</p>',
+ "columns": [('camera', 'Camera it uses'), ('closeup', 'Close-up focus'), ('free_rec', 'Recording with no plan'), ('bird_id', 'Bird ID with no plan')],
+ "rows": [{'slug': 'wasserstein-bird-feeder-camera-case', 'model': 'Wasserstein Bird Feeder Camera Case', 'cells': {'camera': 'Your Blink Outdoor 4 or Blink Outdoor, or Wyze Cam OG, v3, v3 Pro or Outdoor (Wasserstein)', 'closeup': 'No lens; blurry at a few inches, very clear at 1–2 ft (Paste, tested with a Ring Stick Up Cam)', 'free_rec': 'Wyze: microSD, Continuous or Events Only. Blink: Sync Module 2 USB drive or Sync Module XR microSD', 'bird_id': 'None from the case; Blink person detection and Wyze Smart Detection need a plan'}}, {'brand': 'Wyze', 'model': 'Bird Feeder', 'url': 'https://www.wyze.com/products/wyze-bird-feeder', 'cells': {'camera': 'Your Wyze Cam v3, v3 Pro, v4, Outdoor v1/v2 or Battery Cam Pro; Cam OG not listed; no Blink (Wyze)', 'closeup': 'Included diopter Lens Bracket, sharp at 4–8 in (Wyze)', 'free_rec': 'microSD, Continuous or Events Only (Wyze)', 'bird_id': 'None; Smart Detection needs a Wyze plan such as Cam Plus (Wyze)', 'price': '$39.99 (maker, 2026-11-17)'}}, {'brand': 'Birdfy', 'model': 'Feeder (2K, standard kit)', 'url': 'https://www.birdfy.com/products/birdfy-feeder', 'cells': {'camera': 'Its own built-in 2K camera, so no Blink or Wyze needed (Birdfy)', 'closeup': '2K wide-angle camera built into the feeder, aimed at the tray (Birdfy)', 'free_rec': 'Free cloud storage, 30-day retention (Birdfy)', 'bird_id': 'AI ID of 6,000+ species in the free app (Birdfy)', 'price': '$99.99 (maker, 2026-11-17)'}}, {'slug': 'birdfy-feeder-solar-2k', 'model': 'Birdfy Feeder with Solar Panel (2K)', 'cells': {'camera': 'Its own built-in 2K camera, solar panel included (Birdfy)', 'closeup': '2K wide-angle camera built into the feeder, aimed at the tray (Birdfy)', 'free_rec': 'Free cloud storage, 30-day retention (Birdfy)', 'bird_id': 'AI ID of 6,000+ species in the free app (Birdfy)'}}],
+ "after": '\n<h2>What the differences mean</h2><ul><li><strong>Blink\'s best detection range starts 10.5 times farther out than a feeder lens focuses.</strong> 7 ft = 84 in, and 84 in ÷ 8 in (the far end of Wyze\'s close-up range) = 10.5.</li><li><strong>If you own a Wyze, Wyze\'s own feeder costs less than the case and includes the lens.</strong> $47.99 Wasserstein case − $39.99 Wyze Bird Feeder = $8.00.</li><li><strong>The DIY case costs $52.00 less than a feeder with its own camera.</strong> $99.99 Birdfy Feeder − $47.99 Wasserstein case = $52.00, before you add a Blink Sync Module or a microSD card.</li><li><strong>With no plan, the Blink app shows about 33 clips a day.</strong> 1,000 clips ÷ 30 days = 33.3. Blink also stops writing to the USB drive once it is full instead of recording over old clips.</li><li><strong>On batteries, a Blink Outdoor 4 lasts about a month under constant motion.</strong> TechGearLab measured 12% used in 4 days: 4 ÷ 0.12 ≈ 33 days.</li><li><strong>A Wyze card holds days, not weeks, of nonstop video.</strong> Wyze rates continuous recording at up to 4 days on a 32 GB card.</li></ul><table><thead><tr><th>You own</th><th>Use</th><th>Add for no-plan recording</th></tr></thead><tbody><tr><td>Wyze Cam v3, v3 Pro, v4, Outdoor or Battery Cam Pro</td><td>Wyze Bird Feeder</td><td>microSD card (wired cams also need the Wyze Outdoor Power Adapter)</td></tr><tr><td>Wyze Cam OG</td><td>Wasserstein case</td><td>microSD card</td></tr><tr><td>Blink Outdoor 4 or Blink Outdoor</td><td>Wasserstein case</td><td>Sync Module 2 + USB drive, or Sync Module XR + microSD</td></tr><tr><td>No camera that fits, or you want sharp close-ups and bird ID</td><td>Birdfy Feeder</td><td>Nothing: free 30-day cloud</td></tr></tbody></table><h2>Why a security camera blurs the birds at its own feeder</h2><p>Blink and Wyze cameras are built to watch a yard, not a perch a few inches away. Wyze says its cameras are mostly used for "security and monitoring, not for close-up observation of wildlife." That is why the Wyze Bird Feeder comes with a Lens Bracket whose diopter "helps the camera focus within a range of 4-8 inches." Blink makes no close-up lens. Its support page says Blink cameras "detect motion best from about 7 to 19 feet." The Outdoor 4, Outdoor (3rd Gen), XT and XT2 detect by body heat (PIR), and Blink warns that objects at the same apparent temperature as the background may not be detected. The Mini and Mini 2 detect changes in the picture instead.</p><p>Here is what named testers saw. Both case reviews used a Ring Stick Up Cam, not a Blink or Wyze:</p><ul><li><strong>Jim Vorel, Paste (Jan 2023):</strong> blurry video of birds "only a few inches away", but "very clear, HD images" of things a foot or two away. He suggests putting the camera "a foot away or so from the feeders." The battery lasted close to a week at a hundred or more bird visits a day.</li><li><strong>Adam Juniper, Digital Camera World (Apr 2023):</strong> lists "Security cameras can\'t focus closely enough" as a con. The birds were "closer than the Ring\'s nearest focusing distance," and squirrels showed up "a lot more often than birds."</li><li><strong>TechGearLab, Blink Outdoor 4 (2025):</strong> in a walk test, it detected a person at 2, 5 and 10 ft and missed at 15 and 20 ft.</li></ul><p>If you have a Wyze Cam v3, v3 Pro, v4, Outdoor or Battery Cam Pro, the Wyze Bird Feeder is the setup that fixes focus. If you have a Blink Outdoor 4 or Outdoor, the {buy:wasserstein-bird-feeder-camera-case} holds the camera and 26.4 oz of seed in one weatherproof case. It saves clips free to a Sync Module 2 USB drive or a Sync Module XR microSD card. Going by Paste\'s test, birds a foot or more from the lens will look sharper than one right under it. If you want sharp close-ups and bird ID without a plan, a feeder with its own camera does both, such as the {buy:birdfy-feeder-solar-2k}.</p><h2>Not recommended</h2><p>A Blink Outdoor 4 kit whose only hub is a Sync Module Core. Blink says the Core does not support local storage, so a case on that kit saves no clips without a Blink Subscription Plan. Add a Sync Module 2 or XR first. The older Blink XT, XT2 and Indoor (1st Gen) can\'t use local storage either. Blink gives them 7,200 seconds of cloud storage per Sync Module instead.</p>\n',
+ "sources": [('Wyze Bird Feeder Lens Bracket diopter focuses at 4–8 in; Wyze Cams are mostly for security, not close-up wildlife', 'https://support.wyze.com/hc/en-us/articles/28865412396827-How-does-Wyze-Bird-Feeder-take-clear-up-close-bird-pictures'), ('Wyze Cams compatible with the Wyze Bird Feeder; wired cams need the Wyze Outdoor Power Adapter', 'https://support.wyze.com/hc/en-us/articles/28223912490523-Which-Wyze-Cams-are-compatible-with-Wyze-Bird-Feeder'), ('Blink detects motion best at 7–19 ft; PIR on Outdoor 4, Outdoor (3rd Gen), XT, XT2; picture-based detection on Mini and Mini 2', 'https://support.blinkforhome.com/en_US/understanding-motion-detection'), ('Wasserstein case with a Ring Stick Up: blurry at a few inches, clear at 1–2 ft, about a week of battery (Jim Vorel)', 'https://www.pastemagazine.com/tech/birding/wasserstein-smart-bird-feeder-review-cameras-mounting-seed-photos'), ("Wasserstein case: 'Security cameras can't focus closely enough'; squirrels more often than birds (Adam Juniper)", 'https://www.digitalcameraworld.com/reviews/wasserstein-bird-feeder-smart-case-review-bird-watching-made-easy'), ('Blink Outdoor 4: 12% battery used in 4 days of constant motion; detection at 2–10 ft, missed at 15–20 ft', 'https://www.techgearlab.com/reviews/smart-home/security-camera/blink-outdoor-4'), ('Wyze 24/7 Local Recording (Continuous or Events Only) needs no subscription; Smart Detection comes with Cam Plus, Cam Unlimited or Cam Unlimited Pro', 'https://support.wyze.com/hc/en-us/articles/32776621952539-Is-24-7-Local-Recording-going-away'), ('Wyze microSD: up to 4 days of continuous recording on 32 GB', 'https://support.wyze.com/hc/en-us/articles/7372980709275-How-do-Cam-Plus-and-a-microSD-card-compare'), ('Blink local storage via Sync Module 2 (USB) or XR (microSD); none on XT, XT2, Indoor (1st Gen); 7,200 s cloud per Sync Module', 'https://support.blinkforhome.com/en_US/681665'), ('Blink app lists the first 1,000 clips from 30 days; nothing more is written once the drive is full', 'https://support.blinkforhome.com/en_US/sync-module-2-faqs'), ('Sync Module Core has no local storage; person detection needs a Blink Subscription Plan', 'https://support.blinkforhome.com/blink-storage-options'), ('Wasserstein case price $47.99, fits Blink Outdoor 4/Outdoor and Wyze Cam OG/v3/v3 Pro/Outdoor, holds 26.4 oz (read 2026-11-17)', 'https://wasserstein-home.com/products/wasserstein-bird-feeder-smart-camera-case-compatible-with-ring-blink-and-wyze-cam-bird-feeder-for-bird-watching-with-your-security-cam-saddle-brown'), ('Wyze Bird Feeder price $39.99 (read 2026-11-17)', 'https://www.wyze.com/products/wyze-bird-feeder'), ('Birdfy Feeder price $99.99, 2K, AI ID of 6,000+ species, free 30-day cloud (read 2026-11-17)', 'https://www.birdfy.com/products/birdfy-feeder')],
+ "published": '2026-11-03',
+ "checked": '2026-11-17',
+ "updated": '2026-11-17'},
 
 # ---------------- best-swimming-headphones-with-mp3-storage-under-100 (research method ab-2026-11, 2026-11-08) ----------------
 {"slug": 'best-swimming-headphones-with-mp3-storage-under-100',
