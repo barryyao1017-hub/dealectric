@@ -1,0 +1,80 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Xfinity's residential Acceptable Use Policy (revised and effective 2021-02-01) names \"web hosting\" among the servers a customer may not run from the home, and allows content-serving devices only for \"personal and non-commercial residential use\". The deciding limit is therefore the ISP contract, not the NAS: a small-business site breaks the policy, and a personal blog relies on the exception.",
+ "standout": 2,
+ "standout_why": "ChatGPT's search list for this chat is empty, so it had no rival pages to cite. Its answer was the only thing to compare against. It covers CGNAT, dynamic IPs, upload speed, power outages and Cloudflare Tunnel's outbound-only design. It never mentions ISP terms of service, so it rates a 'small business website' as 'NAS is possible' when the largest US cable ISP's residential policy forbids exactly that. It lists 'SSL: Free with Let's Encrypt' without saying that the HTTP-01 check runs only on port 80. It also doesn't say that Cloudflare's Free plan rules out serving video and large files through a Tunnel public hostname.",
+ "decides": "The pick is the same for every NAS (DXP2800, DS225+ or TS-264): the deciding limit is the internet plan and how the site is exposed, not the NAS. This confirms the Cloudflare Tunnel route ChatGPT suggested, which needs no inbound port, no public IP and no HTTP-01 check on port 80. It adds two limits. First, on Xfinity a commercial or small-business WordPress site is outside the residential policy, so those shoppers should pay for hosting or a business line. Second, a media-heavy site (video, large downloads) can't go through a Free-plan Cloudflare public hostname without a paid service such as Stream. A personal, non-commercial blog with ordinary pages stays a valid NAS plan.",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "Synology DS225+",
+  "QNAP TS-264"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Xfinity residential policy: servers banned, web hosting named",
+   "value": "\"use or run dedicated, stand-alone equipment or servers from the Premises that provide network content…\"; \"Examples of prohibited equipment and servers include, but are not limited to, email, web hosting,\" (the policy also lists file sharing and proxy services)",
+   "source": "https://www.xfinity.com/support/articles/comcast-acceptable-use-policy",
+   "source_title": "Acceptable Use Policy for Xfinity® Internet",
+   "read": "2026-11-17",
+   "note": "The policy's own header reads 'Revised and effective: February 1, 2021'. I read it through the fetch tool, which only returns short quoted fragments, so the quotes are excerpts and not the full bullet."
+  },
+  {
+   "product": "general",
+   "label": "Xfinity residential policy: personal-use exception",
+   "value": "\"use or run programs, devices, or equipment from the Premises that provide network content…\" to \"anyone outside of your Premises LAN, except for your personal and non-commercial residential use;\"",
+   "source": "https://www.xfinity.com/support/articles/comcast-acceptable-use-policy",
+   "source_title": "Acceptable Use Policy for Xfinity® Internet",
+   "read": "2026-11-17",
+   "note": "This is a separate bullet from the 'dedicated, stand-alone … servers' ban. A personal blog fits this exception, but a business site doesn't. My own reading: the policy doesn't say whether a NAS that also stores files counts as a 'dedicated, stand-alone' server."
+  },
+  {
+   "product": "general",
+   "label": "Xfinity blocked ports (inbound web ports open)",
+   "value": "Ports 80 and 443 are not on the list. TCP 25 is blocked in both directions; 135–139, 161, 445, 520 and 1900 are blocked in both directions; 0, 67, 547 and 1080 are blocked downstream (inbound).",
+   "source": "https://www.xfinity.com/support/articles/list-of-blocked-ports",
+   "source_title": "List of blocked ports (Xfinity support)",
+   "read": "2026-11-17",
+   "note": "So on Xfinity the barrier is the policy, not a technical port block. My own inference, not stated on the page: with TCP 25 blocked, a home WordPress install can't deliver its own email (password resets, contact forms) directly and needs an SMTP relay on another port."
+  },
+  {
+   "product": "general",
+   "label": "Let's Encrypt HTTP-01 check is port 80 only",
+   "value": "\"The HTTP-01 challenge can only be done on port 80.\" \"Allowing clients to specify arbitrary ports would make the challenge less secure.\" DNS-01 pro: \"You can use this challenge to validate domain names whose webservers aren't exposed to the public internet.\"",
+   "source": "https://letsencrypt.org/docs/challenge-types/",
+   "source_title": "Challenge Types – Let's Encrypt",
+   "read": "2026-11-17",
+   "note": "ChatGPT's table says 'SSL: Free with Let's Encrypt'. Getting that certificate with the usual HTTP check requires inbound port 80 to reach the NAS. Behind CGNAT, or where an ISP blocks 80, it needs the DNS-01 check or Cloudflare's own edge certificate instead."
+  },
+  {
+   "product": "general",
+   "label": "Cloudflare Tunnel connection model",
+   "value": "\"With Tunnel, you do not send traffic to an external IP.\" \"Cloudflare Tunnel uses an outbound-only connection model to enable bidirectional communication.\" It connects resources \"without a publicly routable IP address\" and \"does not use an inbound listener on your origin.\"",
+   "source": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
+   "source_title": "Cloudflare Tunnel · Cloudflare One docs",
+   "read": "2026-11-17",
+   "note": "This is why the Tunnel route works behind CGNAT and needs no port forwarding. The page also tells users to block all inbound traffic at the firewall."
+  },
+  {
+   "product": "general",
+   "label": "Cloudflare Tunnel: video and large files on Free/Pro/Business plans",
+   "value": "\"On Free, Pro, and Business plans, the service-specific terms require you to use a specific paid service\" to serve video and other large files through public hostname routes. The FAQ names Cloudflare Stream.",
+   "source": "https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/",
+   "source_title": "Cloudflare Tunnel FAQ · Cloudflare One docs (section 'Large-file and streaming traffic through Tunnel')",
+   "read": "2026-11-17",
+   "note": "The FAQ links the CDN service-specific terms (cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business), which I didn't open. A WordPress site that self-hosts video or large downloads can't use the free Tunnel route for that content."
+  }
+ ],
+ "unsourced": [
+  "Synology Knowledge Center pages on Let's Encrypt (tutorial 611, the 'cannot add/renew Let's Encrypt' article and the DSM connection_certificate help). Search snippets say DSM needs port 80 open for validation and that custom domains only support HTTP-01, but the pages render with JavaScript and came back empty, and fetching them with curl wasn't approved.",
+  "Current residential server clauses for Verizon Fios, AT&T and Spectrum. The only server-ban wording I found was in forum posts or old copies quoted by third parties, and Verizon's terms URL returned 404.",
+  "An official T-Mobile 5G Home Internet statement that port forwarding or inbound connections aren't supported. Only community forum threads came up.",
+  "An official Cloudflare page giving Cloudflare Tunnel's price or confirming it is free. The zero-trust plans page and the Tunnel get-started page don't state it, and only third-party guides claim it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0702897
+ }
+}

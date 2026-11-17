@@ -1,0 +1,135 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that buying a NAS just for this costs more than hosting for years: the cheapest Docker-capable UGREEN, the DXP2800, is $389.99 before drives (UGREEN store, 2026-11-17), while Hostinger Premium is $95.52 for 48 months, so the NAS only pulls ahead in year 7 even before drives. They also don't state that UGREEN's own FAQ says the cheapest UGREEN, the $239.99 DH2300, does not officially support Docker.",
+ "standout": 3,
+ "standout_why": "ChatGPT ran no search and cited no pages, so there are no rival pages to compare against. Its own answer's cost table says it 'assumes you already own the NAS' and 'excludes hardware depreciation'. It names Synology DS923+/DS224+ without prices, recommends Docker without saying which NAS models can't run it, and gives no break-even. Our current page has the DXP2800 price and host prices but no break-even arithmetic and no DH2300 warning.",
+ "decides": "For a shopper who doesn't own a NAS, 'instead of paying for hosting' turns from yes into no: Hostinger Premium ($1.99/mo prepaid 48 months, then $10.99/mo) stays cheaper than a DXP2800 plus power until year 7, and a $4/mo DigitalOcean Droplet stays cheaper for about 10.6 years, drives excluded. For a shopper who does own one, ChatGPT's 'yes' stands, but only on a Docker-capable model, so the DH2300 must be called out as unsuitable. If the shopper buys anyway, the pick is the DXP2800 ($389.99) or the DH4300 Plus ($373.99), not the DH2300 ($239.99).",
+ "candidates": [
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP2800 GT",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DH2300",
+  "Synology DS225+",
+  "Synology DS224+",
+  "Synology DS923+",
+  "QNAP TS-264-8G",
+  "Hostinger Premium WordPress",
+  "Bluehost Starter",
+  "DreamHost Web Hosting Launch",
+  "DigitalOcean Basic Droplet"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py (Shopify product data). Diskless. It loses to hosting on cost unless you already own it."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Price, UGREEN US store",
+   "value": "$429.99 (compare-at $634.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-gt-2-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 GT",
+   "read": "2026-11-17",
+   "note": "storecheck.py. Costs $40 more than the DXP2800 for the same WordPress-over-Docker job."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, UGREEN US store",
+   "value": "$239.99 (compare-at $394.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300",
+   "read": "2026-11-17",
+   "note": "storecheck.py. The cheapest UGREEN NAS, but see the Docker finding below."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Docker / VM support",
+   "value": "\"The DH2300 does not officially support Docker.\" \"The DH2300 and DH4300 Plus do not support virtual machines.\"",
+   "source": "https://ai.ugreen.com/pages/solution-software",
+   "source_title": "UGREEN NAS Software and UGOS Pro FAQs",
+   "read": "2026-11-17",
+   "note": "nas.ugreen.com/pages/solution-software 301-redirects here. Without Docker, the Docker WordPress + MariaDB stack ChatGPT recommends is unavailable, so this model loses."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Docker support + price",
+   "value": "Listed among models that support Docker; $373.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus",
+   "read": "2026-11-17",
+   "note": "Price from storecheck.py. Docker support from the FAQ at https://ai.ugreen.com/pages/solution-software (read 2026-11-17). It has no VM support, and it is a 4-bay unit that costs about as much as the DXP2800."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Measured idle power",
+   "value": "about 7 W idle; 34.7 W max under CPU+RAM+disk stress",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review (ocinside.de)",
+   "read": "2026-11-17",
+   "note": "ocinside.de measured this with 3.5-inch HDDs in RAID 1 (Btrfs). Drive count and meter not stated."
+  },
+  {
+   "product": "general",
+   "label": "US average residential electricity price",
+   "value": "18.16 ¢/kWh (August 2026, preliminary)",
+   "source": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+   "source_title": "EIA Electric Power Monthly Table 5.6.A",
+   "read": "2026-11-17",
+   "note": "DXP2800 at 7 W × 8,760 h = 61.3 kWh a year × $0.1816 ≈ $11.14 a year to run 24/7. That is below ChatGPT's $20–60 estimate."
+  },
+  {
+   "product": "Hostinger Premium WordPress",
+   "label": "Price",
+   "value": "$1.99/mo on a 48-month term, renews at $10.99/mo; 99.9% uptime guarantee",
+   "source": "https://www.hostinger.com/wordpress-hosting",
+   "source_title": "Hostinger WordPress Hosting",
+   "read": "2026-11-17",
+   "note": "48 × $1.99 = $95.52 for 4 years. Cumulative cost vs DXP2800 ($389.99 + $11.14/yr power): year 4, $95.52 vs $434.55; year 6, $359.28 vs $456.83; year 7, $491.16 vs $467.97. The NAS pulls ahead only in year 7, drives and backups excluded. It loses on intro-to-renewal price jump (5.5×)."
+  },
+  {
+   "product": "DigitalOcean Basic Droplet",
+   "label": "Price",
+   "value": "$4.00/mo (512 MiB RAM, 1 vCPU, 10 GiB SSD, 500 GiB transfer)",
+   "source": "https://www.digitalocean.com/pricing/droplets",
+   "source_title": "Droplet Pricing | DigitalOcean",
+   "read": "2026-11-17",
+   "note": "$48 a year. The NAS saves $48 − $11.14 = $36.86 a year, so $389.99 / $36.86 ≈ 10.6 years to break even. It loses on 512 MiB RAM (tight for WordPress + MySQL) and you administer it yourself."
+  },
+  {
+   "product": "Bluehost Starter",
+   "label": "Price",
+   "value": "$3.99/mo on a 36-month term, renews at $9.99/mo",
+   "source": "https://www.bluehost.com/hosting/shared",
+   "source_title": "Bluehost Shared Hosting",
+   "read": "2026-11-17",
+   "note": "36 × $3.99 = $143.64 for 3 years. It costs more up front than Hostinger for the same managed route."
+  },
+  {
+   "product": "DreamHost Web Hosting Launch",
+   "label": "Price",
+   "value": "$2.89/mo first year, auto-renews at $10.99/mo",
+   "source": "https://www.dreamhost.com/hosting/shared/",
+   "source_title": "DreamHost Shared Hosting",
+   "read": "2026-11-17",
+   "note": "First year $34.68, then $131.88 a year. Only a 1-year intro lock vs Hostinger's 48 months."
+  }
+ ],
+ "unsourced": [
+  "Synology DS225+, DS224+ and DS923+ prices today: Synology has no US web store, and amzcheck.py search returned nothing (Amazon walled), so I skipped them",
+  "QNAP TS-264-8G price today: no QNAP US store price found; Amazon walled",
+  "UGREEN DXP2800 product page warranty and spec power text: the WebFetch got HTTP 429 from nas.ugreen.com",
+  "Notebookcheck's DXP2800 GT idle figure (14.84–20.14 W): seen only in a search summary, page not opened, so not used",
+  "Hetzner cheapest cloud price today: page not opened in this run"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.8680460999999999
+ }
+}

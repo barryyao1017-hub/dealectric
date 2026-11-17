@@ -1,0 +1,181 @@
+{
+ "status": "ok",
+ "angle": "B",
+ "why_angle": "None of the material on this question gives a wattage, an electricity rate or a payback period. It offers only an unsourced '$20–60' power range and assumes you already own the NAS. This page turns each NAS maker's own power figures into a yearly bill at the EIA's 18.16¢/kWh. It sets that bill against Hostinger, Bluehost and DigitalOcean prices, which shows that a NAS bought just for the site costs more than intro-rate hosting for about 7 years.",
+ "slug": "can-you-host-a-wordpress-site-on-a-nas-at-home",
+ "must": [
+  "Hostinger Premium WordPress hosting at $23.88 a year",
+  "a UGREEN DXP2800 draws 16.38 W, $26.06 a year in power"
+ ],
+ "products": [],
+ "page": {
+  "title": "Can you host a WordPress site on a NAS at home instead of paying for hosting (2026)? Yes, and mostly you shouldn't",
+  "h1": "Can you host a WordPress site on a NAS at home instead of paying for hosting? (2026)",
+  "desc": "Yes, a NAS can run WordPress at home. But a UGREEN DXP2800 uses $26.06 a year in power at 16.38 W, more than Hostinger's $23.88-a-year intro plan. Yearly cost, payback and which NAS models can run it.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> Yes, you can host a WordPress site on a NAS at home instead of paying for hosting, but only a NAS you own saves money: a UGREEN DXP2800 draws 16.38 W, $26.06 a year in power, more than Hostinger Premium WordPress hosting at $23.88 a year. Buying one just for this? Pay for hosting.</p>",
+  "columns": [
+   [
+    "yearly",
+    "Running it 24/7 for a year (18.16¢/kWh)"
+   ],
+   [
+    "wp",
+    "How WordPress runs on it"
+   ],
+   [
+    "catch",
+    "The catch"
+   ]
+  ],
+  "rows": [
+   {
+    "brand": "Hostinger",
+    "model": "Premium WordPress hosting",
+    "url": "https://www.hostinger.com/wordpress-hosting",
+    "cells": {
+     "yearly": "$23.88 a year on the 48-month intro ($95.52 ÷ 4); $131.88 a year at the $10.99/mo renewal",
+     "wp": "Managed WordPress, with 99.9% uptime promised in Hostinger's plan terms (Hostinger)",
+     "catch": "The renewal rate is 5.5× the intro rate ($10.99 vs $1.99 a month)",
+     "price": "$95.52 for 48 months (maker, 2026-11-17)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "yearly": "$26.06 at 16.38 W with drives in use; $8.34 at 5.24 W in its low-power state (UGREEN figures); ocinside.de measured about 7 W idle ($11.14)",
+     "wp": "Docker containers and virtual machines (UGREEN FAQ)",
+     "catch": "$389.99 before drives; takes 4.2 years to pay back against renewal-rate shared hosting"
+    }
+   },
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DS225+",
+    "cells": {
+     "yearly": "148.7 kWh at 16.98 W with drives in use; 53.3 kWh at 6.08 W in HDD hibernation (Synology); about 100 kWh measured with two drives (Dong Knows Tech)",
+     "wp": "Container Manager (x86_64 build)",
+     "catch": "Ships with 2 GB RAM (6 GB max); Synology won't give full warranty or technical support if you add non-Synology memory"
+    }
+   },
+   {
+    "slug": "qnap-ts-264-8g",
+    "model": "QNAP TS-264-8G",
+    "cells": {
+     "yearly": "254.8 kWh at 29.086 W operating; 160.2 kWh at 18.288 W disk standby (QNAP, all bays filled)",
+     "wp": "Web Server and Container Station, then WordPress from App Center (QNAP QTS 5.0 tutorial)",
+     "catch": "Highest draw on this list: 1.78× the DXP2800's yearly kWh at the busy-drive figures"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dh4300-plus",
+    "model": "UGREEN NASync DH4300 Plus",
+    "cells": {
+     "yearly": "$36.41 at 22.89 W with drives in use; $11.50 at 7.23 W in its low-power state (UGREEN figures)",
+     "wp": "Docker yes, virtual machines no (UGREEN FAQ)",
+     "catch": "$16 less than the DXP2800 but draws 6.51 W more with drives in use, and has no VM to keep WordPress apart from your files"
+    }
+   },
+   {
+    "brand": "DigitalOcean",
+    "model": "Basic Droplet (1 vCPU, 512 MiB)",
+    "url": "https://www.digitalocean.com/pricing/droplets",
+    "cells": {
+     "yearly": "$48.00 a year ($4.00 × 12)",
+     "wp": "You install WordPress yourself on 1 vCPU, 512 MiB RAM, 10 GiB SSD (DigitalOcean)",
+     "catch": "Only 512 MiB RAM; a DXP2800 would need 17.8 years of savings to match its cost",
+     "price": "$4.00/mo (maker, 2026-11-17)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dh2300",
+    "model": "UGREEN NASync DH2300",
+    "cells": {
+     "yearly": "$21.83 at 13.72 W with drives in use; $5.26 at 3.304 W in its low-power state (UGREEN figures)",
+     "wp": "No Docker: 'The DH2300 does not officially support Docker' (UGREEN FAQ)",
+     "catch": "The cheapest UGREEN NAS at $239.99, but it has no supported way to run the WordPress and MariaDB containers"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>Power bill, DXP2800 with drives in use:</strong> 16.38 W × 8,760 h = 143.5 kWh × $0.1816 = $26.06 a year.</li><li><strong>Same box in its low-power state:</strong> 5.24 W × 8,760 h = 45.9 kWh × $0.1816 = $8.34 a year.</li><li><strong>Extra cost if the site keeps the drives from sleeping:</strong> (16.38 − 5.24) W = 11.14 W × 8,760 h = 97.6 kWh × $0.1816 = $17.72 a year. That is the real extra cost of adding a site to a NAS you already run 24/7.</li><li><strong>Hostinger Premium WordPress:</strong> $95.52 ÷ 4 years = $23.88 a year, then $10.99 × 12 = $131.88 a year at renewal.</li><li><strong>When a NAS bought for the site overtakes Hostinger:</strong> after 7 years the NAS has cost $389.99 + 7 × $26.06 = $572.41 and Hostinger $95.52 + 3 × $131.88 = $491.16. After 8 years it is $598.47 vs $623.04, so the NAS only pulls ahead in year 8, and that is before drives.</li><li><strong>Against Bluehost Starter at renewal:</strong> $389.99 ÷ ($119.88 − $26.06) = 4.2 years to pay back.</li><li><strong>Against a $4 DigitalOcean Droplet:</strong> $389.99 ÷ ($48.00 − $26.06) = 17.8 years.</li><li><strong>QNAP TS-264-8G vs DXP2800:</strong> 254.8 kWh ÷ 143.5 kWh = 1.78× the yearly energy at each maker's busy-drive figure.</li></ul><table><thead><tr><th>Your situation</th><th>What fits</th></tr></thead><tbody><tr><td>No NAS yet, want a personal blog</td><td>Hostinger Premium WordPress: $23.88 a year for the first 4 years, less than the DXP2800's power bill alone</td></tr><tr><td>You want a NAS for files and backups anyway</td><td>UGREEN DXP2800: Docker plus VMs, and the site adds about $17.72 a year in power {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>Cheapest UGREEN that still runs the WordPress containers</td><td>DH4300 Plus at $373.99 (Docker, no VMs) {buy:ugreen-nasync-dh4300-plus}</td></tr><tr><td>Business or shop site on a home Xfinity line</td><td>Paid hosting. Xfinity's residential Acceptable Use Policy lists web hosting among prohibited servers and only allows content-serving devices for personal and non-commercial residential use</td></tr><tr><td>You want a server you control, with no hardware at home</td><td>DigitalOcean Basic Droplet at $48.00 a year</td></tr></tbody></table><h2>What a home WordPress server costs to run, model by model</h2><p>A NAS has no hosting bill, but its electricity is a running cost. Each maker publishes two power figures, one with the drives in use and one with them resting, and they test differently. QNAP tested the TS-264 with every bay filled, so its disk-standby figure (18.288 W) is higher than Synology's drives-in-use figure for the DS225+ (16.98 W). Synology's spec page doesn't name the drives it used. UGREEN publishes 16.38 W with drives in use and 5.24 W in its low-power state for the DXP2800, and costs them at $0.18/kWh. No maker says whether a WordPress database on hard drives lets them sleep between visits, so the table shows both ends of each range.</p><table><thead><tr><th>Model</th><th>Drives in use</th><th>Resting</th><th>Independent measurement</th></tr></thead><tbody><tr><td>UGREEN DXP2800</td><td>16.38 W (UGREEN)</td><td>5.24 W (UGREEN)</td><td>about 7 W idle, 34.7 W max under stress (ocinside.de, HDDs in RAID 1)</td></tr><tr><td>Synology DS225+</td><td>16.98 W (Synology)</td><td>6.08 W hibernation (Synology)</td><td>about 275 Wh per 24 h, an 11.5 W average, with two hard drives (Dong Knows Tech)</td></tr><tr><td>QNAP TS-264-8G</td><td>29.086 W operating (QNAP)</td><td>18.288 W disk standby (QNAP)</td><td>QNAP's figures, all bays filled</td></tr><tr><td>UGREEN DH4300 Plus</td><td>22.89 W (UGREEN)</td><td>7.23 W (UGREEN)</td><td>UGREEN's figures</td></tr><tr><td>UGREEN DH2300</td><td>13.72 W (UGREEN)</td><td>3.304 W (UGREEN)</td><td>UGREEN's figures</td></tr></tbody></table><p>Every yearly figure uses the EIA's August 2026 US average residential rate of 18.16¢/kWh and 8,760 hours (watts × 8.76 = kWh a year). Where your rate is higher, the case for hosting at home gets weaker in proportion.</p><h2>Not recommended</h2><p><strong>UGREEN NASync DH2300.</strong> At $239.99 it is the cheapest UGREEN NAS and the cheapest to run (13.72 W with drives in use). UGREEN's own FAQ says 'The DH2300 does not officially support Docker,' and it has no virtual machines either. The usual home setup, WordPress and MariaDB in containers, therefore has no supported way to run on it. If you want a UGREEN to host a site, the DH4300 Plus is the cheapest model that runs Docker.</p>",
+  "sources": [
+   [
+    "UGREEN power figures for the DXP2800, DH4300 Plus and DH2300 (drives in use / low-power state)",
+    "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume"
+   ],
+   [
+    "US average residential electricity price, 18.16¢/kWh (August 2026)",
+    "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a"
+   ],
+   [
+    "Synology DS225+ power (16.98 W / 6.08 W), memory and warranty",
+    "https://www.synology.com/en-us/products/DS225+#specs"
+   ],
+   [
+    "QNAP TS-264 power (29.086 W / 18.288 W, drives fully populated)",
+    "https://www.qnap.com/en-us/product/ts-264/specs/hardware"
+   ],
+   [
+    "DXP2800 measured about 7 W idle, 34.7 W max (ocinside.de)",
+    "https://www.ocinside.de/review/ugreen_dxp2800/4/"
+   ],
+   [
+    "DS225+ measured about 275 Wh per 24 h with two drives (Dong Knows Tech)",
+    "https://dongknows.com/synology-ds225-plus-review"
+   ],
+   [
+    "Hostinger Premium WordPress: $95.52 for 48 months, renews at $10.99/mo, 99.9% uptime promised",
+    "https://www.hostinger.com/wordpress-hosting"
+   ],
+   [
+    "Bluehost Starter: $3.99/mo intro, $9.99/mo renewal",
+    "https://www.bluehost.com/hosting/shared"
+   ],
+   [
+    "DigitalOcean Basic Droplet: $4.00/mo, 512 MiB RAM, 1 vCPU, 10 GiB SSD",
+    "https://www.digitalocean.com/pricing/droplets"
+   ],
+   [
+    "UGREEN Docker and VM support by model (DH2300 no Docker; DH4300 Plus no VMs)",
+    "https://ai.ugreen.com/pages/solution-software"
+   ],
+   [
+    "UGREEN US store prices: DXP2800 $389.99, DH4300 Plus $373.99, DH2300 $239.99",
+    "https://ai.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage"
+   ],
+   [
+    "Xfinity residential Acceptable Use Policy: web hosting among prohibited servers; personal, non-commercial exception",
+    "https://www.xfinity.com/support/articles/comcast-acceptable-use-policy"
+   ],
+   [
+    "Synology Container Manager ships x86_64 and armv8 builds",
+    "https://archive.synology.com/download/Package/ContainerManager/24.0.2-1707"
+   ],
+   [
+    "QNAP WordPress setup: Web Server, Container Station, App Center",
+    "https://www.qnap.com/en/how-to/tutorial/con_show.php?cid=485"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [],
+ "query": "can you host a wordpress site on a nas at home instead of paying for hosting",
+ "verified_changes": 1,
+ "verified_removed": 2,
+ "fix_pass": {
+  "errors": [
+   "copy says guaranteed or addresses AI",
+   "banned wording: guarantee"
+  ],
+  "log": [
+   "Hostinger row, 'wp' cell: changed 'Managed WordPress with a 99.9% uptime guarantee (Hostinger)' to 'Managed WordPress, with 99.9% uptime promised in Hostinger's plan terms (Hostinger)'. This removes the banned word 'guarantee'. The 99.9% figure and its source, https://www.hostinger.com/wordpress-hosting (already in sources), are unchanged. I did not open that page again because only the wording changed.",
+   "Sources: the Hostinger label now ends '99.9% uptime promised' instead of '99.9% uptime guarantee'. The URL is unchanged.",
+   "'Addresses AI': none of the page text mentions AI or speaks to an AI. The only 'ai' is in the domain ai.ugreen.com, which is UGREEN's real US store and blog. I left those source URLs alone because changing them would break the sources. If the checker is flagging that domain, it is a false positive.",
+   "Nothing else in the draft was changed. No tool calls were made."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-17",
+  "pass": true,
+  "g": null
+ }
+}
