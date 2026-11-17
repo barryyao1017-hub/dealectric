@@ -1,0 +1,94 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX F3800 Plus's 240 V output 'cannot be used while the device is charging via 120V AC', or that the Jackery Explorer 5000 Plus's 240 V ports give 'No Output' during simultaneous charge and discharge. Both units take only 120 V AC input. So a single box running a 240 V well pump or dryer goes dead on 240 V whenever it is recharged from a wall outlet or a 120 V generator.",
+ "standout": 2,
+ "standout_why": "Watt & Warden (cited) covers combined vs per-leg ceilings, the Apex 300's ~1,920 W legs and the DELTA Pro 3's 120 V-or-240 V mode switch. It says nothing about 240 V output while charging. Power Station Field Guide (powerstationpilot.com, cited) states that it does not cover legs, neutral or outlet behaviour. Jackery's own 5000 Plus vs DELTA Pro Ultra blog (cited in one chat) does not mention pass-through, split outlet mode or 240 V while charging. StorageReview (cited) covers only the Apex 300, which in its account keeps 240 V mode on 120 V input. SolarGenReview's EV article (cited) returned HTTP 429 twice, so I could not check it. It is new and changes the pick for anyone who must recharge during a long outage. It is not a 3 because a shopper running 240 V purely on battery is unaffected, and I could not source the rival behaviour for OSCAL or EcoFlow from the makers.",
+ "decides": "If the plan is to keep a 240 V load (well pump, dryer, mini-split) running while the station is topped up from a 120 V outlet or a 120 V-only generator, the F3800 Plus and Explorer 5000 Plus fail on 240 V. Both have 120 V-only AC input, and the 240 V ports cut out while charging. The F3800 Plus keeps 240 V pass-through only when fed by a 240 V generator through its HPP/generator port (L14-30R bypass up to 6,000 W). The DELTA Pro 3 cannot mix 120 V and 240 V outlets at all. The Apex 300 is the one candidate where a named reviewer (StorageReview) describes 240 V mode staying active on 120 V input, so it is the safer pick for 'recharge while running 240 V'. The page should tell the shopper to check this before trusting any single-box 240 V claim.",
+ "candidates": [
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "BLUETTI Apex 300",
+  "EcoFlow DELTA Pro 3",
+  "OSCAL PowerMax 6000",
+  "EcoFlow DELTA Pro Ultra"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output while charging from 120 V AC",
+   "value": "Not available: 'The 240V output cannot be used while the device is charging via 120V AC.'",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Buy Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Verbatim note in the maker's feature list. The /products/f3800 URL served the same note on the same date. The page showed 'Sold Out' / 'Price Loading', so no price was read."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC charging input voltage",
+   "value": "120 V only: 120V~ 15A max (<3 h) / 12A continuous, 1,800 W charging, 1,440 W bypass",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Buy Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The spec lines 'AC Input: 120V~ 15A Max (< 3hrs) / 12A Max (continuous), 60Hz, L+N+PE' and 'AC Input Power (Bypass Mode): 1440W Max' show that the wall input feeds only one leg."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V output and pass-through from a generator",
+   "value": "L14-30R 120/240V~ 25 A, 6,000 W max. With a 240 V generator the L14-30R passes through up to 6,000 W. With a 120 V generator, output is available on L1 only ('No output when connected to the L2 phase'), with bypass up to 3,000 W.",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Buy Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "From the maker's FAQ Q5 conditions 2 and 3, plus the spec line 'AC Output (NEMA L14-30R): 120V/240V~ 25A Max, 60Hz, 6000W Max'."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "240 V ports during simultaneous charge and discharge",
+   "value": "'During Simultaneous Charge & Discharge (Split Outlet Mode): 240V Ports: No Output'. In the same state, the 120 V ports give 12 A max in Backup UPS mode (13.2 A peak) or 30 A max in Online UPS mode.",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303581495067-Explorer-5000-Plus-Basic-Information",
+   "source_title": "Explorer 5000 Plus Basic Information – Jackery",
+   "read": "2026-11-17",
+   "note": "Verbatim under 'Product AC Output Specification'. The page does not say which input sources trigger Split Outlet Mode."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "AC charging input and 240 V outlets",
+   "value": "AC input 120 V, 60 Hz, 15 A max, 1,750 W ±50 W (no 240 V AC input listed). Outlets: NEMA L14-30R 240 V max 7,200 W and NEMA 14-50R 240 V max 7,200 W. Four 5-20R at 2,400 W each, 3,600 W per pair.",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303581495067-Explorer-5000-Plus-Basic-Information",
+   "source_title": "Explorer 5000 Plus Basic Information – Jackery",
+   "read": "2026-11-17",
+   "note": "Maker FAQ spec block."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "120 V and 240 V at the same time",
+   "value": "No. In 240 V mode only 1× L14-30 split-phase and 1× 6-20R are live, and the 120 V outlets turn off.",
+   "source": "https://www.ecoflow.com/us/blog/ecoflow-delta-pro-3-faq",
+   "source_title": "EcoFlow DELTA Pro 3 FAQ: Everything You Need to Know",
+   "read": "2026-11-17",
+   "note": "Maker FAQ dated 2025-05-22: 'can deliver split-phase 120V or 240V output, but not both at the same time.' Watt & Warden already states this, so it is not new."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "240 V mode on a 120 V grid input",
+   "value": "StorageReview says that in 240V mode on a 120V input, the two right front outlets run on bypass, the two left front outlets are 0 ms, and the 14-50R carries both lines plus neutral and ground. 3,840 W total is shared across the 14-50R, the four 20 A outlets and the TT-30R.",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review: 240V and 3,840W From One Box - StorageReview.com",
+   "read": "2026-11-17",
+   "note": "Named reviewer. StorageReview did not measure the 240 V load case on the 14-50R while charging. A BLUETTI community forum user reported that the left plugs do not pass grid power through in 240V mode with 120V input. That is unverified, so it is left out as a value."
+  }
+ ],
+ "unsourced": [
+  "OSCAL PowerMax 6000 (top row on our page): whether its 240 V output stays live while charging from 120 V AC. manuals.plus returned 403, I did not open an OSCAL maker page, and search snippets do not count.",
+  "EcoFlow DELTA Pro 3 and DELTA Pro Ultra: 240 V output while charging from 120 V AC. EcoFlow's DELTA Pro 3 FAQ does not address it, and the only statement found was a Rivian-forum anecdote about overload cut-off.",
+  "BLUETTI Apex 300: the maker's own statement on 240 V output while on 120 V grid input. bluettipower.com/products/apex-300 hit a redirect loop, and the Apex 300 manual PDF exceeded the 10 MB fetch limit.",
+  "Per-leg (L1/L2) wattage limits for the F3800 Plus, Explorer 5000 Plus and DELTA Pro Ultra. None were stated on the maker pages I opened, and PDF text extraction of the F3800 Plus guide and the 5000 Plus manual was blocked in this session.",
+  "Whether SolarGenReview's EV article (a cited rival) mentions 240 V while charging: it returned HTTP 429 twice.",
+  "Prices were not checked. They are outside this angle, and the Anker page showed 'Sold Out' / 'Price Loading'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1558258
+ }
+}

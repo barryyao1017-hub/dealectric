@@ -1,0 +1,149 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got puts measured inverter idle draw side by side for the single-unit 240 V candidates. The Solar Lab measured about 20 W for the BLUETTI Apex 300, about 45 W for the EcoFlow DELTA Pro Ultra, about 58 W for the Jackery Explorer 5000 Plus and about 80 W for the original Anker F3800. Left on for 24 hours, that is roughly 0.48 kWh against 1.92 kWh, or about 17% against 50% of each unit's rated capacity.",
+ "standout": 2,
+ "standout_why": "I read four rival pages. Watt & Warden (cited) says 'We did not test these' and gives only specs. powerstationpilot.com (cited) has no measured figures. smarthomeexplorer.com (cited) says it does no first-party testing and that its 0.85 efficiency factor is an assumption. StorageReview (cited) has measurements for the Apex 300 only: 2.39 kWh delivered, about 72% round trip and a 16 ms transfer. It reports no idle draw and does not compare other models. None of these pages has idle draw, sustained-load efficiency or overload hold times across the F3800, DELTA Pro Ultra, DELTA Pro 3 and Explorer 5000 Plus.",
+ "decides": "People who need 240 V from one box usually want it for well pumps, HVAC or sump loads, so the inverter stays on all day. Idle draw then cuts runtime more than the 6,000 W versus 7,200 W ratings that ChatGPT used to rank the units. On the Solar Lab's numbers, the Apex 300 loses about 0.48 kWh a day at idle, against about 1.92 kWh for the original F3800, 1.39 kWh for the Explorer 5000 Plus and 1.08 kWh for the DELTA Pro Ultra. That supports the Apex 300 for long, light 240 V duty. The DELTA Pro Ultra is the pick for heavy starts: it held 9,200 W for about 10 s, while the F3800 held 8,000 W for only 2 to 3 s. The Solar Lab does not say whether it measured idle in 120 V or 240 V mode, so the page should present these as the outlet's figures and not as 240 V figures.",
+ "candidates": [
+  "BLUETTI Apex 300",
+  "Anker SOLIX F3800 / F3800 Plus",
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow DELTA Pro Ultra X",
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 5000 Plus",
+  "OSCAL PowerMax 6000"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw, inverter on, no load (The Solar Lab)",
+   "value": "about 20 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The page says 'right around 20W' and does not state 120 V or 240 V mode. No author or date is shown, only a © 2026 footer. Over 24 h: 20 W × 24 = 0.48 kWh, which is 17% of the 2,764.8 Wh rating."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Efficiency (The Solar Lab)",
+   "value": "about 85%",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The page says 'right around 85%' and does not state the load or voltage mode."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC energy delivered, single unit, to shutdown (StorageReview)",
+   "value": "2.39 kWh (86% of 2,764.8 Wh); recharge took 3.30 kWh from the wall, about 72% round trip",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review: 240V and 3,840W From One Box - StorageReview.com",
+   "read": "2026-11-17",
+   "note": "Review dated 2026-11-09. Load was a blower fan logged on a power meter until shutdown. The output voltage mode for this test is not stated. With two B300K packs: 7.38 kWh delivered (89%) and about 74% round trip. ChatGPT already cited this page."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "UPS transfer to battery (StorageReview)",
+   "value": "16 ms at 100 W and at about 700 W",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "BLUETTI Apex 300 Review: 240V and 3,840W From One Box - StorageReview.com",
+   "read": "2026-11-17",
+   "note": "Captured with a Quarch analyzer in 120 V mode. BLUETTI's 0 ms figure for 240 V mode was not captured by the reviewer."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw, inverter on (The Solar Lab)",
+   "value": "about 80 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "Given as the comparison figure in the Solar Lab's Explorer 5000 Plus review. This is the original F3800, not the Plus; Anker claims the Plus is 50% lower but I found no measurement. Over 24 h: 80 W × 24 = 1.92 kWh, which is 50% of 3,840 Wh."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Sustained-load efficiency and overload hold (The Solar Lab)",
+   "value": "37 min at 5,100 W, about 84% efficiency; held 8,000 W for 2–3 s and 7,200 W for about 10 s",
+   "source": "https://www.thesolarlab.com/review/testing-the-anker-f3800",
+   "source_title": "Putting the Anker F3800 Power Station to the Test: What Can It ACTUALLY Handle? | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "Theoretical runtime was about 44 min. A full 120 V AC charge took 2 h 35 min against Anker's 2 h 25 min. No 240 V load was tested."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "30 A (L14-30) outlet output observed (The Solar Lab)",
+   "value": "about 25 A",
+   "source": "https://www.thesolarlab.com/review/anker-solix-f3800-plus-review",
+   "source_title": "Anker SOLIX F3800 Plus Review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The review says the 30 A outlet is 'closer to a 25A output'. 25 A × 240 V = 6,000 W, which matches the inverter rating. The review defers idle and efficiency testing to 'a later date'."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "about 45 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "Given as the comparison figure for the original Pro Ultra. The voltage mode is not stated. Over 24 h: 45 W × 24 = 1.08 kWh, which is 18% of 6,144 Wh."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "about 36 W average",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "In compressor-start tests the unit sometimes 'triggered the Ultra X to shut itself down'. Output is capped at 6,000 W with one battery."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Sustained-load efficiency and overload hold (The Solar Lab)",
+   "value": "59 min at just under 6,000 W, about 98% efficiency; held 9,200 W for about 10 s with a brief peak of 9,300 W",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "A 120 V recharge took 4 h 4 min and drew 7.25 kWh for the 6 kWh battery, which implies roughly 83–85% on the charge side; that conflicts with the 98% discharge claim. The unit 'stuttered' on a 2,200 W car lift. No 240 V appliance test."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Sustained-load efficiency and overload hold (The Solar Lab)",
+   "value": "60 min at 3,650 W, about 89% efficiency; held 5,100 W for nearly a minute before shutting down",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-3-review",
+   "source_title": "EcoFlow DELTA Pro 3 Review | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "A 120 V AC charge took about 2 h 54 min against the advertised 2 h 20 min. The review notes the unit cannot run 240 V and 120 V outputs at the same time. No idle figure is given."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured AC energy out (OutdoorGearLab)",
+   "value": "3,790 Wh of 4,096 Wh (about 92.5%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 Review | OutdoorGearLab",
+   "read": "2026-11-17",
+   "note": "Kenji Mowrey, 2026-01-13, measured with OutdoorGearLab's test jig; the voltage mode is not stated. Average charge rate measured at 1,293 Wh/h, with a full charge in 3.2 h. 3,790 ÷ 4,096 = 92.5%; the text says 'over 93%'."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw and overload behaviour (The Solar Lab)",
+   "value": "about 58 W idle; ran 8,000 W and 9,500 W loads for 20–30 s; 'struggled to start a 10,000W surge air conditioner'",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? | The Solar Lab",
+   "read": "2026-11-17",
+   "note": "Over 24 h: 58 W × 24 = 1.39 kWh, which is 28% of 5,040 Wh. Jackery rates surge at 14,000 W. No author or date is shown, and the voltage mode is not stated."
+  }
+ ],
+ "unsourced": [
+  "Idle draw measured in 240 V mode, as opposed to 120 V, for any candidate. Every named figure I found leaves the mode unstated. A BLUETTI community thread says Apex 300 idle is worse at 240 V, but that is a user post, not a named reviewer.",
+  "A measured 240 V appliance start (well pump, central AC, dryer) with a starting-wattage figure for any candidate. The Solar Lab, OutdoorGearLab and StorageReview tested only 120 V loads or used non-appliance overload loads.",
+  "Measured idle draw for the Anker F3800 Plus. The Solar Lab defers testing, PCMag's figure was only on a Now.Solar copy without the original URL, and the How-To Geek/Yahoo review returned 403.",
+  "A measured efficiency or idle figure for the OSCAL PowerMax 6000. Gear Diary (2026-07-31) reportedly measured about 89% but returned 403. The techtest.org review covers the German model.",
+  "Measured figures for the EcoFlow TITAN 5000 Plus and Jackery HomePower 3600 Pro Max. I did not search these within the call budget.",
+  "Dates and author names for The Solar Lab reviews. The pages show only a © 2026 footer and no byline."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1735419
+ }
+}
