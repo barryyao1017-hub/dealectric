@@ -1,0 +1,95 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that EcoFlow's EV X-Stream Adapter does the opposite of charging a car: it charges the DELTA Pro 3, DELTA Pro Ultra or TITAN from a Level 2 J1772 EV station. EcoFlow's actual EV-charging accessory is the $49 Portable Power Station Grounding Adapter, and EcoFlow lists it for the DELTA Pro, DELTA 2, DELTA 2 Max, DELTA Max and the DELTA 3 Classic, Max, Max Plus, Ultra and Ultra Plus, but not for the DELTA Pro 3.",
+ "standout": 3,
+ "standout_why": "Compared against the cited Jackery FAQ, which covers only the Jackery Grounding Adapter for the HomePower 3600 Pro Max and Explorer 5000 Plus and the 5000 Plus firmware update, and the cited ryzzun.com page, which covers Jackery, the Anker F3800 EV mode on NEMA 14-50 under 25 A, and a Tom's Guide test. Ryzzun only says EcoFlow claims the DELTA Pro Ultra 'can charge from an EV charger', does not mention the X-Stream adapter, and gives no EcoFlow model list for EV output. Neither page names EcoFlow's grounding adapter or says which EcoFlow models it works with. Neither notes that the F3800 Plus has no NEMA 14-50 port. The whichwatts EV guide (rank 3) failed to load (TLS certificate error), so I could not compare it.",
+ "decides": "This changes the EcoFlow row. Our current page lists the DELTA Pro 3 + EV X-Stream adapter as 'Level 2 with the $99 adapter', but EcoFlow sells that adapter for charging the station from an EV charger, not for charging a car, so the row has the direction backwards. EcoFlow's documented way to charge a car is the $49 grounding adapter, and its list does not include the DELTA Pro 3. The EcoFlow pick should become the DELTA 3 Ultra (3,072 Wh, $1,369 on 2026-11-17) or the DELTA 3 Max Plus (2,048 Wh, $1,149) plus the $49 grounding adapter, which is cheaper than the $2,799 DELTA Pro 3. For Anker, the F3800 Plus EV mode is documented on its TT-30 or L14-30 outlets, since it has no 14-50. A shopper who buys a NEMA 14-50 EVSE for the F3800 Plus needs a different plug.",
+ "candidates": [
+  "EcoFlow DELTA 3 Ultra",
+  "EcoFlow DELTA 3 Max Plus",
+  "EcoFlow DELTA 3 Max",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800",
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow EV X-Stream Adapter (DELTA Pro 3 / DELTA Pro Ultra / TITAN)",
+   "label": "What the adapter does (direction of power flow)",
+   "value": "Charges the power station from Level 2 AC EV charging stations (SAE J1772 Type 1) at up to 7,200 W. AC input 120/240 V, 30 A; length 1.6 ft. $99.",
+   "source": "https://us.ecoflow.com/products/ev-x-stream-adapter-delta-pro-ultra",
+   "source_title": "EcoFlow EV X-Stream Adapter – EcoFlow US store",
+   "read": "2026-11-17",
+   "note": "Read from EcoFlow's US Shopify catalog with storecheck.py. The maker's text: 'allows you to charge your EcoFlow DELTA Pro 3 / EcoFlow DELTA Pro Ultra / TITAN Series at thousands of level 2 AC EV charging stations'. Nothing on the listing says it charges a car. Our page's DELTA Pro 3 row ('Level 2 with the $99 adapter') has this backwards. The original-DELTA Pro version (https://us.ecoflow.com/products/ev-x-stream-adapter-delta-pro, $99) is also for charging the station, at 3,400 W."
+  },
+  {
+   "product": "EcoFlow Portable Power Station Grounding Adapter",
+   "label": "Models EcoFlow lists for EV charging",
+   "value": "DELTA Pro, DELTA 2 Max, DELTA Max, DELTA 2, DELTA 3 Classic, DELTA 3 Max, DELTA 3 Max Plus, DELTA 3 Ultra, DELTA 3 Ultra Plus. $49, in stock.",
+   "source": "https://us.ecoflow.com/products/portable-power-station-grounding-adapter",
+   "source_title": "EcoFlow Portable Power Station Grounding Adapter – EcoFlow US store",
+   "read": "2026-11-17",
+   "note": "Read from EcoFlow's US Shopify catalog with storecheck.py. The maker's text: 'With the grounding adapter, use a DELTA Pro or DELTA 2 Max/DELTA Max/DELTA 2 to charge your EV safely as an emergency backup power'. The DELTA 3 models are named in the connection instructions. Exclusions by omission: the DELTA Pro 3, DELTA Pro Ultra, TITAN and RIVER are not listed."
+  },
+  {
+   "product": "EcoFlow Portable Power Station Grounding Adapter",
+   "label": "Cabling conditions stated by the maker",
+   "value": "DELTA Pro: ethernet communication cable plus AC cable. DELTA 2/Max/DELTA 3 family: the adapter's own USB-C cable to the station's left USB-C port, plus AC cable. 'Only use the USB-C Cable included'. Through the Double Voltage Hub: an extra NEMA 6-15P or 6-20P to C13 cord is needed.",
+   "source": "https://us.ecoflow.com/products/portable-power-station-grounding-adapter",
+   "source_title": "EcoFlow Portable Power Station Grounding Adapter – EcoFlow US store",
+   "read": "2026-11-17",
+   "note": "The adapter needs a data link to the station, so a generic neutral-ground bonding plug is not equivalent."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "Price, maker's US store",
+   "value": "$1,369 (3,072 Wh, 3,600 W)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-ultra-portable-power-station-3072wh",
+   "source_title": "EcoFlow DELTA 3 Ultra Portable Power Station (3072Wh) – EcoFlow US store",
+   "read": "2026-11-17",
+   "note": "storecheck.py search result. Listed compare-at price $3,198. It is on the grounding-adapter model list, so it can charge a car for $1,369 + $49 = $1,418."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Price, maker's US store",
+   "value": "$1,149 (2,048 Wh, 3,000 W)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Plus Portable Power Station (2048Wh) – EcoFlow US store",
+   "read": "2026-11-17",
+   "note": "storecheck.py search result. The DELTA 3 Max (2,400 W) is $879 at https://us.ecoflow.com/products/delta-3-max-series-portable-power-station, read the same day. Both are on the grounding-adapter list."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "EV-charging outlets and current limit",
+   "value": "EV mode on the NEMA TT-30 (3,000 W, 120 V) or L14-30 (6,000 W, 240 V). No NEMA 14-50 is listed. Set the EV charging rate below 25 A.",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus – Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "The page says 'Direct charging via NEMA TT-30P or L14-30 ports' and 'Double-press the AC Outlet Button to activate EV mode charging'. The spec table shows the NEMA 14-50 only for the standard F3800. The page showed no price ('Price Loading', Sold Out). It does not mention grounding accessories."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus / HomePower 3600 Pro Max",
+   "label": "EV accessory, firmware and exclusions",
+   "value": "Jackery Grounding Adapter ('simulated grounding'). The Explorer 5000 Plus needs a firmware update first, and units without it won't support the adapter. Mains AC charging is prohibited while the adapter is connected, and the parallel port is disabled automatically.",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52357191592475-Can-a-power-station-charge-an-electric-vehicle-EV",
+   "source_title": "Can a power station charge an electric vehicle (EV)? – Jackery",
+   "read": "2026-11-17",
+   "note": "The cited rival already has this. Included for the compatibility table, not as the gap."
+  }
+ ],
+ "unsourced": [
+  "Whether EcoFlow supports charging a car from the DELTA Pro 3 by any route (grounding adapter or 240 V outlet). The DELTA Pro 3 US product page and the 2024 user manual PDF returned HTTP 429 and HTTP 404, so the exclusion rests on its absence from the grounding adapter's listed models.",
+  "EcoFlow grounding adapter manual PDF (cdn.shopify.com, 2023): downloaded but not readable here (compressed streams; extraction tool not permitted). Search snippets say it lists only the DELTA Pro and DELTA Max, which is older than the store's current list.",
+  "BLUETTI documentation on charging an EV from the Elite 300, Elite 200 V2, AC200L, AC180 or Apex 300: I found only the Apex 300 manual's note on charging the Apex from an EV station, plus community-forum posts (forum redirected, not opened). No maker statement on EV output or a grounding accessory.",
+  "ALLPOWERS R4000 and S2000 Pro EV-charging compatibility or grounding accessory: not researched within the tool-call budget.",
+  "A list of EVSE brands or models EcoFlow, Anker or Jackery say were tested with their stations: none of the maker pages I opened names any.",
+  "Anker F3800 Plus price: the maker's page showed no price (sold out)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.3229088999999998
+ }
+}

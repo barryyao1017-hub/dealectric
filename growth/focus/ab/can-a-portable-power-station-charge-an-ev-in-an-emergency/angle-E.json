@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got lists named-lab measurements of how much AC energy each candidate station actually delivers. Notebookcheck measured just over 92% of the BLUETTI Elite 300's 3,014.4 Wh at an EV-like 1,800 W load. OutdoorGearLab measured 3,790 Wh from the EcoFlow DELTA Pro 3. StorageReview got only 920 Wh at 350 W from the ALLPOWERS S2000 Pro, which shut off showing 22% left. CleanTechnica found that the Anker F3800 made a Wallbox, a Tesla Gen 3 Wall Connector and a Mercedes 110 V charger all throw errors until EV mode was switched on.",
+ "standout": 2,
+ "standout_why": "The two cited rivals were checked. Jackery's FAQ (updated 2026-08-20) has no figures at all, only its grounding adapter for the HomePower 3600 Pro Max and Explorer 5000 Plus. Ryzzun (2026-10-23) works out miles from rated capacity times an assumed 85%. Its only measurements are second-hand from Tom's Guide (F3800 into a Blazer EV, about 6 miles; Geneverse and BLUETTI AC200P failed on Level 1), and it describes F3800 EV mode as a how-to. Neither page gives a measured usable Wh for any candidate, the measured gain at high load, the S2000 Pro shortfall, or CleanTechnica's three-charger error result. ChatGPT's own answer also assumes a 15–25% loss on rated Wh. The F3800 EV-mode point is partly covered by Ryzzun, which is why this scores 2 and not 3.",
+ "decides": "It confirms that the 3.8–4 kWh class (DELTA Pro 3, F3800) is the only group that gets a car around 9–10 miles. The F3800 is the only candidate with a named test of actual car chargers working, after a double-press into EV mode. Three corrections for our page: (1) The ALLPOWERS S2000 Pro should drop from about 1,230 to about 920 usable Wh (StorageReview), so roughly 0.75 kWh into the pack and about 2.6 car miles instead of 3.5. Its NCM cells and early shutoff make it a weak emergency pick. (2) The Elite 300 delivers more at Level 1 loads (about 2,650 Wh at 200 W, about 2,775 Wh at 1,800 W) than the 2,560 we list, though Notebookcheck tested the EU unit. (3) The DELTA Pro 3 row's 'Level 2 with the $99 adapter' is wrong. The EV X-Stream adapter charges the power station from a J1772 station and does not charge the car, so that time cell needs rewriting.",
+ "candidates": [
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC200L",
+  "ALLPOWERS S2000 Pro",
+  "BLUETTI AC180",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured AC output at low and high load",
+   "value": "about 2,650 Wh at just over 200 W (just under 88% of 3,014.4 Wh); just over 92% at 1,800 W (about 2,775 Wh)",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review (Notebookcheck, Marcus Schwarten)",
+   "read": "2026-11-17",
+   "note": "Published 2026-03-09, updated 2026-10-05. Notebookcheck says it tested the EU (230 V) version, which differs slightly from the US one. 2,775 Wh = 3,014.4 × 0.92 is our arithmetic. Level 1 EV charging draws 1,440 W, closer to the 1,800 W case. The review has no EV-charging test."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured AC charging efficiency (wall to battery)",
+   "value": "3,450 Wh from the wall to fill 3,014.4 Wh, a good 87% at 1,200 W; just under 85% at about 2,300 W",
+   "source": "https://www.notebookcheck.net/3-kWh-in-a-compact-package-Powerstation-Bluetti-Elite-300-review.1246185.0.html",
+   "source_title": "3 kWh in a compact package: Powerstation Bluetti Elite 300 review (Notebookcheck, Marcus Schwarten)",
+   "read": "2026-11-17",
+   "note": "EU unit. Useful for a 'refill at home before the trip' line."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured usable capacity",
+   "value": "3,790 Wh of 4,096 Wh rated (over 93%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 review (OutdoorGearLab, Kenji Mowrey)",
+   "read": "2026-11-17",
+   "note": "Dated 2026-01-13. Measured on OutdoorGearLab's test jig, load not stated. At the page's own assumptions (×0.85 car-side, 3.5 mi/kWh): 3,790 × 0.85 ≈ 3.2 kWh into the pack, about 11 car miles, against our row's 2.8 kWh and 10 miles. The page also says the unit 'can be charged from Level 1 and Level 2 EV charging stations', which means power going into the station."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Direction of the EV X-Stream adapter",
+   "value": "Charges the DELTA Pro 3 or DELTA Pro Ultra from a Level 2 J1772 station, rated 7,200 W; $99 sale, $129 regular",
+   "source": "https://shopsolarkits.com/products/ecoflow-ev-x-stream-adapter-delta-pro-ultra",
+   "source_title": "EcoFlow EV X-Stream Adapter (DELTA Pro 3 / DELTA Pro Ultra), Shop Solar Kits",
+   "read": "2026-11-17",
+   "note": "A retailer page, not EcoFlow's own. The adapter is not a way to charge a car, so our row's 'Level 2 with the $99 adapter' needs fixing. The adorama.com listing returned 403. WinFuture (Timm Mohn, 2022-10-05) measured 3.3 kW into the original DELTA Pro through this adapter at a public charger, which also shows the power goes into the station: https://winfuture.de/videos/Hardware/EcoFlow-EV-X-Stream-Adapter-Laden-an-jeder-Ladesaeule-24447.html"
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Named test of car chargers on the station",
+   "value": "A Wallbox Pulsar Plus (240 V), a Tesla Gen 3 Wall Connector and a 110 V Mercedes charger all errored in normal mode, and none worked at 110 V. After a double-press of the 240 V switch into EV mode, all three connected and charged.",
+   "source": "http://cleantechnica.com/2024/08/19/ankers-solix-f3800-is-the-new-heavyweight-in-portable-power-stations-cleantechnica-tested/",
+   "source_title": "Anker's SOLIX F3800 Is The New Heavyweight In 'Portable' Power Stations — CleanTechnica Tested (Kyle Field)",
+   "read": "2026-11-17",
+   "note": "Dated 2024-08-19. CleanTechnica does not name the car and reports no kWh or miles. In a separate stress test it pulled 32 A at 240 V (7,680 W)."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured usable capacity",
+   "value": "2,905 Wh of 3,840 Wh rated (about 75%) at about 260 W",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review (Notebookcheck, Marcus Schwarten)",
+   "read": "2026-11-17",
+   "note": "Dated 2024-08-27, updated 2026-10-05. The review gives the EV connection as 3,000 W, which suggests a non-US unit, so use with care. No EV kWh or miles measured. On this figure: 2,905 × 0.85 ≈ 2.5 kWh into the pack, about 8.6 car miles, against our row's 2.6 kWh and 9."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Measured usable capacity",
+   "value": "1,030 Wh of 1,152 Wh rated, at 350 W, inverter losses included",
+   "source": "https://www.storagereview.com/review/bluetti-ac180-portable-power-station-review",
+   "source_title": "BLUETTI AC180 Portable Power Station Review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-17",
+   "note": "Dated 2023-05-26. Sits at the top of our page's 950–1,030 range."
+  },
+  {
+   "product": "ALLPOWERS S2000 Pro",
+   "label": "Measured usable capacity",
+   "value": "920 Wh at 350 W; the unit powered off with 22% still showing (claimed 1,500 Wh, NCM cells)",
+   "source": "https://www.storagereview.com/review/allpowers-s2000-pro-portable-power-station-review",
+   "source_title": "ALLPOWERS S2000 Pro Portable Power Station Review (StorageReview Consumer Desk)",
+   "read": "2026-11-17",
+   "note": "Dated 2023-04-07. The early S2000 Pro was rated 1,500 Wh; we list 1,451 Wh, so check whether the current unit is the same pack. 920 × 0.85 ≈ 0.78 kWh into the pack, about 2.7 car miles, against our row's 1 kWh and 3.5."
+  }
+ ],
+ "unsourced": [
+  "Tom's Guide F3800 → 2024 Chevrolet Blazer EV test (49%→51%, about +1 mi/hr): WebFetch returned only the headline and a curl fallback was not run. The figures were read only from search snippets and Ryzzun's summary, so they are not used here.",
+  "A named measurement of usable Wh, or of an EV charging session, for the ALLPOWERS R4000. Searches found only an exspenditure.com claim of 3,650 Wh from a 3,456 Wh unit, which is implausible, and no lab test.",
+  "A named measured capacity for the BLUETTI AC200L, and the source of our page's '1,910 measured' figure for the Elite 200 V2. CleanTechnica's Elite 200 V2 review (2025-07-07), which I opened, gives no measured capacity. Snippets mention 2,065 Wh and about 2,000 Wh (The Gadgeteer, others), but I did not open those pages.",
+  "Any named lab measurement of kWh actually delivered into an EV battery from any candidate station, as opposed to the station's AC output.",
+  "A named lab figure for car-side Level 1 (120 V) charging loss. Only Tesla-forum and TMC user readings turned up (about 85% at 120 V against 95.6% at 240 V), which are not citable as judgement."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1896722999999996
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a cold EV can use the plug-in power to keep its own pack warm instead of storing it: Tesla's manual says that when plugged in, the car 'uses the charging system, rather than the Battery itself, to keep your Battery warm'. InsideEVs reported that a Model 3 at -15 °F on a 9 A Level 1 cord for 14 hours gained only 1.14 kWh, about 7% of what the outlet supplied. At that rate a 2–3 kWh power station would add well under 1 mile in deep cold.",
+ "standout": 2,
+ "standout_why": "I read the cited Jackery FAQ and the cited ryzzun.com page (dated 2026-10-23). Both cover grounding thoroughly: floating ground, the EV charger's ground-continuity check, the relay opening, Jackery's Grounding Adapter and Anker's EV mode. So the grounding problem is already taken (standout 0 on its own). The only thing ryzzun says about loss inside the car is 'Slow 120V charging tends to lose a bit more to the car's electronics staying awake.' Neither page says that a cold pack can take most of a Level 1 session for heating. ChatGPT's answer allows for a 15–25% loss and says cold only shortens the drive, not the charge. I could not open whichwatts.com (rank 3, uncited) because of an SSL certificate error, so I have not checked it for this point.",
+ "decides": "This confirms that the plan works only in mild weather. In freezing conditions, a 120 V / 12 A session from any station in the current table (BLUETTI Elite 300, ALLPOWERS R4000 and so on) may add almost no range, because the car's own heater takes the power first. That favours 240 V output, which delivers more power per minute beyond what heating takes: Anker SOLIX F3800 / F3800 Plus EV mode, or Jackery Explorer 5000 Plus with its Grounding Adapter. The rebuilt page should also add a cold-weather caveat to its miles columns. Separately, the current page's 'Level 2 with the $99 adapter' cell for the EcoFlow DELTA Pro 3 is wrong. EcoFlow's own FAQ describes the EV X-Stream Adapter as a way to charge the DELTA Pro 3 from EV charging stations, not to charge an EV. That cell has to be removed or corrected.",
+ "candidates": [
+  "Anker SOLIX F3800",
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI Elite 300",
+  "ALLPOWERS R4000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plugged-in EV uses charger power to warm its battery (maker's words)",
+   "value": "'Leave Model S plugged in when not in use. This uses the charging system, rather than the Battery itself, to keep your Battery warm'",
+   "source": "https://www.manualslib.com/manual/2044361/Tesla-S.html?page=90",
+   "source_title": "Tesla Model S Owner's Manual, page 90 (Cold Weather Best Practices), via ManualsLib",
+   "read": "2026-11-17",
+   "note": "This is a mirror of Tesla's own manual, because tesla.com's ownersmanual pages returned HTTP 403 to my fetch. The manual says a blue snowflake icon means some battery energy is unavailable because the battery is cold. It gives no wattage for battery heating."
+  },
+  {
+   "product": "general",
+   "label": "Share of Level 1 energy stored in a cold battery (named test)",
+   "value": "1.14 kWh gained in 14 h at 9 A on 110 V, -15 °F (-26 °C), Tesla Model 3 Long Range AWD; 'only 7% of the power from the outlet actually made it into the battery'; 'roughly 15 kWh' used to keep the battery warm",
+   "source": "https://insideevs.com/features/749828/tesla-model-3-freezing-night-level-1-charger/",
+   "source_title": "A Tesla Model 3 Slow-Charged In -15 Degree Temperatures. Here's How It Went (InsideEVs, Iulian Dnistran, 2025-02-08)",
+   "read": "2026-11-17",
+   "note": "The article's figures don't fully agree with each other. At 9 A × 110–120 V × 14 h, the outlet supplied about 13.9–15.1 kWh in total, so '15 kWh warming + 1.14 kWh stored' is a loose statement. Its 65%→70% state of charge would also be more than 1.14 kWh on this pack. Use the 7% / 1.14 kWh claim and attribute it to InsideEVs. My own extrapolation: about 2.05 kWh into the car (Elite 300 row) × 7% ≈ 0.14 kWh ≈ 0.5 mi at 3.5 mi/kWh, and only in comparably extreme cold. The 12 A in our table would help somewhat; InsideEVs says 12 A 'would have made a difference'."
+  },
+  {
+   "product": "general",
+   "label": "Why EV chargers refuse floating-ground power stations (maker's words)",
+   "value": "Power stations use a 'floating ground'. The charger 'detects the absence of a low-impedance path between the neutral and ground lines', 'interprets this as a ground fault' and 'disengages its internal relay'",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52357191592475-Can-a-power-station-charge-an-electric-vehicle-EV",
+   "source_title": "Can a power station charge an electric vehicle (EV)? – Jackery",
+   "read": "2026-11-17",
+   "note": "A rival already has this (Jackery is cited by ChatGPT, and ryzzun repeats it)."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Grounding Adapter compatibility",
+   "value": "Compatible with HomePower 3600 Pro Max and Explorer 5000 Plus; Explorer 5000 Plus 'must complete a firmware update prior to use'. While the adapter is connected, AC-mains recharging is prohibited and the parallel port is disabled",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52357191592475-Can-a-power-station-charge-an-electric-vehicle-EV",
+   "source_title": "Can a power station charge an electric vehicle (EV)? – Jackery",
+   "read": "2026-11-17",
+   "note": "The FAQ says 'three models' but names only two. Jackery describes the adapter as 'simulated grounding', not a physical earth connection."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "EV charging mode and outlet",
+   "value": "'Double-press the AC Outlet Button to activate EV mode charging'; 'set the charging rate to less than 25A'; 1× NEMA 14-50 (6,000 W max, 240 V)",
+   "source": "https://www.ankersolix.com/products/f3800",
+   "source_title": "Anker SOLIX F3800 product page",
+   "read": "2026-11-17",
+   "note": "The page showed the product as 'Sold Out' with no price. It gives no grounding or neutral details for EV use. The same page content covers the F3800 Plus, which lists TT-30 and L14-30 outlets ('EV & RV Charging: Direct charging via NEMA TT-30P or L14-30 ports'), rated 120/240 V, 25 A max."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "What the EV X-Stream Adapter does",
+   "value": "It charges the DELTA Pro 3 from EV stations: 'rapid Level 2 charging (240V/2000W) for EcoFlow DELTA Pro 3 instead of standard grid power L1 charging rates (120V/2000W) at L2 EV charging stations'",
+   "source": "https://www.ecoflow.com/us/blog/ecoflow-delta-pro-3-faq",
+   "source_title": "EcoFlow DELTA Pro 3 FAQ: Everything You Need to Know (EcoFlow US blog, 2025-05-22)",
+   "read": "2026-11-17",
+   "note": "The adapter is for input to the power station, so it does not charge an EV. Our current page's DELTA Pro 3 row ('Level 2 with the $99 adapter') misreads this. The FAQ does not mention grounding or neutral."
+  }
+ ],
+ "unsourced": [
+  "Whether BLUETTI's AC output (Elite 300, Elite 200 V2, AC200L, AC180) is floating or neutral-ground bonded, in BLUETTI's own words. A search found BLUETTI community-forum threads quoting staff as saying 'float ground', but community.bluettipower.com now 301-redirects to forum.bluettipower.com and I could not open the threads. I found no BLUETTI manual or FAQ page on it.",
+  "Whether the EcoFlow DELTA Pro 3's AC output is neutral-ground bonded or switchable. EcoFlow's US FAQ is silent, and I did not open the manual PDF.",
+  "A carmaker's figure for battery-heater power while on 120 V. The Ford Mach-E figure of about 1 kW appears only in an owners' forum post, and the Hyundai owner's-manual page I opened does not cover it.",
+  "Ford's 'Winter driving in the Mustang Mach-E' PDF (ford.ie). The fetch returned a binary PDF, and the local text extraction needed approval that wasn't granted, so I have no quote from it.",
+  "whichwatts.com's EV and grounding guides (ranks 2 and 3). The fetch failed with an SSL certificate error, so I did not compare against them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1937347999999997
+ }
+}
