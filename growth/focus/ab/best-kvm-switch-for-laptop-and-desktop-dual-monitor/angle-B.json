@@ -1,0 +1,83 @@
+{
+ "angle": "B",
+ "gap": "None of the results ChatGPT got works out how much of a dock's 'laptop charging' its own power brick actually supplies. The AV Access KD-E10 lists '100 W' PD, but its brick is 12 V × 3 A = 36 W, the dock itself can draw up to 33.12 W, and AV Access says to plug in the laptop's original adapter as well. That leaves the laptop 0 W from the KD-E10's own brick. The iDock M10's brick is 20 V × 6 A = 120 W, which covers its 100 W PD and leaves 20 W for the dock.",
+ "standout": 2,
+ "standout_why": "I compared four pages. Racks & Watts (cited) gives the iDock C10 as 'up to 60 W' and says itself that it doesn't know how much power reaches the laptop. TESmart's 2026 buying guide (cited) gives only '100W PD' for the HDC203-PM24, with no adapter rating and no net figure. The Office Journal's laptop+desktop list gives 65 W for the iDock P10 and only says to 'verify the budget is shared'. ChatGPT's answer says 'up to 100W laptop charging' for the T722. None of these compares a brick's rating with the PD figure, and none notes that one '100 W' dock is only a pass-through for the laptop's own charger.",
+ "decides": "This supports the iDock M10 over the KD-E10 for anyone who wants to plug in one cable and leave their laptop charger in the bag. The M10's own 120 W brick covers 100 W PD, and on M4/M5 or Pro/Max Macs it runs two extended screens, which works out to $289.99 / 2 = $145 per extended screen. The KD-E10 at $169.99 still makes sense for a Windows laptop if the shopper keeps their laptop charger at the desk anyway. Our own table should change its KD-E10 'Laptop charging: 100 W' cell to '100 W pass-through (needs your laptop charger)'. The iDock C10 supplies 60 W from its own brick. That is 60 / 140 = 43% of a 140 W MacBook Pro charger's rating, and AV Access itself sends 140 W laptops to the KD-E10 or the original adapter.",
+ "candidates": [
+  "AV Access KD-E10",
+  "AV Access iDock M10",
+  "AV Access iDock C10",
+  "TESmert T722",
+  "TESmart HDC202-X24",
+  "StarTech SV221HUC4K"
+ ],
+ "findings": [
+  {
+   "product": "AV Access KD-E10",
+   "label": "Power left in the dock's own brick for the laptop",
+   "value": "0 W (36 W brick vs 33.12 W dock draw; the 100 W PD comes from the laptop's own charger)",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "KD-E10 | AV Access",
+   "read": "2026-11-17",
+   "note": "12 V × 3 A = 36 W brick; 36 − 33.12 W max consumption = 2.88 W spare, so the brick cannot feed 100 W. The page says the USB-C port delivers up to 100 W 'when connected to a power adapter' and to 'additionally use your laptop's original adapter'."
+  },
+  {
+   "product": "AV Access KD-E10",
+   "label": "Price",
+   "value": "$169.99",
+   "source": "https://www.avaccess.com/products/kd-e10/",
+   "source_title": "KD-E10 | AV Access",
+   "read": "2026-11-17",
+   "note": "AV Access US store list price. Mac: the two screens mirror because macOS doesn't support USB-C MST."
+  },
+  {
+   "product": "AV Access iDock M10",
+   "label": "Brick watts left after 100 W laptop PD",
+   "value": "20 W",
+   "source": "https://www.avaccess.com/products/idock-m10/",
+   "source_title": "iDock M10 | AV Access",
+   "read": "2026-11-17",
+   "note": "20 V × 6 A = 120 W adapter (included); 120 − 100 W PD = 20 W for the dock and its USB ports. The page doesn't say whether PD drops when peripherals draw power."
+  },
+  {
+   "product": "AV Access iDock M10",
+   "label": "Price per extended 4K60 Mac screen",
+   "value": "$145",
+   "source": "https://www.avaccess.com/products/idock-m10/",
+   "source_title": "iDock M10 | AV Access",
+   "read": "2026-11-17",
+   "note": "$289.99 / 2 screens = $145.00. Two extended screens on M4/M5 or any Pro/Max chip, using two USB-C ports on the Mac. M1/M2 base: one external screen. M3 base: two screens with the lid closed only."
+  },
+  {
+   "product": "AV Access iDock C10",
+   "label": "Laptop PD as a share of a 140 W MacBook Pro charger",
+   "value": "43%",
+   "source": "https://www.avaccess.com/products/idock-c10/",
+   "source_title": "iDock C10 | AV Access",
+   "read": "2026-11-17",
+   "note": "60 W / 140 W = 0.43. Brick is 20 V × 6 A = 120 W; max consumption 94.5 W. The page itself recommends the original adapter or the KD-E10 for 140 W laptops. $239.99; MacBook screens mirror."
+  },
+  {
+   "product": "TESmert T722",
+   "label": "Price per extended screen",
+   "value": "$128",
+   "source": "https://www.tesmert.com/products/t722",
+   "source_title": "Dual Monitor KVM Switch & Docking Station for USB-C Laptop and HDMI/DP Desktop – TESmert",
+   "read": "2026-11-17",
+   "note": "$256.00 / 2 = $128.00, in stock per the store's product data. Up to 100 W PD on the full-featured USB-C input. Macs get extended dual screens with two USB-C connections; video tops out at 18 Gbps (4K60); USB 3.2 Gen 1 at 5 Gbps."
+  }
+ ],
+ "unsourced": [
+  "TESmert T722 power adapter rating and max power consumption: the tesmert.com product page returned HTTP 429 three times and a search found no spec sheet, so I couldn't work out its brick headroom after the 100 W PD.",
+  "TESmart HDC202-X24 PD watts, adapter rating and current price: tesmart.com returned HTTP 429 on both WebFetch and storecheck.",
+  "StarTech SV221HUC4K price and power: the StarTech US product page showed only the title (4K 60Hz HDMI 2.0) with no price or power spec. Resellers describe it as bus-powered with no PD, but I didn't use that because it isn't the maker's page.",
+  "Whether the iDock M10 cuts laptop PD when its USB ports draw power: AV Access's product page doesn't say, and I didn't open the manual."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0877617000000002
+ }
+}
