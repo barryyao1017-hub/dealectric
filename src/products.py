@@ -1306,15 +1306,6 @@ PRODUCTS = [
  "fit": "Someone with a double-DIN dash who wants a big wireless-CarPlay screen and will accept entry-level Android hardware.",
  "caveats": ["2 GB of RAM and a quad-core chip: fine for CarPlay and maps, slow for heavy Android apps; Eonon's UA12S Plus-6G ($319.99) is the faster unit.", "Eonon's page showed coupon prices ($209.99 'with coupon') next to the $229.99 price on 2026-11-03; the price you pay depends on the coupon the page offers that day.", "Reliability complaints (freezes, units failing within the first year) appear on Trustpilot and ResellerRatings alongside praise for free replacements; Pioneer, Sony and Kenwood are the safer buy at two to five times the price."]},
 
-{"slug": "eonon-ua12s-plus-6g-10-inch-android-13-car-stereo", "brand": "Eonon", "program": "awin:eonon", "category": "car-stereo",
- "name": "Eonon UA12S Plus-6G 10.1-inch Double-DIN Android 13 Car Stereo, Qualcomm 8-core, 6 GB / 64 GB", "model": "UA12S Plus-6G (QCM6125)",
- "url": "https://www.eonon.com/Android-Car-GPS/Double-Din-GPS-Navigation/UA12S%20Plus-6G.html", "price": 289.99, "verified": '2026-11-17', "list_price": 319.99,
- "specs": [("Screen", "10.1-inch QLED touchscreen"), ("System", "Android 13, Qualcomm QCM6125 octa-core (Kryo 260, Adreno 610), 6 GB RAM, 64 GB storage"), ("Phone", "Wireless and wired Apple CarPlay and Android Auto"), ("Fit", "Universal double-DIN"), ("Editions", "Ultra Edition Gen2 64 GB $279.99, 128 GB $329.99 and Standard 64 GB $199.99 listed on the same page on 2026-11-03")],
- "warranty": "2 years for Android car stereos bought on eonon.com; 1 year for special offers and accessories", "returns": "Product issue: full refund or exchange within 3 months, exchange within 6 months. Change of mind: within 3 months, buyer pays return shipping, plus 20% if opened or installed",
- "summary": "Eonon's fast 10-inch unit: a Qualcomm 8-core chip with 6 GB of RAM, where ATOTO's and Joying's 6 GB units start past $400.",
- "fit": "A double-DIN owner who runs Android apps on the head unit, not just CarPlay.",
- "caveats": ["Eonon's page markets 4G/LTE and DSP on this family, but the spec text we could read lists neither; confirm the SIM slot and DSP amplifier on the configuration you buy.", "Eonon's page showed coupon prices ($289.99 'with coupon') next to the $319.99 price on 2026-11-03.", "Same brand-reputation caveat as the UA13 Plus: mixed owner reviews on reliability."]},
-
 {"slug": "petcube-bites-2-lite", "brand": "Petcube", "program": "awin:petcube", "category": "pet-camera",
  "name": "Petcube Bites 2 Lite Pet Camera with Treat Dispenser", "model": "Bites 2 Lite (Bites2LiteUS)",
  "url": "https://petcube.com/store/product/bites-2-lite/", "price": 99.99, "list_price": 149.99,
@@ -9635,6 +9626,8 @@ PRODUCTS = [
 RETIRED = {
     "baseus-blade-hd-100w-20000mah": ("Baseus Blade HD 100W Laptop Power Bank, 20,000 mAh", "baseus-blade-h1-100w-20000mah",
                                       "Baseus no longer sells the Blade HD (its product page was removed in October 2026). The Blade H1 replaced it: the same flat 20,000 mAh, 100 W format."),
+    "eonon-ua12s-plus-6g-10-inch-android-13-car-stereo": ("Eonon UA12S Plus-6G 10.1-inch Double-DIN Android 13 Car Stereo, 6 GB / 64 GB", None,
+                                      "Eonon no longer sells the UA12S Plus-6G: on 2026-11-17 it was sold out and its product page redirected to a different Eonon model (an Android 12 unit)."),
     "esr-halolock-magslim-qi2-power-bank-10000mah": ("ESR HaloLock MagSlim Qi2 Power Bank, 10,000 mAh", None,
                                       "ESR no longer sells the HaloLock MagSlim Qi2 power bank (its product page was removed in October 2026)."),
 }
