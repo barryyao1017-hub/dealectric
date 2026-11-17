@@ -1,0 +1,124 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that makers turn mAh into Wh with different cell voltages: Anker's 26,250 mAh Prime is rated at 3.8 V (99.75 Wh), while EcoFlow's 27,650 mAh RAPID Pro (99.54 Wh) and AOHi's 27,600 mAh Future Starship (99.36 Wh) are rated at 3.6 V. All three are under the 100 Wh limit, but ChatGPT's 3.7 V table would put the two larger banks at about 102 Wh, and only the Wh printed on the label settles whether a bank can fly.",
+ "standout": 2,
+ "standout_why": "The FAA pages and American Airlines' page returned 403, and the IATA PDF's text could not be extracted, so the cited rivals were not checked directly. ChatGPT's own answer assumes 3.7 V for every bank: 25,000 mAh is 92.5 Wh and 'usually fine', and 30,000 mAh is 111 Wh and 'avoid'. That implies a limit of about 27,000 mAh. RuntimeWise (result 16, read 2026-11-17) gives Wh = mAh × V ÷ 1,000, says most banks are rated at 3.6 or 3.7 V, and shows 27,000 mAh ≈ 100 Wh at 3.7 V. It names no power bank with its Wh. So RuntimeWise covers the general rule but no product figures. None of the results I could read shows that real 27,600–27,650 mAh banks print under 100 Wh. None shows that Anker's 3.8 V rating makes its mAh figure not comparable with other brands. None turns the maker-rated output (5 V) or measured output into the energy a device actually gets.",
+ "decides": "The finding confirms that the largest banks you can fly with are the 99.x Wh ones (EcoFlow RAPID Pro, AOHi Future Starship, Anker Prime 26K), even though ChatGPT's 3.7 V table would rule out anything over about 27,000 mAh. It also means the page should compare banks by label Wh and by delivered energy, not by mAh. Footnote for the table: Anker's 26,250 mAh at 3.8 V and EcoFlow's 27,650 mAh at 3.6 V are almost the same energy (99.75 vs 99.54 Wh), so the extra 1,400 mAh on EcoFlow's box adds nothing. Second footnote for laptop users charging on a plane: the '140 W' port rating is not sustained power. ChargerLAB's AOHi discharge at 100 W stopped on temperature protection after 23 minutes, having delivered 35.52 Wh of the 99.36 Wh label.",
+ "candidates": [
+  "EcoFlow RAPID Pro 27,650 mAh 300 W",
+  "AOHi The Future Starship 240 W 27,600 mAh",
+  "Anker Prime Power Bank 26K 300 W (A110A)",
+  "Anker Prime Power Bank 20K 220 W (A110B)",
+  "Nitecore NB20000 Gen3",
+  "UGREEN Nexode Power Bank 20,000 mAh 100 W",
+  "UGREEN Nexode Power Bank 20,000 mAh 130 W",
+  "UGREEN Nexode Power Bank 20,000 mAh 165W Retractable",
+  "Baseus EnerFill FC41 25,000 mAh 145 W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Rival's mAh-to-Wh rule",
+   "value": "Wh = mAh × V ÷ 1,000; 'most power banks' rated at 3.6 or 3.7 V; examples at 3.7 V: 20,000 mAh = 74 Wh, 27,000 mAh ≈ 100 Wh",
+   "source": "https://www.runtimewise.com/data/airline-battery-rules/",
+   "source_title": "Airline Power Bank and Battery Rules (2026) | RuntimeWise",
+   "read": "2026-11-17",
+   "note": "Result 16 in ChatGPT's set. It gives no Wh figure for any named power bank. This is the baseline the normalisation is measured against."
+  },
+  {
+   "product": "EcoFlow RAPID Pro 27,650 mAh 300 W",
+   "label": "Label capacity and implied cell voltage",
+   "value": "27,650 mAh / 99.54 Wh, which implies 3.6 V",
+   "source": "https://us.ecoflow.com/products/ecoflow-rapid-pro-power-bank-27650mah-300w-140w-built-in-cable",
+   "source_title": "EcoFlow RAPID Pro Power Bank 27,650mAh 300W (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "99.54 ÷ 27.65 = 3.600 V. At ChatGPT's 3.7 V the same mAh would be 27.65 × 3.7 = 102.3 Wh, over the limit. EcoFlow's FAQ says 'carrying a power bank with a capacity under 100Wh is allowed'. Weight 699.4 g. Price $175.99 (was $199.00); the page shows it as sold out / pre-order."
+  },
+  {
+   "product": "AOHi The Future Starship 240 W 27,600 mAh",
+   "label": "Label capacity and cell pack",
+   "value": "27,600 mAh (6 × 4,600 mAh); battery 21.6 V / 4,600 mAh / 99.36 Wh, which is 3.6 V per cell",
+   "source": "https://chargerlab.com/review-of-aohi-starship-240w-pd3-1-27600mah-power-bank-aoc-p011",
+   "source_title": "Review of AOHi Starship 240W PD3.1 27600mAh Power Bank (AOC-P011) | ChargerLAB",
+   "read": "2026-11-17",
+   "note": "21.6 V × 4.6 Ah = 99.36 Wh = 27.6 Ah × 3.6 V. At 3.7 V it would be 102.1 Wh. Maker's rated output is 16,560 mAh at 5 V = 82.8 Wh, 83% of label."
+  },
+  {
+   "product": "AOHi The Future Starship 240 W 27,600 mAh",
+   "label": "Measured delivered energy, ChargerLAB",
+   "value": "90.25 Wh at 9 V 3 A (90.8%); 90.47 Wh at 12 V 3 A; 85.43 Wh at 15 V 3 A; 79.39 Wh at 5 V 3 A; only 35.52 Wh at 20 V 5 A (100 W), stopped by temperature protection at 23 min; 24.06 Wh at 28 V 5 A (140 W), stopped at 10 min",
+   "source": "https://chargerlab.com/review-of-aohi-starship-240w-pd3-1-27600mah-power-bank-aoc-p011",
+   "source_title": "Review of AOHi Starship 240W PD3.1 27600mAh Power Bank (AOC-P011) | ChargerLAB",
+   "read": "2026-11-17",
+   "note": "Shows 'max port watts' and sustained watts are different specs. Efficiency at each load is ChargerLAB's figure against 99.36 Wh."
+  },
+  {
+   "product": "Anker Prime Power Bank 26K 300 W (A110A)",
+   "label": "Label capacity and implied cell voltage",
+   "value": "26,250 mAh / 99.75 Wh, which implies 3.8 V; Anker says devices get 'about 15,200 mAh'",
+   "source": "https://www.anker.com/products/a110a-anker-prime-26k-300w-power-bank",
+   "source_title": "Anker Prime Power Bank (26K, 300W) A110A",
+   "read": "2026-11-17",
+   "note": "99.75 ÷ 26.25 = 3.800 V. At 3.6 V the same mAh would be 94.5 Wh, so its mAh is not comparable with EcoFlow's or AOHi's. Anker does not state the voltage behind its 15,200 mAh delivered figure (15,200 ÷ 26,250 = 58% of the mAh number). 600 g, $229.99. Page says 'TSA-approved capacity'."
+  },
+  {
+   "product": "Anker Prime Power Bank 20K 220 W (A110B)",
+   "label": "Label capacity and delivered figure",
+   "value": "20,100 mAh; devices get 'about 11,250 mAh'",
+   "source": "https://www.anker.com/products/a110b-anker-prime-20k-220w-power-bank",
+   "source_title": "Anker Prime Power Bank (20K, 220W) A110B",
+   "read": "2026-11-17",
+   "note": "11,250 ÷ 20,100 = 56% of the mAh number. The US page did not show a Wh figure today. 510 g, $179.99."
+  },
+  {
+   "product": "Nitecore NB20000 Gen3",
+   "label": "Label capacity and rated output capacity",
+   "value": "20,000 mAh at 3.6 V (72 Wh); rated 10,100 mAh at 5 V",
+   "source": "https://www.nitecore.com/product/nb20000Gen3",
+   "source_title": "NITECORE NB20000 Gen3",
+   "read": "2026-11-17",
+   "note": "10.1 Ah × 5 V = 50.5 Wh, 70% of label. 291 g ±5 g. ChatGPT's 3.7 V table says 74 Wh for this mAh."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20,000 mAh 100 W",
+   "label": "Label capacity and rated output capacity",
+   "value": "20,000 mAh at 3.6 V (72 Wh); rated 11,300 mAh at 5 V 6 A",
+   "source": "https://us.ugreen.com/products/ugreen-100w-20000mah-power-bank",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 100W (UGREEN US)",
+   "read": "2026-11-17",
+   "note": "11.3 Ah × 5 V = 56.5 Wh, 78% of label. $79.99 on the store today."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20,000 mAh 130 W",
+   "label": "Label capacity (pack voltage)",
+   "value": "20,000 mAh / 72 Wh (14.4 V × 5,000 mAh)",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display (UGREEN US)",
+   "read": "2026-11-17",
+   "note": "UGREEN states the figure as a 4S pack (14.4 V × 5 Ah), the same 72 Wh as 20 Ah × 3.6 V. $89.99 today."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20,000 mAh 165W Retractable",
+   "label": "US store price today",
+   "value": "$99.99",
+   "source": "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 165W with Retractable USB-C Cable (UGREEN US)",
+   "read": "2026-11-17",
+   "note": "ChatGPT's 'best overall' pick. Price came from the store search tool. The product page returned HTTP 429, so I have no Wh figure for this model."
+  }
+ ],
+ "unsourced": [
+  "Printed Wh and rated (5 V) capacity for UGREEN Nexode 20,000 mAh 165W Retractable (ChatGPT's pick): us.ugreen.com product page returned HTTP 429 three times",
+  "Printed Wh for Baseus EnerFill FC41 25,000 mAh 145 W: baseus.com product text read through the store tool has no spec table, and WebFetch returned 429",
+  "Wh and rated capacity for Anker Nano Power Bank 10K 45W (A1638): US product URL returned 404 and search snippets gave no Wh",
+  "Wh printed on the US product page for Anker Prime 20K (A110B): the page shows only 20,100 mAh",
+  "The voltage behind Anker's 'about 15,200 mAh / 11,250 mAh to your devices' figures: not stated on Anker's pages",
+  "FAA and American Airlines pages (results 1 and 10–12) returned 403, and the IATA guidance PDF (result 9) could not be text-extracted, so I could not confirm whether they give a mAh-to-Wh voltage"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0652358
+ }
+}
