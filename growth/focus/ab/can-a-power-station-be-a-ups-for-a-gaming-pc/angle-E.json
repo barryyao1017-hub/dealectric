@@ -1,0 +1,158 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured switchover time next to a measured PSU hold-up time. StorageReview measured the EcoFlow DELTA 3 Plus at just over 8 ms and the BLUETTI Elite 300 at 8 ms. It also measured older stations running slower than their ratings: the EcoFlow DELTA 2 at about 38.5 ms against a claim of under 30 ms, and the Anker SOLIX F2000 at about 27.4 ms against a 20 ms claim. On the PC side, HWBusters measured a Cooler Master Elite Gold 850W gaming PSU's hold-up at 15.6 ms, and Cybenetics measured an XPG KYBER 850 at 15.8 ms hold-up and 14.1 ms from AC loss to PWR_OK. So a station rated 15 to 20 ms leaves no margin for a typical gaming PSU, while one measured near 8 ms does.",
+ "standout": 3,
+ "standout_why": "ChatGPT's results list for this chat is empty, so there were no cited rival pages to compare against. Its own answer labels its 0/4/10/20/30 ms switchover figures as 'Illustrative specifications, not measured performance'. It gives no PSU hold-up figure from any lab and never notes that measured switchover can be slower than the rating. Our current page already has the StorageReview 8 ms figures and a generic '16 ms PSU' note. What it lacks is a named lab's measured hold-up and PWR_OK times for actual 850 W gaming PSUs.",
+ "decides": "Confirms the pick. Stations with a 10 ms or faster rating and a measured switchover near 8 ms (EcoFlow DELTA 3 Plus, BLUETTI Elite 300) fit inside both the measured 14.1 to 15.8 ms gaming-PSU windows and ATX 3.1's 12 ms full-load floor. Stations rated 15 to 20 ms (BLUETTI Elite 200 V2, BLUETTI AC180, Jackery Explorer 1000 v2) are at or past the 14.1 ms PWR_OK window. StorageReview's DELTA 2 and F2000 results show measured switchover can exceed the rating by 7 to 9 ms, so a 20 ms rating should not be trusted for a gaming PC.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow RIVER 3"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured UPS transfer time (StorageReview)",
+   "value": "just over 8 ms (rated 10 ms)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review (StorageReview, Dylan Dougherty, 2025-01-02)",
+   "read": "2026-11-17",
+   "note": "Quarch Mains Power Analysis Module with a workstation load. The wattage is not stated and the article does not say whether the workstation stayed on."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured AC discharge (StorageReview)",
+   "value": "910 Wh of 1,024 Wh rated (about 88.9%); 1.18 kWh to recharge (about 86.8%)",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review (StorageReview, 2025-01-02)",
+   "read": "2026-11-17",
+   "note": "Percentages are as StorageReview reported them. At 500 W, 910 Wh ÷ 500 W is about 1.8 h."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured UPS switchover (StorageReview)",
+   "value": "8 ms line to battery; 8.25 ms battery back to line (rated 10 ms or less)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review: 3014Wh, 2400W and an 8ms UPS Switchover in a 58-Pound Box (StorageReview, Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "Quarch power analyzer with a workstation load; the wattage during the test is not stated. StorageReview also notes BLUETTI's manual says the UPS feature is not meant for servers or workstations that need a high-performance UPS."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable capacity (StorageReview)",
+   "value": "2.67 kWh out from a 3.49 kWh charge (0 to 100%)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "BLUETTI Elite 300 Review (StorageReview, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "Measured with a Kill-A-Watt. 2.67 ÷ 3.49 is about 76% round trip (our arithmetic). 2,670 Wh ÷ 500 W is about 5.3 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "UPS ride-through, home-lab rack (StorageReview)",
+   "value": "no reboots at a 986 W to 1.1 kW load; no ms figure measured (rated 15 ms)",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review (StorageReview, Dylan Dougherty, 2025-04-25)",
+   "read": "2026-11-17",
+   "note": "Load was a Dell R640 and R240, an HPE DL360 Gen10, a Gigabyte chassis and switches, with multiple unplug and replug cycles. These are server PSUs, not gaming ATX units."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured discharge (StorageReview)",
+   "value": "1.91 kWh out of 2,073.6 Wh rated; 2.44 kWh to recharge",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "BLUETTI Elite 200 V2 Review (StorageReview, 2025-04-25)",
+   "read": "2026-11-17",
+   "note": "1.91 ÷ 2.44 is about 78% (our arithmetic). 1,910 Wh ÷ 500 W is about 3.8 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Desktop PC switchover test (APH Networks)",
+   "value": "desktop PC stayed on through random AC cuts; drain test gave 2,028 Wh (97.8% of rated)",
+   "source": "https://aphnetworks.com/reviews/bluetti-elite-200-v2/4",
+   "source_title": "BLUETTI Elite 200 V2 Review (Page 4 of 5), APH Networks",
+   "read": "2026-11-17",
+   "note": "AC was cut with a switched power strip. No ms figure; APH quotes the 15 ms rating. Drain test used a 987 W heater. The PC's PSU model and load are not stated."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Measured AC discharge and fan noise (Notebookcheck, EU model)",
+   "value": "about 850 Wh at about 250 W, 230 V (about 83%); about 45 dB at 1 m under high output and fast AC charging",
+   "source": "https://www.notebookcheck.net/Lighter-stronger-and-faster-but-Anker-Solix-C1000-Gen-2-power-station-review.1190194.0.html",
+   "source_title": "Lighter, stronger and faster: Anker Solix C1000 Gen 2 power station review (Notebookcheck, Marcus Schwarten, 2025-12-21, updated 2026-10-05)",
+   "read": "2026-11-17",
+   "note": "Tested the European 230 V unit; Notebookcheck says the US version differs in some points. UPS figure is the 10 ms rating, not measured."
+  },
+  {
+   "product": "EcoFlow DELTA 2 (discontinued)",
+   "label": "Measured switchover vs. claim (StorageReview)",
+   "value": "about 38.5 ms measured vs. under 30 ms claimed; workstation stayed on 'just barely'",
+   "source": "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups",
+   "source_title": "Portable Power Stations Actually Work Pretty Well as a UPS (StorageReview, Kevin OBrien, 2023-10-27)",
+   "read": "2026-11-17",
+   "note": "Quarch module logging every 125 µs; load was a Tyan AMD EPYC Gen4 workstation at idle."
+  },
+  {
+   "product": "Anker SOLIX F2000 (older)",
+   "label": "Measured switchover vs. claim (StorageReview)",
+   "value": "about 27.4 ms measured vs. 20 ms claimed",
+   "source": "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups",
+   "source_title": "Portable Power Stations Actually Work Pretty Well as a UPS (StorageReview, 2023-10-27)",
+   "read": "2026-11-17",
+   "note": "Same rig. Other results from the same rig: BLUETTI AC60 about 13.8 ms (claimed under 20), UGREEN PowerRoam 1200 about 15.3 ms, Jackery Explorer 2000 Plus 8.7 ms, Eaton 5PX G2 reference UPS 8.6 ms."
+  },
+  {
+   "product": "general (gaming PSU)",
+   "label": "Measured hold-up time, Cooler Master Elite Gold 850W ATX 3.1 (HWBusters)",
+   "value": "15.6 ms",
+   "source": "https://hwbusters.com/psus/cooler-master-elite-gold-850w-atx-v3-1-psu-review/11/",
+   "source_title": "Cooler Master Elite Gold 850W PSU review (HWBusters, crmaris, 2026-10-19)",
+   "read": "2026-11-17",
+   "note": "The reviewer calls it 'below the 17ms I like to see'. Test conditions are not stated on the verdict page."
+  },
+  {
+   "product": "general (gaming PSU)",
+   "label": "Measured hold-up and AC-loss-to-PWR_OK, XPG KYBER 850 (Cybenetics)",
+   "value": "15.8 ms hold-up; 14.1 ms AC loss to PWR_OK",
+   "source": "https://www.cybenetics.com/evaluations/psus/2224/",
+   "source_title": "Cybenetics evaluation report, XPG KYBER 850 (2023-08-23)",
+   "read": "2026-11-17",
+   "note": "The PC resets when PWR_OK drops, so 14.1 ms is the useful window. The report page does not state the input voltage or load for the hold-up test."
+  },
+  {
+   "product": "general (gaming PSU)",
+   "label": "Hold-up result, DeepCool PN850M ATX 3.1 (HWBusters)",
+   "value": "longer than 20 ms",
+   "source": "https://hwbusters.com/psus/deepcool-pn850m-atx-v3-1-psu-review/6",
+   "source_title": "DeepCool PN850M ATX v3.1 PSU review, Hold Up Time page (HWBusters, crmaris, 2024-03-07)",
+   "read": "2026-11-17",
+   "note": "The exact figure is only in a chart image. This shows hold-up varies widely between 850 W gaming PSUs."
+  },
+  {
+   "product": "general (ATX spec)",
+   "label": "ATX hold-up requirement (Seasonic)",
+   "value": "ATX 3.0: 17 ms at full load; ATX 3.1: 12 ms at full load, with 17 ms at 80% load recommended",
+   "source": "https://knowledge.seasonic.com/article/79-comparison-atx-3-0-vs-atx-3-1-standards",
+   "source_title": "Differences Between ATX 3.0 and ATX 3.1 Standards (Seasonic knowledge base, updated 2025-10-15)",
+   "read": "2026-11-17",
+   "note": "This is a PSU maker's summary of the Intel spec, not a measurement. It sets the worst case an ATX 3.1 PSU must guarantee."
+  }
+ ],
+ "unsourced": [
+  "Measured switchover (ms) for the Anker SOLIX C1000 Gen 2: Anker's support page, MacRumors and Notebookcheck give only the 10 ms rating. I found no scope or Quarch figure.",
+  "Measured switchover for the EcoFlow DELTA 3 (non-Plus), Jackery Explorer 1000 v2, BLUETTI AC180 and EcoFlow RIVER 3: searches returned only ratings or forum anecdotes. A BLUETTI forum thread about the Elite 30 V2's switchover rising with load now redirects to the forum home, so I could not read it.",
+  "A measured switchover test with a gaming PC under GPU load and a named PSU: the StorageReview tests used workstations or servers at unstated or idle loads, and APH did not state the PC's PSU or load.",
+  "Hold-up times measured at 115 V: the Cybenetics and HWBusters pages I opened don't say which input voltage the hold-up test used.",
+  "Idle self-consumption in watts for the DELTA 3 Plus, Elite 300 and C1000 Gen 2: not reported in the StorageReview or Notebookcheck reviews I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.9738750000000002
+ }
+}

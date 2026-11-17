@@ -1,0 +1,96 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that, of the 1 kWh-class candidates, only the EcoFlow DELTA 3 Plus is documented by its maker as sending a PC a shutdown signal over USB-C (HID, via EcoFlow PowerManager or NUT); the non-Plus DELTA 3, Anker SOLIX C1000 Gen 2 and BLUETTI Elite 200 V2 pages list no such link; and the twolven GitHub project reports that on September 2026 DELTA 3 Plus firmware Windows' built-in HID UPS battery driver rejects the device (Code 10), so automatic shutdown on Windows needs NUT and a WinUSB driver swap.",
+ "standout": 2,
+ "standout_why": "ChatGPT's chat lists no search results and no cited pages, so there was no rival page to compare against. Its answer covers switchover time, wattage and runtime but never says whether a power station can tell the PC to shut down before the battery runs out, or which models can. A real UPS such as the CyberPower CP1500PFCLCD or APC BR1500MS2 does this as standard. ChatGPT also missed that the C1000 Gen 2's North American page rates its grid pass-through (1,800 W) below its 2,000 W inverter rating.",
+ "decides": "This supports picking the DELTA 3 Plus over the DELTA 3 for a gaming PC that may be left unattended. Both have the same inverter, but only the Plus documents a USB-C HID shutdown signal. The page should warn that on Windows this currently means installing NUT rather than relying on the built-in battery icon. For the other picks (C1000 Gen 2, Elite 300, Elite 200 V2, Jackery 1000 v2), the PC keeps running until the battery is empty and then loses power with no warning. For the C1000 Gen 2, keep the protected load under 1,800 W, the pass-through rating on Anker's 120 V page. The 2,000 W figure is the inverter rating.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "EcoFlow RIVER 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 30 V2",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "PC/NAS shutdown signal (maker)",
+   "value": "Yes: 'sends a signal before the battery is fully depleted to prompt the server to save data and then shut down'; 'supports NAS servers and HID communication functions'; switchover under 10 ms; desktops named as a use",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Series (US)",
+   "read": "2026-11-17",
+   "note": "Footnote: install the EcoFlow PowerManager app on the computer, then NUT Server on the NAS, and turn on HID support. The same footnote still reads 'The formal launch version will come later in December', which is stale wording. The page covers only the Plus and does not say whether the non-Plus DELTA 3 has the link. Our current page says it has none, but I did not re-source that today."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Windows native HID UPS compatibility on current firmware",
+   "value": "Fails: Windows shows 'USB Input Device' Code 10 (0xC00000B9). Workaround: NUT 2.8.5 usbhid-ups (EcoFlow subdriver) after swapping Interface 0 to WinUSB in Zadig; shuts down at a set charge level (default 15%)",
+   "source": "https://github.com/twolven/ecoflow-delta3-windows-ups",
+   "source_title": "twolven/ecoflow-delta3-windows-ups (GitHub)",
+   "read": "2026-11-17",
+   "note": "Unofficial project by GitHub user twolven, tested on Windows 11 24H2/25H2 with DELTA 3 Plus firmware from September 2026. The author says the 2024 firmware enumerated as a plain HID device, that the current composite firmware advertises a 376-byte report descriptor but returns nothing for it, and that Linux and NUT tolerate this. Same USB ID (3746:FFFF) across DELTA 3 Plus, RIVER 3 Plus, DELTA 3 Max Plus and Ultra Plus. Needs a USB-C data cable; EcoFlow's manual, as summarized by search, says one is not included."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Auto-shutdown link and output (maker)",
+   "value": "USB-B port to PC or NAS; Power Manager 'notifies you when RIVER 3 Plus is running low, prompting devices to save data and initiates an automatic shutdown'; under 10 ms switchover; 600 W AC",
+   "source": "https://www.ecoflow.com/us/river-3-plus-portable-power-station",
+   "source_title": "EcoFlow RIVER 3 Plus (US)",
+   "read": "2026-11-17",
+   "note": "This is EcoFlow's most explicit auto-shutdown claim, but 600 W is below a gaming PC's draw (ChatGPT's own table puts high-end systems at 450–700 W), so it suits a router or NAS, not the gaming PC."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Pass-through (bypass) limit vs inverter, 120 V model",
+   "value": "AC output 2,000 W max; AC (Bypass) 1,800 W max; AC input 120 V, 12 A max; UPS 10 ms",
+   "source": "https://www.ankersolix.com/ca/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Canada, 120 V)",
+   "read": "2026-11-17",
+   "note": "The US product URL returned 404, so this is the 120 V/60 Hz Canadian page. The page mentions no PC communication or USB shutdown signal and gives no guidance on which devices the UPS suits. A search excerpt of Anker's manual says SurgePad does not work in bypass mode; I did not open the manual (the file was over 10 MB)."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Bypass vs rated output (maker)",
+   "value": "UPS 10 ms or less with 980 W bypass power; 600 W rated",
+   "source": "https://www.bluettipower.com/products/bluetti-elite-30-v2-portable-power-station-600w-288wh",
+   "source_title": "BLUETTI Elite 30 V2 + 100W Solar (BLUETTI US store)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck search on bluettipower.com. A PC drawing 600–980 W runs fine on grid pass-through, then overloads the 600 W inverter the moment the grid drops. The same trap applies to any station whose bypass rating is above its inverter rating."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "US price; UPS terms",
+   "value": "$899.00; 2,600 W continuous AC. The product page's FAQ 'Does Elite 200 V2 have a UPS function?' has no answer text in the page as fetched, and the page lists no PC link or bypass limit",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-17",
+   "note": "Price from storecheck product (Shopify variant, compare_at $899, in stock). Page text from WebFetch."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "UPS claim (maker)",
+   "value": "'10ms UPS Backup... for medical devices, servers, and other sensitive equipment'; 1,800 W output",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-350w-solar",
+   "source_title": "Elite 100 V2 + 350W Solar (BLUETTI US store)",
+   "read": "2026-11-17",
+   "note": "This is in Dealectric's catalog but not on the current page. Its stated 10 ms is faster than the 15 ms or less the current page gives for the Elite 200 V2. No PC communication is stated."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus US store price and full UPS spec page: us.ecoflow.com returned HTTP 429 to both WebFetch and storecheck.",
+  "EcoFlow DELTA 3 Plus user manual UPS section, verbatim: the PDF downloaded but neither WebFetch nor local pdftotext could read it (pdftotext needed approval). Its USB-C data cable, 'not included' and Power Manager OS wording came only from search summaries, so they are not stated as values here.",
+  "Whether the non-Plus EcoFlow DELTA 3 has a USB HID/PowerManager link: the DELTA 3 Series page covers only the Plus, and I did not open a DELTA 3 maker page.",
+  "Any USB/HID shutdown signal on the BLUETTI Elite 300, Elite 200 V2, AC180 and Jackery Explorer 1000 v2: none of the maker pages I opened mention one, and I did not open their manuals within the call budget.",
+  "Anker SOLIX C1000 Gen 2 US product page and price: ankersolix.com/products/c1000-gen-2 returned 404 and the store search returned 404.",
+  "Anker C1000 Gen 2 manual text on bypass and SurgePad: the PDF host exceeded the 10 MB fetch limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1643232000000001
+ }
+}

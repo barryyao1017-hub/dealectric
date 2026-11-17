@@ -1,0 +1,124 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that a PC power supply's hold-up time is specified at full load: ATX 3.1 requires 12 ms at 100% load and recommends 17 ms at 80% load. Measured that way, the power stations rated at 10 ms or faster (EcoFlow DELTA 3 Plus, Anker SOLIX C1000 Gen 2, BLUETTI Elite 300) fall inside even the minimum. Ratings of 15 ms (Elite 200 V2) or 'under 20 ms' (Jackery v2 line) are longer than the ATX 3.1 full-load minimum, so they only work when the PSU does better than spec or runs well below full load.",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no searches and cited no pages, so there is no rival page to compare against. Its answer says 20–30 ms 'can cause the PC to shut down' and suggests '10 ms or less', but it never gives the PSU-side spec or the load it is measured at. It also doesn't say that no power station maker states a load for its switchover rating, while the ATX figure is tied to a load (100% / 80%). Our current page mentions 'ATX 3.1's 12 ms floor' in one note but not the full-load condition, the 17 ms at 80% recommendation, the ATX 3.0 to 3.1 change, or a measured PSU hold-up figure. The new part is the normalisation table: switchover rating vs PSU hold-up at a stated load.",
+ "decides": "It supports the 10 ms-or-faster group (DELTA 3 Plus, which StorageReview measured at just over 8 ms; C1000 Gen 2; Elite 300) as the picks for a gaming PC, because their ratings are below the 12 ms minimum a compliant ATX 3.1 PSU must reach even at 100% load. It moves Elite 200 V2 (15 ms) and the Jackery v2 line (under 20 ms) to 'only if your PSU does better than spec'. HWBusters measured 20.2 ms on one 850 W ATX 3.1 unit, but its AC-loss-to-PWR_OK time was 16.5 ms, so even that example is tight against 20 ms. It also adds a second normalisation footnote: in UPS mode the C1000 Gen 2 load limit is its 1,800 W bypass, not its 2,000 W inverter rating. Elite 200 V2 shares 1,800 W between charging and bypass. Neither limit matters for a 500–700 W gaming PC.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "Jackery Explorer 2000 v2",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA 3 Classic"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PSU hold-up time requirement, ATX 3.0 vs ATX 3.1",
+   "value": "ATX 3.0: 17 ms at full load. ATX 3.1: 12 ms at full load (required), 17 ms at 80% load (recommended)",
+   "source": "https://knowledge.seasonic.com/article/79-comparison-atx-3-0-vs-atx-3-1-standards",
+   "source_title": "Seasonic: Differences Between ATX 3.0 and ATX 3.1 Standards",
+   "read": "2026-11-17",
+   "note": "Seasonic says ATX 3.1 relaxed the requirement 'from 17ms at full load to 12ms at full load' and recommends '17ms at 80% load'. This is the PSU side of the comparison. Power station switchover ratings have to be compared against this figure at its stated load."
+  },
+  {
+   "product": "general",
+   "label": "Measured PSU hold-up, one ATX 3.1 850 W unit (Gigabyte AE850PM PG5)",
+   "value": "20.2 ms hold-up at full load; 16.5 ms AC loss to PWR_OK",
+   "source": "https://hwbusters.com/psus/gigabyte-ae850pm-pg5-850w-atx-v3-1-psu-review/6/",
+   "source_title": "HWBusters: Gigabyte AE850PM PG5 850W ATX v3.1 PSU review, Hold Up Time",
+   "read": "2026-11-17",
+   "note": "HWBusters: 'comfortably exceeding the ATX 3.1 requirement of 12ms at full load'. They call the 16.5 ms PWR_OK time 'just below the usual 17ms target' and give no load for that figure. This is one sample and not representative of all PSUs. It shows a real PSU can exceed 20 ms on output, but its power-good signal can drop sooner."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "UPS switchover (maker) and UPS-mode load limit",
+   "value": "UPS 10 ms ('under 10 ms UPS switchover'); AC output 2,000 W (3,000 W peak); AC bypass 1,800 W max; AC charging 1,200 W, 1,600 W UltraFast",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (ankersolix.com, US)",
+   "read": "2026-11-17",
+   "note": "No load condition or footnote on the 10 ms figure. In UPS mode the load runs through the bypass, so the usable limit is 1,800 W, not 2,000 W. That is still far above a 500–700 W gaming PC. The page showed no price."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "UPS switchover: rated vs measured",
+   "value": "Rated <10 ms (spec table) / measured just over 8 ms",
+   "source": "https://www.storagereview.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "StorageReview: EcoFlow DELTA 3 Plus review",
+   "read": "2026-11-17",
+   "note": "Measured with a Quarch Mains Power Analysis Module on 'a workstation'. The review gives no wattage for the load. This is the only measured figure in the group, and it is below the 12 ms ATX 3.1 full-load minimum."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Price and AC output (maker US store)",
+   "value": "$649 (compare-at $1,598), in stock; 1,800 W AC, 2,200 W with X-Boost (surge 3,600 W)",
+   "source": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Plus Portable Power Station (us.ecoflow.com)",
+   "read": "2026-11-17",
+   "note": "Read through the storecheck Shopify search. A direct page fetch returned HTTP 429."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Switchover and price (maker US store)",
+   "value": "10 ms auto-switch; 1,800 W (3,600 W surge); $459 (compare-at $1,299)",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-17",
+   "note": "Store text: '10ms Auto-Switch: Keep critical devices like NAS systems and servers running smoothly.' Read through storecheck search. No measured figure."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "UPS switchover, output, price (maker US store)",
+   "value": "10 ms UPS; 2,400 W output (4,800 W 'lifting'); $1,199",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-17",
+   "note": "Page: 'switches in just 10 ms'. It is labelled UPS, not EPS, and has no footnote or load condition. '4,800 W lifting' is BLUETTI's power-lifting mode, not a surge rating; this normalisation note is ours. Price is from the storecheck search."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "UPS switchover rating, bypass limit, tested load",
+   "value": "15 ms UPS switch time; up to 1,800 W charging + bypass combined; 2,600 W AC; no reboots at 986 W to 1.1 kW",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "StorageReview: Portable Power Meets Lab-Grade Reliability, BLUETTI Elite 200 V2 review",
+   "read": "2026-11-17",
+   "note": "No measured ms figure. The load was a server rack (PowerEdge R640/R240, ProLiant DL360 Gen10, switches), not a gaming PC. The 15 ms rating is longer than the 12 ms ATX 3.1 full-load minimum and shorter than the 17 ms recommended at 80% load. The 1,800 W figure covers charging and pass-through together."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Switchover and price (maker US store)",
+   "value": "Under 20 ms; 2,200 W (4,400 W surge); $999 (compare-at $1,899)",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Store text: 'Switchover happens in under 20ms so your router, computer, and NAS stay online.' This is longer than the 12 ms ATX 3.1 full-load minimum and the 17 ms recommended at 80% load, so it only works with a PSU that does better than spec. Read through storecheck search."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "UPS switchover claim and price (maker US store)",
+   "value": "'True 0ms UPS switching'; 7,200 W rated; $3,499 (compare-at $13,489), sold out, pre-order ships Dec 2",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-17",
+   "note": "This is the only 0 ms claim in the set. Store text: 'True 0ms UPS switching keeps computers, appliances, and critical devices running without interruption.' I could not open the conditions behind it (which mode it applies to). Read through storecheck search."
+  }
+ ],
+ "unsourced": [
+  "Conditions on Jackery Explorer 5000 Plus '0 ms' (a search snippet says 'UPS: <20ms, Online UPS: 0ms', with the online mode enabled in the app or by a button combination). ca.jackery.com and jackery.com both returned HTTP 429, so this is not verified.",
+  "Jackery Explorer 1000 v2 switchover and bypass limit from Jackery's US page. Fetch returned HTTP 429, and the manual PDF was not opened.",
+  "BLUETTI AC180 20 ms rating from BLUETTI's page or manual (not opened within the budget).",
+  "EcoFlow DELTA 3 Plus maker spec table and UPS-mode conditions (bypass limit, grid input exceeding load). us.ecoflow.com product fetch returned HTTP 429, and the manual PDF was not found on an EcoFlow domain.",
+  "AC bypass/pass-through wattage limit for BLUETTI Elite 300 and EcoFlow DELTA 3 / 3 Plus. Not stated on the pages I opened.",
+  "The load at which any maker rates its switchover time. None of the opened maker pages states one.",
+  "Anker SOLIX C1000 Gen 2 US price. ankersolix.com showed no price, the anker.com store search returned 404, and Amazon was not tried.",
+  "ATX 3.1 PWR_OK / T5 / T6 timing values from the Intel spec itself. The Seasonic page does not give them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.302883
+ }
+}

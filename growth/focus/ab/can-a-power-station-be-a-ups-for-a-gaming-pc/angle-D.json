@@ -1,0 +1,94 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the deadline for a power station's switchover is the PSU's AC-loss-to-PWR_OK time, not its published hold-up time: ATX 3.1 only requires 11 ms, and measured PSUs drop PWR_OK 2.6–3.7 ms before their rails fail, at which point the motherboard resets.",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no searches and cited no pages. Its answer only says ATX supplies have 'limited hold-up time' and that 20–30 ms 'can' cause a reboot, with no spec number. The top related page, StorageReview, says desktops are designed for a 'minimum hold-up of 16ms', which is the old figure. Seasonic and Corsair give 12 ms (ATX 3.1) vs 17 ms (ATX 3.0) for rail hold-up but say nothing about PWR_OK. Our current page mentions a '12 ms floor' and a '16 ms PSU' but not the shorter PWR_OK limit, which is what triggers the reset.",
+ "decides": "It confirms the cutoff the page should use. Stations rated 10 ms or less (Anker SOLIX C1000 Gen 2, EcoFlow DELTA 3 / DELTA 3 Plus, BLUETTI Elite 300) fit inside the 11 ms that ATX 3.1 guarantees on any compliant PSU. Stations rated 15 ms (Elite 200 V2) or 20 ms (AC180, Jackery Explorer 1000 v2) work only if your own PSU's PWR_OK time is longer than the spec minimum. HWBusters measured 14.3–17.1 ms on large ATX 3.1 units at full load, so a 15 ms station is a gamble that depends on your PSU, and a 20 ms one goes past all three measured units.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3",
+  "BLUETTI Elite 300",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "ATX 3.1 required minimums: hold-up and AC loss to PWR_OK",
+   "value": "12 ms hold-up at full load; 11 ms from AC loss to PWR_OK; at least 1 ms from PWR_OK inactive to DC loss",
+   "source": "https://hwbusters.com/psus/nzxt-c1200-platinum-atx-v3-1-psu-review/6/",
+   "source_title": "HWBusters, NZXT C1200 Platinum ATX v3.1 PSU review: Hold Up Time",
+   "read": "2026-11-17",
+   "note": "HWBusters quote: 'ATX v3.1 sets minimums of 12ms for hold-up' and '11ms for AC loss to PWR_OK'. This is the reviewer's summary of Intel's spec. Intel's own PDF (336521 Rev 2.1a) is encrypted and I could not extract its text."
+  },
+  {
+   "product": "general",
+   "label": "Rail hold-up requirement, ATX 3.0 vs ATX 3.1 (PSU maker's wording)",
+   "value": "ATX 3.0: 17 ms at full load. ATX 3.1: 12 ms at full load, with 17 ms at 80% load recommended",
+   "source": "https://knowledge.seasonic.com/article/79-comparison-atx-3-0-vs-atx-3-1-standards",
+   "source_title": "Seasonic: Differences Between ATX 3.0 and ATX 3.1 Standards",
+   "read": "2026-11-17",
+   "note": "Corsair says the same thing at https://corsair.com/explorer/diy-builder/power-supply-units/atx-30-vs-atx-31-whats-the-difference: 'ATX 3.1 features a shorter hold-up time of 12ms, compared to ATX 3.0's 17ms hold-up time.' (read 2026-11-17)"
+  },
+  {
+   "product": "Gigabyte AE850PM PG5 (example ATX 3.1 PSU)",
+   "label": "Measured hold-up vs AC loss to PWR_OK",
+   "value": "20.2 ms rail hold-up at full load; PWR_OK drops at 16.5 ms, 3.7 ms before the rails",
+   "source": "https://hwbusters.com/psus/gigabyte-ae850pm-pg5-850w-atx-v3-1-psu-review/6/",
+   "source_title": "HWBusters, Gigabyte AE850PM PG5 850W ATX v3.1 PSU review: Hold Up Time",
+   "read": "2026-11-17",
+   "note": "Input voltage not stated on the page. The usable switchover window is 16.5 ms, not 20.2 ms."
+  },
+  {
+   "product": "NZXT C1200 Platinum (example ATX 3.1 PSU)",
+   "label": "Measured hold-up vs AC loss to PWR_OK",
+   "value": "19.8 ms rail hold-up; PWR_OK drops at 17.1 ms, 2.7 ms before the rails",
+   "source": "https://hwbusters.com/psus/nzxt-c1200-platinum-atx-v3-1-psu-review/6/",
+   "source_title": "HWBusters, NZXT C1200 Platinum ATX v3.1 PSU review: Hold Up Time",
+   "read": "2026-11-17",
+   "note": "Chart captions say 230 V input. Load not stated."
+  },
+  {
+   "product": "Thermaltake AX 3200W (example ATX 3.1 PSU)",
+   "label": "Measured hold-up vs AC loss to PWR_OK",
+   "value": "16.9 ms rail hold-up at full load; PWR_OK drops at 14.3 ms, 2.6 ms before the rails",
+   "source": "https://hwbusters.com/psus/thermaltake-ax-3200w-atx-v3-1-psu-review/6/",
+   "source_title": "HWBusters, Thermaltake AX 3200W ATX v3.1 PSU review: Hold Up Time",
+   "read": "2026-11-17",
+   "note": "Even a flagship 3,200 W unit gives only 14.3 ms of PWR_OK time at full load. A 15 ms station would trip it, and a 10 ms station would not."
+  },
+  {
+   "product": "general",
+   "label": "Rule: switchover must be shorter than PSU hold-up (reviewer's wording and tests)",
+   "value": "Measured transfer times: Jackery Explorer 2000 Plus 8.7 ms, Bluetti AC60 13.8 ms, Bluetti AC70 14 ms, Ugreen PowerRoam 1200 15.3 ms, Anker SOLIX F2000 27.4 ms, EcoFlow DELTA 2 38.5 ms; the DELTA 2 passed 'just barely' because the Tyan workstation's PSU is 'incredibly overbuilt'",
+   "source": "https://www.storagereview.com/review/portable-power-stations-actually-work-pretty-well-as-a-ups",
+   "source_title": "StorageReview: Portable Power Stations Actually Work Pretty Well as a UPS",
+   "read": "2026-11-17",
+   "note": "StorageReview says desktops are designed for a 'minimum hold-up of 16ms'. That is the older figure: ATX 3.1 lowered the rail requirement to 12 ms and the PWR_OK requirement to 11 ms (HWBusters)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Maker's UPS switchover claim and US price",
+   "value": "<10 ms UPS; $719 (list $799), marked pre-order 'Ships in late November' and 'Sold out'",
+   "source": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "source_title": "EcoFlow US: DELTA 3 Plus Portable Power Station",
+   "read": "2026-11-17",
+   "note": "The footnote ⁶ qualifying the 10 ms claim was cut off in the fetched page. 10 ms is under ATX 3.1's 11 ms PWR_OK minimum."
+  }
+ ],
+ "unsourced": [
+  "Intel's own ATX 3.x design-guide text for the hold-up and T5/T6 PWR_OK rows: both Intel PDFs (cdrdv2-public.intel.com 336521 Rev 2.1a and 613768 2.11) are AES-encrypted, so I could not extract them. The 11 ms PWR_OK figure is HWBusters' summary of the spec.",
+  "Whether the ATX 3.1 hold-up and PWR_OK minimums are specified at 115 V or 230 V input. HWBusters labels its measurements 230 V, and I found no US-voltage measurement.",
+  "BLUETTI AC180 and Elite 200 V2 UPS-time wording on the maker's US pages: the AC180 page returned HTTP 429 and the Elite 200 V2 page went into a redirect loop.",
+  "Jackery Explorer 1000 v2 UPS wording and price on jackery.com: HTTP 429.",
+  "Any measurement of AC loss to PWR_OK at typical gaming load (300–500 W, partial load) rather than full load, which would show how much margin a mid-sized gaming PSU actually has."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.9282813000000001
+ }
+}
