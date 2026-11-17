@@ -169,7 +169,12 @@ def main() -> int:
             continue
         item = {**key, "old": old, "new": new, "move": round((new - old) / old, 3), "cell": r.get("price_cell")}
         why = None
-        if r.get("live_available") is False:
+        cell_txt = str(r.get("price_cell") or "")
+        if day in cell_txt:
+            why = f"the cell was already read today by another session (it says {old}); not overwritten"
+        elif re.search(r"\b(M?SRP|list|RRP)\b", cell_txt, re.I):
+            why = "the cell is a list price (SRP); the read may be a sale price"
+        elif r.get("live_available") is False:
             why = "sold out on the maker's store at the new price"
         elif abs(new - old) / old > MAX_MOVE:
             why = f"moved {item['move']:+.0%}"
