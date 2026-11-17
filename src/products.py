@@ -100,6 +100,7 @@ CATEGORIES = {
     "transfer-switch": ('Transfer switches & home backup kits', 'Sub panels, inlet boxes and switches that connect a backup battery or generator to chosen home circuits.'),
     "charge-controller": ('Solar charge controllers', 'Controllers that take a solar panel string and convert it to a voltage a battery or power station can charge from.'),
     "electric-bike": ('Electric bikes', 'Electric bicycles for trails, hunting and commuting, compared on motor, battery, weight and load capacity.'),
+    "e-bike": ('Electric bikes', 'Pedal-assist electric bicycles for commuting, fitness and errands, compared on measured weight, battery and gearing.'),
 }
 
 PRODUCTS = [
@@ -7876,6 +7877,42 @@ PRODUCTS = [
  "summary": "The biggest burst from a pocket-size light: about 12,000 lm at turn-on in 1Lumen's test, from a 4.3 in body.",
  "fit": 'Pocket carry for short bursts: checking a yard, a roadside or a dark lot for a few seconds.',
  "caveats": ['Output drops fast: ZeroAir measured 3,835 lm at 30 seconds (29.5% of the claim), and another tester saw it settle near 1,800 lm after about 35 seconds.', "The cell is proprietary, so a standard 21700 won't fit.", 'No moonlight mode from off, so the lowest mode is bright for night walking.', 'One Trustpilot buyer was quoted for a replacement head after a 3 ft drop.']},
+
+{"slug": 'tenways-cgo600-pro-c',
+ "brand": 'TENWAYS',
+ "program": 'awin:tenways',
+ "category": 'e-bike',
+ "name": 'TENWAYS CGO600 Pro-C Commuter E-Bike, Shimano 8-speed chain, torque sensor, 360 Wh removable battery',
+ "model": 'CGO600 Pro-C',
+ "url": 'https://us.tenways.com/products/cgo600-pro',
+ "official_page": 'https://us.tenways.com/pages/cgo600-pro',
+ "price": 1399,
+ "list_price": 1899,
+ "verified": '2026-11-17',
+ "specs": [('Weight', '37 lb net with battery, 41 lb with all accessories (maker); 45 lb measured by Electric Bike Report'), ('Battery', '36 V 10 Ah (360 Wh), LG cells, removable'), ('Motor', '350 W rear hub (TENWAYS C9), 45 Nm, torque sensor'), ('Drivetrain', 'Shimano 8-speed chain'), ('Range', 'Up to 53 miles (maker); over 60 miles in lowest assist and about 22 miles in highest assist (Electric Bike Report)'), ('Assist speed', '20 mph, pedal assist only (no throttle per Electric Bike Report)'), ('Rider height', '5\'5" to 6\'5" (sizes M, L, XL)'), ('Payload', '264 lb total (Electric Bike Report)')],
+ "warranty": '2 years, with spare parts supplied after the warranty ends (maker page)',
+ "returns": "14-day test ride and free shipping as advertised on the store; full terms are on the store's policy pages (not read)",
+ "summary": "A pedal-assist city bike with a torque sensor, 8 gears and a removable 360 Wh battery, on Black Friday sale for $1,399 (list $1,899). In Electric Bike Report's test it climbed its test hill 24 seconds faster than the city-bike average.",
+ "fit": 'Riders 5\'5" to 6\'5" who pedal, want gears for hills and need to take the battery inside to charge.',
+ "caveats": ["Tested at 45 lb by Electric Bike Report, versus the 37 lb net weight in the maker's ads.", 'No throttle, and assist stops at 20 mph.', "The tail light isn't a brake light (Electric Bike Report).", "The product page doesn't state UL 2849 certification. The store's $349 spare battery fits only non-UL CGO600 Pro/Pro-C models.", 'The $1,399 sale price is for the chain Pro-C; no US price was shown for the single-speed belt version.']},
+
+{"slug": 'tenways-ago-x',
+ "brand": 'TENWAYS',
+ "program": 'awin:tenways',
+ "category": 'e-bike',
+ "name": 'TENWAYS AGO X Hybrid E-Bike, 80 Nm mid-drive, 504 Wh battery, Shimano 10-speed',
+ "model": 'AGO X',
+ "url": 'https://us.tenways.com/products/ago-x',
+ "official_page": 'https://us.tenways.com/pages/ago-x',
+ "price": 1799,
+ "list_price": 2499,
+ "verified": '2026-11-17',
+ "specs": [('Weight', '59 lb net, 64 lb with accessories (maker, ±3-5%)'), ('Battery', "36 V 14 Ah (504 Wh), LG cells, sold as a 'portable battery'"), ('Motor', 'Bafang M410 mid-drive, 250 W, 80 Nm, built-in torque sensor'), ('Drivetrain', 'Shimano 10-speed'), ('Fork and brakes', 'SR SUNTOUR lockout suspension fork, hydraulic disc brakes'), ('Range', 'Up to 62 miles (maker)'), ('Assist speed', '20 mph')],
+ "warranty": '2 years (store banner)',
+ "returns": "14-day test ride and free shipping as advertised on the store; full terms are on the store's policy pages (not read)",
+ "summary": 'A hybrid e-bike with an 80 Nm Bafang mid-drive and torque sensor, 10 gears, a lockout suspension fork, hydraulic brakes and a 504 Wh battery, on Black Friday sale for $1,799 (list $2,499).',
+ "fit": "Riders with steep hills or mixed pavement and gravel who want mid-drive climbing and don't need to carry the bike.",
+ "caveats": ["Heavy at 59 lb net, so it's hard to carry up stairs.", 'The maker page lists no rider-height range, payload or UL certification.', "The maker page doesn't mention a throttle."]},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
