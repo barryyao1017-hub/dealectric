@@ -7686,6 +7686,23 @@ PRODUCTS = [
  "fit": "Homeowners with a large solar array, or plans for one, who want indoor whole-home backup through EcoFlow's Smart Home Panel 10, including 240V central AC.",
  "caveats": ['Costs more per Wh than the Jackery Explorer 5000 Plus and Anker SOLIX S5000 on Amazon (arithmetic, read 2026-11-15)', "≤20 ms switchover, against ≤10 ms on the Anker S5000 and 0 ms on the Jackery's 5-20 outlets", 'IP20 indoor-only unit, 121.3 lb with no wheels; not a camping or RV station', 'The 10 kW output figure needs solar connected. Whole-home use needs the Smart Home Panel 10 and installation (pv magazine USA).', 'Only two 5-20R outlets and one L14-50R on the unit', 'Will not charge below 32°F']},
 
+{"slug": 'autel-maxicharger-80a-19-2kw',
+ "brand": 'Autel Energy',
+ "program": 'awin:autelenergy',
+ "category": 'ev-charger',
+ "name": 'Autel MaxiCharger 80A 19.2kW Residential EV Charger, J1772, 25 ft cable',
+ "model": 'MaxiCharger 80A',
+ "url": 'https://store.autelenergy.com/products/autel-maxicharger-ac-home-80a-19-2kw-ev-charger',
+ "price": 938.0,
+ "list_price": 1299.0,
+ "verified": '2026-11-17',
+ "specs": [('Max output', '80 A, 19.2 kW at 240 V'), ('Amp settings', '16, 24, 32, 40, 48, 50, 64, 72 or 80 A'), ('Circuit', 'Dedicated 100 A circuit for the full 80 A; hardwired'), ('Connector', 'SAE J1772 (NACS cars need an adapter, not included)'), ('Cable', '25 ft'), ('Connectivity', 'Wi-Fi, Bluetooth and Ethernet (store spec table)'), ('Load management', 'Dynamic load balancing between Autel chargers with no extra hardware; whole-home ALM needs extra hardware'), ('Enclosure', 'IP65 / NEMA 4X, indoor or outdoor, wall mount'), ('Ground fault', '20 mA CCID'), ('Size and weight', '14.5 × 8.5 × 5.1 in, about 20.3 lb')],
+ "warranty": '5 years on the charger body, backplate and internal components (product page). A footer badge on the same page says 3 years, so confirm the term at checkout.',
+ "returns": '30-day returns (store page)',
+ "summary": "A hardwired 80 A (19.2 kW) home charger with Wi-Fi, Bluetooth and a wired Ethernet port. It can share one circuit's power between two Autel chargers without extra hardware, and it comes with a 5-year warranty.",
+ "fit": 'Owners of EVs with a 19.2 kW onboard charger whose garage Wi-Fi is weak, or two-EV homes that need two chargers on limited electrical capacity.',
+ "caveats": ['80 A only helps cars with a 19.2 kW onboard charger; most EVs stop at 48 A (11.5 kW).', 'Needs a dedicated 100 A circuit; a load calculation may show the panel needs an upgrade.', 'J1772 plug only; NACS cars need a separate adapter.', 'Some owners of earlier units in a Lucid owners thread reported Wi-Fi trouble and used Ethernet instead.', 'The whole-home load limit (ALM) needs add-on hardware the store page does not price.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
