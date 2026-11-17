@@ -1,0 +1,147 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Tesla's own Gen 3 Wall Connector spec caps output at 12–48 A, so at a Gen 3 destination charger the 80 A (Lectron, A2Z) and 60 A continuous (TeslaTap Mini) ratings ChatGPT used to rank the adapters all deliver the same 48 A at most. Ratings that do differ once normalised are A2Z's IP54 when plugged in (its IP67 applies only unplugged), its published CSA certificate number and 24-month warranty, set against Lectron's unqualified IP67 with no certificate number and $29 lower price.",
+ "standout": 2,
+ "standout_why": "I could not open either cited thisWATT page (guide and TeslaTap spec page) because of a self-signed certificate error, so I can't rule out that they have this. ChatGPT's two answers do not mention a 48 A charger cap. Instead they treat 80 A as 'extra headroom' and rank on amps. I also read two uncited top results. evandcharger.com says only that 'the highest hardwired residential units stop at 48 A or 50 A' and advises preferring 80 A on a 48 A charger 'because it runs cooler'. electrifiedexperts.com says the car's onboard charger caps current. Neither cites Tesla's Gen 3 spec, says whether ratings are continuous or maximum, or separates IP ratings plugged in from unplugged. Neither gives A2Z's CSA certificate number. The cited a2zev.com page has the IP54 and certificate figures, but no rival lines them up against Lectron.",
+ "decides": "This confirms the Lectron 80A UL 2252 as the value pick at $129.99 today, $20 below the $149.99 ChatGPT showed. At a Gen 3 Wall Connector its 80 A buys no speed over a 60 A TeslaTap, and it carries a UL 2252 claim and a temperature sensor that TeslaTap's page does not. The A2Z Stellar costs $159.00 today, not the $111.42 ChatGPT showed. The extra $29.01 buys documentation, not speed: a CSA certificate number, a disclosed IP54 rating when plugged in, dual over-temperature switches, a dual lock and a 24-month warranty. The TeslaTap Mini 60A at $194.96 and 80A at $224.96 cost $65–95 more than the Lectron. Their maker pages state no listing and no temperature monitoring, and the extra amps can't be used on a Gen 3 unit. The older Lectron 48A is listed as 'SGS certified under the UL 2251 standard', which is the connector standard, not the UL 2252 adapter standard.",
+ "candidates": [
+  "Lectron NACS to J1772 80A UL 2252",
+  "A2Z Stellar NACS to J1772",
+  "TeslaTap Mini 60A",
+  "TeslaTap Mini 80A",
+  "Lectron Tesla to J1772 48A (older)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Tesla Gen 3 Wall Connector maximum output current",
+   "value": "12–48 A, nominal 200–240 V AC single-phase",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/1PNA/en-us/GUID-86D9DE81-BB5F-4CAD-9E2D-23AAAC475A20.html",
+   "source_title": "Tesla Gen 3 Wall Connector – Product Specifications",
+   "read": "2026-11-17",
+   "note": "This is the North America manual for part number 1457768-**-*. 48 A × 240 V = 11.5 kW, so any adapter rated 48 A or more charges at the same rate on this unit."
+  },
+  {
+   "product": "Lectron NACS to J1772 80A UL 2252",
+   "label": "Rated current (basis)",
+   "value": "'Supports up to 80A and 240V'; the page does not say whether this is continuous",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "Read from the maker's Shopify product data with storecheck.py. 5 AWG cable."
+  },
+  {
+   "product": "Lectron NACS to J1772 80A UL 2252",
+   "label": "Ingress protection",
+   "value": "IP67, with no plugged-in (mated) figure given",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "Compare A2Z, which splits its rating into IP67 unplugged and IP54 plugged in."
+  },
+  {
+   "product": "Lectron NACS to J1772 80A UL 2252",
+   "label": "Safety listing and thermal protection",
+   "value": "'UL 2252 CERTIFIED' plus 'a built-in temperature sensor'; no testing lab or certificate number given",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "The product page does not say what the sensor does when it trips (cut or derate)."
+  },
+  {
+   "product": "Lectron NACS to J1772 80A UL 2252",
+   "label": "Price at maker",
+   "value": "$129.99 (compare-at $169.99), in stock",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "storecheck.py product. ChatGPT showed $149.99, and our page's 2026-11-11 figure was also $149.99."
+  },
+  {
+   "product": "A2Z Stellar NACS to J1772",
+   "label": "Rated current",
+   "value": "Rated current 80 A, 240 VAC (19.2 kW)",
+   "source": "https://a2zev.com/products/nacs-j1772-stellar",
+   "source_title": "NACS Charger to J1772 Vehicle | AC | 80A | Certified to UL 2252 - CAN/CSA C22.2 | The Stellar Adapter",
+   "read": "2026-11-17",
+   "note": "storecheck.py product. The sister Stellar Pro listing ($199) adds '(actual rate set by the charger and vehicle)'."
+  },
+  {
+   "product": "A2Z Stellar NACS to J1772",
+   "label": "Ingress protection",
+   "value": "IP67 unplugged; IP54 when plugged in (mated); Type 3R",
+   "source": "https://a2zev.com/products/nacs-j1772-stellar",
+   "source_title": "NACS Charger to J1772 Vehicle | AC | 80A | Certified to UL 2252 - CAN/CSA C22.2 | The Stellar Adapter",
+   "read": "2026-11-17",
+   "note": "This is the footnote finding: the IP67 headline on both 80 A adapters refers to the unplugged state. Only A2Z discloses the rating when plugged in."
+  },
+  {
+   "product": "A2Z Stellar NACS to J1772",
+   "label": "Safety listing and thermal protection",
+   "value": "UL 2252 - CAN/CSA-C22.2, master contract 305840, certificate 80265273; 'Dual over-temperature sensor switches'; operating range -30 to 50 °C",
+   "source": "https://a2zev.com/products/nacs-j1772-stellar",
+   "source_title": "NACS Charger to J1772 Vehicle | AC | 80A | Certified to UL 2252 - CAN/CSA C22.2 | The Stellar Adapter",
+   "read": "2026-11-17",
+   "note": "This is the only adapter of the three whose page gives a certificate number a buyer can look up."
+  },
+  {
+   "product": "A2Z Stellar NACS to J1772",
+   "label": "Price at maker and warranty",
+   "value": "$159.00, in stock; 24-month warranty against manufacturing defects",
+   "source": "https://a2zev.com/products/nacs-j1772-stellar",
+   "source_title": "NACS Charger to J1772 Vehicle | AC | 80A | Certified to UL 2252 - CAN/CSA C22.2 | The Stellar Adapter",
+   "read": "2026-11-17",
+   "note": "storecheck.py product. ChatGPT's card showed $111.42, which the maker's store does not match today. $159.00 − $129.99 = $29.01 more than the Lectron."
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Rated current (basis)",
+   "value": "'continuous charge rate up to 60 AMPS @250VAC (15KW)'",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=146",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "This is the only one of these products that calls its figure continuous. On a Gen 3 Wall Connector it is still capped at 48 A. The page states no UL listing, temperature monitoring or warranty."
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Price at maker",
+   "value": "$194.96",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=146",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "$194.96 − $129.99 = $64.97 more than the Lectron 80A."
+  },
+  {
+   "product": "TeslaTap Mini 80A",
+   "label": "Rated current (basis) and price",
+   "value": "'charge rate up to 80 AMPS @250VAC (20KW)', not called continuous; $224.96",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=160",
+   "source_title": "TeslaTap MINI 80 AMP",
+   "read": "2026-11-17",
+   "note": "The page states no certification, temperature monitoring or warranty. It says the new design fits Rivian and RAV4 EVs with an oversized ground pin."
+  },
+  {
+   "product": "Lectron Tesla to J1772 48A (older)",
+   "label": "Safety listing and price",
+   "value": "'SGS certified under the UL 2251 standard'; $99.99 (compare-at $159.99)",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "storecheck.py search result. UL 2251 is the connector standard and UL 2252 is the adapter standard, so the 48A is not certified to the adapter standard the 80A carries. Our page's 2026-11-11 price was $112.99."
+  }
+ ],
+ "unsourced": [
+  "Tesla Gen 2 Wall Connector 80 A maximum output: Tesla's Gen 2 install-manual PDF (digitalassets.tesla.com) came back as unreadable binary and tesla.com/support returned 403. I saw the 80 A figure only in a search snippet, so I left it out.",
+  "Lectron 80A IP rating when plugged in, and what its temperature sensor does on trip (cut or derate threshold): the user-manual PDF (cdn.shopify.com UM_Portrait_LENACSJ177280ABLKUS_V6.pdf) did not render as text, and local PDF extraction was not permitted.",
+  "Lectron 80A UL 2252 testing lab and certificate number: not on the product page, and the manual was unreadable.",
+  "Mating-cycle life (insertions) for any of the adapters: not on the Lectron, A2Z or TeslaTap maker pages.",
+  "Whether the Lectron and A2Z 80 A ratings are continuous or maximum: neither maker page says.",
+  "Contents of the cited thisWATT guide and TeslaTap spec page: both failed with a self-signed certificate error, so I could not check whether they mention the 48 A Gen 3 cap or IP ratings when plugged in."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2759471999999996
+ }
+}

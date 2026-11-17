@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a Tesla Wall Connector or Destination Charger has an owner-set 'Access Controls' menu (All Vehicles, Only Teslas, Authorized Teslas Only, Compatibility Mode) and that any setting other than All Vehicles turns away every J1772 adapter. No adapter can get around this setting. Tesla's own documentation says All Vehicles is the default, and Compatibility Mode exists for vehicles that fault on the Wall Connector.",
+ "standout": 2,
+ "standout_why": "I compared against The Charge Curve (Wall Connector page), EV & Charger (best NACS-to-J1772), Electrified Experts (NACS-to-J1772 guide), Plug & Range (adapter review) and the TeslaTap MINI 60A maker page. None of them mention Access Control, Only Teslas, Compatibility Mode or Wall Connector firmware. The Charge Curve only says the pilot signal is the same for every car. TeslaTap says it 'Works on ALL generations of Tesla Chargers'. Lectron's 80A page says it works with 'Tesla Destination Chargers, Mobile Connectors, and Wall Connectors' without naming this limit. ChatGPT's own answer did warn in general terms that 'some Tesla Destination Chargers are configured for Tesla-only access', but it named no setting and cited no source. I couldn't read the cited thisWATT guide (certificate error), so it may already cover part of this. I couldn't check the A2Z page either (HTTP 429).",
+ "decides": "This confirms the pick rather than changing it. Whether a Destination Charger works depends on one setting on the charger. It doesn't depend on which adapter you buy. TeslaTap, Lectron 80A and A2Z all use the same pass-through pilot signalling, so all three charge on a unit left at the default 'All Vehicles' and none charge on an 'Only Teslas' unit. So the choice still comes down to UL 2252 listing, heat sensing and price, where the Lectron 80A UL 2252 at $129.99 today leads. The page should tell shoppers to check that a host's Wall Connector is set to All Vehicles, or ask the host to change it, and not to expect any adapter to get past an Only Teslas unit. If the car faults on a Wall Connector that is set to All Vehicles, the host can switch it to Compatibility Mode.",
+ "candidates": [
+  "Lectron Tesla (NACS) to J1772 80A UL 2252",
+  "A2Z Stellar NACS to J1772",
+  "TeslaTap Mini 60A",
+  "TeslaTap Mini 80A",
+  "Lectron Tesla to J1772 48A"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Wall Connector Access Controls options (Universal Wall Connector install guide)",
+   "value": "4 options: 'All Vehicles' (default option, any vehicle can charge), 'Only Teslas' (any Tesla can charge), 'Authorized Teslas Only' (only Teslas configured in device setup or Tesla app), 'Compatibility Mode' (allows Wall Connector to be compatible with older generation vehicles; use only if you experience faults; some software functionality lost)",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/UniversalWC/en-us/GUID-93D0B514-3A09-4487-818D-E9851B67E9DA.html",
+   "source_title": "Optional: Access Controls (Tesla Energy Library, Universal Wall Connector install)",
+   "read": "2026-11-17",
+   "note": "Tesla's installer documentation. Authorized Teslas Only is set by entering VINs. Only 'All Vehicles' admits a non-Tesla car on an adapter."
+  },
+  {
+   "product": "general",
+   "label": "Wall Connector Access Controls options (Tesla One commissioning)",
+   "value": "Options are All Vehicles (default), Only Teslas and Authorized Teslas Only. 'The customer can also add vehicles in the Tesla app.'",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/TeslaOne/en-us/GUID-93D0B514-3A09-4487-818D-E9851B67E9DA.html",
+   "source_title": "Optional: Access Controls (Tesla Energy Library, Tesla One)",
+   "read": "2026-11-17",
+   "note": "Same setting set up through the Tesla One installer app. Compatibility Mode isn't listed in this version."
+  },
+  {
+   "product": "general",
+   "label": "Firmware that added Tesla-only restriction to Gen 3 Wall Connectors",
+   "value": "Firmware 1.4.4 for Gen 3 Wall Connectors, pushed over the air. Dropdown in the admin panel at 192.168.92.1 offers 'All Vehicles' and 'Only Tesla'",
+   "source": "https://teslanorth.com/2021/01/31/tesla-wall-connector-now-lets-you-control-what-vehicles-can-charge",
+   "source_title": "Tesla Wall Connector Now Lets You Control What Vehicles Can Charge (Tesla North, Nehal Malik, 2021-01-31)",
+   "read": "2026-11-17",
+   "note": "Named reviewer/news source. The article doesn't mention Gen 2 units."
+  },
+  {
+   "product": "general",
+   "label": "Signalling between Wall Connector and car",
+   "value": "Charger 'signals, over a single pilot wire, the maximum current available'. 'Every car in North America implements the same signalling, whether its inlet is J1772 or NACS.'",
+   "source": "https://thechargecurve.com/cables-adapters/can-a-tesla-wall-connector-charge-a-non-tesla-ev",
+   "source_title": "Can a Tesla Wall Connector Charge a Non-Tesla EV? (The Charge Curve)",
+   "read": "2026-11-17",
+   "note": "This is why a passive adapter works electrically. It's a rival page, included for context only."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Maker compatibility claim and price",
+   "value": "$129.99 (compare-at $169.99), in stock. 80 A, 240 V, UL 2252, built-in temperature sensor, 5 AWG cable. 'compatible with all J1772 EVs and Tesla Destination Chargers, Mobile Connectors, and Wall Connectors'. 'NOT compatible with Tesla Superchargers'",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on ev-lectron.com. ChatGPT showed $149.99 and our page has $149.99 (2026-11-11), so it is $20 lower today. The compatibility claim says nothing about Access Controls."
+  },
+  {
+   "product": "Lectron Tesla to J1772 48A",
+   "label": "Price and listing",
+   "value": "$99.99 (compare-at $159.99). 48 A, 240 V. 'SGS certified under the UL 2251 standard'. 'Compatible with ... all generation of Destination Chargers'",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search. Our page shows $112.99 (2026-11-11)."
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Maker compatibility claim, rating and price",
+   "value": "$194.96. '60 AMPS @250VAC (15KW)'. 'With this adapter you can charge ANY non-Tesla EV on a Tesla Destination, UMC, or Wall Connector.' 'Works on ALL generations of Tesla Chargers.' Not compatible with Superchargers. No UL listing mentioned",
+   "source": "https://www.umc-j1772.com/index.php?product_id=146&route=product%2Fproduct",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "Maker page. It has two padlock points but doesn't mention Wall Connector access control."
+  }
+ ],
+ "unsourced": [
+  "Tesla's US support page on Wall Connector Access Control (tesla.com/support/gen-3-wall-connector-access-control and the en_ie and en_pr versions): every request returned HTTP 403, so I couldn't confirm the firmware minimum (a search snippet said 21.36.4) or its wording on non-Tesla vehicles and overrides.",
+  "Tesla J1772 Wall Connector manual PDF (tesla.com): HTTP 403.",
+  "Whether Gen 2 Wall Connectors / older Destination Chargers have any access-control setting at all (likely not, since they have no Wi-Fi): I found no Tesla or named-reviewer source in budget.",
+  "How a Gen 3 Wall Connector tells a Tesla from a non-Tesla vehicle (which signal it uses): no Tesla source found.",
+  "A2Z Stellar price and compatibility wording today: a2zev.com returned HTTP 429 to both WebFetch and storecheck.py.",
+  "The cited thisWATT guide (thiswatt.com/guides/best-tesla-to-j1772-adapters): a certificate error blocked WebFetch, so I couldn't check whether it mentions Access Controls."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9048258
+ }
+}

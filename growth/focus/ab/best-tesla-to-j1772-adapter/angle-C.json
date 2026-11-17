@@ -1,0 +1,92 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states Tesla's own names for the Wall Connector access settings: 'All Vehicles' is the default, 'Only Teslas' and 'Authorized Teslas Only' (Teslas added by VIN) block other cars, and there is a 'Compatibility Mode' for faults with older vehicles. So a J1772 car that won't charge at a destination charger may be stopped by how the host set up the charger, and none of the adapter makers' pages claims to get around that.",
+ "standout": 2,
+ "standout_why": "Compared against thechargecurve.com (Can a Tesla Wall Connector Charge a Non-Tesla EV?), evandcharger.com (Best NACS to J1772 Adapters), electrifiedexperts.com (NACS to J1772 Adapter guide) and the TeslaTap Mini 60 maker page that ChatGPT cited. None of them names the access-control modes or Compatibility Mode. evandcharger and electrifiedexperts don't mention the Rivian/RAV4 oversized ground pin. thechargecurve says it doesn't cover access control at all. ChatGPT's own answer said only that 'some Tesla Destination Chargers are configured for Tesla-only access', so rivals have part of this. I couldn't open the cited thisWATT pages (TLS certificate error), so they may have something I didn't see.",
+ "decides": "This confirms the pick rather than changing it. Every candidate's maker page names the same Tesla chargers (Destination, Wall Connector, Mobile Connector) and rules out Superchargers. No adapter can override a host's 'Only Teslas' setting, so the page should tell shoppers to ask the host for 'All Vehicles', or for Compatibility Mode if the car faults. The fit facts that actually separate the adapters are vehicle-specific. TeslaTap says its Mini 60 and Mini 80 now fit Rivian and RAV4 EVs with an oversized ground pin. Lectron's 80A page claims 'all J1772 EVs' but doesn't mention ground-pin fit. That points Rivian and RAV4 EV owners toward TeslaTap. Lectron's 80A price today is $129.99, not the $149.99 ChatGPT showed.",
+ "candidates": [
+  "Lectron Tesla (NACS) to J1772 80A UL 2252",
+  "A2Z EV Stellar NACS to J1772",
+  "TeslaTap Mini 60A",
+  "TeslaTap Mini 80A",
+  "Lectron Tesla (NACS) to J1772 48A"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Tesla Wall Connector access-control modes",
+   "value": "All Vehicles (default: 'any vehicle can charge'); Only Teslas ('any Tesla can charge'); Authorized Teslas Only ('only Teslas configured in device setup or Tesla app can charge'; you add each car by VIN)",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/TeslaOne/en-us/GUID-93D0B514-3A09-4487-818D-E9851B67E9DA.html",
+   "source_title": "Optional: Access Controls (Tesla Energy Library, Tesla One commissioning)",
+   "read": "2026-11-17",
+   "note": "Tesla's commissioning doc. Under either restricted mode a non-Tesla car can't charge, with or without an adapter. The page doesn't name the Wall Connector generation or a firmware version."
+  },
+  {
+   "product": "general",
+   "label": "Wall Connector Compatibility Mode",
+   "value": "'This option allows Wall Connector to be compatible with older generation vehicles … Use it only if you experience faults with your Wall Connector and your electric vehicle.'",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/UniversalWC/en-us/GUID-93D0B514-3A09-4487-818D-E9851B67E9DA.html",
+   "source_title": "Optional: Access Controls (Tesla Energy Library, Universal Wall Connector install, Commissioning Procedure)",
+   "read": "2026-11-17",
+   "note": "Listed as a fourth option next to All Vehicles, Only Teslas and Authorized Teslas Only in the Universal Wall Connector install docs. The host sets it, not the driver."
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Charger and vehicle compatibility (maker)",
+   "value": "'Works on ALL generations of Tesla Chargers'; Destination, UMC and Wall Connector; 'compatible with ALL US built EV's with a continuous charge rate up to 60 AMPS @250VAC (15KW)'; 'Now works on Rivian and RAV4 EVs that have an oversized ground pin'; 'NOT COMPATIBLE … with the Tesla Super Charger Network'",
+   "source": "https://www.umc-j1772.com/index.php?product_id=146&route=product%2Fproduct",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "The page mentions no UL or other certification. Price on page: $194.96."
+  },
+  {
+   "product": "TeslaTap Mini 80A",
+   "label": "Charger and vehicle compatibility (maker)",
+   "value": "'Works on ALL generations of Tesla Chargers'; 'ALL US built EV's with charge rate up to 80 AMPS @250VAC (20KW)'; 'NEW DESIGN - Now works on Rivian and RAV4 EVs that have an oversized ground pin'; not for Superchargers",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=160",
+   "source_title": "TeslaTap MINI 80 AMP",
+   "read": "2026-11-17",
+   "note": "The maker names the Porsche Taycan's 20 kW onboard charger as the use case. No certification claimed. Price on page: $224.96."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Charger and vehicle compatibility (maker)",
+   "value": "'compatible with all J1772 EVs and Tesla Destination Chargers, Mobile Connectors, and Wall Connectors … NOT compatible with Tesla Superchargers'; 80 A / 240 V; IP67; 5 AWG cable; UL 2252; built-in temperature sensor",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "Read from the store's Shopify product data with storecheck.py. The page doesn't name Wall Connector generations or say anything about Rivian/RAV4 ground-pin fit."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Price at maker",
+   "value": "$129.99 (compare-at $169.99), in stock",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search on ev-lectron.com. ChatGPT's card showed $149.99, and our page shows $149.99 from 2026-11-11."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 48A",
+   "label": "Charger compatibility and listing (maker)",
+   "value": "'Compatible with the Tesla High Powered Wall Connectors, all generation of Destination Chargers, and Mobile Connectors'; 48 A / 240 V; 'SGS certified under the UL 2251 standard'; $99.99 (compare-at $159.99)",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search on ev-lectron.com. Price is down from the $112.99 our page shows from 2026-11-11."
+  }
+ ],
+ "unsourced": [
+  "A2Z EV Stellar compatibility, exclusions and price: a2zev.com returned HTTP 429 three times (two WebFetch tries and one storecheck.py try).",
+  "The firmware version that adds Access Control (a search snippet said 21.36.4): tesla.com/support/gen-3-wall-connector-access-control returned HTTP 403, and the Energy Library page doesn't state a version.",
+  "Any 'do not use adapters' wording in Tesla's North American Gen 3 Wall Connector manual: the 1PNA PDF was over the 10 MB fetch limit. The en and en-GB links redirect to the AU/NZ install manual.",
+  "Lectron's own instruction sheet text (cdn.transend.us TeslaJ1772Blk48AUSA-Instructions.pdf): the PDF is image-only, so no text could be extracted.",
+  "Whether the cited thisWATT guide and its TeslaTap specs page mention access-control modes or ground-pin fit: both returned a TLS 'self signed certificate in certificate chain' error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0791905
+ }
+}

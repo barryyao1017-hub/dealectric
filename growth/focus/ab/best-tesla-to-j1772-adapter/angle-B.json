@@ -1,0 +1,155 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how hard each adapter is pushed on a current Tesla Wall Connector. Tesla caps that charger at 48 A / 11.5 kW, so every candidate delivers the same 11.5 kW. That puts the Lectron 48A at 100% of its rating for the whole session, the TeslaTap Mini 60A at 80%, and the 80 A Lectron and A2Z at 60%. Per kW delivered, the cost runs from $8.68 (Lectron 48A) to $11.28 (Lectron 80A) to $16.92 (TeslaTap Mini 60A).",
+ "standout": 2,
+ "standout_why": "I compared against evandcharger.com (best NACS-to-J1772 list, 2026-10-05) and thechargecurve.com (Lectron vs A2Z, 2026-10-17). thisWATT, the main cited rival, would not load (certificate error), so I couldn't check it. evandcharger works out kW and $/kW at each adapter's own rating (Lectron $169.99 / 19.2 kW = $8.85/kW). It never uses the charger's 48 A output, and it says nothing about how much of each adapter's rating is in use. The Charge Curve says a home Wall Connector tops out at 48 A and that a 48 A adapter isn't the bottleneck. That covers part of the speed point. Neither page gives the percentage of rating in use at 48 A, the cost per kW actually delivered, or today's $129.99 Lectron 80A price.",
+ "decides": "This backs the Lectron 80A UL 2252 as the pick. On a 48 A Wall Connector it charges no faster than the 48 A model. Its case is that it runs at 60% of rating where the old 48A runs at 100% with no temperature sensor stated, and today it costs only $30 more ($129.99 vs $99.99). The TeslaTap Mini 60A costs about 50% more per kW delivered than the Lectron 80A ($16.92 vs $11.28). It also states no UL listing, so it stays a niche pick. The Lectron 80A has dropped to $129.99 from the $149.99 on our page and in ChatGPT's answer, and the page price should be updated.",
+ "candidates": [
+  "Lectron Tesla (NACS) to J1772 80A UL 2252",
+  "A2Z EV Stellar NACS to J1772 80A",
+  "TeslaTap Mini 60A",
+  "TeslaTap Mini 80A",
+  "Lectron Tesla to J1772 48A (older model)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Maximum output of the current Tesla Wall Connector (Gen 3)",
+   "value": "48 A / 11.5 kW at 240 V on a 60 A breaker",
+   "source": "https://energylibrary.tesla.com/docs/Public/Charging/WallConnector/Gen3/Install/UniversalWC/en-us/GUID-5CC6694C-47C9-4515-A156-A5B21EB81C88.html",
+   "source_title": "Circuit Breaker Rating / Maximum Output (Tesla Energy Library)",
+   "read": "2026-11-17",
+   "note": "Tesla's table: 60 A breaker -> 48 A -> 11.5 kW. The 48 A figure is the input to every number below: 48 A × 240 V = 11.52 kW."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Price at maker store",
+   "value": "$129.99 (compare-at $169.99)",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "Shopify storecheck. In stock. Maker lists 80 A, 240 V, UL 2252, a built-in temperature sensor and 5 AWG cable."
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Share of rating in use on a 48 A Wall Connector",
+   "value": "60%",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "48 A charger output (Tesla table) ÷ 80 A adapter rating = 0.60"
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Cost per kW delivered on a 48 A Wall Connector",
+   "value": "$11.28/kW",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "$129.99 ÷ 11.52 kW (48 A × 240 V; adapter is not the limit) = $11.28/kW"
+  },
+  {
+   "product": "Lectron Tesla (NACS) to J1772 80A UL 2252",
+   "label": "Largest battery that fits the maker's '4–6 hour full charge' claim on a 48 A Wall Connector",
+   "value": "about 46–69 kWh",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-ev-adapter-250v-80-amp",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 80 Amp | UL 2252 Certified",
+   "read": "2026-11-17",
+   "note": "4 h × 11.52 kW = 46 kWh; 6 h × 11.52 kW = 69 kWh, ignoring charging losses. The claim only holds for full 80 A delivery or small packs."
+  },
+  {
+   "product": "Lectron Tesla to J1772 48A (older model)",
+   "label": "Price at maker store",
+   "value": "$99.99 (compare-at $159.99)",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "Shopify storecheck. Maker says 'SGS certified under the UL 2251 standard'. No temperature sensor is mentioned."
+  },
+  {
+   "product": "Lectron Tesla to J1772 48A (older model)",
+   "label": "Share of rating in use on a 48 A Wall Connector",
+   "value": "100%",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "48 A ÷ 48 A = 1.00. No margin if the car pulls the charger's full output."
+  },
+  {
+   "product": "Lectron Tesla to J1772 48A (older model)",
+   "label": "Cost per kW delivered on a 48 A Wall Connector",
+   "value": "$8.68/kW",
+   "source": "https://ev-lectron.com/products/lectron-tesla-to-j1772-adapter-max-48a-250v-for-tesla-high-powered-connectors-destination-chargers-and-mobile-connectors-black",
+   "source_title": "Lectron Tesla (NACS) to J1772 EV Adapter | 240V | 48 Amp",
+   "read": "2026-11-17",
+   "note": "$99.99 ÷ 11.52 kW = $8.68/kW"
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Price at maker",
+   "value": "$194.96",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=146",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "Maker says 'continuous charge rate up to 60 AMPS @250VAC (15KW)'. Only 'MADE IN USA' is stated. No UL listing and no temperature sensing are mentioned."
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Share of rating in use on a 48 A Wall Connector",
+   "value": "80%",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=146",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "48 A ÷ 60 A continuous = 0.80"
+  },
+  {
+   "product": "TeslaTap Mini 60A",
+   "label": "Cost per kW delivered on a 48 A Wall Connector",
+   "value": "$16.92/kW",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=146",
+   "source_title": "TeslaTap MINI 60 AMP",
+   "read": "2026-11-17",
+   "note": "$194.96 ÷ 11.52 kW = $16.92/kW"
+  },
+  {
+   "product": "TeslaTap Mini 80A",
+   "label": "Price at maker",
+   "value": "$224.96",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=160",
+   "source_title": "TeslaTap MINI 80 AMP",
+   "read": "2026-11-17",
+   "note": "Maker: 'charge rates up to 80 AMPS @250VAC (20KW)'. No UL listing and no temperature sensing are mentioned."
+  },
+  {
+   "product": "TeslaTap Mini 80A",
+   "label": "Share of rating in use / cost per kW delivered on a 48 A Wall Connector",
+   "value": "60% / $19.53/kW",
+   "source": "https://www.umc-j1772.com/index.php?route=product%2Fproduct&product_id=160",
+   "source_title": "TeslaTap MINI 80 AMP",
+   "read": "2026-11-17",
+   "note": "48 ÷ 80 = 0.60; $224.96 ÷ 11.52 kW = $19.53/kW"
+  },
+  {
+   "product": "A2Z EV Stellar NACS to J1772 80A",
+   "label": "Rating and share of rating in use on a 48 A Wall Connector",
+   "value": "80 A / 19.2 kW rated; 60% in use",
+   "source": "https://a2zev.com/products/nacs-j1772-stellar",
+   "source_title": "NACS Charger to J1772 Vehicle | AC | 80A | Certified to UL 2252 - CAN/CSA C22.2 | The Stellar Adapter",
+   "read": "2026-11-17",
+   "note": "48 ÷ 80 = 0.60. Maker lists UL 2252 / CAN/CSA C22.2, dual over-temperature sensor switches, IP67 (IP54 mated) and a vehicle-locked latch. Store shows 159.00 with no currency shown (see unsourced)."
+  }
+ ],
+ "unsourced": [
+  "A2Z Stellar US-dollar price and cost per kW. a2zev.com storecheck returned 159.00 with no currency, and the store is Canadian, so it is probably CAD. ChatGPT showed $111.42. A second fetch with ?country=US got HTTP 429, so I didn't compute $/kW.",
+  "Gen 2 Tesla Wall Connector 80 A / 19.2 kW output on a 100 A breaker: the share of rating in use at 80 A would be 167% for the 48A, 133% for the 60A and 100% for the 80 A models. Tesla's gen-2 support pages returned 403. The Gen 2 manual PDF (digitalassets.tesla.com) came back as unreadable binary, as did the manuals.online copy, so I'm leaving this out.",
+  "Which J1772 cars can draw more than 48 A on AC: 2022–23 F-150 Lightning Extended Range at 19.2 kW / 80 A. The Ford 2023 tech-spec PDF came back as unreadable binary. A Ford FAQ snippet says 2024–25 models cap at 48 A. Not used.",
+  "Tesla's own page saying which generation of Wall Connector destination sites use. tesla.com support pages returned 403.",
+  "thisWATT guide (the main cited rival) failed to load (certificate error), so I couldn't check whether it already states this figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2133865
+ }
+}
