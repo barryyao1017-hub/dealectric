@@ -1,0 +1,102 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much of the battery the station uses on itself over 72 hours. That ranges from about 360 Wh (DELTA 2 Max with AC off, 5 W × 72 h) to about 1,944 Wh (DELTA 3 Max with the inverter left on, 27 W × 72 h, 95% of its 2,048 Wh). None of them says that Anker's SOLIX S2000, ChatGPT's #2 pick, has no 12V car-socket output.",
+ "standout": 3,
+ "standout_why": "I opened Solar Waypoint's C2000 Gen 2 vs AC200L vs DELTA 2 Max page. It gives Wh/lb and counts the 12V sockets, but has no idle or self-consumption figure, no 72-hour overhead and no fridge-days number. I could not open gearranking.com (SSL error), stationarena.com (SSL error) or buyerdecision.com (HTTP 403), so I can't rule out that they give an idle figure. ChatGPT's own answer says to use the 12V socket to avoid inverter losses but gives no numbers. It also listed the Anker S2000 as a 12V-fridge pick, but Anker says that model has no 12V output.",
+ "decides": "1) The Anker SOLIX S2000 should come off the list as a 12V-fridge pick. Its fridge would have to run through the AC inverter and the fridge's own AC adapter. 2) Over 3 days, the station's own draw matters as much as its capacity. At an average fridge draw of 20 W, the DELTA 2 Max with AC off lasts about 82 h. The Elite 200 V2 lasts about 70 h (its 9.5 W idle figure doesn't say whether the inverter was on). The Jackery 2000 v2 with the inverter on lasts about 55 h, and the DELTA 3 Max with the inverter on about 44 h. So the page should give a rule, 'switch AC off and run the fridge from the 12V socket', and rank stations by measured idle draw with AC off.",
+ "candidates": [
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI Elite 200 V2",
+  "Jackery Explorer 2000 v2",
+  "Anker SOLIX S2000",
+  "Anker SOLIX C2000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "12V car-socket output",
+   "value": "none (no 12V car-socket output)",
+   "source": "https://www.ankersolix.com/blogs/portable-power-station/anker-solix-s2000-compact-2000wh-lifepo4-power-station",
+   "source_title": "Anker SOLIX S2000: compact 2000Wh LiFePO4 power station (Anker SOLIX blog, posted 01/09/2026)",
+   "read": "2026-11-17",
+   "note": "The page's FAQ says: 'The S2000 does not have a 12V car-socket output.' The product page's output list also has only AC, USB-C and USB-A. So a 12V fridge would have to run from AC through its own adapter."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Idle draw (maker figure), capacity, weight",
+   "value": "6 W active idle, 2 W system standby; 2,010 Wh; 35.7 lb",
+   "source": "https://ankersolix.com/s2000",
+   "source_title": "Anker SOLIX S2000 product page",
+   "read": "2026-11-17",
+   "note": "Overhead over 72 h: 6 W × 72 h = 432 Wh, before any loss in the fridge's AC adapter. Weight ratio: 2,010 / 35.7 = 56.3 Wh/lb. Anker's 35-hour fridge claim was tested with a 700 L household fridge, not a 12V fridge."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Self-consumption, AC on vs AC off (EcoFlow support, quoted)",
+   "value": "23 W with AC on; 5 W with AC off",
+   "source": "https://windinmyface.com/blog/2025/20250116_1012-Ecoflow-Delta2Max-AC-conversion-efficiency.html",
+   "source_title": "diglloyd WindInMyFace: Ecoflow Delta 2 Max: A/C Power Conversion Efficiency (2025-01-16)",
+   "read": "2026-11-17",
+   "note": "This is EcoFlow tech support's figure, quoted by Lloyd Chambers; he did not measure it. Overhead over 72 h: AC off 5 × 72 = 360 Wh; AC on 23 × 72 = 1,656 Wh, which is 81% of 2,048 Wh. Runtime with a 20 W fridge and AC off: 2,048 / (20 + 5) = 82 h, nominal Wh, no DC conversion loss counted."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Weight and Wh per lb",
+   "value": "50 lb; 41.0 Wh/lb",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-c2000-gen-2-vs-bluetti-ac200l-vs-ecoflow-delta-2-max/",
+   "source_title": "Solar Waypoint: Anker Solix C2000 Gen 2 vs Bluetti AC200L vs EcoFlow DELTA 2 Max",
+   "read": "2026-11-17",
+   "note": "2,048 Wh / 50 lb = 41.0 Wh/lb. The same page gives the C2000 Gen 2 as 2,048 Wh / 41.7 lb = 49.1 Wh/lb."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Idle draw, inverter on, no load (measured)",
+   "value": "about 27 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-max",
+   "source_title": "The Solar Lab: EcoFlow DELTA 3 Max Review",
+   "read": "2026-11-17",
+   "note": "The Solar Lab measured this with the inverter on and nothing plugged in. They give no figure for DC only. Overhead over 72 h: 27 × 72 = 1,944 Wh, 95% of 2,048 Wh. Runtime with a 20 W fridge and the inverter on: 2,048 / (20 + 27) = 44 h, under the 72 h target. Weight 45 lb, so 2,048 / 45 = 45.5 Wh/lb."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw (measured)",
+   "value": "9.5 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review",
+   "source_title": "The Solar Lab: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-17",
+   "note": "The review doesn't say which outputs were on. Overhead over 72 h: 9.5 × 72 = 684 Wh, 33% of 2,073 Wh. Runtime with a 20 W fridge: 2,073 / (20 + 9.5) = 70 h. Weight 53.4 lb, so 2,073 / 53.4 = 38.8 Wh/lb, the heaviest per Wh of the candidates."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "$899.00",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-17",
+   "note": "Read with the storecheck tool on the Shopify store. Compare-at price is also $899, so it isn't marked as a sale. Cost per Wh: 899 / 2,073 = $0.43/Wh. The store title says 2,080 Wh; The Solar Lab lists 2,073 Wh."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Idle draw, inverter on (measured)",
+   "value": "about 17 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-2000-v2-review",
+   "source_title": "The Solar Lab: Jackery Explorer 2000 V2 Review",
+   "read": "2026-11-17",
+   "note": "Measured with the inverter on; the review also says it idles for about 5 days from full. Overhead over 72 h: 17 × 72 = 1,224 Wh, 60% of 2,042 Wh. Runtime with a 20 W fridge and the inverter on: 2,042 / (20 + 17) = 55 h. Weight is 'just under 40 lbs', so about 2,042 / 40 = 51 Wh/lb."
+  }
+ ],
+ "unsourced": [
+  "Idle draw with AC off and only the 12V socket on, for the DELTA 3 Max, Elite 200 V2, Jackery 2000 v2 and C2000 Gen 2. I searched the maker pages and The Solar Lab, and checked StorageReview and APH Networks only in search snippets. None gave a figure measured with AC off.",
+  "Today's prices for the EcoFlow DELTA 3 Max, DELTA 2 Max (us.ecoflow.com returned HTTP 429), the Jackery 2000 v2 (jackery.com returned HTTP 429), and the Anker S2000 and C2000 Gen 2 (ankersolix.com product/search returned HTTP 404). So I can only give cost per usable Wh for the Elite 200 V2.",
+  "The 12V car-outlet rating (V/A) for the DELTA 2 Max and DELTA 3 Max from the manuals. The DELTA 2 Max manual PDF had no readable text layer, the webstaurant spec PDF was too large to fetch, and I didn't open a DELTA 3 Max manual.",
+  "BLUETTI's own '15 W self-consumption' FAQ figure for the Elite 200 V2 (seen only in a search snippet, page not opened).",
+  "Rival pages gearranking.com/power-stations/ecoflow-delta-2-max, stationarena.com versus pages and buyerdecision.com/tools/power-station-reality-check could not be opened (SSL error / HTTP 403). I couldn't check whether they already state idle draw or the S2000's missing 12V port."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2104869000000003
+ }
+}

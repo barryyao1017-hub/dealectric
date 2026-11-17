@@ -1,0 +1,48 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a power station can switch its own 12 V car port off under a light load. Jackery's Explorer 2000 Pro manual turns the Car Port off after 12 hours at 2 W or less, and it stays off until someone presses the button.",
+ "standout": 1,
+ "standout_why": "I checked three rival sources. ChatGPT's answer and its cited DELTA 2 Max manual already give the regulated 12.6 V / 10 A car outlet. The Solar Waypoint three-way comparison (C2000 Gen 2 / AC200L / DELTA 2 Max) only says each model has one 12 V socket 'for portable refrigerators'. It gives no output voltage, no idle draw figure and no auto-off rule, and its Anker note ('low idle consumption') has no number. So the port spec is already covered. The auto-off rule is new, but I could only source it for the Explorer 2000 Pro, which is not one of our candidates. I could not read the BuyerDecision tool page (HTTP 403) or the stationarena versus pages (certificate error), so I can't rule out that they mention it.",
+ "decides": "This confirms the pick rather than changing it. As Jackery words the rule, the port only shuts off after 12 continuous hours at 2 W or less, and a compressor fridge that is running breaks that each time the compressor starts. The risk to a 3-day unattended run is mainly in cold weather or with the fridge switched to standby. The page can add a practical step: before leaving, find and turn off any low-load or ECO auto-off for the 12 V port. I could not source the matching setting for the Elite 200 V2 (DC ECO), DELTA 3 Max / DELTA 2 Max, C2000 Gen 2 or Explorer 2000 v2.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "EcoFlow DELTA 2 Max",
+  "Anker SOLIX C2000 Gen 2",
+  "Jackery Explorer 2000 v2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 2000 Pro",
+   "label": "Low-load auto-off for the car port and other outputs",
+   "value": "Car Port ≤ 2 W, USB ≤ 2 W or AC ≤ 25 W for 12 hours, then the unit turns off automatically. Pressing the car port, USB or AC button turns it back on.",
+   "source": "https://manualslib.mx/manual/810257/Jackery-Explorer-2000-Pro.html?page=14",
+   "source_title": "Jackery Explorer 2000 Pro manual, page 14 (ManualsLib mirror)",
+   "read": "2026-11-17",
+   "note": "Quoted from the English Q&A on page 14: 'when the port is connected to a small load device(AC Output ≤ 25W, USB Output ≤ 2W, Car Port ≤ 2W) for 12 hours, the device will automatically be turned off.' The same page says 'the Low Power Mode will be turned off by default' and that it is enabled by long-pressing AC + DISPLAY. The wording is unclear about which state the protection is in by default. This is a third-party mirror of Jackery's manual; Jackery's own product pages returned HTTP 429. It is the 2000 Pro, not the 2000 v2 on our page."
+  },
+  {
+   "product": "general (Jackery Explorer car port)",
+   "label": "Car port rating and why it stops",
+   "value": "Rated 12 V / 10 A / 120 W. Output stops on battery depletion, 'low-power load mode design', overload above the rating, or an internal fault.",
+   "source": "https://community.jackery.com/us/knowledge/power-station-troubleshooting/automatic-shutdown-after-use",
+   "source_title": "Jackery Community: automatic shutdown after use",
+   "read": "2026-11-17",
+   "note": "This is Jackery's own troubleshooting article. It does not name models or give a time limit. It is a maker statement that the car port can shut off by design under a low load."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 200 V2 DC ECO mode: load threshold, hours before the DC output shuts off, and whether it is on by default. BLUETTI's maker-hosted manual PDF did not return readable text, and the manuals.plus copy returned 403.",
+  "EcoFlow DELTA 2 Max and DELTA 3 Max: any car-port or DC timeout setting and the unit timeout default. The EcoFlow-hosted DELTA 2 Max manual PDF did not return readable text, and I found no EcoFlow help-center article on the car port.",
+  "Anker SOLIX C2000 Gen 2: whether the car charger port turns itself off under a light load. Search showed only the 12 V ~ 10 A rating and a port-memory setting. I did not open the manual, and the Anker community thread about a C1000 DC port shutting off returned 404.",
+  "Jackery Explorer 2000 v2: Energy Saving Mode thresholds and whether the 2000 Pro's 12 h ≤2 W car-port rule applies. jackery.com returned HTTP 429 twice.",
+  "Measured idle draw of the 12 V converter (W with the car port on) for any candidate, from the maker or a named reviewer. This is the other figure that would decide the 3-day energy budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2247163000000003
+ }
+}

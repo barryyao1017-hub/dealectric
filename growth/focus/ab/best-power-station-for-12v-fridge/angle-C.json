@@ -1,0 +1,67 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got names the one expansion pack that fits the Anker SOLIX C2000 Gen 2 (Anker SOLIX BP2000 (Gen 2), up to 4 kWh) together with its 12V⎓10A car-charger output and Anker's own claim of 9 W idle draw and 7 days on a portable fridge.",
+ "standout": 1,
+ "standout_why": "I opened solarwaypoint.com's C2000 Gen 2 / AC200L / DELTA 2 Max comparison. It gives maximum expanded capacity (4,096 / 8,192 / 6,144 Wh) and says each model has one 12V socket. It does not name which expansion packs fit, and it gives no volt or amp rating for the car outlet. It says nothing about ECO or auto-off. The cited EcoFlow manual PDFs give the DELTA 2 Max car outlet as 12.6V/10A, and ChatGPT's answer repeats that. buyerdecision.com (403) and stationarena.com (TLS error) would not load, so I could not check them. The finding that would have decided the pick is whether each station's 12V port shuts itself off while a fridge compressor is cycling. I could not open a maker document for it, so it is in unsourced and not counted here.",
+ "decides": "The C2000 Gen 2 confirmation is weak: its 12V port is the standard 10 A socket a compressor fridge needs. The BP2000 (Gen 2) is the only pack Anker names for it, so a shopper who wants more than 3 days with no sun knows which battery to add. The pick still depends on the unsourced auto-off check below. If BLUETTI's DC ECO mode or EcoFlow's 12V DC timeout can turn the car port off between compressor cycles, the page has to tell shoppers which setting to change for a 72-hour run.",
+ "candidates": [
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI Elite 200 V2",
+  "Jackery Explorer 2000 v2",
+  "BLUETTI AC200L"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "12V car outlet rating",
+   "value": "12 V⎓10 A (Anker lists no wattage; 12 × 10 = 120 W)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page (Anker SOLIX US)",
+   "read": "2026-11-17",
+   "note": "Spec table reads 'Car Charger Output: 12V⎓10A'. The 120 W is my arithmetic, not Anker's figure."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Compatible expansion battery",
+   "value": "Anker SOLIX BP2000 (Gen 2); up to 4 kWh total",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page (Anker SOLIX US)",
+   "read": "2026-11-17",
+   "note": "The FAQ says the unit 'can be paired with Anker SOLIX BP2000 (Gen 2) to expand capacity'. The page also says 'Up to 4kWh Expandable Capacity'. No other pack is named."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Idle draw and fridge runtime (maker claim)",
+   "value": "9 W idle; 'portable fridge for 7 days'",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page (Anker SOLIX US)",
+   "read": "2026-11-17",
+   "note": "This is Anker's own claim and the page gives no test conditions. The page does not say whether the 9 W is with only DC on or with AC on. The same page claims 32 h on a dual-door fridge, or 64 h with the expansion battery."
+  },
+  {
+   "product": "general",
+   "label": "What rival comparison pages state about 12V ports and expansion",
+   "value": "One 12V socket per model, no V/A rating; maximum expanded Wh only, no pack model names; no mention of ECO or auto-off",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-c2000-gen-2-vs-bluetti-ac200l-vs-ecoflow-delta-2-max/",
+   "source_title": "Anker Solix C2000 Gen 2 vs Bluetti AC200L vs EcoFlow DELTA 2 Max Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "This page sets the baseline the standout score is judged against."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 2 Max / DELTA 3 Max: whether the 12V DC output has an auto-off timeout, its default setting, and whether a cycling fridge keeps it on. A search snippet of the DELTA 2 app manual said '12V DC timeout ... Default: 12 hours', with options up to 'always on'. I tried to open the DELTA 2 Max user manual PDFs (EcoFlow's US OSS host, ecoflow.no, and the mygenerator.com.au mirror). They came back as compressed or encrypted binary or went over the size limit, and local PDF text extraction was not allowed, so I could not read the text.",
+  "BLUETTI Elite 200 V2: the DC ECO mode threshold, timer and default state. The EB3A manual snippet says '≤1W for DC' after 4 hours, but that is a different model. I tried the Elite 200 V2 manual PDFs on s4.bluettipower.com and the manuals.plus mirror (unreadable binary). The BLUETTI product page hit a redirect loop, and the community thread now redirects to forum.bluettipower.com, which I did not open.",
+  "EcoFlow DELTA 3 Max: the car outlet rating and the names of compatible extra batteries. The us.ecoflow.com product page returned HTTP 429.",
+  "Jackery Explorer 2000 v2: the car port rating, expansion battery compatibility, and today's price. jackery.com returned HTTP 429 twice, and storecheck.py also got HTTP 429.",
+  "BLUETTI AC200L: compatible expansion pack model names (B230/B300/B300K) from a BLUETTI document. Not opened, because I ran out of tool budget.",
+  "Today's prices for all candidates. Store pages were rate-limited, the Anker page showed no price, and I did not reach amzcheck.py within the budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9419702000000005
+ }
+}

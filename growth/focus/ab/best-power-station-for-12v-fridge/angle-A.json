@@ -1,0 +1,123 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Anker SOLIX S2000, its #2 pick for a 12 V fridge, has no 12 V car output at all. Anker's spec table lists only USB-C (100 W + 15 W), USB-A (12 W) and AC outputs. On the S2000 a 12 V fridge has to run from the fridge's AC adapter with the inverter on, and Anker rates that state at 6 W 'Active Idle Power'. Over 72 h that is about 432 Wh of overhead before the fridge draws anything.",
+ "standout": 3,
+ "standout_why": "Compared against: the solarwaypoint.com C2000 Gen 2 vs AC200L vs DELTA 2 Max page, which lists '12V accessory sockets' with no V/A rating, no idle figures and nothing on the S2000; the cited EcoFlow DELTA 2 Max manuals, which cover only EcoFlow; and the result titles, none of which is about the S2000 (they cover DELTA 2 Max, AC200L, F2000 and C2000 Gen 2). I could not read buyerdecision.com/tools/power-station-reality-check (HTTP 403) or the two stationarena.com pages (TLS certificate error), so a car-port table there can't be ruled out. Even so, none of those result titles names the S2000. ChatGPT's own answer called the S2000 'best for portability' for a 12 V fridge and told the shopper to plug the fridge into the 12 V car socket.",
+ "decides": "The S2000 should come off a 12 V-fridge list, or be shown as AC-only with an idle penalty. Of the ~2 kWh units, the ones that hold the pick are those with a real 12 V car port: Anker's C2000 Gen 2 (12 V / 10 A), EcoFlow DELTA 3 Max and BLUETTI Elite 200 V2. A normalised idle column also matters for 3 days. Makers state idle three different ways: Anker S2000 gives 'Active Idle 6 W / System Standby 2 W', Anker C2000 Gen 2 gives '9 W idle' with no conditions, and Jackery gives no figure, but The Solar Lab measured about 17 W with the inverter on. Over 72 h those figures range from about 144 Wh to about 1,224 Wh. That is the footnote: run the fridge from the 12 V port with the inverter off, never from AC.",
+ "candidates": [
+  "Anker SOLIX S2000",
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 3 Max",
+  "EcoFlow DELTA 2 Max",
+  "BLUETTI Elite 200 V2",
+  "Jackery Explorer 2000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Output ports (no 12 V car/DC output)",
+   "value": "USB-C 100 W ×1 + 15 W ×1, USB-A 12 W, AC outlets (1,500 W); no 12 V car socket or DC5521 output listed",
+   "source": "https://www.ankersolix.com/ca/anker-solix-s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX Canada product page)",
+   "read": "2026-11-17",
+   "note": "Read from the maker's spec table on the Canadian product page. The US product URL returned 404 today."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Idle draw as stated by maker",
+   "value": "6 W Active Idle Power; 2 W System Standby Power",
+   "source": "https://www.ankersolix.com/ca/anker-solix-s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX Canada product page)",
+   "read": "2026-11-17",
+   "note": "With no 12 V port, a 12 V fridge runs through the AC inverter via the fridge's AC adapter. Arithmetic: 6 W × 72 h = 432 Wh of station overhead, about 30% of the 1,440 Wh a 20 W-average fridge uses in 3 days (ChatGPT's own 'typical' row). Adapter conversion loss is extra and was not sourced."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "No 12 V car socket; measured idle and efficiency",
+   "value": "No 12 V car socket; idle about 6 W with inverter on, about 2 W with inverter off; 91% AC efficiency",
+   "source": "https://www.thesolarlab.com/review/anker-solix-s2000",
+   "source_title": "Anker SOLIX S2000 Review: Longest-Lasting Home Backup? (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Named-reviewer measurement that agrees with Anker's 6 W / 2 W spec. The review page carries no date."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Net weight",
+   "value": "16.2 kg (35.7 lb)",
+   "source": "https://www.ankersolix.com/ca/anker-solix-s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX Canada product page)",
+   "read": "2026-11-17",
+   "note": "Maker spec table."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Car charger output",
+   "value": "12 V ⎓ 10 A",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 (Anker SOLIX US product page)",
+   "read": "2026-11-17",
+   "note": "Maker spec table, listed as 'Car Charger Output'."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Idle draw as stated by maker",
+   "value": "9 W idle power consumption (conditions not stated)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 (Anker SOLIX US product page)",
+   "read": "2026-11-17",
+   "note": "Anker does not say whether AC or DC outputs are on for this figure, so it can't be compared directly with the S2000's split 6 W / 2 W. If it applied for the whole trip: 9 W × 72 h = 648 Wh."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Cycle life / capacity / weight",
+   "value": "4,000 cycles to 80% capacity; 2,048 Wh (51.2 V, 40,000 mAh); 18.9 kg (41.7 lb)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 (Anker SOLIX US product page)",
+   "read": "2026-11-17",
+   "note": "The cycle-life end point (80%) comes from the page's comparison table. The spec table says only '4000 Cycles'."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Measured idle draw, inverter on",
+   "value": "about 17 W; 90% efficiency",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-2000-v2-review",
+   "source_title": "Jackery Explorer 2000 V2 Review: Buy It or the 2000 Plus? (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Measured by The Solar Lab with the inverter on and no load. Arithmetic: 17 W × 72 h = 1,224 Wh, which is why a fridge should run from the 12 V car socket (the review lists '1 × 12V car socket') with AC off. The review gives no 12 V-only idle figure and carries no date."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Price and weight",
+   "value": "$879 (list $2,398); 20.3 kg",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh) – EcoFlow US",
+   "read": "2026-11-17",
+   "note": "From the EcoFlow US Shopify store via storecheck. Product is in stock."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price",
+   "value": "$899",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh – BLUETTI US",
+   "read": "2026-11-17",
+   "note": "From the BLUETTI US Shopify store via storecheck. Product is in stock; compare-at price is the same."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Max car output rating (V/A) and any 12 V output timeout: the us.ecoflow.com product page returned HTTP 429 twice, and I did not reach a DELTA 3 Max manual.",
+  "EcoFlow DELTA 2 Max car output (ChatGPT's 12.6 V / 10 A) and its DC timeout setting: the cited manual PDF came back as unreadable binary through the fetch tool, and the shell could not run pdftotext.",
+  "BLUETTI Elite 200 V2 car outlet rating, DC ECO/auto-off behaviour and idle draw: the bluettipower.com product page redirect-looped, and storecheck returned only the title and price.",
+  "Jackery Explorer 2000 v2 car-port low-load auto-shutoff: search snippets quote the Explorer 2000 Pro manual (car output ≤2 W for 12 h shuts off), but I didn't open a v2 manual or Jackery's v2 FAQ (the jackery.com product page returned 429), and the Jackery blog article came back truncated.",
+  "12 V-port-only idle draw (inverter off) for any candidate: searched for named-reviewer measurements and found only inverter-on figures.",
+  "Anker SOLIX S2000 US price: ankersolix.com US product and store search returned 404. ChatGPT's $749.99 card retailer could not be checked.",
+  "Anker SOLIX S2000 car charging input: a retailer snippet says 120 W, but the Anker CA spec table I opened lists no car input.",
+  "Rival pages buyerdecision.com/tools/power-station-reality-check (HTTP 403) and both stationarena.com versus pages (TLS certificate error) could not be read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1840839
+ }
+}
