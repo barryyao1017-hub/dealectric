@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that since Synology Photos 1.7.0 (2024-08-26, needs DSM 7.2.2) a Synology NAS no longer makes HEIC photo or HEVC video previews itself. iPhone backups made through the Synology Photos app still display fine. A family library moved from iCloud by copying it from the Mac over SMB or File Station needs Synology Image Assistant (macOS 12.3 or later) on the Mac, or those photos and videos may not display in the web portal and TV app.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages: Apple 108771 (backup methods), Apple 108782 (iCloud Photos), Apple's localized iPhone backup guide, the Synology blog from 2023-09-18, and the Synology Photos iOS KB. The KB is rendered by JavaScript and would not load, so I could not check its text. The Synology blog came out before the August 2024 change. The Apple pages don't cover what a NAS does. ChatGPT's answer called Synology Photos 'Good' for replacing iCloud Photos but never mentioned HEIC/HEVC handling or the migration route. It also never said the iPhone app needs iOS 17, and none of the rival pages warn that Time Machine to a NAS over AFP stops working in macOS 27.",
+ "decides": "This confirms Synology DS225+/DS224+ for a family on iPhones, but it adds a migration condition. Back up each phone with the Synology Photos app, which handles HEIC/HEVC fine. If you bulk-copy an exported iCloud library from the Mac, install Synology Image Assistant on that Mac (macOS 12.3+) or the photos may not display. Every iPhone needs iOS 17 or later for the current Synology Photos app. For UGREEN (DXP2800/DH2300), UGREEN's guide says to switch phones to 'Download and Keep Originals' first, or the NAS may only get the smaller optimized copies. Pick a NAS that does Time Machine over SMB, because Apple drops AFP support in macOS 27.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS224+",
+  "Synology DS223j",
+  "Synology BeeStation Plus",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general (Synology Photos on DS225+/DS224+/DS223j/DS925+)",
+   "label": "HEIC/HEVC processing moved off the NAS",
+   "value": "Synology Photos 1.7.0-0794 (2024-08-26) 'will offload media processing of HEIC photos and HEVC (H.265) videos from Synology NAS to the client devices'; requires DSM 7.2.2 and above",
+   "source": "https://www.synology.com/api/releaseNote/findChangeLog?identify=SynologyPhotos&lang=en-us&os=DSM",
+   "source_title": "Synology release notes data for Synology Photos",
+   "read": "2026-11-17",
+   "note": "This is the JSON data behind synology.com/en-us/releaseNote/SynologyPhotos. The HTML page renders with JavaScript and shows no text. The newest version in the data is 1.9.1-10928 (2026-07-07)."
+  },
+  {
+   "product": "general (Synology Photos)",
+   "label": "Which upload routes need Image Assistant",
+   "value": "HEIC/HEVC files newly uploaded through the web portal, File Station or SMB need Synology Image Assistant or they 'may not display properly in the web portal and TV app'. Files 'uploaded or backed up through the Synology Photos mobile app are unaffected'",
+   "source": "https://www.synology.com/api/releaseNote/findChangeLog?identify=SynologyPhotos&lang=en-us&os=DSM",
+   "source_title": "Synology release notes data for Synology Photos",
+   "read": "2026-11-17",
+   "note": "From the same 1.7.0 entry. A migration that copies an exported iCloud library from the Mac over SMB falls into the affected group."
+  },
+  {
+   "product": "general (Synology Photos, DSM 7.3)",
+   "label": "Formats that need Image Assistant",
+   "value": "HEIC, HEIF and HIF images, plus MOV (HEVC) including Live Photos and MP4 (HEVC), among other video formats",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/synology_photos",
+   "source_title": "Synology Photos Technical Specifications (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "Desktop limitations 6 and 7. The mobile app spec says it 'Supports the Image Assistant feature to generate previews for HEIC photos and HEVC videos.'"
+  },
+  {
+   "product": "general (Synology Image Assistant)",
+   "label": "Computer and NAS requirements",
+   "value": "macOS 12.3 or later; Windows 11 22H2 or later (not Arm-based Windows); DSM 7.2.2 or above; browser extension for Chrome, Edge, Firefox and Safari needs the desktop app installed",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/image_assistant",
+   "source_title": "Synology Image Assistant Technical Specifications",
+   "read": "2026-11-17",
+   "note": "The page says HEVC/VP9 aren't supported on macOS 12.3 and earlier, and points those Macs to the Synology Photos mobile app for previews."
+  },
+  {
+   "product": "general (Synology Photos iOS app)",
+   "label": "Minimum iOS for current app",
+   "value": "Requires iOS 17.0 or later (app version 2.4.2)",
+   "source": "https://apps.apple.com/us/app/synology-photos/id1484764501?platform=iphone",
+   "source_title": "Synology Photos App - App Store",
+   "read": "2026-11-17",
+   "note": "This conflicts with Synology's DSM 7.3 spec page, which says 'iOS: 16.0 or above'. The App Store listing is what decides installation, so iOS 17 is the working minimum."
+  },
+  {
+   "product": "general (Synology Photos iOS app)",
+   "label": "Stated iOS backup limitations",
+   "value": "Enable notifications for Synology Photos to improve iOS backup. When several iOS devices share one iCloud storage and photo sync between them is delayed, Synology Photos may miss photos taken during that delay",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/synology_photos",
+   "source_title": "Synology Photos Technical Specifications (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "Paraphrased from the Mobile limitations section. This matters if the family keeps a smaller shared iCloud plan alongside the NAS, as ChatGPT recommended."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Recognition features vs RAM",
+   "value": "Facial recognition supported; 'Object recognition requires an upgrade of memory capacity to a minimum of 4 GB' (ships with 2 GB, maximum 6 GB)",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specs)",
+   "read": "2026-11-17",
+   "note": "Intel Celeron J4125, 2 GB DDR4 non-ECC, one memory slot."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DH2300 (UGREEN NAS app)",
+   "label": "iCloud Optimize Storage condition",
+   "value": "'If Optimize iPhone Storage is selected, choose Download and Keep Originals.' 'HEIC photos remain HEIC'; HEVC video isn't converted to H.264",
+   "source": "https://ai.ugreen.com/blogs/how-to/backup-iphone-photos-to-ugreen-nas",
+   "source_title": "UGREEN: Back up iPhone photos to UGREEN NAS",
+   "read": "2026-11-17",
+   "note": "Dated 12/11/2024 with no author. The page names no models, UGOS version or minimum iOS version, and it says 'iOS controls when applications can continue working in the background.'"
+  },
+  {
+   "product": "general (Mac Time Machine to any NAS)",
+   "label": "Protocol support",
+   "value": "Time Machine can back up to a third-party NAS 'that supports Time Machine over the SMB network protocol'; AFP to NAS 'is not recommended' and is not supported in macOS 27 or later",
+   "source": "https://support.apple.com/en-us/102423",
+   "source_title": "Backup disks you can use with Time Machine - Apple Support",
+   "read": "2026-11-17",
+   "note": "Published September 14, 2026."
+  },
+  {
+   "product": "general (iPhone backup)",
+   "label": "Where computer backups go",
+   "value": "Computer backups are stored on the Mac or PC and depend on its free space; encryption is off by default. The page doesn't mention a network drive or NAS as a destination",
+   "source": "https://support.apple.com/en-us/108771",
+   "source_title": "Backup methods for iPhone or iPad - Apple Support",
+   "read": "2026-11-17",
+   "note": "Published October 20, 2026. A cited rival page."
+  },
+  {
+   "product": "general (leaving iCloud)",
+   "label": "Getting originals out of iCloud Photos",
+   "value": "On iPhone, turn on 'Download and Keep Originals', then Share > 'Export Unmodified Original'. On Mac, File > Export. iCloud.com download works best a few items at a time (no number given)",
+   "source": "https://support.apple.com/en-us/108306",
+   "source_title": "Archive or make copies of the information you store in iCloud - Apple Support",
+   "read": "2026-11-17",
+   "note": "Published September 14, 2026. ChatGPT got this page but didn't cite it. Files exported this way and copied to Synology over SMB fall under the Image Assistant requirement above."
+  }
+ ],
+ "unsourced": [
+  "Which Synology models support face and object recognition: the Synology KB article 'Which Synology NAS models support the face and object recognition feature on Synology Photos?' renders with JavaScript and returned no body. The DS223j spec page lists 'Facial Recognition' with no value, so I'm not reporting DS223j or DS124 support either way. Fetching the KB with curl needed approval, so I skipped it.",
+  "The text of Synology's Synology Photos iOS KB (the cited rival page): it renders with JavaScript and returned no body, so I couldn't check whether it already mentions Image Assistant.",
+  "Minimum iOS version and minimum UGOS Pro version for the UGREEN NAS iPhone app: UGREEN's how-to gives neither, and I didn't open the UGREEN NAS App Store listing.",
+  "Whether UGREEN UGOS Pro makes HEIC/HEVC previews on the NAS itself (DXP2800 x86 vs DH2300 ARM): I found no UGREEN document stating it.",
+  "HEIC/HEVC handling in BeePhotos on BeeStation Plus: not researched within the call budget.",
+  "Immich iOS app handling of iCloud-only (optimized) assets: Immich docs not opened within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 0.9942163000000002
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states the yearly cost of an off-site copy of 2 TB from a NAS: $119.99 for BeeProtect, $155.98 for Synology C2 and $166.80 for Backblaze B2. Each is the same as or more than the $119.88 a year for iCloud+ 2 TB, which already covers six people, and the NAS hardware comes on top.",
+ "standout": 3,
+ "standout_why": "I compared against the pages ChatGPT cited. Apple 108771 gives backup methods and says iCloud encrypts backups, with no prices. Apple 108782 covers Optimize Storage and originals at full resolution, with no prices. The Synology blog (2023) says background backup runs only while the phone charges and Focused Backup only in the foreground, with no costs. The Synology iOS KB page did not render past its header for me, so I couldn't check it. None of the results ChatGPT got includes Apple's iCloud+ price page or any off-site backup price. So none puts iCloud's yearly fee next to the yearly fee for a NAS's own off-site copy. ChatGPT itself said 'You still need a separate copy' but never priced it.",
+ "decides": "A NAS lowers the yearly bill only if the family gives up a paid off-site copy. If they keep one, as both ChatGPT and our page advise, BeeProtect ($119.99) costs about the same as iCloud+ 2 TB ($119.88), and C2 or B2 for 2 TB costs about $36–47 a year more. So the NAS is a choice for control and capacity, not for saving money. Among the NAS candidates, BeeStation Plus is the cheapest way to get an off-site copy, because BeeProtect is a flat fee whatever the amount of data. A DS225+ or DXP2800 costs more each year as the library grows. Second footnote: if iCloud Photos uses Optimize Storage, UGREEN tells you to switch to 'Download and Keep Originals' before the NAS copy can be a full-resolution archive. That means the iPhones need room for the whole library, so a family that wants iCloud Photos off-loading plus a NAS archive still needs iCloud.",
+ "candidates": [
+  "Synology BeeStation Plus (8 TB)",
+  "Synology DS225+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "iCloud+ 2 TB US price and how many people can share it",
+   "value": "$9.99 a month = $119.88 a year; can be shared with up to five other family members (six people)",
+   "source": "https://support.apple.com/en-us/108047",
+   "source_title": "iCloud+ plans and pricing - Apple Support",
+   "read": "2026-11-17",
+   "note": "US prices on the page: 200 GB $2.99, 2 TB $9.99, 6 TB $29.99, 12 TB $59.99 a month. Published 16 Sep 2026. Yearly figure = 9.99 × 12."
+  },
+  {
+   "product": "Synology BeeStation Plus (8 TB)",
+   "label": "BeeProtect off-site backup, yearly cost",
+   "value": "$119.99 a year, flat rate whatever the amount of data (after a free trial)",
+   "source": "https://www.blackvoid.club/synology-beestation-plus-overview/",
+   "source_title": "Synology BeeStation Plus overview - Blackvoid (Luka Manestar, 13 May 2025)",
+   "read": "2026-11-17",
+   "note": "Synology's own BeeProtect page (https://bee.synology.com/en-us/BeeStation/BeeProtect) shows '$---' placeholders instead of a price. It does confirm one subscription at one price 'regardless of how much storage you use', up to 8 versions, a 3-month trial if activated within one month of unboxing (otherwise 1 month), and that BeeCamera data is excluded. Blackvoid quotes $369.95 RRP for the BeeStation Plus."
+  },
+  {
+   "product": "Synology BeeStation Plus (8 TB)",
+   "label": "Usable capacity behind the '8 TB' label",
+   "value": "about 6.98 (Synology gives no unit) of 8 TB; Synology defines 1 TB as 1 trillion bytes",
+   "source": "https://bee.synology.com/BeeStation/Plus-8TB",
+   "source_title": "BeeStation Plus - Synology",
+   "read": "2026-11-17",
+   "note": "The US store page https://www.synology.com/en-us/store/BST170-8T has the same footnote and lists a 3-year warranty, but no USD price. 8 × 10^12 bytes = 7.28 TiB, so 6.98 is probably TiB after system space. That is still about 3.5 times iCloud's 2 TB, on a single drive with no RAID."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Synology C2 off-site backup for Hyper Backup, normalised to 2 TB",
+   "value": "$77.99 per TB a year → $155.98 a year for 2 TB ($7.99 per TB a month → $191.76 a year billed monthly)",
+   "source": "https://nascompares.com/news/synology-free-license-and-subscription-c2-charge-changes-again-here-is-everything-affected/amp/",
+   "source_title": "Synology's C2 and License Changes Explained - NASCompares",
+   "read": "2026-11-17",
+   "note": "NASCompares quotes the C2 OneStorage table '$77.99 per TB annually' for 1–200 TB, effective 22 June 2026. Arithmetic: 2 × 77.99 and 2 × 7.99 × 12. Synology's own C2 pricing page didn't render the figures."
+  },
+  {
+   "product": "general",
+   "label": "Backblaze B2 off-site storage, normalised to 2 TB a year (for Hyper Backup, or Docker tools on UGREEN)",
+   "value": "from $6.95 per TB a month → $166.80 a year for 2 TB; egress free up to 3× stored data",
+   "source": "https://www.backblaze.com/cloud-storage/pricing",
+   "source_title": "Cloud Storage Pricing - Backblaze B2",
+   "read": "2026-11-17",
+   "note": "Page says 'Starts at $6.95 / TB / mo', first 10 GB free, no minimum duration, egress over 3× is $0.01/GB. Arithmetic: 2 × 6.95 × 12."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "UGREEN US store price",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 - UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "Read from the store's Shopify search JSON with storecheck.py. The product-page call then returned HTTP 429, so I couldn't confirm which variant (diskless or bundle) the $389.99 belongs to. The same search showed the DXP2800 GT at $429.99."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Whether the NAS photo backup gets originals when iCloud Photos uses Optimize Storage",
+   "value": "Not guaranteed: UGREEN says some full-resolution originals 'may exist only in iCloud' and tells users to select 'Download and Keep Originals' before making an original-quality archive",
+   "source": "https://ai.ugreen.com/blogs/how-to/backup-iphone-photos-to-ugreen-nas",
+   "source_title": "How to back up iPhone photos to UGREEN NAS - UGREEN (Nov 2024)",
+   "read": "2026-11-17",
+   "note": "The same page says the app backs up in the background (plus 'Nighttime idle backup'), backs up Live Photos, keeps HEIC as HEIC, and may cut back background work when the battery is low. This applies to the DH2300 too, since it uses the same UGREEN NAS app."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Photos background backup condition (in a cited rival, for contrast)",
+   "value": "background backup runs through the iOS background-task mechanism while the phone charges; Focused Backup runs only in the foreground",
+   "source": "https://blog.synology.com/how-the-synology-photos-app-empowers-users-to-safeguard-and-manage-their-photos/",
+   "source_title": "How the Synology Photos app empowers users to safeguard and manage their photos - Synology blog (2023-09-18)",
+   "read": "2026-11-17",
+   "note": "ChatGPT already cites this. I list it so the table can set 'only while charging' (Synology) against 'background plus nighttime idle' (UGREEN) on the same terms."
+  },
+  {
+   "product": "general",
+   "label": "Immich 'Free Up Space' with iCloud Photos turned on",
+   "value": "Deleting on the iPhone also deletes the photo from iCloud and all other devices; the photo then lives only on the Immich server (copy in Recently Deleted for 30 days); iCloud Shared Album items are excluded",
+   "source": "https://docs.immich.app/features/mobile-app",
+   "source_title": "Mobile App - Immich docs",
+   "read": "2026-11-17",
+   "note": "Shows that Immich (via Docker on the DXP2800) can replace iCloud's off-loading only by removing the photo from iCloud. It can't run alongside iCloud Photos."
+  }
+ ],
+ "unsourced": [
+  "Synology DS225+ live US price: amzcheck.py search 'synology ds225+ diskless' returned no results (probably walled), and Synology doesn't sell the DS225+ in its US store. I didn't recheck Walmart or Newegg.",
+  "BeeProtect price on a Synology page: the bee.synology.com BeeProtect page and the en-us store page show '$---' placeholders or no price, so the $119.99 comes from the Blackvoid review only.",
+  "C2 OneStorage per-TB price on Synology's own page: c2.synology.com/en-us/pricing/storage returned no figures to the fetcher, so the price comes from NASCompares.",
+  "Synology Photos iOS KB (kb.synology.com/.../SynologyPhotos/iPhone): the page is JavaScript-rendered and the body didn't load, so I couldn't read Synology's own statement on HEIC/Live Photos or on what it uploads when photos are optimised to iCloud. curl through Bash needed approval I didn't have.",
+  "UGREEN NASync DH2300 US price and BeeStation Plus live US price: I didn't look them up within the call budget.",
+  "Hard-drive cost, which a full NAS-versus-iCloud cost table needs: I didn't look it up."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0679645
+ }
+}

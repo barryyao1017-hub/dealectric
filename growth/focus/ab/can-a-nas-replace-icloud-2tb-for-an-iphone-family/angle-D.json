@@ -1,0 +1,116 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got explains why iPhone photo backup to a NAS is less reliable than iCloud Photos. iOS decides when a third-party app may run in the background. Apple added a system-managed background photo-upload extension in iOS 26.1. That extension needs the upload server's base URL written into the app's Info.plist (its settings file). A self-hosted NAS has a different address in every home, so NAS photo apps can't easily use it. Synology Photos' iOS release notes through version 2.4.2 don't mention it, and an Immich maintainer said in October 2025 that adding it is not likely 'anytime soon'.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT cited: Apple 108771 (backup methods), Apple 108782 (iCloud Photos), the Apple 'Back up iPhone' guide, the Synology Photos iOS help page and the Synology Photos blog. I also checked result #11 (Synology's 'apps stop running backup tasks in background' article) and Synology's DSM 7.3 Photos spec page. ChatGPT's answer only says background uploads are 'less predictable… you may need to open the app occasionally'. None of these pages says that iOS controls the schedule. None mentions Apple's iOS 26.1/27 background upload extension, why NAS apps haven't adopted it, or Immich's warning that 'Free Up Space' on an iPhone with iCloud Photos on also deletes the photo from iCloud and from every device on that Apple Account. Apple 108771 lists only iCloud and a Mac or PC as backup targets, and says computer backup storage 'depends on your Mac's or PC's available space'. It never gives the folder: ~/Library/Application Support/MobileSync/Backup/ on the Mac. So partly covered, and mostly new.",
+ "decides": "This confirms the plan works only in part, and the deciding limit is in iOS, not in the NAS hardware. Synology Photos, Immich and the UGREEN NAS app all depend on iOS background scheduling or on someone opening the app. A DS225+, DXP2800 or BeeStation doesn't change that. For a family: 1) keep a small iCloud plan, or have each person open the photo app regularly; 2) don't use a NAS app's 'free up space' while iCloud Photos is still on; 3) each iPhone's Finder backup is written to the Mac's internal drive before Time Machine copies it to the NAS (Apple supports Time Machine to a NAS over SMB; AFP is not supported from macOS 27). So the Mac needs free internal space for every phone's backup. Picking the NAS should come down to the photo app and price, not CPU.",
+ "candidates": [
+  "Synology DS225+",
+  "UGREEN NASync DXP2800",
+  "Synology BeeStation Plus",
+  "UGREEN NASync DH2300"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "iOS background photo upload extension: who decides when it runs",
+   "value": "Available from iOS 26.1 (PHBackgroundResourceUploadExtension); replaced by PHBackgroundResourceUploadJobExtension on iOS 27. Apple: 'The system calls your extension to process uploads when conditions allow, scheduling work based on factors such as network availability, power state, and device activity.'",
+   "source": "https://developer.apple.com/documentation/photokit/uploading-asset-resources-in-the-background.md",
+   "source_title": "Uploading asset resources in the background (Apple Developer, PhotoKit)",
+   "read": "2026-11-17",
+   "note": "Apple's own developer documentation. The system also 'automatically downloads asset resources before processing', so photos stored only in iCloud (Optimize Storage) are fetched before upload."
+  },
+  {
+   "product": "general",
+   "label": "Requirement that blocks self-hosted (NAS) servers",
+   "value": "Apple: add a top-level Info.plist key 'BackgroundUploadURLBase' set to 'the base URL for your upload server… The system requires this key for network access validation.' The app also needs full photo library access.",
+   "source": "https://developer.apple.com/documentation/photokit/uploading-asset-resources-in-the-background.md",
+   "source_title": "Uploading asset resources in the background (Apple Developer, PhotoKit)",
+   "read": "2026-11-17",
+   "note": "The URL is set when the app is built, while each family's NAS has its own address. In Immich discussion #23245 (27 Dec 2025), a non-maintainer wrote that 'Apple forces developers to hardcode the URL that the photos will be uploaded to' and that 'the body of the HTTP request can only contain the asset data itself'."
+  },
+  {
+   "product": "Immich (Docker on UGREEN DXP2800 / Synology)",
+   "label": "Maintainer position on adopting the iOS 26.1 extension",
+   "value": "'This isn't really something to track as a feature request, nor is it something we're likely to add anytime soon.' (bo0tzz, Immich maintainer, 25 Oct 2025)",
+   "source": "https://github.com/immich-app/immich/discussions/23245",
+   "source_title": "[Feature] iOS 26.1 Background Photo Sync Support #23245 (immich-app GitHub)",
+   "read": "2026-11-17",
+   "note": "The discussion is closed, and I found no Immich release that adopts the extension."
+  },
+  {
+   "product": "Immich",
+   "label": "Current iOS background backup behavior",
+   "value": "'iOS automatically manages background tasks; the app cannot control when the background upload task will run.' 'The more frequently you open the app, the more often background tasks will run.' Background App Refresh must be on.",
+   "source": "https://docs.immich.app/features/mobile-backup",
+   "source_title": "Mobile Backup | Immich docs (last updated 11 Nov 2026)",
+   "read": "2026-11-17",
+   "note": "Photos stored in iCloud in albums chosen for backup 'will be pulled from iCloud', which uses extra data and phone storage."
+  },
+  {
+   "product": "Immich",
+   "label": "Free Up Space while iCloud Photos is on",
+   "value": "'iCloud utilizes a two-way sync; this means deleting a photo' or using Free Up Space on the iPhone also removes it from iCloud and from all devices signed in to the same Apple Account. After Free Up Space, the photo is stored only on the Immich server.",
+   "source": "https://docs.immich.app/features/mobile-app",
+   "source_title": "Mobile App | Immich docs (last updated 11 Nov 2026)",
+   "read": "2026-11-17",
+   "note": "Immich advises using iCloud's 'Optimize iPhone Storage' instead if iCloud is your second copy. The same iOS mechanism applies to Synology Photos' 'free up space' feature, which deletes local copies."
+  },
+  {
+   "product": "Synology DS225+ / Synology Photos",
+   "label": "Synology Photos iOS app: background-upload extension in release notes",
+   "value": "Version 2.4.2 (Oct 1) only mentions faster similar-photo recognition. Version 2.4.0 (Jul 21) requires iOS 17+ and lists 'Enhanced backup performance and stability'. No version note mentions the iOS 26.1 background upload extension or iCloud.",
+   "source": "https://apps.apple.com/us/app/synology-photos/id1484764501?platform=iphone",
+   "source_title": "Synology Photos App - App Store",
+   "read": "2026-11-17",
+   "note": "The App Store page shows no years. I place 2.4.0 and 2.4.2 in 2026 because the 2.3.2 note (Mar 31) mentions 'after updating to iOS 26'. This is an absence in the release notes, not a Synology statement."
+  },
+  {
+   "product": "Synology DS225+ / Synology Photos",
+   "label": "Synology's own iOS backup limitations",
+   "value": "Synology: 'When multiple iOS devices share an iCloud storage but the synchronization of photos between devices delay', Synology Photos 'might not be able to back up all the photos taken during the delayed time'. To make backup work better: 'please enable notifications for Synology Photos and connect your device to the charger'. Mobile app needs iOS 16.0 or above (spec page; the App Store now lists iOS 17.0).",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/synology_photos",
+   "source_title": "Synology Photos Technical Specifications (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "This page was in ChatGPT's results (#13) but not cited."
+  },
+  {
+   "product": "general",
+   "label": "Where Finder backups of an iPhone are written on the Mac",
+   "value": "~/Library/Application Support/MobileSync/Backup/ (in the Mac user's home folder)",
+   "source": "https://support.apple.com/en-us/108809",
+   "source_title": "Locate and manage backups of your iPhone, iPad, and iPod touch (Apple Support, published 20 Oct 2026)",
+   "read": "2026-11-17",
+   "note": "Apple 108771 (cited by ChatGPT) gives only iCloud or a Mac/PC as backup targets, and says computer backup storage 'depends on your Mac's or PC's available space'. In ChatGPT's 'Finder backup, then back up the Mac to the NAS' plan, every family iPhone's backup sits on the Mac's internal disk first."
+  },
+  {
+   "product": "general",
+   "label": "Time Machine to a NAS",
+   "value": "'Time Machine can back up to a third-party NAS device that supports Time Machine over the SMB network protocol.' AFP to a NAS 'is not recommended' and is not supported in macOS 27 or later.",
+   "source": "https://support.apple.com/en-us/102423",
+   "source_title": "Backup disks you can use with Time Machine (Apple Support, published 14 Sep 2026)",
+   "read": "2026-11-17",
+   "note": "Confirms the Mac part of the plan works on any of the candidate NASes that offer SMB Time Machine."
+  },
+  {
+   "product": "general",
+   "label": "Apple engineer on the extension when iCloud Photos is on",
+   "value": "'iCloud Photos being enabled or disabled should have no bearing on the PHBackgroundResourceUploadExtension feature.' (Apple engineer, June 2026, replying to a report that the extension never runs with iCloud Photos on under iOS 26.4)",
+   "source": "https://developer.apple.com/forums/thread/822256",
+   "source_title": "PHBackgroundResourceUploadExtension is never scheduled when iCloud Photos is enabled (Apple Developer Forums)",
+   "read": "2026-11-17",
+   "note": "An Apple DTS engineer called it 'a bug rather than intentional behavior' in May 2026. I found no confirmed fix. This matters for a family that keeps a small iCloud plan next to a NAS."
+  }
+ ],
+ "unsourced": [
+  "Whether the UGREEN NAS iOS app (UGOS Pro) or Synology's BeePhotos app uses the iOS 26.1/27 background upload extension. I found no UGREEN or Synology release note or help page that mentions it.",
+  "Text of Synology's help pages 'Synology Photos | iOS' and 'Synology mobile applications keep stopping backup tasks running in the background'. Both load their content with JavaScript and returned only the title and footer, so I quote Synology's DSM 7.3 spec page instead.",
+  "An Apple statement on whether Finder's iPhone backup folder may be moved to a network drive. Apple 108809 gives the path but says nothing about moving it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.1325723
+ }
+}
