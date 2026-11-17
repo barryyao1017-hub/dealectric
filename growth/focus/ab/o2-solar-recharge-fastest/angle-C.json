@@ -1,0 +1,101 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states what Anker's own split current limit means for its 600 W / 1.8-hour solar claim on the SOLIX C1000 Gen 2: the station takes only 8.2 A at 11–28 V, so a two-panel setup running at 28 V or less tops out near 230 W, and the full 600 W needs the panels working at 41.4 V or more on its single XT60i input.",
+ "standout": 2,
+ "standout_why": "Anker's own page (ankersolix.com/a1765), which ChatGPT cited, lists the bands '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'. It does not work out the 41.4 V minimum for 600 W (600 ÷ 14.5), the roughly 230 W ceiling at 28 V and below, or what that means for two panels wired in parallel. ChatGPT's answer gives the C1000 Gen 2 '600W' and '1.8 hr' with no voltage condition. I could not open the other two cited pages: the REI-hosted DELTA 3 Plus manual returned HTTP 403 and the solargenreview.com DELTA 3 Plus review returned HTTP 429. So I can't rule out that the review covers the input voltage window. Our current page gives the voltage window for the DELTA 3 Plus and Elite 100 V2 but does not list the C1000 Gen 2.",
+ "decides": "This supports the DELTA 3 Plus as the pick. It is the only candidate where EcoFlow states a second solar input ('from 1 input to 2 inputs'), so each of the two panels can have its own input. On the C1000 Gen 2, Anker's 1.8-hour figure only holds when the two panels together work at 41.4 V or more and stay at 60 V or less open-circuit on one input. Anker's own two-panel recipe for 600 W is a mismatched 400 W + 200 W pair, not two equal panels. The BLUETTI AC180 is capped at 500 W on one input with a hard 60 V open-circuit limit. That rules out wiring two higher-voltage panels in series, so the AC180 ranks below both.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar (MPPT) input current by voltage band",
+   "value": "8.2 A at 11–28 V; 14.5 A at 29–60 V; 600 W max",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Quoted from the spec: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'. The same bands appear on https://www.ankersolix.com/products/c1000-gen2. Arithmetic: 600 W ÷ 14.5 A = 41.4 V is the lowest working voltage that can deliver 600 W. 28 V × 8.2 A = 229.6 W is the most the low band can deliver."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Maker's solar refill claim",
+   "value": "600 W (60 V max) of solar, full in 1.8 h",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Quoted: 'Plug in 600W (60V max) of solar and recharge fully in just 1.8 hours.' This only holds when the band condition above is met, i.e. at 41.4 V or more."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Panel combinations Anker lists for 600 W",
+   "value": "6× 100 W, 3× 200 W, or 400 W + 200 W",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Quoted: 'For 600W solar input: Use 6× 100W, 3× 200W, or 400W + 200W solar panels.' The only two-panel option Anker lists is a mismatched 400 W + 200 W pair."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Input ports",
+   "value": "1 XT60i input port in the port diagram",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "The diagram labels one 'XT60i Input Port' and no second DC input, so both panels have to share it. The page does not explicitly call it the solar port."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Number of solar inputs",
+   "value": "2 (EcoFlow: upgraded 'from 1 input to 2 inputs')",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "The FAQ does not give per-port limits for the Plus. I could not re-open EcoFlow's per-port figure (500 W, 11–60 V, 15 A) for this angle (see unsourced). Our current page already carries it."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Two 400 W panels on the single-input DELTA 3: EcoFlow's own worked exclusion",
+   "value": "Not usable in either wiring: series 957.18 W > 500 W, parallel 25.8 A > 15 A",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "The FAQ uses DELTA 3 limits of 11–60 V, 15 A, 500 W and says 'All three conditions must be met; exceeding any one of them means the solar panels cannot be used.'"
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input requirement and exclusion",
+   "value": "Voc 12–60 V; series or parallel allowed; Voc above 60 V 'will damage the device'",
+   "source": "https://www.manualslib.de/manual/1012764/Bluetti-Ac180.html?page=14",
+   "source_title": "Bluetti AC180 manual, 4.3.2 Solar Charging (ManualsLib)",
+   "read": "2026-11-15",
+   "note": "Quoted from section 4.3.2: 'Connect the solar panels (in series or parallel) to AC180 via the solar charging cable'; 'The open circuit voltage of solar panels cannot exceed 60V, otherwise it will damage the device.' This is a third-party mirror of BLUETTI's manual. BLUETTI's own PDF did not render as text."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Max solar input and US price",
+   "value": "500 W max; US$499.00 (out of stock, restock late November); AC180 + 2×200W Solar kit US$1,232.00",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station",
+   "read": "2026-11-15",
+   "note": "Prices read from BLUETTI's US store page on 2026-11-15."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 1000 v2 solar input per port (number of DC8020 ports, per-port A/W, combined 400 W): jackery.com/products/explorer-1000-v2 returned HTTP 429 twice, and the Jackery FAQ page loaded without its spec text. I saw figures only in search snippets and did not use them.",
+  "EcoFlow DELTA 3 Plus per-XT60i limits and price on us.ecoflow.com: HTTP 429. The cited REI-hosted manual returned HTTP 403.",
+  "Anker SOLIX PS400 / 200 W panel Voc and Vmp from an Anker US product page: the URLs I tried returned 404 or a category listing. Without this I can't confirm that two Anker panels in series or parallel meet the C1000 Gen 2's 41.4–60 V window.",
+  "AC180 solar input current limit in BLUETTI's manual: the mirrored solar section lists only Voc 12–60 V. The 10 A / 500 W figures sit under generator charging.",
+  "US prices for the DELTA 3 Plus, C1000 Gen 2 and Explorer 1000 v2: the Anker page showed no price, the EcoFlow and Jackery stores were rate-limited, and the storecheck tool returned 429 (EcoFlow) and 404 (Anker)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0903171999999999
+ }
+}

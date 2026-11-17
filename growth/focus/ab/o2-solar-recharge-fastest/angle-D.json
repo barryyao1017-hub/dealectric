@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX C1000 Gen 2 has a single solar input whose current limit drops to 8.2 A whenever the array works below 29 V. If two panels on that one input run below 29 V, the station takes about 230 W at most (28 V × 8.2 A), not its rated 600 W. The EcoFlow DELTA 3 Plus gives each of the two panels its own 500 W MPPT input.",
+ "standout": 2,
+ "standout_why": "ChatGPT cited the Anker a1765 page. That page prints 'MPPT: 11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)', but only inside a spec table and with no explanation. ChatGPT's answer then repeated '600W … 1.8 hours' with no condition attached. The cited EcoFlow pages (REI manual, us.ecoflow.com) and solargenreview cover only the DELTA 3 Plus. I could not open REI (403) or solargenreview (429), so I read EcoFlow's own FAQ and series page in their place. Neither the cited pages nor ChatGPT's answer turns Anker's voltage bands into what the shopper needs to know: how two panels must be wired to reach 600 W, and what happens if they aren't. That makes the finding new and useful. It is not a 3 because the raw numbers already appear on one cited page. I did not open the uncited explainers (stormwatts, voltandvalley, wattratings), so I can't rule out that one of them makes the general point about voltage.",
+ "decides": "Confirms the EcoFlow DELTA 3 Plus as the pick for two panels. It has two separate PV inputs ('DELTA 3 Plus has 2 inputs', '500W MPPT × 2', EcoFlow), so each panel works within its own 11–60 V, 15 A, 500 W limit and no series or parallel wiring is needed. The Anker C1000 Gen 2, ChatGPT's runner-up, puts both panels on one input. It reaches its 600 W ceiling only if that array works at about 41 V or more (600 W ÷ 14.5 A) while staying at or under 60 V open-circuit. A pair of panels working below 29 V is limited to roughly 230 W, which stretches the advertised 1.8 h refill to about 4.5 h or more (1,024 Wh ÷ 230 W, before losses). The page should tell C1000 Gen 2 buyers to check their panels' working voltage (Vmp) and combined open-circuit voltage (Voc) before trusting the 1.8 h figure.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar (MPPT) input current limit by voltage band",
+   "value": "11–28 V at 8.2 A; 29–60 V at 14.5 A; 600 W max",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Verbatim from the INPUT table: '11-28v⎓8.2A; 29V-60V⎓14.5A (600W Max)'. The same bands are on https://www.ankersolix.com/products/c1000-gen2, also read 2026-11-15. Arithmetic: the most the station can take below 29 V is 28 V × 8.2 A ≈ 230 W. To reach 600 W at the 14.5 A limit, the array must work at 600 ÷ 14.5 ≈ 41.4 V or more."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Panel combinations Anker gives for 600 W solar",
+   "value": "6× 100 W, 3× 200 W, or 400 W + 200 W",
+   "source": "https://www.ankersolix.com/a1765",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Footnote 2, verbatim: 'For 600W solar input: Use 6× 100W, 3× 200W, or 400W + 200W solar panels.' The only two-panel route to 600 W that Anker names is a 400 W panel plus a 200 W panel on the single input."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar recharge time claim and its conditions",
+   "value": "1.8 h at 600 W of solar, 60 V max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Verbatim: 'Plug in 600W (60V max) of solar and recharge fully in just 1.8 hours.' This holds only if the array works in the 29–60 V band (see the band finding above)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Number of solar (PV) inputs",
+   "value": "2 inputs (DELTA 3: 1 input)",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "Verbatim: 'EcoFlow DELTA 3 Plus has 2 inputs, and DELTA 3 still has 1 input.'"
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input total and refill time claim",
+   "value": "1,000 W (500 W MPPT × 2); full charge in 70 min",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "Verbatim: 'EcoFlow DELTA 3 Plus with 500W MPPT × 2 charges fully in 70 minutes, even with limited sunlight.' The page footnotes this as EcoFlow internal testing. For comparison, the DELTA 3 has '500W MPPT' and 'recharges in 2 hours'."
+  },
+  {
+   "product": "general",
+   "label": "EcoFlow's rule for combining panels on one input",
+   "value": "Open-circuit voltage must fall within the input's voltage range, current must not exceed the input maximum, and total power must not exceed the input maximum; example limits 11–60 V, 15 A, 500 W",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "The worked example uses the DELTA 3's single input (11–60 V, 15 A, 500 W). Two 400 W panels: in series about 957 W, which is over 500 W; in parallel about 25.8 A, which is over 15 A. Either way, two large panels on one 500 W input are capped. This is why the DELTA 3 Plus's second input matters."
+  }
+ ],
+ "unsourced": [
+  "Anker C1000 Gen 2 user manual wording that panels 'must be connected in parallel' with total Voc within 60 V and total Isc within 15 A. Search summaries quote it, but every copy I tried failed to open: Anker CloudFront A17631A1_US_UG_V2 PDF and newtime.ua PDF (both over the fetch size limit), device.report (403), and the Anker support article (would not render).",
+  "EcoFlow DELTA 3 Plus per-port limits (11–60 V, 15 A, 500 W per XT60i) from the DELTA 3 Plus manual itself. REI returned 403, ecoflow.ie and webstaurantstore returned PDFs the fetch tool could not read, and local PDF extraction was not permitted. The FAQ's 11–60 V / 15 A / 500 W figures are for the DELTA 3 example.",
+  "Jackery Explorer 1000 v2 solar input: two DC8020 ports, 16–60 V at 10.5 A each, 400 W combined. These figures come only from a search summary; jackery.com returned 429 twice, so they are left out.",
+  "BLUETTI AC180 solar input per-band limits. I ran out of tool budget before opening bluetti.com.",
+  "Typical working voltage (Vmp) and open-circuit voltage (Voc) of common 100–200 W and 400 W portable panels, needed to show which two-panel pairs land below 29 V on the C1000 Gen 2. I did not open any panel spec pages.",
+  "Prices for any candidate. Price was not this angle's job, and no store pages were checked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9748555000000002
+ }
+}

@@ -1,0 +1,177 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the full 800 W from a car costs about $850-$900 all in at the 1 kWh size (EcoFlow DELTA 3 $579 + 800W Alternator Charger $269 = $848; BLUETTI Elite 100 V2 + Charger 2 $898, both on the makers' US stores 2026-11-17), or that the Anker SOLIX C1000 Gen 2 ChatGPT lists at 800 W tops out at its 600 W XT60i input.",
+ "standout": 2,
+ "standout_why": "Compared against the cited rivals I could open: rvpartsgiant.com (cited) lists the EcoFlow 800W, BLUETTI Charger 1/2 and Anker 800W chargers with maker wattages and times but no prices and no per-station input caps. bluettipower.com/pages/power-station-fast-vehicle-charge (cited) prices only BLUETTI bundles, so it can't compare brands. BuyerDecision's car-charging-time table (cited in all three chats) returned 403 directly and through r.jina.ai, and The Verge refused the fetch, so I could not check whether either carries prices or the C1000 Gen 2 600 W cap. ChatGPT's own answers show only two bundle prices ($1,299 Elite 200 V2 + Charger 2, $1,099.99 Anker C1000 Gen 2 bundle) and call the C1000 Gen 2 an 800 W option.",
+ "decides": "It confirms that the fastest car charging at a ~1 kWh size is an 800 W alternator charger feeding a station that accepts 800 W: EcoFlow DELTA 3 / DELTA 3 Plus (1.3 h claimed for 1 kWh) or BLUETTI Elite 100 V2 + Charger 2 (800 W alternator-only into a 1,000 W-max input). It also sets the cheapest path: DELTA 3 + charger bought separately at $848, $50 under the Elite 100 V2 + Charger 2 bundle. It demotes the Anker C1000 Gen 2 bundle ($1,099.99 in ChatGPT's answer, $200-250 more), which is capped at 600 W by its input. The Elite 200 V2 + Charger 2 ($1,299) holds more but needs at least 2.6 h from the alternator alone (2,073.6 Wh / 800 W). Its 2.4 h figure needs solar added. A plain 12 V socket station like the Jackery Explorer 1000 Plus (12 V, 11 A, about 14.5 h) is roughly 10x slower.",
+ "candidates": [
+  "EcoFlow DELTA 3 + 800W Alternator Charger",
+  "EcoFlow DELTA 3 Plus + 800W Alternator Charger",
+  "BLUETTI Elite 100 V2 + Charger 2",
+  "BLUETTI Elite 100 V2 + Charger 1",
+  "BLUETTI Elite 200 V2 + Charger 2",
+  "BLUETTI Elite 200 V2 + Charger 1",
+  "BLUETTI AC180 + Charger 1",
+  "Anker SOLIX C1000 Gen 2 + 800W Alternator Charger",
+  "Anker SOLIX C2000 Gen 2 + Alternator Charger",
+  "Jackery Explorer 1000 Plus (12 V car socket only)"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow 800W Alternator Charger",
+   "label": "price, EcoFlow US store",
+   "value": "$269",
+   "source": "https://us.ecoflow.com/products/800w-alternator-charger",
+   "source_title": "EcoFlow 800W Alternator Charger",
+   "read": "2026-11-17",
+   "note": "Read through the store's product feed (storecheck.py search). The listing says '800W ... Top up 1kWh in only 1.3 hours' and '8x faster than traditional in-vehicle auxiliary power outlets'. The product page itself returned HTTP 429 on a direct fetch."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "price, EcoFlow US store, and alternator support",
+   "value": "$579; lists '800W Alternator Charger' among its 5 recharging methods",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Store product feed. DELTA 3 + 800W charger bought separately: $579 + $269 = $848. 1,024 Wh / 800 W = 1.28 h before losses, matching EcoFlow's 1.3 h claim."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "price, EcoFlow US store, and alternator support",
+   "value": "$649; lists '800W Alternator Charger' among its 5 recharging methods",
+   "source": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Plus Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Store product feed. Bought separately with the $269 charger: $918."
+  },
+  {
+   "product": "EcoFlow DELTA 3 + 800W Alternator Charger (bundle)",
+   "label": "bundle price, EcoFlow US store",
+   "value": "$999",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-series-portable-power-station-800w-alternator-charger",
+   "source_title": "EcoFlow DELTA 3 + 800W Alternator Charger",
+   "read": "2026-11-17",
+   "note": "The store product feed shows one price. I could not see which DELTA 3 variant it applies to: variant reads returned HTTP 429. It is $151 above buying the DELTA 3 and charger separately ($848)."
+  },
+  {
+   "product": "EcoFlow 800W Alternator Charger",
+   "label": "vehicle-side limits",
+   "value": "11-31 V input, 76 A max, charges only above 13 V input, 125 A fuse rating",
+   "source": "https://www.rvpartsgiant.com/blogs/blog/charge-power-station-while-driving-ecoflow-bluetti-vs-dc-dc",
+   "source_title": "Power Station Charging on the Road: EcoFlow, Bluetti, DC-DC (RV Parts Giant)",
+   "read": "2026-11-17",
+   "note": "Figures RV Parts Giant attributes to EcoFlow. RV Parts Giant also estimates 800 W at 12 V is about 67 A before losses and suggests a continuous draw of about one third of the alternator rating. That points to an alternator of roughly 200 A for the full 800 W."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2 + Charger 2",
+   "label": "bundle price, BLUETTI US store",
+   "value": "$898 (was $899)",
+   "source": "https://www.bluettipower.com/products/charger-2-elite-100-v2",
+   "source_title": "Elite 100 V2 + Charger 2",
+   "read": "2026-11-17",
+   "note": "The same page lists the Elite 100 V2 alone at $499 and a solar input of '1,000W Max., 12V-60V, 20A Max.'. So the station can take Charger 2's full 800 W from the alternator (my inference from the two ratings). 1,024 Wh / 800 W = 1.28 h before losses. BLUETTI does not state this bundle's car charge time."
+  },
+  {
+   "product": "BLUETTI Charger 2",
+   "label": "price and alternator-only rating",
+   "value": "$429 (was $449); up to 800 W from the alternator, 600 W from solar, 1,200 W combined; 75 A fuse in box",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-2-alternator-solar-charger",
+   "source_title": "BLUETTI Charger 2 1200W Alternator & Solar Dual DC Charger",
+   "read": "2026-11-17",
+   "note": "FAQ: 'Charger 2 can draw up to 800 W from the alternator and up to 600 W from solar.' The 1,200 W headline needs solar too. No alternator amp requirement is stated."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2 + Charger 1",
+   "label": "bundle price and claimed car charge time",
+   "value": "$699; 560 W; full in 1.8 h (BLUETTI claim)",
+   "source": "https://www.bluettipower.com/pages/power-station-fast-vehicle-charge",
+   "source_title": "Fast Road Trip Charging: BLUETTI Alternator Chargers - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The bundle price matches the store feed (storecheck, $699). 1,024 Wh / 560 W = 1.83 h. It is $199 cheaper than the Charger 2 bundle for about 0.5 h more per full charge."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + Charger 2",
+   "label": "bundle price and claimed time",
+   "value": "$1,299; 2 kWh in 2.4 h (BLUETTI claim, car + solar)",
+   "source": "https://www.bluettipower.com/pages/power-station-fast-vehicle-charge",
+   "source_title": "Fast Road Trip Charging: BLUETTI Alternator Chargers - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "From the alternator alone at 800 W: 2,073.6 Wh / 800 W = 2.59 h minimum before losses. The 2.4 h figure needs the 1,200 W car + solar combination."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + Charger 1",
+   "label": "bundle price and claimed time",
+   "value": "$1,099; 560 W; 2 kWh in 4.2 h (BLUETTI claim)",
+   "source": "https://www.bluettipower.com/pages/power-station-fast-vehicle-charge",
+   "source_title": "Fast Road Trip Charging: BLUETTI Alternator Chargers - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The store feed (storecheck) also shows $1,099. Dealectric lists this bundle."
+  },
+  {
+   "product": "BLUETTI AC180 + Charger 1",
+   "label": "bundle price",
+   "value": "$748; Charger 1 rated 560 W, '1kWh in just 2.5 hours'",
+   "source": "https://www.bluettipower.com/products/ac180-bluetti-charger-1-dc-input-cable",
+   "source_title": "AC180+BLUETTI Charger 1",
+   "read": "2026-11-17",
+   "note": "The page gives no AC180-specific input cap or charge time. The 2.5 h per 1 kWh figure is the generic Charger 1 line. Dealectric lists this bundle."
+  },
+  {
+   "product": "BLUETTI Charger 1",
+   "label": "standalone price",
+   "value": "$219 (was $249); up to 560 W",
+   "source": "https://www.bluettipower.com/products/bluetti-charger-1",
+   "source_title": "BLUETTI Charger 1",
+   "read": "2026-11-17",
+   "note": "Store product feed (storecheck.py search)."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "max DC/solar input (caps any alternator charger)",
+   "value": "600 W, 60 V max",
+   "source": "https://www.ankersolix.com/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Footnote 3: 'Alternator charging time is estimated based on the upcoming Anker SOLIX Alternator Charger.' Anker's alternator charger page (https://www.ankersolix.com/ca/products/alternator-charger-special-offer, read 2026-11-17) says it connects through a 'PPS XT-60i port connection cable', which on this station is the 600 W input. So the 800 W charger delivers at most 600 W here: 1,024 Wh / 600 W = 1.7 h before losses. This is my inference from the two pages. Anker does not state it."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2 + Alternator Charger",
+   "label": "alternator rate and charge time",
+   "value": "800 W; 100% in 3 h; 2,048 Wh",
+   "source": "https://www.ankersolix.com/products/c2000-gen2-alternator-charger",
+   "source_title": "Anker SOLIX C2000 Gen 2 + Alternator Charger (Anker SOLIX US)",
+   "read": "2026-11-17",
+   "note": "'Data based on Anker internal testing.' The page shows no base price, only promotions, so it is unpriced here."
+  },
+  {
+   "product": "Jackery Explorer 1000 Plus",
+   "label": "car charging input and time",
+   "value": "12 V, 11 A current limit (about 132 W); around 14.5 h",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303601965595-Explorer-1000-Plus-Basic-Information",
+   "source_title": "Explorer 1000 Plus Basic Information - Jackery",
+   "read": "2026-11-17",
+   "note": "12 V x 11 A = 132 W. No Jackery alternator charger is mentioned. This is a result ChatGPT got, so it counts as the baseline the fastest options beat."
+  },
+  {
+   "product": "Jackery Solar Generator 1000 Plus / Explorer 1000 Plus",
+   "label": "price, Jackery US store",
+   "value": "$619 (was $949)",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-1000-plus",
+   "source_title": "Jackery Solar Generator 1000 Plus",
+   "read": "2026-11-17",
+   "note": "Store product feed shows one price. The listing covers the standalone Explorer 1000 Plus or the bundle with two 100 W panels, and $619 is presumably the lowest variant. Unverified which."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C1000 Gen 2 + 800W Alternator Charger bundle price on ankersolix.com (ChatGPT showed $1,099.99). The Anker US product URLs I tried returned 404 or showed no price, and storecheck returned 404 for ankersolix.com.",
+  "Anker SOLIX 800W Alternator Charger standalone US price. Not shown on Anker's US or CA pages I could open.",
+  "Which DELTA 3 variant the $999 EcoFlow bundle price belongs to, and the DELTA 3 Plus + 800W bundle price. us.ecoflow.com returned HTTP 429 on variant and product-page reads.",
+  "EcoFlow 800W Alternator Charger output on a 12 V vs 24 V vehicle from EcoFlow's own spec page (HTTP 429). Only RV Parts Giant's restatement of 11-31 V / 76 A was read.",
+  "Any independent measured (not maker-claimed) alternator charging rate for any of these setups. None of the pages I opened carries one.",
+  "BuyerDecision's car-charging-time table and The Verge's Charger 2 article (both cited by ChatGPT) could not be read (403 / fetch refused), so I could not check whether they already carry prices or the C1000 Gen 2 600 W cap.",
+  "BLUETTI AC180 max DC input (to check whether it caps Charger 1 below 560 W). The bundle page's spec section was empty."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}

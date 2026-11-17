@@ -1,0 +1,94 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the makers' refill claims on the same basis. Every claim assumes the station's full solar input. Anker's own spec splits the C1000 Gen 2 input into two bands: 11–28 V at 8.2 A (about 230 W at most) and 29–60 V at 14.5 A. So two low-voltage panels wired in parallel get well under half of the 600 W behind its '1.8 hours' figure. The BLUETTI Elite 100 V2 claims the same 70-minute full refill as the EcoFlow DELTA 3 Plus. The difference is that the BLUETTI takes its 1,000 W through one 12–60 V, 20 A input, while EcoFlow splits its 1,000 W across two 500 W inputs.",
+ "standout": 2,
+ "standout_why": "I could not open the rival pages this time. The REI-hosted DELTA 3 Plus manual returned 403, and solargenreview.com and several maker pages returned 429. This judgement is therefore based on what ChatGPT showed the shopper and on the maker pages I did open. ChatGPT's answers repeat the headline figures: EcoFlow's '70 minutes' and Anker's '1.8-hour refill at maximum solar input'. They give no input voltage or current conditions, do not split two panels in series from two in parallel, and never mention the Elite 100 V2. Our current page already contrasts two inputs with one and gives voltage windows. It does not have Anker's 230 W low-voltage cap, the matching 70-minute claims from EcoFlow and BLUETTI, or the average watts each claim implies.",
+ "decides": "This mostly confirms the DELTA 3 Plus pick for 'two panels', because it takes one panel per input and two panels need no series or parallel wiring. The Elite 100 V2 makes the same 70-minute claim for $499, but only when both panels are wired into one string that sits between 50 V working and 60 V open-circuit. Wired in parallel, it is capped at 20 A times the panels' working voltage. On the Anker C1000 Gen 2, the '1.8 hours' needs a string above 41 V. Two small panels in parallel at about 18–20 V stay inside the 8.2 A band and reach only about a third of that rate.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 100 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 3",
+  "Jackery Explorer 1000 v2",
+  "BLUETTI AC180"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Solar input and refill claim",
+   "value": "1,000 W as '500W MPPT × 2'; 'Full Charge in 70 Minutes'",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "The page gives no panel wattage, charge range or irradiance for the 70-minute claim. Its footnotes only say 'internal testing'. Normalised: 1,024 Wh ÷ 70 min (1.167 h) = an average of about 878 W into the battery, which is 88% of the 1,000 W input limit."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Number of solar inputs",
+   "value": "2 inputs ('DELTA 3 Plus has 2 inputs, and DELTA 3 still has 1 input')",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "With two inputs, each panel goes on its own port, so two panels need no series or parallel wiring."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Two 400 W rigid panels on the single input",
+   "value": "Cannot be used: in series they exceed the 500 W limit, and in parallel they exceed the 15 A limit (input is 11–60 V, 15 A, 500 W)",
+   "source": "https://www.ecoflow.com/us/support/faq?category=ecoflow-delta-3-plus",
+   "source_title": "EcoFlow DELTA 3 Plus | EcoFlow Product FAQs | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "This is EcoFlow's own worked example. It says the panels' open-circuit voltage, current and power must all fall within the input's limits, and if any one is exceeded 'the solar panels cannot be used'. The same page says the DELTA 3 'with a 500W MPPT recharges in 2 hours'."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input and refill claim",
+   "value": "1,000 W max, 12–60 V, 20 A max; 'Full in 70 Minutes'",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "No footnote or conditions are given for the 70-minute claim. This is the same headline as the DELTA 3 Plus, through one input range. Arithmetic: 1,000 W ÷ 20 A means the string must work at 50 V or more, and open-circuit voltage must stay at 60 V or below. Two panels in parallel are capped at 20 A × their working voltage."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store",
+   "value": "US$499.00",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Checked with storecheck.py and on the product page. The page shows a Black Friday Early Access promotion running Nov 5–18, so the price may change."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input bands",
+   "value": "11–28 V ⎓ 8.2 A; 29–60 V ⎓ 14.5 A (600 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "Arithmetic: 28 V × 8.2 A = about 230 W at most in the low band. Reaching 600 W at 14.5 A needs about 41.4 V or more. Two ~18–20 V panels wired in parallel stay in the low band (230 W or less). Wiring them in series moves the string into the high band."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Refill claim",
+   "value": "'Plug in 600W (60V max) of solar and recharge fully in just 1.8 hours'",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "No footnote gives a charge range or the panel used. Normalised: 1,024 Wh ÷ 1.8 h = an average of about 569 W into the battery (95% of 600 W). At the 230 W low-band cap, the same 1,024 Wh would take about 4.5 h before conversion losses (1,024 ÷ 230)."
+  }
+ ],
+ "unsourced": [
+  "DELTA 3 Plus per-input voltage and current (11–60 V, 15 A, 500 W per our current page): I could not reopen it today. The REI manual returned 403, the solarpowersupply.eu PDF did not extract, and the EcoFlow FAQ states those limits only for the DELTA 3.",
+  "DELTA 3 Plus US price today: the us.ecoflow.com product page and storecheck both returned 429, and the store search did not return the product.",
+  "Jackery Explorer 1000 v2 solar input and refill claim: jackery.com returned 429 and the store search did not return the product.",
+  "BLUETTI AC180 solar input, refill claim and charge range: bluettipower.com/products/ac180 returned 429.",
+  "Panel electrical specs (Voc, Isc, Vmp, Imp) for a common 200 W or 400 W panel, needed to turn the Elite 100 V2 and C1000 Gen 2 limits into exact watts for a named pair: the BLUETTI 500W panel page has no electrical specs in its captured content, and the EcoFlow 400W panel page returned 429.",
+  "Number of solar inputs on the Elite 100 V2 and C1000 Gen 2: neither maker page I opened states it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1590616
+ }
+}

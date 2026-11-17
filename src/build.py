@@ -141,7 +141,7 @@ from gaps import GAP_PAGES
 from focus import BUYBOX, DEAL_ROW, BUY_FIRST
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from kits import KITS
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 import html
 import sys
 
@@ -229,7 +229,9 @@ def buy_url(p):
     c = best_offer(p)[0]
     if where == "applied":
         path = s.path + (f"?{s.query}" if s.query else "")
-        return f"{s.scheme}://{s.netloc}/discount/{quote(c['code'])}?redirect={quote(path, safe='')}"
+        # unquote first: a store handle that is already percent-encoded (ALLPOWERS' "...-kit-%E5%89%AF%E6%9C%AC") was
+        # encoded twice and landed on the store's 404 page (2026-11-17)
+        return f"{s.scheme}://{s.netloc}/discount/{quote(c['code'])}?redirect={quote(unquote(path), safe='')}"
     if where == "checkout":
         return f"{s.scheme}://{s.netloc}/cart/{p['cart_variant']}:1" + (f"?discount={quote(c['code'])}" if c else "")
     return p["url"]
@@ -1758,8 +1760,13 @@ def pick_line(c):
     # listing); that pick links the seller's own page
     if c.get("keep_pick") and first.get("url"):   # accuracy first (Barry 11-12): the seller's own page
         u = html.escape(first["url"])
-        return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
+        line = (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
                 f'<a href="{u}" rel="nofollow noopener">{u}</a>')
+        if c.get("buy_by_name"):   # open2 run: the pick has no link of ours, so name the best row we do link, as other pages do
+            nxt = next((r for r in c["rows"][1:] if r.get("slug")), None)
+            if nxt:
+                line += ours(nxt, "Dealectric link")
+        return line
     if c.get("all_links") and not c.get("keep_pick"):
         if first.get("asin"):
             link = amazon_row_link(first["asin"])

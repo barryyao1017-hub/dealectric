@@ -1,0 +1,98 @@
+<title>Offer Table</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+:root{--bg:#fbfaf7;--fg:#1c1f24;--muted:#5d6570;--line:#e2ded5;--accent:#0b6b4f;--accent-soft:#e3f1ec;--warn:#8a5a00;--warn-soft:#fbf1dc;--bar:#0b6b4f;--track:#e6e3db}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171a;--fg:#e8eaec;--muted:#9aa3ad;--line:#2b3036;--accent:#5fd0a9;--accent-soft:#17302a;--warn:#e8b95a;--warn-soft:#33290f;--bar:#5fd0a9;--track:#2b3036;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14171a;--fg:#e8eaec;--muted:#9aa3ad;--line:#2b3036;--accent:#5fd0a9;--accent-soft:#17302a;--warn:#e8b95a;--warn-soft:#33290f;--bar:#5fd0a9;--track:#2b3036;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:820px;margin:0 auto}
+h1,h2{font-family:"Space Grotesk",Inter,system-ui,sans-serif;text-wrap:balance;line-height:1.2}
+h1{font-size:1.9rem;margin:0 0 8px}
+h2{font-size:1.25rem;margin:40px 0 10px}
+p{margin:0 0 12px}
+.sub{color:var(--muted);margin-bottom:24px}
+.lead{background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 16px;border-radius:6px;margin:0 0 8px}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px}
+a{color:var(--accent)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:8px 0 14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.76rem;letter-spacing:.04em;text-transform:uppercase}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.bar{width:22%;min-width:90px;vertical-align:middle}
+td.bar i{display:block;height:12px;background:var(--bar);border-radius:3px;min-width:2px}
+td.bar{background:linear-gradient(var(--track),var(--track)) no-repeat 10px 50%/calc(100% - 20px) 12px}
+ol,ul{padding-left:1.3rem;margin:0 0 12px}
+li{margin-bottom:6px}
+.small{color:var(--muted);font-size:.88rem}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:0 28px}
+.two>div{min-width:0}
+</style>
+<main>
+<h1>Offer table</h1>
+<p class="sub">Dealectric · 29 Oct to 17 Nov 2026 · {{n_offers}} live offers, {{n_go}} with a tracked buy link</p>
+
+<p class="lead"><strong>{{lead}}</strong></p>
+
+<h2>Where ChatGPT's buy-link clicks go</h2>
+<p>A click here means a shopper opened a buy link that ChatGPT wrote in its own answer. There were {{tot_answer}} of them.</p>
+<div class="scroll"><table>
+<tr><th>Offer group</th><th class="n">Offers</th><th class="n">Clicked</th><th class="n">Answer clicks</th><th></th><th class="n">Clicks from our page</th><th class="n">Sales by click</th></tr>
+{{groups}}
+</table></div>
+<p>Inside the same two brands, on about the same number of our pages, the 19 kits drew 278 clicks and the 27 single units drew 21. So it is the kit, not only the brand. The 15 kits and bundles from other brands (camera, drone, printer and off-grid solar sets) drew none.</p>
+
+<h2>Which of our pages turn a visit into a click</h2>
+<div class="scroll"><table>
+<tr><th>Page kind</th><th class="n">Pages visited</th><th class="n">ChatGPT visits</th><th class="n">Buy-link clicks</th><th class="n">Click rate</th></tr>
+{{pages}}
+</table></div>
+<p>We have five kit comparison pages. They take as many visits as 56 other comparison pages put together, and convert them eight times as often. The three busiest are <a href="https://dealectric.com/solar-generator-with-panels-included">panels included</a>, <a href="https://dealectric.com/best-2000wh-solar-generator-kit-with-panels">2000 Wh kit</a> and <a href="https://dealectric.com/best-solar-generator-kit-under-500">kit under $500</a>.</p>
+
+<h2>Top offers</h2>
+<div class="scroll"><table>
+<tr><th>Offer</th><th>Type</th><th class="n">Price</th><th class="n">Code</th><th class="n">On pages</th><th class="n">Answer clicks</th><th class="n">Page clicks</th><th class="n">Sales by click</th></tr>
+{{top}}
+</table></div>
+
+<h2>Sales</h2>
+<p>{{sales_text}}</p>
+
+<h2>Kits our partners sell that we don't list</h2>
+<div class="scroll"><table>
+<tr><th>Brand</th><th class="n">Kits in store</th><th class="n">Listed</th><th class="n">Missing</th><th class="n">Missing, in stock</th><th>Note</th></tr>
+{{kits}}
+</table></div>
+<p class="small">From each store's public product list or sitemap, read 17 Nov. BLUETTI and Anker SOLIX counts come from page addresses, so a few are colour or regional duplicates.</p>
+
+<h2>What search platforms count</h2>
+<p>{{counts_text}}</p>
+<div class="two">
+<div><div class="scroll"><table>
+<tr><th>Kit phrases</th><th class="n">Exact</th><th class="n">Broad</th></tr>
+{{kw_kit}}
+</table></div></div>
+<div><div class="scroll"><table>
+<tr><th>Deal and price phrases</th><th class="n">Exact</th><th class="n">Broad</th></tr>
+{{kw_deal}}
+</table></div>
+<div class="scroll"><table>
+<tr><th>Code phrases</th><th class="n">Exact</th><th class="n">Broad</th></tr>
+{{kw_code}}
+</table></div></div>
+</div>
+<p class="small">Bing US searches over the latest 13 weeks. Exact is the phrase as typed; broad is every search containing its words. Bing is a small share of search, so read these as relative sizes.</p>
+
+<h2>What I would build first</h2>
+{{order}}
+
+<h2>Limits of this read</h2>
+<div class="note"><ul>
+<li>The {{tot_answer}} answer clicks come from at least {{browsers}} browsers; {{one_click}} of them clicked once. A browser here is a device type, country and network, so one busy signature may be several people or one keen shopper.</li>
+<li>We see which offer was clicked, not what the shopper asked.</li>
+<li>Amazon offers (93) have no tracked link, so they have no click numbers at all.</li>
+<li>All of the evidence that kits win is solar. Nothing here shows the pattern carries to another category.</li>
+<li>Stock and prices for the missing BLUETTI and Anker SOLIX kits were not read.</li>
+</ul></div>
+</main>

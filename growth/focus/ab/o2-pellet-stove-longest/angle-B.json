@@ -1,0 +1,146 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states that the inverter's own idle draw is added to a 150 W pellet stove's load. When you include it (stove W + idle W), the 5,024 Wh Anker SOLIX S5000 (about 10 W idle) runs about 30 h. That matches the 6,144 Wh EcoFlow DELTA Pro Ultra (45–60 W idle, 29–31 h), and the Anker SOLIX F3800 falls from ChatGPT's 21.8 h to about 14 h because of its roughly 80 W idle draw.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT cited plus the top results I could open. ChatGPT's own answer divides capacity × 0.85 by 150 W and ignores idle draw. solarwaypoint.com's three-way comparison lists capacity and weight but no idle draw, efficiency or runtime. sparkpowered.com (2026-11-14) uses 85% of rated Wh and gives no idle draw. runtimemath.com (2026-11-14) works maker-listed self-draw into its runtimes only for the smaller BLUETTI/EcoFlow/Anker C-series units (Apex 300 at 20 W, for example). It has no idle figure for the DELTA Pro Ultra, DELTA Pro 3 or F3800, and gives the S5000 a flat 0.85 factor. Our current dealectric page has an idle figure only for the Elite 300 (19 W). Both cited enoughwatts.com pages failed to load (TLS certificate error), so I could not check them. No page I read runs the big units' measured delivered Wh against stove watts plus idle watts.",
+ "decides": "For an actual pellet stove load (about 150 W), it changes ChatGPT's ranking. A bigger battery doesn't automatically mean a longer runtime, because a 45–80 W idle draw is 30–53% on top of the stove's draw. The DELTA Pro Ultra's 34.8 h shrinks to about 29–31 h, which is a tie with the S5000's ~30 h. The S5000 has less rated capacity but a 10 W idle draw, and it's already in our catalog (anker-solix-s5000). The F3800 drops from 21.8 h to about 14 h, behind the DELTA Pro 3 (up to 25 h). The DELTA Pro Ultra X with two batteries (12,288 Wh, about 36 W idle) still runs longest overall. Among single boxes, the S5000 and DELTA Pro Ultra are effectively tied, so price per hour should decide the pick. I could not source either price today.",
+ "candidates": [
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow DELTA Pro Ultra X",
+  "Anker SOLIX S5000",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Delivered AC energy on a full discharge",
+   "value": "4,870 Wh (97% of 5,024 Wh)",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review: 5 kWh on wheels, tested through a real power outage – pv magazine USA (Andrew Riha)",
+   "read": "2026-11-15",
+   "note": "Andrew Riha (pv magazine USA, 2026-10-28) took this from the unit's app reading, not a meter. He did not state the test load."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Idle draw, 120 V AC on, no load",
+   "value": "about 10 W (measured); 8.8 W (Anker spec)",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review – pv magazine USA",
+   "read": "2026-11-15",
+   "note": "Riha measured a 5% drop in state of charge over 24 h ≈ 10 W. Anker's spec of 8.8 W is at https://www.ankersolix.com/s5000 (read 2026-11-15)."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Hours on a 150 W pellet stove, idle draw included",
+   "value": "about 30.4 h",
+   "source": "https://now.solar/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage-pv-magazine-usa/",
+   "source_title": "Anker Solix S5000 deep-dive review – pv magazine USA",
+   "read": "2026-11-15",
+   "note": "4,870 Wh ÷ (150 W + 10 W) = 30.4 h. Adding idle on top of a measured discharge is conservative, since some of the idle draw is already inside the delivered figure."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Measured discharge efficiency",
+   "value": "98% at just under 6,000 W (59 min runtime)",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra real-world testing – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab ran it near the inverter's maximum, so efficiency at a 150 W load will be lower. I treat 6,144 Wh × 0.98 = 6,021 Wh as an upper bound."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Idle draw",
+   "value": "45 W to 60 W (The Solar Lab, two different figures)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Ultra X review says the original Ultra has 'around a 45W idle draw'. The Solar Lab's DELTA Pro Ultra vs Ultra X page (https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x, read 2026-11-15) says 'roughly 60W'. The source gives no method for either figure."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Hours on a 150 W pellet stove, idle draw included",
+   "value": "about 28.7–30.9 h (ChatGPT said 34.8 h)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "6,144 Wh × 0.98 = 6,021 Wh; 6,021 ÷ (150 + 45) = 30.9 h; 6,021 ÷ (150 + 60) = 28.7 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "Idle draw",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'During testing, idle draw averaged around 36W'. That is about 0.86 kWh per day, or 864 Wh, against a 150 W stove's 3,600 Wh per day: 24% overhead. The review gives no measured capacity, so I did not calculate hours."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured discharge efficiency",
+   "value": "about 84% at 5,100 W (37 min against 44 min expected)",
+   "source": "https://www.thesolarlab.com/review/testing-the-anker-f3800",
+   "source_title": "Putting the Anker F3800 Power Station to the Test – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "3,840 Wh × 0.84 = 3,226 Wh."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw",
+   "value": "close to 80 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "EcoFlow DELTA Pro Ultra X home backup unit – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: the Anker F3800 'pulls closer to 80W while idling'. It doesn't say whether that is the F3800 or the F3800 Plus, or which firmware. 80 W × 24 h = 1,920 Wh per day, half the pack."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Hours on a 150 W pellet stove, idle draw included",
+   "value": "about 14.0 h (ChatGPT said 21.8 h)",
+   "source": "https://www.thesolarlab.com/review/testing-the-anker-f3800",
+   "source_title": "Putting the Anker F3800 Power Station to the Test – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "3,226 Wh ÷ (150 W + 80 W) = 14.0 h."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured delivered energy",
+   "value": "3,790 Wh of 4,096 Wh (93%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 review – OutdoorGearLab",
+   "read": "2026-11-15",
+   "note": "OutdoorGearLab did not state the test load. The Solar Lab measured 89% at 3,650 W (https://www.thesolarlab.com/quiz-results/ecoflow-delta-pro-3-power-station, read 2026-11-15)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Hours on a 150 W pellet stove, idle draw not included",
+   "value": "up to 25.3 h (upper bound)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "EcoFlow DELTA Pro 3 review – OutdoorGearLab",
+   "read": "2026-11-15",
+   "note": "3,790 Wh ÷ 150 W = 25.3 h. This is an upper bound because I could not source the idle draw."
+  },
+  {
+   "product": "general",
+   "label": "Running draw of one real stove (from its manual, as quoted)",
+   "value": "US Stove US5522-W: 162 W running, 332 W with the igniter on",
+   "source": "https://sparkpowered.com/home-backup/pellet-stove",
+   "source_title": "Power Station for a Pellet Stove: Igniter vs Running Watts, Hours and Switchover – Spark Powered",
+   "read": "2026-11-15",
+   "note": "Close to ChatGPT's 150 W assumption, so the 150 W calculations above hold. At 162 W the S5000 gives 4,870 ÷ 172 = 28.3 h and the DELTA Pro Ultra gives 6,021 ÷ 207 = 29.1 h (45 W idle)."
+  }
+ ],
+ "unsourced": [
+  "Prices today (2026-11-15). The us.ecoflow.com DELTA Pro Ultra page returned HTTP 429 both through storecheck and WebFetch. storecheck returned 404 for the Anker SOLIX S5000 on ankersolix.com, and the S5000 maker pages showed no price. pv magazine gives a $2,499.99 launch price dated 2026-10-28, which doesn't meet the 'today' rule. Without prices I could not compute cost per runtime hour.",
+  "Idle draw of the EcoFlow DELTA Pro 3. A search snippet attributed 37 W to a Solar Lab quiz page, but neither Solar Lab page I opened shows the number. OutdoorGearLab doesn't give one.",
+  "A low-load (100–200 W) measured discharge for the DELTA Pro Ultra, F3800 or DELTA Pro 3. All the efficiency figures I found were measured at 3.6–6 kW.",
+  "Jackery Explorer 5000 Plus idle draw and measured capacity (ChatGPT showed it as a card). Not researched, to stay within the tool budget.",
+  "Rival pages enoughwatts.com/appliances/pellet-stove and enoughwatts.com/for/pellet-stove-outage (both cited by ChatGPT). They failed to load with a TLS self-signed-certificate error, so I could not check their contents."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2031953999999998
+ }
+}
