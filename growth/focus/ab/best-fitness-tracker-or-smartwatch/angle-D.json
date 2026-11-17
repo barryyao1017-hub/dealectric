@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that, for a US iPhone owner, Apple does not let non-Apple wearables send text replies. Apple's ANCS Bluetooth service gives accessories only a generic 'positive' or 'negative' action per notification. Apple's newer AccessoryNotifications framework does support quick replies, but it works only on iPhones in the EU signed in with an EU Apple Account. As a result, Fitbit Charge 6, Fitbit Inspire 3 and Garmin vívoactive 6 replies are Android-only, Apple Watch is the only native reply-from-wrist option on iPhone, and Amazfit gets around the block only through a third-party Beeper bridge.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited pages and the top results. The cited Apple Support Series 11 tech specs (support.apple.com/en-mide/125093) state only that the watch needs iPhone 11 or later with iOS 26. They say nothing about what other watches can do on iPhone. The body of the cited Google Store Charge 6 specs page would not render, so I could not check its text. apple.com/watch/compare mentions iPhone requirements for features but not third-party limits. Among uncited results, sekin.in says Charge 6 has 'documented preset quick replies' with an Android phone, so part of this is already out there. It does not say iPhone blocks replies, does not explain why, does not cover Garmin or Amazfit, and does not mention the EU-only Apple framework. ChatGPT's answer listed 'Calls, messages' as smartwatch traits and asked which phone the shopper uses, but never said that the phone decides whether a tracker can reply at all.",
+ "decides": "The phone question becomes the first fork. On Android: Apple Watch is out because it pairs only with iPhone. Fitbit and Garmin can reply with quick replies, but on Charge 6 and Inspire 3 there is no wrist payment on iPhone either way. On iPhone in the US: the cheapest way to reply from the wrist natively is the Apple Watch SE 3. Amazfit Active 2 and Bip 6 can reply only after setting up Zepp Messenger with a Beeper account. Fitbit and Garmin buyers on iPhone get read-only notifications. Our current table already shows 'no replies on iPhone' for Charge 6 and 'replies on Android only' for vívoactive 6. This finding gives the reason, extends it to Inspire 3, and should change the Amazfit cells to 'replies on iPhone via Zepp Messenger + Beeper'.",
+ "candidates": [
+  "Apple Watch SE 3",
+  "Apple Watch Series 11",
+  "Fitbit Charge 6",
+  "Fitbit Inspire 3",
+  "Garmin vívoactive 6",
+  "Amazfit Active 2 (Round)",
+  "Amazfit Bip 6"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What a non-Apple accessory can do with an iPhone notification over ANCS",
+   "value": "Only a 'positive' or 'negative' action, chosen by iOS (for example, answer or decline a call). The spec defines no text-reply action.",
+   "source": "https://developer.apple.com/library/archive/documentation/CoreBluetooth/Reference/AppleNotificationCenterServiceSpecification/Specification/Specification.html",
+   "source_title": "Apple Notification Center Service (ANCS) Specification",
+   "read": "2026-11-17",
+   "note": "Quotes: 'EventFlagPositiveAction: A positive action exists…', 'EventFlagNegativeAction…', and 'performing a positive action on an Incoming Call notification may answer it, while performing a negative action may decline it.' The appendix with ActionID values did not render, but the body describes only these two generic actions."
+  },
+  {
+   "product": "general",
+   "label": "Apple's quick-reply framework for third-party accessories: availability",
+   "value": "iOS 26.5 or later. Works for customers only on iPhones located in the EU and signed in with an EU Apple Account.",
+   "source": "https://developer.apple.com/tutorials/data/documentation/accessorynotifications.json",
+   "source_title": "Accessory Notifications | Apple Developer Documentation",
+   "read": "2026-11-17",
+   "note": "Quote: 'Customer installations of your app can only use the framework on devices located in the EU that are signed in with an Apple Account with an EU country or region.' The framework does support 'typing text in a quick reply'. So a US iPhone owner cannot use it."
+  },
+  {
+   "product": "Apple Watch Series 11",
+   "label": "Phone requirement",
+   "value": "iPhone 11 or later (including iPhone SE 2nd gen or later) with iOS 26 or later. Android is not listed.",
+   "source": "https://support.apple.com/en-mide/125093",
+   "source_title": "Apple Watch Series 11 - Tech Specs - Apple Support",
+   "read": "2026-11-17",
+   "note": "The same page says 'Apple Watch Ultra 3, Apple Watch Series 11, and Apple Watch SE 3 require iPhone 11 or later with iOS 26 or later.' This is the regional (en-mide) page that ChatGPT cited. Battery on the same page: up to 24 h normal use, 38 h in Low Power Mode."
+  },
+  {
+   "product": "Fitbit Charge 6",
+   "label": "Replying to messages from the band",
+   "value": "Android only. On iPhone it can respond only to Google Health app notifications.",
+   "source": "https://support.google.com/googlehealth/answer/14237935?hl=en",
+   "source_title": "How do I respond to messages with my Fitbit device?",
+   "read": "2026-11-17",
+   "note": "Quotes: 'This feature is currently available on devices paired to an Android phone.' and 'devices paired to an iPhone can only respond to Google Health app notifications.' Charge 6 is in the page's device list."
+  },
+  {
+   "product": "Fitbit Inspire 3",
+   "label": "Replying to messages from the band",
+   "value": "Android only. On iPhone it can respond only to Google Health app notifications.",
+   "source": "https://support.google.com/googlehealth/answer/14237935?hl=en",
+   "source_title": "How do I respond to messages with my Fitbit device?",
+   "read": "2026-11-17",
+   "note": "Inspire 3 is in the same device list as Charge 6."
+  },
+  {
+   "product": "Garmin vívoactive 6",
+   "label": "Text-message reply from the watch",
+   "value": "Available only with compatible Android phones",
+   "source": "https://www8.garmin.com/manuals/webhelp/GUID-8C2C402F-55AC-431F-9CF2-1442B89CE149/EN-US/GUID-73EB3305-E1BD-4AD8-B6AA-EFCDA3156CCB.html",
+   "source_title": "vívoactive 6 Owner's Manual - Replying to a Text Message",
+   "read": "2026-11-17",
+   "note": "Quote: 'NOTE: This feature is available only for compatible Android™ phones.'"
+  },
+  {
+   "product": "Amazfit Active 2 (Round)",
+   "label": "Replying to messages on iPhone",
+   "value": "Yes, but only through Zepp Messenger with a Beeper account (Zepp app 9.13.0 or later). There are no native iOS replies.",
+   "source": "https://us.amazfit.com/pages/how-to-reply-to-ios-message-notifications-on-amazfit-devices",
+   "source_title": "How to Reply to iOS Message Notifications on Amazfit Devices",
+   "read": "2026-11-17",
+   "note": "Quote: 'Apple doesn't allow third-party wearables to reply directly to notifications.' Active 2 Round and Square are on the supported list. Setup: register with Beeper, connect chat apps in Beeper, sign in to Beeper in Zepp, then complete a verification step."
+  },
+  {
+   "product": "Amazfit Bip 6",
+   "label": "Replying to messages on iPhone",
+   "value": "Yes, but only through Zepp Messenger with a Beeper account (Zepp app 9.13.0 or later)",
+   "source": "https://us.amazfit.com/pages/how-to-reply-to-ios-message-notifications-on-amazfit-devices",
+   "source_title": "How to Reply to iOS Message Notifications on Amazfit Devices",
+   "read": "2026-11-17",
+   "note": "Bip 6 is on the supported list. It is not on the list for Amazfit's separate EU-only 'iOS Notification Forwarding (Beta)', which needs iOS 26.5 or later (huami.com blog post dated July 9, 2026, read 2026-11-17)."
+  }
+ ],
+ "unsourced": [
+  "Fitbit Charge 6 phone and OS requirements and wording on notifications from the Google Store specs page (store.google.com/us/product/fitbit_charge_6_specs). The body would not render in two fetches, so I could not check what the cited rival says or source the iOS minimum version from Google.",
+  "The ANCS appendix listing the ActionID values (0 = Positive, 1 = Negative). The archived spec's appendix did not render, so the 'no reply action' point rests on the spec body.",
+  "Google's own statement that Pixel Watch 4 needs Android and does not support iPhone. Search returned only secondary sites and a Best Buy Q&A, not a Google support page.",
+  "Samsung's own statement that Galaxy Watch 8 is not compatible with iPhone. Not searched because of the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 21,
+  "cost_usd_list": 0.9243071
+ }
+}
