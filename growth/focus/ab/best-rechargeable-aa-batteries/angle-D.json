@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 1.5 V lithium AA they offer as the fix for voltage-sensitive devices has a protection circuit: XTAR says it 'will stop when the current exceeds 2-2.5A' and 'does not work on some camera flashes'. It also holds 1.5 V and then drops to 1.1 V instead of fading slowly. Separately, Kwikset says its smart-lock software is 'optimized for alkaline batteries', so rechargeables can show the wrong percentage and may not give 'correct low-battery warnings'.",
+ "standout": 2,
+ "standout_why": "Compared against Digital Camera World (cited), the Which? sample page (cited) and GeekChamp's Eneloop vs LADDA page (rank 2). Digital Camera World only says Li-ion AAs give 'the full 1.5V output' for 'voltage-critical devices', with no current limit, flash caveat or gauge behaviour. Which? covers none of this. GeekChamp has part of it: some devices 'report a low battery early', a 1.5 V lithium is 'a targeted compatibility choice', and the charger must match. But it gives no current limit, no flash incompatibility, no output curve and nothing from a lock maker. ChatGPT's own answer only says voltage-sensitive devices 'may require rechargeable 1.5V lithium batteries'.",
+ "decides": "This confirms Eneloop Pro (NiMH, no output-cutoff circuit) over the XTAR 1.5 V lithium for camera flashes, the use ChatGPT gave the Pro. XTAR itself says its cells cut out above 2-2.5 A and fail in some flashes. It also qualifies our XTAR row ('Smart locks, thermostats that misread NiMH'). The XTAR's flat 1.5 V followed by a step to 1.1 V near empty is not the alkaline-shaped decline Kwikset says its lock software expects. So the page should send lock owners to the lock maker's battery guidance first, and not present 1.5 V lithium as a guaranteed fix.",
+ "candidates": [
+  "Panasonic eneloop (BK-3MCCA)",
+  "Panasonic eneloop pro (BK-3HCCA)",
+  "IKEA LADDA 2450",
+  "Tenergy Premium Pro 2,800 mAh",
+  "XTAR 1.5 V lithium AA 4150 mWh"
+ ],
+ "findings": [
+  {
+   "product": "XTAR 1.5 V lithium AA 4150 mWh",
+   "label": "Output cutoff current (protection circuit)",
+   "value": "Output stops above 2-2.5 A; XTAR advises against devices needing more than 2.5 A instantaneous or more than 2 A continuous",
+   "source": "https://xtar.cc/?p=8567",
+   "source_title": "FAQs about XTAR 4150mWh AA Li-ion Battery",
+   "read": "2026-11-17",
+   "note": "Maker's FAQ, quoted: 'The output will stop when the current exceeds 2-2.5A.' The cutoff does not damage the cell."
+  },
+  {
+   "product": "XTAR 1.5 V lithium AA 4150 mWh",
+   "label": "Camera flash compatibility",
+   "value": "Maker says it 'does not work on some camera flashes'",
+   "source": "https://xtar.cc/?p=8567",
+   "source_title": "FAQs about XTAR 4150mWh AA Li-ion Battery",
+   "read": "2026-11-17",
+   "note": "XTAR's reason: flashes draw high instantaneous current, and repeated firing heats the cell until its protection trips."
+  },
+  {
+   "product": "XTAR 1.5 V lithium AA 4150 mWh",
+   "label": "End-of-charge output behaviour",
+   "value": "Holds 1.5 V for about 78-85% of the discharge, then steps to 1.1 V (when the internal cell reaches about 3.15 V); averages 1.44 V",
+   "source": "https://xtar.cc/?p=10624",
+   "source_title": "AA Battery Test & Comparison: XTAR, Energizer, Duracell, GP (XTAR)",
+   "read": "2026-11-17",
+   "note": "Maker's own test at 200 mA: a stable 1.5 V for about 11 h of about 14 h total. The 3.15 V internal figure and the warning that below 1.1 V 'the device may interpret it as insufficient battery power' come from https://xtar.cc/?p=8567, read 2026-11-17. Maker-run test, not independent."
+  },
+  {
+   "product": "general",
+   "label": "Smart-lock maker guidance on rechargeable AAs (Kwikset)",
+   "value": "Not recommended: software and app 'optimized for alkaline batteries'; 'the displayed battery percentage may not be accurate'; user 'might not receive correct low-battery warnings'; rechargeables 'will not harm your smart lock'",
+   "source": "https://www.kwikset.com/support/answers/can-i-use-rechargeable-batteries-for-my-smart-lock",
+   "source_title": "Can I use rechargeable batteries for my smart lock? | Kwikset Support",
+   "read": "2026-11-17",
+   "note": "Kwikset's support page. It does not say whether 1.5 V lithium rechargeables count as 'rechargeable' here; it recommends alkaline."
+  },
+  {
+   "product": "Panasonic eneloop (BK-3MCCA)",
+   "label": "Discharge voltage profile vs alkaline",
+   "value": "'eneloop Ni-MH AA and AAA batteries maintain a consistent level of 1.2V power throughout the entire life of the charge'; alkaline is rated 1.5 V but 'the voltage rapidly drops below the NiMH rating of 1.2V'",
+   "source": "https://www.panasonicbatteryproducts.com/?p=5319",
+   "source_title": "Consistent discharge performance | Panasonic Battery Products (Panasonic Energy Corporation of America)",
+   "read": "2026-11-17",
+   "note": "US Panasonic battery site (Columbus, GA address). This is why gauges calibrated to alkaline read NiMH as lower than it is. The page itself does not mention gauges."
+  }
+ ],
+ "unsourced": [
+  "Panasonic's own FAQ wording that a device's battery indicator may show less remaining capacity on eneloop, and that devices are designed for 1.5 V to 0.9 V: all four regional FAQ pages (panasonic.com sg/ph/global/global consumer) returned HTTP 403, so it comes only from search snippets and is left out.",
+  "Schlage/Allegion statement that 'Lithium, rechargeable, and older battery technologies may cause undesirable operation', and the Schlage Home app note that lithium may 'fail to trigger low battery' notifications: kc.allegion.com returned 403 on WebFetch and curl was not approved.",
+  "XTAR datasheet figures (2 A max continuous, 1,200 cycles, 1.1 V low-power voltage): the Battery Junction datasheet PDF is image-only and not machine-readable, so they come only from a search snippet. The FAQ's 2-2.5 A cutoff is used instead.",
+  "Eneloop Pro's maximum discharge current and the current a typical speedlight draws on recycle: I didn't look further after hitting the call budget, and nothing is published on the pages I opened.",
+  "Yale and August lock battery guidance: not reached within the budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9302630999999999
+ }
+}
