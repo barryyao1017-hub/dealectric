@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states Minn Kota's own rule for a motor plus a separate lithium battery: the battery's continuous discharge rating must cover the motor's max amp draw, otherwise the battery management system restricts power and the motor 'may shut off or perform erratically'. Minn Kota also says brushed motors on lithium should be held to 85% speed (Speed 8.5).",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages, epropulsion.com eLite and torqeedo.com Travel S M-1160-00, and the top result sparkpowered.com/electric-outboard-motor. ePropulsion only says the eLite has an 'integrated smart BMS'. Torqeedo says its BMS 'can temporarily reduce motor power' when hot, but only for its own matched battery. Spark Powered gives battery size in Wh only, with no amps and no BMS limits, and never names Minn Kota. None of them covers the case of a 12 V motor with a separate lithium battery, which is ChatGPT's third card (NT300 bundle) and three rows of our page. I couldn't open trollingmotorsdirect.org (TLS certificate error) or yachtandocean.com (404).",
+ "decides": "It sets a hard pass/fail check for the separate-battery picks. The Endura Max 55 is listed at 50 A max draw. The Redodo 12V 50Ah Bluetooth trolling battery is rated 60 A continuous for 30 minutes, so it clears that check and the row can stay. Redodo's general-purpose 12V 50Ah has a 50 A BMS, which leaves no margin at full throttle on a 55 lb motor, so it should not be swapped in. The page should also tell readers with brushed Minn Kota motors to cap speed at 85% on lithium, per Minn Kota. The integrated ePropulsion units avoid the whole question because the motor and BMS come matched.",
+ "candidates": [
+  "Redodo 12V 50Ah Bluetooth trolling motor battery",
+  "Redodo 12V 100Ah Group 24 Bluetooth",
+  "Minn Kota Endura Max 55",
+  "ePropulsion eLite",
+  "ePropulsion kLite 750",
+  "Torqeedo Travel S",
+  "Newport NK180 HD Bundle"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minn Kota rule: lithium battery continuous discharge vs motor max amp draw",
+   "value": "Battery must 'provide enough continuous discharge amperage to run the motor at its max amp draw'; if the draw exceeds the rating, 'the battery's management system will restrict power to the motor', which 'may cause the motor to shut off or perform erratically'",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations (Minn Kota Help Center)",
+   "read": "2026-11-17",
+   "note": "Quoted from the maker's support article. Its per-motor 'Required Continuous Discharge Amperage' chart is an image and could not be read as text."
+  },
+  {
+   "product": "general",
+   "label": "Minn Kota speed limit for brushed motors on lithium",
+   "value": "Limit motor speed to 85% (Speed 8.5 or lower); 'Running the motor at maximum speed with lithium batteries can result in damage'",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6477037780631-Lithium-Battery-Selection-and-Recommendations",
+   "source_title": "Lithium Battery Selection and Recommendations (Minn Kota Help Center)",
+   "read": "2026-11-17",
+   "note": "Applies to brushed Minn Kota motors such as the Endura line, per the same article."
+  },
+  {
+   "product": "general",
+   "label": "Symptoms when amperage is short (Minn Kota)",
+   "value": "Motor shuts off after a short run, turns on without the prop spinning, steering issues, erratic i-Pilot Spot-Lock",
+   "source": "https://minnkota-help.johnsonoutdoors.com/hc/en-us/articles/6470890831895-Trolling-Motor-Power-Considerations",
+   "source_title": "Trolling Motor Power Considerations (Minn Kota Help Center)",
+   "read": "2026-11-17",
+   "note": "Same rule, repeated in Minn Kota's power troubleshooting article."
+  },
+  {
+   "product": "Minn Kota Endura Max 55",
+   "label": "Max amp draw",
+   "value": "50 A at 12 V (55 lb thrust, 36 in shaft); $334.99",
+   "source": "https://www.overtons.com/minn-kota-endura-max-55-trolling-motor---transom-mount---12v---55lb---36-365928.html",
+   "source_title": "Minn Kota Endura Max 55 Trolling Motor - Transom Mount - 12V - 55lb - 36\" (Overton's)",
+   "read": "2026-11-17",
+   "note": "This figure is from a retailer listing, not the maker. Overton's has a conflicting 'Specs' panel (90/115 lb, 24/36 V, bow mount), but the 50 A line sits with the matching 55 lb, 12 V, 36 in details."
+  },
+  {
+   "product": "Redodo 12V 50Ah Bluetooth trolling motor battery",
+   "label": "BMS continuous discharge",
+   "value": "60 A continuous for 30 minutes; 640 W output; 640 Wh; 11.27 lb; stops charging below 0 °C; $179.99",
+   "source": "https://www.redodopower.com/products/12v-50ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 50Ah Bluetooth Battery for Trolling Motors (Up to 70lb Thrust)",
+   "read": "2026-11-17",
+   "note": "From the Redodo store (Shopify, read with storecheck). 60 A is more than the Endura Max 55's 50 A max draw, a 10 A margin. The 30-minute limit hardly matters: 50 Ah at 50 A is about 1 h before the battery is empty."
+  },
+  {
+   "product": "Redodo 12V 50Ah LiFePO4 (general-purpose, non-trolling)",
+   "label": "BMS continuous discharge",
+   "value": "50 A continuous charge/discharge; 640 W max load; $167.39",
+   "source": "https://www.redodopower.com/products/12v-50ah-lithium-ion-battery-640wh",
+   "source_title": "Redodo 12V 50Ah Lithium LiFePO4 Battery | For Portable Solar Power Stations, Camping, RV",
+   "read": "2026-11-17",
+   "note": "50 A BMS against a 50 A max draw on a 55 lb motor leaves no margin. This is the look-alike shoppers should not swap in."
+  },
+  {
+   "product": "Torqeedo Travel S",
+   "label": "Built-in BMS derating",
+   "value": "BMS can temporarily reduce motor power to prevent overloads, most often in high heat; $3,398 Essential Package (motor $1,799 + 1,080 Wh battery $1,599)",
+   "source": "https://www.torqeedo.com/us/products/outboards/travel/travel/M-1160-00.html",
+   "source_title": "Electric Outboard with direct drive - Travel - Torqeedo",
+   "read": "2026-11-17",
+   "note": "Integrated system with the motor and BMS matched by the maker. This is the rival's existing mechanism statement and covers heat only."
+  },
+  {
+   "product": "ePropulsion eLite",
+   "label": "Peak power limit",
+   "value": "500 W nominal; 750 W sport mode for 1 minute at a time, subject to battery state of charge and temperature; 378 Wh at 25.2 V",
+   "source": "https://www.epropulsion.com/products/electric-outboards/elite",
+   "source_title": "eLite - ePropulsion",
+   "read": "2026-11-17",
+   "note": "No price on this maker page (it points to a dealer locator)."
+  }
+ ],
+ "unsourced": [
+  "Endura Max 55 max amp draw from Minn Kota itself: the minnkota.johnsonoutdoors.com product and manual pages came back empty, the battery-chart and manual PDFs were not readable as text, and the help-center chart is an image. Only Overton's 50 A is sourced.",
+  "Max amp draw for the motor in ChatGPT's NT300 bundle and for Newport NV 55 lb: newportvessels.com returned HTTP 429.",
+  "Continuous BMS rating for the Redodo 12V 100Ah Group 24 Bluetooth: the store text I read does not state it. The 100 A on our page was not re-verified today.",
+  "Two rival pages could not be checked: trollingmotorsdirect.org (TLS certificate error) and yachtandocean.com (404)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2135167
+ }
+}

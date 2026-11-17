@@ -1,0 +1,101 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the headline watts on these motors are battery-draw figures you can compare directly (rated watts × maker runtime ≈ pack Wh), or that the extra watts are not: ePropulsion's kLite 750 '750 W' boost only works above 50% charge, which caps it at about 15 minutes (its own table), the eLite's 750 W Sport mode runs 1 minute at a time, Newport's '600W' is a peak figure, and every maker's 'HP equivalent' works out to about 3 hp per kW when 1 kW is only 1.34 mechanical hp.",
+ "standout": 2,
+ "standout_why": "The cited ePropulsion eLite page gives 500 W nominal and a 750 W Sport mode, with the 1-minute limit in its runtime table, but it does not set that against other makers. The cited Torqeedo Travel page gives 1,100 W input and '3 HP-equivalent' without saying what that means. sparkpowered.com repeats '3 hp equivalent' for both the Spirit and the Travel and has no watts basis, no boost limits and no cycle life. The yachtandocean.com URL returned 404, the device.report comparison PDF returned 403, and trollingmotorsdirect.org failed on its SSL certificate, so I could not check those three. ChatGPT's answer puts the eLite at '500W' and the Travel S at '1,100W' with no note on basis, boost or hp, and calls the NT300 '3 HP-equivalent' without explaining it. None of these pages normalises boost, peak or hp-equivalent claims, and none points out that one 80% cycle rating means state of health while another means depth of discharge.",
+ "decides": "It confirms the kLite 750 as the kayak pick on fair terms. Taken at sustained power, the kLite (500 W nominal) and Newport NK180 HD (600 W peak, 25 A at 24 V) are close. The kLite's 750 W boost is a burst of about 15 minutes and should not be read as more power than the Newport. It also says to compare the Spirit 1.0 Plus (1,000 W) and Torqeedo Travel S (1,100 W input) by watts and Wh, not by their matching '3 HP' labels, which mean the same thing as Newport's '1.8 HP' at 600 W. Cycle life cannot be compared one-to-one: the kLite gives 800 cycles to 80% state of health, while the Spirit Battery Plus manual gives 500 cycles at 80% depth of discharge.",
+ "candidates": [
+  "ePropulsion kLite 750",
+  "ePropulsion eLite",
+  "ePropulsion Spirit 1.0 Plus",
+  "Torqeedo Travel S",
+  "Newport NK180 HD Bundle"
+ ],
+ "findings": [
+  {
+   "product": "ePropulsion kLite 750",
+   "label": "Boost (750 W) availability and how long it lasts",
+   "value": "Boost only above 50% state of charge; maker table gives 0:15 runtime at 750 W on the 378 Wh integrated battery",
+   "source": "https://www.epropulsion.com/products/electric-outboards/klite-750",
+   "source_title": "kLite 750 - ePropulsion",
+   "read": "2026-11-17",
+   "note": "Footnote: 'Boost/Sport mode is available only when battery charge is above 50%'. 750 W × 0.25 h = 187.5 Wh, about half of 378 Wh, which matches the 50% gate. Tested on a Crescent Lite Tackle 2 at 6 mph (Bonafide PWR 129: 5.8 mph). Nominal 500 W gives 0:48 at 5.5 mph."
+  },
+  {
+   "product": "ePropulsion kLite 750",
+   "label": "Cycle life",
+   "value": "800 cycles to 80% state of health",
+   "source": "https://www.epropulsion.com/products/electric-outboards/klite-750",
+   "source_title": "kLite 750 - ePropulsion",
+   "read": "2026-11-17",
+   "note": "Page wording: '800 cycle at 80% SoH'. This means capacity left after 800 cycles, which is a different measure from a depth-of-discharge rating."
+  },
+  {
+   "product": "ePropulsion eLite",
+   "label": "Sport mode (750 W) limit",
+   "value": "750 W for 1 minute at a time; 500 W nominal",
+   "source": "https://www.epropulsion.com/products/electric-outboards/elite",
+   "source_title": "eLite - ePropulsion",
+   "read": "2026-11-17",
+   "note": "'Sport Mode can be used for 1 minute at a time, subject to battery SOC and temperature.' At 500 W the maker gives 0:45 and 4.7 mph (8 ft aluminium dinghy, 117 kg total). 378 Wh / 500 W = 0.76 h, so the 500 W rating is battery draw."
+  },
+  {
+   "product": "ePropulsion Spirit 1.0 Plus",
+   "label": "Power basis and HP-equivalent definition",
+   "value": "1 kW labelled '3HP equivalent'; 1:15 at 1,000 W on the 1,276 Wh Spirit Battery Plus",
+   "source": "https://www.epropulsion.com/spirit-1/",
+   "source_title": "Spirit 1.0 Plus/Evo - ePropulsion",
+   "read": "2026-11-17",
+   "note": "The page calls 3HP 'a theoretical equivalent based on thrust and performance characteristics'. 1,276 Wh / 1,000 W = 1.28 h, which matches 1:15, so the watts are battery draw. 1 kW is 1.34 mechanical hp, so the label is about 2.2× the shaft-hp ceiling. Test: 12 ft aluminium boat, one operator, calm lake."
+  },
+  {
+   "product": "ePropulsion Spirit 1.0 Plus",
+   "label": "Battery cycle life (Spirit Battery Plus)",
+   "value": "500 cycles at 80% depth of discharge",
+   "source": "https://www.manualslib.de/manual/1391391/Epropulsion-Spirit-1-0-Plus.html?page=11",
+   "source_title": "ePropulsion Spirit 1.0 Plus manual (ManualsLib), battery spec table",
+   "read": "2026-11-17",
+   "note": "Manual table row 'Battery Life: 500 cycles at 80% DOD'. Lithium-ion polymer, 1,276 Wh / 28 Ah. This counts cycles that use 80% of the pack and is not comparable with the kLite's '80% SoH' figure. Some retailers list 800 cycles; I used the manual figure."
+  },
+  {
+   "product": "Torqeedo Travel S",
+   "label": "Power basis and HP label",
+   "value": "1,100 W input power, '3 HP-equivalent'; 0:59 at full throttle on the 1,080 Wh battery (racing sailboat), 0:47 (3.8 m dinghy)",
+   "source": "https://www.torqeedo.com/us/products/outboards/travel/travel/M-1160-00.html",
+   "source_title": "Electric Outboard with direct drive - Travel - Torqeedo",
+   "read": "2026-11-17",
+   "note": "1,080 Wh / 1,100 W = 0.98 h, which matches 0:59, so this is input (battery) power on the same basis as the ePropulsion figures. 3 HP / 1.1 kW = 2.7 hp per kW. Essential Package $3,398, motor alone $1,799, battery $1,599. The Range Package Wh is inconsistent on the page (1,512 vs 1,425 Wh)."
+  },
+  {
+   "product": "Torqeedo Travel S",
+   "label": "Travel Battery",
+   "value": "1,080 Wh, 44 V Li-ion, 8.3 kg; $1,599",
+   "source": "https://www.torqeedo.com/products/accessories/spare-batteries/travel-battery/1166-10.html",
+   "source_title": "Travel Battery - Torqeedo",
+   "read": "2026-11-17",
+   "note": "No cycle life is stated on the page. Torqeedo notes 'reduced motor power with Travel XP'."
+  },
+  {
+   "product": "Newport NK180 HD Bundle",
+   "label": "Power basis, HP label, price today",
+   "value": "'600W (1.8 HP equivalent)' given as peak power, 25 A at 24 V; bundle $2,139.97",
+   "source": "https://newportvessels.com/products/nk180pro-electric-kayak-motor-bundle",
+   "source_title": "NK180 HD Electric Kayak Motor Bundle - Newport Vessels",
+   "read": "2026-11-17",
+   "note": "24 V × 25 A = 600 W, so the 600 W is peak battery draw, not a sustained rating like ePropulsion's 500 W nominal. 1.8 hp / 0.6 kW = 3 hp per kW, the same scale ePropulsion uses. The '37.5 hours max' runtime on the 24 V 50 Ah (1,280 Wh) battery implies an average draw of about 34 W. The price has risen from the $1,924.97 on our page (2026-11-06). Motor alone is $1,299.99."
+  }
+ ],
+ "unsourced": [
+  "Newport 24V 50Ah LiFePO4 cycle life and weight: a search snippet showed 3,000 cycles and 22 lb, but newportvessels.com and feelfreeus.com both returned HTTP 429 and the store tool also got 429, so I could not open the page or tell whether the 3,000 is at a DoD or capacity cutoff.",
+  "Torqeedo Travel Battery cycle life: not on the Travel product page or the 1166-10 battery page. I did not find a Torqeedo manual or datasheet figure.",
+  "ePropulsion eLite cycle life: not on the eLite page.",
+  "Static thrust in lbs for any of these motors, to set against 12 V trolling motors rated in lbs: none of the maker pages I opened states it.",
+  "The Torqeedo vs ePropulsion comparison chart (device.report PDF, 403) and the Yacht & Ocean guide (404) could not be read, so I could not rule out that they normalise boost or hp."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9975627
+ }
+}
