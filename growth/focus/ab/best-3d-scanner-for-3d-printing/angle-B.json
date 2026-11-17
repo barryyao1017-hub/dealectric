@@ -1,0 +1,109 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states the dimensional error over a 200 mm replacement part for the scanners in our six-pick table. Only the Revopoint MetroX has a sourced length term among them, giving 0.03 mm + 0.1 mm/m × 0.2 m = 0.05 mm, or 1.7 times its 0.03 mm single-frame figure. The makers' own spec pages for the Einstar VEGA and Einstar 2 give no accuracy figure at all.",
+ "standout": 1,
+ "standout_why": "I compared against the cited 3dprinting.com/3d-scanners/ and 3dprinting.com/scanners/best-small-format-3d-scanners/. The first already uses accuracy + rate × length, but only for metrology-tier scanners: MetroX Pro gets 0.052 mm at 300 mm and MetroY Pro 0.08 mm at 1 m. It marks volumetric accuracy as 'Not stated' for INSPIRE 2, Seal, Seal Lite, Mole, POP 3 Plus, MINI 2, Ferret Pro, Raptor and Einstar VEGA, and it does not list the standard MetroX. The small-format page says error over a part's length is 'Not computable' because it has no per-metre terms. So the method is already on a cited rival. Only the MetroX figure and the point that the other picks publish no length term are new.",
+ "decides": "This confirms the MetroX as the pick for mechanical or replacement parts where a printed part has to fit. It is the only scanner in our table whose error over part length can be worked out from a published term: 0.05 mm at 200 mm. The INSPIRE 2, Seal, Moose, Otter and VEGA publish only single-frame or point figures (0.01 to 0.05 mm). Those numbers describe one frame, not a stitched 200 mm part, so the table should label its accuracy column 'single frame' and should not rank those scanners against each other on fit accuracy. It does not change the budget or small-object picks.",
+ "candidates": [
+  "Revopoint MetroX",
+  "Revopoint INSPIRE 2",
+  "Revopoint MINI 2",
+  "Revopoint POP 3 Plus",
+  "3DMakerpro Seal",
+  "3DMakerpro Moose",
+  "Creality CR-Scan Otter",
+  "Creality CR-Scan Raptor",
+  "Creality CR-Scan Ferret Pro",
+  "Einstar VEGA",
+  "Einstar 2"
+ ],
+ "findings": [
+  {
+   "product": "Revopoint MetroX",
+   "label": "Volumetric accuracy (launch spec)",
+   "value": "0.03 mm + 0.1 mm × L (m)",
+   "source": "https://www.cnx-software.com/2024/11/04/revopoint-metrox-3d-scanner-blue-laser-scanning-breakthrough-at-an-appealing-price/",
+   "source_title": "Revopoint MetroX 3D scanner – Blue laser scanning breakthrough at an appealing price (CNX Software)",
+   "read": "2026-11-17",
+   "note": "CNX Software's spec table says 'L is the length of the object'. The same table gives single-frame accuracy up to 0.03 mm and single-frame precision up to 0.01 mm."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Worst-case error over a 200 mm part",
+   "value": "0.05 mm",
+   "source": "https://www.cnx-software.com/2024/11/04/revopoint-metrox-3d-scanner-blue-laser-scanning-breakthrough-at-an-appealing-price/",
+   "source_title": "Revopoint MetroX 3D scanner – Blue laser scanning breakthrough at an appealing price (CNX Software)",
+   "read": "2026-11-17",
+   "note": "0.03 mm + 0.1 mm/m × 0.2 m = 0.05 mm. That is 0.05 / 0.03 = 1.7 times the single-frame figure."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Worst-case error over a 100 mm part",
+   "value": "0.04 mm",
+   "source": "https://www.cnx-software.com/2024/11/04/revopoint-metrox-3d-scanner-blue-laser-scanning-breakthrough-at-an-appealing-price/",
+   "source_title": "Revopoint MetroX 3D scanner – Blue laser scanning breakthrough at an appealing price (CNX Software)",
+   "read": "2026-11-17",
+   "note": "0.03 mm + 0.1 mm/m × 0.1 m = 0.04 mm"
+  },
+  {
+   "product": "Revopoint MetroX Pro",
+   "label": "Worst-case error over a 200 mm part (from the rival's figure)",
+   "value": "0.048 mm",
+   "source": "https://3dprinting.com/3d-scanners/",
+   "source_title": "Best 3D Scanners 2026: The Complete Buying Guide (3DPrinting.com)",
+   "read": "2026-11-17",
+   "note": "3DPrinting.com lists volumetric accuracy as 0.04 mm + 0.04 mm/m, so 0.04 + 0.04 × 0.2 = 0.048 mm. The rival already computes 0.052 mm at 300 mm."
+  },
+  {
+   "product": "Einstar VEGA",
+   "label": "Accuracy rows on the maker's spec page",
+   "value": "none; point distance HD 0.05–3 mm, Fast 0.5–10 mm; body 535 g (regular), 643 g (limited)",
+   "source": "https://www.einstar.com/pages/einstar-vega-specs",
+   "source_title": "EINSTAR VEGA Specs | EINSTAR",
+   "read": "2026-11-17",
+   "note": "The maker's spec page has no single-frame or volumetric accuracy row, so no error over part length can be worked out."
+  },
+  {
+   "product": "Einstar 2",
+   "label": "Accuracy rows on the maker's spec page",
+   "value": "none; resolution Laser HD 0.05–10 mm, IR Rapid 0.2–10 mm; 420 g with batteries, 348 g without",
+   "source": "https://www.einstar.com/pages/einstar-2-specs",
+   "source_title": "EINSTAR 2 3D Scanner Specs | EINSTAR",
+   "read": "2026-11-17",
+   "note": "No accuracy or volumetric row is published."
+  },
+  {
+   "product": "Creality CR-Scan Otter",
+   "label": "Price (Creality US store)",
+   "value": "$899.00",
+   "source": "https://store.creality.com/products/cr-scan-otter-3d-scanner",
+   "source_title": "Creality CR-Scan Otter 3D Scanner: Ultra-Accurate, Smooth Scanning",
+   "read": "2026-11-17",
+   "note": "The store page shows no accuracy, volumetric accuracy or weight specs."
+  },
+  {
+   "product": "Creality CR-Scan Raptor",
+   "label": "Price (Creality US store)",
+   "value": "$879.00 (listed against $1,499.00, 'Save $620.00')",
+   "source": "https://store.creality.com/products/cr-scan-raptor-3d-scanner",
+   "source_title": "CR-Scan Raptor 3D Scanner | Metrology Grade Accuracy, 7 Blue Laser Lines",
+   "read": "2026-11-17",
+   "note": "The store page gives no numeric accuracy or volumetric accuracy. The title only says 'Metrology Grade Accuracy'."
+  }
+ ],
+ "unsourced": [
+  "Revopoint MetroX volumetric accuracy as currently published by Revopoint. A search snippet suggests the official page now says 0.025 mm + 0.05 mm × L, which would give 0.035 mm at 200 mm. Every Revopoint page and storecheck call returned HTTP 429, so I used the CNX Software launch figure instead. Re-check revopoint3d.com before publishing.",
+  "Revopoint INSPIRE 2, MINI 2 and POP 3 Plus volumetric (mm/m) accuracy. Revopoint's site returned HTTP 429.",
+  "3DMakerpro Seal and Moose volumetric accuracy and today's price. store.3dmakerpro.com returned HTTP 429 to storecheck.",
+  "Creality CR-Scan Otter volumetric accuracy. Neither Creality product page shows specs, and the search found only the 0.02 mm @ 60 mm single-frame figure on retailer pages.",
+  "Creality CR-Scan Raptor (base model) volumetric accuracy. The Creality US store, creality.com and the creality.com/eu pages showed no figures. Retailers disagree (0.02 + 0.08 mm/m vs 0.02 + 0.06 mm/m) and mostly refer to the Raptor Pro or RaptorX.",
+  "Einstar VEGA and Einstar 2 volumetric accuracy. The maker spec pages publish none, and the einstar.com product page returned HTTP 429.",
+  "Prices today for Revopoint MetroX, INSPIRE 2, Einstar VEGA, 3DMakerpro Seal and Moose. Every one of these stores returned HTTP 429. Amazon was not tried because of the tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9827681999999999
+ }
+}

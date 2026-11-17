@@ -7769,6 +7769,22 @@ PRODUCTS = [
  "fit": "Backup or off-grid power for a 240 V well pump. That covers a Franklin SubDrive20 or SubDrive30 Connect from one unit, and a plain across-the-line pump within the maker's 6 HP motor rating.",
  "caveats": ["The 16,000 W peak and the 6 HP motor rating are Sun Gold's own figures. No named reviewer has measured them, and the listing gives no peak hold time.", "Franklin publishes its 1.5× sizing rule for generators. Applying it to an inverter's continuous rating is our proxy.", 'A SubDrive50 (11,000 W bar) needs two units in parallel.', 'Two-wire pump motors get no soft start, so with one of those the start relies on the peak rating.']},
 
+{"slug": '3dmakerpro-moose-3d-scanner',
+ "brand": '3DMakerpro',
+ "program": 'awin:3dmakerpro',
+ "category": '3d-scanner',
+ "name": '3DMakerpro Moose 3D Scanner, 0.03 mm accuracy, AI visual tracking, scans 15 mm to 1,500 mm',
+ "model": 'Moose',
+ "url": 'https://store.3dmakerpro.com/products/moose',
+ "price": 419.0,
+ "verified": '2026-11-17',
+ "specs": [('Accuracy (maker)', '0.03 mm'), ('Resolution (maker)', '0.07 mm'), ('Scan range (maker)', '15 mm to 1,500 mm'), ('Tracking', 'AI visual tracking'), ('Phone scanning', 'With the Smart Grip (sold separately): Android 10 or later, iOS 15 or later'), ('Measured, 3D-printed PLA staircase (HafenCity University Hamburg, 2026)', '0.10 mm standard deviation, 1.36 mm span')],
+ "warranty": '24 months from 3DMakerpro, for scanners bought from 3DMakerpro or an authorized vendor',
+ "returns": "3DMakerpro refunds manufacturing defects reported within 14 calendar days, on orders from its official store only. Its policy says sale ('Specials') items can't be refunded, and the store lists the Moose at $419, down from $699. If you return it for personal reasons, you may have to pay the shipping and return fees.",
+ "summary": "In HafenCity University Hamburg's 2026 test against a ZEISS ATOS 5 reference, the Moose's scan of a 3D-printed PLA part deviated 0.10 mm (standard deviation). Of the low-cost scanners tested, it was the only one that stayed at or below 0.13 mm on a printed part, a plaster bust and a porous figure.",
+ "fit": 'Scanning printed parts, figures and busts to reprint them, for objects from 15 mm to 1,500 mm.',
+ "caveats": ['On a flat granite plate in the same study it scattered more than the Revopoint MetroX: 0.60 mm vs 0.29 mm standard deviation.', 'Scanning from a phone needs the Smart Grip, which 3DMakerpro sells separately for $299.', "The store's product feed shows $419. The page itself was rate-limited, so the edition behind that price wasn't shown."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

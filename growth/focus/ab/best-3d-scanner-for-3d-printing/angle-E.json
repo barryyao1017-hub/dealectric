@@ -1,0 +1,105 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that, in HafenCity University Hamburg's 2026 ISPRS lab test against a ZEISS ATOS 5 reference scan, a 3D-printed PLA staircase scanned with the 3DMakerpro Moose had a 0.10 mm standard deviation, while the Revopoint POP 3 Plus (ChatGPT's 'best general-purpose' pick) had 0.66 mm.",
+ "standout": 3,
+ "standout_why": "Both pages ChatGPT cited are spec-only. 3dprinting.com/3d-scanners/ reports no measured gauge-block, sphere or deviation figure for any scanner, and best-small-format-3d-scanners/ says in its table note that 'All numbers are manufacturer specs'. The top-ranked result (printingxyz.com) also lists only maker specs. 3dprinting.com's own Seal review, which the small-format page links to, has no measurement either. None of them mentions the ISPRS/HafenCity study, Notebookcheck's 150 mm gauge-block result for the Ferret Pro, or 3D Printing Industry's reference-block test of the Seal.",
+ "decides": "Two of ChatGPT's picks measured worse than their specs. The POP 3 Plus (spec 0.04–0.05 mm) was the noisiest scanner in the ISPRS lab on every object, and the Ferret Pro (spec 0.1 mm) was 0.335 mm off on Notebookcheck's 150 mm gauge block. The Moose, already on our page at $489, was the most accurate of the three low-cost scanners the lab tested, without markers or spray, on a 3D-printed part, a plaster bust and a porous figure. That supports keeping the Moose as the value pick for scanning parts to reprint. The MetroX tied the Moose on the printed staircase (0.10 mm standard deviation) but scattered 0.47–1.57 mm on the organic shapes, so it fits mechanical parts rather than sculptures. Its flat-plate result was better than the Moose's, though: 0.29 mm vs 0.60 mm standard deviation.",
+ "candidates": [
+  "3DMakerpro Moose",
+  "Revopoint MetroX",
+  "Revopoint POP 3 Plus",
+  "Creality CR-Scan Ferret Pro",
+  "3DMakerpro Seal",
+  "Revopoint INSPIRE 2",
+  "Creality CR-Scan Otter",
+  "Creality CR-Scan Raptor",
+  "Revopoint MINI 2",
+  "Einstar Vega"
+ ],
+ "findings": [
+  {
+   "product": "3DMakerpro Moose",
+   "label": "Deviation on a 3D-printed PLA staircase (100×100×100 mm, five 20 mm steps) vs a ZEISS ATOS 5 reference",
+   "value": "mean +0.09 mm, standard deviation 0.10 mm, span 1.36 mm",
+   "source": "https://isprs-archives.copernicus.org/articles/XLIX-B1-2026/263/2026/isprs-archives-XLIX-B1-2026-263-2026.pdf",
+   "source_title": "Kersten, Marsmann, Przybilla (HafenCity University Hamburg): Geometrical Accuracy Investigations of Handheld 3D Scanners in Comparison: Low-Cost vs. High-End, ISPRS Archives XLIX-B1-2026, pp. 263–270, published 2026-07-22",
+   "read": "2026-11-17",
+   "note": "Table 5. Moose used markerless EasyScan mode. Revopoint units were scanned on a turntable with target markers. On the same part the high-end Hexagon MARVELSCAN had a 0.08 mm standard deviation. The fetched PDF came back as binary, so I read the tables through a text render of the PDF (r.jina.ai). Spot-check the figures against the PDF before publishing."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Deviation on the same 3D-printed PLA staircase",
+   "value": "mean −0.13 mm, standard deviation 0.10 mm, span 8.04 mm (max −7.08 mm outliers)",
+   "source": "https://isprs-archives.copernicus.org/articles/XLIX-B1-2026/263/2026/isprs-archives-XLIX-B1-2026-263-2026.pdf",
+   "source_title": "Kersten et al., ISPRS Archives XLIX-B1-2026-263",
+   "read": "2026-11-17",
+   "note": "Table 5. Turntable mode with markers. Same standard deviation as the Moose, but stray points widened the span."
+  },
+  {
+   "product": "Revopoint POP 3 Plus",
+   "label": "Deviation on the same 3D-printed PLA staircase",
+   "value": "mean −0.41 mm, standard deviation 0.66 mm, span 14.08 mm",
+   "source": "https://isprs-archives.copernicus.org/articles/XLIX-B1-2026/263/2026/isprs-archives-XLIX-B1-2026-263-2026.pdf",
+   "source_title": "Kersten et al., ISPRS Archives XLIX-B1-2026-263",
+   "read": "2026-11-17",
+   "note": "Table 5. The authors' summary: the Revopoint scans show 'very unstable scan fusion, manifesting as high noise behaviour and extensive deviations'."
+  },
+  {
+   "product": "3DMakerpro Moose",
+   "label": "Standard deviation on a 160 mm gypsum Einstein bust / 140 mm porous Moai",
+   "value": "0.13 mm / 0.10 mm (MetroX 0.47 / 1.07 mm; POP 3 Plus 1.26 / 1.19 mm)",
+   "source": "https://isprs-archives.copernicus.org/articles/XLIX-B1-2026/263/2026/isprs-archives-XLIX-B1-2026-263-2026.pdf",
+   "source_title": "Kersten et al., ISPRS Archives XLIX-B1-2026-263",
+   "read": "2026-11-17",
+   "note": "Tables 3 and 6. On the bust the Moose's 0.13 mm equals the MARVELSCAN's 0.13 mm. The paper says the Moose 'proved to be the most accurate system' among the low-cost devices."
+  },
+  {
+   "product": "Revopoint MetroX",
+   "label": "Flatness on a 300×300 mm granite plate (standard deviation)",
+   "value": "0.29 mm (Moose 0.60 mm; POP 3 Plus 0.96 mm; MARVELSCAN 0.08 mm)",
+   "source": "https://isprs-archives.copernicus.org/articles/XLIX-B1-2026/263/2026/isprs-archives-XLIX-B1-2026-263-2026.pdf",
+   "source_title": "Kersten et al., ISPRS Archives XLIX-B1-2026-263",
+   "read": "2026-11-17",
+   "note": "Table 2. The MetroX beat the Moose on flat surfaces. The paper's own text conflicts with this table on the Moose-vs-POP comparison."
+  },
+  {
+   "product": "Creality CR-Scan Ferret Pro",
+   "label": "Length error on a 150 mm gauge block",
+   "value": "149.67 mm measured, 0.335 mm deviation (spec claims 0.1 mm)",
+   "source": "https://www.notebookcheck.com/3D-Scanner-zum-kleinen-Preis-Was-der-Creality-Ferret-Pro-kann.1343967.0.html",
+   "source_title": "Notebookcheck (Silvio Werner): 3D-Scanner zum kleinen Preis – Was der Creality Ferret Pro kann, 2026-07-16, updated 2026-10-05",
+   "read": "2026-11-17",
+   "note": "Gauge block specified to 0.003 mm, caliper reading 150.005 mm. Scan measured with CrealityScan's quick-measure tool. Werner puts the error at about ten times the caliper's ±0.035 mm uncertainty."
+  },
+  {
+   "product": "3DMakerpro Seal",
+   "label": "Error on a 15×20×25 mm reference cuboid (turntable mode)",
+   "value": "0.02 mm on X and Z, −0.16 mm on Y",
+   "source": "https://3dprintingindustry.com/news/review-3dmakerpro-seal-an-affordable-user-friendly-and-high-quality-3d-scanner-228206/",
+   "source_title": "3D Printing Industry (Alex Tyrer-Jones): Review: 3DMakerpro Seal, 2024-02-08",
+   "read": "2026-11-17",
+   "note": "Same review: −0.053 mm on a motorcycle indicator (clear plastic and black casing) and 0.104 mm on a chrome e-scooter suspension part. The test dates from 2024."
+  },
+  {
+   "product": "Creality CR-Scan Otter",
+   "label": "Accuracy error on a black automotive plastic part (turntable)",
+   "value": "17 µm (Raptor 22 µm; Seal 51 µm; MetroX 136 µm; Ferret 270 µm)",
+   "source": "https://zelpio.com/blog/3d-scanner-comparison-test/",
+   "source_title": "Zelpio: 3D scanner comparison test, 2026-06-28",
+   "read": "2026-11-17",
+   "note": "WEAK SOURCE: no tester is named and the page gives no reference instrument or error method. Background only, not for deciding a pick. Its MetroX ranking conflicts with the ISPRS staircase result."
+  }
+ ],
+ "unsourced": [
+  "A measured accuracy figure from a named reviewer or lab for the Creality CR-Scan Otter, CR-Scan Raptor, Revopoint INSPIRE 2, Revopoint MINI 2 or Einstar Vega. I searched Notebookcheck (it has only launch and deal news for these), Creative Bloq's INSPIRE 2 shiny-object test (qualitative only), 3dprinting.com reviews and general searches for gauge-block or caliper tests.",
+  "Tom's Hardware's 'best 3D scanners … we've benchmarked' page came back truncated, so I couldn't check it for measured figures.",
+  "HP Academy's 'Scan Off' (Taz Quinn-Walshe) compared the Moose, Otter, Einstar and Range 2 in Geomagic Design X, but its deviation figures are only in the video, not on the page.",
+  "A gauge-block or sphere-spacing test of the MetroX or Moose. The ISPRS study reports surface-deviation statistics only, not sphere or length errors."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.1625769999999997
+ }
+}
