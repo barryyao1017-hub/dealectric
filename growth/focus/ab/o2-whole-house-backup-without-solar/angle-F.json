@@ -1,0 +1,142 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got prices a whole-home-sized (about 24-30 kWh, 240 V, automatic switchover) battery from today's store pages. At equipment cost before installation, the Anker SOLIX E10 with 24.6 kWh and Power Dock is $13,798 ($561/kWh). The FranklinWH 2× aPower 2 + aGate (30 kWh) is $20,578 ($686/kWh). Six Enphase IQ Battery 5P units plus IQ System Controller 3 (30 kWh) come to $23,430 ($781/kWh). The EcoFlow DELTA Pro Ultra X 12 kWh + Smart Home Panel 3 is $10,899 ($887/kWh). Tesla's Powerwall 3 has only an installed average, $998/kWh (EnergySage).",
+ "standout": 2,
+ "standout_why": "I compared five pages. solutionenergy.com/batteries/without-solar and solarpanelx.com give Tesla and FranklinWH only as EnergySage installed averages ($967/kWh and $1,232/kWh), and price the E10 only as one 6 kWh battery with Power Dock ($5,799). outagereadyhq.com prices portable units and their transfer kits (DELTA Pro 3, F3800 Plus, Apex 300, Jackery 5000 Plus, DELTA Pro Ultra) as of Oct 24 to Nov 10. None of them gives FranklinWH or Enphase equipment prices, a 24-30 kWh whole-home configuration priced from a store today, or a per-kWh comparison across both kinds of system. energysavvyhomes.com could not be read (TLS error), and stormwatts.com was not read.",
+ "decides": "ChatGPT's answer suggests two Powerwall 3s or two aPower 2s for about 27-30 kWh, at $22,000-$35,000 installed. Store prices today show the shopper can buy whole-home-sized equipment for 30 kWh for $20,578 (FranklinWH, installer still needed) or 24.6 kWh with automatic switchover for $13,798 (Anker SOLIX E10, which Dealectric lists). That puts the E10 ahead on equipment cost per kWh among systems with automatic whole-home switchover. Portable 240 V units (Apex 300 kit $579/kWh) are cheaper per kWh, but at 3.84 kW they cannot carry a whole house with central AC. Installation is extra on every equipment price, and Powerwall 3 has no public equipment price, so the Tesla comparison is installed against equipment-only.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2 + aGate",
+  "Enphase IQ Battery 5P + IQ System Controller 3",
+  "Anker SOLIX E10 + Power Dock",
+  "EcoFlow DELTA Pro Ultra X + Smart Home Panel 3",
+  "EcoFlow DELTA Pro Ultra",
+  "Anker SOLIX F3800 Plus + Smart Home Power Kit",
+  "BLUETTI Apex 300 + B300K + Home Backup Kit",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro 3",
+  "EcoFlow DELTA 3 Max",
+  "Base Power (service)"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10 (2× Power Module + 4× B6000) + Power Dock",
+   "label": "price, capacity, output, grid charging",
+   "value": "$13,798 (shown against $14,098); 24 kWh (4 × 6.144 kWh = 24.576 kWh); 20 kW turbo; grid charging at 7,680 W (240 V / 32 A) or 1,800 W (120 V); switchover in 20 ms or less",
+   "source": "https://us.ankersolix.com/products/e10-2-power-module-4-battery-power-dock",
+   "source_title": "E10 (2× Power Module + 4× Battery) + Power Dock",
+   "read": "2026-11-17",
+   "note": "Read through r.jina.ai; the store's JSON gave $14,098, and the page shows $13,798 as the sale price. $13,798 / 24.576 kWh = $561/kWh. Installation is a separate add-on ('Power Dock Installation Service (Permit Not Included)'), and the page says an electrician is required. Loses where: no single-unit 30 kWh option, and a second power module is needed to go past 7.68 kW continuous. Dealectric lists the E10."
+  },
+  {
+   "product": "Anker SOLIX E10 (1× Power Module + 2× B6000) + Power Dock",
+   "label": "price, capacity",
+   "value": "$7,799; 12 kWh; 10 kW turbo",
+   "source": "https://us.ankersolix.com/products/e10-power-module-battery-2-power-dock",
+   "source_title": "Anker SOLIX E10 (1× Power Module + 2× Battery) + Power Dock",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py. $7,799 / 12.288 kWh = $635/kWh. Without the dock, the 1 module + 2 batteries kit is $6,299 and the 1 module + 1 battery + Power Dock kit is $5,799 (same store listing)."
+  },
+  {
+   "product": "FranklinWH aPower 2 + aGate (30 kWh)",
+   "label": "equipment price",
+   "value": "$20,578 for 2 × aPower 2 (APR-10K15V2-US) + 1 × aGate; 30 kWh; 10 kW continuous per aPower 2",
+   "source": "https://www.self2solar.com/products/franklinwh-apower-2-agate-30kwh-ac-couple-storage-system",
+   "source_title": "FranklinWH aPower 2 + aGate 30kWh AC-Couple Storage System For Whole-home Backup and Partial-home Backup",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py, equipment only. $20,578 / 30 kWh = $686/kWh. The 15 kWh bundle (1 × aPower 2 + aGate) is $11,379 ($759/kWh) at https://www.self2solar.com/products/franklinwh-home-energy-management-system-apower2-with-agate. An aPower 2 alone is $9,799. Loses where: the highest equipment cost at 30 kWh among systems with automatic switchover except Enphase, and installation is extra. ChatGPT cited FranklinWH's own page saying it charges from the grid without solar."
+  },
+  {
+   "product": "Enphase IQ Battery 5P",
+   "label": "equipment price, capacity, output",
+   "value": "$3,555.15 (shown against $4,586); 5.0 kWh usable; 3.84 kW continuous",
+   "source": "https://shopsolarkits.com/products/enphase-iq-battery-5p",
+   "source_title": "Enphase IQ Battery 5P",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py. Backup also needs the IQ System Controller 3, which is $2,099 at https://shopsolarkits.com/products/enphase-iq-system-controller-3 (same date). 30 kWh = 6 × $3,555.15 + $2,099 = $23,430 ($781/kWh, 23 kW continuous). One unit + controller = $5,654 ($1,131/kWh). Loses where: 5 kWh per unit, so a whole house needs six units, and it is the most expensive at 30 kWh. Solarpanelx.com says Enphase's compatibility table lists only configurations with solar."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X (1× inverter + 2× battery) + Smart Home Panel 3",
+   "label": "price, capacity, output, grid charging",
+   "value": "$10,899; 12 kWh; 12 kW 120/240 V; grid charging up to 12,000 W (240 V, 50 A); sold out, pre-order",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra-x-inverter-smart-home-panel-3-2b-bundle",
+   "source_title": "EcoFlow DELTA Pro Ultra X Smart Control Kit",
+   "read": "2026-11-17",
+   "note": "Read through r.jina.ai. $10,899 / 12.288 kWh = $887/kWh. Each extra battery is $2,349 (https://us.ecoflow.com/products/delta-pro-ultra-x-smart-extra-battery). Installation is a separate order. Loses where: the highest per-kWh equipment price among the whole-home systems, and it is sold out."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "price",
+   "value": "$4,199 (inverter + 6 kWh battery), listed as unavailable",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py; available=false. Loses where: out of stock, and replaced by the DELTA Pro Ultra X."
+  },
+  {
+   "product": "Tesla Powerwall 3",
+   "label": "installed price",
+   "value": "$13,473 typical installed before incentives; $998/kWh; 13.5 kWh",
+   "source": "https://www.energysage.com/energy-storage/best-home-batteries/tesla-powerwall-battery-complete-review/",
+   "source_title": "Tesla Powerwall 3 review in 2026: A game changer at a solid price (EnergySage)",
+   "read": "2026-11-17",
+   "note": "Page updated May 15, 2026; average of marketplace quotes. Tesla publishes no equipment price, and tesla.com returned 403. Loses where: the only price is an installed average, so it can't be compared like-for-like with equipment prices. Solarpanelx.com notes the utility or installer can restrict grid charging ('Grid Charging Restricted')."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus + Smart Home Power Kit",
+   "label": "price",
+   "value": "$4,799.99 for one unit (3.84 kWh); $7,799.99 for two units + kit (7.68 kWh)",
+   "source": "https://us.ankersolix.com/products/f3800-plus-2-smart-home-power-kit",
+   "source_title": "2× Anker SOLIX F3800 Plus + Smart Home Power Kit",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py. Two units: $7,799.99 / 7.68 kWh = $1,016/kWh. One unit: $1,250/kWh (https://us.ankersolix.com/products/f3800-plus-smart-home-power-kit). Output is 6,000 W per unit (outagereadyhq.com). Loses where: about twice the per-kWh cost of the E10 for a third of the capacity. Dealectric lists the F3800 Plus."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit (single Apex 300)",
+   "label": "price, capacity, output",
+   "value": "$3,199 (shown against $3,399); 5,529.6 Wh; 3,840 W",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py. $3,199 / 5.53 kWh = $579/kWh. An Apex 300 alone is $1,499 (https://www.bluettipower.com/products/apex-300-home-battery-backup). Loses where: 3.84 kW output per unit is backup for essential circuits, not a whole house with central AC. Dealectric lists it."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "price, availability",
+   "value": "$3,499; 5,040 Wh; sold out, pre-order shipping Dec 2",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py; the text says 'sold out due to high demand. Pre-order now, ships Dec 2.' $3,499 / 5.04 kWh = $694/kWh without a switch. Outagereadyhq.com (Oct 29) lists the Smart Transfer Switch bundle at $3,989. Loses where: not shipping until December."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "price",
+   "value": "$879 (shown against $2,398); 2,048 Wh; 2,400 W",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh)",
+   "read": "2026-11-17",
+   "note": "Store JSON via storecheck.py. ChatGPT's card showed $999 (Best Buy). Loses where: 2 kWh at 2.4 kW covers a fridge and lights for a few hours, not a whole house."
+  },
+  {
+   "product": "general",
+   "label": "rival pricing baseline",
+   "value": "Solutionenergy.com gives Tesla at about $967/kWh and FranklinWH at about $1,232/kWh (EnergySage installed averages), and the E10 at $5,799 with Power Dock. Solarpanelx.com gives an EnergySage average of about $1,159/kWh and Base Power at a $695 install fee plus $19/month (Texas).",
+   "source": "https://solutionenergy.com/batteries/without-solar/",
+   "source_title": "Best Home Battery Backup Without Solar - SolutionEnergy",
+   "read": "2026-11-17",
+   "note": "Shows what the cited rivals already state. Base Power figures are from https://solarpanelx.com/guides/home-battery-backup-without-solar-cost-options/ (read 2026-11-17)."
+  }
+ ],
+ "unsourced": [
+  "Tesla Powerwall 3 equipment or 'starting at' price: tesla.com/powerwall and the Tesla support grid-charging page returned 403, including through r.jina.ai.",
+  "Current EcoFlow DELTA Pro 3 price: the store search returned no DELTA Pro 3 power station today; outagereadyhq.com had $2,799 on Oct 24.",
+  "Mango Power E 240 V kit prices: the store JSON gives only the lowest variant ($1,499 to $3,499 against inflated compare-at prices), and the per-variant pages hit HTTP 429.",
+  "Jackery Home Backup Kit 5000 Plus (20 kWh) price: the store JSON shows only the $3,499 lowest variant, and the variant page hit HTTP 429.",
+  "Whether Enphase supports a US install with IQ Battery 5P and no solar: the only grid-charging documentation found was on the UK installer site.",
+  "energysavvyhomes.com whole-home guide (cited by ChatGPT): WebFetch failed with a TLS certificate error."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}
