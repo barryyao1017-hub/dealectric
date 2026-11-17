@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the bottleneck for direct-playing a 4K remux in Infuse is the link from the Apple TV to the network, not the NAS. Ultra HD Blu-ray tops out at 128 Mbit/s (about 16 MB/s), and any gigabit NAS can deliver that roughly 7 times over. Firecore staff recommend a wired Gigabit connection for high-bitrate files, but Apple's spec page shows the cheaper 64 GB Apple TV 4K (3rd gen) Wi-Fi model has no Ethernet port at all.",
+ "standout": 2,
+ "standout_why": "I compared against both cited pages, Firecore's 'Streaming From a Mac, PC, or NAS' (support.firecore.com/…/215090977) and firecore.com/infuse, and also opened the top uncited result, itechguides.com. The Firecore support page lists protocols (SMB/NFS/FTP/WebDAV…) and SMB version settings, and warns that SMB3 encryption can lower performance. It gives no bitrate, bandwidth, or wired-versus-Wi-Fi guidance. firecore.com/infuse only says Infuse plays formats 'without transcoding'. The itechguides article covers no wired/Wi-Fi, Ethernet port or 4K NAS requirements; it mentions bitrate only for remote streaming. None of them gives the 128 Mbit/s peak, the gigabit headroom, Firecore's own advice to use wired Gigabit, or the fact that the 64 GB Apple TV 4K has no Ethernet.",
+ "decides": "It confirms the cheapest-NAS pick and points the money at a different part of the setup. 1GbE ARM boxes (Synology DS124, DS223j, TerraMaster F2-212, UGREEN DH2300) are enough because 128 Mbit/s uses about a seventh of gigabit. Paying extra for 2.5GbE or an Intel CPU (DXP2800, DS225+) does nothing for Infuse direct play. What decides whether remuxes play without buffering is whether the Apple TV can be wired. A shopper with the 64 GB Wi-Fi-only 3rd-gen model has to rely on Wi-Fi and should use 5 GHz: Apple lists the 2.4 GHz link rate as 195 Mbit/s, close to the 128 Mbit/s peak. Owners of the 128 GB model or the 2nd/4th gen should plug in Ethernet. If SMB3 transport encryption is on, turning it off (Firecore's own advice) keeps a weak ARM CPU from becoming the limit.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "TerraMaster F2-212",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Firecore staff guidance on network for high-bitrate files",
+   "value": "\"streaming large or high-bitrate files is best done over a wired Gigabit connection\"; \"the Apple TV's HW decoder will top out at about 200 mpbs\" [sic]",
+   "source": "https://community.firecore.com/t/upper-limit-of-apple-tv/17356",
+   "source_title": "Upper limit of Apple TV - Firecore community",
+   "read": "2026-11-17",
+   "note": "Posted 4 Dec 2018 by 'james', who writes as the Infuse team. In the same post: 'SMB works well in most cases… NFS can be faster in some cases, but is a bit more fiddly to set up.'"
+  },
+  {
+   "product": "general",
+   "label": "Ultra HD Blu-ray maximum bit rate by disc capacity",
+   "value": "82 Mbit/s (50 GB), 108 Mbit/s (66 GB), 128 Mbit/s (100 GB)",
+   "source": "https://hd-report.com/ultra-hd-blu-ray/",
+   "source_title": "Ultra HD Blu-ray Disc - HD Report",
+   "read": "2026-11-17",
+   "note": "128 Mbit/s ÷ 8 = 16 MB/s. A 1GbE NAS measured at about 110–115 MB/s SMB read (StorageReview, DS223j, already in our table) gives about 7× headroom. HD Report lists the BDA as developer but its footnote is not visible. The BDA white paper PDF failed to load (certificate error)."
+  },
+  {
+   "product": "Apple TV 4K (3rd generation)",
+   "label": "Ethernet by configuration",
+   "value": "Wi-Fi model (64 GB): no Ethernet; Wi-Fi + Ethernet model (128 GB): Gigabit Ethernet; both Wi-Fi 6 (802.11ax) 2x2 MIMO",
+   "source": "https://support.apple.com/en-us/111839",
+   "source_title": "Apple TV 4K (3rd generation) - Technical Specifications",
+   "read": "2026-11-17",
+   "note": "Maker spec page. The Ethernet row is listed only for the 128 GB configuration."
+  },
+  {
+   "product": "Apple TV 4K (2nd/3rd/4th generation)",
+   "label": "Wi-Fi link rates and Ethernet speed",
+   "value": "2nd and 3rd gen: 802.11ax 1200 Mbit/s at 5 GHz, 195 Mbit/s at 2.4 GHz, 1 Gbit/s Ethernet. 4th gen: 802.11be 2400 Mbit/s at 5 and 6 GHz, 229 Mbit/s at 2.4 GHz, 1 Gbit/s Ethernet",
+   "source": "https://support.apple.com/guide/deployment/wi-fi-ethernet-specifications-apple-devices-dep268652e6c/web",
+   "source_title": "Wi-Fi and Ethernet specifications for Apple devices - Apple Support",
+   "read": "2026-11-17",
+   "note": "These are PHY (link) rates, not measured throughput. 195 Mbit/s at 2.4 GHz is only about 1.5× the 128 Mbit/s disc peak, so 5 GHz or wired is the safe path. This table does not mark the 64 GB 3rd-gen model as Ethernet-less; spec page 111839 does."
+  },
+  {
+   "product": "Apple TV 4K (current, 4th gen)",
+   "label": "Current model ports and formats",
+   "value": "Gigabit Ethernet; Wi-Fi 7 (802.11be) 2x2 MIMO; 128 GB; Dolby Vision (Profile 8.1 and 5), HDR10, HDR10+, HLG",
+   "source": "https://www.apple.com/apple-tv-4k/specs/",
+   "source_title": "Apple TV 4K - Technical Specifications - Apple",
+   "read": "2026-11-17",
+   "note": "Single configuration on the current page, so every new unit can be wired. The listed Dolby Vision profiles do not include Profile 7 (the UHD Blu-ray dual-layer profile)."
+  },
+  {
+   "product": "general",
+   "label": "Infuse SMB settings that affect speed",
+   "value": "SMB version choice Auto/SMB3/SMB2/SMB1/Legacy; SMB3 encryption 'in some cases… can lead to lower performance'; fix by disabling 'Transport encryption' on the server",
+   "source": "https://support.firecore.com/hc/en-us/articles/215090977-Streaming-From-a-Mac-PC-or-NAS",
+   "source_title": "Streaming From a Mac, PC, or NAS – Firecore Support",
+   "read": "2026-11-17",
+   "note": "Already on a cited rival page; included for context, not as the gap."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "CPU, RAM, LAN, protocols",
+   "value": "Realtek RTD1619B; 1 GB DDR4 non-ECC; 1× 1GbE RJ-45 (MTU limit 1500); SMB, AFP, NFS, FTP, WebDAV; max 5 SMB connections (FSCT-based)",
+   "source": "https://www.synology.com/en-us/products/DS124#specs",
+   "source_title": "DS124 | Synology Inc. - specifications",
+   "read": "2026-11-17",
+   "note": "Maker US spec page. The 5-connection SMB figure is Synology's FSCT rating, not a hard cap on Infuse streams."
+  }
+ ],
+ "unsourced": [
+  "BDA's own Ultra HD Blu-ray white paper (blu-raydisc.com White_Paper_General_5th_20180216.pdf) for the 128 Mbit/s maximum: the fetch failed with a certificate error, so the figure is from HD Report. One Wikipedia-derived page gives 92/123/144 Mbit/s and cites the 5th edition; I could not settle which set is current.",
+  "A measured Infuse or SMB throughput for an Apple TV 4K over 5 GHz Wi-Fi from a named reviewer: only community anecdotes found, none with a named test.",
+  "Whether DSM's default SMB transport-encryption setting causes Infuse's SMB3 'Auto' mode to negotiate encryption on the DS124/DS223j, and the throughput penalty on the RTD1619B: no maker or reviewer source found.",
+  "Firecore's official statement on Dolby Vision Profile 7 handling on Apple TV and on whether TrueHD/DTS-HD MA still need Infuse Pro: only community-forum posts and partial support-page text found, not used."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.9238658000000002
+ }
+}

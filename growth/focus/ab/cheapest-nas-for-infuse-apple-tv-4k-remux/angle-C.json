@@ -1,0 +1,118 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that the Apple TV 4K's wired port tops out at Gigabit (and the 64 GB Wi-Fi-only 3rd-generation model has no Ethernet port at all), so a 2.5GbE NAS adds nothing for Infuse. None of them says that Infuse supports only Dolby Vision Profiles 5 and 8, so UHD Blu-ray remuxes (Profile 7) fall back to HDR whichever NAS serves them.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited (Firecore's 'Streaming From a Mac, PC, or NAS' and firecore.com/infuse) and its answer. The Firecore support article lists the SMB modes (Auto/SMB3/SMB2/SMB1/Legacy) and protocols but says nothing about Ethernet, bandwidth or NAS brands. firecore.com/infuse lists 'Dolby Vision (Profile 5 & 8)' but never says that disc remuxes are Profile 7 or what happens to them. ChatGPT's answer says 'SMB + Gigabit Ethernet' is enough but gives no reason, and it does not name the Apple TV's port limit or the Wi-Fi-only model with no port. None of the pages says Dolby Vision and Atmos need Infuse Pro, beyond the feature list on firecore.com.",
+ "decides": "It backs the cheapest 1GbE pick (Synology DS124 at 1×1GbE, or UGREEN DH2300 at $239.99) over 2.5GbE boxes such as the DXP2800 or Asustor AS1102TL, because the Apple TV's own port is Gigabit and Camera Jabber measured the DH2300 at 109 MB/s (about 872 Mb/s) wired. It adds two warnings that apply whatever NAS is bought: shoppers with the 64 GB Wi-Fi-only Apple TV 4K (3rd gen) are limited to Wi-Fi, and Profile 7 remuxes will play as HDR10, not Dolby Vision, so a transcoding NAS will not fix that.",
+ "candidates": [
+  "Synology DS124",
+  "UGREEN NASync DH2300",
+  "Synology DS223j",
+  "TerraMaster F2-212",
+  "UGREEN NASync DXP2800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Apple TV 4K (3rd gen, 2022) Ethernet by configuration",
+   "value": "64 GB Wi-Fi model: no Ethernet listed; 128 GB Wi-Fi + Ethernet model: Gigabit Ethernet; both Wi-Fi 6 2x2 MIMO",
+   "source": "https://support.apple.com/en-us/111839",
+   "source_title": "Apple TV 4K (3rd generation) - Technical Specifications",
+   "read": "2026-11-17",
+   "note": "Apple's spec page for the 3rd generation. The Wi-Fi model's connectivity list has no Ethernet entry."
+  },
+  {
+   "product": "general",
+   "label": "Apple TV 4K (3rd gen) Dolby Vision support",
+   "value": "Dolby Vision Profile 5 up to 2160p60; HDR10+/HDR10/HLG",
+   "source": "https://support.apple.com/en-us/111839",
+   "source_title": "Apple TV 4K (3rd generation) - Technical Specifications",
+   "read": "2026-11-17",
+   "note": "Only Profile 5 is listed for this generation."
+  },
+  {
+   "product": "general",
+   "label": "Current Apple TV 4K on apple.com (US) networking and HDR",
+   "value": "One configuration, 128 GB; Gigabit Ethernet; Wi-Fi 7 (802.11be) 2x2 MIMO; Dolby Vision Profile 8.1 and 5, HDR10, HDR10+, HLG; Dolby Atmos",
+   "source": "https://www.apple.com/apple-tv-4k/specs/",
+   "source_title": "Apple TV 4K - Technical Specifications",
+   "read": "2026-11-17",
+   "note": "The wired port on the current model is still Gigabit, so it cannot go faster than 1 Gb/s from any NAS."
+  },
+  {
+   "product": "general",
+   "label": "Infuse Dolby Vision profiles",
+   "value": "Full Dolby Vision for Profile 5 and Profile 8 only; also HDR10, HDR10+, HLG",
+   "source": "https://firecore.com/infuse",
+   "source_title": "Infuse - Video Player for Apple TV, iPhone, iPad, Mac & Vision | Firecore",
+   "read": "2026-11-17",
+   "note": "Firecore's own product page."
+  },
+  {
+   "product": "general",
+   "label": "Infuse handling of Dolby Vision Profile 7 (UHD Blu-ray remux)",
+   "value": "'All Profile 7 will fall back to HDR' (Firecore's james, 2023-05-26)",
+   "source": "https://community.firecore.com/t/summary-of-dolby-vision-support-status/42403",
+   "source_title": "Summary of Dolby Vision Support status - Firecore community",
+   "read": "2026-11-17",
+   "note": "On 2020-12-01 in thread 19713, james also wrote 'Profile 7 is dual layer, which is not supported on the Apple TV.' This is a player and Apple TV limit that the NAS does not affect."
+  },
+  {
+   "product": "general",
+   "label": "Infuse Pro gating and price",
+   "value": "Dolby Vision and Atmos, lossless 24-bit HD audio and extra video formats are listed as Pro features; Pro costs $1.99/month, $16.99/year or $99.99 lifetime; requires tvOS 18.5+",
+   "source": "https://firecore.com/infuse",
+   "source_title": "Infuse - Video Player for Apple TV, iPhone, iPad, Mac & Vision | Firecore",
+   "read": "2026-11-17",
+   "note": "The page's free and Pro lists overlap on iCloud sync and cloud sources. Only the Pro section lists Dolby Vision and Atmos."
+  },
+  {
+   "product": "general",
+   "label": "Infuse share protocols and SMB modes",
+   "value": "SMB (Auto, SMB3, SMB2, SMB1, Legacy), NFS, FTP, SFTP, FTPS, FTPES, UPnP, DLNA, WebDAV; library features unavailable over UPnP/DLNA; SMB3 encryption can lower performance",
+   "source": "https://support.firecore.com/hc/en-us/articles/215090977-Streaming-From-a-Mac-PC-or-NAS",
+   "source_title": "Streaming From a Mac, PC, or NAS – Firecore Support",
+   "read": "2026-11-17",
+   "note": "A rival cited by ChatGPT already says this, so it adds nothing new. It does mean a router's SMB1-only USB share can still connect."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "LAN and file services",
+   "value": "1× 1GbE (MTU limit 1500); SMB1 (CIFS), SMB2, SMB3, NFSv3, NFSv4, NFSv4.1, AFP, FTP, WebDAV; Realtek RTD1619B 4-core 1.7 GHz, 1 GB DDR4; 1 bay; 2-year warranty, extendable to 4",
+   "source": "https://www.synology.com/en-us/products/DS124#specs",
+   "source_title": "DS124 | Synology Inc. - specifications",
+   "read": "2026-11-17",
+   "note": "It supports every SMB and NFS version Infuse can use."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured wired SMB throughput and feature limits",
+   "value": "Read 109 MB/s, write 103 MB/s wired (EXT4); 61/46 MB/s over Wi-Fi (Btrfs); 1GbE port; no Docker, no VMs, no M.2",
+   "source": "https://camerajabber.com/reviews/ugreen-nasync-dh2300-review/",
+   "source_title": "UGREEN NASync DH2300 review - Camera Jabber (Ali Jennings, 23 Aug 2026)",
+   "read": "2026-11-17",
+   "note": "Measured with AJA System Test Lite. 109 MB/s × 8 = 872 Mb/s, close to the Apple TV's Gigabit port limit. The reviewer had to turn SMB on in settings."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, UGREEN US store",
+   "value": "$239.99 (compare-at $394.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300 - UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py (Shopify JSON). Diskless."
+  }
+ ],
+ "unsourced": [
+  "The UHD Blu-ray maximum video bitrate (128 Mb/s on 100 GB discs), to show how much headroom Gigabit leaves: What Hi-Fi's page came back truncated, AnandTech's page failed an SSL check, and I could not find the BDA white paper.",
+  "UGREEN's official DH2300 spec page for the protocol list (SMB/NFS/WebDAV, and whether AFP is supported): ai.ugreen.com/pages/dh2300-specs returned 404 and the Neowin review returned 403. A search snippet said AFP is not supported, which conflicts with the 'AFP' in our current row, so that cell needs checking.",
+  "Synology DS124 US price: amzcheck.py returned nothing (Amazon blocked it), and I did not open Synology's US store or Newegg.",
+  "Whether UGREEN offers a native tvOS app for the DH2300, as our current row claims: I found no UGREEN page that says so."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0795437000000003
+ }
+}

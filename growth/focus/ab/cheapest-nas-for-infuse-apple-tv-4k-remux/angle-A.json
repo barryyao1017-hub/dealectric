@@ -1,0 +1,93 @@
+{
+ "angle": "A",
+ "gap": "None of the results ChatGPT got turns a NAS's network rating into the bitrate Infuse needs. A gigabit NAS measured at about 112 MB/s (896–944 Mbit/s) has roughly 7× the headroom of the 128 Mbit/s Ultra HD Blu-ray maximum. The Apple TV 4K's own port is only Gigabit Ethernet, and the 64 GB model has no Ethernet port at all, so a 2.5GbE NAS gives no benefit to a single Infuse stream.",
+ "standout": 2,
+ "standout_why": "I opened Firecore's 'Streaming From a Mac, PC, or NAS' (cited) and itechguides' Infuse setup guide (top result). Firecore covers protocols (SMB, NFS, WebDAV and others), the SMB-version setting and SMB3 encryption slowing playback. It says nothing about Ethernet or Wi-Fi, bitrate, 4K/remux or NAS hardware. itechguides only says to 'check the connection, file bitrate, and server capability' and gives no figures. ChatGPT's answer says 'Gigabit Ethernet' is enough but never shows the arithmetic, and never mentions that the 64 GB Apple TV 4K has no Ethernet port. I did not open firecore.com/infuse.",
+ "decides": "It confirms the pick: buy the cheapest 1GbE box with SMB/NFS (Synology DS124 or DS223j, TerraMaster F2-212, UGREEN DH2300). It rules out paying more for 2.5GbE (UGREEN DXP2800, Asustor AS1102TL) just for Infuse, because the Apple TV caps the link at 1 Gb/s. Owners of the 64 GB Wi-Fi-only Apple TV 4K have Wi-Fi 6 as their only link, so for them the router matters more than the NAS port. A second normalisation note for the page: makers' low power figures are 'HDD hibernation' numbers, not idle numbers. Synology lists 3.44 W (DS124) and 4 W (DS223j) for hibernation, while ocinside measured 9–11 W idle on the DH2300. Compare idle against idle.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "TerraMaster F2-212",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "Asustor Drivestor 2 Lite AS1102TL"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Apple TV 4K (3rd gen) network ports",
+   "value": "Wi-Fi + Ethernet 128 GB: Gigabit Ethernet + Wi-Fi 6 (2x2 MIMO); Wi-Fi 64 GB: no Ethernet port, Wi-Fi 6 only",
+   "source": "https://support.apple.com/en-us/111839",
+   "source_title": "Apple TV 4K (3rd generation) - Tech Specs",
+   "read": "2026-11-17",
+   "note": "Apple lists Ethernet only under the 128 GB Wi-Fi + Ethernet model. The fastest wired link any current Apple TV 4K can use is 1 Gb/s."
+  },
+  {
+   "product": "general",
+   "label": "Ultra HD Blu-ray maximum data rate (worst case for a 4K remux)",
+   "value": "108 Mbit/s (66 GB dual-layer), 128 Mbit/s (100 GB triple-layer)",
+   "source": "https://www.whathifi.com/news/4k-blu-ray-discs-bda-agrees-standards-next-generation-discs",
+   "source_title": "4K Blu-ray discs: BDA agrees standards for next-generation discs (What Hi-Fi?, 18 Feb 2015)",
+   "read": "2026-11-17",
+   "note": "What Hi-Fi? attributes the figures to the BDA's Victor Matsuda. A remux copies the disc stream, so 128 Mbit/s is the ceiling Infuse has to pull over SMB/NFS."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured network throughput (iperf3, 1GbE)",
+   "value": "about 112 MB/s (reviewer also wrote 944 Mbit/s)",
+   "source": "https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "source_title": "Ugreen DH2300 NAS Review (ocinside.de), page 5",
+   "read": "2026-11-17",
+   "note": "Unit conversion: 112 MB/s × 8 = 896 Mbit/s, which is 7.0× the 128 Mbit/s disc maximum. The reviewer's own 944 Mbit/s works out to 7.4×. The two figures they give don't match (944/8 = 118 MB/s), so the page should use the lower one. Blackmagic sequential writes were over 100 MB/s."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Measured wall power",
+   "value": "9–11 W idle; 12–13 W copying over the network; 15–17 W at 100% CPU stress; about 1 W when powered off",
+   "source": "https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "source_title": "Ugreen DH2300 NAS Review (ocinside.de), page 5",
+   "read": "2026-11-17",
+   "note": "Measured with a Shelly Plug S, which the reviewer calls 'not super accurate'. Two drives in RAID-1. The current page's '9.5 W idle' falls inside this range."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Maker specs relevant to Infuse",
+   "value": "1× 1GbE (MTU limit 1500); SMB, NFS, AFP, FTP, WebDAV; Realtek RTD1619B 4-core 1.7 GHz, 1 GB DDR4; 10.69 W access / 3.44 W HDD hibernation; 19.0 dB(A) idle; 2-year warranty (extendable to 4)",
+   "source": "https://www.synology.com/en-us/products/DS124#specs",
+   "source_title": "DS124 | Synology Inc. - Specifications",
+   "read": "2026-11-17",
+   "note": "The 3.44 W figure is with the drives spun down (hibernation), not idle. The power footnote does not name the test drives. The noise test used Synology SATA HDDs."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Maker specs relevant to Infuse",
+   "value": "1× 1GbE (MTU limit 1500); SMB1/2/3, NFSv3/v4/v4.1; Realtek RTD1619B 4-core 1.7 GHz, 1 GB DDR4; 16.31 W access / 4 W HDD hibernation; 18.2 dB(A); 2-year warranty (extendable to 4)",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DS223j | Synology Inc. - Specifications",
+   "read": "2026-11-17",
+   "note": "Noise was measured fully loaded with Seagate 2TB ST2000VN000 drives at idle. The power footnote does not name the drives. Same CPU and RAM as the DS124, so streaming headroom is the same. The second bay adds about 5.6 W at access (16.31 − 10.69)."
+  },
+  {
+   "product": "general",
+   "label": "What Infuse needs from the share (Firecore)",
+   "value": "SMB, NFS, FTP, SFTP, FTPS, FTPES, UPnP, DLNA or WebDAV; library features unavailable over UPnP/DLNA; SMB3 transport encryption can lower performance",
+   "source": "https://support.firecore.com/hc/en-us/articles/215090977-Streaming-From-a-Mac-PC-or-NAS",
+   "source_title": "Streaming From a Mac, PC, or NAS – Firecore Support",
+   "read": "2026-11-17",
+   "note": "The rival page sets no NAS hardware requirement and gives no speed or bitrate figure. That missing figure is what the normalisation in this angle fills."
+  }
+ ],
+ "unsourced": [
+  "Prices today: I didn't get a current price for any candidate. Amazon (amzcheck search) returned nothing for DS124, DS223j or F2-212. storecheck on us.ugreen.com hit HTTP 429 or returned an unrelated product for DH2300/DXP2800. Newegg returned 403. ai.ugreen.com (DH2300) returned 429.",
+  "TerraMaster F2-212 maker spec page (LAN, protocols, power): terra-master.com/us returned 429 and /global returned 404.",
+  "UGREEN DH2300 maker power figures (access/hibernation): a search summary credited retailer listings with 13.72 W / 3.304 W, but I couldn't open the maker page (429), so I left them out.",
+  "Neowin's DH2300 measured power (search summary: 10.3 W with drives hibernating, 15.3 W accessing): the page returned 403 on both the amp and full URLs.",
+  "Measured SMB read speed for the DS124 and for the 2.5GbE models (DXP2800, AS1102TL): no time left in the tool budget to open a reviewer page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9323010999999997
+ }
+}

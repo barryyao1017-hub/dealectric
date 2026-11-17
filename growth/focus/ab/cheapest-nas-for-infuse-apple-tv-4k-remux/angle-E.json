@@ -1,0 +1,122 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured read or transfer speed for any cheap NAS. The slowest named result among the candidates, CGMagazine's 59 MB/s SMB transfer on the TerraMaster F2-212, is about 472 Mb/s. That is roughly 3.3× the 144 Mb/s top data rate of an Ultra HD Blu-ray disc. StorageReview measured 115 MB/s SMB read on the Synology DS223j, about 6.4× that rate.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited and the top how-to result. Firecore's 'Streaming From a Mac, PC, or NAS' lists protocols and an SMB3-encryption tip, with no throughput or bitrate figures and no NAS models. firecore.com/infuse names protocols and says 4K HDR, with no bitrate or throughput numbers. itechguides.com lists DH2300, DXP2800, DS225+ and AS1202T only with seller claims ('up to 125MB/s', '282 MB/s') and says it has no benchmarks of its own. None of these pages has a speed or wattage measured by a named reviewer, and none compares a measured speed against a 4K remux bitrate. ChatGPT's answer says 'more than enough performance' without a number.",
+ "decides": "This confirms the pick rather than changing it. Every gigabit candidate measured by a named reviewer (DS223j at 115 MB/s from StorageReview, DH2300 at about 112 MB/s from ocinside's iperf3 test, F2-212 at 59–75 MB/s from CGMagazine and Mighty Gadget) has several times the network speed a 144 Mb/s (18 MB/s) UHD Blu-ray remux needs. Speed doesn't separate the cheap boxes, so price, bay count, noise and idle power decide. The DXP2800's 2.5GbE (PC-WELT measured 170 MB/s reading a 4K film) is speed Infuse can't use. Its 17.0 W idle from PC-WELT is close to twice the DH2300's 9.5 W idle from NASCompares. DH2300 noise was 31–32 dBA idle and 38–41 dBA under heavy read/write (NASCompares), which matters for a box kept in the living room. The F2-212 figures are transfers to the NAS, not reads. CGMagazine also reports Plex streaming 'everything up to 4K HDR without issue' on the F2-212.",
+ "candidates": [
+  "Synology DS124",
+  "Synology DS223j",
+  "TerraMaster F2-212",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS223j",
+   "label": "SMB 128K sequential read / write",
+   "value": "115 MB/s read, 115 MB/s write",
+   "source": "https://www.storagereview.com/review/synology-ds223j-review",
+   "source_title": "Synology DS223j Review – StorageReview (Ethan Beeler, 2023-07-06)",
+   "read": "2026-11-17",
+   "note": "StorageReview test: 2× 22 TB WD Red Pro, built-in 1GbE, four SMB shares with 25 GB files, up to 16 threads × QD16. iSCSI also reached 115 MB/s. The review says this fills the gigabit link. It gives no power or noise figures. 115 MB/s × 8 = 920 Mb/s, about 6.4× a 144 Mb/s UHD BD stream."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Network throughput (iperf3) and write to drives",
+   "value": "about 112 MB/s (944 Mbit/s) iperf3; over 100 MB/s sequential write (Blackmagic Disk Speed Test over the network)",
+   "source": "https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "source_title": "Ugreen DH2300 NAS Review – ocinside.de, page 5",
+   "read": "2026-11-17",
+   "note": "Client was a Mac Studio M2 Max on 10 Gb/s through a 10 Gb/s switch, so the DH2300's 1GbE port was the limit. Drives in RAID-1. The page gives no separate read figure. No date was shown on the page."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Power draw measured by ocinside",
+   "value": "9–11 W idle; 12–13 W while copying over the network; 15–17 W briefly under full CPU stress; about 1 W off",
+   "source": "https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "source_title": "Ugreen DH2300 NAS Review – ocinside.de, page 5",
+   "read": "2026-11-17",
+   "note": "Measured with a Shelly Plug S, which the author calls not very accurate. Drives in RAID-1. ocinside works out about 110 kWh a year running 24/7."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Noise and power measured by NASCompares",
+   "value": "Noise: 31–32 dBA idle, 33–35 dBA light file activity, 38–41 dBA sustained read/write, 44–45 dBA max load. Power: 9.5 W idle, 12 W file activity, 13 W sustained read/write.",
+   "source": "https://nascompares.com/?p=84094",
+   "source_title": "UGREEN DH2300 NAS Review – NAS Compares (Rob Andrews, 2025-10-12, updated 2025-10-16)",
+   "read": "2026-11-17",
+   "note": "2× 4 TB Seagate IronWolf. The fan modes for each noise reading are as stated in the article. The review has no SMB MB/s figures, and its 4K60 HDMI and 8K decode claims are specs, not tests. I read only the first 100,000 characters of the page."
+  },
+  {
+   "product": "TerraMaster F2-212",
+   "label": "SMB transfer measured by CGMagazine",
+   "value": "59 MB/s sustained over a 2.55 TB transfer (about 12 hours); USB 3.0 about 90 MB/s",
+   "source": "https://www.cgmagonline.com/review/hardware/terramaster-f2-212-nas-review",
+   "source_title": "Terramaster F2-212 NAS Review – CGMagazine (Zubi Khan, 2024-04-04)",
+   "read": "2026-11-17",
+   "note": "Single 22 TB Seagate Exos. This was a library copy onto the NAS (a write), not a read. 59 MB/s × 8 = 472 Mb/s, about 3.3× 144 Mb/s. The same review says Plex streamed 'everything up to 4K HDR without issue'. No power or noise measured."
+  },
+  {
+   "product": "TerraMaster F2-212",
+   "label": "Large-file transfer measured by Mighty Gadget",
+   "value": "up to 75 MB/s to the NAS over gigabit",
+   "source": "https://mightygadget.com/terramaster-f2-212-nas-review",
+   "source_title": "TerraMaster F2-212 NAS Review – Mighty Gadget (James Smythe, 2024-07-17, updated 2026-03-21)",
+   "read": "2026-11-17",
+   "note": "The review doesn't state protocol, client or RAID mode. It calls this 'not quite saturating the gigabit NIC'. The 10.4 W idle / 21.1 W access figures on this page are not shown as meter readings, so I left them out."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "4K film copy and NAS Performance Tester, measured by PC-WELT",
+   "value": "UHD film ('Tears of Steel') read 170.45 MB/s, write 160.26 MB/s; NAS Performance Tester 8000 MB read 170.75 MB/s, write 161.79 MB/s",
+   "source": "https://www.pcwelt.de/article/2436535/ugreen-nasync-dxp2800-test.html",
+   "source_title": "Ugreen Nasync DXP2800 im Test – PC-WELT (Ines Walke-Chomjakov, 2024-09-19)",
+   "read": "2026-11-17",
+   "note": "RAID 1, Btrfs, UGOS Pro 1.0.0.0779. The article doesn't state the link speed. These results exceed gigabit, so the 2.5GbE port was in use, which an Apple TV 4K (gigabit at most) can't use."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power draw measured by PC-WELT",
+   "value": "17.0 W idle; 13.3 W sleep (lowest seen); 27.5 W load; 0.9 W off",
+   "source": "https://www.pcwelt.de/article/2436535/ugreen-nasync-dxp2800-test.html",
+   "source_title": "Ugreen Nasync DXP2800 im Test – PC-WELT (Ines Walke-Chomjakov, 2024-09-19)",
+   "read": "2026-11-17",
+   "note": "Factory settings with drives in RAID 1. Noise was described only in words: 'sehr leise' (very quiet) at idle, 'leise' (quiet) under load."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Maker-measured noise and power (no named reviewer figure found)",
+   "value": "19.0 dB(A) idle; 10.69 W access; 3.44 W HDD hibernation",
+   "source": "https://www.synology.com/en-us/products/DS124",
+   "source_title": "DiskStation DS124 – Synology US product page",
+   "read": "2026-11-17",
+   "note": "These are Synology's own measurements, not a reviewer's. Noise was taken with two GRAS 40AE microphones 1 m from the front and rear, against 16.49–17.51 dB(A) background. The page lists 1× 1GbE (MTU 1500) and gives no sequential MB/s figure."
+  },
+  {
+   "product": "general",
+   "label": "Ultra HD Blu-ray maximum data rate (the most a 4K remux needs)",
+   "value": "144 Mb/s (= 18 MB/s) for 66 GB and 100 GB discs; 92 Mb/s for 50 GB discs",
+   "source": "https://en.wikipedia.org/wiki/Ultra_HD_Blu-ray",
+   "source_title": "Ultra HD Blu-ray – Wikipedia",
+   "read": "2026-11-17",
+   "note": "This is the reference used to compare against the measured NAS speeds above. 144 / 8 = 18 MB/s. Wikipedia doesn't split video from total stream rate. A spec from the Blu-ray Disc Association would be a better source if the page relies on this number."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's network read speed for the Synology DS124. On testberichte.de, PC Magazin/PCgo (2025-02-07) and Stiftung Warentest (2024-07-25) give only grades. The only DS124 numbers there (about 100–115 MB/s writing to an encrypted share, about 3.5 W) come from a customer review, so I left them out. Searches for PCMag, NASCompares, KitGuru and Tom's Hardware DS124 benchmarks found nothing.",
+  "HotHardware's F2-212 numbers (the current page's 'saturates gigabit' and 10.4 W / 21.1 W): the page returned HTTP 403, and I couldn't download it another way.",
+  "Digital Camera World's DH2300 figure of about 110–115 MB/s: the fetch returned only the headline, so I couldn't read it on the page. It should not stay on the page labelled 'via search'.",
+  "Neowin's F2-212 and DH2300 reviews and electronics-lab's F2-212 review: all returned HTTP 403.",
+  "Measured power or noise for the DS223j: StorageReview reported neither.",
+  "ocinside's DXP2800 idle figure of about 7 W: seen only in a search snippet, page not opened.",
+  "A DXP2800 SMB read measured on a stated 1GbE link: PC-WELT didn't state the link speed.",
+  "Named measurements for the QNAP TS-233 and Asustor AS1102TL / AS1202T: not researched within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1374611000000001
+ }
+}
