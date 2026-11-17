@@ -98,8 +98,12 @@ def main():
     extra = ROOT / "growth/bfcm/curated-extra.json"   # groups 2 and 4, written after their research lands
     if extra.exists():
         B.update(json.loads(extra.read_text()))
+    # refresh passes: each file replaces a brand's entry whole and carries its own "checked" date (DLC-221)
+    for f in sorted((ROOT / "growth/bfcm").glob("curated-refresh-*.json")):
+        B.update(json.loads(f.read_text()))
     bf = json.loads((ROOT / "src/bfcm.json").read_text())
     bf["brands"] = {b: {"checked": SEEN, **{k: v for k, v in d.items() if v}} for b, d in sorted(B.items())}
+    bf["checked"] = max(d["checked"] for d in bf["brands"].values())
     bf["new_brands_joined"] = "Nov 8–10, 2026"
     (ROOT / "src/bfcm.json").write_text(json.dumps(bf, indent=1, ensure_ascii=False) + "\n")
     print(f"{len(B)} brands, {sum(1 for d in B.values() if d.get('phases'))} with a 2026 sale")
