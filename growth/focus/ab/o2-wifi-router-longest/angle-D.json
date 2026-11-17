@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the auto-off threshold that decides whether a router survives an outage on a given port. The likely example is Jackery's Energy Saving Mode, on by default on the Explorer 240 v2. Search results quote its manual as switching every output off after 12 hours when the AC load is at or below 25 W or the USB and car-port load is at or below 2 W. That would cut a 10–20 W router on AC but leave it running on the 12 V car port. I could not open a Jackery page to confirm these figures.",
+ "standout": 1,
+ "standout_why": "I compared against outagemath.com (cited), wattpowerstation.com/guides/portable-power-station-small-loads (cited), powerstations.reviews/guides/power-station-standby-draw (cited in pm015) and our own page. Outagemath gives no timers, thresholds or per-model idle draw. Wattpowerstation already has Hobotech's DELTA Pro 3 figures (about 49 W with AC on, about 13 W with DC only), so the basic point that DC wastes less than AC is already out there. Powerstations.reviews lists DC-ECO timers for the BLUETTI Elite 100 V2 and 200 V2 and 0.01 W no-load for the EcoFlow TRAIL DC units, but gives no load thresholds for any port. Our page says the Jackery 240 v2 mode shuts outputs after 12 h but gives no threshold. The threshold finding would be new and would decide the pick, which is why it would score 2–3. I could not open it on a Jackery page (jackery.com returned HTTP 429, the notice-facile manual copy returned 403, the otto.de manual PDF was too large), so the score stays at 1.",
+ "decides": "It confirms the DC-port route. On stations whose default auto-off uses a high AC threshold and a very low DC threshold, a 10–20 W router stays up on the 12 V or USB-C port but gets switched off on AC unless the shopper disables the mode. On BLUETTI Elite V2 units with DC-ECO on by default, the shopper has to turn DC-ECO off first. For the 'least loss on USB/12 V' question, DC-only units with no inverter (EcoFlow TRAIL 300 DC, rated 0.01 W no-load) beat stations that run their DC side through a control board that stays on (Elite 30 V2: about 7–11 W with DC on, as measured by reviewers our page cites).",
+ "candidates": [
+  "Jackery Explorer 240 v2",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 3",
+  "Anker SOLIX C300 DC",
+  "EcoFlow TRAIL 300 DC",
+  "EcoFlow DELTA Pro 3"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Own draw, AC outlets on vs DC outputs only",
+   "value": "about 49 W with AC on (195 Wh over 4 h); about 13 W with DC only (151 Wh over 12 h)",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-small-loads/",
+   "source_title": "Why Portable Power Stations Run Out Early on Small Loads",
+   "read": "2026-11-15",
+   "note": "Hobotech measurement as reported by wattpowerstation, a rival page ChatGPT already cited, so this is not new. One unit only. 195/4 = 48.75 W; 151/12 = 12.6 W."
+  },
+  {
+   "product": "EcoFlow TRAIL 300 DC",
+   "label": "No-load consumption (maker)",
+   "value": "0.01 W",
+   "source": "https://powerstations.reviews/guides/power-station-standby-draw",
+   "source_title": "Power station standby draw: what it uses with nothing plugged in",
+   "read": "2026-11-15",
+   "note": "EcoFlow's 'no-load consumption' label as quoted by powerstations.reviews, which did not measure it. The TRAIL 200 DC has the same figure. It is a figure with no load attached, not the draw while USB is delivering power."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "DC-ECO default",
+   "value": "AC-ECO and DC-ECO on out of the box; outputs switch off after 1–4 h (user-set) at low load",
+   "source": "https://powerstations.reviews/guides/power-station-standby-draw",
+   "source_title": "Power station standby draw: what it uses with nothing plugged in",
+   "read": "2026-11-15",
+   "note": "Same entry for the Elite 200 V2. The page gives no watt threshold. For a router on the DC ports, DC-ECO has to be checked or turned off."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Energy delivered from DC vs AC idle loss",
+   "value": "219 Wh from DC at 8 A (about 92 W), 86% of 256 Wh; about 4% of capacity lost per hour with the AC inverter on and no load",
+   "source": "https://thetechnologyman.com/power-all-your-tech-anywhere-jackery-explorer-240-v2-full-review",
+   "source_title": "Power All Your Tech Anywhere: Jackery Explorer 240 V2 Full Review (The Technology Man, Gidon, 2024-11-14)",
+   "read": "2026-11-15",
+   "note": "Gidon says the DC subsystem has 'far smaller parasitic drain' but did not measure DC-only idle. 4% of 256 Wh is about 10 W."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Energy Saving Mode behavior (as stated on our page)",
+   "value": "On by default; switches off every output after 12 h when the load is at or below a set value; can be turned off",
+   "source": "https://dealectric.com/small-power-station-to-keep-wifi-router-and-modem-on-in-an-outage",
+   "source_title": "Dealectric: Which small power station keeps a Wi-Fi router and modem running in a power outage (2026)",
+   "read": "2026-11-15",
+   "note": "Our own page, quoting the manual. It leaves out the watt thresholds, which are the part that matters for this angle."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 240 v2 Energy Saving Mode thresholds. Search results attribute 'AC ≤25 W, USB and car ≤2 W, all outputs off after 12 h' to the v2 manual, and one Jackery 240 product page is said to state 6 h. I could not open a source: jackery.com and ca.jackery.com returned HTTP 429, notice-facile.com returned 403, the d.otto.de manual PDF was over the fetch limit, and the jackery.com blog page returned only navigation.",
+  "BLUETTI Elite 30 V2 DC-ECO threshold and timer. The official manual PDF on s4.bluettipower.com came back as unreadable compressed streams, and local PDF-to-text extraction was not permitted. The BLUETTI community thread on high standby draw now redirects to forum.bluettipower.com and could not be retrieved. Search results show the EB3A manual at ≤1 W DC / 4 h, but that is a different model.",
+  "EcoFlow RIVER 3 DC 12 V and USB timeout, and whether the unit stays on while DC is enabled. The REI-hosted manual returned 403, and no EcoFlow page with a DC timeout figure was opened.",
+  "Anker SOLIX C300 DC measured idle draw with USB-C or the car socket on, and any auto-off behavior. Not researched within the tool budget.",
+  "Whether UPS switchover on any candidate covers the DC and USB ports as well as AC. No maker page found that states it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2185124999999997
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured overload limit for any candidate. Named testers found that the EcoFlow DELTA 3 Plus held about 2,600 W for about a minute and shut down above that (The Solar Lab), that the DJI Power 1000 V2 cut out just over 3,000 W and tripped when starting a table saw (The Technology Man), and that the OUPES Mega 1 dropped voltage during surges instead of going briefly past 2,000 W (The Solar Lab).",
+ "standout": 2,
+ "standout_why": "I opened the cited Volt & Valley best-of-2026 page, which says 'We do not run instrumented tests'. I also opened both cited Tested Watts pages (C1000 Gen 2 vs DELTA 3 Plus, and Elite 100 V2 vs DELTA 3 Plus). Both say 'We don't lab-test power stations (yet)'. All three give only the makers' surge figures. The cited Enough Watts DELTA 3 Plus page would not load because of an SSL certificate error, so I could not check it. None of the pages I read reports a measured overload limit, a motor-start result or a measured weight. ChatGPT's own answer said its comparison was 'not a verified motor-start test'.",
+ "decides": "The finding works against ChatGPT's preliminary pick, the OUPES Mega 1, which it chose only on advertised surge per pound (4,500 W, 162 W/lb). The Solar Lab saw the Mega 1 lower its voltage during surges instead of going briefly past its 2,000 W rating. Of the candidates, the DJI Power 1000 V2 has the strongest named result: it held about 3,000 W on a ramped load and started an induction-motor bandsaw, though it failed on a table saw. It is also heavier than ChatGPT stated: OutdoorGearLab weighed it at 31.5 lb, against the 28.7 lb ChatGPT used for the Power 1000. The DELTA 3 Plus overload limit The Solar Lab measured (2,600 W) is well below its 3,600 W surge claim. These come from different testers using different methods, so the page should present them as named results, not a ranking.",
+ "candidates": [
+  "OUPES Mega 1",
+  "DJI Power 1000 V2",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Overload cut-out under a ramped AC load",
+   "value": "starts beeping at about 2,900 W and cuts out just over 3,000 W",
+   "source": "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review",
+   "source_title": "This Compact Power Station Can Output 2600W?! DJI Power 1000 V2 Review – The Technology Man (Gidon, 2025-08-08)",
+   "read": "2026-11-15",
+   "note": "The variable load was another power station charging from it. This is a sustained overload limit, not an instantaneous inrush peak. DJI rates the unit at 2,200 W continuous and 4,400 W peak, per OutdoorGearLab's spec table."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Motor-start results",
+   "value": "14-inch induction-motor bandsaw started; Bosch 1,800 W sliding mitre saw ran; 12,000 BTU portable AC ran (about 900 W with the compressor on); induction-motor table saw failed ('start up draw was too high and triggered overload protection')",
+   "source": "https://thetechnologyman.com/this-compact-power-station-can-output-2600w-dji-power-1000-v2-review",
+   "source_title": "DJI Power 1000 V2 Review – The Technology Man (Gidon, 2025-08-08)",
+   "read": "2026-11-15",
+   "note": "Pass/fail by appliance. The reviewer gives no inrush wattage for any load. The 1,800 W mitre-saw figure is the tool's rating."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured overload ceiling",
+   "value": "2,600 W held for about 1 minute; shut down 'pretty much immediately' above that",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-plus-review",
+   "source_title": "EcoFlow DELTA 3 Plus Review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The page shows no author or date (only '© 2026'). EcoFlow claims 1,800 W continuous and 3,600 W surge, so the measured limit is 1,000 W under the surge claim. In the same review, a 1,573 W load drove internal temperature to 138 °F."
+  },
+  {
+   "product": "OUPES Mega 1",
+   "label": "Behaviour during surges",
+   "value": "voltage drops during surges, 'reducing power delivery instead of momentarily exceeding its 2,000W rating'",
+   "source": "https://www.thesolarlab.com/review/oupes-mega-1-review",
+   "source_title": "OUPES Mega 1 Review: Affordable and Powerful or Too Good to Be True? – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "This is a description, not a number, and the page shows no author or date. OUPES advertises 4,500 W surge, the figure ChatGPT used for its top pick. The reviewer also ran a sustained 1,779 W efficiency test."
+  },
+  {
+   "product": "DJI Power 1000 (original)",
+   "label": "Above-rating sustained load",
+   "value": "2,400 W for 20 minutes with no shut-off",
+   "source": "https://www.thesolarlab.com/review/dji-power-1000-power-station-review",
+   "source_title": "DJI Power 1000 Review – The Solar Lab",
+   "read": "2026-11-15",
+   "note": "The rating is 2,200 W, so this load was 9% over it. The page shows no author or date, and the load device is not named."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Combined-load overload",
+   "value": "shut down with a toaster, coffee maker and induction burner running together (about 2,700 W, estimated by the author); all three ran once Power Lifting mode was on",
+   "source": "https://cleantechnica.com/2025/09/11/bluetti-elite-100-v2-portable-power-station-cleantechnica-tested/",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station (CleanTechnica Tested) – Paul Fosse, 2025-09-11",
+   "read": "2026-11-15",
+   "note": "The wattage is the author's estimate ('about 900 watts' each), not a measurement. Power Lifting lowers the voltage for resistive loads and does not help start a motor."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Measured weight",
+   "value": "31.5 lb",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/dji-power-1000-v2",
+   "source_title": "DJI Power 1000 V2 review – OutdoorGearLab (Kenji Mowrey, 2026-07-23)",
+   "read": "2026-11-15",
+   "note": "OutdoorGearLab weighed it ('Measured Weight'). At about 3,000 W measured cut-out, that is about 95 W/lb. At the 4,400 W rated peak it is 140 W/lb, not the 153 W/lb ChatGPT showed from 28.7 lb."
+  },
+  {
+   "product": "general",
+   "label": "OutdoorGearLab measured weights",
+   "value": "Anker SOLIX C1000 Gen 2 25.2 lb; BLUETTI Elite 100 V2 25.0 lb; EcoFlow DELTA 3 28.1 lb; DJI Power 1000 V2 31.5 lb",
+   "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+   "source_title": "The Best Power Stations of 2026 – OutdoorGearLab (RJ Spurrier, updated 2026-07-23)",
+   "read": "2026-11-15",
+   "note": "Weighed by OutdoorGearLab. The same table lists the C1000 Gen 2's 'Max AC Surge Wattage' as 2,400 W, where the rival pages give 3,000 W. I did not check this against Anker's page (see unsourced). No surge figure in the table is measured."
+  }
+ ],
+ "unsourced": [
+  "An instrumented peak-surge or inrush measurement (oscilloscope or clamp meter) for any of the five candidates: I searched Notebookcheck-style labs, OutdoorGearLab, The Solar Lab, CleanTechnica and The Technology Man and found only overload ramps and pass/fail motor starts",
+  "Any named overload or motor-start test of the Anker SOLIX C1000 Gen 2: The Solar Lab's review URL returned 404, and a Battery Skills water-pump test appeared only in a search snippet, which I did not open",
+  "A BLUETTI Elite 100 V2 motor-start failure (a Hobotech test on a 5,000 BTU AC, cited by a Bluetti forum poster): the forum thread now redirects to forum.bluettipower.com and I could not reach the post; PhoneArena's review returned 403",
+  "Maker spec pages to check rated surge and weight: dji.com/power-1000-v2 specs redirected to a 404; ankersolix.com/products/c1000-gen-2 and storecheck lookups returned 404, so the C1000 Gen 2's surge (3,000 W on rival pages vs 2,400 W from OutdoorGearLab) is unconfirmed from Anker",
+  "The cited Enough Watts DELTA 3 Plus page, which failed to load with an SSL certificate error, so I could not compare against it"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0741949000000002
+ }
+}

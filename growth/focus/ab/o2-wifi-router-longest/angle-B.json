@@ -1,0 +1,131 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much of the battery each station's own DC-on draw uses up at a 15 W router load, worked out from measured no-load drain. The estimates come to about 46% for the EcoFlow DELTA Pro 3 (13 W), 42% for the BLUETTI Elite 30 V2 (10.9 W), 19% for the BLUETTI EB3A (3.6 W) and under 1% for the EcoFlow TRAIL 300 DC (about 0.08 W). On those figures a 288 Wh TRAIL 300 DC would run a 15 W router for about 19 h, against about 11 h for the 288 Wh Elite 30 V2.",
+ "standout": 2,
+ "standout_why": "Compared against outagemath.com (cited): it gives 15 W runtimes for 54 stations from rated Wh × 85% only, says 'makers don't publish idle draw', and has no DC figures. wattpowerstation.com small-loads (cited): it lists DELTA Pro 3 at 13 W with DC only and 49 W with AC on (from Hobotech), but its other idle figures don't say which outputs were on, and it gives no hours at router load and nothing for 300 Wh-class units. wattcellar (cited): it uses 0 W idle for every maker except BLUETTI and says outright that it doesn't count the DC route. best-batteries (cited): it has delivered Wh by port (AC, 12 V, USB-C) but no load watts and no idle draw. ChatGPT itself turned The Technology Man's EB3A result (16% in 12 h with DC on) into a reason to avoid that model. Worked out in watts, the EB3A's DC drain (3.6 W) is about a third of the Elite 30 V2's (10.9 W, same reviewer, same method). None of those pages has that comparison.",
+ "decides": "For the 'loses the least on USB and 12 V' question, the pick moves to a DC-only unit (EcoFlow TRAIL 300 DC, 2 Wh a day measured idle). Among stations with an inverter, the older EB3A beats the newer Elite 30 V2. For the 'longest router runtime' question, the big station's lead is smaller than it looks: DELTA Pro 3 works out to about 6.1 days on DC and about 2.7 days on AC at 15 W. ChatGPT showed 8–10 days and outagemath showed 9.7 days. Its own 13–49 W draw can be up to three times the router's load.",
+ "candidates": [
+  "EcoFlow TRAIL 300 DC",
+  "BLUETTI EB3A",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow RIVER 2",
+  "Jackery Explorer 240 v2",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX C300 DC"
+ ],
+ "findings": [
+  {
+   "product": "EcoFlow TRAIL 300 DC",
+   "label": "Measured idle draw, switched on with no load",
+   "value": "about 2 Wh per 24 h (≈0.08 W)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-trail-300dc",
+   "source_title": "EcoFlow TRAIL 300 DC Review: Tiny, Tough, and Surprisingly Long-Lasting (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "The Solar Lab: 'consumed about 2Wh over 24 hours' while on and unused. The page doesn't say which outputs were enabled, and it reports no measured delivered Wh."
+  },
+  {
+   "product": "EcoFlow TRAIL 300 DC",
+   "label": "Estimated hours at a 15 W router on DC",
+   "value": "about 19 h",
+   "source": "https://www.thesolarlab.com/review/ecoflow-trail-300dc",
+   "source_title": "EcoFlow TRAIL 300 DC Review (The Solar Lab)",
+   "read": "2026-11-15",
+   "note": "288 Wh ÷ (15 W + 0.08 W) = 19.1 h; own draw = 0.08 ÷ 15.08 = 0.5% of the battery. This is an upper bound: USB-C/12 V conversion loss at load isn't measured for this unit."
+  },
+  {
+   "product": "BLUETTI EB3A",
+   "label": "Measured DC-on no-load drain",
+   "value": "≈3.6 W (16% of 268 Wh in 12 h)",
+   "source": "https://thetechnologyman.com/bluetti-eb3a-portable-power-station-review-lifepo4-268wh-600w-ac-pv68-solar-panel/",
+   "source_title": "Bluetti EB3A portable power station review (The Technology Man, 12 Apr 2023)",
+   "read": "2026-11-15",
+   "note": "0.16 × 268 Wh ÷ 12 h = 3.57 W. Eco mode off, DC on only. With AC on, the same reviewer measured over 5%/h (≥13.4 W). DC output test at 8 A: 225 Wh (84%)."
+  },
+  {
+   "product": "BLUETTI EB3A",
+   "label": "Estimated hours at a 15 W router on DC",
+   "value": "about 14.4 h",
+   "source": "https://thetechnologyman.com/bluetti-eb3a-portable-power-station-review-lifepo4-268wh-600w-ac-pv68-solar-panel/",
+   "source_title": "Bluetti EB3A review (The Technology Man)",
+   "read": "2026-11-15",
+   "note": "268 Wh ÷ (15 W + 3.57 W) = 14.4 h; own draw = 3.57 ÷ 18.57 = 19% of the battery."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Measured DC-on no-load drain",
+   "value": "≈10.9 W (100% to 24% in 20 h)",
+   "source": "https://thetechnologyman.com/this-189-bluetti-elite-30-v2-power-station-is-better-than-i-expected/",
+   "source_title": "This £189 Bluetti Elite 30 V2 Power Station Is Better Than I Expected (The Technology Man, 23 Dec 2025)",
+   "read": "2026-11-15",
+   "note": "0.76 × 288 Wh ÷ 20 h = 10.9 W (the reviewer says 'around 11 W'). AC on with Eco off: 100% to 19% in 12 h, about 19 W. DC capacity test: 244 Wh (85%). Weight 4.3 kg."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Estimated hours at a 15 W router on DC",
+   "value": "about 11.1 h (14.8 h if BLUETTI's 4.5 W standby claim held)",
+   "source": "https://thetechnologyman.com/this-189-bluetti-elite-30-v2-power-station-is-better-than-i-expected/",
+   "source_title": "Bluetti Elite 30 V2 review (The Technology Man)",
+   "read": "2026-11-15",
+   "note": "288 Wh ÷ (15 + 10.9) W = 11.1 h; own draw = 10.9 ÷ 25.9 = 42% of the battery. Using the maker's figure instead: 288 ÷ (15 + 4.5) = 14.8 h."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker standby claim and US price",
+   "value": "'only 4.5W standby'; $289.99, in stock",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh (BLUETTI US store)",
+   "read": "2026-11-15",
+   "note": "Read with the storecheck.py search tool. The claimed 4.5 W is less than half of The Technology Man's 10.9 W measured with DC on. At $289.99 ÷ 11.1 h ≈ $26 per router-hour of capacity."
+  },
+  {
+   "product": "EcoFlow RIVER 2",
+   "label": "Measured standby draw and delivered Wh by port",
+   "value": "1.14 W standby (no outputs), 3.71 W with AC on; 12 V car port 221.9 Wh (86.7%) at 8 A; USB-C 233 Wh (91%)",
+   "source": "https://goughlui.com/2025/03/30/review-ecoflow-river-2-portable-power-station-300w-256wh/",
+   "source_title": "Review: EcoFlow RIVER 2 Portable Power Station (300W/256Wh) (Gough's Tech Zone, 30 Mar 2025)",
+   "read": "2026-11-15",
+   "note": "Hours at 15 W via USB-C ≤ 233 Wh ÷ 15 W = 15.5 h. The USB-C test load wasn't stated, and draw with DC on wasn't measured separately."
+  },
+  {
+   "product": "Jackery Explorer 240 v2",
+   "label": "Measured AC idle drain and DC delivered Wh",
+   "value": "about 4%/h with AC on (≈10.2 W); 219 Wh on DC at ~92 W (86%); 193 Wh on AC at 100 W",
+   "source": "https://thetechnologyman.com/power-all-your-tech-anywhere-jackery-explorer-240-v2-full-review",
+   "source_title": "Power All Your Tech Anywhere: Jackery Explorer 240 V2 Full Review (The Technology Man, 14 Nov 2024)",
+   "read": "2026-11-15",
+   "note": "AC idle 0.04 × 256 = 10.2 W, so on AC at 15 W: 256 ÷ 25.2 = 10.2 h. On DC at 15 W: ≤ 219 ÷ 15 = 14.6 h. The DC drain is described as 'far smaller' but not quantified."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Estimated days at a 15 W router, DC-only vs AC on",
+   "value": "about 6.1 days on DC; about 2.7 days on AC",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-small-loads/",
+   "source_title": "Why Portable Power Stations Run Out Early on Small Loads (wattpowerstation.com, 2026-11-09)",
+   "read": "2026-11-15",
+   "note": "Idle figures from Hobotech (26 Jun 2024), quoted by this page: about 13 W with DC only and about 49 W with AC on. DC: 4,096 ÷ (15 + 13) = 146 h = 6.1 d (own draw = 46%). AC: 4,096 ÷ (15 + 49) = 64 h = 2.7 d (77%). ChatGPT showed 8–10 days; outagemath shows 9.7 days."
+  },
+  {
+   "product": "general",
+   "label": "Measured AC delivery at a 20 W load vs heavier loads",
+   "value": "EcoFlow DELTA 2: 745 Wh at 20 W vs 871 Wh at 120 W and 930 Wh at 900 W (rated 1,024 Wh)",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity (Best Batteries, 2026-08-28)",
+   "read": "2026-11-15",
+   "note": "At 20 W: 745 ÷ 20 = 37 h measured, which is 72.8% of rated capacity. The same unit delivered 90.8% at 900 W, so the loss grows as the load gets smaller."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX C300 DC idle or DC-on draw: The Gadgeteer review (the-gadgeteer.com, 2024-11-26) reports no measured figure. ankersolix.com/products/c300-dc showed sold out with no price on 2026-11-15, and I didn't open another retailer page.",
+  "EcoFlow TRAIL 300 DC US price: us.ecoflow.com returned HTTP 429. The store search showed the 'TRAIL Series DC' listing at $109 but didn't say which variant, so it isn't used. I also found no measured USB-C or 12 V delivered Wh for the TRAIL 300 DC.",
+  "Jackery Explorer 240 v2 DC-on drain in watts: The Technology Man calls it 'far smaller' than AC but gives no number.",
+  "EcoFlow RIVER 3 DC-on draw: the only figure surfaced was a search snippet about the RIVER 3 Plus (18 W, Alza.cz). I didn't open it, so it isn't used. The ComputerBase result of 211 Wh at 15 W on USB-C, cited on our current page, wasn't re-opened this session.",
+  "A BLUETTI forum user's 9.36 W DC-on figure for the Elite 30 V2: the community URL redirected to the forum home page and the post wasn't read.",
+  "Hobotech's DELTA Pro 3 page timed out, so the 13 W and 49 W figures are cited through wattpowerstation.com."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2994667
+ }
+}
