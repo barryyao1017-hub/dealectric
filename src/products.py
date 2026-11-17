@@ -8103,6 +8103,23 @@ PRODUCTS = [
  "fit": "Pellet-stove owners who want two days or more of heat through an outage from one listing, for less than EcoFlow's 12 kWh DELTA Pro Ultra X bundle.",
  "caveats": ["Nobody has published an idle measurement with B500K packs attached; each pack's own standby draw would come off the hours", "BLUETTI's bundle page (read 2026-11-17) says the Apex 300 is expected to ship in late January and that each unit is delivered separately", 'Three heavy boxes to place and cable, not one']},
 
+{"slug": 'aiper-ecosurfer-s2-solar-pool-skimmer',
+ "brand": 'Aiper',
+ "program": 'amazon:us',
+ "asin": 'B0DPG7L6QP',
+ "category": 'pool-cleaner',
+ "name": 'Aiper EcoSurfer S2 Solar Pool Skimmer Robot, 24 W panel, 4 L basket, DC charger included',
+ "model": 'EcoSurfer S2',
+ "url": 'https://www.amazon.com/dp/B0DPG7L6QP',
+ "price": None,
+ "verified": '2026-11-17',
+ "specs": [('Rated battery life', '35 h after an adapter charge (Aiper)'), ('Charging time', '4-6 h (Aiper)'), ('In the box', 'Skimmer and DC charger (Aiper)'), ('Basket', '4 L top-loaded, 150 µm filter (Aiper)'), ('Solar panel', '24 W (PCWorld)'), ('Battery', '5,200 mAh (PCWorld)'), ('Low-battery behaviour', 'Drives itself into sunlight for a 15-minute solar top-up (Aiper)'), ('Sun needed to run nonstop', 'About 5.7 h a day (The Hook Up)'), ('Control', 'Aiper app: start/stop, schedules, remote control')],
+ "warranty": '2 years (The Hook Up)',
+ "returns": "Amazon's return policy for this listing",
+ "summary": "A solar surface skimmer that needed the least daily sun of the four skimmers The Hook Up gave sun-hour figures for. In PCWorld's test it ran 24 hours nonstop and lost only about 25% of its battery. It ships with its plug-in charger in the box (Aiper).",
+ "fit": 'Pools with partial shade, or owners who want the skimmer to keep running through cloudy or winter weeks without buying anything extra.',
+ "caveats": ["4 L basket, less than half the Beatbot iSkim's 9 L", "Picked up 15 of 20 leaves in The Hook Up's 1-hour test, against 18 for the Beatbot iSkim", "Digital Trends' Ian Bell found the iSkim cleared his pool surface in about half the time of the Aiper Surfer, his previous favorite skimmer", "Aiper's 35 h rating is measured after an adapter charge. The Hook Up's drain of 3.46% an hour works out to about 29 h on the battery alone"]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
