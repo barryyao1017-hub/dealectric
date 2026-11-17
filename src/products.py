@@ -7690,7 +7690,7 @@ PRODUCTS = [
  "fit": "Homeowners with a large solar array, or plans for one, who want indoor whole-home backup through EcoFlow's Smart Home Panel 10, including 240V central AC.",
  "caveats": ['Costs more per Wh than the Jackery Explorer 5000 Plus and Anker SOLIX S5000 on Amazon (arithmetic, read 2026-11-15)', "≤20 ms switchover, against ≤10 ms on the Anker S5000 and 0 ms on the Jackery's 5-20 outlets", 'IP20 indoor-only unit, 121.3 lb with no wheels; not a camping or RV station', 'The 10 kW output figure needs solar connected. Whole-home use needs the Smart Home Panel 10 and installation (pv magazine USA).', 'Only two 5-20R outlets and one L14-50R on the unit', 'Will not charge below 32°F']},
 
-{"slug": 'autel-maxicharger-80a-19-2kw',
+{"slug": 'autel-maxicharger-80a-19-2kw', "cart_variant": 68109815906624,
  "brand": 'Autel Energy',
  "program": 'awin:autelenergy',
  "category": 'ev-charger',
@@ -7707,7 +7707,7 @@ PRODUCTS = [
  "fit": 'Owners of EVs with a 19.2 kW onboard charger whose garage Wi-Fi is weak, or two-EV homes that need two chargers on limited electrical capacity.',
  "caveats": ['80 A only helps cars with a 19.2 kW onboard charger; most EVs stop at 48 A (11.5 kW).', 'Needs a dedicated 100 A circuit; a load calculation may show the panel needs an upgrade.', 'J1772 plug only; NACS cars need a separate adapter.', 'Some owners of earlier units in a Lucid owners thread reported Wi-Fi trouble and used Ethernet instead.', 'The whole-home load limit (ALM) needs add-on hardware the store page does not price.']},
 
-{"slug": 'himiway-d5-pro',
+{"slug": 'himiway-d5-pro', "cart_variant": 41033767223371,
  "brand": 'Himiway',
  "program": 'awin:himiway',
  "category": 'electric-bike',
@@ -7725,7 +7725,7 @@ PRODUCTS = [
  "fit": 'Budget hunters who climb steep ground or haul gear uphill and want a mid-drive for under the price of hunting-brand mid-drives.',
  "caveats": ['Hardtail: front fork only, no rear suspension.', "webBikeWorld's tester found brake fade on repeated steep descents with the 2-piston calipers and wanted 4-piston brakes and 203 mm rotors.", 'webBikeWorld waited nearly five months for a warranty part and called support spotty.', 'Himiway does not name the motor maker; webBikeWorld identifies it as a Bafang 500 W mid-drive.', 'No camo finish; the rear rack and fenders were listed at $0 with the bike on 2026-11-17.']},
 
-{"slug": 'himiway-d5-2-0',
+{"slug": 'himiway-d5-2-0', "cart_variant": 41642813259851,
  "brand": 'Himiway',
  "program": 'awin:himiway',
  "category": 'electric-bike',
@@ -7743,7 +7743,7 @@ PRODUCTS = [
  "fit": 'Hunters on rolling ground, rough two-track or logging roads who want suspension and a spare battery for long or cold days.',
  "caveats": ['At 92 lb it is the heaviest bike here and hard to lift into a truck bed alone.', 'Hub motor: on long steep climbs a mid-drive such as the D5 Pro uses the gears better.', 'The free battery has no terms or end date on the page; check that the cart shows it at $0.', 'Himiway does not state the battery in watt-hours; 720 Wh is 48 V x 15 Ah.']},
 
-{"slug": 'himiway-d5-2-0-camo',
+{"slug": 'himiway-d5-2-0-camo', "cart_variant": 41663854411851,
  "brand": 'Himiway',
  "program": 'awin:himiway',
  "category": 'electric-bike',
@@ -8003,7 +8003,7 @@ PRODUCTS = [
  "fit": 'Medium to large objects such as busts, helmets, car seats and furniture, scanned with an ordinary phone on a budget under $400.',
  "caveats": ['Not for small, fine-detail parts: objects under about 6 in are below its range.', 'Dark, black and translucent objects need scanning spray (one reviewer used dry shampoo).', 'One reviewer says the handle battery drains quickly and the scanner sometimes loses tracking.', 'Owner reviews often call the software glitchy.']},
 
-{"slug": 'hohem-isteady-v3-ultra',
+{"slug": 'hohem-isteady-v3-ultra', "cart_variant": 50983212613952,
  "brand": 'Hohem',
  "program": 'cj:hohem',
  "category": 'phone-gimbal',
@@ -8020,7 +8020,7 @@ PRODUCTS = [
  "fit": 'Owners of Pro Max and Ultra phones who keep the case on and sometimes add a MagSafe lens, mic or light.',
  "caveats": ['We could not confirm a maximum phone thickness in the specs we read. Foldable owners should choose the M7, which lists 12.5 mm.', 'SLR Lounge found the clamp only just strong enough for big phones in thick cases. Some phones may need the case off.', 'The AI tracker is a separate camera beside the phone, so its framing can differ from what the phone records.', 'Reviewers saw a 2.5-star Google Play rating for the Hohem Joy app. Tracking and recording work from the remote without the app.']},
 
-{"slug": 'hohem-isteady-m7',
+{"slug": 'hohem-isteady-m7', "cart_variant": 50513768055104,
  "brand": 'Hohem',
  "program": 'cj:hohem',
  "category": 'phone-gimbal',
