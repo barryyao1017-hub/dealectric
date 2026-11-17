@@ -1,0 +1,78 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that the Thunderbolt 4 logo only guarantees 100W charging (Intel's requirement), or that USB-IF certified 40Gbps cables are labelled either 60W or 240W with no level in between. So the only way to know a cable does both is the combined 'USB 40Gbps 240W' certification mark, or a maker's explicit 240W/EPR rating on a Thunderbolt cable.",
+ "standout": 1,
+ "standout_why": "ChatGPT's own answer already says to look for 'USB4 40Gbps or Thunderbolt 4 with explicit 240W support', so part of this is already out there. It doesn't say why: Intel requires only 100W for Thunderbolt 4, and USB-IF's 40Gbps cable labels come in just two power levels, 60W or 240W. I couldn't compare against the cited Plugable pages (plugable.com/products/usb4-240w-1m and /tbt4-240w-1m). Plugable returned HTTP 429 on all four tries, so I can't say whether those pages explain the 100W baseline. The StarTech and ACT pages ChatGPT got loaded without spec text, and the StarTech datasheets are image-only PDFs.",
+ "decides": "Confirms the pick rule rather than changing the winner. A cable sold only as 'Thunderbolt 4 certified' or 'Thunderbolt 5 certified' is not proof of 240W. Shoppers should look for the USB-IF '40Gbps 240W' cable mark, or a maker page that states 240W, as Belkin INZ005 and Plugable TBT4-240W do. It also tells us how to fill our page's 'cert' column. Each row should say which body certified which number. For example, Belkin's certification is Thunderbolt 5/Intel, and its 240W rating is Belkin's own claim.",
+ "candidates": [
+  "Plugable USB4-240W-1M",
+  "Plugable TBT4-240W-1M",
+  "Belkin Connect Thunderbolt 5 INZ005",
+  "Cable Matters 40Gbps active Thunderbolt 4 cable 2 m (201304-BLK-2m)",
+  "StarTech 1M-40G-USB4-CABLE",
+  "Apple Thunderbolt 5 (USB-C) Pro Cable",
+  "UGREEN Thunderbolt 5 cable 80Gbps 240W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Charging that Thunderbolt 4 certification requires",
+   "value": "100 W",
+   "source": "https://intel.com/content/www/us/en/architecture-and-technology/thunderbolt/overview.html",
+   "source_title": "Intel – Thunderbolt Technology overview",
+   "read": "2026-11-17",
+   "note": "Intel lists 100W as the 'required PC charging' level for Thunderbolt 4. Footnote 3: 'Thunderbolt 4 technology for thin and light notebooks that require up to 100W to charge.' Intel gives no separate cable power rating. So a Thunderbolt 4 logo alone guarantees 40Gbps, not 240W."
+  },
+  {
+   "product": "general",
+   "label": "Charging that Thunderbolt 5 certification requires",
+   "value": "140 W required; 140–240 W 'available on some devices'",
+   "source": "https://intel.com/content/www/us/en/architecture-and-technology/thunderbolt/overview.html",
+   "source_title": "Intel – Thunderbolt Technology overview",
+   "read": "2026-11-17",
+   "note": "Footnote 3: 'Thunderbolt 5 technology for laptops that require up to 140W to charge… 140W‒240W is available on some devices.' The same page says Thunderbolt 5 universal cables go up to 2 m. So even a Thunderbolt 5 cable needs the maker to state 240W."
+  },
+  {
+   "product": "general",
+   "label": "Power levels a USB-IF certified 40Gbps cable can be labelled with",
+   "value": "60 W or 240 W only; certified cables must show both speed and wattage",
+   "source": "https://graniteriverlabs.com/en-us/technical-blog/usb-logo-new-guidelines",
+   "source_title": "GRL (Granite River Labs) – USB logo new guidelines, 2022-10-17",
+   "read": "2026-11-17",
+   "note": "GRL is a USB-IF test lab. It writes that a 40Gbps cable 'will also have to list its power transfer capability, which can be either 60W or 240W', and 'Cables that are certified will now have to show their wattage as well as their data transfer speed' (USB 2.0 cables excepted). In practice a certified 40Gbps cable is either a 60W cable or a 240W cable."
+  },
+  {
+   "product": "Belkin Connect Thunderbolt 5 INZ005",
+   "label": "Data / power / certification as Belkin states them",
+   "value": "80Gbps bidirectional (120Gbps one way with Bandwidth Boost, 40Gbps back); 240 W; 'Thunderbolt 5 and Intel certified'; 1 m; 2-year warranty; $53.99",
+   "source": "https://www.belkin.com/p/thunderbolt-5-cable/P-INZ005.html",
+   "source_title": "Belkin – Thunderbolt 5 Cable INZ005",
+   "read": "2026-11-17",
+   "note": "The certification covers Thunderbolt 5, which Intel ties to 140W. The 240W figure is Belkin's own rating, and the page has no footnote attached to it. Belkin says the cable works with TB4/TB3/USB4 ports but gives no figure for 40Gbps fallback. Price is from belkin.com, read 2026-11-17."
+  },
+  {
+   "product": "Cable Matters 40Gbps active Thunderbolt 4 cable 2 m",
+   "label": "How it reaches 2 m at 40Gbps and 240W",
+   "value": "Active (powered electronics in the cable) Thunderbolt 4, 40Gbps, 240 W PD 3.1, 6.6 ft, Intel-certified",
+   "source": "https://thunderbolttechnology.net/product/cable-matters-active-thunderbolt%E2%84%A2-4-cable-240w-power-delivery-support-66ft",
+   "source_title": "Thunderbolt Technology Community – Cable Matters Active Thunderbolt 4 Cable with 240W, 6.6ft",
+   "read": "2026-11-17",
+   "note": "This is a third-party community listing, not Cable Matters' own page. The Cable Matters USB4 page I tried (cablematters.com/pc-1468-133) says 'Product Not Found', and Newegg returned 403. The listing says USB4 speed is 'up to 40Gbps depending on USB4 device and host compatibility'. ChatGPT showed this cable as plain 'USB4', but this listing makes it an active Thunderbolt 4 cable."
+  }
+ ],
+ "unsourced": [
+  "Plugable USB4-240W-1M and TBT4-240W-1M: specs, USB-IF TID and price from plugable.com. The store returned HTTP 429 on storecheck and WebFetch, 4 tries; the Best Buy listing timed out.",
+  "StarTech 1M-40G-USB4-CABLE and CC6FT40GUSB4GEN3 power rating and active/passive status: the datasheet PDFs are image-only and the startech.com product page loaded without specs. I couldn't extract the PDF text in this environment.",
+  "ACT AC7451: the page came back empty, so I couldn't read why it is 0.8 m.",
+  "Whether the USB-IF cable spec sets a maximum length for passive 40Gbps cables (I looked for 0.8 m): only vendor listings turned up, not the USB-IF spec text.",
+  "USB-IF trademark licence requirements (Jan 2026) on 240W designation and test procedure: the PDF downloaded but its text was compressed and unreadable.",
+  "Apple Thunderbolt 5 Pro Cable specs on apple.com: the product URL resolved to a search page with no cable specs.",
+  "Cable Matters 2 m cable price and specs on the maker's own US page: the product page was discontinued and Newegg blocked access (403)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.020329
+ }
+}

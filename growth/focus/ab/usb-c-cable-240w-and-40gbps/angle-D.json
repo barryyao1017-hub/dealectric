@@ -1,0 +1,95 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a cable only gets 240 W if its e-marker chip reports it as EPR-capable (50 V, 5 A), which the charger checks before raising the voltage, or that this can fail on longer 40Gbps cables: Plugable's own 2 m active Thunderbolt 4 cable is rated for 100 W, so the two ratings can split once you go past about 1 m.",
+ "standout": 2,
+ "standout_why": "I compared against what ChatGPT showed: its answer and the cited Plugable USB4-240W-1M and TBT4-240W-1M product pages. The answer says the two ratings are 'independent' but never names the e-marker check as the thing that decides 240 W. It also recommends a 2 m Cable Matters cable without saying that 40Gbps over 2 m needs an active cable, or that active 40Gbps cables can be capped at 100 W. I could not read the two cited Plugable pages (HTTP 429 on four tries), so they may mention the e-marker. That is why this scores 2 and not 3.",
+ "decides": "It supports the 1 m (or 0.8 m) passive cables whose e-marker reports EPR, such as the Plugable USB4-240W-1M and TBT4-240W-1M, as the safe pick. It also means any 2 m '40Gbps' pick has to show 240 W/EPR from the maker before it is listed. ChatGPT's 2 m Cable Matters pick (201304-BLK-2m) does not meet that bar yet: retailer listings disagree between 240 W and 100 W, and the maker's page returned 404.",
+ "candidates": [
+  "Plugable USB4-240W-1M",
+  "Plugable TBT4-240W-1M",
+  "Plugable TBT5-240W80R",
+  "Cable Matters USB4 2m 201304-BLK-2m",
+  "StarTech 1M-40G-USB4-CABLE",
+  "Plugable TBT4-40G2M (counter-example: 2 m, 100 W)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "EPR cables must carry an e-marker that reports EPR",
+   "value": "\"All EPR cables shall be Electronically Marked and include EPR-specific information in the eMarker\"; \"EPR cables are marked as 50 V and 5 A capable\"",
+   "source": "https://www.cnx-software.com/2021/05/27/usb-type-c-specification-2-1-allows-up-to-240w-extended-power-range-epr/",
+   "source_title": "USB Type-C Specification 2.1 allows up to 240W Extended Power Range (EPR) - CNX Software",
+   "read": "2026-11-17",
+   "note": "CNX Software quoting USB Type-C Cable and Connector Specification Release 2.1 directly. The same quote says EPR cables 'shall be visibly identified with EPR cable identification icons as defined by the USB-IF'."
+  },
+  {
+   "product": "general",
+   "label": "Minimum voltage an EPR cable must handle",
+   "value": "53.65 V",
+   "source": "https://www.cnx-software.com/2021/05/27/usb-type-c-specification-2-1-allows-up-to-240w-extended-power-range-epr/",
+   "source_title": "USB Type-C Specification 2.1 allows up to 240W Extended Power Range (EPR) - CNX Software",
+   "read": "2026-11-17",
+   "note": "Quoted spec text: \"The minimum functional voltage that a cable shall support is 53.65 V.\" 240 W is 48 V × 5 A."
+  },
+  {
+   "product": "general",
+   "label": "Charger checks the cable before entering EPR",
+   "value": "Source sends a Discover ID request to confirm the cable supports 50 V and 5 A; the e-marker \"must be set to EPR Mode Capable\"",
+   "source": "https://www.graniteriverlabs.com/en-us/technical-blog/usb-power-delivery-specification-3-1",
+   "source_title": "Introduction to PD 3.1 - Granite River Labs (Cindy Chang, GRL Taipei, 2021-09-14)",
+   "read": "2026-11-17",
+   "note": "GRL is a USB test lab. Verbatim: \"EPR cables must contain an E-Marker to clarify this capability. The E-Marker must be set to EPR Mode Capable and provide notification that it supports 50V and 5A.\" The page does not say what power a charger falls back to when the cable fails the check."
+  },
+  {
+   "product": "general",
+   "label": "Passive 40Gbps cables are length-limited",
+   "value": "Passive Thunderbolt 4: typically 1 m (3.3 ft) max; active Thunderbolt 4: up to 2 m (6.6 ft)",
+   "source": "https://plugable.com/blogs/news/how-long-can-a-thunderbolt-cable-be-passive-active-and-optical-by-speed",
+   "source_title": "How Long Can a Thunderbolt Cable Be? Passive, Active and Optical by Speed - Plugable (Evan King, 2026-10-23)",
+   "read": "2026-11-17",
+   "note": "Verbatim: \"Because high-frequency signals degrade rapidly over copper, passive cables must be kept relatively short.\" Plugable says active cables carry retimer chips that \"monitor, equalize, and amplify the data signal\"."
+  },
+  {
+   "product": "Plugable TBT4-40G2M",
+   "label": "Charging rating of a 2 m active 40Gbps cable",
+   "value": "100 W",
+   "source": "https://plugable.com/blogs/news/how-long-can-a-thunderbolt-cable-be-passive-active-and-optical-by-speed",
+   "source_title": "How Long Can a Thunderbolt Cable Be? Passive, Active and Optical by Speed - Plugable (Evan King, 2026-10-23)",
+   "read": "2026-11-17",
+   "note": "Verbatim: \"The cable supports up to 100W Power Delivery.\" A maker's own example of a 2 m 40Gbps cable that does not do 240 W, so a longer cable can split the two ratings."
+  },
+  {
+   "product": "Plugable TBT5-240W80R",
+   "label": "Length and power of a passive cable that does both",
+   "value": "0.8 m, passive Thunderbolt 5, 240 W EPR",
+   "source": "https://plugable.com/blogs/news/how-long-can-a-thunderbolt-cable-be-passive-active-and-optical-by-speed",
+   "source_title": "How Long Can a Thunderbolt Cable Be? Passive, Active and Optical by Speed - Plugable (Evan King, 2026-10-23)",
+   "read": "2026-11-17",
+   "note": "Verbatim: \"the cable supports 240W Extended Power Range (EPR) charging.\" The article names it right-angle and Thunderbolt 5. It does not give a data rate for it in the sentences I read."
+  },
+  {
+   "product": "general",
+   "label": "USB-IF marking that shows both ratings on one cable",
+   "value": "USB-IF marking for a maximum of 240 W and 40Gbps",
+   "source": "https://learn.adafruit.com/understanding-usb-type-c-cable-types-pitfalls-and-more/overview",
+   "source_title": "Understanding USB Type-C Cable Types, Pitfalls and More - Adafruit Learning System (last edited January 2025)",
+   "read": "2026-11-17",
+   "note": "Verbatim: the example cable \"uses the current USB-IF markings for a maximum of 240W and 40Gbps\" and \"can be used for high power (up to 240W) charging of USB C devices as well as 40Gbs data transfer.\""
+  }
+ ],
+ "unsourced": [
+  "Text of the cited Plugable USB4-240W-1M and TBT4-240W-1M product pages (e-marker wording, passive/active, USB-IF TID, warranty, price): plugable.com returned HTTP 429 on four tries, and the Shopify storecheck tool needed approval I did not have.",
+  "Cable Matters 201304-BLK-2m: whether it is active and whether its 240 W rating comes from an EPR e-marker. The maker page URL I tried returned 404. Retailer listings disagree (240 W vs 100 W, 20 V max).",
+  "The USB Type-C spec's own length table for USB4 Gen3 passive cables (the commonly cited ~0.8 m): the R2.4 PDF was too large for WebFetch, and Bash download was not allowed.",
+  "StarTech 1M-40G-USB4-CABLE datasheet specs (e-marker, EPR, passive/active): WebFetch could not extract text from the PDF.",
+  "What power a PD 3.1 charger falls back to when the cable's e-marker is not EPR-capable: the GRL page does not state it, and the PD spec itself was not opened.",
+  "Apple Thunderbolt 4 Pro Cable 100 W rating from apple.com: only retailer snippets came up, no Apple page opened.",
+  "Prices: none checked today. Store tools needed approval and plugable.com was rate-limited."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.2873256000000004
+ }
+}
