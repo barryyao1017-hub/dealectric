@@ -102,6 +102,7 @@ CATEGORIES = {
     "electric-bike": ('Electric bikes', 'Electric bicycles for trails, hunting and commuting, compared on motor, battery, weight and load capacity.'),
     "e-bike": ('Electric bikes', 'Pedal-assist electric bicycles for commuting, fitness and errands, compared on measured weight, battery and gearing.'),
     "pool-cleaner": ('Pool cleaners', 'Robotic pool cleaners and solar surface skimmers that clean a pool on their own.'),
+    "phone-gimbal": ('Phone gimbals', 'Handheld 3-axis stabilizers that hold a smartphone steady and can follow a subject.'),
 }
 
 PRODUCTS = [
@@ -8001,6 +8002,40 @@ PRODUCTS = [
  "summary": 'A low-cost handheld scanner rated to 0.1 mm for objects from 6 in to 6.5 ft. The handle, wireless bridge and phone holder in the box let you scan cordless with a phone.',
  "fit": 'Medium to large objects such as busts, helmets, car seats and furniture, scanned with an ordinary phone on a budget under $400.',
  "caveats": ['Not for small, fine-detail parts: objects under about 6 in are below its range.', 'Dark, black and translucent objects need scanning spray (one reviewer used dry shampoo).', 'One reviewer says the handle battery drains quickly and the scanner sometimes loses tracking.', 'Owner reviews often call the software glitchy.']},
+
+{"slug": 'hohem-isteady-v3-ultra',
+ "brand": 'Hohem',
+ "program": 'cj:hohem',
+ "category": 'phone-gimbal',
+ "name": 'Hohem iSteady V3 Ultra AI Tracking Phone Gimbal, 400 g payload, touchscreen remote',
+ "model": 'iSteady V3 Ultra',
+ "url": 'https://store.hohem.com/products/isteady-v3-ultra-gimbal-for-phone',
+ "price": 124.99,
+ "list_price": 189.0,
+ "verified": '2026-11-17',
+ "specs": [('Max phone weight (payload)', '400 g (14.1 oz)'), ('Phone width', '58–98 mm (2.3–3.9 in)'), ('Gimbal weight', '428 g (15.1 oz)'), ('Battery', 'About 9 h balanced; 4–5 h with AI tracking and fill light'), ('Tracking', 'Separate 2 MP AI camera on a magnetic light module; works with any camera app'), ('Remote', 'Detachable 1.22-inch touchscreen remote with live tracker view'), ('Colors', 'Black or White')],
+ "warranty": '1 year on gimbals (Hohem store policy)',
+ "returns": "7 days from receipt, unused and in original packaging, with prior approval from store@hohem.com; buyer pays return shipping unless the fault is Hohem's",
+ "summary": 'A folding 3-axis phone gimbal rated for 400 g of phone, 100 g more than DJI, Insta360 and Zhiyun allow, in a 428 g body with a built-in tripod and selfie stick.',
+ "fit": 'Owners of Pro Max and Ultra phones who keep the case on and sometimes add a MagSafe lens, mic or light.',
+ "caveats": ['We could not confirm a maximum phone thickness in the specs we read. Foldable owners should choose the M7, which lists 12.5 mm.', 'SLR Lounge found the clamp only just strong enough for big phones in thick cases. Some phones may need the case off.', 'The AI tracker is a separate camera beside the phone, so its framing can differ from what the phone records.', 'Reviewers saw a 2.5-star Google Play rating for the Hohem Joy app. Tracking and recording work from the remote without the app.']},
+
+{"slug": 'hohem-isteady-m7',
+ "brand": 'Hohem',
+ "program": 'cj:hohem',
+ "category": 'phone-gimbal',
+ "name": 'Hohem iSteady M7 AI Tracking Phone Gimbal, 500 g payload, foldable-phone clamp',
+ "model": 'iSteady M7',
+ "url": 'https://store.hohem.com/products/hohem-isteady-m7-big-phone-gimbal',
+ "price": 215.99,
+ "list_price": 299.0,
+ "verified": '2026-11-17',
+ "specs": [('Max phone weight (payload)', '500 g (1.1 lb)'), ('Phone width', '58–90 mm (2.3–3.5 in)'), ('Phone thickness', 'Up to 12.5 mm (0.49 in), including folded foldables'), ('Gimbal weight', 'About 1.6 lb with tripod'), ('Battery', 'Up to 12 h; about 8 h with the AI tracker'), ('Remote', 'Detachable 1.4-inch touchscreen remote, about 32 ft range'), ('Light', 'Magnetic fill light, warm to cool white plus RGB')],
+ "warranty": '1 year on gimbals (Hohem store policy)',
+ "returns": "7 days from receipt, unused and in original packaging, with prior approval from store@hohem.com; buyer pays return shipping unless the fault is Hohem's",
+ "summary": "Hohem's heavy-duty phone gimbal: rated for 500 g and folded phones up to 12.5 mm thick, with a touchscreen remote and an app-free AI tracker.",
+ "fit": 'Owners of foldables like the 11.3 mm iPhone Duo, and anyone running a phone with a cage, lens and mic.',
+ "caveats": ['Big and heavy: about 1.6 lb with its tripod, and not pocketable.', "Its clamp tops out at 90 mm wide, narrower than the V3 Ultra's 98 mm.", "The Gadgeteer counted 18 controls and found the remote's preview did not match the phone's framing.", 'The Hohem Joy app had a 2.3-star App Store rating when reviewed. It is needed for firmware updates and some modes.']},
 
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
