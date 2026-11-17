@@ -4688,7 +4688,7 @@ GAP_PAGES = [
 # ---------------- G255: solar-generator-that-can-run-a-well-pump (research method ab-2026-11, 2026-11-11) ----------------
 {"slug": 'solar-generator-that-can-run-a-well-pump',
  "question": 'G255 (gap mining daily 2026-11-11, research method ab-2026-11: what solar generator can run a well pump)',
- "method": 'ab-2026-11', "all_links": True,
+ "method": 'ab-2026-11', "buy_compare": True, "all_links": True,
  "angle": 'B',
  "searched_as": ['EcoFlow DELTA Pro 3 240V 4000W surge specifications Anker SOLIX F3800 240V 6000W well pump BLUETTI AC500 240V split phase'],
  "title": 'What Solar Generator Can Run a Well Pump? 240V Start Amps, Gallons per Charge and Panel Hours',
@@ -5635,7 +5635,7 @@ GAP_PAGES = [
  "price_check": True,
  "run": 'combo-1113',
  "kit": 'kit-240v-solar-generator',
- "method": 'ab-2026-11', "all_links": True,
+ "method": 'ab-2026-11', "buy_compare": True, "all_links": True,
  "angle": 'K1',
  "searched_as": ['official EcoFlow DELTA Pro 3 240V output Anker SOLIX F3800 240V Bluetti AC500 split phase specifications 2026', 'official 240V output solar generator EcoFlow DELTA Pro 3 Anker SOLIX F3800 Jackery Explorer 5000 Plus specs'],
  "title": 'Solar Generator With a 240V Outlet: What You Get at 240V',
