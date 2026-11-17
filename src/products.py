@@ -7719,6 +7719,23 @@ PRODUCTS = [
  "fit": 'Keeping a chest freezer running through a 3-day outage on battery alone, with room to add solar.',
  "caveats": ['The Solar Lab measured the 12.8 W idle draw on the Apex 200 alone. If the B300K pushes total idle draw to 20 W, battery-only runtime at 1 kWh/day falls to about 3.1 days.', 'The high-voltage MC4 solar port needs a string of 60 V or more. A pair of portable panels usually goes into the 1,000 W XT60 port.', "BLUETTI's page gives no weight for the Apex 200 or the B300K."]},
 
+{"slug": 'tenergy-solla-aa-1000mah-24-pack',
+ "brand": 'Tenergy',
+ "program": 'cj:tenergy',
+ "asin": None,
+ "category": 'battery-charger',
+ "name": 'Tenergy Solla NiMH AA Solar-Light Batteries, 1,000 mAh, 24-pack',
+ "model": 'Solla AA 1000 mAh (P/N 19036)',
+ "url": 'https://power.tenergy.com/tenergy-solla-rechargeable-nimh-aa-battery-1000mah-solar-batteries-for-solar-garden-lights-24-pcs-ul-certified/',
+ "price": 25.99,
+ "verified": '2026-11-17',
+ "specs": [('Capacity', '1,000 mAh'), ('Voltage / chemistry', '1.2 V NiMH'), ('Cells', '24 × AA'), ('Rated cycle life', '2,000 (maker, test method not stated)'), ('Working temperature', '-4 °F to 122 °F'), ('Shipped state', 'Pre-charged')],
+ "warranty": '12 months (Tenergy)',
+ "returns": '30 days for a refund (Tenergy store)',
+ "summary": 'The same Solla 1,000 mAh solar-light cell as the 12-pack, at $1.08 a cell instead of $1.42.',
+ "fit": 'Yards with more than about 12 solar lights that take 1.2 V NiMH AA cells of 600–1,000 mAh.',
+ "caveats": ["Tenergy's 2,000-cycle rating names no test method or depth of discharge.", "The -4 °F to 122 °F 'working temperature' does not say whether it covers charging."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

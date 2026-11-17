@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states why a 1.5 V lithium 'rechargeable' AA can't work in a solar light: XTAR says its 1.5 V Li-ion AA (a 3.6 V cell behind a buck regulator) needs a 4.75–5.5 V charging voltage, while a garden-light solar cell puts out about 2 V open-circuit in bright sun, so the light's own panel can never recharge it. Only a 1.2 V NiMH cell can be charged by that panel.",
+ "standout": 2,
+ "standout_why": "Compared against the cited idealgardenlights.com Solar Lights Guide, the cited Tenergy Solla 1000 mAh page, the top-ranked uncited guides solarpatiolights.net and geekchamp.com, and the Costco SL-1001 manual (ManualsLib). Ideal Garden Lights says only that Li-ion 'are not interchangeable with NiCad' and 'Using the wrong voltage can damage the solar components', and it never mentions a charge circuit. Tenergy names 'over-charging from long sunny summer days' but explains no circuit. geekchamp says only 'Charging circuits are chemistry-specific'. solarpatiolights mentions 1.5 V only for alkaline. The Costco manual says 'Only use AA 1.2V 1000mAh NiMh' and bans alkaline, carbon-zinc and NiCd but doesn't mention lithium. ChatGPT's own answer said '1.2V (not 1.5V lithium-ion)' but gave no reason or source. None gives the voltage mismatch (about 2 V panel vs 4.75–5.5 V needed) that makes the 1.5 V lithium AA a non-starter. I scored it 2, not 3, because ChatGPT already steered toward NiMH, so this proves its advice rather than reversing the pick.",
+ "decides": "It rules out 1.5 V lithium rechargeable AAs, including the XTAR 1.5 V AA 4,150 mWh that Dealectric lists, for solar lights: the panel can't reach their charge voltage, so they would drain and stay flat. That leaves 1.2 V NiMH as the only workable chemistry and supports the Solla, EBL and eneloop rows. A second, weaker mechanism point: one garden light's charge circuit measured only 20 mA (OldNewb on All About Circuits). At 20 mA a 600 mAh cell takes about 30 h of full sun and a 2,000 mAh cell about 100 h, so 1,000–1,300 mAh cells fit small lights better than 2,000 mAh ones. That backs ChatGPT's 'match the original capacity' advice and the 1,000/1,300 mAh Solla picks over eneloop or Brightown 2,000 mAh for typical path lights.",
+ "candidates": [
+  "Tenergy Solla AA 1000 mAh",
+  "Tenergy Solla Premium AA 1300 mAh",
+  "EBL Solar AA 1300 mAh",
+  "Panasonic eneloop AA 2000 mAh",
+  "XTAR 1.5V AA 4150 mWh (excluded)"
+ ],
+ "findings": [
+  {
+   "product": "XTAR 1.5V AA 4150 mWh",
+   "label": "Charging voltage the cell requires",
+   "value": "4.75–5.5 V (XTAR: 'the charging voltage range is 4.75-5.5V'; FAQ: 'needs the charging voltage of about 5V')",
+   "source": "https://xtar.cc/?p=7793",
+   "source_title": "XTAR blog: Why can't 1.5V Li-ion AA be charged by a regular charger",
+   "read": "2026-11-17",
+   "note": "XTAR also says 'Using the wrong charger may damage both the battery and the charger.' Corroborated by the XTAR FAQ at https://xtar.cc/?p=8567 (read 2026-11-17)."
+  },
+  {
+   "product": "XTAR 1.5V AA 4150 mWh",
+   "label": "Internal construction",
+   "value": "3.6 V 14430 Li-ion cell plus a '3-in-1 smart chip' (charge management, synchronous buck, Li-ion protection) that outputs 1.5 V",
+   "source": "https://xtar.cc/?p=8567",
+   "source_title": "FAQs about XTAR 4150mWh AA Li-ion Battery",
+   "read": "2026-11-17",
+   "note": "The 3.6 V core behind a buck regulator is why it needs about 5 V at its terminals to charge, far above a 1.2 V NiMH charge level. XTAR names only its own VX4, MX4, L8, L4, BC8 and BC4 chargers as compatible."
+  },
+  {
+   "product": "general",
+   "label": "Solar cell open-circuit voltage in a single-NiMH garden light",
+   "value": "about 2 V in bright sunlight; battery 1.2 V / 600 mAh NiMH; driver IC marked YX801 (YX8018 family)",
+   "source": "https://tomscircuits.blogspot.com/2012/07/morse-thermometer-part-2.html",
+   "source_title": "Tom's Circuits: Reverse Engineering a Solar Lamp",
+   "read": "2026-11-17",
+   "note": "Tom F. quotes: 'the cell will deliver an open-circuit voltage of about 2 Volts in bright sunlight.' One teardown from 2012; 2 V is far below XTAR's 4.75 V charging minimum."
+  },
+  {
+   "product": "general",
+   "label": "Rated battery for the YX8018 solar lawn-light driver IC",
+   "value": "one 1.2 V rechargeable cell ('applicable to solar products powered by one 1.2V rechargeable battery')",
+   "source": "https://www.datasheetcafe.com/yx8018-datasheet-pdf/",
+   "source_title": "YX8018 Datasheet PDF – Solar LED Driver, TO-94-4 Pin (DatasheetCafe)",
+   "read": "2026-11-17",
+   "note": "Third-party host of the Shiningic datasheet. Pin CE is listed as 'Negative electrode of solar battery, EN control / charge control'. The sample circuit uses a 1.25 V 100 mAh AAA NiCd. No light-on/off threshold voltages are given."
+  },
+  {
+   "product": "general",
+   "label": "Measured solar charging current of one garden light",
+   "value": "20 mA",
+   "source": "https://forum.allaboutcircuits.com/threads/swapping-a-150-mah-battery-to-a-600-mah-when-charging-circuit-only-20ma.178883/",
+   "source_title": "All About Circuits forum: Swapping a 150 mAh battery to a 600 mAh when charging circuit only 20 mA",
+   "read": "2026-11-17",
+   "note": "Measured by OldNewb, method not stated; original cell was a 2/3 AA 150 mAh NiMH. OldNewb: 'The 600mah ones don't even charge up enough to even turn on at dark.' KeithWalker: at 20 mA the cell 'can only supply about 150mAH on a good sunny day.' My arithmetic, ignoring charge losses: 600 mAh / 20 mA = 30 h; 1,000 mAh = 50 h; 2,000 mAh = 100 h of full sun."
+  },
+  {
+   "product": "general",
+   "label": "Battery the light maker specifies (Costco SL-1001 8-pack)",
+   "value": "'Only use AA 1.2V 1000mAh NiMh rechargeable batteries'; alkaline, carbon-zinc and NiCd prohibited",
+   "source": "https://www.manualslib.com/manual/2300316/Costco-Sl-1001-8pk.html?page=2",
+   "source_title": "Costco SL-1001-8PK Care And Use Instructions, page 2 (ManualsLib)",
+   "read": "2026-11-17",
+   "note": "Rival result 9. It names the chemistry but gives no reason and doesn't mention lithium."
+  },
+  {
+   "product": "Tenergy Solla AA 1000 mAh",
+   "label": "Maker's stated overcharge design target",
+   "value": "SOLAR PRO technology against 'leaking due to over-charging from long sunny summer days' and 'over-discharging from extended rainy or cloudy days'; 1.2 V NiMH, 2,000 cycles, -4 to 122 °F, $16.99 for 12",
+   "source": "https://power.tenergy.com/tenergy-solla-rechargeable-nimh-aa-battery-1000mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/",
+   "source_title": "Tenergy Solla Rechargeable NiMH AA Battery, 1000mAh, 12 PCS – Tenergy Power",
+   "read": "2026-11-17",
+   "note": "This is the cited rival. Tenergy gives no circuit or charge-rate detail; the page only shows image alt text for 'advanced circuit protection'."
+  }
+ ],
+ "unsourced": [
+  "Energizer NiMH handbook's maximum continuous-overcharge rate (the C/10 or 0.05C figure that explains why NiMH tolerates a panel with no charge cut-off): I fetched https://data.energizer.com/wp-content/uploads/2020/11/nimhhandbook_ver2-2.pdf but it came back as compressed PDF binary, and I couldn't extract text locally, so the exact figure isn't quoted.",
+  "The original Shiningic YX8018 datasheet with the light-on/off threshold voltages and the charge path (direct or through the IC, and whether there is any charge termination): only third-party mirrors were reachable, and the DatasheetCafe copy gives no thresholds.",
+  "A maker or reviewer test of a 1.5 V lithium AA left in a solar light: the only lead was a candlepowerforums thread with no reported result. The incompatibility here comes from XTAR's charge-voltage spec against the measured panel voltage, not a direct test.",
+  "Panasonic's own guidance on eneloop in solar lights: its FAQ only says to check that the light accepts Ni-MH and gives no charge-rate detail.",
+  "The Analog Devices 'hacking an LED solar garden light' teardown (timed out) and the Electronics-Lab YX8018 article (HTTP 403): I couldn't open either, so neither is used."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9787388000000001
+ }
+}

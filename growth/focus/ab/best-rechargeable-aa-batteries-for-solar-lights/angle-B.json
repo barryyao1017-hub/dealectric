@@ -1,0 +1,147 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out, for each AA capacity, how many sunny days a typical garden-light panel needs to fill it. A 2V 100 mA panel with about 6 h of sun gives roughly 600 mAh a day. On that basis a 1,000 mAh Solla needs about 1.7 sun-days, a 1,300 mAh cell about 2.2 and a 2,000 mAh eneloop or Brightown about 3.3. The light only drains about 600 mAh a night, so capacity above one day's harvest is buffer for cloudy nights and does not make the light brighter or run longer.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited and the top guide results. idealgardenlights.com (cited) only says higher-capacity batteries 'can take 3-10 days of direct sunlight to reach a full initial charge', with no per-capacity or per-panel figure. power.tenergy.com (cited) gives no charge time, solar input or runtime hours. solarpatiolights.net (2026-10-20) says outright that it gives no charge time, panel output or days to fill, and works out no cost per cell or per mAh. None of them turns a panel rating into a fill time for each capacity, and none gives a cost per Wh.",
+ "decides": "It backs ChatGPT's 'don't oversize' warning with a number and makes it a rule of thumb. For a common 600 mAh, 2V/100 mA path light, 1,000–1,300 mAh is the most a single sunny day can nearly or fully refill (1.7–2.2 sun-days). 2,000 mAh cells (eneloop, Brightown) need 3+ sun-days, so in short winter days they mostly sit partly charged. By cost per Wh from the makers' own stores, the Tenergy Solla Premium 1300 20-pack ($0.88/Wh) and the Solla 1000 24-pack ($0.90/Wh) beat the 12-packs. EBL's own store, at $3.75 a cell for a 4-pack, is the poorest value. So for most lights the pick is the Solla 1000 (24-pack) or the Solla Premium 1300 (20-pack), not a 2,000 mAh cell.",
+ "candidates": [
+  "Tenergy Solla AA 1000mAh",
+  "Tenergy Solla Premium AA 1300mAh",
+  "EBL Solar AA 1300mAh",
+  "Panasonic eneloop AA 2000mAh",
+  "Brightown AA 2000mAh",
+  "Lightalent AA 600mAh"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Reference solar path light: panel/charge spec and battery",
+   "value": "2V 100 mA; built-in NiMH 600 mAh; 6-8 h sun charge; 8-10 h runtime; about 3-4 lm",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "The page lists 'Voltage: 2V100mA' without saying it is the panel. The 600 mAh in 6-8 h of sun fits a charge of about 100 mA, so I use it as the panel's charge current."
+  },
+  {
+   "product": "general",
+   "label": "Daily harvest from reference panel",
+   "value": "about 600 mAh per sunny day",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "100 mA × 6 h (low end of Sunco's 6-8 h sun charge) = 600 mAh. This ignores NiMH charge losses, so real fill times are longer."
+  },
+  {
+   "product": "general",
+   "label": "Nightly draw of reference light",
+   "value": "about 60-75 mA, i.e. about 600 mAh a night",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "600 mAh ÷ 10 h = 60 mA; 600 mAh ÷ 8 h = 75 mA."
+  },
+  {
+   "product": "Tenergy Solla AA 1000mAh",
+   "label": "Sun-days to fill from empty (reference panel)",
+   "value": "1.7 days",
+   "source": "https://power.tenergy.com/tenergy-solla-rechargeable-nimh-aa-battery-1000mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/",
+   "source_title": "Tenergy Solla AA Rechargeable NiMH AA Battery, 1000mAh, 12 PCS",
+   "read": "2026-11-17",
+   "note": "1000 mAh ÷ 600 mAh/day = 1.67 days."
+  },
+  {
+   "product": "Tenergy Solla AA 1000mAh",
+   "label": "Price per cell and per Wh, maker store",
+   "value": "12-pack $16.99 = $1.42/cell = $1.18/Wh; 24-pack $25.99 = $1.08/cell = $0.90/Wh",
+   "source": "https://power.tenergy.com/tenergy-solla-rechargeable-nimh-aa-battery-1000mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/",
+   "source_title": "Tenergy Solla AA Rechargeable NiMH AA Battery, 1000mAh, 12 PCS",
+   "read": "2026-11-17",
+   "note": "1.2 V × 1.0 Ah = 1.2 Wh/cell; $16.99 ÷ 12 = $1.42 ÷ 1.2 = $1.18/Wh; $25.99 ÷ 24 = $1.08 ÷ 1.2 = $0.90/Wh. 2,000 cycles, -4 to 122 °F, ships pre-charged."
+  },
+  {
+   "product": "Tenergy Solla Premium AA 1300mAh",
+   "label": "Sun-days to fill from empty (reference panel)",
+   "value": "2.2 days",
+   "source": "https://power.tenergy.com/tenergy-solla-premium-rechargeable-nimh-aa-battery-1300mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/",
+   "source_title": "Tenergy Solla Premium Rechargeable NiMH AA Battery, 1300mAh, 12 PCS",
+   "read": "2026-11-17",
+   "note": "1300 mAh ÷ 600 mAh/day = 2.17 days."
+  },
+  {
+   "product": "Tenergy Solla Premium AA 1300mAh",
+   "label": "Price per cell and per Wh, maker store",
+   "value": "8 for $14.49 = $1.81/cell = $1.16/Wh; 12 for $18.99 = $1.58/cell = $1.01/Wh; 20 for $27.49 = $1.37/cell = $0.88/Wh",
+   "source": "https://power.tenergy.com/tenergy-solla-premium-rechargeable-nimh-aa-battery-1300mah-solar-batteries-for-solar-garden-lights-12-pcs-ul-certified/",
+   "source_title": "Tenergy Solla Premium Rechargeable NiMH AA Battery, 1300mAh, 12 PCS",
+   "read": "2026-11-17",
+   "note": "1.2 V × 1.3 Ah = 1.56 Wh/cell; e.g. $27.49 ÷ 20 = $1.37 ÷ 1.56 = $0.88/Wh. The 12-pack is now $18.99 (P/N 19043). 2,000 cycles, -4 to 122 °F, pre-charged. The specs block says '8 x AA', which conflicts with the 12 PCS title."
+  },
+  {
+   "product": "EBL Solar AA 1300mAh",
+   "label": "Sun-days to fill and price per Wh, maker store",
+   "value": "2.2 days; 4-pack $14.99 = $3.75/cell = $2.40/Wh",
+   "source": "https://www.eblofficial.com/products/aa-rechargeable-batteries-for-solar-lights",
+   "source_title": "EBL AA Rechargeable Batteries for Solar Lights",
+   "read": "2026-11-17",
+   "note": "1300 ÷ 600 = 2.17 days; $14.99 ÷ 4 = $3.75 ÷ 1.56 Wh = $2.40/Wh. The page also lists a 20-pack with no price. -4 to 140 °F; keeps more than 80% after 3 years; neither cycle rating nor pre-charge is stated."
+  },
+  {
+   "product": "Panasonic eneloop AA 2000mAh",
+   "label": "Sun-days to fill from empty (reference panel)",
+   "value": "3.3 days",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "2000 mAh ÷ 600 mAh/day = 3.33 days. The 2,000 mAh figure comes from our current page's row; I did not reopen a Panasonic source this session."
+  },
+  {
+   "product": "Brightown AA 2000mAh",
+   "label": "Sun-days to fill from empty (reference panel)",
+   "value": "3.3 days",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "2000 ÷ 600 = 3.33 days. The 2,000 mAh is from our current page's row and was not reopened this session."
+  },
+  {
+   "product": "Lightalent AA 600mAh",
+   "label": "Sun-days to fill from empty (reference panel)",
+   "value": "1.0 day",
+   "source": "https://www.sunco.com/products/solar-path-lights",
+   "source_title": "Sunco Solar LED Path Lights, Round, Dusk To Dawn Photocell",
+   "read": "2026-11-17",
+   "note": "600 ÷ 600 = 1.0 day. Same size as the reference light's own cell, so it fills each sunny day but leaves nothing for a cloudy one."
+  },
+  {
+   "product": "general",
+   "label": "Maker's battery-spec lock (Costco/GTX lights)",
+   "value": "Only AA 1.2V 1000mAh NiMH; charge about 12 h before first use",
+   "source": "https://www.manualslib.com/manual/2300316/Costco-Sl-1001-8pk.html?page=2",
+   "source_title": "Costco SL-1001-8PK Care And Use Instructions, page 2",
+   "read": "2026-11-17",
+   "note": "A maker that names an exact capacity. It backs 1,000 mAh as the default replacement size."
+  },
+  {
+   "product": "general",
+   "label": "Rival's fill-time claim (cited by ChatGPT)",
+   "value": "Higher-capacity batteries 'can take 3-10 days of direct sunlight to reach a full initial charge'; at least 6 h of bright sun recommended",
+   "source": "https://www.idealgardenlights.com/pages/solar-lights-guide",
+   "source_title": "Solar Lights Guide - Ideal Garden Lights USA",
+   "read": "2026-11-17",
+   "note": "Qualitative range only, with no capacity or panel figure attached."
+  }
+ ],
+ "unsourced": [
+  "Amazon prices for eneloop (B00JHKSN5I), Brightown (B07V3JQS1Z) and Lightalent (B0B1Q9Y75D): amzcheck returned blocked, so they have no cost-per-Wh figure.",
+  "Price of EBL's 20-pack on eblofficial.com: the variant is listed with no price. storecheck returned HTTP 429.",
+  "A panel spec that clearly says it is the panel's current: Sunco lists '2V100mA' without naming the panel. Hoselink's L336 spec page says 'Polycrystalline 2V 120mAh', a unit that doesn't work for a panel. The Home Depot manual PDFs that ChatGPT got could not be read through WebFetch (compressed), and running pdftotext locally was not approved.",
+  "A NiMH charge-efficiency figure from a maker or named source, which would turn the 1.7/2.2/3.3 sun-day figures into real-world numbers: I didn't look one up, so the fill times are best-case (no charge losses).",
+  "Panasonic's US spec page for the eneloop AA's 2,000 mAh minimum capacity and 2,100 cycles: not reopened this session."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1229157999999997
+ }
+}
