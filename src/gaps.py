@@ -1699,106 +1699,23 @@ GAP_PAGES = [
  "checked": '2026-11-08',
  "updated": '2026-11-12'},
 
-{'slug': 'solar-panel-for-blink-outdoor-4-without-a-camera-bundle',
- 'question': 'G89 (Awin brands: solar panel for a Blink Outdoor 4 sold separately)',
- 'lead_first': True,
- 'product_result': {'slug': 'wasserstein-solar-panel-blink-outdoor-4',
-                    'item_id': 'WASSERSTEIN-BLINK-SOLAR',
-                    'title': 'Wasserstein solar panel for Blink Outdoor 4',
-                    'description': 'Internal battery, 13.1 ft cable, 360° mount, USB-C adapter for the Outdoor 4. $36.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/1100/5760/products/SolarPanelblinkcamoutdoorpic2-713927_cb0a1a55-b724-4f82-a914-e6d3369dbc90.jpg'},
- 'title': 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
- 'h1': 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
- 'desc': "Solar for a Blink Outdoor 4: Blink's Solaris ($39.99) clips onto the camera and cannot be mounted apart from it, and the old Solar Panel Mount fits "
-         "only the Outdoor (3rd Gen); a separately mounted panel is the route when the camera sits in shade. Wasserstein's panel with an internal battery, "
-         '13.1 ft cable and USB-C adapter ($36.99, 2-pack $63.99) against the Solaris and generic 4 W panels at $19.99–30, with how solar power works on the '
-         'Outdoor 4 (USB-C port, AA batteries out, weather seal) and the Battery Extension Pack rule.',
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Buy the <strong>Wasserstein solar panel for Blink Outdoor 4</strong> '
-          '({buy:wasserstein-solar-panel-blink-outdoor-4}): $36.99 on 2026-11-03 (list $48.99; 2-pack $63.99), with an internal battery, a 13.1 ft cable, a '
-          "360° mount and the USB-C adapter the Outdoor 4 needs. Blink's own answer for the Outdoor 4 is the Solaris ($39.99), a solar battery pack that clips "
-          "onto the camera and cannot be mounted away from it; Wasserstein's panel is the one to buy when the camera sits in shade and the panel needs sun. "
-          'Generic 4 W panels were $19.99–30.</p>\n'
-          "<p>What to know: the Outdoor 4 runs on two AA lithium cells and has a USB-C port under a cover; Blink's Solar Panel Mount (micro-USB, Outdoor 3rd "
-          "Gen only) does not fit it, and Blink's replacement is the Solaris, released in 2026: a solar panel and battery that attach to the Outdoor 4 or "
-          "Outdoor 2K+, IP65 when connected, with no separate mount and, on the Outdoor 4, no battery or charging readout in the app (Blink's Solaris FAQ). A "
-          "third-party panel plugs into that USB-C port, the AAs come out (lithium AAs do not recharge), and the camera then runs on the panel's internal "
-          "battery day and night; the port cover is off, so the panel's plug is what seals the port, which is the seller's claim rather than Blink's. "
-          "Wasserstein's case against the Solaris is the 13.1 ft cable: the panel goes where the sun is and the camera stays under the eave; against a $20 "
-          "generic panel its extras are the internal battery, the included USB-C converter and 30-day returns. Blink's Battery Extension Pack also fits the "
-          'Outdoor 4, but Blink says USB power cannot be plugged in while it is attached, so it is pack or panel, not both.</p>\n',
- 'columns': [('fits', 'Fits the Outdoor 4'), ('battery', 'Internal battery'), ('cable', 'Cable / mount'), ('sold', 'Sold alone')],
- 'rows': [{'slug': 'wasserstein-solar-panel-blink-outdoor-4',
-           'model': 'Wasserstein solar panel (Outdoor 4/3, XT2, XT)',
-           'cells': {'fits': 'Yes, USB-C converter included',
-                     'battery': 'Yes',
-                     'cable': '13.1 ft; 360° wall mount, screws and anchors',
-                     'sold': 'Yes: 1, 2 or 3 pack'}},
-          {'brand': 'Blink',
-           'model': 'Solar Panel Mount (official)',
-           'url': 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs',
-           'cells': {'fits': 'No: Outdoor (3rd Gen) only; Outdoor 4, XT, XT2 listed as incompatible',
-                     'battery': 'No',
-                     'cable': 'Integrated mount',
-                     'sold': 'Bundled with a camera in the US ($74.98); alone in the UK (£34.99)',
-                     'price': '$74.98 with camera (Slickdeals), 2026-11-03'}},
-          {'brand': 'Blink',
-           'model': 'Solaris (official, 2026)',
-           'url': 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq',
-           'cells': {'fits': 'Yes: Outdoor 4 and Outdoor 2K+',
-                     'battery': 'Yes',
-                     'cable': 'None: attaches to the camera, cannot be mounted separately; IP65 when connected',
-                     'sold': 'Yes, alone',
-                     'price': '$39.99 at Best Buy and Amazon, 2026-11-03'}},
-          {'brand': 'Generic',
-           'model': '4 W USB-C panels for Blink Outdoor 4 (Amazon)',
-           'url': 'https://www.amazon.com/Camera-Compatible-Outdoor-Adjustable-Weatherproof/dp/B0CRD6L3LP',
-           'cells': {'fits': 'Yes, USB-C plug',
-                     'battery': 'Some list a 2000 mAh battery',
-                     'cable': '13.12 ft typical',
-                     'sold': 'Yes: singles, 2-, 3- and 4-packs',
-                     'price': '$19.99 single / $37.99 2-pack (EverExceed, Amazon, 2026-11-03); other listings $27–30'}},
-          {'brand': 'Wasserstein',
-           'model': '2-pack / 3-pack',
-           'url': 'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack',
-           'cells': {'fits': 'Yes', 'battery': 'Yes', 'cable': '13.1 ft each', 'sold': 'Yes', 'price': '$63.99 (2) / $91.99 (3) on 2026-11-03'}}],
- 'after': '\n'
-          '<h2>How solar works on an Outdoor 4</h2>\n'
-          "<p>Blink's Outdoor 4 ships with two AA lithium batteries and a USB-C port behind a rubber cover. Blink's own support page says the camera can be "
-          'powered through that port by a weather-resistant USB-C adapter and that, once the cover is removed, the camera is no longer weather-resistant until '
-          'it goes back on. A solar panel for the Outdoor 4 is therefore a USB-C power supply with a battery: the panel charges its internal cell by day, the '
-          "cell runs the camera at night, and the AAs are removed. Blink's Solaris is the official solar option: it attaches to the camera itself (IP65 when "
-          "connected), so it only helps where the camera gets direct sun, and Blink's FAQ says the app shows no battery or charging status for an Outdoor 4 "
-          "with Solaris attached. Blink's Battery Extension Pack is compatible with the Outdoor 4 too, with the rule that USB power cannot be connected while "
-          'it is on.</p>\n'
-          "<h2>What Blink's own mount and Solaris do</h2>\n"
-          "<p>The Blink Solar Panel Mount is a micro-USB design for the Outdoor (3rd Gen). Blink's FAQ names the Outdoor 4, XT and XT2 as unsupported, and in "
-          'the US it is sold with a camera ($74.98 bundle), standalone only abroad (£34.99 at John Lewis). It is not an option for an Outdoor 4 owner at any '
-          'price; the Solaris ($39.99 at Best Buy and Amazon on 2026-11-03) is, with the mounting limit above.</p>\n'
-          '<h2>Internal battery and cable</h2>\n'
-          "<p>Wasserstein's panel stores daytime charge in an internal battery and runs the camera through the night and through cloudy days; the 13.1 ft "
-          'weatherproof cable lets the panel sit in sun while the camera sits in shade, and the 360° wall mount comes with screws and anchors. Owner reviews '
-          "at Best Buy and Lowe's praise fewer battery swaps and report charge levels rising over weeks; a minority report no charging, and Wasserstein's own "
-          'reply is that its panels trickle-charge rather than fill a flat battery.</p>\n'
-          '<h2>Warranty and returns</h2>\n'
-          "<p>Wasserstein's Blink accessories carry a 3-month warranty per its listings and the store gives 30 days to return. Tom's Guide's piece on "
-          "Wasserstein's panel says it mounts more flexibly than Blink's own but is not as seamless.</p>\n"
-          '<h2>What we could not verify</h2>\n'
-          '<p>Long-term owner reports on r/blinkcameras, how long the Solaris keeps an Outdoor 4 running in winter (early Amazon-forum reports include units '
-          'that never showed charging), and whether the Outdoor 4 keeps its weather rating with a third-party plug in the port.</p>\n',
- 'sources': [('Wasserstein solar panel for Blink Outdoor 4 & 3 / XT2 / XT',
-              'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack'),
-             ('Blink support: Solar Panel Mount FAQs', 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs'),
-             ('Blink support: Blink Solaris FAQ', 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq'),
-             ('Blink support: Outdoor 4 Battery Extension Pack FAQ', 'https://support.blinkforhome.com/f-a-q/outdoor-4-battery-extension-pack-faq'),
-             ("Tom's Guide: this solar panel is a game-changer for security cameras, but there's a catch",
-              'https://www.tomsguide.com/opinion/this-solar-panel-is-a-game-changer-for-security-cameras-but-theres-a-catch'),
-             ('Blink Solar Panel Mount, John Lewis (UK, sold alone)',
-              'https://www.johnlewis.com/blink-solar-panel-mount-for-blink-outdoor-camera-black/p6144808'),
-             ('Blink Outdoor + Solar Panel Mount bundle (Slickdeals)',
-              'https://slickdeals.net/f/16078297-blink-outdoor-solar-panel-charging-mount-wireless-motion-detection-add-on-camera-sync-module-required-74-98')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- solar-panel-for-blink-outdoor-4-without-a-camera-bundle (research method ab-2026-11, 2026-11-17) ----------------
+{"slug": 'solar-panel-for-blink-outdoor-4-without-a-camera-bundle',
+ "question": 'G89 (Awin brands: solar panel for a Blink Outdoor 4 sold separately)',
+ "method": 'ab-2026-11',
+ "angle": 'C',
+ "searched_as": ['Blink Outdoor 4 solar panel compatibility official Blink solar panel mount USB C battery'],
+ "title": 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
+ "h1": 'Solar panel for a Blink Outdoor 4: Blink Solaris or a separately mounted panel? (2026)',
+ "desc": "Blink's Solaris pages name only the Outdoor 2K+ and its Solar Panel Mount fits only the Outdoor (3rd Gen), so an Outdoor 4 needs a separate USB-C panel. Here is what fits and the limits of each.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The solar panel for a Blink Outdoor 4 is a separately mounted USB-C panel such as Wasserstein\'s: official Blink Solaris lists compatibility with the Outdoor 2K+ only, and Blink\'s solar panel mount fits the 3rd Gen only. Wasserstein\'s 13.1 ft cable reaches the camera\'s USB-C port.</p>',
+ "columns": [('fit', 'Outdoor 4 named by its maker'), ('power', 'What powers the camera'), ('attach', 'How it attaches'), ('support', 'Support and warranty')],
+ "rows": [{'slug': 'wasserstein-solar-panel-blink-outdoor-4', 'model': 'Wasserstein Solar Panel for Blink Outdoor 4 & 3 / XT2 / XT', 'cells': {'fit': "Yes: the listing gives connection steps for the 'Blink Outdoor 4 (4th Gen)'", 'power': 'Solar panel with internal battery (wattage and capacity not published)', 'attach': 'Panel mounts on its own 360° bracket; 13.1 ft (4 m) weatherproof micro-USB cable plus the included USB-C converter', 'support': "3-month Wasserstein warranty; Blink doesn't support third-party power"}}, {'brand': 'Blink', 'model': 'Solaris', 'url': 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq', 'cells': {'fit': "No: Blink's FAQ and setup guide name only the Outdoor 2K+", 'power': 'Solar panel plus a 3.2 V 1,600 mAh LFP battery (5.12 Wh); up to one month without sun (Blink)', 'attach': "Slides onto the camera's back in place of the AAs, with the camera's back cover refitted over it; cannot be mounted apart from the camera", 'support': 'Blink accessory, IP65 when attached; documented for the Outdoor 2K+'}}, {'brand': 'Blink', 'model': 'Outdoor 4 Battery Extension Pack', 'url': 'https://support.blinkforhome.com/outdoor-4-battery-extension-pack-install?kb_language=en_US', 'cells': {'fit': "Yes: 'only compatible with the Blink Outdoor 4 and Outdoor 2K+'", 'power': 'Four AA 1.5 V lithium cells (no solar)', 'attach': "Connects to the battery chamber and blocks the Outdoor 4's USB-C power socket", 'support': 'Blink accessory; sold in the US and Canada'}}, {'brand': 'Blink', 'model': 'Solar Panel Mount', 'url': 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs', 'cells': {'fit': 'No: Outdoor (3rd Gen) only; Outdoor 4 listed as not compatible', 'power': '0.8 W panel plus one 18650 cell, 3.7 V 3,200 mAh (11.84 Wh)', 'attach': '2 ft micro-USB cable; 13 ft extension sold separately', 'support': 'Blink, IP65, 1-year limited warranty in the US'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Solaris stores 5.12 Wh.</strong> 3.2 V × 1.6 Ah = 5.12 Wh, per Blink's spec page, and all 156 g of it hangs on the camera.</li><li><strong>Blink's 'month without sun' claim implies a very small daily draw.</strong> 5.12 Wh ÷ 30 days ≈ 0.17 Wh a day, about 7 mW on average. That is Blink's best case, stated for the Outdoor 2K+.</li><li><strong>The older Solar Panel Mount holds more than twice as much.</strong> 3.7 V × 3.2 Ah = 11.84 Wh, so Solaris holds 5.12 ÷ 11.84 = 43% of that. The mount fits only the Outdoor (3rd Gen).</li><li><strong>A busy Outdoor 4 drains much faster than Blink's two-year rating.</strong> TechGearLab measured a 12% drop over four days of constant motion. At 3% a day, 100% lasts about 33 days, which TechGearLab put at a little over a month on the two-battery setup. Blink rates the camera at up to 2 years on default settings.</li></ul><p>Wasserstein publishes no wattage or battery capacity for its Blink panel, so its reserve can't be compared with these figures.</p><table><thead><tr><th>Your setup</th><th>What fits</th></tr></thead><tbody><tr><td>Outdoor 4 in shade, with sun within about 13 ft</td><td>Wasserstein panel on its own bracket, cabled to the camera</td></tr><tr><td>Outdoor 4, Blink-supported parts only</td><td>Outdoor 4 Battery Extension Pack (four AAs, no solar) or Blink's Weather Resistant Power Adapter</td></tr><tr><td>Outdoor 2K+</td><td>Blink Solaris, fitted to the back of the camera</td></tr><tr><td>Outdoor (3rd Gen)</td><td>Blink Solar Panel Mount</td></tr></tbody></table><h2>How a solar panel connects to the Outdoor 4</h2><p>The Outdoor 4 takes outside power through its USB-C socket. Blink says it “can be powered through its USB-C port using a weather resistant USB-C adapter; however, once the USB port cover is removed, the camera is no longer weather-resistant until it's reinserted.” The camera runs on AA 1.5 V lithium non-rechargeable cells. Blink describes USB power as an alternative to those batteries, not as a way to charge them.</p><p>Wasserstein's panel comes with a 13.1 ft (4 m) weatherproof micro-USB cable and a USB-C converter. The maker's instruction for the Outdoor 4 is to “use the included USB C converter to connect to micro USB cable.” The listing doesn't say the converter joint is sealed, so mount the camera where that joint stays out of direct rain. {buy:wasserstein-solar-panel-blink-outdoor-4}</p><p>Two limits apply to any cabled panel. First, Blink says “Third party power solutions are not supported” and “We cannot warranty devices connected to unreliable power sources, or when weather protection is removed.” Second, when the Outdoor 4 Battery Extension Pack is fitted, “the Outdoor 4's USB-C power socket is blocked,” so you can use the pack or a panel, but not both.</p><p>Solaris avoids the cable, but Blink's FAQ says “Blink Solaris is compatible with the Blink Outdoor 2K+.” Its setup guide asks for “a compatible Blink Outdoor 2K+ camera,” and neither page names the Outdoor 4. If a store lists Solaris for an Outdoor 4, buy it only where returns are easy.</p><h2>Not recommended</h2><p><strong>Blink Solar Panel Mount on an Outdoor 4.</strong> It is Blink's own panel and the only one with published watts, but Blink states that the Outdoor 4, XT and XT2 are “NOT compatible with its Micro-USB connector to provide a weather resistant seal.” It is made for the Outdoor (3rd Gen) only.</p>\n",
+ "sources": [('Solaris compatible with the Outdoor 2K+ only; at least 45 min of direct sun daily; up to one month without charging; IP65 when connected; cannot be mounted separately (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq'), ("Solaris setup requires a Sync Module and a compatible Outdoor 2K+ camera; AAs removed and the camera's back cover refitted over the Solaris pack (read 2026-11-17)", 'https://support.blinkforhome.com/en_GB/blink-solaris-setup-guide'), ('Solaris battery 3.2 V 1,600 mAh LFP, 156 g, IP65, -22 °F to 167 °F (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/blink-solaris-technical-specifications'), ('Solar Panel Mount: Outdoor (3rd Gen) only, Outdoor 4 not compatible; 18650 3,200 mAh 11.84 Wh; 2 ft cable; IP65; 1-year limited warranty (read 2026-11-17)', 'https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs'), ('Solar Panel Mount 0.8 W solar, 5 V 0.5 A output (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/solar-panel-mount/blink-solar-panel-mount-specifications'), ('Outdoor 4 powered through USB-C with a weather-resistant adapter; not weather-resistant with the port cover removed; AA 1.5 V lithium non-rechargeable cells only (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/using-outdoor4/remove-back-cover-outdoor4-camera'), ('Battery Extension Pack: four AA lithium cells, Outdoor 4 and Outdoor 2K+ only, blocks the USB-C power socket (read 2026-11-17)', 'https://support.blinkforhome.com/outdoor-4-battery-extension-pack-install?kb_language=en_US'), ('Outdoor 4 rated up to 2 years on 2 AA lithium at default settings; Extension Pack available in the US and Canada (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/outdoor4-camera-tech-specs'), ('Blink does not support or warranty third-party power; Weather Resistant Power Adapter usable on the Outdoor 4 (read 2026-11-17)', 'https://support.blinkforhome.com/en_US/how-are-blink-cameras-powered'), ('Wasserstein panel: $36.99, 13.1 ft weatherproof micro-USB cable, USB-C converter for the Outdoor 4, internal battery, 3-month warranty (read 2026-11-17)', 'https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack'), ('TechGearLab measured a 12% drain over 4 days of constant motion, projecting a little over a month on the two-battery setup (read 2026-11-17)', 'https://www.techgearlab.com/reviews/smart-home/security-camera/blink-outdoor-4')],
+ "published": '2026-11-03',
+ "checked": '2026-11-17',
+ "updated": '2026-11-17'},
 {'slug': 'bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription',
  'question': 'G90 (Awin brands: bird feeder camera from a Blink or Wyze camera you already own)',
  'lead_first': True,

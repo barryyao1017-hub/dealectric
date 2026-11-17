@@ -1,0 +1,100 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much energy Blink Solaris stores (3.2 V × 1.6 Ah = 5.12 Wh, LFP) or the average daily draw that Blink's 'up to one month without charging' claim works out to (5.12 Wh ÷ 30 days ≈ 0.17 Wh/day, about 7 mW on average).",
+ "standout": 2,
+ "standout_why": "I compared against the cited Blink Solaris FAQ (en_US faq-blink-solaris) and the cited Solar Panel Mount FAQ, plus the US and UK Solaris FAQ copies that rank high. The Solaris FAQ gives 'up to one month' of power with no charging and '45 minutes of direct sunlight' a day. It gives no battery capacity, no Wh and no panel wattage. The Mount FAQ gives 11.84 Wh, but for the Outdoor (3rd Gen)-only mount, not for anything that fits the Outdoor 4. The Solaris capacity appears only on the Solaris Technical Specifications page, and ChatGPT never got that page (its rank-6 result is the Mount's spec page). No rival turns either figure into stored energy or a daily budget.",
+ "decides": "This supports Solaris as the cable-free pick without settling it. It stores 5.12 Wh, which is 43% of the 11.84 Wh 18650 in Blink's older mount (5.12 ÷ 11.84). Blink sizes that buffer for about a month without sun at the camera's normal draw. A separately mounted panel only beats it on buffer if its internal battery holds more than about 5.1 Wh. I could not source the Wasserstein battery capacity or panel wattage, so that comparison can't be finished yet. The page should also flag that the Blink Solaris FAQ and Technical Specifications pages I opened name only the Outdoor 2K+ as compatible and never mention the Outdoor 4. Outdoor 4 compatibility rests on retailer titles such as Best Buy's 'Accessory for Outdoor 4 and Outdoor 2K+', and I could not open that page.",
+ "candidates": [
+  "Blink Solaris",
+  "Wasserstein Solar Panel for Blink Outdoor 4 & 3 / XT2 / XT",
+  "EverExceed 4 W USB-C solar panel for Blink Outdoor 4 (Amazon B0CRD6L3LP)"
+ ],
+ "findings": [
+  {
+   "product": "Blink Solaris",
+   "label": "Stored energy",
+   "value": "5.12 Wh",
+   "source": "https://support.blinkforhome.com/en_US/blink-solaris-technical-specifications",
+   "source_title": "Blink Solaris Technical Specifications — Blink Support",
+   "read": "2026-11-17",
+   "note": "Spec: 'Rechargeable 3.2V 1600mAh LFP (Lithium Iron Phosphate) battery'. 3.2 V × 1.6 Ah = 5.12 Wh."
+  },
+  {
+   "product": "Blink Solaris",
+   "label": "Implied average camera draw from Blink's 'up to one month' claim",
+   "value": "≈0.17 Wh/day (≈7 mW average)",
+   "source": "https://support.blinkforhome.com/en_US/blink-solaris-faq",
+   "source_title": "Blink Solaris FAQ — Blink Support",
+   "read": "2026-11-17",
+   "note": "FAQ: 'The rechargeable battery provides up to one month of power even when the camera is not charging.' 5.12 Wh ÷ 30 days = 0.171 Wh/day; ÷ 24 h = 7.1 mW. This is Blink's best case and assumes the full rated capacity can be used."
+  },
+  {
+   "product": "Blink Solaris",
+   "label": "Direct sun Blink says keeps it running",
+   "value": "45 min/day",
+   "source": "https://support.blinkforhome.com/en_US/blink-solaris-faq",
+   "source_title": "Blink Solaris FAQ — Blink Support",
+   "read": "2026-11-17",
+   "note": "'Blink Solaris requires at least 45 minutes of direct sunlight daily for optimal performance.' To replace the ≈0.17 Wh/day draw in 45 min, the panel must average at least 0.171 Wh ÷ 0.75 h ≈ 0.23 W into the battery. Blink publishes no panel wattage."
+  },
+  {
+   "product": "Blink Solaris",
+   "label": "Weight per stored Wh",
+   "value": "≈30.5 g/Wh (156 g total)",
+   "source": "https://support.blinkforhome.com/en_US/blink-solaris-technical-specifications",
+   "source_title": "Blink Solaris Technical Specifications — Blink Support",
+   "read": "2026-11-17",
+   "note": "Spec weight 5.5 oz (156 g). 156 g ÷ 5.12 Wh = 30.5 g/Wh. This weight hangs on the camera, because Solaris attaches directly to it. Other specs on the page: IP65, -22°F to 167°F, model BAS0430U."
+  },
+  {
+   "product": "Blink Solaris",
+   "label": "Compatibility stated on Blink's own Solaris pages",
+   "value": "Outdoor 2K+ only (Outdoor 4 not mentioned)",
+   "source": "https://support.blinkforhome.com/en_US/faq-blink-solaris/blink-solaris-faq",
+   "source_title": "Blink Solaris FAQ — Blink Support",
+   "read": "2026-11-17",
+   "note": "The en_US, en_GB and helpjuice copies of the FAQ all read 'Blink Solaris is compatible with the Blink Outdoor 2K+.' The Technical Specifications page lists no cameras. ChatGPT's claim that Blink confirms Outdoor 4 support is not on these pages."
+  },
+  {
+   "product": "general",
+   "label": "Buffer in Blink's older Solar Panel Mount (Outdoor 3rd Gen only), for scale",
+   "value": "11.84 Wh (Solaris = 43% of it)",
+   "source": "https://support.blinkforhome.com/solar-panel-mount/blink-solar-panel-mount-faqs",
+   "source_title": "Blink Solar Panel Mount FAQ — Blink Support",
+   "read": "2026-11-17",
+   "note": "Mount FAQ: one 18650, '3.7 V, 3200mAh, 11.84Wh'; 'Outdoor 4, XT and XT2 not supported.' 5.12 ÷ 11.84 = 0.43."
+  },
+  {
+   "product": "Blink Outdoor 4",
+   "label": "Camera's own power and rated life",
+   "value": "2 × AA 1.5 V lithium, up to 2 years at default settings",
+   "source": "https://support.blinkforhome.com/en_US/outdoor4-camera-tech-specs",
+   "source_title": "Blink Outdoor 4 Technical Specifications — Blink Support",
+   "read": "2026-11-17",
+   "note": "The spec page lists no USB port or input rating. It mentions only an optional 'Weather Resistant Power Adapter (sold separately)'. Operating range is -4 to 113°F, narrower than Solaris's own -22 to 167°F."
+  },
+  {
+   "product": "Wasserstein Solar Panel for Blink Outdoor 4 & 3 / XT2 / XT",
+   "label": "Price, 1-pack, maker's store",
+   "value": "$36.99",
+   "source": "https://wasserstein-home.com/products/wasserstein-solar-panel-compatible-with-blink-outdoor-blink-xt2-xt-camera-3-pack",
+   "source_title": "Wasserstein Solar Panel for Blink Outdoor 4 & 3 / XT2 / XT",
+   "read": "2026-11-17",
+   "note": "Read with storecheck search on 2026-11-17: in stock, compare-at $147.99. Listing: internal battery, 13.1 ft micro-USB cable plus a USB-C converter for the Outdoor 4, 360° mount, 3-month warranty. The listing gives no battery mAh/Wh and no panel watts, so cost per Wh can't be computed."
+  }
+ ],
+ "unsourced": [
+  "Wasserstein Blink panel internal battery capacity (mAh/Wh) and panel wattage: not in the maker's listing text from storecheck. A product-page fetch returned HTTP 429, and the Amazon listing was walled by amzcheck.",
+  "Blink Solaris panel wattage: not on Blink's Solaris FAQ or Technical Specifications pages. The Amazon user-manual PDF (m.media-amazon.com C1pO5xHsloL.pdf) would not extract to text.",
+  "Blink Solaris price read today: Best Buy product page timed out and Amazon was walled, so I computed no Solaris cost per Wh. The $39.99 on our page is from 2026-11-03 and was not re-read.",
+  "EverExceed / generic 4 W panel specs (4 W, 2000 mAh) and price: Newegg returned 403 and Amazon was walled. These figures were seen only in search snippets, so they are not used.",
+  "Energizer L91 AA capacity, needed to compare Solaris's 5.12 Wh with the two AA lithiums it replaces: Energizer's L91.pdf returned 404, the Farnell datasheet timed out, and the BatteryJunction PDF would not extract to text.",
+  "Blink's usage assumptions behind 'up to one month' and 'up to 2 years at default settings' (seconds of activity per month): not stated on the pages I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0576593
+ }
+}
