@@ -7736,6 +7736,22 @@ PRODUCTS = [
  "fit": 'Yards with more than about 12 solar lights that take 1.2 V NiMH AA cells of 600–1,000 mAh.',
  "caveats": ["Tenergy's 2,000-cycle rating names no test method or depth of discharge.", "The -4 °F to 122 °F 'working temperature' does not say whether it covers charging."]},
 
+{"slug": 'nebula-mars-3-air',
+ "brand": 'NEBULA',
+ "program": 'cj:soundcore',
+ "category": 'projector',
+ "name": 'soundcore Nebula Mars 3 Air Portable Google TV Projector, 1080p, 400 ANSI lumens (D2325)',
+ "model": 'Nebula Mars 3 Air (D2325)',
+ "url": 'https://www.soundcore.com/products/mars-3-air-projectors-d2325',
+ "price": 599.99,
+ "verified": '2026-11-17',
+ "specs": [('Rated brightness', '400 ANSI lumens (soundcore)'), ('Measured brightness', '372–399 ANSI lumens by picture mode; 145 lumens on battery in Eco (ProjectorCentral)'), ('Battery', '52 Wh; 3 h 10 min measured in Eco (ProjectorCentral); rated 2.5 h in Eco (soundcore)'), ('Fan noise', '40.0–40.3 dBA at 36 in, in a 38.9 dBA room (ProjectorCentral)'), ('Power input', '19 V/4.74 A adapter (Nebula user guide) on a proprietary power port; no USB-C port (ProjectorCentral)'), ('Weight', '1.693 kg (soundcore); 3.7 lb (ProjectorCentral)'), ('Streaming', 'Built-in Netflix (soundcore)')],
+ "warranty": 'Hassle-Free Warranty (soundcore store)',
+ "returns": '30-Day Money-Back Guarantee; extended holiday returns on orders placed 11/9–12/31 (soundcore store)',
+ "summary": 'The longest-running mini projector here on battery: ProjectorCentral got 3 h 10 min in Eco at 145 lumens. Plugged in it measured 372–399 lumens, with the fan at about 40 dBA in each mode measured.',
+ "fit": "Movie nights where a 2.5-hour film has to finish on battery, and plugged-in viewing where you want close to 400 lumens without the MoGo 4's 48–52 dBA Performance mode.",
+ "caveats": ["Charges only from its 19 V/4.74 A adapter through a proprietary power port and has no USB-C port, so a USB-C power bank can't top it up (Nebula user guide; ProjectorCentral).", 'Switches to Eco automatically on battery when Auto is on (ProjectorCentral), which drops it to about 145 lumens.', 'Heavier than the MoGo 4: 3.7 lb vs 2.9 lb (ProjectorCentral).', "The store page shows an '$80 OFF' badge next to the $599.99 listed price; check the cart total."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
