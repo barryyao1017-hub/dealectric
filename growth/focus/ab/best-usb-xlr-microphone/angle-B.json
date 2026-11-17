@@ -1,0 +1,76 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much preamp gain the USB/XLR hybrids need in XLR mode. The Samson Q9U's -57 dBV/Pa works out to 1.41 mV/Pa, only 2 dB hotter than a Shure SM7B. If the SM7B needs more than 60 dB of gain, the Q9U still needs about 58 dB of clean gain from the interface you add later.",
+ "standout": 2,
+ "standout_why": "I compared against itechguides.com (rank 8). It gives sensitivity and gain needed only for the XLR-only SM7B: '-59 dBV/Pa' and 'more than 60 dB of preamp gain'. It gives no sensitivity figure for the MV7+ or the PodMic USB. Both MusicRadar pages ChatGPT cited loaded only their titles in my fetches, so I couldn't check them. ChatGPT's answer sells 'the ability to upgrade to an audio interface later' but never says how much gain that upgrade needs.",
+ "decides": "This confirms the pick rather than changing it. The Q9U and PodMic USB come out about the same in XLR mode (both -57 dB, about 1.4 mV/Pa). Either way, a shopper who wants the XLR upgrade needs an interface with about 58 dB of clean gain or an inline booster. I couldn't source the MV7+ XLR sensitivity, so I can't rank it on this figure. The page should add a 'gain needed via XLR' column next to 'Outputs'.",
+ "candidates": [
+  "Shure MV7+",
+  "Rode PodMic USB",
+  "Samson Q9U",
+  "Maono PD400X",
+  "Maono PD200X",
+  "Fifine AmpliGame AM8"
+ ],
+ "findings": [
+  {
+   "product": "Samson Q9U",
+   "label": "XLR sensitivity",
+   "value": "-57 dBV/Pa at 1 kHz",
+   "source": "https://samsontech.com/products/microphones/usb-microphones/q9u/",
+   "source_title": "Samson Q9U product page",
+   "read": "2026-11-17",
+   "note": "Maker spec. The same page lists 50 Hz to 20 kHz, 250 Ω and 2.13 lb (0.97 kg). It shows 'Coming Soon / Preorder Today' with no price."
+  },
+  {
+   "product": "Samson Q9U",
+   "label": "XLR output per pascal",
+   "value": "1.41 mV/Pa",
+   "source": "https://samsontech.com/products/microphones/usb-microphones/q9u/",
+   "source_title": "Samson Q9U product page",
+   "read": "2026-11-17",
+   "note": "1000 × 10^(-57/20) = 1.41 mV/Pa"
+  },
+  {
+   "product": "Samson Q9U",
+   "label": "Preamp gain needed via XLR, compared with an SM7B",
+   "value": "about 58 dB (2 dB less than an SM7B)",
+   "source": "https://www.itechguides.com/best-microphone-top-picks-for-streaming-podcasting-calls-and-recording/",
+   "source_title": "Best Microphone: MV7+, PodMic USB, MV6, NT1, SM7B Compared (itechguides)",
+   "read": "2026-11-17",
+   "note": "itechguides gives the SM7B as '-59 dBV/Pa' needing 'more than 60 dB of preamp gain'. (-57) - (-59) = 2 dB hotter, so 60 - 2 = about 58 dB for the same recording level. The SM7B baseline comes from this rival page, not from Shure."
+  },
+  {
+   "product": "Rode PodMic USB",
+   "label": "Sensitivity",
+   "value": "-57 dB",
+   "source": "https://podcastage.com/rev/podmicusb",
+   "source_title": "Rode PodMic USB Review / Test (Podcastage, Bandrew Scott)",
+   "read": "2026-11-17",
+   "note": "Named reviewer. The page gives '-57dB' without a reference unit and dates the review 'Jul 25' with no year. Taking it as dBV/Pa: 1000 × 10^(-57/20) = 1.41 mV/Pa, which is the same as the Q9U and needs about 58 dB of gain (60 - 2) by the itechguides SM7B baseline. Podcastage's own test settings were 'Computer Level: 51dB' plus '+8dB' boosted in post, or 59 dB in total."
+  },
+  {
+   "product": "general",
+   "label": "SM7B baseline (the gain reference for XLR dynamic mics)",
+   "value": "-59 dBV/Pa; needs more than 60 dB of preamp gain",
+   "source": "https://www.itechguides.com/best-microphone-top-picks-for-streaming-podcasting-calls-and-recording/",
+   "source_title": "Best Microphone: MV7+, PodMic USB, MV6, NT1, SM7B Compared (itechguides)",
+   "read": "2026-11-17",
+   "note": "This is a rival page in ChatGPT's results. It also says a booster is 'not guaranteed' to be needed with every interface."
+  }
+ ],
+ "unsourced": [
+  "Shure MV7+ XLR sensitivity: I tried shure.com product page (no specs shown), the shure.com MV7+ user guide (JavaScript shell, no spec text), the pubs.shure.com PDF (redirects back to the shell), the Full Compass-hosted Shure PDF (compressed, unreadable) and the Yahoo Tech review (403). A search summary said -55 dBV/Pa, but I couldn't open a page confirming it, so I left it out.",
+  "Rode PodMic USB sensitivity from Rode: the rode.com product page had an empty Specifications section, the user-guide page was a navigation shell, and the edge.rode.com datasheet PDF could not be text-extracted here.",
+  "Shure SM7B sensitivity from Shure: the shure.com product page and user guide gave no spec text, so the baseline comes from itechguides.",
+  "Maono PD400X, Maono PD200X and Fifine AM8 sensitivity and prices: maono.com and fifinemicrophone.com returned HTTP 429 twice.",
+  "Prices for every candidate: I didn't run the storecheck or amzcheck tools within the call budget, so this angle has no cost-per-feature figure.",
+  "MusicRadar best-podcasting-microphones and best-usb-microphones (the two cited rivals): WebFetch returned only the page titles, and curl needed approval I didn't have, so I couldn't check whether they state XLR gain needs."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 0.9422677000000002
+ }
+}
