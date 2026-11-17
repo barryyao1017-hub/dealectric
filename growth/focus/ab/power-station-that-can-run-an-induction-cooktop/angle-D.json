@@ -1,0 +1,112 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the boost modes on power stations (EcoFlow X-Boost, BLUETTI Power Lifting, Anker SurgePad) get past the rated output by lowering the voltage, and are meant for pure resistive or heating loads, not 'devices that have voltage protection'. A plug-in induction cooktop is that kind of device: Duxtop's manual says it 'shuts down' with error E3 when 'voltage input is too high or too low'. So the 2,700–3,900 W boost figures don't count, and the station's rated output has to cover the whole 1,800 W the cooktop draws.",
+ "standout": 2,
+ "standout_why": "Compared against: the cited BLUETTI AC200L page, which lists 'Power lifting Mode: 3,600W' and 2,400 W rated but never says the mode lowers voltage or is only for resistive loads, and never mentions induction. ChatGPT's own answer, which says 'at least 2,000W continuous… pure sine wave' and never explains why a boost rating doesn't count. The cited unpluggedwatts.com comparison could not be opened (TLS certificate error in WebFetch, and curl was not allowed), so I can't rule out that it covers part of this. That uncertainty is why the score is 2, not 3.",
+ "decides": "This confirms 'rated output must be at least the cooktop's draw' and tells the page not to give credit for boost wattage. The AC180 (1,800 W, 2,700 W Power Lifting), P1800 (1,800 W) and DELTA 3 Plus (1,800 W) have no rated headroom under an 1,800 W plate. If the plate goes over 1,800 W, their overload fallback lowers voltage, which is exactly the condition that makes the cooktop shut down. These three fit only if the shopper caps the plate at about 1,500 W. The Elite 200 V2 (2,600 W rated) and C1000 Gen 2 (2,000 W rated) clear 1,800 W on their rated output alone. The C1000 Gen 2 spec lists 15 A per outlet, and 120 V × 15 A = 1,800 W, so one cooktop on one outlet is covered by the rating. The Elite 200 V2 stays the pick, but its stock cell is now out of date: BLUETTI shows pre-order, shipping from 11.26.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI AC180",
+  "ALLPOWERS P1800",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI AC200L"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Plug-in induction cooktop low/high-voltage shutdown (Duxtop 9620LS)",
+   "value": "E3: 'Voltage input is too high or too low and the unit shuts down.' Remedy: confirm the supply is 110/120 V AC",
+   "source": "https://www.manualslib.com/manual/2727094/Duxtop-9620ls.html?page=16",
+   "source_title": "Duxtop 9620LS manual, Error code guide (ManualsLib p.16)",
+   "read": "2026-11-17",
+   "note": "Maker's manual, hosted on ManualsLib. This is what goes wrong when a voltage-lowering boost mode feeds an induction plate. No source tested a Duxtop on a station's boost mode; the link between the two is my inference from the two makers' wording."
+  },
+  {
+   "product": "general",
+   "label": "Duxtop 9620LS power draw and supply",
+   "value": "Left burner 100–1,800 W, right burner 100–1,000 W; supply '120V/60Hz 15 amp circuit'",
+   "source": "https://www.manualslib.com/manual/2727094/Duxtop-9620ls.html?page=18",
+   "source_title": "Duxtop 9620LS manual, Specifications (ManualsLib p.18)",
+   "read": "2026-11-17",
+   "note": "An 1,800 W plate is 120 V × 15 A, the most a NEMA 5-15 plug carries."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "EcoFlow on running an induction cooker and X-Boost",
+   "value": "'X-Boost mode can run some higher-wattage appliances up to 3,400W, though it works by lowering voltage, so results vary…'; 'Do not rely on X-Boost as a substitute for the standard rating.'; 'Match the cooker's input wattage against the power station's rated output.'; 2,400 W rated AC, 'A cooker drawing 1,800W leaves 600W of rated output'",
+   "source": "https://www.ecoflow.com/us/blog/induction-cooktop-energy-use",
+   "source_title": "Induction Cooktop Energy Use: Wattage, Power Requirements, and What a Meal Really Costs (EcoFlow US, 2026-10-20)",
+   "read": "2026-11-17",
+   "note": "Maker's own article. WebFetch caps quotes at 125 characters, so the end of the X-Boost sentence is paraphrased."
+  },
+  {
+   "product": "general",
+   "label": "EcoFlow X-Boost: appliances excluded",
+   "value": "'X-Boost is more suitable for heating and electrical equipment, but not for all electrical appliances.' Not for 'Some electrical appliances equipped with voltage protection (such as precision instruments, etc.)'. Not available in bypass (charging while AC on)",
+   "source": "https://www.ecoflow.com/ph/support/faq?page=111",
+   "source_title": "Welcome to EcoFlow Support, FAQ",
+   "read": "2026-11-17",
+   "note": "EcoFlow's official support FAQ. Only the Philippines regional page loaded; the wording is not model-specific."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Rated AC output vs Power Lifting",
+   "value": "2,600 W continuous; Power Lifting 3,900 W 'for pure resistive loads' ('kettles, electric blankets, and hair dryers')",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station, BLUETTI US",
+   "read": "2026-11-17",
+   "note": "2,600 − 1,800 = 800 W of rated headroom with an 1,800 W plate. No boost mode needed."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price and stock",
+   "value": "US$899.00; 'Pre-order: Ships from 11.26'",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station, BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Our page says 'In stock (2026-11-04)'. That is now out of date."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Rated AC output vs Power Lifting; price and stock",
+   "value": "'1,800W AC Output / 2,700W Power Lifting Mode'; US$549.00; 'currently out of stock, expected restock: Late-November', another note on the page says 'ships from 12.14'",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180, BLUETTI US",
+   "read": "2026-11-17",
+   "note": "No rated headroom over an 1,800 W plate. Power Lifting is BLUETTI's resistive-load mode (see the Elite 200 V2 wording), so it doesn't add room for an induction cooktop. The page gives two different ship dates."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Rated AC output vs Power Lifting (cited rival)",
+   "value": "2,400 W rated; 'Power lifting Mode: 3,600W'; surge 7,200 W. The page does not say what kind of load Power Lifting is for and does not mention induction",
+   "source": "https://www.bluettipower.com/pages/ac200l",
+   "source_title": "BLUETTI AC200L: Revolutionizing Portable Power Solutions, BLUETTI US",
+   "read": "2026-11-17",
+   "note": "This is the page ChatGPT cited. It lacks the mechanism."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Rated AC output and per-outlet current",
+   "value": "'120V~ 15A, 120V~ 16.66A, 60Hz, 2,000W Max'; 3,000 W peak; units-only 'Available — ships as soon as possible'",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh, Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "15 A × 120 V = 1,800 W per outlet; 16.66 A × 120 V ≈ 2,000 W total. One 1,800 W plate is inside the rating. No price showed on the page."
+  }
+ ],
+ "unsourced": [
+  "Anker's own wording that SurgePad 'does not support… devices that have voltage protection or strict voltage requirements': only seen in a search summary of the A1763 user guide. support.ankersolix.com returned a CSS error page and the US product page doesn't mention SurgePad.",
+  "A maker or reviewer test of a plug-in induction cooktop running on X-Boost, Power Lifting or SurgePad (shutdown or reduced output). Searched EcoFlow, BLUETTI and Anker pages and the general web; found only forum anecdotes.",
+  "Text of the cited rival unpluggedwatts.com/2000-watt-power-station-comparison: WebFetch failed with a self-signed certificate error and curl was not allowed.",
+  "X-Boost text in the EcoFlow DELTA 2 Max manual PDF: it fetched as encrypted streams, and local PDF text extraction needed approval.",
+  "Current EcoFlow DELTA 3 Plus rated output, X-Boost figure and price from us.ecoflow.com: HTTP 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0968753999999998
+ }
+}

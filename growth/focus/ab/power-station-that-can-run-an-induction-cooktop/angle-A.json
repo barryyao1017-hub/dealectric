@@ -1,0 +1,77 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the 'boost' wattages power stations advertise (BLUETTI Power Lifting, EcoFlow X-Boost) are made by lowering the outlet voltage and cannot replace the rated output, so a 1,800 W induction plate has to fit under the rated figure (2,400 W on the AC200L, not its 3,600 W Power Lifting number).",
+ "standout": 2,
+ "standout_why": "I compared against the cited BLUETTI AC200L page (bluettipower.com/pages/ac200l). It lists 'Power lifting Mode: 3,600W' next to the 2,400 W rated output and the 7,200 W surge, but never says which appliances the mode supports or that it lowers voltage. It does not mention induction cooktops at all. ChatGPT's own answer correctly used the rated 2,400 W, but it never told the shopper to ignore the bigger boost and peak numbers. I could not read the other cited rival, unpluggedwatts.com: WebFetch failed with a self-signed certificate error, and fetching it from the shell needed approval I didn't have. So I can't say whether that page covers this.",
+ "decides": "This confirms the rule for picking: compare the plate's input watts with the station's rated (continuous) output only. The 1,800 W-rated units (BLUETTI AC180, ALLPOWERS P1800, EcoFlow DELTA 3 Plus) stay 'at the limit' for an 1,800 W plate however large their boost number is. EcoFlow itself says not to rely on X-Boost as a substitute for the standard rating. Among the 1 kWh units, the Anker SOLIX C1000 Gen 2 is rated at 2,000 W with no boost mode on its product page, so it is the small option with real headroom. The 2 kWh units (AC200L at 2,400 W, Elite 200 V2 at 2,600 W) clear an 1,800 W plate on their rated output alone.",
+ "candidates": [
+  "BLUETTI AC200L",
+  "BLUETTI Elite 200 V2",
+  "BLUETTI AC180",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX C1000 Gen 2",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Rated AC output vs Power Lifting vs surge",
+   "value": "2,400 W rated; 3,600 W Power Lifting; 7,200 W surge; pure sine wave",
+   "source": "https://www.bluettipower.com/pages/ac200l",
+   "source_title": "BLUETTI AC200L: Revolutionizing Portable Power Solutions - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page states 'Power lifting Mode: 3,600W' and 'Surge Power: 7,200W'. Its FAQ says not to exceed 'AC200L's rated 2,400W'. The page does not say which loads Power Lifting supports and does not mention induction cooktops. This is the page ChatGPT cited."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "X-Boost method and EcoFlow's own sizing rule for induction cookers",
+   "value": "X-Boost reaches up to 3,400 W 'by lowering voltage'; the cooker must be at or below the 2,400 W rated output (4,800 W surge)",
+   "source": "https://www.ecoflow.com/us/blog/induction-cooktop-energy-use",
+   "source_title": "Induction Cooktop Energy Use: Wattage, Power Requirements, and What a Meal Really Costs (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "EcoFlow writes: 'Match the cooker's input wattage against the power station's rated output' and 'Do not rely on X-Boost as a substitute for the standard rating.' It adds that results vary by device. Maker's own blog."
+  },
+  {
+   "product": "general",
+   "label": "Input watts of common portable induction plates (120 V)",
+   "value": "Duxtop 9600LS 1,800 W; NuWave PIC Flex Pro 1,400 W; NuWave PIC Double Pro 1,800 W shared across two zones; portable cookers 'generally rated at up to 1,800W' on a 120 V/15 A outlet",
+   "source": "https://www.ecoflow.com/us/blog/induction-cooktop-energy-use",
+   "source_title": "Induction Cooktop Energy Use (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "These are nameplate input figures. EcoFlow notes that rated wattage is the maximum draw, not the continuous use. Built-in 240 V cooktops cannot run from a 120 V station."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Rated AC output vs peak; boost mode",
+   "value": "2,000 W rated; 3,000 W peak; the product page does not mention SurgePad",
+   "source": "https://www.ankersolix.com/ca/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 (Anker SOLIX Canada)",
+   "read": "2026-11-17",
+   "note": "This is the Canadian maker page, not the US one. The spec table reads '2,000W (3,000W Peak Output)'. The 2,400 W SurgePad figure in search results belongs to the original C1000 (1,800 W). Headroom over an 1,800 W plate: 2,000 − 1,800 = 200 W (11%)."
+  },
+  {
+   "product": "general",
+   "label": "Normalised headroom for an 1,800 W plate, rated output only",
+   "value": "Elite 200 V2 +800 W; AC200L +600 W; DELTA 3 Max +600 W; C1000 Gen 2 +200 W; AC180 / P1800 / DELTA 3 Plus 0 W",
+   "source": "https://www.ecoflow.com/us/blog/induction-cooktop-energy-use",
+   "source_title": "Induction Cooktop Energy Use (EcoFlow US): rule = cooker input watts vs rated output",
+   "read": "2026-11-17",
+   "note": "Arithmetic: rated output minus 1,800 W. Rated figures come from the AC200L page and the C1000 Gen 2 page above, and from our current page's table for the Elite 200 V2 (2,600 W), AC180, P1800 and DELTA 3 Plus (1,800 W). I did not re-open the maker pages for those four this session (see unsourced). Boost and peak figures are left out on purpose."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's own wording that Power Lifting is for 'pure resistive' loads only (kettles, hair dryers, heaters). Search snippets from the AC180 and Elite 200 V2 manuals say so, but the BLUETTI PDFs were over WebFetch's size limit. One AC180 manual came back as unreadable binary, and turning it into text locally needed approval I didn't have.",
+  "A maker statement that names induction cooktops as supported or unsupported under Power Lifting, X-Boost or SurgePad. I searched across all three brands and found none.",
+  "Elite 200 V2 and AC180 rated / Power Lifting figures from the BLUETTI US product page. The Elite 200 V2 page hit a redirect loop and the AC180 page returned HTTP 429.",
+  "EcoFlow DELTA 3 Plus X-Boost wattage and current stock from us.ecoflow.com (HTTP 429). The only 2,200 W figure I saw was on third-party manuals.plus.",
+  "What the unpluggedwatts.com comparison (cited by ChatGPT) says about boost modes. The page could not be fetched (SSL error).",
+  "Prices: I did not run storecheck or amzcheck, because the shell's network calls were blocked pending approval."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.07402
+ }
+}

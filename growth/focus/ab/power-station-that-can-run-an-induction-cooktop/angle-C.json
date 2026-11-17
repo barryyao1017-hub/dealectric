@@ -1,0 +1,104 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that BLUETTI's and EcoFlow's boost modes do not raise rated output. BLUETTI says Power Lifting is for pure-resistive heating devices like hair dryers, kettles and heaters. EcoFlow says X-Boost works by lowering voltage, so results vary by device. That means an 1,800 W induction plate has to fit under the station's rated continuous output, and a station like the BLUETTI AC180 (1,800 W rated, 2,700 W Power Lifting) gives it no headroom.",
+ "standout": 2,
+ "standout_why": "I checked the cited BLUETTI AC200L page (bluettipower.com/pages/ac200l). It gives 'Power lifting Mode: 3,600W' but never says which devices that mode suits, and it never mentions induction. Its FAQ only says to keep the total under the rated 2,400 W. I also checked the uncited result ankersolix.com/f2000. It lists Inverter Mode 2,400 W and Bypass Mode 1,440 W but says nothing about cooktops or SurgePad device limits. ChatGPT's answer says to get 2,000 W or more continuous but never says why boost or surge figures don't count. I could not open the other cited page, unpluggedwatts.com, because of a certificate error, so I have not confirmed that it lacks this point.",
+ "decides": "It backs the page's 'At its limit' rows (AC180, P1800, DELTA 3 Plus, all 1,800 W). The maker's boost mode does not give headroom for an induction plate, so for an 1,800 W plate like the Duxtop 9100MC the pick should be a station rated 2,000 W or more continuous: Anker SOLIX C1000 Gen 2, BLUETTI Elite 200 V2 or EcoFlow DELTA 3 Max. Separately, the F2000's 1,440 W Bypass Mode limit suggests a full-power 1,800 W plate would be over that limit while the unit runs on wall power. That reading is my inference from Anker's spec; Anker does not say it about cooktops.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "Anker SOLIX F2000",
+  "ALLPOWERS P1800"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Power Lifting mode: who it is for",
+   "value": "2,700 W Power Lifting, 'ideal for pure-resistive heating devices like hair dryers, electric kettles, and heaters'; rated output 1,800 W",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 (BLUETTI US)",
+   "read": "2026-11-17",
+   "note": "The maker page lists resistive heating loads only and says nothing about induction cooktops. So an 1,800 W induction plate depends on the 1,800 W rated output and has zero headroom."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC outlets",
+   "value": "4 × 120 V/15 A, 1,800 W total",
+   "source": "https://www.bluettipower.com/pages/ac180",
+   "source_title": "BLUETTI AC180 (BLUETTI US)",
+   "read": "2026-11-17",
+   "note": "The rating is shown as '4?120V/15A' because a symbol failed to render; it is read as 4 ×. A 15 A plug like the Duxtop 9100MC's fits."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price and stock, maker US store",
+   "value": "$549, available (compare-at $1,232)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-17",
+   "note": "From the storecheck.py search of bluettipower.com, which returned available: true. This conflicts with our page's 'Back late Nov' stock cell."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Outlets and Power Lifting (cited rival page)",
+   "value": "4 × 120 V/20 A + 1 × TT-30 120 V/30 A, 2,400 W total; Power Lifting 3,600 W; surge 7,200 W",
+   "source": "https://www.bluettipower.com/pages/ac200l",
+   "source_title": "BLUETTI AC200L: Revolutionizing Portable Power Solutions - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Its FAQ says to keep the total wattage within the rated 2,400 W. The page does not say which devices Power Lifting suits and does not mention induction."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Maker's stated induction pairing",
+   "value": "Compatible with the 1,800 W Duxtop 9100MC and the 1,500 W NuWave PIC Gold Pro, within its 2,400 W rated output at 120 V/60 Hz",
+   "source": "https://www.ecoflow.com/us/blog/low-consumption-electric-stove",
+   "source_title": "Low Consumption Electric Stove Guide: Induction, Radiant, and Coil Compared, Plus Cooking on Limited Power (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "EcoFlow also says it 'cannot directly power the 240V full-size range' and estimates 'about 1.2 hours' on the 1,500 W NuWave at continuous full power."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "X-Boost limit",
+   "value": "X-Boost up to 3,400 W, but it 'does not provide additional rated output; it lowers voltage, so performance varies by appliance'; surge 4,800 W",
+   "source": "https://www.ecoflow.com/us/blog/low-consumption-electric-stove",
+   "source_title": "Low Consumption Electric Stove Guide (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "EcoFlow's own statement. This is why an 1,800 W plate on an 1,800 W EcoFlow (DELTA 3 Plus) has no real margin."
+  },
+  {
+   "product": "general",
+   "label": "Reference 1,800 W induction plate",
+   "value": "Duxtop 9100MC: 1,800 W max, 15 power levels from 200 W to 1,800 W, 120 V 15 A outlet",
+   "source": "https://www.ecoflow.com/us/blog/low-consumption-electric-stove",
+   "source_title": "Low Consumption Electric Stove Guide (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "From EcoFlow's table. The 200 W lowest setting means smaller stations can still run it at reduced settings."
+  },
+  {
+   "product": "Anker SOLIX F2000",
+   "label": "AC output, inverter mode vs bypass mode",
+   "value": "Inverter Mode 120 V 20 A, 2,400 W max; Bypass Mode 120 V 12 A, 1,440 W max",
+   "source": "https://www.ankersolix.com/f2000",
+   "source_title": "Anker SOLIX F2000 | Power Ready for Anything - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "This is my reading, not Anker's statement: a full-power 1,800 W plate would be over the 1,440 W bypass limit while the unit passes wall power through. The page does not mention cooktops or SurgePad device limits."
+  }
+ ],
+ "unsourced": [
+  "Duxtop 9100MC low-voltage fault code (E4 'Low voltage warning', reported in search snippets of the manual). I couldn't open a copy: the manuals.plus mirrors returned 403, manualshive returned a certificate error, and the manualslib pages 10 and 11 rendered without the table. With it I could have shown that a voltage-lowering boost mode can trip the plate.",
+  "Which devices EcoFlow DELTA 3 Plus X-Boost suits, per its US page or manual: us.ecoflow.com returned 429 to both WebFetch and storecheck.py, and I found no English manual. Its DELTA 3 Plus price and stock are also unchecked today.",
+  "Which devices Anker SurgePad suits on the SOLIX C1000 Gen 2 and C2000 Gen 2: the ankersolix C1000 Gen 2 URL returned 404, the C2000 Gen 2 manual PDF was over the 10 MB fetch limit, and the f2000 page has no SurgePad note.",
+  "Which devices the ALLPOWERS P1800 boost mode suits, and the BLUETTI Elite 200 V2 outlet ratings and Power Lifting wording: I did not reach either within the call budget.",
+  "Whether the cited unpluggedwatts.com comparison mentions boost or Power Lifting limits for induction: WebFetch hit a certificate error, and the curl fallback was not approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1864377
+ }
+}
