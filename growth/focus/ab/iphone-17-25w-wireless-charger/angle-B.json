@@ -1,0 +1,138 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what 25W on an iPhone 17 costs in total once you add the adapter each charger needs: Apple MagSafe 1 m plus Apple's 40W adapter came to $59.99 on Amazon today, against $68.98 for the ESR Cyclone, $74.98 for the UGREEN MagFlow Pro (each with a $24.99 UGREEN 45W adapter) and $129.99 for the Belkin UltraCharge Pro 3-in-1, which comes with its adapter.",
+ "standout": 2,
+ "standout_why": "I compared against the cited apple.com/iphone-17/specs page and the cited MagSafe Charger (1 m) page. The specs page says only 'MagSafe wireless charging up to 25W with 30W power adapter or higher' and '50% in 30 minutes'. In my fetch, the MagSafe page showed no price and did not say what wattage an iPhone 17 gets. Neither page says that third-party Qi2.2 chargers need a different minimum adapter (35W for the ESR Cyclone, 45W for the UGREEN MagFlow Pro), and neither adds the adapter to the charger price. ChatGPT's answer repeats the 30W figure and gives no prices.",
+ "decides": "Adding the adapter puts Apple's own MagSafe Charger first: it is the cheapest complete 25W setup when bought with Apple's discounted 40W adapter, and it needs the smallest adapter (30W, or 1.2× the 25W it delivers). The ESR Cyclone needs 35W (1.4×) and the UGREEN MagFlow Pro needs 45W (1.8×, because its fan also draws power). Their fans only make sense for a shopper who cares about heat. The 3-in-1s come with their adapter, so their sticker price is the full price, but only for someone who also charges a Watch and AirPods.",
+ "candidates": [
+  "Apple MagSafe Charger (1 m)",
+  "Apple MagSafe Charger (2 m)",
+  "ESR Cyclone 25W pad with CryoBoost",
+  "UGREEN MagFlow Pro Qi2 25W Magnetic Charger with Cooling",
+  "ESR CryoBoost 3-in-1 (Qi2.2)",
+  "Belkin UltraCharge Pro 3-in-1 (WIZ040)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "iPhone 17 wireless max and Apple's adapter minimum",
+   "value": "25 W MagSafe / 25 W Qi2, with a 30 W or higher adapter; 50% in 30 min (MagSafe + 30 W) vs 50% in 20 min wired (40 W+)",
+   "source": "https://www.apple.com/iphone-17/specs/",
+   "source_title": "iPhone 17 - Technical Specifications - Apple",
+   "read": "2026-11-17",
+   "note": "Footnote 6. Apple tested with MagSafe Charger A3502/A3503 and the 30W USB-C Power Adapter A2164, starting from a drained phone."
+  },
+  {
+   "product": "Apple MagSafe Charger (1 m)",
+   "label": "Price",
+   "value": "$30.99 (Amazon)",
+   "source": "https://www.amazon.com/dp/B0FQFKMMYB",
+   "source_title": "Apple MagSafe Charger (1 m): Wireless Charger with Fast-Charging Capability",
+   "read": "2026-11-17",
+   "note": "Read with amzcheck.py on ASIN B0FQFKMMYB. The apple.com page did not render a price."
+  },
+  {
+   "product": "Apple MagSafe Charger (2 m)",
+   "label": "Price",
+   "value": "$39.99 (Amazon)",
+   "source": "https://www.amazon.com/dp/B0FQFTXT7K",
+   "source_title": "Apple MagSafe Charger (2 m): Wireless Charger with Fast-Charging Capability",
+   "read": "2026-11-17",
+   "note": "Read with amzcheck.py."
+  },
+  {
+   "product": "general",
+   "label": "Apple 40W Dynamic Power Adapter price (meets the 30 W+ rule)",
+   "value": "$29.00 (Amazon)",
+   "source": "https://www.amazon.com/dp/B0FQFPN3WR",
+   "source_title": "Apple 40W Dynamic Power Adapter with 60W Max",
+   "read": "2026-11-17",
+   "note": "Read with amzcheck.py. The Apple 35W Dual USB-C adapter (B0D1XRRQZJ) was $39.00."
+  },
+  {
+   "product": "Apple MagSafe Charger (1 m)",
+   "label": "All-in cost for 25 W",
+   "value": "$59.99",
+   "source": "https://www.amazon.com/dp/B0FQFKMMYB",
+   "source_title": "Apple MagSafe Charger (1 m)",
+   "read": "2026-11-17",
+   "note": "$30.99 charger + $29.00 Apple 40W adapter = $59.99. The 2 m version: $39.99 + $29.00 = $68.99."
+  },
+  {
+   "product": "Apple MagSafe Charger (1 m)",
+   "label": "Minimum adapter as a multiple of the 25 W it delivers",
+   "value": "1.2×",
+   "source": "https://www.apple.com/iphone-17/specs/",
+   "source_title": "iPhone 17 - Technical Specifications - Apple",
+   "read": "2026-11-17",
+   "note": "30 W ÷ 25 W = 1.2"
+  },
+  {
+   "product": "ESR Cyclone 25W pad with CryoBoost",
+   "label": "Price and adapter needed for 25 W on iPhone 17",
+   "value": "$43.99 (was $49.99); needs a 35 W or higher adapter",
+   "source": "https://www.esrtech.com/products/black-25w-qi2-small-gaming-charging-pad-stand-cryoboost-cyclone",
+   "source_title": "Cyclone 25W Magnetic Charging Pad with CryoBoost - Black",
+   "read": "2026-11-17",
+   "note": "Listing text: 'up to 25W for iPhone 18/17 ... (with ≥35W input)'. ESR also claims an iPhone 17 Pro goes from 0 to 60% in 30 min. Burgundy is $49.99."
+  },
+  {
+   "product": "ESR Cyclone 25W pad with CryoBoost",
+   "label": "All-in cost for 25 W",
+   "value": "$68.98",
+   "source": "https://www.esrtech.com/products/black-25w-qi2-small-gaming-charging-pad-stand-cryoboost-cyclone",
+   "source_title": "Cyclone 25W Magnetic Charging Pad with CryoBoost",
+   "read": "2026-11-17",
+   "note": "$43.99 pad + $24.99 UGREEN Nexode Air 45W (meets the 35 W+ rule) = $68.98. Adapter ratio: 35 ÷ 25 = 1.4×."
+  },
+  {
+   "product": "UGREEN MagFlow Pro Qi2 25W Magnetic Charger with Cooling",
+   "label": "Price and adapter needed",
+   "value": "$49.99; '45W Adapter Required' (sold separately)",
+   "source": "https://us.ugreen.com/products/magflow-pro-qi2-25w-magnetic-wireless-charger",
+   "source_title": "UGREEN MagFlow Pro Qi2 25W Magnetic Charger with Cooling",
+   "read": "2026-11-17",
+   "note": "Listing text: 'Use a 45W or higher charger (sold separately) to ensure the cooling fan operates at its full potential' and '45W Adapter Required'."
+  },
+  {
+   "product": "UGREEN MagFlow Pro Qi2 25W Magnetic Charger with Cooling",
+   "label": "All-in cost for 25 W",
+   "value": "$74.98",
+   "source": "https://us.ugreen.com/products/nexode-air-usb-c-charger-45w-gan-foldable-plug",
+   "source_title": "UGREEN Nexode Air USB-C Charger (45W, GaN, Foldable Plug)",
+   "read": "2026-11-17",
+   "note": "$49.99 charger + $24.99 Nexode Air 45W = $74.98. Adapter ratio: 45 ÷ 25 = 1.8×."
+  },
+  {
+   "product": "Belkin UltraCharge Pro 3-in-1 (WIZ040)",
+   "label": "All-in cost for 25 W (adapter in box)",
+   "value": "$129.99 including a 45 W PSU",
+   "source": "https://www.belkin.com/ultracharge-pro-3-in-1-magnetic-charging-dock-with-qi2-25w/P-WIZ040.html",
+   "source_title": "UltraCharge Pro 3-in-1 Magnetic Charging Dock with Qi2 25W",
+   "read": "2026-11-17",
+   "note": "In the box: '45W USB-C Power Supply Unit'. FAQ: Qi2 iPhones from the 16 series on charge at 25 W."
+  },
+  {
+   "product": "ESR CryoBoost 3-in-1 (Qi2.2)",
+   "label": "Price",
+   "value": "$109.99 (was $129.99), US plug",
+   "source": "https://www.esrtech.com/products/3-in-1-25w-qi2-2-wireless-charging-station-us-plug-black",
+   "source_title": "CryoBoost 3-in-1 Magnetic Charging Station (25W, Qi2.2) - US Plug–Black",
+   "read": "2026-11-17",
+   "note": "Read with storecheck search. ESR claims the fan cuts heat by 6.5°F on average. All-in = $109.99 only if the adapter is in the box; that is not confirmed (see unsourced)."
+  }
+ ],
+ "unsourced": [
+  "Price of the Apple 30W USB-C Power Adapter in the US: the apple.com product and category pages rendered no price, and amzcheck returned a null price for B0CX23PHFD.",
+  "Whether the ESR CryoBoost 3-in-1 comes with an adapter and its wattage: the esrtech.com product page returned HTTP 429 and the storecheck search text does not list the box contents.",
+  "Price and minimum adapter for the basic UGREEN MagFlow Qi2.2 25W pad: the Best Buy page timed out and I did not find the product on us.ugreen.com.",
+  "Price of the Anker Prime Wireless Charging Station 3-in-1 on anker.com: storecheck search and the guessed product URL both returned 404.",
+  "iPhone 17 battery capacity in Wh, needed to turn the 25 W figures into charge times: Apple's specs page does not publish it, and I did not look for a teardown source."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1053469
+ }
+}
