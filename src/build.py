@@ -1758,8 +1758,13 @@ def pick_line(c):
     # listing); that pick links the seller's own page
     if c.get("keep_pick") and first.get("url"):   # accuracy first (Barry 11-12): the seller's own page
         u = html.escape(first["url"])
-        return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
+        line = (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
                 f'<a href="{u}" rel="nofollow noopener">{u}</a>')
+        if c.get("buy_by_name"):   # open2 run: the pick has no link of ours, so name the best row we do link, as other pages do
+            nxt = next((r for r in c["rows"][1:] if r.get("slug")), None)
+            if nxt:
+                line += ours(nxt, "Dealectric link")
+        return line
     if c.get("all_links") and not c.get("keep_pick"):
         if first.get("asin"):
             link = amazon_row_link(first["asin"])
