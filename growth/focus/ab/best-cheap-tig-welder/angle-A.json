@@ -1,0 +1,101 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the YesWelder TIG-200P ACDC PRO sustains almost the same TIG current at 100% duty on 220V (110 A) as on 110V (108 A). On a 240V circuit its extra headroom is only 200 A at 30% duty, while the PrimeWeld TIG225X is rated 155 A at 100% on 240V. On 120V the two machines are rated the same: 108 A at 100%.",
+ "standout": 1,
+ "standout_why": "I compared the two cited pages, homewelder.com/best-tig-welder-for-beginners and woodworking-projects.com/hobby-tig-welder. HomeWelder already lists YesWelder 30% @ 200A, ARCCAPTAIN 25% @ 200A, AHP 60% @ 200A (240V) and PrimeWeld's 100% figures of 108A (120V) and 155A (240V). It does not give YesWelder's own 100% figures (108A on 110V, 110A on 220V), so it never shows that 240V adds almost no sustained current on that machine, or that the YesWelder matches the PrimeWeld on 120V. It also never puts all the machines on one basis. Woodworking-projects lists only one duty figure per model, at mixed amperages (40% @ 225A, 35% @ 200A, 60% @ 190A), and does not normalise them. Neither page says the YesWelder bundle with the pedal costs less today than the bare unit.",
+ "decides": "If the shopper has only 120V, YesWelder ($599.15 with pedal today) and PrimeWeld TIG225X are both rated 108 A at 100% duty. PrimeWeld's higher price then buys a CK torch, warranty and AC controls, not more sustained current, which makes YesWelder the value pick. If the shopper has 240V and will weld thicker aluminum, PrimeWeld (155 A at 100%, stated) and AHP 203Xi (about 155 A at 100%, derived) carry roughly 45 A more continuous current than YesWelder (110 A) or ARCCAPTAIN TIG200P (about 100 A, derived), which favours them. LOTOS TIG200ACDC is still the cheapest with the pedal included, but I could not source its duty cycle, so it can't be placed on this basis.",
+ "candidates": [
+  "LOTOS TIG200ACDC",
+  "YesWelder TIG-200P ACDC PRO",
+  "AHP AlphaTIG 203Xi",
+  "PrimeWeld TIG225X",
+  "ARCCAPTAIN TIG200P AC/DC"
+ ],
+ "findings": [
+  {
+   "product": "YesWelder TIG-200P ACDC PRO",
+   "label": "TIG duty cycle, 110V input",
+   "value": "60% @ 140 A; 100% @ 108 A",
+   "source": "https://yeswelder.com/products/aluminum-tig-welder-tig-200p-ac-dc",
+   "source_title": "YesWelder TIG-200P ACDC PRO (maker US store)",
+   "read": "2026-11-17",
+   "note": "Footnote 'Detailed Duty Cycle' on the maker page. No ambient temperature or standard is stated."
+  },
+  {
+   "product": "YesWelder TIG-200P ACDC PRO",
+   "label": "TIG duty cycle, 220V input",
+   "value": "30% @ 200 A; 100% @ 110 A",
+   "source": "https://yeswelder.com/products/aluminum-tig-welder-tig-200p-ac-dc",
+   "source_title": "YesWelder TIG-200P ACDC PRO (maker US store)",
+   "read": "2026-11-17",
+   "note": "Moving from 110V to 220V raises the 100% current by only 2 A (108 to 110 A). The 200 A headline is a 30% rating. As a check on the method used for the derived rows, 200 A × √0.30 = 109.5 A, which matches the maker's stated 110 A."
+  },
+  {
+   "product": "YesWelder TIG-200P ACDC PRO",
+   "label": "TIG output range by input",
+   "value": "10–140 A @ 110V; 10–200 A @ 220V",
+   "source": "https://yeswelder.com/products/aluminum-tig-welder-tig-200p-ac-dc",
+   "source_title": "YesWelder TIG-200P ACDC PRO (maker US store)",
+   "read": "2026-11-17",
+   "note": "Recommended TIG thickness on the maker page: ≤3/16 in @ 110V, ≤1/4 in @ 220V."
+  },
+  {
+   "product": "YesWelder TIG-200P ACDC PRO",
+   "label": "Price on the maker store",
+   "value": "$649.00 without pedal; $599.15 with FP-5P-B foot pedal (struck from $728.00); $726.31 Combo Bundle",
+   "source": "https://yeswelder.com/products/aluminum-tig-welder-tig-200p-ac-dc",
+   "source_title": "YesWelder TIG-200P ACDC PRO (maker US store)",
+   "read": "2026-11-17",
+   "note": "Today the version with the pedal costs $49.85 less than the bare unit. ChatGPT showed $649 with 'foot pedal may cost extra'. Warranty is 2 years."
+  },
+  {
+   "product": "PrimeWeld TIG225X",
+   "label": "TIG duty cycle, normalised to 100%",
+   "value": "100% @ 108 A (120V); 100% @ 155 A (240V); 40% at 225 A max",
+   "source": "https://homewelder.com/best-tig-welder-for-beginners/",
+   "source_title": "Best TIG Welder for Beginners: AC/DC Under $1,000 (Home Welder)",
+   "read": "2026-11-17",
+   "note": "Figures as stated by Home Welder. The maker page and the manual PDF (cdn.shopify.com/.../TIG225X_AC_DC_TIG_Welder_With_Pulse_Manual-min.pdf) were rate-limited or too large to open. Home Welder lists the price as $849 without torch and the warranty as 3 years."
+  },
+  {
+   "product": "AHP AlphaTIG 203Xi",
+   "label": "TIG duty cycle and derived 100% current",
+   "value": "60% @ 200 A on 240V (stated); about 155 A at 100% (derived)",
+   "source": "https://homewelder.com/best-tig-welder-for-beginners/",
+   "source_title": "Best TIG Welder for Beginners: AC/DC Under $1,000 (Home Welder)",
+   "read": "2026-11-17",
+   "note": "Derived with the heating-equivalent rule I100 = I_rated × √(duty): 200 × √0.60 = 154.9 A. The method reproduced YesWelder's stated 110 A. Home Welder also gives max 150 A at 120V, $670, pedal included, 3-year parts and labor, AC frequency 20–200 Hz and balance 20–80% EP."
+  },
+  {
+   "product": "ARCCAPTAIN TIG200P AC/DC",
+   "label": "TIG duty cycle and derived 100% current",
+   "value": "25% @ 200 A on 220V (stated); about 100 A at 100% (derived)",
+   "source": "https://homewelder.com/best-tig-welder-for-beginners/",
+   "source_title": "Best TIG Welder for Beginners: AC/DC Under $1,000 (Home Welder)",
+   "read": "2026-11-17",
+   "note": "200 × √0.25 = 100 A. Home Welder also gives max 120 A at 110V, AC frequency 20–250 Hz, balance 20–60% EP, pedal sold separately, 3-year warranty. The maker page returned HTTP 429."
+  },
+  {
+   "product": "LOTOS TIG200ACDC",
+   "label": "Price, inputs and what's in the box (maker store)",
+   "value": "$399.98 (compare-at $549.98); 10–200 A AC/DC TIG; 110/120V and 220/240V auto dual voltage; foot pedal and argon regulator included; HF start; 1-year replacement plus 3-year limited warranty",
+   "source": "https://lotostechnology.com/products/tig200",
+   "source_title": "LOTOS TIG200ACDC 200A AC/DC Aluminum TIG Welder (maker US store)",
+   "read": "2026-11-17",
+   "note": "Read from the store's product listing using the storecheck search tool. The full product page returned HTTP 429. The included pigtail adapts the 220V plug to a 110V outlet."
+  }
+ ],
+ "unsourced": [
+  "LOTOS TIG200ACDC duty cycle and maximum output on 110V: the maker listing does not state them, and the product page and manual were rate-limited (HTTP 429).",
+  "PrimeWeld TIG225X duty table from the maker: the product page returned 429 and the manual PDF was over the 10 MB fetch limit, so its figures come from Home Welder.",
+  "AHP AlphaTIG 203Xi 120V duty cycle and the ambient temperature behind its rating: the maker page returned 429, the brochure and manual PDFs were not machine-readable through fetch, and manuals.online returned 403.",
+  "ARCCAPTAIN TIG200P AC/DC maker spec and price: the maker page returned 429 twice.",
+  "The duty-cycle test basis (ambient temperature, 10-minute period, IEC 60974-1) for any of the five machines: not stated on any page I could open."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0628453999999998
+ }
+}
