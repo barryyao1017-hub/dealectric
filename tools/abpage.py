@@ -616,7 +616,9 @@ def apply(slug: str, local: bool) -> dict:
             for m in draft["must"]:
                 cmd += ["--must", m]
             r = sh(*cmd)
-            if "PASS" not in r.stdout:
+            fails = [l for l in r.stdout[r.stdout.find("FAIL:"):].splitlines()[1:] if l.startswith("- ")] if "FAIL:" in r.stdout else []
+            link_only = fails and all("/go/ link cut" in l or "buy link" in l for l in fails)
+            if "PASS" not in r.stdout and not (draft.get("keep_pick") and link_only):   # keep_pick: no buy link exists for the pick
                 errs.append("fastloop check: " + r.stdout[-500:])
         new_files = sorted((set((ROOT / "src/img").glob("*.png")) | set((ROOT / "docs").rglob("*")) | set((ROOT / "src/dist").rglob("*"))) - before)
         if errs:
