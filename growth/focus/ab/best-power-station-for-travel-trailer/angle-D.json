@@ -1,0 +1,56 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states which fix the EMS side recommends when a trailer's EMS sees a power station's floating neutral as an 'open ground' and cuts power: Progressive EMS support says to remove or bypass the EMS, says not to put a neutral-ground bonding plug in a power station, and offers a permanent bypass switch for EMS units built into the RV.",
+ "standout": 1,
+ "standout_why": "I compared this against the two cited rivals. quiettechreport.com (best-portable-power-stations-rv-air-conditioners) already says that 'many portable power stations use a floating-neutral electrical design' and that this 'may trigger an EMS/open-ground fault'. But it names no EMS brand, gives no fix and does not say which candidate stations float. solutionenergy.com/portable-power/rv/ covers the TT-30R 20 A limit, the trailer's converter drawing from the station, and Jackery's grounding adapter, but says nothing about floating neutral or EMS. So the mechanism is already partly covered. What is new is the EMS-side fix (bypass, no bonding plug), the fact that a named RV electrical writer recommends the opposite fix, and the Anker C2000 Gen 2's 12 V 10 A car output as the only DC route around the issue. None of this is a per-model statement on how the neutral is wired.",
+ "decides": "This confirms the picks rather than changing them. For a trailer with a hardwired EMS (common on newer trailers), any of the candidates may lose power the moment it is plugged into the shore cord, because the EMS reads the station's floating neutral as an open ground. The page should say the plan needs either a plug-in EMS that can be left out or a bypass switch on a built-in one. A bonding plug is disputed: Progressive EMS support (via AIR GEAR) says don't, while Mike Sokol shows how. I found no maker statement saying any candidate bonds neutral to ground, so this does not separate the picks.",
+ "candidates": [
+  "Anker SOLIX C2000 Gen 2",
+  "BLUETTI AC200L",
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA 3 Ultra",
+  "EcoFlow DELTA Pro 3",
+  "Jackery HomePower 3000",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What an RV EMS does with a power station, and the fix Progressive EMS support recommends",
+   "value": "The EMS reads an open ground and cuts power. The advice is to remove or bypass the EMS, not to use a bonding plug, and Progressive sells a permanent bypass switch for built-in EMS units.",
+   "source": "https://air-gear-help-center.gorgias.help/en-US/ems-and-power-station-%22open-ground%22-error-4099332",
+   "source_title": "AIR GEAR Technical Support, Progressive EMS section: EMS and power station \"open ground\" error",
+   "read": "2026-11-17",
+   "note": "Quotes: 'This is normal with any power station or generator, and it does not indicate a malfunction.' An 'Electrical Management System (EMS) will shut off the power to your RV when it detects an open ground.' For a power station, 'the solution is to remove or bypass the EMS.' 'Do not use a Ground-Neutral Bonding plug in a power station.' 'Progressive offers a bypass switch that can be installed permanently in your RV.' AIR GEAR is a retailer's help desk filed under Progressive EMS, not Progressive Industries itself. The only power station it names is Sorein."
+  },
+  {
+   "product": "general",
+   "label": "Named RV electrical writer's opposite fix",
+   "value": "A neutral-ground bonding plug plugged into a 3-way adapter on the station's 120 V outlet, with the extension cord in the adapter's other socket",
+   "source": "https://rvelectricity.substack.com/p/solar-generator-n-g-bonding",
+   "source_title": "Solar Generator N-G Bonding? (Mike Sokol, RVelectricity, 2023-01-20)",
+   "read": "2026-11-17",
+   "note": "Mike Sokol tested a Jackery Explorer and writes that these 'generators' don't have any ground contacts in their outlets. The reader's Progressive unit kept the generator from running with an 'open ground' error. The article covers 120 V outlets only, and a reader's question about the 30 A RV outlet got no answer. This conflicts with the AIR GEAR advice above, so the page should give both and name who says what."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "RV outlet rating and 12 V DC output",
+   "value": "TT-30R: 120 V, 20 A max, 2,400 W max. Car charger output: 12 V, 10 A.",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page",
+   "read": "2026-11-17",
+   "note": "The 20 A TT-30R limit is already in solutionenergy.com. The new point is the 12 V 10 A (120 W) car output, the only DC way to run the trailer's 12 V lights, pump and controls without going through the shore cord and EMS, and it is small. The page says nothing about neutral/ground on the outlets. No price was shown."
+  }
+ ],
+ "unsourced": [
+  "A maker statement on whether the outlets float or bond neutral to ground for each candidate: Anker SOLIX C2000 Gen 2 (product page checked, silent), EcoFlow DELTA 3 Ultra and DELTA Pro 3 (EcoFlow's floating-neutral blog post of 2026-09-24 names no model's configuration, and the DELTA Pro 3 manual did not turn up in an EcoFlow-site search), BLUETTI AC200L and Elite 300 (BLUETTI community threads now redirect to forum.bluettipower.com and would not open), Jackery HomePower 3000 (product page returned HTTP 429), Anker SOLIX F3800 (manuals cover home-panel wiring only).",
+  "Progressive Industries' own EMS-PT30X manual wording for error E2 (open ground: 'power to the RV will not be provided'; 'a bonded neutral generator is recommended'). The camperid PDF came back as binary I could not extract, and the manuals.plus and manualmachine copies returned 403. I saw the wording only in a search snippet, so it is left out of the findings.",
+  "Jackery's FAQ line that the HomePower 3000 needs a grounding adapter for RV use. The product page returned HTTP 429, so I could not open it here. solutionenergy.com already cites this line."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1766927
+ }
+}

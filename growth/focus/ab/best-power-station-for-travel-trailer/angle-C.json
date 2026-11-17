@@ -1,0 +1,112 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got cites a maker document on how a station's neutral is wired. Jackery's own HomePower 3000 (JE-3000B) spec FAQ answers the question 'is the neutral floating or bonded?' with 'floating', and the same FAQ calls its 120V/30A TT-30 port 'an auxiliary power input for small camper vans and trailers'. That matters for a trailer with a hardwired EMS or surge protector that checks for a missing ground.",
+ "standout": 1,
+ "standout_why": "I compared against both cited rivals and the top result. quiettechreport.com (cited) already warns under the HomePower 3000 that 'floating-neutral arrangements may trigger an EMS/open-ground fault', but it doesn't cite Jackery and says 'may'. solutionenergy.com (cited) gives each model's TT-30 amp rating (C2000 Gen 2 20 A, HomePower 3000 30 A, DELTA Pro 3 'true 30 A') and the expansion batteries, and says Jackery requires a 'grounding adapter'. It never says whether any neutral is floating or bonded. Neither page names a maker's statement on a specific model's neutral, so our page would add the source and the certainty, not a new idea.",
+ "decides": "This doesn't change the pick. It confirms that the trailer's EMS should be checked before buying. Jackery documents the HomePower 3000 (ChatGPT's 'best balance' pick) as floating neutral and not expandable ('battery packs: Not supported'). An owner whose hardwired EMS checks for a ground should expect an open-ground fault, and Jackery offers no expansion path. For the Anker SOLIX C2000 Gen 2 (ChatGPT's #1), Anker's page puts the TT-30R at 20 A / 2,400 W. That is below the 30 A the trailer's inlet implies, even though Anker's headline says 'Power Your Entire RV' and claims the unit runs 'most window and RV A/Cs'.",
+ "candidates": [
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA Pro 3",
+  "BLUETTI AC200L",
+  "Jackery HomePower 3000",
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA 3 Ultra",
+  "Anker SOLIX F3800"
+ ],
+ "findings": [
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Neutral wiring",
+   "value": "floating (not bonded to ground)",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303681925147-HomePower-3000-Basic-Information",
+   "source_title": "HomePower 3000 Basic Information (Jackery FAQ, model JE-3000B, updated 2026-08-19)",
+   "read": "2026-11-17",
+   "note": "This is Jackery's own answer to 'is the neutral wire floating or bonded'. A trailer EMS or surge protector that checks for a ground may report open ground. Jackery's FAQ doesn't mention a bonding plug or adapter for this model."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "TT-30 output and shared AC limit",
+   "value": "TT-30 120 V / 30 A; 4 × 120 V 20 A outlets + 1 × 120 V 30 A; 3,600 W total across the 5 ports; 7,200 W instantaneous",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303681925147-HomePower-3000-Basic-Information",
+   "source_title": "HomePower 3000 Basic Information (Jackery FAQ)",
+   "read": "2026-11-17",
+   "note": "Jackery lists the RV use as 'auxiliary power input for small camper vans and trailers'. The 50 A port entry is blank ('/'), so there's no 50 A output. The 3,600 W limit is shared by all five ports, so other AC loads cut what the TT-30 can deliver."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Expansion, parallel and car charging",
+   "value": "expansion battery packs not supported; parallel not supported; car fast charger about 5.6 h; car port about 36 h at 11–16 V, 8 A",
+   "source": "https://faq.jackery.com/hc/en-us/articles/52303681925147-HomePower-3000-Basic-Information",
+   "source_title": "HomePower 3000 Basic Information (Jackery FAQ)",
+   "read": "2026-11-17",
+   "note": "The FAQ doesn't mention an alternator charger. UPS switchover is within 20 ms, and Jackery says this is 'not a 0 ms' UPS."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "TT-30R rating",
+   "value": "120 V, 20 A max, 2,400 W max (4,000 W peak)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page",
+   "read": "2026-11-17",
+   "note": "20 A × 120 V = 2,400 W, which is two-thirds of a 30 A (3,600 W) trailer inlet. On the same page Anker headlines 'Power Your Entire RV via TT-30 Port' and says it runs 'most window and RV A/Cs'."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Compatible expansion battery and alternator charging",
+   "value": "Anker SOLIX BP2000 Expansion Battery (Gen 2) only, 2,048 Wh, up to 4 kWh total; alternator charging up to 800 W (to 100% in 3 h per Anker)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 product page",
+   "read": "2026-11-17",
+   "note": "FAQ Q4 names only the BP2000 (Gen 2). The comparison table marks alternator charging 'Not Supported' on the F2000. The AC input is listed as L+N+PE, but the page says nothing about the neutral-ground state of the outputs."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Extra battery link cable compatibility",
+   "value": "Extra Battery Flat Link Cable connects DELTA Pro 3 to the DELTA Pro 3 Smart Extra Battery or the DELTA Pro Extra Battery; $89.00; 0.85 m or 2 m",
+   "source": "https://us.ecoflow.com/products/extra-battery-flat-link-cable",
+   "source_title": "EcoFlow Extra Battery Flat Link Cable (EcoFlow US store)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py. EcoFlow notes this cable's design 'is different from that of the DELTA Pro Extra Battery Cable', so the older DELTA Pro cable doesn't carry over."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Alternator charger compatibility",
+   "value": "EcoFlow 500W Alternator Charger $199.00; reverse charging and battery maintenance only with the XT150 cable on DELTA-series units; the original DELTA Pro (not Pro 3) needs a DELTA Pro to Smart Generator Adapter",
+   "source": "https://us.ecoflow.com/products/ecoflow-500w-alternator-charger",
+   "source_title": "EcoFlow 500W Alternator Charger (EcoFlow US store)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py. The included XT60 cable charges only. Used with third-party stations, it doesn't support reverse charging or battery maintenance."
+  },
+  {
+   "product": "EcoFlow DELTA 3 / DELTA 3800 Gen4",
+   "label": "Cross-generation extra battery compatibility",
+   "value": "DELTA 3: DELTA 3, DELTA Pro 3, DELTA 2 or DELTA 2 Max Extra Battery (1–5 kWh). DELTA 3800 Gen4: DELTA Pro 3 Smart Extra Battery and DELTA 3 Max Plus (2,048 Wh) Smart Extra Battery (4–12 kWh)",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station (EcoFlow US store search result)",
+   "read": "2026-11-17",
+   "note": "The DELTA 3800 Gen4 line comes from https://us.ecoflow.com/products/delta-3800-gen4, read the same day through storecheck.py search."
+  },
+  {
+   "product": "BLUETTI AC200L / Elite 300",
+   "label": "Which BLUETTI models have a native TT-30",
+   "value": "AC200L and Elite 300 only, as named by BLUETTI; both listed at 2,400 W",
+   "source": "https://bluettipower.com/blogs/knowledge/what-is-tt-30-outlet-rv",
+   "source_title": "What Is a TT-30 Outlet? RV 30 Amp Plug Explained (2026 Guide), BLUETTI, 2026-10-05",
+   "read": "2026-11-17",
+   "note": "BLUETTI calls both 'true TT-30 plug-and-play' but gives no amp rating per outlet. 2,400 W ÷ 120 V = 20 A of inverter output on a 30 A receptacle. The article doesn't address neutral bonding or EMS open-ground faults."
+  }
+ ],
+ "unsourced": [
+  "Neutral-ground state (floating or bonded) of the BLUETTI AC200L, Anker SOLIX C2000 Gen 2 and EcoFlow DELTA Pro 3 outputs. I searched the maker pages and manuals. Only forum posts and an unattributed rvoutfitting.com line about a DELTA Pro 3 app bonding control turned up. I couldn't open the DELTA Pro 3 manual PDF (skanbatt copy returned 404).",
+  "Anker support article 'How should my electrical device be grounded when connecting to Anker SOLIX F3800' (support.ankersolix.com). The page wouldn't render ('CSS Error'), so I couldn't read F3800 outlet grounding by mode.",
+  "Jackery HomePower 3000 product page wording on a 'grounding adapter' for RV use, which solutionenergy.com cites. jackery.com returned HTTP 429 on both WebFetch and storecheck. I didn't open Jackery's grounding-adapter page, which a search snippet says lists only the HomePower 3600 Pro Max and Explorer 5000 Plus, so I can't state its compatibility.",
+  "EcoFlow DELTA Pro 3 TT-30R amp rating and price from us.ecoflow.com. The product page returned HTTP 429.",
+  "BLUETTI AC200L per-outlet TT-30 amp rating and its list of compatible expansion batteries from the maker's product page or manual. I didn't open them within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2234196999999998
+ }
+}
