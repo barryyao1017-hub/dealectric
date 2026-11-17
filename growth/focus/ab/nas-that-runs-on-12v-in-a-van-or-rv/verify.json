@@ -1,0 +1,232 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "E",
+  "why_angle": "The QNAP TS-233 spec page and the Synology compare pages give only the makers' own watts. Neither says which drives were fitted or how the power was measured, and none covers UGREEN. This page adds what named reviewers measured, with the drives they used: LANOC for the TS-233, Mighty Gadget for the DH2300, OCinside for the DXP2800, and PC-Welt for the DS223j and DS223. It turns each idle figure into Ah per day from a 12.8 V battery.",
+  "slug": "nas-that-runs-on-12v-in-a-van-or-rv",
+  "must": [
+   "The QNAP TS-233 runs on 12 V in a van or RV",
+   "LANOC measured 3.7 W idle and 7.4 W during file transfer"
+  ],
+  "products": [],
+  "unsourced": [
+   "Today's US price for the QNAP TS-233 and the Synology DS223. QNAP and Synology have no US store. B&H, Adorama and Newegg returned 403, and amzcheck.py was walled by Amazon (blocked: true for ASINs B09VCYCFSY and B0GTX78T19). Those rows therefore have no price cell.",
+   "An Amazon product record for the QNAP TS-233. The ASIN could not be checked on Amazon because amzcheck was blocked, so the TS-233 appears as a maker-page row and not as our product.",
+   "A reviewer measurement of the TS-233 with hard drives. The Toshiba HDD Lab report TSH209 (two N300 drives) PDF would not render, and no other reviewer measured it.",
+   "A reviewer measurement of the Synology DS124. Neither PC-Welt nor testberichte.de has a lab figure, so the DS124 is left out of the rows.",
+   "Any measurement taken on the 12 V DC side, from a van battery. Every reviewer figure here is either at the wall through the AC adapter or the method isn't stated.",
+   "A DC input tolerance range published by QNAP, Synology or UGREEN for these models.",
+   "Synology's own figure for the output voltage of Adapter 60W_1. Only retailer listings state 12 V.",
+   "Neowin's DH2300 measurement (15.3 W access, 10.3 W hibernation). The page returned 403, so it isn't used."
+  ],
+  "page": {
+   "title": "Which NAS runs on 12 V in a van or RV, and how much power does it draw (2026)? Input voltages and measured watts",
+   "h1": "Which NAS runs on 12 V in a van or RV, and how much power does it draw? (2026)",
+   "desc": "2-bay NAS that run from a 12 V supply in a van or RV: QNAP TS-233, UGREEN DH2300 and DXP2800, and Synology DS223j and DS223. Compared on DC input, maker watts, reviewer-measured idle and load draw, and amp-hours per day from a 12.8 V battery.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The QNAP TS-233 runs on 12 V in a van or RV and draws the least power of these 2-bay NAS: QNAP's spec names a 12 V DC power supply, and LANOC measured 3.7 W idle and 7.4 W during file transfer with two SSDs. Synology's DS223j drew 16.4 W idle in PC-Welt's test.</p>",
+   "columns": [
+    [
+     "input",
+     "DC input (source)"
+    ],
+    [
+     "maker",
+     "Maker figure, access / standby"
+    ],
+    [
+     "idle",
+     "Measured idle (reviewer)"
+    ],
+    [
+     "load",
+     "Measured load (reviewer)"
+    ],
+    [
+     "drives",
+     "Reviewer's drives"
+    ],
+    [
+     "ahday",
+     "Ah/day at measured idle, 12.8 V"
+    ]
+   ],
+   "rows": [
+    {
+     "brand": "QNAP",
+     "model": "TS-233",
+     "url": "https://www.qnap.com/en-us/product/ts-233/specs/hardware",
+     "cells": {
+      "input": "12 V DC, minimum 48 W adapter (QNAP)",
+      "maker": "10.81 W operating with both bays filled / 3.43 W disk standby (QNAP)",
+      "idle": "3.7 W (LANOC)",
+      "load": "7.4 W copying files; 5.7 W streaming Plex (LANOC)",
+      "drives": "Two 500 GB SATA SSDs",
+      "ahday": "6.9 Ah"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dh2300",
+     "model": "UGREEN NASync DH2300",
+     "cells": {
+      "input": "12 V, 4.2 A / 50 W external adapter (Starry Hope)",
+      "maker": "13.72 W access / 3.304 W hibernation, one 2 TB HDD (UGREEN, via Starry Hope)",
+      "idle": "9–10 W (Mighty Gadget)",
+      "load": "12–13 W (Mighty Gadget)",
+      "drives": "Two 4 TB Seagate IronWolf, RAID 1",
+      "ahday": "16.9–18.8 Ah"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp2800",
+     "model": "UGREEN NASync DXP2800",
+     "cells": {
+      "input": "12 V, 5 A / 60 W external adapter (Starry Hope)",
+      "maker": "16.38 W access / 5.24 W hibernation, one 2 TB HDD (UGREEN lab, via Starry Hope)",
+      "idle": "About 7 W (OCinside)",
+      "load": "34.7 W peak under CPU, RAM and disk stress (OCinside)",
+      "drives": "Two WD40EFPX 4 TB HDDs in RAID 1; NVMe tests with a Samsung 980 Pro, then a Crucial T705",
+      "ahday": "13.1 Ah"
+     }
+    },
+    {
+     "slug": "synology-ds223j",
+     "model": "Synology DS223j",
+     "cells": {
+      "input": "12 V via Synology Adapter 60W_1 (retailer listings; Synology states 60 W only)",
+      "maker": "16.31 W access / 4 W HDD hibernation (Synology)",
+      "idle": "16.4 W; 3.1 W asleep (PC-Welt)",
+      "load": "22.3 W (PC-Welt)",
+      "drives": "PC-Welt test drives, models unnamed",
+      "ahday": "30.8 Ah"
+     }
+    },
+    {
+     "brand": "Synology",
+     "model": "DS223",
+     "url": "https://www.synology.com/en-us/products/DS223",
+     "cells": {
+      "input": "12 V via Synology Adapter 60W_1 (retailer listings; Synology states 60 W only)",
+      "maker": "17.343 W access / 4.08 W HDD hibernation (Synology)",
+      "idle": "14.2 W; 3.3 W asleep (PC-Welt)",
+      "load": "18.2 W (PC-Welt)",
+      "drives": "PC-Welt test drives, models unnamed",
+      "ahday": "26.6 Ah"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2>\n<ul>\n<li><strong>Battery use per day, NAS left idle for 24 h.</strong> TS-233: 3.7 W × 24 h = 88.8 Wh, ÷ 12.8 V = 6.9 Ah. DH2300: 9–10 W × 24 h = 216–240 Wh, ÷ 12.8 V = 16.9–18.8 Ah. DXP2800: 7 W × 24 h = 168 Wh, ÷ 12.8 V = 13.1 Ah. DS223: 14.2 W × 24 h = 340.8 Wh, ÷ 12.8 V = 26.6 Ah. DS223j: 16.4 W × 24 h = 393.6 Wh, ÷ 12.8 V = 30.8 Ah. These figures leave out the DC-DC converter's own losses.</li>\n<li><strong>Synology DS223j against the TS-233 at idle:</strong> 16.4 W ÷ 3.7 W = 4.4 times the draw. The comparison isn't like for like, because LANOC tested the TS-233 with SSDs and PC-Welt doesn't name its drives. QNAP's own figure with both bays filled, 10.81 W, is still lower than Synology's 16.31 W for the DS223j: 16.31 ÷ 10.81 = 1.51, or 51% more.</li>\n<li><strong>Asleep, the gap closes.</strong> PC-Welt measured the DS223j at 3.1 W asleep: 3.1 W × 24 h = 74.4 Wh, or 5.8 Ah. QNAP rates the TS-233 at 3.43 W in disk standby. If your NAS spends most of the day with its drives spun down, the standby figure matters more than the active one.</li>\n<li><strong>Converter and fuse size at 12 V:</strong> TS-233, 48 W ÷ 12 V = 4 A. DH2300, 50 W ÷ 12 V = 4.2 A. DXP2800 and DS223j, 60 W ÷ 12 V = 5 A. Size for the adapter rating, not the idle figure. StorageReview's copy of Seagate's IronWolf spec gives 1.8–2.0 A at 12 V for each drive while it spins up, so two drives starting together draw about 4 A, or 48 W.</li>\n<li><strong>Don't wire it straight to the house battery.</strong> Seagate's IronWolf spec, as StorageReview lists it, allows 12 V ±10%, so 13.2 V at most. A 12 V LiFePO4 charger such as Redodo's 14.6 V model pushes the bus to 14.6 V, which is 1.4 V above that limit. Feed the NAS from a regulated DC-DC converter set to 12 V. Victron's Orion-Tr 12/12 takes 8–17 V in and gives an adjustable 10–15 V out. Its no-load draw is under 80 mA, about 1 W at 12.8 V.</li>\n</ul>\n<table>\n<tr><th>Use</th><th>Fits</th><th>Why</th></tr>\n<tr><td>All-SSD build, smallest battery budget</td><td>QNAP TS-233</td><td>QNAP states a 12 V DC input; LANOC measured 3.7 W idle and 7.4 W copying files</td></tr>\n<tr><td>Two hard drives, bought from the maker's US store</td><td>{buy:ugreen-nasync-dh2300}</td><td>12 V, 4.2 A adapter; Mighty Gadget measured 9–10 W idle with two 4 TB IronWolf drives</td></tr>\n<tr><td>Hard drives plus NVMe, Intel N100</td><td>{buy:ugreen-nasync-dxp2800}</td><td>About 7 W idle in OCinside's test, but 34.7 W peak, so it needs a 5 A converter</td></tr>\n<tr><td>Must run Synology DSM</td><td>Synology DS223j</td><td>Allow about 31 Ah a day while it is awake (16.4 W, PC-Welt)</td></tr>\n</table>\n<h2>Measured watts and how each reviewer took them</h2>\n<ul>\n<li><strong>QNAP TS-233, LANOC (Wes Compton):</strong> 3.7 W idle, 5.7 W streaming to Plex, 7.4 W copying files, with two 500 GB SATA SSDs installed. With SSDs there is no drive spin-down, so these are lower than a hard-drive build would read. The review mentions a newly installed Sense whole-home energy monitor and names no plug-in meter. QNAP's own 10.81 W operating and 3.43 W disk standby were 'tested with drives fully populated', meaning two drives, but QNAP doesn't name the drive model.</li>\n<li><strong>UGREEN NASync DH2300, Mighty Gadget (James Smythe):</strong> 9–10 W idle and 12–13 W under load, with two 4 TB Seagate IronWolf drives in RAID 1. OCinside read 9–11 W idle and 12–13 W while copying on a Shelly Plug S, which it calls not very accurate. UGREEN's own 13.72 W and 3.304 W figures were taken with a single 2 TB drive.</li>\n<li><strong>UGREEN NASync DXP2800, OCinside:</strong> about 7 W idle and 34.7 W peak under a combined CPU, RAM and disk stress test. The unit was set up in RAID 1. The review names two WD40EFPX 4 TB drives as its test drives, and it ran NVMe tests first with a Samsung 980 Pro and then with a Crucial T705. UGREEN's 16.38 W figure is with one 2 TB drive, so a second spinning drive adds to it.</li>\n<li><strong>Synology DS223j and DS223, PC-Welt (Ines Walke-Chomjakov):</strong> DS223j at 16.4 W idle, 3.1 W asleep, 22.3 W under load and 0.1 W off. DS223 at 14.2 W idle, 3.3 W asleep and 18.2 W under load. PC-Welt names neither the drives nor the meter. Synology lists only a 60 W adapter with 100–240 V AC input. The 12 V output comes from retailer listings of the Adapter 60W_1, which name the DS223 and DS223j among its applied models.</li>\n<li><strong>Where the meter sat:</strong> none of these reviewers measured on a 12 V DC feed. A reading at the wall includes the AC adapter's own loss, which a DC-DC feed replaces with the converter's loss.</li>\n</ul>\n<h2>Not recommended</h2>\n<p><strong>Synology DS223j or DS223 on battery alone.</strong> PC-Welt measured 16.4 W and 14.2 W idle, which is 30.8 Ah and 26.6 Ah a day from a 12.8 V bank if left awake. Synology also publishes no output voltage for the adapter, so the 12 V input rests on retailer listings. They make sense only if you need DSM and will set the drives to hibernate, where PC-Welt read 3.1–3.3 W.</p>",
+   "sources": [
+    [
+     "QNAP TS-233: minimum 48 W adapter (12 V DC); 10.81 W operating with drives fully populated; 3.43 W disk standby (read 2026-11-17)",
+     "https://www.qnap.com/en-us/product/ts-233/specs/hardware"
+    ],
+    [
+     "QNAP TS-233 measured at 3.7 W idle, 5.7 W Plex, 7.4 W file transfer with two 500 GB SSDs, LANOC (read 2026-11-17)",
+     "https://lanoc.org/review/storage/qnap-ts-233?showall=1"
+    ],
+    [
+     "UGREEN DH2300 measured at 9–10 W idle and 12–13 W load with two 4 TB IronWolf drives in RAID 1, Mighty Gadget, James Smythe (read 2026-11-17)",
+     "https://mightygadget.com/ugreen-dh2300-nas-review/"
+    ],
+    [
+     "UGREEN DH2300 measured at 9–11 W idle and 12–13 W copying on a Shelly Plug S ('not super accurate'), RAID 1, OCinside (read 2026-11-17)",
+     "https://www.ocinside.de/review/ugreen_dh2300/5/"
+    ],
+    [
+     "UGREEN DH2300: 50 W external adapter, 12 V / 4.2 A; UGREEN figures of 13.72 W access and 3.304 W hibernation with one 2 TB HDD (read 2026-11-17)",
+     "https://www.starryhope.com/nas/models/ugreen-nasync-dh2300/"
+    ],
+    [
+     "UGREEN DXP2800 test hardware: two WD40EFPX 4 TB HDDs; NVMe tests with Samsung 980 Pro and Crucial T705, OCinside (read 2026-11-17)",
+     "https://www.ocinside.de/review/ugreen_dxp2800/"
+    ],
+    [
+     "UGREEN DXP2800 measured at about 7 W idle and 34.7 W maximum under stress, RAID 1, OCinside (read 2026-11-17)",
+     "https://www.ocinside.de/review/ugreen_dxp2800/4/"
+    ],
+    [
+     "UGREEN DXP2800: 60 W external adapter, 12 V / 5 A; UGREEN lab figures of 16.38 W access and 5.24 W hibernation with one 2 TB HDD (read 2026-11-17)",
+     "https://www.starryhope.com/nas/models/ugreen-nasync-dxp2800/"
+    ],
+    [
+     "Synology DS223j measured at 16.4 W idle, 3.1 W sleep, 22.3 W load and 0.1 W off, PC-Welt, Ines Walke-Chomjakov, 3 Aug 2024 (read 2026-11-17)",
+     "https://www.pcwelt.de/?p=2389650"
+    ],
+    [
+     "Synology DS223 measured at 14.2 W idle, 3.3 W sleep and 18.2 W load, PC-Welt, Ines Walke-Chomjakov, 22 Apr 2023 (read 2026-11-17)",
+     "https://www.pcwelt.de/?p=1782382"
+    ],
+    [
+     "Synology DS223: 17.343 W access, 4.08 W HDD hibernation; DS223j: 16.31 W access, 4 W hibernation; 60 W adapter with 100–240 V AC input (read 2026-11-17)",
+     "https://www.synology.com/en-us/products/compare/DS223/DS223j"
+    ],
+    [
+     "Synology Adapter 60W_1 output: 12 V, 60 W (retailer listing, read 2026-11-17)",
+     "https://b2b.100mega.com/en/206148-napajeci-adapter-synology-60w"
+    ],
+    [
+     "Synology Adapter 60W_1 applied models include DS223 and DS223j (retailer listing, read 2026-11-17)",
+     "https://store.area9.com.au/products/synology-spare-adapter-60w-for-ds214se-ds214play-ds215j-ds216se-ds216play-nvr216-ds216-ds216j-ds216-plus-ds216-plusii-and-more-1206753"
+    ],
+    [
+     "Seagate IronWolf 12 V tolerance ±10%; spin-up current 1.8–2.0 A at 12 V, StorageReview (read 2026-11-17)",
+     "https://www.storagereview.com/review/seagate-ironwolf-hdd-10tb-review"
+    ],
+    [
+     "12 V LiFePO4 charger output up to 14.6 V, Redodo (recorded by research agents 2026-11-17; not re-read: HTTP 429)",
+     "https://www.redodopower.com/products/redodo-14-6v-20a-lifepo4-battery-charger"
+    ],
+    [
+     "Victron Orion-Tr 12/12 isolated: 8–17 V input, adjustable 10–15 V output, no-load current under 80 mA (read 2026-11-17)",
+     "https://www.victronenergy.com/media/pg/Orion-Tr_Smart_DC-DC_Charger_-_Isolated/en/specifications.html"
+    ]
+   ]
+  }
+ },
+ "checked": 64,
+ "changed": [
+  {
+   "where": "rows[UGREEN NASync DXP2800].cells.drives",
+   "was": "Two WD40EFPX 4 TB HDDs in RAID 1, plus two NVMe SSDs",
+   "now": "Two WD40EFPX 4 TB HDDs in RAID 1; NVMe tests with a Samsung 980 Pro, then a Crucial T705",
+   "why": "OCinside page 1 names the two WD40EFPX drives, but it tested the NVMe SSDs one after the other ('a 980 Pro 1TB ... and then again with a T705'), not both at once. The power page (/4/) doesn't name any drives."
+  },
+  {
+   "where": "after: Measured watts, DXP2800 bullet",
+   "was": "The unit was set up in RAID 1, and the review lists two WD40EFPX 4 TB drives and two NVMe SSDs as the test hardware.",
+   "now": "The unit was set up in RAID 1. The review names two WD40EFPX 4 TB drives as its test drives, and it ran NVMe tests first with a Samsung 980 Pro and then with a Crucial T705.",
+   "why": "Same as above. OCinside used the two NVMe SSDs one after the other, not together."
+  },
+  {
+   "where": "after: Measured watts, TS-233 bullet",
+   "was": "The review doesn't name its meter.",
+   "now": "The review mentions a newly installed Sense whole-home energy monitor and names no plug-in meter.",
+   "why": "LANOC's review does mention a measuring device, a Sense installed 'on our power', so 'doesn't name its meter' was inaccurate."
+  },
+  {
+   "where": "sources",
+   "was": "No source for the OCinside DH2300 figures in the after-section (9–11 W idle, 12–13 W copying, Shelly Plug S, 'not very accurate')",
+   "now": "Added https://www.ocinside.de/review/ugreen_dh2300/5/",
+   "why": "I opened the page and it supports all of these: 9–11 W idle, 12–13 W copying, a Shelly Plug S that is 'not super accurate', and RAID 1."
+  },
+  {
+   "where": "sources",
+   "was": "The WD40EFPX drive claim had no source that held it. OCinside /4/ doesn't name any drives.",
+   "now": "Added https://www.ocinside.de/review/ugreen_dxp2800/",
+   "why": "Page 1 of the OCinside review names the WD40EFPX drives and the NVMe SSDs it used."
+  },
+  {
+   "where": "sources: Redodo",
+   "was": "(read 2026-11-17)",
+   "now": "(recorded by research agents 2026-11-17; not re-read: HTTP 429)",
+   "why": "not re-read: redodopower.com returned HTTP 429 to WebFetch, to the .json endpoint and to storecheck.py. I couldn't load any copy, so the 14.6 V figure stays as the research agents recorded it."
+  }
+ ],
+ "removed": [],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.5982268000000001
+ }
+}

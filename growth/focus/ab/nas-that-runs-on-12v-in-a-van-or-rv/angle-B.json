@@ -1,0 +1,138 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got gives a NAS's daily draw at a realistic van duty cycle. At 4 h of drive access and 20 h of hibernation, the QNAP TS-233 uses about 112 Wh, or 8.7 Ah a day from a 12.8 V battery, against 11.3 Ah for the Synology DS223j. ChatGPT only multiplied the active watts by 24 h. None of its results states that the DS223j's Synology Adapter 60W_1 puts out 12 V.",
+ "standout": 2,
+ "standout_why": "I compared against the cited QNAP TS-233 hardware-spec page and the Synology DS223/DS223j and DS124/DS223j compare pages, plus ChatGPT's own table. QNAP publishes 10.81 W typical and 3.43 W disk standby. Synology publishes access and hibernation watts plus a 36 W or 60 W adapter with 100–240 V AC input. None of these pages combines the two modes into a daily Wh or Ah figure. ChatGPT's 259–416 Wh/day assumes 24 h of access, which overstates a mostly idle van NAS by about 2.3×. None states the Synology adapter's DC output voltage, which is why ChatGPT wrote 'Verify adapter'.",
+ "decides": "The finding confirms the QNAP TS-233 as the pick: at the same duty cycle it uses about 23% fewer Ah per day than the DS223j (8.7 against 11.3), and QNAP itself publishes the 12 VDC input. The DS223j moves from 'verify adapter' to 'also 12 V, per retailer listings of Synology's Adapter 60W_1', so it becomes a real 12 V option. It costs about 2.6 Ah more each day. The finding also gives fuse and DC-DC converter sizes: 4 A for the TS-233 (48 W ÷ 12 V) and 5 A for the DS223j (60 W ÷ 12 V). The DS124 matches the TS-233 on Ah per day, but I could not source its adapter voltage.",
+ "candidates": [
+  "QNAP TS-233",
+  "Synology DS223j",
+  "Synology DS124",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800"
+ ],
+ "findings": [
+  {
+   "product": "QNAP TS-233",
+   "label": "Power input",
+   "value": "Minimum 48 W adapter, 12 VDC output, 100–240 VAC input",
+   "source": "https://www.qnap.com/en-us/product/ts-233/specs/hardware/ts-233",
+   "source_title": "TS-233 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "QNAP's spec table. Accessories listed: PWR-ADAPTER-48W-A01, and PWR-ADAPTER-65W-A01 (EOL)."
+  },
+  {
+   "product": "QNAP TS-233",
+   "label": "Spec-sheet draw",
+   "value": "10.81 W operating (typical), 3.43 W disk standby",
+   "source": "https://www.qnap.com/en-us/product/ts-233/specs/hardware/ts-233",
+   "source_title": "TS-233 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "'Tested with drives fully populated'. QNAP does not name the drive model."
+  },
+  {
+   "product": "QNAP TS-233",
+   "label": "Daily draw, 4 h access + 20 h standby",
+   "value": "112 Wh/day = 8.7 Ah/day at 12.8 V",
+   "source": "https://www.qnap.com/en-us/product/ts-233/specs/hardware/ts-233",
+   "source_title": "TS-233 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "4 × 10.81 + 20 × 3.43 = 43.2 + 68.6 = 111.8 Wh; 111.8 ÷ 12.8 V = 8.7 Ah. Excludes DC-DC converter losses. The duty cycle is our assumption."
+  },
+  {
+   "product": "QNAP TS-233",
+   "label": "Fuse / converter current at 12 V",
+   "value": "4 A",
+   "source": "https://www.qnap.com/en-us/product/ts-233/specs/hardware/ts-233",
+   "source_title": "TS-233 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "48 W minimum adapter ÷ 12 V = 4.0 A."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Spec-sheet draw and adapter",
+   "value": "16.31 W access, 4 W HDD hibernation; 60 W adapter, 100–240 V AC input",
+   "source": "https://www.synology.com/en-us/products/compare/DS124/DS223j",
+   "source_title": "Synology compare DS124 / DS223j",
+   "read": "2026-11-17",
+   "note": "Synology's compare table. It gives no DC output voltage."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Adapter model fitted",
+   "value": "Synology Adapter 60W_1 (part 1206753); applied models list DS225+, DS224+, DS223, DS223j",
+   "source": "https://store.area9.com.au/products/synology-spare-adapter-60w-for-ds214se-ds214play-ds215j-ds216se-ds216play-nvr216-ds216-ds216j-ds216-plus-ds216-plusii-and-more-1206753",
+   "source_title": "Synology 60 W Power Adapter – Area9",
+   "read": "2026-11-17",
+   "note": "Retailer listing, not Synology. The page does not state the voltage."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Adapter 60W_1 output voltage",
+   "value": "12 V, 60 W",
+   "source": "https://b2b.100mega.com/en/206148-napajeci-adapter-synology-60w",
+   "source_title": "Synology síťový adaptér adapter 60W_1 (100-240V / 12V) – 100mega",
+   "read": "2026-11-17",
+   "note": "Retailer listing ('Výstupní napětí: 12 V'). Its compatibility list names older DS21x models only; DS223j compatibility comes from the Area9 listing above."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Daily draw, 4 h access + 20 h hibernation",
+   "value": "145 Wh/day = 11.3 Ah/day at 12.8 V",
+   "source": "https://www.synology.com/en-us/products/compare/DS124/DS223j",
+   "source_title": "Synology compare DS124 / DS223j",
+   "read": "2026-11-17",
+   "note": "4 × 16.31 + 20 × 4 = 65.2 + 80 = 145.2 Wh; 145.2 ÷ 12.8 = 11.3 Ah. Fuse/converter sizing: 60 W ÷ 12 V = 5 A."
+  },
+  {
+   "product": "Synology DS124",
+   "label": "Spec-sheet draw and adapter",
+   "value": "10.69 W access, 3.44 W HDD hibernation; 36 W adapter",
+   "source": "https://www.synology.com/en-us/products/compare/DS124/DS223j",
+   "source_title": "Synology compare DS124 / DS223j",
+   "read": "2026-11-17",
+   "note": "Daily draw: 4 × 10.69 + 20 × 3.44 = 42.8 + 68.8 = 111.6 Wh; ÷ 12.8 = 8.7 Ah/day, about the same as the TS-233."
+  },
+  {
+   "product": "general",
+   "label": "Overstatement in a 24 h-active estimate",
+   "value": "about 2.3× for the TS-233 (259 Wh vs 112 Wh)",
+   "source": "https://www.qnap.com/en-us/product/ts-233/specs/hardware/ts-233",
+   "source_title": "TS-233 | Hardware Specs | QNAP (US)",
+   "read": "2026-11-17",
+   "note": "24 × 10.81 = 259.4 Wh; 259.4 ÷ 111.8 = 2.32."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, UGREEN US store",
+   "value": "$239.99 (compare-at $394.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NASync DH2300 – UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "storecheck.py search of nas.ugreen.com."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98)",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 – UGREEN NAS store",
+   "read": "2026-11-17",
+   "note": "storecheck.py search of nas.ugreen.com."
+  }
+ ],
+ "unsourced": [
+  "UGREEN DH2300 access and hibernation watts (13.72 W / 3.304 W per UGREEN lab) and adapter output (12 V 4.2 A): only seen in a search snippet. nas.ugreen.com and ai.ugreen.com returned 429, Wellbots returned 429, Adorama returned 403, so no Ah/day figure was derived.",
+  "Neowin's measured DH2300 draw (15.3 W access, 10.3 W hibernation with 2× WD Red 4 TB): Neowin returned 403 on both the AMP and full URLs.",
+  "UGREEN DXP2800 spec-sheet watts and 12 V 5 A adapter: the product page body was CSS-only in storecheck, and Adorama returned 403.",
+  "Synology DS124 adapter DC output voltage: the 36 W Set listing at Anafra returned 403. Synology's compare page gives only wattage and AC input.",
+  "A Synology first-party page giving the 12 V output of Adapter 60W_1: the DS223j product-spec PDF downloaded, but the text could not be extracted.",
+  "Prices for the QNAP TS-233, Synology DS223j and DS124: QNAP's US product page shows no price, and amzcheck.py returned nothing (Amazon walled)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9585297999999998
+ }
+}
