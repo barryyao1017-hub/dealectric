@@ -1,0 +1,48 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Lumary 4\" gimbal lights cannot be controlled locally out of the box: in the Home Assistant forum, misra (Mark) could find only Wi-Fi Lumary 4\" gimbals and wanted Zigbee or Z-Wave instead, and zimmer62 (Joe) put ESPHome on his Lumary 4\" lights to get the local control he required.",
+ "standout": 1,
+ "standout_why": "ChatGPT's answers already say these are 2.4 GHz Wi-Fi lights, that 'Alexa/Google compatibility does not automatically mean Matter support or full local control', and that the lights need constant power and generally don't work with ordinary wall dimmers. I could not open the cited Lumary pages, the Best Buy pages or the Wayfair page; they rate-limited me (HTTP 429) or timed out every time. So I could not check what those pages say. The only page I opened was a forum thread. It adds named users, plus the detail that someone reflashed the lights with ESPHome, to a point ChatGPT already made in general terms. A finding that would decide the pick, Lumary's own wall dimmer and which gimbal models it works with, is listed under unsourced because I could not open a page for it.",
+ "decides": "It confirms rather than changes the pick. Any Lumary gimbal works with Alexa or Google through the Lumary Wi-Fi app with no hub. A shopper who needs the lights to keep working without the cloud, or wants Zigbee, Z-Wave or Matter, will not get that from Lumary without reflashing the lights. The point that would decide the pick, whether the lights can be dimmed from a wall switch, is still unverified. The rebuilt page needs it opened on Lumary's own product page before it goes in.",
+ "candidates": [
+  "Lumary RGBAI Gimbal Pro 4\"",
+  "Lumary RGB Gimbal Ultra 4\"",
+  "Lumary Wi-Fi Smart Gimbal 4\" 9W",
+  "Lumary Smart Gimbal 4\" 7W 90°",
+  "Lumary Adjustable Smart Gimbal 6\" RGBWW",
+  "CloudyBay 6\" Gimbal Smart Wi-Fi RGBCW"
+ ],
+ "findings": [
+  {
+   "product": "Lumary 4\" smart gimbal (Wi-Fi)",
+   "label": "Radio protocol, as a named user found it",
+   "value": "Wi-Fi only; misra (Mark): \"I've only found the lumary 4\" that are WiFi and would also prefer Zigbee or z-wave.\"",
+   "source": "https://community.home-assistant.io/t/rgbww-recessed-gimbal-lighting-that-is-home-assistant-local-compatible/779531",
+   "source_title": "RGBWW Recessed Gimbal lighting that is home assistant local compatible - Home Assistant Community",
+   "read": "2026-11-17",
+   "note": "Forum post dated 2025-03-10. A user report, not a maker spec."
+  },
+  {
+   "product": "Lumary 4\" smart gimbal (Wi-Fi)",
+   "label": "Local control needs a firmware change",
+   "value": "zimmer62 (Joe): \"I used the luminary 4\", hacked them to use esphome.\"",
+   "source": "https://community.home-assistant.io/t/rgbww-recessed-gimbal-lighting-that-is-home-assistant-local-compatible/779531",
+   "source_title": "RGBWW Recessed Gimbal lighting that is home assistant local compatible - Home Assistant Community",
+   "read": "2026-11-17",
+   "note": "Post dated 2025-06-05. In the same thread on 2024-10-06, Joe set the requirement: \"It must be locally controlled\", with a dumb on/off from the wall switch if Home Assistant is down. Reflashing was his way to get local control. I found no maker statement that the lights offer local control, so read this as a named user's workaround, not a feature."
+  }
+ ],
+ "unsourced": [
+  "Lumary Dimmer Light Switch (lumarysmart.com/products/lumary-dimmer-light-switch; Amazon B0GR8H95N9, also sold as light + switch bundles such as B0FLJRP3JL): I looked for the list of gimbal models it works with, its neutral-wire requirement, whether it keeps power to the lights, and its price. Search snippets say it is 'designed exclusively' for Lumary recessed lights, including Smart Gimbal Lights Standard/Plus (and Pro/Max on a newer listing). Every attempt to open the page failed: Lumary HTTP 429, Amazon 503 or walled, and the store tool returned HTTP 0. Not used.",
+  "Whether a standard wall dimmer is unsupported on each candidate (9W, 7W 90°, Pro, Ultra, 6\"), in Lumary's or Best Buy's own words: Lumary pages returned 429 and Best Buy timed out twice.",
+  "Wi-Fi band in Lumary's own words (snippets say 2.4 GHz only, no 5 GHz) and whether any Lumary gimbal supports Matter: no Lumary page would open.",
+  "The Lumary gimbal manual on manuals.plus (pairing and power-cycle reset steps, cutout size, junction box versus retrofit can): HTTP 403.",
+  "Today's maker-store prices for the Lumary candidates: lumarysmart.com and lumaryusa.com returned 429 and storecheck.py returned HTTP 0. No prices are reported."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0092228
+ }
+}
