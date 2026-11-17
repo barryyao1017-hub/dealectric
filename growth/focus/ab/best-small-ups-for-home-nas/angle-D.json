@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Synology's Standby Mode keeps the NAS powered on with its volumes unmounted. The NAS only turns itself back on when mains returns if it actually lost power, which needs a UPS that accepts DSM's power-off command plus the 'Restart automatically after a power failure' setting. Synology itself warns that 'Some UPS devices do not support shutting down by DSM'.",
+ "standout": 1,
+ "standout_why": "Pages compared: the cited Synology KB (DSM 6 version, which loaded as an empty JS shell), the cited HoldBackup guide, Racks&Watts and TechFromAlex. ChatGPT's answer and HoldBackup cover part of this. ChatGPT says safe mode 'does not necessarily mean the NAS immediately powers off'. HoldBackup says 'do not equate every safe-state mode with an immediate full power-off' and to 'review the separate UPS power-off and recovery settings'. Neither explains why that matters: auto-restart depends on the NAS losing power, and UPS power-off support varies by model. Racks&Watts only says to observe 'UPS output behavior and restart' in a test. TechFromAlex says what happens when power returns is not covered. No rival names the NUT 'power race', where power comes back before the UPS cuts its output and the machine stays halted.",
+ "decides": "This confirms the plan works only if the UPS can be told to cut and later restore its output. If it can't, a NAS in Standby Mode can stay stuck with volumes unmounted after a short outage until someone presses the power button. Pick a UPS whose USB HID driver exposes a delayed output-off and restart command, and tell the shopper to tick 'Shut down UPS when the system enters Standby Mode' and 'Restart automatically after a power failure', then pull the plug once to test. The NUT record for the CyberPower CP850PFCLCD shows ups.delay.shutdown 20 s and ups.delay.start 30 s, and its submitter's simulated forced-shutdown test 'worked fine'. The NUT record for APC's Back-UPS ES 850G2 (a cousin of the BE850M2/BE600M1 family) lists load.off and shutdown.reboot but no shutdown.return. That favours the CyberPower PFC unit over the small APC Back-UPS for unattended recovery, until a BE600M1-specific record is found.",
+ "candidates": [
+  "APC Back-UPS BE600M1",
+  "CyberPower CP850PFCLCD",
+  "CyberPower CP850AVRLCD",
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What Synology Standby Mode does",
+   "value": "\"When the Synology NAS enters Standby Mode, it stops all services and unmounts volumes in order to prevent data loss\"; by default this happens when the UPS runs low, or after a custom delay",
+   "source": "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7",
+   "source_title": "UPS | DSM - Synology Knowledge Center",
+   "read": "2026-11-17",
+   "note": "DSM 7 help page. It renders with JavaScript, so it was read as text through the r.jina.ai reader proxy of the same URL. The DSM 6 page ChatGPT cited loaded as an empty shell."
+  },
+  {
+   "product": "general",
+   "label": "When the NAS turns back on by itself",
+   "value": "\"In situations where the Synology NAS shuts down during Standby Mode, it will automatically turn on when power is restored\", but only with 'Restart automatically after a power failure' enabled (Control Panel > Hardware & Power > General)",
+   "source": "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7",
+   "source_title": "UPS | DSM - Synology Knowledge Center",
+   "read": "2026-11-17",
+   "note": "Auto power-on depends on the NAS having shut down, meaning it lost power. Synology does not say a unit left powered in Standby restarts by itself."
+  },
+  {
+   "product": "general",
+   "label": "UPS power-off option and Synology's warning",
+   "value": "'Shut down UPS when the system enters Standby Mode': \"If this option is enabled, the Synology NAS will be shut down immediately upon the loss of power source.\" Warning: \"The UPS power-off function varies by brand and model. Some UPS devices do not support shutting down by DSM.\" Synology also advises: \"please make sure to tick Restart automatically after a power failure\"",
+   "source": "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7",
+   "source_title": "UPS | DSM - Synology Knowledge Center",
+   "read": "2026-11-17",
+   "note": "Read through the r.jina.ai reader proxy. The page also advises testing with a simulated outage first."
+  },
+  {
+   "product": "general",
+   "label": "Network UPS server, for a second NAS or PC on one UPS",
+   "value": "\"Tick Enable network UPS server if this Synology NAS is connected to a USB UPS and will act as a network UPS server\"; clients are listed by IP, and their switch must be on the same UPS",
+   "source": "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7",
+   "source_title": "UPS | DSM - Synology Knowledge Center",
+   "read": "2026-11-17",
+   "note": "The page gives no maximum client count."
+  },
+  {
+   "product": "general",
+   "label": "Power race (the NUT project's own words)",
+   "value": "FAQ #60: \"The power came back during the shutdown, but before the UPS power off. Now the UPS does not reboot, and my computer stays off.\" \"There is a situation where the power may return during the shutdown process. This is known as a race.\" Smart UPSes handle it with a command that powers the load off and back on. Units that can only kill power on battery have \"no way to power down the load\" if mains returns first.",
+   "source": "https://networkupstools.org/docs/FAQ.html",
+   "source_title": "Network UPS Tools FAQ",
+   "read": "2026-11-17",
+   "note": "NUT is the stack Synology DSM, QNAP and TrueNAS use for USB UPSes. The user manual's shutdown design also says the driver 'tells the UPS driver(s) to power off the load', and 'If your UPS just sits there and never resets the load, you are vulnerable to a power race' (https://networkupstools.org/docs/user-manual.chunked/Configuration_notes.html)."
+  },
+  {
+   "product": "CyberPower CP850PFCLCD",
+   "label": "NUT driver and shutdown/restart delays",
+   "value": "usbhid-ups; ups.delay.shutdown 20 s, ups.delay.start 30 s; submitter's comment: \"Simulated 'standalone' testing using upsmon -c fsd worked fine.\"",
+   "source": "https://networkupstools.org/ddl/Cyber_Power_Systems/CP850PFCLCD.html",
+   "source_title": "Network UPS Tools - Devices Dumps Library: Cyber Power Systems CP850PFCLCD",
+   "read": "2026-11-17",
+   "note": "User-submitted NUT reports (2.4.3 and 2.7.2). The reports include no instant-command list, so shutdown.return is not shown either way. ups.delay.start means the UPS has a programmable restart delay after an output-off."
+  },
+  {
+   "product": "APC Back-UPS ES 850G2 (family evidence for BE850M2/BE600M1)",
+   "label": "NUT instant commands for output control",
+   "value": "load.off, load.off.delay, shutdown.reboot ('Shut down the load briefly while rebooting the UPS'), shutdown.stop; no shutdown.return or shutdown.stayoff; ups.delay.shutdown 20 s",
+   "source": "https://networkupstools.org/ddl/APC/Back-UPS_ES_850G2.html",
+   "source_title": "Network UPS Tools - Devices Dumps Library: APC Back-UPS ES 850G2",
+   "read": "2026-11-17",
+   "note": "This is not the US BE850M2 or BE600M1. NUT's APC directory has no BE600M1, BE425M or BE850M2 entry, so it is cited only as same-family evidence (Back-UPS ES, usbhid-ups)."
+  }
+ ],
+ "unsourced": [
+  "UGREEN US2000/US3000: whether UGOS or the DC UPS powers the NASync back on when mains returns after a Standby/Timed shutdown. The ai.ugreen.com product page returned HTTP 429, and the reader proxy returned only a tracking pixel.",
+  "NUT device-dump records for APC BE600M1, BE425M and BE850M2, and for CyberPower CP685AVRG, EC650LCD and CP850AVRLCD. None are listed in the NUT APC or Cyber Power Systems directories.",
+  "Synology compatibility list columns for UPS power-off support for each model. The page renders with JavaScript and showed 'No results' through the reader proxy.",
+  "An official Synology statement on what happens when mains returns while a NAS is still powered in Standby Mode. Only forum anecdotes say it stays stuck, and they are left out under the named-source rule.",
+  "TerraMaster forum and ManualOwl Synology SHA guide pages explaining restart after a UPS-triggered shutdown. Both returned HTTP 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1017936999999995
+ }
+}

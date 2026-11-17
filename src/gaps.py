@@ -746,71 +746,23 @@ GAP_PAGES = [
  "checked": '2026-11-08',
  "updated": '2026-11-12'},
 
-{"slug": "best-small-ups-for-home-nas", "question": "G29 (UGREEN funnel: small UPS for a home NAS)", "lead_first": True,
- "product_result": {"slug": "ugreen-nas-ups-us3000-120w", "item_id": "UGREEN-US3000-UPS",
-                    "title": "UGREEN NAS UPS US3000 for NASync 2- and 4-bay units",
-                    "description": "120 W inline DC battery, 43 Wh, 0 s transfer, USB link for UGOS auto shutdown.",
-                    "image_url": "https://cdn.shopify.com/s/files/1/0630/9416/1602/files/ups.webp"},
+# ---------------- best-small-ups-for-home-nas (research method ab-2026-11, 2026-11-17) ----------------
+{"slug": 'best-small-ups-for-home-nas',
+ "question": 'G29 (UGREEN funnel: small UPS for a home NAS)',
+ "method": 'ab-2026-11',
+ "angle": 'C',
+ "searched_as": ['Synology UPS USB automatic safe mode compatibility APC CyberPower NAS UPS shutdown'],
  "title": "Best small UPS to protect a home NAS and shut it down safely (2026): UGREEN's DC UPS, and the AC units for every other NAS",
- "h1": "Best small UPS for a home NAS, with a safe shutdown (2026)",
- "desc": "Which small UPS keeps a home NAS up through an outage and shuts it down cleanly: UGREEN's inline DC UPS (US3000, US2000) for its own NASync models, and the compact AC units for any NAS (APC BE425M, BE600M1, BE850M2, BN900M; CyberPower EC650LCD, CP685AVRG, CP850PFCLCD; Eaton 3S 550, 5S 700; Tripp Lite AVR650UM, SMART1000LCD) on watts, waveform, USB shutdown, runtime and warranty, with what UGOS, DSM, QTS and TrueNAS support.",
- "intro": """
-<p class="lead"><strong>Short answer.</strong> If your NAS is a UGREEN NASync 2- or 4-bay (DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus, DH2300, DH4300 Plus), buy the <strong>UGREEN NAS UPS US3000</strong> ({buy:ugreen-nas-ups-us3000-120w}), $109.99 on 2026-11-03: a 120 W lithium battery that sits inline on the NAS's own DC lead, switches over in 0 seconds, and tells UGOS over USB to shut down at once, after a set time, or before the battery runs out; UGREEN quotes about 10 minutes of runtime. For any other NAS, the small AC unit to buy is the <strong>APC Back-UPS BE600M1</strong> (600 VA / 330 W, USB shutdown, about $135–140): it is on UGOS's own supported list and on Synology's and QNAP's.</p>
-<p>Two things to know. The US3000 powers only the NAS, not the router or switch, so remote access drops during the outage even though the data stays safe; and no lab has measured its runtime, the figures are UGREEN's 10 minutes and reviewers' 7–10 minute estimates at 35–55 W. For a NAS with an active-PFC power supply, or a 6- or 8-bay that the US3000 does not support, the CyberPower CP850PFCLCD (850 VA / 510 W, pure sine wave on battery, three-year warranty) is the safe AC pick.</p>
-""",
- "columns": [("rating", "Rating"), ("wave", "Waveform on battery"), ("data", "USB shutdown"), ("runtime", "Runtime (maker or reviewer)"), ("warranty", "Warranty")],
- "rows": [
-  {"slug": "ugreen-nas-ups-us3000-120w", "model": "UGREEN NAS UPS US3000 (DC, NASync 2–4 bay)",
-   "cells": {"rating": "120 W DC, 43.2 Wh lithium", "wave": "DC inline, 0 s transfer", "data": "USB to UGOS: Auto, Timed or Standby shutdown; NUT server toggle", "runtime": "About 10 min (UGREEN); 7–10 min estimated at 35–55 W (reviews)", "warranty": "2 years"}},
-  {"brand": "UGREEN", "model": "NAS UPS US2000 (DC, DH series and DXP2800)", "url": "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply",
-   "cells": {"rating": "72 W DC, 43.2 Wh lithium", "wave": "DC inline, 0 s", "data": "USB to UGOS", "runtime": "Not published", "warranty": "2 years", "price": "$69.99 (UGREEN NAS store, 2026-11-03)"}},
-  {"brand": "APC", "model": "Back-UPS BE600M1", "url": "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/",
-   "cells": {"rating": "600 VA / 330 W", "wave": "Simulated sine", "data": "USB data port; on UGOS's, DSM's and QTS's lists", "runtime": "67 min at 40 W, 10 min at 180 W (APC datasheet)", "warranty": "3 years (retailers)", "price": "about $135–140 (SHI, undated)"}},
-  {"brand": "APC", "model": "Back-UPS BE425M", "url": "https://www.mouser.com/datasheet/2/357/1/BE425M_DATASHEET_WW_en_WW-2576945.pdf",
-   "cells": {"rating": "425 VA / 255 W", "wave": "Simulated sine", "data": "Not stated", "runtime": "45 min at 40 W (APC datasheet)", "warranty": "Not found", "price": "about $77–80 (MSRP $106)"}},
-  {"brand": "APC", "model": "Back-UPS BE850M2", "url": "https://www.se.com/us/en/product/BE850M2/",
-   "cells": {"rating": "850 VA / 450 W", "wave": "Simulated sine", "data": "Not stated", "runtime": "90 min at 40 W, 14.8 min at 180 W", "warranty": "Not found", "price": "Not found"}},
-  {"brand": "CyberPower", "model": "CP850PFCLCD", "url": "https://m.cdw.com/product/cyberpower-intelligent-pfc-lcd-cp850pfclcd/2190603",
-   "cells": {"rating": "850 VA / 510 W", "wave": "Pure sine (line-interactive)", "data": "USB", "runtime": "2 min at full load (retailer)", "warranty": "3 years + connected-equipment guarantee", "price": "Not found"}},
-  {"brand": "CyberPower", "model": "EC650LCD", "url": "https://www.cyberpowersystems.com/product/ups/ecologic/ec650lcd/",
-   "cells": {"rating": "650 VA / 390 W", "wave": "Simulated sine", "data": "USB management", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
-  {"brand": "CyberPower", "model": "CP685AVRG", "url": "https://www.cyberpowersystems.com/product/ups/avr/cp685avrg/",
-   "cells": {"rating": "685 VA / 390 W", "wave": "Simulated sine", "data": "USB and RS-232", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
-  {"brand": "Eaton", "model": "5S 700", "url": "https://www.shi.com/product/27137872/Eaton-5S-700-UPS-AC-120-V",
-   "cells": {"rating": "700 VA / 420 W", "wave": "Not found", "data": "USB", "runtime": "12 min at half load (retailer)", "warranty": "2–3 years (sources differ)", "price": "Not found"}},
-  {"brand": "Tripp Lite", "model": "AVR650UM", "url": "https://tripplite.eaton.com/",
-   "cells": {"rating": "650 VA / 325 W", "wave": "Not found", "data": "USB", "runtime": "Not found", "warranty": "3 years", "price": "Not found"}},
- ],
- "after": """
-<h2>DC inline or AC box</h2>
-<p>UGREEN's DC UPS takes the NAS's own power brick as input (12 V 10 A, 19 V 7.9 A or 20 V 7 A), feeds the NAS from its four 18650 cells and reports over USB; there is no inverter and no switchover gap. It supports only UGREEN's DC-powered 2- and 4-bay NASync units (the 6- and 8-bay DXP6800 and DXP8800 use internal AC supplies and are listed as not supported), powers nothing else, and its battery replacement path is not published. An AC UPS backs up the NAS plus the router and switch, so the NAS stays reachable and NUT can share one UPS with several machines; it needs a model on your NAS's compatibility list for the USB shutdown to work, and its lead-acid battery lasts roughly three to five years.</p>
-<h2>What each NAS OS does</h2>
-<ul>
-<li><strong>UGOS Pro:</strong> detects a USB UPS under Control Panel → Hardware & Power → UPS, with Auto Shutdown (immediate, logged within two seconds in NASCompares' test), Timed shutdown and Standby (shut down before the battery is empty) modes, restart on power return, and a NUT server toggle. UGREEN's supported list names the US3000, APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850; other USB units may or may not be recognised.</li>
-<li><strong>Synology DSM:</strong> USB, SNMP and network UPS with one NAS as server and others on an allow-list, plus a standby-mode trigger; Synology advises a real outage test.</li>
-<li><strong>QNAP QTS:</strong> USB, SNMP and network master with up to 20 clients; QNAP suggests a 3–5 minute shutdown delay and keeps a per-model list.</li>
-<li><strong>TrueNAS and Unraid:</strong> NUT; the US3000 needs manual configuration there, and one TrueNAS SCALE 25.10 user could not get NUT to see it.</li>
-</ul>
-<h2>Why bother</h2>
-<p>A NAS that loses power mid-write can leave a RAID array resyncing for hours or a file system to repair; the UPS's job is the clean shutdown, not hours of runtime. Ten minutes is enough if the shutdown is automatic; pick Auto Shutdown on UGOS, or a short delay on DSM and QTS, and test it by pulling the plug once.</p>
-""",
- "sources": [
-  ("UGREEN NAS UPS US3000", "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"),
-  ("UGREEN NAS UPS US2000", "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply"),
-  ("UGREEN: UPS for NAS buying and setup guide", "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide"),
-  ("UGREEN support: supported UPS models", "https://support.ugnas.com/detail/article/en-US/708"),
-  ("NASCompares: UGREEN US3000 review (UGOS modes, shutdown test)", "https://nascompares.com/2025/09/26/ugreen-us3000-nas-ups-review/"),
-  ("rack2reality: UGREEN US3000 review (connection, runtime table)", "https://rack2reality.com/2025/11/03/ugreen-us3000-ups-review-nasync-companion/"),
-  ("needtoknowit: UGREEN 120W UPS review (supported models)", "https://www.needtoknowit.com.au/blog/ugreen-nas-120w-ups-review.md"),
-  ("TrueNAS forum: US3000 and NUT on TrueNAS SCALE", "https://forums.truenas.com/t/ugreen-us3000-ups-usb-vid-2b89-ffff-not-accessible-by-nut-on-truenas-scale-25-10/66980"),
-  ("APC Back-UPS BE600M1", "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/"),
-  ("APC BE425M datasheet", "https://www.mouser.com/datasheet/2/357/1/BE425M_DATASHEET_WW_en_WW-2576945.pdf"),
-  ("CyberPower CP850PFCLCD (CDW listing)", "https://m.cdw.com/product/cyberpower-intelligent-pfc-lcd-cp850pfclcd/2190603"),
-  ("Eaton 5S 700 (SHI listing)", "https://www.shi.com/product/27137872/Eaton-5S-700-UPS-AC-120-V"),
-  ("Synology DSM: UPS settings", "https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7"),
-  ("QNAP: using a UPS with a QNAP NAS", "https://www.qnap.com/en/how-to/faq/article/how-do-i-use-a-ups-with-my-qnap-nas"),
- ],
- "published": "2026-11-03", "updated": '2026-11-08', "checked": "2026-11-03"},
+ "h1": 'Best small UPS for a home NAS, with a safe shutdown (2026)',
+ "desc": "Which small UPS shuts your NAS down safely: UGREEN's US3000 and US2000 DC units by NASync model, plus restart-safe settings for an AC UPS on UGREEN or Synology.",
+ "answer": '<p class="lead"><strong>Short answer.</strong> The best small UPS for a home NAS is one your NAS reads over USB. On a UGREEN NASync that is the US3000 DC UPS, made for 6 models (not the DXP6800 or DXP8800). On those or a Synology, use an AC UPS your NAS maker lists, set so the NAS restarts on its own (see below).</p>',
+ "columns": [('fits', 'Which NAS it works with'), ('link', 'Power path and shutdown signal'), ('capacity', 'Output and battery'), ('setup', 'Shutdown setup that restarts cleanly')],
+ "rows": [{'slug': 'ugreen-nas-ups-us3000-120w', 'model': 'UGREEN NAS UPS US3000', 'cells': {'fits': 'UGREEN DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus; not the DXP6800 or DXP8800 series (UGREEN)', 'link': "DC pass-through: the NAS's own adapter plugs into the UPS, and the UPS feeds the NAS. USB data cable goes to a rear NAS USB port (UGREEN)", 'capacity': "120 W DC out, 12 V 10 A (NASCompares); 43.2 Wh battery, about 10 min (UGREEN's figure)", 'setup': 'Switch from Energy-Saving to Normal Mode, then set the shutdown in UGOS Control Panel → Hardware & Power → UPS (UGREEN)'}}, {'slug': 'ugreen-nas-ups-us2000-72w', 'model': 'UGREEN NAS UPS US2000', 'cells': {'fits': 'UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT (UGREEN guide)', 'link': 'DC unit for UGREEN NAS that run from an external power adapter, with a USB link to UGOS (UGREEN)', 'capacity': '72 W DC out; 22.2 Wh battery (UGREEN)', 'setup': 'UGOS Control Panel → Hardware & Power → UPS (UGREEN)'}}],
+ "after": "\n<h2>What the differences mean</h2><ul><li><strong>Load headroom.</strong> Notebookcheck measured a two-bay UGREEN DXP2800 GT with two WD Red drives at 14.84–20.14 W idle and 35.9 W flat out. The US3000's 120 W covers that peak 3.3 times (120 ÷ 35.9 = 3.3), and the US2000's 72 W covers it twice (72 ÷ 35.9 = 2.0).</li><li><strong>Battery.</strong> UGREEN lists 43.2 Wh in the US3000 and 22.2 Wh in the US2000. The US3000 holds 1.9 times the energy (43.2 ÷ 22.2 = 1.95) for $40 more at UGREEN's store on 2026-11-17 ($109.99 − $69.99).</li></ul><table><thead><tr><th>Your NAS</th><th>UPS that fits</th></tr></thead><tbody><tr><td>UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT</td><td>US2000 for the lowest cost ({buy:ugreen-nas-ups-us2000-72w}); US3000 for twice the battery</td></tr><tr><td>UGREEN DXP4800 Plus, DXP4800 Pro, DXP480T Plus</td><td>US3000 ({buy:ugreen-nas-ups-us3000-120w})</td></tr><tr><td>UGREEN DXP6800 or DXP8800 series</td><td>An AC UPS. UGREEN's tested list has the APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850</td></tr><tr><td>Synology, or another NAS that monitors a USB UPS</td><td>An AC UPS with a USB data port that is on your NAS maker's UPS compatibility list</td></tr></tbody></table><h2>Which UPS your NAS can hear, and how to make it come back on</h2><p><strong>UGREEN's DC units fit only UGREEN NAS.</strong> The US3000 has no power adapter of its own. The NAS's original adapter plugs into its DC IN, and its DC OUT cable goes to the NAS. A USB data cable to a rear NAS USB port carries the outage signal. NASCompares notes that it works only with UGREEN NAS models that take external DC input, powers one NAS, and can't run a router or switch. UGREEN's guide lists the US3000 for the DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro and DXP480T Plus, and says it is not compatible with the DXP6800 or DXP8800 series. The plain DXP4800 (non-Plus) is not on that list. The US2000 is listed for the DH2300, DH4300 Plus, DXP2800 and DXP2800 GT, but UGREEN's own store menu describes it as DH-series only, so check the listing for your model before you buy. UGREEN also says a unit may arrive in Energy-Saving Mode; switch it to Normal Mode before you rely on it.</p><p><strong>AC UPS on a UGREEN NAS.</strong> UGREEN lists the APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850 as passing its basic compatibility test. It also warns that with the BE600M1 or BK650M2-CH, if Auto Shutdown is set to 'Immediately' and power returns within the UPS's roughly two-minute delayed cutoff, the NAS may not restart on its own. Use a timed or low-battery shutdown instead.</p><p><strong>Synology Standby Mode.</strong> Synology says that in Standby Mode the NAS 'stops all services and unmounts volumes in order to prevent data loss'. It turns itself back on when power returns only if it actually shut down and 'Restart automatically after a power failure' is ticked (Control Panel &gt; Hardware &amp; Power &gt; General). The option 'Shut down UPS when the system enters Standby Mode' makes the UPS cut power, but Synology warns that 'Some UPS devices do not support shutting down by DSM'. Run a simulated outage once to check yours.</p><p><strong>The power race.</strong> The Network UPS Tools FAQ describes power that 'came back during the shutdown, but before the UPS power off', leaving the computer off. A UPS that can switch its output off and back on avoids this.</p><h2>Not recommended</h2><p><strong>CyberPower CP850AVRLCD.</strong> Cable Plus USA lists its battery output as a simulated sine wave, not a pure sine wave. It was $164.95 there on 2026-11-17.</p>\n",
+ "sources": [("UGREEN US3000/US2000 compatible NAS models, DXP6800/DXP8800 exclusion, battery Wh, Energy-Saving Mode, UGOS UPS path, tested AC UPS list and BE600M1 'Immediately' restart caveat (read 2026-11-17)", 'https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide'), ('UGREEN US3000 price $109.99, UGREEN NAS store (read 2026-11-17)', 'https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah'), ('UGREEN US2000 price $69.99, UGREEN NAS store (read 2026-11-17)', 'https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply'), ('US3000 DC output 12 V 10 A, 120 W; UGREEN external-DC NAS only; one NAS, no router (NASCompares, read 2026-11-17)', 'https://nascompares.com/review/ugreen-us3000-nas-ups-review/'), ("Synology Standby Mode, UPS power-off option and warning, 'Restart automatically after a power failure' (Synology Knowledge Center, read 2026-11-17)", 'https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7'), ('Power race when mains returns before the UPS cuts output (NUT FAQ, read 2026-11-17)', 'https://networkupstools.org/docs/FAQ.html'), ('DXP2800 GT with two WD Red drives: 14.84–20.14 W idle, 35.9 W maximum (Notebookcheck, read 2026-11-17)', 'https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html'), ('CyberPower CP850AVRLCD simulated sine on battery, $164.95 (Cable Plus USA, read 2026-11-17)', 'https://store.cablesplususa.com/cyupssyinlcd4.html')],
+ "published": '2026-11-03',
+ "checked": '2026-11-17',
+ "updated": '2026-11-17'},
 
 # ---------------- best-nas-under-400-for-jellyfin (research method ab-2026-11, 2026-11-14) ----------------
 {"slug": 'best-nas-under-400-for-jellyfin',

@@ -1,0 +1,131 @@
+{
+ "status": "ok",
+ "angle": "C",
+ "why_angle": "The pages that got cited cover Synology, APC and CyberPower. None of them says which NAS models UGREEN's DC UPS units power or that the US3000 doesn't fit the DXP6800/DXP8800. None warns that an APC BE600M1 set to shut down 'Immediately' can leave a NAS off when power comes back. This page puts which UPS fits which NAS, and a shutdown setup that restarts cleanly, into the table, with UGREEN's own guide (opened 2026-11-17) as the source.",
+ "slug": "best-small-ups-for-home-nas",
+ "must": [
+  "the US3000 DC UPS",
+  "not the DXP6800 or DXP8800"
+ ],
+ "unsourced": [
+  "CyberPower CP850PFCLCD (record, table row and buy link dropped): on 2026-11-17 amzcheck returned blocked for B00429N18S and amazon.com/dp/B00429N18S returned 503, so the ASIN and Amazon's return terms couldn't be read. The cyberpowersystems.com product pages (/product/ups/pfc-sinewave/cp850pfclcd/ and /product/ups/cp850pfclcd/) returned 405. cyberpower.com/global's CP850PFCLCDA page links to warranty terms but doesn't state a length.",
+  "APC BE600M1 (record, table row and buy link dropped): on 2026-11-17 amzcheck returned blocked for B01FWAZEIU and amazon.com/dp and /gp/product/B01FWAZEIU returned 503. se.com's US BE600M1 page shows no warranty. Its datasheet PDF (se.com/us/en/product/download-pdf/BE600M1) wouldn't extract. apc.com/shop/us/en/returnPolicy now redirects to se.com's APC brand page. Amazon's returns help page returned 503.",
+  "US2000 runtime figure: UGREEN gives only 'varies by NAS, drives, and workload'.",
+  "QNAP and TrueNAS UPS compatibility: no maker page was opened, so the page names Synology only.",
+  "Existing US3000/US2000 records: today's store prices are 109.99 and 69.99 USD (storecheck, 2026-11-17). Make sure the stored prices match."
+ ],
+ "products": [],
+ "page": {
+  "title": "Best small UPS to protect a home NAS and shut it down safely (2026): UGREEN's DC UPS, and the AC units for every other NAS",
+  "h1": "Best small UPS for a home NAS, with a safe shutdown (2026)",
+  "desc": "Which small UPS shuts your NAS down safely: UGREEN's US3000 and US2000 DC units by NASync model, plus restart-safe settings for an AC UPS on UGREEN or Synology.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best small UPS for a home NAS is one your NAS reads over USB. On a UGREEN NASync that is the US3000 DC UPS, made for 6 models (not the DXP6800 or DXP8800). On those or a Synology, use an AC UPS your NAS maker lists, set so the NAS restarts on its own (see below).</p>",
+  "columns": [
+   [
+    "fits",
+    "Which NAS it works with"
+   ],
+   [
+    "link",
+    "Power path and shutdown signal"
+   ],
+   [
+    "capacity",
+    "Output and battery"
+   ],
+   [
+    "setup",
+    "Shutdown setup that restarts cleanly"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "ugreen-nas-ups-us3000-120w",
+    "model": "UGREEN NAS UPS US3000",
+    "cells": {
+     "fits": "UGREEN DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus; not the DXP6800 or DXP8800 series (UGREEN)",
+     "link": "DC pass-through: the NAS's own adapter plugs into the UPS, and the UPS feeds the NAS. USB data cable goes to a rear NAS USB port (UGREEN)",
+     "capacity": "120 W DC out, 12 V 10 A (NASCompares); 43.2 Wh battery, about 10 min (UGREEN's figure)",
+     "setup": "Switch from Energy-Saving to Normal Mode, then set the shutdown in UGOS Control Panel → Hardware & Power → UPS (UGREEN)"
+    }
+   },
+   {
+    "slug": "ugreen-nas-ups-us2000-72w",
+    "model": "UGREEN NAS UPS US2000",
+    "cells": {
+     "fits": "UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT (UGREEN guide)",
+     "link": "DC unit for UGREEN NAS that run from an external power adapter, with a USB link to UGOS (UGREEN)",
+     "capacity": "72 W DC out; 22.2 Wh battery (UGREEN)",
+     "setup": "UGOS Control Panel → Hardware & Power → UPS (UGREEN)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><ul><li><strong>Load headroom.</strong> Notebookcheck measured a two-bay UGREEN DXP2800 GT with two WD Red drives at 14.84–20.14 W idle and 35.9 W flat out. The US3000's 120 W covers that peak 3.3 times (120 ÷ 35.9 = 3.3), and the US2000's 72 W covers it twice (72 ÷ 35.9 = 2.0).</li><li><strong>Battery.</strong> UGREEN lists 43.2 Wh in the US3000 and 22.2 Wh in the US2000. The US3000 holds 1.9 times the energy (43.2 ÷ 22.2 = 1.95) for $40 more at UGREEN's store on 2026-11-17 ($109.99 − $69.99).</li></ul><table><thead><tr><th>Your NAS</th><th>UPS that fits</th></tr></thead><tbody><tr><td>UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT</td><td>US2000 for the lowest cost ({buy:ugreen-nas-ups-us2000-72w}); US3000 for twice the battery</td></tr><tr><td>UGREEN DXP4800 Plus, DXP4800 Pro, DXP480T Plus</td><td>US3000 ({buy:ugreen-nas-ups-us3000-120w})</td></tr><tr><td>UGREEN DXP6800 or DXP8800 series</td><td>An AC UPS. UGREEN's tested list has the APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850</td></tr><tr><td>Synology, or another NAS that monitors a USB UPS</td><td>An AC UPS with a USB data port that is on your NAS maker's UPS compatibility list</td></tr></tbody></table><h2>Which UPS your NAS can hear, and how to make it come back on</h2><p><strong>UGREEN's DC units fit only UGREEN NAS.</strong> The US3000 has no power adapter of its own. The NAS's original adapter plugs into its DC IN, and its DC OUT cable goes to the NAS. A USB data cable to a rear NAS USB port carries the outage signal. NASCompares notes that it works only with UGREEN NAS models that take external DC input, powers one NAS, and can't run a router or switch. UGREEN's guide lists the US3000 for the DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro and DXP480T Plus, and says it is not compatible with the DXP6800 or DXP8800 series. The plain DXP4800 (non-Plus) is not on that list. The US2000 is listed for the DH2300, DH4300 Plus, DXP2800 and DXP2800 GT, but UGREEN's own store menu describes it as DH-series only, so check the listing for your model before you buy. UGREEN also says a unit may arrive in Energy-Saving Mode; switch it to Normal Mode before you rely on it.</p><p><strong>AC UPS on a UGREEN NAS.</strong> UGREEN lists the APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850 as passing its basic compatibility test. It also warns that with the BE600M1 or BK650M2-CH, if Auto Shutdown is set to 'Immediately' and power returns within the UPS's roughly two-minute delayed cutoff, the NAS may not restart on its own. Use a timed or low-battery shutdown instead.</p><p><strong>Synology Standby Mode.</strong> Synology says that in Standby Mode the NAS 'stops all services and unmounts volumes in order to prevent data loss'. It turns itself back on when power returns only if it actually shut down and 'Restart automatically after a power failure' is ticked (Control Panel &gt; Hardware &amp; Power &gt; General). The option 'Shut down UPS when the system enters Standby Mode' makes the UPS cut power, but Synology warns that 'Some UPS devices do not support shutting down by DSM'. Run a simulated outage once to check yours.</p><p><strong>The power race.</strong> The Network UPS Tools FAQ describes power that 'came back during the shutdown, but before the UPS power off', leaving the computer off. A UPS that can switch its output off and back on avoids this.</p><h2>Not recommended</h2><p><strong>CyberPower CP850AVRLCD.</strong> Cable Plus USA lists its battery output as a simulated sine wave, not a pure sine wave. It was $164.95 there on 2026-11-17.</p>",
+  "sources": [
+   [
+    "UGREEN US3000/US2000 compatible NAS models, DXP6800/DXP8800 exclusion, battery Wh, Energy-Saving Mode, UGOS UPS path, tested AC UPS list and BE600M1 'Immediately' restart caveat (read 2026-11-17)",
+    "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide"
+   ],
+   [
+    "UGREEN US3000 price $109.99, UGREEN NAS store (read 2026-11-17)",
+    "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"
+   ],
+   [
+    "UGREEN US2000 price $69.99, UGREEN NAS store (read 2026-11-17)",
+    "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply"
+   ],
+   [
+    "US3000 DC output 12 V 10 A, 120 W; UGREEN external-DC NAS only; one NAS, no router (NASCompares, read 2026-11-17)",
+    "https://nascompares.com/review/ugreen-us3000-nas-ups-review/"
+   ],
+   [
+    "Synology Standby Mode, UPS power-off option and warning, 'Restart automatically after a power failure' (Synology Knowledge Center, read 2026-11-17)",
+    "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7"
+   ],
+   [
+    "Power race when mains returns before the UPS cuts output (NUT FAQ, read 2026-11-17)",
+    "https://networkupstools.org/docs/FAQ.html"
+   ],
+   [
+    "DXP2800 GT with two WD Red drives: 14.84–20.14 W idle, 35.9 W maximum (Notebookcheck, read 2026-11-17)",
+    "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html"
+   ],
+   [
+    "CyberPower CP850AVRLCD simulated sine on battery, $164.95 (Cable Plus USA, read 2026-11-17)",
+    "https://store.cablesplususa.com/cyupssyinlcd4.html"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Synology UPS USB automatic safe mode compatibility APC CyberPower NAS UPS shutdown"
+ ],
+ "query": "best small ups to protect a home nas and shut it down safely",
+ "verified_changes": 2,
+ "verified_removed": 2,
+ "fix_pass": {
+  "errors": [
+   "cyberpower-cp850pfclcd: missing warranty",
+   "cyberpower-cp850pfclcd: missing returns",
+   "cyberpower-cp850pfclcd: ASIN 'B00429N18S' not found on Amazon",
+   "apc-back-ups-be600m1: missing warranty",
+   "apc-back-ups-be600m1: missing returns",
+   "apc-back-ups-be600m1: ASIN 'B01FWAZEIU' not found on Amazon"
+  ],
+  "log": [
+   "cyberpower-cp850pfclcd: removed the product record, its table row and its buy link. The ASIN couldn't be confirmed: amzcheck returned blocked for B00429N18S and https://www.amazon.com/dp/B00429N18S returned 503 (2026-11-17). Warranty couldn't be sourced: https://www.cyberpowersystems.com/product/ups/pfc-sinewave/cp850pfclcd/ and https://www.cyberpowersystems.com/product/ups/cp850pfclcd/ returned 405, and https://www.cyberpower.com/global/en/product/sku/cp850pfclcda links to warranty terms without stating a length. Returns couldn't be sourced: Amazon's returns help page returned 503.",
+   "apc-back-ups-be600m1: removed the product record, its table row and its buy link. The ASIN couldn't be confirmed: amzcheck returned blocked for B01FWAZEIU, and https://www.amazon.com/dp/B01FWAZEIU and /gp/product/B01FWAZEIU returned 503. Warranty couldn't be sourced: https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/ shows none, and the datasheet PDF wouldn't extract. Returns couldn't be sourced: https://apc.com/shop/us/en/returnPolicy redirects to se.com's APC brand page, and Amazon's returns page returned 503.",
+   "Answer: replaced the CP850PFCLCD Synology pick with 'an AC UPS your NAS maker lists as compatible', with the restart-safe setup. Title and desc reworded so they no longer promise AC unit picks.",
+   "After: dropped the 'AC capacity a small NAS never uses' and 'Measured runtime' bullets, which relied only on the dropped products. In the fit table, the DXP6800/DXP8800 row now names UGREEN's tested AC list (UGREEN guide) with no buy link. The Synology row now points to the NAS maker's compatibility list.",
+   "After: removed the CP850PFCLCD NUT-report sentences from 'The power race'. Reworded the CP850AVRLCD paragraph to drop the comparison with the CP850PFCLCD; its Cable Plus USA facts are unchanged.",
+   "Sources: removed CyberPower CP850PFCLCD, NUT DDL CP850PFCLCD, ACE Peripherals FAQ, se.com BE600M1, Legit Reviews BE600M1 and Synology DS225+ specs, which nothing on the page uses now.",
+   "Unsourced: replaced the CP850PFCLCD/BE600M1 price, waveform, Synology-compatibility and CP850 warranty entries with one entry per dropped product listing what was tried."
+  ]
+ },
+ "hand_fix": "2026-11-17: answer trimmed to the length rule; title kept from the live page",
+ "gate": {
+  "date": "2026-11-17",
+  "pass": true,
+  "g": null
+ }
+}

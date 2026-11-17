@@ -1,0 +1,158 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that CyberPower's pure-sine CP850PFCLCD ($169.95 on Amazon, 2026-11-17) costs only $5 more than ChatGPT's own middle pick, the CP850AVRLCD ($164.95 at Cable Plus USA, 2026-11-17), which switches to a simulated sine wave on battery, or that UGREEN's DC NAS UPS units cost $69.99 (US2000) and $109.99 (US3000) at UGREEN's store today.",
+ "standout": 2,
+ "standout_why": "I compared against holdbackup.com (cited), racksandwatts.com and techfromalex.com. holdbackup and racksandwatts give no prices at all and only say 'Check price on Amazon'. techfromalex puts the CP850PFCLCD in a '$100–200' band and the BE600M1 in a '$50–100' band, with no dates and no exact figures, and it never mentions the CP850AVRLCD. None of the three names a DC UPS or any UGREEN UPS. The Synology compatibility lists and KB pages ChatGPT cited give no prices or waveforms. ChatGPT itself showed $164.95 and $169.95 but did not say that the cheaper card is simulated sine.",
+ "decides": "Among ChatGPT's three AC picks, the CP850AVRLCD loses: for $5 less you get a simulated-sine unit, and NAS power supplies with active PFC can misbehave on simulated sine (techfromalex's point). That makes the CP850PFCLCD the AC pick for a 2–4-bay Synology, QNAP or TrueNAS box. For UGREEN NASync owners, the US2000 at $69.99 and the US3000 at $109.99 both undercut every AC pick ChatGPT priced, which supports our page's lead for that audience.",
+ "candidates": [
+  "APC Back-UPS BE600M1",
+  "CyberPower CP850AVRLCD",
+  "CyberPower CP850PFCLCD",
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000",
+  "CyberPower CP1500PFCLCD",
+  "APC Back-UPS Pro BX1500M",
+  "APC Back-UPS Pro BR1000MS",
+  "APC Back-UPS Pro BR1500MS2",
+  "Eaton 5SC1000",
+  "GOLDENMATE 600VA",
+  "APC Back-UPS BE425M",
+  "APC Back-UPS BE850M2",
+  "CyberPower EC650LCD",
+  "CyberPower CP685AVRG",
+  "Eaton 5S 700",
+  "Tripp Lite AVR650UM"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Price, UGREEN NAS store",
+   "value": "$109.99 (compare-at $137.50), in stock",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS UPS US3000 120W DC Battery Backup and Surge Protector",
+   "read": "2026-11-17",
+   "note": "Read from the Shopify store's product data with storecheck.py search on ai.ugreen.com. The product page itself returned HTTP 429 when I tried to open it."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Price, UGREEN NAS store",
+   "value": "$69.99 (compare-at $79.99), in stock",
+   "source": "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply",
+   "source_title": "UGREEN NAS UPS US2000 72W DC Battery Backup and Surge Protector",
+   "read": "2026-11-17",
+   "note": "Same storecheck.py search. Matches our page's $69.99 from 2026-11-03."
+  },
+  {
+   "product": "CyberPower CP850PFCLCD",
+   "label": "Price, Amazon (the retailer ChatGPT's card showed)",
+   "value": "$169.95",
+   "source": "https://www.amazon.com/dp/B00429N18S",
+   "source_title": "CyberPower CP850PFCLCD PFC Sinewave UPS Battery Backup and Surge Protector",
+   "read": "2026-11-17",
+   "note": "From amzcheck.py asin B00429N18S. The title matches and the price matches ChatGPT's third card ($169.95)."
+  },
+  {
+   "product": "CyberPower CP850AVRLCD",
+   "label": "Price, Cable Plus USA",
+   "value": "$164.95 (list $169.95)",
+   "source": "https://store.cablesplususa.com/cyupssyinlcd4.html",
+   "source_title": "CyberPower CP850AVRLCD Intelligent LCD UPS, Cable Plus USA",
+   "read": "2026-11-17",
+   "note": "Same price as ChatGPT's card. I couldn't check Amazon because amzcheck was blocked for this ASIN."
+  },
+  {
+   "product": "CyberPower CP850AVRLCD",
+   "label": "Waveform on battery (why it loses)",
+   "value": "Simulated sine wave",
+   "source": "https://store.cablesplususa.com/cyupssyinlcd4.html",
+   "source_title": "CyberPower CP850AVRLCD Intelligent LCD UPS, Cable Plus USA",
+   "read": "2026-11-17",
+   "note": "This is the retailer's spec listing, because cyberpowersystems.com returned HTTP 405. The CP850PFCLCD costs $5 more on Amazon and is pure sine."
+  },
+  {
+   "product": "CyberPower CP850AVRLCD",
+   "label": "Runtime",
+   "value": "About 11 min at half load, about 3 min at full load (510 W)",
+   "source": "https://store.cablesplususa.com/cyupssyinlcd4.html",
+   "source_title": "CyberPower CP850AVRLCD Intelligent LCD UPS, Cable Plus USA",
+   "read": "2026-11-17",
+   "note": "Retailer spec table. Half load works out to about 255 W."
+  },
+  {
+   "product": "CyberPower CP850AVRLCD",
+   "label": "Warranty",
+   "value": "3-year limited (batteries included), $250,000 connected-equipment guarantee",
+   "source": "https://store.cablesplususa.com/cyupssyinlcd4.html",
+   "source_title": "CyberPower CP850AVRLCD Intelligent LCD UPS, Cable Plus USA",
+   "read": "2026-11-17",
+   "note": "Retailer listing."
+  },
+  {
+   "product": "CyberPower CP850PFCLCD",
+   "label": "Waveform and full-load runtime (rival's figures)",
+   "value": "Pure sine, 850 VA / 510 W, 3 min at full load",
+   "source": "https://techfromalex.com/ups-auto-shutdown-synology-qnap-nut",
+   "source_title": "UPS Auto-Shutdown on Synology or QNAP (2026 NUT Guide)",
+   "read": "2026-11-17",
+   "note": "This rival recommends it for a lighter single-NAS setup and puts its price only in a $100–200 band."
+  },
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "Rating and replaceable battery",
+   "value": "600 VA / 330 W, 7 NEMA outlets (2 surge-only), replacement battery available",
+   "source": "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/",
+   "source_title": "APC Back-UPS 600VA, 120V, USB Type A and C charging ports – Schneider Electric US",
+   "read": "2026-11-17",
+   "note": "se.com shows no price, waveform or runtime, and lists the item as 'Non-Stock'."
+  },
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "Replacement battery part",
+   "value": "APCRBC154 (12 V, 6.5 Ah sealed lead-acid)",
+   "source": "https://www.se.com/us/en/product/download-pdf/BE600M1",
+   "source_title": "BE600M1 product datasheet (Schneider Electric)",
+   "read": "2026-11-17",
+   "note": "From the datasheet PDF's accessory links. The same links point to a 2-year repair-or-replace warranty, which disagrees with our page's '3 years (retailers)'. The PDF text was compressed and I couldn't extract waveform or runtime."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Why it loses for a small home NAS",
+   "value": "1,500 VA / 1,000 W; about $228 on Amazon (rival's undated figure); 66 min at 100 W",
+   "source": "https://techfromalex.com/ups-auto-shutdown-synology-qnap-nut",
+   "source_title": "UPS Auto-Shutdown on Synology or QNAP (2026 NUT Guide)",
+   "read": "2026-11-17",
+   "note": "The 66 min at 100 W figure is CyberPower's table as quoted by holdbackup.com/guides/ups-for-home-office-nas. It is the default pick on all three rival pages but more than twice the size a 2–4-bay NAS needs. I didn't price it myself."
+  },
+  {
+   "product": "APC Back-UPS Pro BX1500M",
+   "label": "Why it loses",
+   "value": "Stepped approximation to sine; 1,500 VA / 900 W",
+   "source": "https://racksandwatts.com/guides/best-ups-for-a-small-homelab-rack/",
+   "source_title": "Best UPS for a NAS: pure sine, USB/NUT and small-rack picks",
+   "read": "2026-11-17",
+   "note": "Racksandwatts accepts it only if the power supply tolerates stepped sine."
+  },
+  {
+   "product": "GOLDENMATE 600VA",
+   "label": "Why it loses",
+   "value": "No matching NUT driver entry for the 600VA model",
+   "source": "https://racksandwatts.com/guides/best-ups-for-a-small-homelab-rack/",
+   "source_title": "Best UPS for a NAS: pure sine, USB/NUT and small-rack picks",
+   "read": "2026-11-17",
+   "note": "Racksandwatts rejects it for the NAS-shutdown shortlist. The maker lists it at 600 VA / 360 W, simulated sine."
+  }
+ ],
+ "unsourced": [
+  "APC BE600M1 price today. Amazon was walled by amzcheck (ASIN B01FWAZEIU). Staples (product_2240683), CDW and SHI pages returned HTTP 403. A search snippet showed $79.99 at Staples, but I couldn't open the page to confirm it. ChatGPT's card showed $99.99.",
+  "APC BE600M1 waveform on battery and runtime at 40 W / 180 W. se.com doesn't show them, and the datasheet PDF text wouldn't extract.",
+  "UGREEN US3000 and US2000 compatible-NAS lists, and whether they work with non-UGREEN NAS or NUT. The UGREEN product pages returned HTTP 429 on three tries.",
+  "Prices for APC BE425M, APC BE850M2, CyberPower EC650LCD, CyberPower CP685AVRG, Eaton 5S 700, Tripp Lite AVR650UM, APC BR1000MS, Eaton 5SC1000 and CyberPower CP1500PFCLCD. I ran out of my tool budget, cyberpowersystems.com returned 405, and Amazon was walled.",
+  "CyberPower's own MSRP and runtime table for the CP850PFCLCD and CP850AVRLCD. cyberpowersystems.com returned HTTP 405 to the fetcher, and curl needed approval."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0990371
+ }
+}

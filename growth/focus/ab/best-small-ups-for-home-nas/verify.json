@@ -1,0 +1,264 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "C",
+  "why_angle": "The pages that got cited cover Synology, APC and CyberPower. None of them says which NAS models UGREEN's DC UPS units power or that the US3000 doesn't fit the DXP6800/DXP8800. None warns that an APC BE600M1 set to shut down 'Immediately' can leave a NAS off when power comes back. This page puts which UPS fits which NAS, and a shutdown setup that restarts cleanly, into the table, with UGREEN's own guide (opened 2026-11-17) as the source.",
+  "slug": "best-small-ups-for-home-nas",
+  "must": [
+   "the US3000 DC UPS",
+   "not the DXP6800 or DXP8800"
+  ],
+  "unsourced": [
+   "APC BE600M1 price today: amzcheck was blocked for B01FWAZEIU, and Staples, CDW, Newegg and B&H returned 403. Office Depot timed out. So the BE600M1 is an Amazon record with no price.",
+   "CyberPower CP850PFCLCD price today: amzcheck was blocked for B00429N18S on 2026-11-17. With no sourced price, the CP850AVRLCD paragraph no longer compares the two prices.",
+   "APC BE600M1 waveform on battery and its data-port connector. The se.com page doesn't give them and the datasheet PDF wouldn't extract.",
+   "Synology's compatibility entries for the CP850PFCLCD and BE600M1. The compatibility list loads with JavaScript and couldn't be read.",
+   "US2000 runtime figure: UGREEN gives only 'varies by NAS, drives, and workload'.",
+   "CP850PFCLCD warranty: the cyberpowersystems.com US page returned 405.",
+   "QNAP and TrueNAS UPS compatibility: no maker page was opened, so the page names Synology only.",
+   "Existing US3000/US2000 records: today's store prices are 109.99 and 69.99 USD (storecheck, 2026-11-17). Make sure the stored prices match."
+  ],
+  "products": [
+   {
+    "slug": "cyberpower-cp850pfclcd",
+    "brand": "CyberPower",
+    "program": "amazon:us",
+    "asin": "B00429N18S",
+    "category": "ups",
+    "name": "CyberPower CP850PFCLCD PFC Sinewave UPS Battery Backup and Surge Protector, 850 VA / 510 W",
+    "model": "CP850PFCLCD",
+    "url": "https://www.cyberpower.com/global/en/product/sku/cp850pfclcda",
+    "price": null,
+    "verified": "2026-11-17",
+    "specs": [
+     [
+      "Capacity",
+      "850 VA / 510 W"
+     ],
+     [
+      "Output on battery",
+      "Pure sine wave"
+     ],
+     [
+      "Runtime (CyberPower)",
+      "9 min at half load (255 W), 3 min at full load"
+     ],
+     [
+      "Data port",
+      "1 HID-compliant USB port, cable included"
+     ],
+     [
+      "Replacement battery",
+      "RB1290"
+     ],
+     [
+      "NUT driver (user report)",
+      "usbhid-ups; 20 s output-off delay, 30 s restart delay"
+     ]
+    ],
+    "warranty": null,
+    "returns": null,
+    "summary": "A pure-sine AC UPS with a USB HID data port. It is the AC pick for a Synology or other non-UGREEN home NAS that needs a clean automatic shutdown.",
+    "fit": "Synology and other NAS that monitor a USB HID UPS through NUT's usbhid-ups driver; also UGREEN DXP6800/DXP8800 owners who need an AC unit.",
+    "caveats": [
+     "CyberPower's runtime figures are at 255 W and 510 W, far above a small NAS's draw, so they don't tell you minutes at NAS loads.",
+     "Check your exact NAS model on its maker's UPS compatibility list before buying."
+    ]
+   },
+   {
+    "slug": "apc-back-ups-be600m1",
+    "brand": "APC",
+    "program": "amazon:us",
+    "asin": "B01FWAZEIU",
+    "category": "ups",
+    "name": "APC Back-UPS 600VA BE600M1 Battery Backup and Surge Protector, 7 outlets, USB charging ports",
+    "model": "BE600M1",
+    "url": "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/",
+    "price": null,
+    "verified": "2026-11-17",
+    "specs": [
+     [
+      "Capacity",
+      "600 VA / 330 W"
+     ],
+     [
+      "Outlets",
+      "7 NEMA, 2 of them surge-only"
+     ],
+     [
+      "Measured runtime (Legit Reviews)",
+      "75 min at about 30 W of rated device draw"
+     ],
+     [
+      "UGREEN NAS testing",
+      "On UGREEN's tested AC UPS list (basic compatibility test)"
+     ]
+    ],
+    "warranty": null,
+    "returns": null,
+    "summary": "A small AC UPS that UGREEN lists as passing its basic NAS compatibility test. Legit Reviews ran about 30 W of gear for 75 minutes on it.",
+    "fit": "UGREEN DXP6800/DXP8800 owners and anyone who wants the smallest AC unit for a 2-bay NAS.",
+    "caveats": [
+     "On UGREEN NAS, don't set Auto Shutdown to 'Immediately'. If power returns during the UPS's roughly two-minute delayed cutoff, the NAS may not restart on its own.",
+     "The USB charging ports are for charging devices, not for sending the shutdown signal."
+    ]
+   }
+  ],
+  "page": {
+   "title": "Best small UPS to protect a home NAS and shut it down safely (2026): UGREEN's DC UPS, and the AC units for every other NAS",
+   "h1": "Best small UPS for a home NAS, with a safe shutdown (2026)",
+   "desc": "Which small UPS shuts your NAS down safely: UGREEN's US3000 and US2000 DC units by NASync model, and a USB AC UPS for Synology, with restart-safe settings.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best small UPS to protect a home NAS and shut it down safely is one your NAS reads over USB. On a UGREEN NASync, that is the US3000 DC UPS, made for 6 models (not the DXP6800 or DXP8800). On Synology, CyberPower's pure-sine CP850PFCLCD, with automatic shutdown set.</p>",
+   "columns": [
+    [
+     "fits",
+     "Which NAS it works with"
+    ],
+    [
+     "link",
+     "Power path and shutdown signal"
+    ],
+    [
+     "capacity",
+     "Output and battery"
+    ],
+    [
+     "setup",
+     "Shutdown setup that restarts cleanly"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "ugreen-nas-ups-us3000-120w",
+     "model": "UGREEN NAS UPS US3000",
+     "cells": {
+      "fits": "UGREEN DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus; not the DXP6800 or DXP8800 series (UGREEN)",
+      "link": "DC pass-through: the NAS's own adapter plugs into the UPS, and the UPS feeds the NAS. USB data cable goes to a rear NAS USB port (UGREEN)",
+      "capacity": "120 W DC out, 12 V 10 A (NASCompares); 43.2 Wh battery, about 10 min (UGREEN's figure)",
+      "setup": "Switch from Energy-Saving to Normal Mode, then set the shutdown in UGOS Control Panel → Hardware & Power → UPS (UGREEN)"
+     }
+    },
+    {
+     "slug": "ugreen-nas-ups-us2000-72w",
+     "model": "UGREEN NAS UPS US2000",
+     "cells": {
+      "fits": "UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT (UGREEN guide)",
+      "link": "DC unit for UGREEN NAS that run from an external power adapter, with a USB link to UGOS (UGREEN)",
+      "capacity": "72 W DC out; 22.2 Wh battery (UGREEN)",
+      "setup": "UGOS Control Panel → Hardware & Power → UPS (UGREEN)"
+     }
+    },
+    {
+     "slug": "cyberpower-cp850pfclcd",
+     "model": "CyberPower CP850PFCLCD",
+     "cells": {
+      "fits": "Uses NUT's usbhid-ups driver (NUT), which Synology DSM supports (ACE FAQ)",
+      "link": "AC, pure sine on battery; 1 HID USB port, cable included (CyberPower)",
+      "capacity": "850 VA / 510 W; 9 min at half load, i.e. 255 W (CyberPower)",
+      "setup": "Reports a 20 s output-off delay and a 30 s restart delay (NUT). On Synology, tick 'Shut down UPS when the system enters Standby Mode' and 'Restart automatically after a power failure'"
+     }
+    },
+    {
+     "slug": "apc-back-ups-be600m1",
+     "model": "APC Back-UPS BE600M1",
+     "cells": {
+      "fits": "On UGREEN's tested AC UPS list (basic compatibility test); the AC route for DXP6800/DXP8800",
+      "link": "AC, 7 NEMA outlets, 2 of them surge-only (APC)",
+      "capacity": "600 VA / 330 W; 75 min at about 30 W (Legit Reviews)",
+      "setup": "Timed or low-battery shutdown, not 'Immediately'. If power returns during its roughly two-minute delayed cutoff, the NAS may stay off (UGREEN)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Load headroom.</strong> Notebookcheck measured a two-bay UGREEN DXP2800 GT with two WD Red drives at 14.84–20.14 W idle and 35.9 W flat out. The US3000's 120 W covers that peak 3.3 times (120 ÷ 35.9 = 3.3), and the US2000's 72 W covers it twice (72 ÷ 35.9 = 2.0).</li><li><strong>Battery.</strong> UGREEN lists 43.2 Wh in the US3000 and 22.2 Wh in the US2000. The US3000 holds 1.9 times the energy (43.2 ÷ 22.2 = 1.95) for $40 more at UGREEN's store on 2026-11-17 ($109.99 − $69.99).</li><li><strong>AC capacity a small NAS never uses.</strong> Synology rates the DS225+ at 16.98 W in use, which is 5.1% of the BE600M1's 330 W (16.98 ÷ 330 = 0.051). CyberPower's 9-minute figure for the CP850PFCLCD is at half load: 510 W × 0.5 = 255 W, or 15 times that NAS's draw (255 ÷ 16.98 = 15.0). It doesn't tell you minutes at NAS loads.</li><li><strong>Measured runtime.</strong> Legit Reviews ran about 30 W of gear (summed device ratings, not a meter reading) for 75 minutes on a BE600M1. That covers a 5-minute wait before shutdown 15 times over (75 ÷ 5 = 15).</li></ul><table><thead><tr><th>Your NAS</th><th>UPS that fits</th></tr></thead><tbody><tr><td>UGREEN DH2300, DH4300 Plus, DXP2800, DXP2800 GT</td><td>US2000 for the lowest cost ({buy:ugreen-nas-ups-us2000-72w}); US3000 for twice the battery</td></tr><tr><td>UGREEN DXP4800 Plus, DXP4800 Pro, DXP480T Plus</td><td>US3000 ({buy:ugreen-nas-ups-us3000-120w})</td></tr><tr><td>UGREEN DXP6800 or DXP8800 series</td><td>An AC UPS. The APC BE600M1 is on UGREEN's tested list ({buy:apc-back-ups-be600m1})</td></tr><tr><td>Synology, or another NAS that monitors a USB HID UPS</td><td>CyberPower CP850PFCLCD ({buy:cyberpower-cp850pfclcd}); check your model on the NAS maker's UPS compatibility list</td></tr></tbody></table><h2>Which UPS your NAS can hear, and how to make it come back on</h2><p><strong>UGREEN's DC units fit only UGREEN NAS.</strong> The US3000 has no power adapter of its own. The NAS's original adapter plugs into its DC IN, and its DC OUT cable goes to the NAS. A USB data cable to a rear NAS USB port carries the outage signal. NASCompares notes that it works only with UGREEN NAS models that take external DC input, powers one NAS, and can't run a router or switch. UGREEN's guide lists the US3000 for the DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro and DXP480T Plus, and says it is not compatible with the DXP6800 or DXP8800 series. The plain DXP4800 (non-Plus) is not on that list. The US2000 is listed for the DH2300, DH4300 Plus, DXP2800 and DXP2800 GT, but UGREEN's own store menu describes it as DH-series only, so check the listing for your model before you buy. UGREEN also says a unit may arrive in Energy-Saving Mode; switch it to Normal Mode before you rely on it.</p><p><strong>AC UPS on a UGREEN NAS.</strong> UGREEN lists the APC BE600M1, APC BK650M2-CH and SANTAK TG-BOX850 as passing its basic compatibility test. It also warns that with the BE600M1 or BK650M2-CH, if Auto Shutdown is set to 'Immediately' and power returns within the UPS's roughly two-minute delayed cutoff, the NAS may not restart on its own. Use a timed or low-battery shutdown instead.</p><p><strong>Synology Standby Mode.</strong> Synology says that in Standby Mode the NAS 'stops all services and unmounts volumes in order to prevent data loss'. It turns itself back on when power returns only if it actually shut down and 'Restart automatically after a power failure' is ticked (Control Panel &gt; Hardware &amp; Power &gt; General). The option 'Shut down UPS when the system enters Standby Mode' makes the UPS cut power, but Synology warns that 'Some UPS devices do not support shutting down by DSM'. Run a simulated outage once to check yours.</p><p><strong>The power race.</strong> The Network UPS Tools FAQ describes power that 'came back during the shutdown, but before the UPS power off', leaving the computer off. A UPS that can switch its output off and back on avoids this. A user-submitted NUT report for the CP850PFCLCD shows a 20-second output-off delay and a 30-second restart delay, and its submitter reports that a simulated forced shutdown 'worked fine'.</p><h2>Not recommended</h2><p><strong>CyberPower CP850AVRLCD.</strong> It has the same 510 W rating as the CP850PFCLCD, but Cable Plus USA lists its battery output as a simulated sine wave. It was $164.95 there on 2026-11-17. For a NAS, the pure-sine model is the better buy.</p>",
+   "sources": [
+    [
+     "UGREEN US3000/US2000 compatible NAS models, DXP6800/DXP8800 exclusion, battery Wh, Energy-Saving Mode, UGOS UPS path, tested AC UPS list and BE600M1 'Immediately' restart caveat (read 2026-11-17)",
+     "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide"
+    ],
+    [
+     "UGREEN US3000 price $109.99, UGREEN NAS store (read 2026-11-17)",
+     "https://ai.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah"
+    ],
+    [
+     "UGREEN US2000 price $69.99, UGREEN NAS store (read 2026-11-17)",
+     "https://ai.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply"
+    ],
+    [
+     "US3000 DC output 12 V 10 A, 120 W; UGREEN external-DC NAS only; one NAS, no router (NASCompares, read 2026-11-17)",
+     "https://nascompares.com/review/ugreen-us3000-nas-ups-review/"
+    ],
+    [
+     "CP850PFCLCD 850 VA / 510 W, pure sine, HID USB port, 9 min at half load and 3 min at full load (CyberPower, read 2026-11-17)",
+     "https://www.cyberpower.com/global/en/product/sku/cp850pfclcda"
+    ],
+    [
+     "CP850PFCLCD NUT usbhid-ups driver, 20 s shutdown delay, 30 s start delay, forced-shutdown test (NUT device library, read 2026-11-17)",
+     "https://networkupstools.org/ddl/Cyber_Power_Systems/CP850PFCLCD.html"
+    ],
+    [
+     "UPS drivers Synology DSM supports, including usbhid-ups (ACE Peripherals FAQ, read 2026-11-17)",
+     "https://support.aceperipherals.com/kb/faq.php?id=2"
+    ],
+    [
+     "Synology Standby Mode, UPS power-off option and warning, 'Restart automatically after a power failure' (Synology Knowledge Center, read 2026-11-17)",
+     "https://kb.synology.com/en-us/DSM/help/DSM/AdminCenter/system_hardware_ups?version=7"
+    ],
+    [
+     "Power race when mains returns before the UPS cuts output (NUT FAQ, read 2026-11-17)",
+     "https://networkupstools.org/docs/FAQ.html"
+    ],
+    [
+     "APC BE600M1 600 VA / 330 W, 7 NEMA outlets, 2 surge-only (Schneider Electric US, read 2026-11-17)",
+     "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/"
+    ],
+    [
+     "BE600M1 ran 75 min on about 30 W of gear (Legit Reviews, read 2026-11-17)",
+     "https://www.legitreviews.com/?p=209537"
+    ],
+    [
+     "DXP2800 GT with two WD Red drives: 14.84–20.14 W idle, 35.9 W maximum (Notebookcheck, read 2026-11-17)",
+     "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html"
+    ],
+    [
+     "Synology DS225+ 16.98 W in use (Synology specs, read 2026-11-17)",
+     "https://www.synology.com/en-us/products/DS225+#specs"
+    ],
+    [
+     "CyberPower CP850AVRLCD simulated sine on battery, $164.95 (Cable Plus USA, read 2026-11-17)",
+     "https://store.cablesplususa.com/cyupssyinlcd4.html"
+    ]
+   ]
+  }
+ },
+ "checked": 46,
+ "changed": [
+  {
+   "where": "page.after, Not recommended (CyberPower CP850AVRLCD)",
+   "was": "It was $164.95 there on 2026-11-17, within a few dollars of the pure-sine CP850PFCLCD's Amazon price.",
+   "now": "It was $164.95 there on 2026-11-17.",
+   "why": "No source gives a CP850PFCLCD price. The draft's product price is null, and amzcheck was blocked for B00429N18S on 2026-11-17, so the 'within a few dollars' comparison is unsourced. $164.95 and 'Simulated Sine Wave' were re-read on Cable Plus USA (the page also shows a $169.95 list price, 'You save $5.00')."
+  },
+  {
+   "where": "unsourced",
+   "was": "(no entry for the CP850PFCLCD price)",
+   "now": "Added an entry: CP850PFCLCD price today, amzcheck blocked for B00429N18S",
+   "why": "Records why the price comparison was dropped."
+  }
+ ],
+ "removed": [],
+ "notes": [
+  "Not re-read: Synology Knowledge Center UPS page (en-us, en-global and en-id copies). It renders by JavaScript and returned only the title and footer to the fetcher. A search result attributed to kb.synology.com/en-id matches the Standby Mode, 'Shut down UPS when the system enters Standby Mode' and 'Some UPS devices do not support shutting down by DSM' wording. The 'Restart automatically after a power failure' path (Control Panel > Hardware & Power > General) was not seen. All of these are kept as the research agents recorded them.",
+  "Not re-read: the claim that UGREEN's store menu describes the US2000 as DH-series only. The US2000 product page returned HTTP 429 to WebFetch, and storecheck gives no menu text. Kept as recorded.",
+  "Prices re-read 2026-11-17 with storecheck search on ai.ugreen.com: US3000 $109.99 (compare-at $137.50), US2000 $69.99 (compare-at $79.99), both available. Direct product lookups first returned HTTP 429.",
+  "Amazon: amzcheck was blocked for both B00429N18S and B01FWAZEIU, so there are no Amazon prices. These rows have slugs, so their prices come from Dealectric records.",
+  "Confirmed on the UGREEN guide: US3000 compatible models, 'not compatible with the DXP6800 or DXP8800 series', 43.2 Wh, about 10 min with footnote, 120 W; US2000 compatible models, 72 W, 22.2 Wh, runtime 'varies'; Energy-Saving to Normal Mode; Control Panel → Hardware & Power → UPS; tested list (BE600M1, BK650M2-CH, SANTAK TG-BOX850); the 'approximately two-minute delayed-cutoff period' warning; USB to a rear NAS port; DC IN/DC OUT path.",
+  "Confirmed: NASCompares (12 V 10 A, 120 W max; external-DC UGREEN NAS only; one NAS, no routers or switches). CyberPower (850 VA/510 W, pure sine, 1 HID USB port, USB cable included, 9 min at half load / 3 min at full load, RB1290 in the spec table, though a 'Battery & Cell' section names RBP0007 as included). NUT DDL (usbhid-ups, ups.delay.shutdown 20, ups.delay.start 30, Report #2 says 'upsmon -c fsd worked fine'). ACE FAQ (usbhid-ups is among the DSM-supported drivers). NUT FAQ item 60 (exact quoted heading; smart UPSes force the load off and back on). se.com (600 VA, 330 W, '7 NEMA outlets (2 surge)'). Legit Reviews (BE600M1, 'right around 30 Watts' from listed device ratings of 18+5+6 W, 75 minutes). Notebookcheck (14.84–20.14 W idle, 35.9 W max, two WD Red). Synology DS225+ (16.98 W access).",
+  "Arithmetic checked: 120/35.9 = 3.34; 72/35.9 = 2.01; 43.2/22.2 = 1.946; 109.99 − 69.99 = 40.00; 16.98/330 = 5.1%; 255/16.98 = 15.0; 75/5 = 15."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.589223
+ }
+}

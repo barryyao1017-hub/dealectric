@@ -1,0 +1,90 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured runtime for any small UPS or a measured NAS power draw. Legit Reviews kept a roughly 30 W load running for 75 minutes on the APC BE600M1, and Notebookcheck measured a two-bay NAS with two WD Red drives at 14.84–20.14 W idle and 35.9 W flat out, so a 600 VA unit covers a 2–5 minute shutdown timer many times over.",
+ "standout": 2,
+ "standout_why": "I read the cited holdbackup.com guide, racksandwatts.com and techfromalex.com. HoldBackup says it tested nothing and uses only CyberPower's 66 min at 100 W rating for the CP1500PFCLCD. Racks and Watts declines to give any runtime and lists only datasheet waveforms. Tech from Alex gives a 3-minute full-load CP850PFCLCD figure without naming a source. The cited Synology compatibility and KB pages have no measurements. None of these pages has a named runtime test of a small UPS, a measured transfer time, or a measured NAS wall draw.",
+ "decides": "The measurements back the smallest AC pick. A two-bay NAS measures about 5.6 W (igor'sLAB, standby, NVMe only) to 35.9 W (Notebookcheck, maximum). The BE600M1 ran 75 minutes on about 30 W (Legit Reviews), so buying an 850 VA unit for runtime is unnecessary. Pick the 850 VA class only if you want pure sine output. Custom PC Review measured the CP1500PFCLCD's switchover at about 8–11 ms against a 4 ms rating, so a page that leans on the CyberPower PFC line's 4 ms figure should be careful. For the UGREEN US3000, no reviewer has timed a runtime. The 'about 10 minutes' figure is UGREEN's, NASCompares repeats it, and NASCompares measured only that the outage was logged in under 2 seconds.",
+ "candidates": [
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000",
+  "APC Back-UPS BE600M1",
+  "APC Back-UPS BE425M",
+  "APC Back-UPS BE850M2",
+  "CyberPower CP850PFCLCD",
+  "CyberPower EC650LCD",
+  "CyberPower CP685AVRG",
+  "Eaton 5S 700",
+  "Tripp Lite AVR650UM"
+ ],
+ "findings": [
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "Runtime on battery, reviewer test",
+   "value": "75 min at about 30 W",
+   "source": "https://www.legitreviews.com/?p=209537",
+   "source_title": "APC UPS 600VA BE600M1 Battery Backup & Surge Protector Review (Legit Reviews, Nathan Kirsch, 2018-12-10)",
+   "read": "2026-11-17",
+   "note": "The load was a router, a camera system and a cable modem. The 30 W is the sum of the devices' rated draws (18 + 5 + 6 W), not a meter reading. In the same article APC rates 67 min at 40 W and 23 min at 100 W."
+  },
+  {
+   "product": "general (2-bay NAS: UGREEN NASync DXP2800 GT)",
+   "label": "NAS wall draw, idle and maximum",
+   "value": "14.84–20.14 W idle; 31.12 W all CPU cores loaded; 35.9 W CPU and drives at full load",
+   "source": "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html",
+   "source_title": "Small, fast and surprisingly quiet: Ugreen NASync DXP2800 GT review (Notebookcheck, Daniel Schmidt, 2026-10-13)",
+   "read": "2026-11-17",
+   "note": "Two WD Red HDDs installed and spinning during idle. Arithmetic: 35.9 W is about 11% of the BE600M1's 330 W rating."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "NAS wall draw",
+   "value": "0.6 W off with WoL; 5.6 W standby; 14.5 W during data transfer",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "UGREEN NASync DXP2800 NAS im Test, page 8 (igor'sLAB, Tim Kutzner, 2024-05-08)",
+   "read": "2026-11-17",
+   "note": "Measured at the wall socket with one NVMe SSD and no HDDs, so hard drives add to these figures. The DXP2800 is one of the NASes the US2000 is listed for."
+  },
+  {
+   "product": "general (Synology DS225+)",
+   "label": "NAS energy use over 24 h",
+   "value": "about 275 Wh per 24 h (about 11.5 W average)",
+   "source": "https://dongknows.com/synology-ds225-plus-review",
+   "source_title": "Synology DS225+ review (Dong Knows Tech, Dong Ngo, 2025-08-04)",
+   "read": "2026-11-17",
+   "note": "Tested with two hard drives. The method is not described. Average is 275 Wh ÷ 24 h ≈ 11.5 W."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Outage detection, reviewer test",
+   "value": "outage logged by the NAS in under 2 s",
+   "source": "https://nascompares.com/2025/09/26/ugreen-us3000-nas-ups-review/",
+   "source_title": "UGREEN US3000 NAS UPS Review (NASCompares, Rob Andrews, 2025-09-26)",
+   "read": "2026-11-17",
+   "note": "From the review's power-pull test. The 5-minute timed shutdown was a setting, not a measurement. The review's 'up to around ten minutes' runtime has no stated NAS, drives or load."
+  },
+  {
+   "product": "general (CyberPower CP1500PFCLCD, larger sibling of the CP850PFCLCD)",
+   "label": "Measured transfer time, runtime and waveform",
+   "value": "about 8–11 ms transfer (rated 4 ms); 24 min at 200 W; pure sine output on battery",
+   "source": "https://www.custompcreview.com/?p=41209",
+   "source_title": "CyberPower CP1500 AVR LCD and CP1500 PFC LCD review (Custom PC Review, Sam Chen, 2017-04-30)",
+   "read": "2026-11-17",
+   "note": "Load built from chained 50 W fluorescent bulbs, waveform checked on an oscilloscope. This is the 1500 VA model, not the CP850PFCLCD. Use it only as a family data point."
+  }
+ ],
+ "unsourced": [
+  "A measured runtime for the UGREEN US3000 or US2000 with a named NAS and drives. NASCompares and Notebookcheck's US3000 news piece report only maker figures. Rack2Reality's review would not load (certificate error). Neowin's DXP2800 + UPS review returned 403.",
+  "TechPowerUp's DXP4800 Plus power measurements (page returned 403; I saw the figures only in a search snippet, so they are left out).",
+  "A measured transfer time or waveform capture for the APC BE600M1 or the CyberPower CP850PFCLCD. I found only spec sheets and retailer listings.",
+  "Any named reviewer or lab measurement for the CyberPower EC650LCD, CyberPower CP685AVRG, Eaton 5S 700, Tripp Lite AVR650UM, APC BE425M or APC BE850M2.",
+  "A meter-measured DS225+ wattage from NASCompares. The 16.98 W and 6.08 W in its review are Synology's spec figures.",
+  "An ENERGY STAR efficiency figure for the BE600M1. No product-finder record turned up in search.",
+  "The Galaxus/Digitec test of an APC UPS with a Synology NAS. Both page versions timed out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0765333
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the makers' runtime figures are measured at different loads, all far above what a small NAS draws: CyberPower's 9 min for the CP850PFCLCD is at half load (about 255 W), while APC quotes its Back-UPS at a 40 W 'entry-level PC'. So '850 VA gives more headroom' says nothing about minutes at a 20–40 W NAS. The only fair way to compare them is runtime at one NAS-sized load, or battery energy in Wh.",
+ "standout": 2,
+ "standout_why": "I read holdbackup.com (cited), racksandwatts.com and techfromalex.com, and I tried the cited Synology KB page. holdbackup gives one runtime point, 66 min at 100 W for the CP1500PFCLCD, and compares nothing. racksandwatts gives no runtimes and warns against turning VA or Wh into minutes. techfromalex gives only '3-minute full-load runtime' for the CP850PFCLCD. The Synology KB page came back with no body text. None of them puts the candidates' runtimes at the same load or says how far apart the makers' reference loads are. ChatGPT's own answer sizes by VA (600–900 VA) and lists no runtime at all.",
+ "decides": "This backs the small, cheap picks over the 850 VA units for a 2–4-bay NAS. The NAS only needs a few minutes on battery to get through a short blip and then shut down. The CP850PFCLCD's headline runtimes are at 255 W and 510 W, roughly 6–25× a small NAS's draw, so they don't show any advantage at NAS loads. Pure sine and price are what separate the picks, not VA. The table needs one 'minutes at 40 W' column. Each footnote should say which load the maker actually tested, and cells the maker never published should be left blank, not filled with a guess.",
+ "candidates": [
+  "APC Back-UPS BE600M1",
+  "CyberPower CP850PFCLCD",
+  "CyberPower CP850AVRLCD",
+  "CyberPower CP1500PFCLCD",
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000"
+ ],
+ "findings": [
+  {
+   "product": "CyberPower CP850PFCLCD",
+   "label": "Runtime as the maker states it",
+   "value": "9 min at half load, 3 min at full load (850 VA / 510 W)",
+   "source": "https://www.cyberpower.com/global/en/product/sku/cp850pfclcda",
+   "source_title": "CyberPower CP850PFCLCDa product page (Global, 120 V NEMA 5-15)",
+   "read": "2026-11-17",
+   "note": "Half load is 510 W × 0.5 = 255 W, about 6–13× a 20–40 W 2–4-bay NAS. The page gives no runtime at lower watts. The US page (cyberpowersystems.com) returned HTTP 405 to my fetch."
+  },
+  {
+   "product": "CyberPower CP850PFCLCD",
+   "label": "Waveform on battery / data port / battery",
+   "value": "Pure sine wave; 1 HID-compliant USB port, cable included; sealed lead-acid RBP model RB1290",
+   "source": "https://www.cyberpower.com/global/en/product/sku/cp850pfclcda",
+   "source_title": "CyberPower CP850PFCLCDa product page (Global)",
+   "read": "2026-11-17",
+   "note": "The page gives no voltage or Ah for the RB1290 battery, so I did not convert it to Wh."
+  },
+  {
+   "product": "CyberPower CP1500PFCLCD",
+   "label": "Runtime as a rival page quotes it",
+   "value": "66 min at 100 W (CyberPower's table, new fully charged batteries)",
+   "source": "https://holdbackup.com/guides/ups-for-home-office-nas",
+   "source_title": "UPS for a NAS: Compatibility & Shutdown Signal | HoldBackup",
+   "read": "2026-11-17",
+   "note": "This is the cited rival's only runtime figure. It is a single point for one model, with no comparison across models."
+  },
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "Rated output and USB port on the maker page",
+   "value": "330 W max configurable power; '1 USB smart charging port'",
+   "source": "https://www.se.com/us/en/product/BE600M1/apc-backups-600va-120v-usb-type-a-and-c-charging-ports/",
+   "source_title": "APC Back-UPS 600VA, 120V, USB Type-A and C charging ports (BE600M1) | Schneider Electric US",
+   "read": "2026-11-17",
+   "note": "The fetched part of the maker page lists the charging port but no runtime, waveform or warranty. Those are in the linked datasheet PDF, which I could not extract."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Price, UGREEN NAS store",
+   "value": "$109.99 (compare-at $137.50), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nas-backup-power-120w-12000mah",
+   "source_title": "UGREEN NAS UPS US3000 120W DC Battery Backup and Surge Protector",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search of nas.ugreen.com (Shopify JSON). The product page itself returned HTTP 429."
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Price, UGREEN NAS store",
+   "value": "$69.99 (compare-at $79.99), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nas-72w-dc-uninterruptible-power-supply",
+   "source_title": "UGREEN NAS UPS US2000 72W DC Battery Backup and Surge Protector",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search of nas.ugreen.com."
+  },
+  {
+   "product": "general",
+   "label": "How the rival pages handle runtime",
+   "value": "No runtimes compared at a common load; racksandwatts: 'Do not turn VA or battery watt-hours into guaranteed minutes'; techfromalex gives only the CP850PFCLCD's 3-minute full-load runtime",
+   "source": "https://racksandwatts.com/guides/best-ups-for-a-small-homelab-rack/",
+   "source_title": "Best UPS for a NAS: pure sine, USB/NUT and small-rack picks",
+   "read": "2026-11-17",
+   "note": "I also read https://techfromalex.com/ups-auto-shutdown-synology-qnap-nut on 2026-11-17. It gives no runtimes beyond the 3 min at full load for the CP850PFCLCD."
+  }
+ ],
+ "unsourced": [
+  "APC BE600M1 / BE425M / BE850M2 runtime at 40 W (67 / 45 / 90 min) and at 180 W. These appeared only in search snippets. The APC datasheet PDFs I opened (cdn.blueally.com BE600M1_datasheet.pdf, jsie-aapk43_r0_en.pdf, the webstaurantstore brochure) came back as compressed streams I could not read. govconnection returned 403, and the Dell link opened a category page.",
+  "APC BE600M1 waveform on battery, battery Ah/VAh (snippets disagreed: 66, 78 or 81 VAh) and warranty. Not on the fetched se.com page.",
+  "CyberPower CP850PFCLCD and CP850AVRLCD runtime at 25–100 W from CyberPower's runtime chart. cyberpowersystems.com returned HTTP 405 to WebFetch, and curl through Bash was not approved. The Farnell spec-sheet PDF timed out.",
+  "CyberPower CP850AVRLCD waveform, battery and runtime. The maker page returned 405.",
+  "RB1290 battery voltage and Ah, needed to state the CP850PFCLCD's battery energy in Wh.",
+  "UGREEN US3000 battery Wh, chemistry, runtime claim with its test load, and shutdown modes. Every fetch of nas.ugreen.com and ugreen.com product pages returned HTTP 429. Our current page's 43.2 Wh and 'about 10 min' are unverified this session.",
+  "Synology DSM UPS help text on safe mode and timing. The kb.synology.com page came back with no body text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.1333412000000003
+ }
+}

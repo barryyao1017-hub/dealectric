@@ -1,0 +1,113 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which NAS models UGREEN's DC UPS units power: the US3000 is for the DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro and DXP480T Plus but not the DXP6800 or DXP8800 series, and the US2000 is for the DH2300, DH4300 Plus, DXP2800 and DXP2800 GT. None of those results gives UGREEN's warning that a NAS on an APC BE600M1 (ChatGPT's top pick) set to shut down 'Immediately' may not restart on its own if power comes back during the UPS's roughly two-minute delayed cutoff.",
+ "standout": 2,
+ "standout_why": "I compared against HoldBackup (cited), Racks&Watts, TechFromAlex, ACE Peripherals' Synology FAQ and the Synology Knowledge Center page ChatGPT cited. HoldBackup covers only the CyberPower CP1500PFCLCD with a DS923+. It says Synology doesn't support USB hubs and that a USB charging socket is not a data link. Racks&Watts and TechFromAlex cover 1500 VA APC, CyberPower and Eaton units and NUT drivers. TechFromAlex names the BE600M1 only as a related product and makes no compatibility claim for it. ACE's FAQ is a 2016 list of Synology-tested UPS units and drivers. None of these pages mentions UGREEN's DC UPS units, which NASync models they fit, the DXP6800/DXP8800 exclusion, UGREEN's list of tested AC UPS units, or the BE600M1 auto-restart caveat. The Synology compatibility-list pages ChatGPT cited only load their data with JavaScript, and I could not read them.",
+ "decides": "If you own a UGREEN NAS, your model decides the UPS. DH2300, DH4300 Plus or DXP2800 owners can use the US2000 or the US3000. DXP4800 Plus, DXP4800 Pro or DXP480T Plus owners need the US3000. DXP6800 or DXP8800 owners need an AC UPS, and UGREEN's guide says so. That makes the page's 'NASync 2–4 bay' label for the US3000 inaccurate: it should name the models, add the DXP480T Plus, and exclude the 6- and 8-bay units. The BE600M1 is still a sound small AC pick, and it is on UGREEN's tested list. The page should add one setup step: use a delayed or low-battery shutdown, not 'Immediately', or the NAS may stay off when power returns during the APC's roughly two-minute cutoff.",
+ "candidates": [
+  "UGREEN NAS UPS US3000",
+  "UGREEN NAS UPS US2000",
+  "APC Back-UPS BE600M1",
+  "APC BK650M2-CH",
+  "SANTAK TG-BOX850",
+  "CyberPower CP850PFCLCD",
+  "CyberPower CP1500PFCLCD"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Compatible NAS models (maker)",
+   "value": "DH2300, DH4300 Plus, DXP2800, DXP4800 Plus, DXP4800 Pro, DXP480T Plus",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "Taken from the guide's DC UPS compatibility section. The plain DXP4800 (non-Plus) and the DXP2800 GT/DXP4800 GT are not in UGREEN's US3000 list. Need to Know IT says they appear on some UGREEN lists, so they need checking per region."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Models UGREEN says it does not support",
+   "value": "DXP6800 series and DXP8800 series; UGREEN recommends a standard AC UPS for them",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "The guide's table marks the US3000 'Supported', but a note under it excludes the DXP6800/DXP8800. Notebookcheck's news item states the same exclusion: https://www.notebookcheck.net/Compact-UPS-protects-data-integrity-and-ensures-round-the-clock-availability-of-NAS.1132409.0.html"
+  },
+  {
+   "product": "UGREEN NAS UPS US2000",
+   "label": "Compatible NAS models (maker)",
+   "value": "DH2300, DH4300 Plus, DXP2800, DXP2800 GT",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "UGREEN's own pages disagree. Its site menu says 'Only Support DH Series', while the guide also lists the DXP2800 and DXP2800 GT."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Power hookup",
+   "value": "Has no power adapter of its own: the NAS's original adapter plugs into DC IN, and the UPS's DC OUT cable goes to the NAS power input. The USB data port goes to a rear NAS USB port.",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "UGREEN also says the unit may ship in Energy-Saving Mode and should be switched to Normal Mode."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "DC input and output",
+   "value": "Input 12 V, 19 V or 20 V DC; output 12 V DC 10 A, 120 W max; one NAS only through the DC pass-through",
+   "source": "https://nascompares.com/review/ugreen-us3000-nas-ups-review/",
+   "source_title": "Review of the UGREEN NAS UPS – Is the US3000 120W UPS Any Good? (NASCompares)",
+   "read": "2026-11-17",
+   "note": "From NASCompares' spec table. NASCompares also says the unit works only with UGREEN NAS models that take external DC input, and that it can't power a router or switch. Included cables: about 53 cm USB-A to USB-C data cable and a fixed DC cable of about 28 cm."
+  },
+  {
+   "product": "UGREEN NAS UPS US3000",
+   "label": "Use with non-UGREEN NAS",
+   "value": "Need to Know IT says UGREEN supports the US3000 only with compatible UGREEN NAS models, and that its connector and data compatibility with other brands is not established",
+   "source": "https://needtoknowit.com.au/blog/ugreen-nas-120w-ups-review/",
+   "source_title": "UGREEN NAS 120W DC UPS Review (Need to Know IT)",
+   "read": "2026-11-17",
+   "note": "Need to Know IT recommends an APC or CyberPower AC UPS for Synology, QNAP and other brands. Page last updated 30 October 2026."
+  },
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "On UGREEN's tested AC UPS list",
+   "value": "Supported (basic compatibility test), along with APC BK650M2-CH and SANTAK TG-BOX850",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "UGREEN says these units passed basic compatibility testing only, and tells buyers to check the UGREEN NAS Compatibility List for their exact NAS model and region."
+  },
+  {
+   "product": "APC Back-UPS BE600M1",
+   "label": "Caveat: NAS may not restart on its own",
+   "value": "With Auto Shutdown set to 'Immediately', if power returns during the APC's roughly two-minute delayed cutoff, the NAS may not restart automatically",
+   "source": "https://ai.ugreen.com/blogs/how-to/ups-for-nas-buying-setup-guide",
+   "source_title": "UPS for NAS buying & setup guide (UGREEN NAS blog)",
+   "read": "2026-11-17",
+   "note": "UGREEN states this for both the BE600M1 and the BK650M2-CH on UGOS. UGOS UPS settings are under Control Panel → Hardware & Power → UPS. Fix: choose a timed or low-battery shutdown, not 'Immediately'."
+  },
+  {
+   "product": "general",
+   "label": "Synology: UPS drivers DSM supports beyond its tested list",
+   "value": "apcsmart, bcmxcp_usb, blazer_usb, metasys, netxml-ups, optiups, powercom, powerpanel, richcomm_usb, snmp-ups, tripplite_usb, usbhid-ups. USB 2.0 connection recommended; SNMP v1/v2c UPS cards need DSM 4.2 or later.",
+   "source": "https://support.aceperipherals.com/kb/faq.php?id=2",
+   "source_title": "What UPS devices do Synology product support? (ACE Support Center)",
+   "read": "2026-11-17",
+   "note": "This is a distributor FAQ last updated in 2016, not a Synology document. ChatGPT got this page in its results, so it is not new."
+  }
+ ],
+ "unsourced": [
+  "Synology's UPS compatibility entries for the DS225+ and DS720+ (BE600M1, CP850PFCLCD, and the 'UPS power off' column). The synology.com compatibility pages and a guessed API URL returned only page chrome because the data loads with JavaScript, and running curl needed approval.",
+  "The connector on the APC BE600M1's data port and the part number of the cable in the box. The APC user guide PDFs (download.se.com SPD_AHUG-9XB6SU_EN and the Standard Electric Supply copy) came back as compressed binary, and local PDF extraction needed approval. The se.com product page doesn't give them, and the manuals.plus copy returned 403.",
+  "UGREEN's US3000 and US2000 product pages, for the exclusion text and today's price: ai.ugreen.com and the storecheck tool both returned HTTP 429.",
+  "A minimum UGOS Pro version for UPS or US3000 support: neither the UGREEN guide nor the reviews I read give one.",
+  "QNAP's UPS compatibility for the TS-264 and TS-464: not reached within the tool budget.",
+  "Whether the US3000's NUT server option works with Synology or QNAP clients: only unverified reader comments on NASCompares mention it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1704831
+ }
+}
