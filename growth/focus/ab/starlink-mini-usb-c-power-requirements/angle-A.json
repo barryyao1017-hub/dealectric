@@ -1,0 +1,123 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the Starlink Mini's own input is rated 12–48 V at 60 W (25–40 W average). That means Starlink's '100 W, 20 V/5 A minimum' USB-C rule is about getting 5 A at 20 V, not about the dish needing 100 W. The extra 40 W on a '140 W' port only comes at 28 V (USB PD 3.1 EPR), which does nothing for the Mini. Some power stations also have a USB-C port that cannot run the Mini at all: on the Anker SOLIX C1000 Gen 2, USB-C1 shares a 20 W total with USB-A.",
+ "standout": 2,
+ "standout_why": "I compared against Starlink's help pages that ChatGPT cited (a7fe6525 'How can I power my Starlink Mini?' and fba85643 'What USB power rating do I need'), the Mini accessories guide PDF (result 7/14) and the ctmods 'starlink mini usb-c pd requirements' post that ranks for this query. The help-center articles load with JavaScript and returned only the word 'Starlink', even through a text proxy, so I could not read their bodies. Search results show they repeat the 100 W / 20 V-5 A rule. The accessories guide states '100W (20V/5A) power source' and that the cable won't charge phones, but gives no input rating or draw. ctmods repeats 100 W, 20 V/5 A and notes that 100 W doesn't guarantee uptime. It doesn't mention 60 W input or 28 V vs 20 V. ChatGPT's answer mentions 20 V/5 A on a 140 W charger and 'single port vs total', but it calls 100 W a startup/peak need, which contradicts the 60 W input rating. It also never says which port on a given power station qualifies. Risk: result 12 ('Starlink Mini: Specifications and Installation') may list the 60 W input rating, and I could not render it to check.",
+ "decides": "The table's USB-C column should read 'has a 20 V/5 A port: yes/no (which port)', not the headline port wattage. A 140 W port gives the Mini no more than a 100 W port does, so the extra watts above 100 shouldn't count in a product's favour. Pick the power station or power bank by usable Wh and a single 20 V/5 A port. For the Anker C1000 Gen 2, the page must say to use USB-C2 (20 V 5 A listed), not USB-C1 (20 W shared with USB-A). The page's runtime math should use 25–40 W (Starlink's average) and treat 60 W as the most the dish can draw, not 100 W. Our current page uses 20–40 W, and 20 W is below Starlink's stated average range.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow RIVER 3 Plus",
+  "ALLPOWERS P1800",
+  "UGREEN 145W 25000mAh 3-Port Power Bank"
+ ],
+ "findings": [
+  {
+   "product": "Starlink Mini",
+   "label": "Input rating (dish)",
+   "value": "12–48 V, 60 W",
+   "source": "https://starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "Starlink Mini Product Specifications (specification_sheet_mini.pdf)",
+   "read": "2026-11-17",
+   "note": "Read through the r.jina.ai text renderer. Verbatim row: 'Input Rating 12-48V 60W'. The PDF metadata shows it was published 28 May 2026."
+  },
+  {
+   "product": "Starlink Mini",
+   "label": "Average power consumption",
+   "value": "25–40 W",
+   "source": "https://starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "Starlink Mini Product Specifications (specification_sheet_mini.pdf)",
+   "read": "2026-11-17",
+   "note": "Verbatim: 'Power Consumption Average: 25-40W'. This is the figure to use for runtime: 1,024 Wh × 0.85 / 40 W ≈ 22 h; / 25 W ≈ 35 h. The 0.85 efficiency is an assumption, not a Starlink figure."
+  },
+  {
+   "product": "Starlink Mini",
+   "label": "USB PD requirement",
+   "value": "100 W, 20 V/5 A minimum (with Starlink USB-C to Barrel Jack Cable)",
+   "source": "https://starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "Starlink Mini Product Specifications (specification_sheet_mini.pdf)",
+   "read": "2026-11-17",
+   "note": "Verbatim: 'USB PD Requirement 100W, 20V/5A Minimum (with Starlink USB-C to Barrel Jack Cable Accessory)'. The same sheet rates the dish input at 60 W, so the 100 W is a rule for the source (a 5 A profile at 20 V), not what the dish draws."
+  },
+  {
+   "product": "Starlink Mini USB-C Cable, 5 m",
+   "label": "Source requirement and limitation",
+   "value": "Requires a 100 W (20 V/5 A) power source; designed only for powering the Mini, not for charging phones",
+   "source": "https://starlink.com/public-files/accessories_guide_mini.pdf",
+   "source_title": "V4_MINI_Accessories_Guide_042525 (Starlink Mini Accessories Guide)",
+   "read": "2026-11-17",
+   "note": "Read through the r.jina.ai renderer. The guide also says the Mini Car Adapter works with 12–24 V car outlets and comes with a Mini USB-C Cable."
+  },
+  {
+   "product": "general",
+   "label": "USB PD voltage behind 100 W vs 140 W",
+   "value": "100 W = 20 V at 5 A (top of the standard range); 140 W needs the new 28 V fixed voltage",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-17",
+   "note": "Verbatim: 'Prior to this update, USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A' and 'New 28V, 36V, and 48V fixed voltages enable up to 140W, 180W and 240W'. The Mini asks for 20 V, so on a 140 W PD 3.1 port it gets at most 20 V × 5 A = 100 W. The extra 40 W exists only at 28 V."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C2 profiles",
+   "value": "5 V 3 A, 9 V 3 A, 15 V 3 A, 20 V 3 A, 20 V 5 A, 28 V 5 A (140 W max)",
+   "source": "https://www.ankersolix.com/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (ankersolix.com US)",
+   "read": "2026-11-17",
+   "note": "Verbatim spec row; the page's '5V~ 3V' is a typo for 3 A. The listed 20 V 5 A profile meets Starlink's minimum, so this is the port to use for the Mini."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C1 limit",
+   "value": "USB-A and USB-C1 share 20 W max",
+   "source": "https://www.ankersolix.com/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (ankersolix.com US)",
+   "read": "2026-11-17",
+   "note": "Verbatim: 'USB-A and USB-C1 Total 20W Max'. USB-C1 is far below 20 V/5 A, so it cannot run the Mini even though the unit is sold with '3 USB-C ports'. The page lists no separate row for USB-C3."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Car outlet",
+   "value": "12 V, 10 A, 120 W",
+   "source": "https://www.ankersolix.com/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 (ankersolix.com US)",
+   "read": "2026-11-17",
+   "note": "This is another way to power the Mini: Starlink's Mini Car Adapter is rated for 12–24 V outlets (accessories guide)."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "USB-C PD",
+   "value": "USB-C port with PD 3.1, up to 140 W; 288 Wh; 600 W rated AC",
+   "source": "https://bluettipower.com/products/bluetti-elite-30-v2-light-sand-grey-100w",
+   "source_title": "BLUETTI Elite 30 V2 (bluettipower.com)",
+   "read": "2026-11-17",
+   "note": "The Tech Specs block was empty. Copy said 'USB-C port with PD 3.1 protocol, delivering up to 140W output'. 140 W means 28 V; for the Mini it gives 20 V at up to 5 A = 100 W (USB-IF). Runtime: 288 Wh × 0.85 / 25–40 W ≈ 6.1–9.8 h. The 0.85 is assumed."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price",
+   "value": "US$299.99 (station alone); US$399.99 with 60 W solar; US$489.99 with 100 W solar",
+   "source": "https://bluettipower.com/products/bluetti-elite-30-v2-light-sand-grey-100w",
+   "source_title": "BLUETTI Elite 30 V2 (bluettipower.com)",
+   "read": "2026-11-17",
+   "note": "Read from the product page with WebFetch. I could not run the storecheck tool because Bash was blocked."
+  }
+ ],
+ "unsourced": [
+  "Body text of the Starlink help-center articles ChatGPT cited (a7fe6525, fba85643, 7c9fb509, 93709b47). They render only through JavaScript; WebFetch and the r.jina.ai proxy returned no article text, and Bash/curl needed approval I didn't have. So I can't confirm whether result 12 already states the 60 W input rating.",
+  "Anker SOLIX C1000 Gen 2 USB-C3 per-port profile: the US page lists no USB-C3 row. The Solar Lab and the AU page (search snippets only) suggest two 140 W ports.",
+  "Anker SOLIX C1000 Gen 2 US price: the ankersolix.com page showed no price in the fetched text.",
+  "BLUETTI Elite 30 V2 per-port V/A table (whether the 140 W port and the 100 W port both list 20 V 5 A): bluettipower.com Tech Specs was empty and the /products/elite-30-v2 URL returned 404. I did not open a manual.",
+  "EcoFlow RIVER 3 Plus USB-C profiles and price: us.ecoflow.com returned HTTP 429.",
+  "UGREEN 145W 25000mAh power bank: per-port split (C1 140 W vs 100 W when C2 is in use) and 90 Wh capacity. us.ugreen.com and ugreen.com returned HTTP 429. Search snippets disagree (Digital Camera World snippet says 100 W from C1); not used.",
+  "ALLPOWERS P1800 and BLUETTI Elite 100 V2 per-port USB-C V/A profiles: not reached within the tool budget.",
+  "A named reviewer's measured Starlink Mini draw over USB-C (watts at idle, in use and peak, e.g. with snow melt): not searched within the budget. Starlink's spec sheet average (25–40 W) and 60 W input rating are the only sourced figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0429975999999999
+ }
+}

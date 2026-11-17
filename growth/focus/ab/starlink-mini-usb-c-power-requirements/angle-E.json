@@ -1,0 +1,104 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured Starlink Mini run: Martin Sauter (wirelessmoves) found a 60 W USB-C power bank left the Mini stuck in a boot loop, while a 100 W, 72 Wh Anker Prime bank ran it for 2 h 45 min and steady draw was about 21 W.",
+ "standout": 2,
+ "standout_why": "ChatGPT drew only on Starlink pages: Help Center a7fe6525 and fba85643 (cited), the USB-C cable article and the Mini accessories PDF. Its answer gives a spec table (100 W PD, '25–40W typical') and a runtime table worked out from an assumed 30 W at 85% efficiency, with no measurement from a named tester. None of those results contains a real powered run, a measured 60 W failure or a measured steady draw. I could not render the Starlink pages myself because they are JavaScript-only, so this comparison uses ChatGPT's answer and the result titles. Its '60W not supported' line is a spec claim; the wirelessmoves boot loop is the first observed test of it.",
+ "decides": "The measured run backs the 100 W PD rule: a 60 W bank failed and a 100 W bank worked. It also shows real draw is lower than ChatGPT's 30 W assumption: 72 Wh lasted 2.75 h, about 26 W counting the bank's own losses. Our 'hours' column (20–40 W) should be anchored near 21–26 W. On that basis the 288 Wh Elite 30 V2 and 286 Wh RIVER 3 Plus sit near the top of their '6–12 h' range, and every listed station needs a USB-C port rated 100 W or more (all qualify: 100–140 W).",
+ "candidates": [
+  "ALLPOWERS P1800",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 100 V2",
+  "EcoFlow RIVER 3 Plus",
+  "BLUETTI Elite 30 V2",
+  "Anker Prime 20,000 mAh power bank (the bank the testers used)"
+ ],
+ "findings": [
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Measured steady power draw",
+   "value": "about 21 W average; 40 W and higher only in the first 1–2 minutes after power-on",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (wirelessmoves, Martin Sauter, posted 2025-01-05, updated 2025-01-08)",
+   "read": "2026-11-17",
+   "note": "Read from a large Anker power station (model not named); no meter named. The post gives a 21–40 W range overall."
+  },
+  {
+   "product": "general (Starlink Mini)",
+   "label": "USB-C power bank rated 60 W",
+   "value": "Failed: status light came on, boot process looped",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (wirelessmoves, Martin Sauter)",
+   "read": "2026-11-17",
+   "note": "An older 60 W bank (model not named). This is the tester's direct observation."
+  },
+  {
+   "product": "Anker Prime power bank (72 Wh, 100 W USB-C PD)",
+   "label": "Measured Starlink Mini runtime over USB-C",
+   "value": "2 h 45 min",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (wirelessmoves, Martin Sauter)",
+   "read": "2026-11-17",
+   "note": "The model is named only in the link URL (Anker Prime, 72 Wh); 500 g bank. 72 Wh ÷ 2.75 h ≈ 26 W drawn from the bank's rated capacity, including conversion losses. ChatGPT's table predicts 2.8 h from a larger 100 Wh bank."
+  },
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Measured boot and steady draw",
+   "value": "40–50 W during boot and satellite search; about 20–30 W once connected",
+   "source": "https://www.dishytech.com/starlink-mini-review/",
+   "source_title": "My Starlink Mini Review After 6 Months (DISHYtech, Colby Baber, published 2024-12-16)",
+   "read": "2026-11-17",
+   "note": "Measurement method not stated."
+  },
+  {
+   "product": "Anker Prime 20,000 mAh power bank",
+   "label": "Starlink Mini runtime over USB-C",
+   "value": "more than 3 hours",
+   "source": "https://www.dishytech.com/starlink-mini-review/",
+   "source_title": "My Starlink Mini Review After 6 Months (DISHYtech, Colby Baber)",
+   "read": "2026-11-17",
+   "note": "The review names only an 'Anker Prime portable power bank'; its companion emergency-kit post identifies it as the 20,000 mAh model with 100 W per USB-C port."
+  },
+  {
+   "product": "general (Starlink Mini, DC input)",
+   "label": "DC supply needed for a reliable boot (tester's own testing)",
+   "value": "at least 120 W (12 V / 10 A)",
+   "source": "https://www.dishytech.com/starlink-emergency-kit-powering-the-mini-with-a-usb-c-power-bank/",
+   "source_title": "Starlink Emergency Kit – Powering the Mini with a USB-C power bank (DISHYtech, Colby Baber; comment dated 2024-10-02)",
+   "read": "2026-11-17",
+   "note": "Stated by the author in a comment reply. A reader comment on the same page says a Goal Zero Yeti 1000X 60 W USB-C port did not power the Mini; that is a reader report, not the author's test."
+  },
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Kill-A-Watt measured draw (outlier)",
+   "value": "idle 22–28 W; boot 62–71 W; web/email 42–55 W; large download 58–73 W; workday average 50–55 W",
+   "source": "https://earthsims.com/starlink/starlink-mini-review/",
+   "source_title": "Starlink Mini Review 2026 (Earth SIMs, Jordan Stambaugh; published 2026-02-16, updated 2026-03-27)",
+   "read": "2026-11-17",
+   "note": "Measured with a Kill-A-Watt, which reads at the AC wall, so the figures likely include adapter losses. They run about twice the wirelessmoves and DISHYtech readings; treat as an upper bound."
+  },
+  {
+   "product": "general (Starlink Mini)",
+   "label": "Steady draw, clear sky (publication's own testing)",
+   "value": "about 20–25 W; 12 V fuse sizing given as a 5 A startup peak and 1.7 A steady",
+   "source": "https://www.4wdtalk.com/?p=31060",
+   "source_title": "Starlink Mini Power Consumption: Real Watts, Runtime, 12V and Solar (4WDTalk, Alex Schult, 2026-06-18)",
+   "read": "2026-11-17",
+   "note": "No meter named, and the article does not say whether readings were over USB-C or 12 V."
+  }
+ ],
+ "unsourced": [
+  "The text of Starlink's own power pages (Help Center a7fe6525 and fba85643, the specifications page and the spec-sheet PDF): all render only with JavaScript, the PDF could not be text-extracted here, and a reader proxy returned nothing. So the official '100 W / 20 V 5 A' and '20–40 W average' figures are taken from ChatGPT's answer and the reviewers' quotes, not from a page I opened.",
+  "A USB-C PD meter reading (volts and amps at the Mini's cable) from a named reviewer; searches found none.",
+  "GoRV magazine issue #97, p56 (reported 90 W startup spike): the page failed with a certificate error.",
+  "A ZDNet figure of about 100 W at startup, seen only as a second-hand mention; the ZDNet original was not found.",
+  "Measured Starlink Mini runtime on any candidate station (ALLPOWERS P1800, Anker SOLIX C1000 Gen 2, BLUETTI Elite 100 V2 / Elite 30 V2, EcoFlow RIVER 3 Plus) by a named reviewer.",
+  "A measured Starlink Mini runtime posted in the DISHYtech forum thread on the UGREEN Nexode 25,000 mAh 200 W bank; the thread did not load.",
+  "A measured snow-melt draw for the Mini; sources disagree on whether the Mini has a heater at all."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0399609
+ }
+}

@@ -1,0 +1,128 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many hours each candidate runs the Mini from its one 100 W+ USB-C port, worked out from a measured figure (Wireless Moves ran the Mini for 2 h 45 min on a 72 Wh bank, so it used 26.2 Wh of rated capacity per hour), or that the second USB-C port on the UGREEN 145W bank (65 W) and on the Anker C1000 Gen 2 (shares 20 W with USB-A) can't run the Mini at all.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's answer and the Starlink help pages it cited (a7fe6525 'How can I power my Starlink Mini?' and fba85643 'What USB power rating do I need'), plus the result-14 Mini accessories PDF. The help pages load their text by script and came back empty, and the PDF arrived as compressed binary, so I couldn't read what they say. ChatGPT's answer gives a 100 W PD minimum and a generic runtime table (30 W average with an assumed 85% efficiency, so 100 Wh = 2.8 h). It warns in general terms to check for 100 W 'from a single USB-C port'. It names no products, has no measured runtime, and doesn't say which port on a given product works.",
+ "decides": "Runtime: at the measured 26.2 Wh per hour, a 90 Wh bank (UGREEN 145W) gives about 3.4 h, enough for an evening but not a day. A 1 kWh LiFePO4 station gives about 39 h from USB-C alone. The BLUETTI Elite 100 V2 costs least per hour of runtime ($12.8/h) and has about the same Wh per lb as the Anker C1000 Gen 2. The Elite 30 V2 (about 11 h, 9.5 lb, $299.99) suits one night of camping. Ports: on the UGREEN 145W the Mini must go in USB-C1 (140 W), and on the C1000 Gen 2 in USB-C2 (140 W). The other USB-C port on each is under 100 W, and Wireless Moves saw a 60 W bank put the Mini into a boot loop.",
+ "candidates": [
+  "UGREEN 145W 25000mAh 3-Port Power Bank",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "Anker SOLIX C1000 Gen 2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Starlink Mini measured average draw",
+   "value": "21 W average; 21–40 W range; 40 W and higher only in the first 1–2 minutes after power-on",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (Wireless Moves)",
+   "read": "2026-11-17",
+   "note": "Measured by Wireless Moves on an Anker power station."
+  },
+  {
+   "product": "general",
+   "label": "Measured Mini runtime on a USB-C PD power bank",
+   "value": "2 h 45 min on a 72 Wh, 500 g, 100 W PD bank, which is 26.2 Wh of rated capacity per hour",
+   "source": "https://blog.wirelessmoves.com/2025/01/starlink-mini-part-2-power-and-performance.html",
+   "source_title": "Starlink Mini – Part 2 – Power and Performance (Wireless Moves)",
+   "read": "2026-11-17",
+   "note": "72 Wh ÷ 2.75 h = 26.2 Wh/h. That equals 21 W × 2.75 h / 72 Wh = 80% of rated Wh delivered. The same article says a 60 W bank caused a boot loop and a 100 W PD bank worked. I use 26.2 Wh/h as the divisor for every runtime below. That is an assumption for the stations, whose USB-C conversion losses weren't measured."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Capacity and per-port USB-C output",
+   "value": "90 Wh; USB-C1 140 W max (20V-5A, 28V-5A); USB-C2 65 W max (20V-3.25A), too little for the Mini",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-17",
+   "note": "Spec table on UGREEN's own store, bundle listing of the same bank: 'Power Capacity: 25,000mAh/3.6V/90Wh(TYP)'."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Price",
+   "value": "$79.99",
+   "source": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+   "source_title": "UGREEN 145W 25000mAh 3-Port Power Bank – UGREEN US",
+   "read": "2026-11-17",
+   "note": "From storecheck search on us.ugreen.com. The bundle with a 240 W cable is $84.99."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank",
+   "label": "Mini hours per charge from USB-C1 / cost per hour / cost per Wh",
+   "value": "about 3.4 h; $23.5 per hour of runtime; $0.89/Wh",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-17",
+   "note": "90 Wh ÷ 26.2 Wh/h = 3.4 h; $79.99 ÷ 3.4 h = $23.5/h; $79.99 ÷ 90 Wh = $0.89/Wh."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Capacity, weight, USB-C, price",
+   "value": "288 Wh; 4.3 kg (9.5 lb); one USB-C PD 3.1 port, 140 W; $299.99",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-17",
+   "note": "The page gives only kg; 4.3 kg × 2.2046 = 9.48 lb. Blush Pink colour is $289.99 on the same store."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Mini hours per charge from USB-C / Wh per lb / cost per hour",
+   "value": "about 11.0 h; 30.4 Wh/lb (1.16 Mini-hours per lb); $27.3 per hour of runtime ($1.04/Wh)",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-17",
+   "note": "288 ÷ 26.2 = 11.0 h; 288 ÷ 9.48 lb = 30.4 Wh/lb; 11.0 h ÷ 9.48 lb = 1.16 h/lb; $299.99 ÷ 11.0 h = $27.3/h; $299.99 ÷ 288 Wh = $1.04/Wh."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Capacity, weight, price",
+   "value": "1,024 Wh; 25 lb; $499",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-17",
+   "note": "From storecheck on bluettipower.com: price $499.00, 'Only 25lbs'."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Mini hours per charge from USB-C / Wh per lb / cost per hour",
+   "value": "about 39 h; 41.0 Wh/lb (1.56 Mini-hours per lb); $12.8 per hour of runtime ($0.49/Wh)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-17",
+   "note": "1,024 ÷ 26.2 = 39.1 h; 1,024 ÷ 25 = 41.0 Wh/lb; 39.1 ÷ 25 = 1.56 h/lb; $499 ÷ 39.1 h = $12.8/h; $499 ÷ 1,024 Wh = $0.49/Wh."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Capacity, weight, per-port USB-C output",
+   "value": "1,024 Wh; 24.9 lb; USB-C2 140 W max (20V 5A, 28V 5A); USB-C1 shares 20 W total with USB-A, too little for the Mini",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 – Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Spec table quote: 'USB-A and USB-C1 Total 20W Max'."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Mini hours per charge from USB-C2 / Wh per lb",
+   "value": "about 39 h; 41.1 Wh/lb (1.57 Mini-hours per lb)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2 – Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "1,024 ÷ 26.2 = 39.1 h; 1,024 ÷ 24.9 = 41.1 Wh/lb; 39.1 ÷ 24.9 = 1.57 h/lb."
+  }
+ ],
+ "unsourced": [
+  "Text of Starlink's own Mini help pages (a7fe6525, fba85643), specifications page and the accessories_guide_mini.pdf / specification_sheet_mini.pdf. The pages render by script and WebFetch returned only 'Starlink'. The PDFs came back as compressed binary, and running pdftotext needed a permission I don't have. So I couldn't quote Starlink's own average-draw or 100 W wording.",
+  "UGREEN 145W 25000mAh weight: the product page returned HTTP 429 twice, so I couldn't compute Wh per lb or hours per lb for it.",
+  "Anker SOLIX C1000 Gen 2 US price today: ankersolix.com showed no dollar amount and isn't a Shopify store storecheck can read. I skipped Amazon given the call budget.",
+  "EcoFlow RIVER 3 Plus main unit: neither storecheck search nor the product URL found it on us.ecoflow.com (404; only the extra battery is listed at $149), and the WebFetch attempt hit HTTP 429. I didn't derive price, weight or hours for it.",
+  "Baseus Blade H1 100W and AOHi Starship 40000mAh: storecheck returned HTTP 404 for both stores.",
+  "A measured USB-C output efficiency for any power station (as opposed to a power bank). The 26.2 Wh/h divisor comes from a power bank test and is applied to the stations as an assumption."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1565800999999998
+ }
+}

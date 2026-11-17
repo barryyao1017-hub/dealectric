@@ -1,0 +1,122 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says that on the Anker SOLIX C1000 Gen 2 only the USB-C2 port runs a Starlink Mini: USB-C2 lists a 20V⎓5A profile (140 W max), while USB-C1 shares a 20 W cap with USB-A, so the wrong port fails Starlink's 100 W (20V/5A) minimum.",
+ "standout": 2,
+ "standout_why": "Rivals checked: the three cited Starlink Help Center articles (a7fe6525 'How can I power my Starlink Mini?' and fba85643 'What USB power rating do I need', in its ws and gb copies), plus two results ChatGPT got but did not cite: the Mini spec sheet and the Mini accessories guide PDF. Limit: the Help Center articles render only in JavaScript and would not open for me through either the direct URL or a reader proxy. My view of what they say comes from Starlink's spec sheet and accessories guide, which I did open. Those Starlink documents state the requirement only for the dish side: 100 W at 20V/5A minimum with Starlink's USB-C to Barrel Jack cable, a 12–48 V 60 W DC input, a 5 m USB-C cable, and a Car Adapter for 12–24 V outlets. None of them says which port on a given power station meets the requirement. ChatGPT's own table stops at '140W charger: supported if the port provides 20V/5A'. No result covers the Anker port split (C1 limited to 20 W), the RIVER 3 Plus's single USB-C port at exactly 20V⎓5A and 100 W, or the fact that these stations' 12 V car outlets can run the Mini through the Car Adapter.",
+ "decides": "This confirms that both the Anker C1000 Gen 2 and the EcoFlow RIVER 3 Plus can run the Mini over USB-C, with conditions. On the Anker the cable must go into USB-C2. The RIVER 3 Plus meets 20V⎓5A exactly, with no wattage to spare and only one USB-C port. Each also has a 12 V car outlet rated 120–126 W, above the Mini's 60 W input rating. That outlet plus Starlink's Mini Car Adapter is a second route that doesn't depend on USB-C profiles. The page's USB-C column should therefore name the qualifying port rather than the station's total USB-C wattage. The BLUETTI rows stay unconfirmed until their port profiles are sourced.",
+ "candidates": [
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow RIVER 3 Plus",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 100 V2",
+  "ALLPOWERS P1800",
+  "Starlink Mini Car Adapter",
+  "Starlink Mini USB-C Cable (5 m)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Starlink Mini USB PD requirement",
+   "value": "100 W, 20V/5A minimum (with Starlink USB-C to Barrel Jack Cable Accessory)",
+   "source": "https://starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "MINI SPECIFICATIONS (Starlink Mini spec sheet)",
+   "read": "2026-11-17",
+   "note": "Opened through the r.jina.ai reader because the direct PDF fetch returned compressed streams. Quoted as written. The requirement is tied to Starlink's own USB-C to barrel cable."
+  },
+  {
+   "product": "general",
+   "label": "Starlink Mini DC input rating and average draw",
+   "value": "Input 12–48 V, 60 W; average consumption 25–40 W",
+   "source": "https://starlink.com/public-files/specification_sheet_mini.pdf",
+   "source_title": "MINI SPECIFICATIONS (Starlink Mini spec sheet)",
+   "read": "2026-11-17",
+   "note": "Lines quoted from the spec sheet: 'Input Rating 12-48V 60W' and 'Power Consumption Average: 25-40W'. The kit's power supply is rated 100–240 V ~ 1.6 A, 50–60 Hz."
+  },
+  {
+   "product": "Starlink Mini USB-C Cable (5 m)",
+   "label": "Length, required source, and an exclusion",
+   "value": "5 m (16.4 ft); requires a 100 W (20V/5A) power source; 'not suitable for charging devices like cellphones'",
+   "source": "https://starlink.com/public-files/accessories_guide_mini.pdf",
+   "source_title": "V4_MINI_Accessories_Guide_042525 (Mini Accessories)",
+   "read": "2026-11-17",
+   "note": "Opened through the r.jina.ai reader. The phone exclusion is Starlink's own wording, so the cable is one-way: power source to Mini only."
+  },
+  {
+   "product": "Starlink Mini Car Adapter",
+   "label": "Compatible outlets and kit contents",
+   "value": "Works with any standard automotive 12–24 V auxiliary power outlet; the kit contains the Mini Car Adapter and the Mini USB-C Cable; it replaces the Mini 15 m Power Cable and Mini Power Supply",
+   "source": "https://starlink.com/public-files/accessories_guide_mini.pdf",
+   "source_title": "V4_MINI_Accessories_Guide_042525 (Mini Accessories)",
+   "read": "2026-11-17",
+   "note": "Listed compatibility: Starlink Mini. Package 208.5 × 153.75 × 67.5 mm, 0.43 kg. The reader flagged that some DC-cable blocks in this PDF extracted out of order. The Car Adapter and USB-C cable blocks read cleanly."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C2 output profiles",
+   "value": "5V 3A, 9V 3A, 15V 3A, 20V 3A, 20V 5A, 28V 5A (140 W max)",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2",
+   "read": "2026-11-17",
+   "note": "From the maker's US spec list. The page prints '5V~ 3V', which looks like a typo for 3A. The listed 20V 5A profile = 100 W, which meets Starlink's minimum."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "USB-C1 shared cap (exclusion)",
+   "value": "USB-A and USB-C1 total 20 W max",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2",
+   "read": "2026-11-17",
+   "note": "20 W is far below Starlink's 100 W (20V/5A) minimum, so USB-C1 cannot run the Mini. Use USB-C2."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Car outlet rating",
+   "value": "12V⎓10A, 120 W",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen2",
+   "read": "2026-11-17",
+   "note": "12 V falls within the Car Adapter's 12–24 V outlet range and the Mini's 12–48 V input. 120 W is above the Mini's 60 W input rating (120 ≥ 60). This route through the Starlink Car Adapter is an inference from the two maker documents. Neither maker tested this pairing."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "USB-C output",
+   "value": "1 port; 5/9/12/15V 3A max, 20V 5A max, 100 W max",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review (StorageReview, Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-17",
+   "note": "This is StorageReview's spec table, not a measurement. The EcoFlow US product URLs I tried returned 404 or 429. 20V × 5A = 100 W, exactly Starlink's minimum, with no wattage to spare and only one USB-C port."
+  },
+  {
+   "product": "EcoFlow RIVER 3 Plus",
+   "label": "Car output",
+   "value": "1 outlet, 12.6 V, 10 A, 126 W max",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-plus-review-compact-power-station-with-600w-output-ups-support",
+   "source_title": "EcoFlow RIVER 3 Plus Review (StorageReview, Dylan Dougherty, 2025-02-12)",
+   "read": "2026-11-17",
+   "note": "12.6 V falls within the Car Adapter's 12–24 V range and 126 W exceeds the Mini's 60 W input rating. This is an inference, not a tested pairing."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "USB-C headline output and price",
+   "value": "One USB-C port with PD 3.1, up to 140 W; $299.99 at bluettipower.com",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-17",
+   "note": "The 140 W line comes from the maker page, opened through the reader. The price comes from the store's Shopify data via storecheck. The Blush Pink listing shows $289.99. The page does not list per-voltage PD profiles, so I have not confirmed a 20V/5A profile."
+  }
+ ],
+ "unsourced": [
+  "Full text of the cited Starlink Help Center articles (a7fe6525, fba85643, 7c9fb509, 0b2d5227): the pages render only in JavaScript, and both direct fetches and the r.jina.ai reader returned no article text. I used the Starlink spec sheet and accessories guide instead.",
+  "BLUETTI Elite 30 V2 and Elite 100 V2 per-port USB-C voltage/current profiles (whether 20V 5A is listed): the BLUETTI product pages gave redirect loops or tracker-only content. I did not get to the user manuals within the tool-call budget.",
+  "ALLPOWERS P1800 USB-C voltage/current profiles: not researched within the tool-call budget.",
+  "EcoFlow's own US spec page for RIVER 3 Plus: product URLs returned 404 or 429. The figure on the page comes from StorageReview's spec table.",
+  "Starlink Mini Car Adapter and Mini USB-C Cable US prices: the Starlink shop pages render only in JavaScript, so I could not open them.",
+  "Anker SOLIX C1000 Gen 2 current price: the maker page showed no price, and storecheck search on ankersolix.com returned HTTP 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1281765000000001
+ }
+}

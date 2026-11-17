@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a USB-C PD source only offers 20 V at more than 3 A after it reads an e-marker in the cable that declares 5 A, so any link in the path without a 5 A e-marker (a third-party USB-C-to-DC cable, an extension or an adapter) caps the Mini at 20 V × 3 A = 60 W, below the 100 W (20 V/5 A) Starlink asks for, even when the charger is a 100 W unit.",
+ "standout": 2,
+ "standout_why": "I checked the rival pages ChatGPT had: the cited Starlink help articles on powering the Mini, its USB power rating and its USB-C cable, plus Starlink's Mini accessories PDF. None of them would render or extract through my tools. The Starlink pages return only the word 'Starlink' because they are built with JavaScript, and the PDF came back as binary. So I can't confirm word for word what they say. From the titles and ChatGPT's answer, they state the charger requirement: 100 W, 20 V/5 A USB-C PD. ChatGPT's answer is entirely about the charger's rating and never mentions the cable's current rating or e-marker. The way PD negotiation works (the charger reads the cable first and stays at 3 A unless the cable declares 5 A) is not on any page ChatGPT saw.",
+ "decides": "It confirms the pick and narrows it. A '100 W' rating on the box is only enough if (1) one port can supply the 20 V/5 A level by itself, like UGREEN Nexode 100W ports C1 and C2, and (2) everything between that port and the Mini can carry 5 A, which means Starlink's own USB-C cable or a USB-C-to-DC cable with a 5 A e-marker, with no 3 A extension or adapter in between. Otherwise the charger falls back to 60 W. The page should tell shoppers to use the Starlink USB-C cable or a third-party cable that states a 5 A e-marker. It should also warn against USB-C extensions and 3 A cables.",
+ "candidates": [
+  "UGREEN Nexode 100W 4-Port Charger",
+  "UGREEN Nexode 100W Charger + 100W USB-C Cable 2 Pack (bundle)",
+  "Starlink Mini USB-C Cable"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "When a USB-C cable must carry an e-marker",
+   "value": "Cables rated above 3 A must be electronically marked (e-marked); a USB 2.0 Type-C cable 'May be electronically marked (required if cable supports >3A)'",
+   "source": "https://ti.com/document-viewer/lit/html/SSZTBJ8/GUID-61351F5F-3B46-4F6A-A613-320B3A36C17A",
+   "source_title": "Texas Instruments technical article SSZTBJ8 (Brian Gosselin and Nate Enos, May 2016)",
+   "read": "2026-11-17",
+   "note": "Verbatim: 'cables are required to be electronically marked if they are either full-featured and/or rated at more than 3A current'. A 20 V/5 A (100 W) contract needs 5 A, so the cable must have an e-marker."
+  },
+  {
+   "product": "general",
+   "label": "Charger reads the cable before setting current; a 3 A cable limits the contract",
+   "value": "Source first sends a Discover ID Request on SOP' and reads the cable's e-marker; if the cable 'can only support a maximum current of 3A, then the Source cannot create a protocol with Sink' above that level",
+   "source": "https://www.graniteriverlabs.com/en-us/technical-blog/usb-pd-power-delivery-spec-versions",
+   "source_title": "Granite River Labs technical blog, USB PD spec versions (Cindy Chang, Test Engineer, GRL Taipei, 2021-03-24)",
+   "read": "2026-11-17",
+   "note": "Same article: 'if any cable supports SuperSpeed or a current greater than 3A, there must be an e-Marker.' Arithmetic: without a 5 A e-marked path, 20 V × 3 A = 60 W maximum, versus the 100 W (20 V × 5 A) Starlink specifies."
+  },
+  {
+   "product": "general",
+   "label": "USB PD 100 W level",
+   "value": "100 W = 20 V × 5 A",
+   "source": "https://www.graniteriverlabs.com/en-us/technical-blog/usb-pd-power-delivery-spec-versions",
+   "source_title": "Granite River Labs technical blog, USB PD spec versions (Cindy Chang, 2021-03-24)",
+   "read": "2026-11-17",
+   "note": "Verbatim: the 2012 USB-IF release 'increased power supply capacity to a maximum of 100W (20V 5A).'"
+  },
+  {
+   "product": "Starlink Mini USB-C Cable",
+   "label": "How the Starlink USB-C cable gets 20 V",
+   "value": "USB-C to barrel jack with an internal PD chip that negotiates 20 V from a USB-C PD source",
+   "source": "https://www.dishyminimounts.com.au/blogs/starlink-mini-guides/starlink-mini-power-consumption",
+   "source_title": "Dishy Mini Mounts, Starlink Mini Power Consumption and Battery Runtimes (2026-03-29)",
+   "read": "2026-11-17",
+   "note": "This is a named accessory seller's description, not Starlink's. The same page gives a startup surge of 'up to 60W' and calls 65 W the minimum, which conflicts with Starlink's 100 W requirement as ChatGPT's answer reported it. Use this for the mechanism only, not for the wattage requirement."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "Single-port 20 V/5 A level",
+   "value": "USB-C1 / C2: 100 W max, 5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/5A; USB-C3: 22.5 W max (not enough for the Mini)",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1",
+   "source_title": "UGREEN US store, (Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack",
+   "read": "2026-11-17",
+   "note": "Spec text from the UGREEN US product page via storecheck. The Mini has to go on C1 or C2. The page lists multi-port charging modes, so the power on C1 drops when other ports are in use; I did not source the exact split."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger + 100W USB-C Cable 2 Pack (bundle)",
+   "label": "Price",
+   "value": "$59.99 (compare-at $71.98), in stock",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1",
+   "source_title": "UGREEN US store, (Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack",
+   "read": "2026-11-17",
+   "note": "The included USB-C-to-USB-C cables cannot plug into the Mini's DC input, so the shopper still needs the Starlink Mini USB-C cable."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port Charger",
+   "label": "Price",
+   "value": "$54.99, in stock",
+   "source": "https://us.ugreen.com/products/100w-3c1a-gan-fast-charger",
+   "source_title": "UGREEN US store, UGREEN Nexode 100W 4-Port Charger",
+   "read": "2026-11-17",
+   "note": "From storecheck on the UGREEN US Shopify store."
+  }
+ ],
+ "unsourced": [
+  "Text of Starlink's own help articles on powering the Mini, its USB power rating and its USB-C cable: the pages render with JavaScript and returned only 'Starlink' through direct fetch and the r.jina.ai reader.",
+  "Starlink Mini accessories guide PDF (starlink.com/public-files/accessories_guide_mini.pdf): it downloaded, but I couldn't extract the text because the PDF tool and pdftotext were not available without approval.",
+  "Whether Starlink's own Mini USB-C cable has a 5 A e-marker, and its US price and length from Starlink's store: Starlink's pages wouldn't render and the CDW listing returned 403.",
+  "Normative usb.org wording on the source checking the cable before offering more than 3 A: the USB Type-C R2.0 PDF is over the 10 MB fetch limit, and Microchip AN3265 returned 403.",
+  "campervanbuilders.com.au and commaguide.com pages on Mini USB-C power: TLS certificate errors on fetch.",
+  "How the UGREEN Nexode 100W splits power when several ports are in use."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0243015999999998
+ }
+}
