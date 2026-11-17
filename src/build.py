@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Static site generator for dealectric.com. Run: python3 build.py  -> writes ./dist"""
-import os, shutil, datetime, json, math
+import os, re, shutil, datetime, json, math
 
 if __name__ == "__main__":
     # One build at a time per working tree, and none while a page tool is between its edit of src/ and its commit
@@ -138,6 +138,19 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
+
+# src/rival_reads.json (2026-11-17 freshness sweep, tools/freshapply.py): other brands' price cells re-read on the makers'
+# pages, {"cells": {"<page slug>|<maker url>": {"from": cell as written, "to": cell with today's read}}}. A cell is swapped
+# only while the page still says "from", so a later rewrite of that row takes over by itself.
+try:
+    _RIVAL = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "rival_reads.json"), encoding="utf-8"))["cells"]
+except FileNotFoundError:
+    _RIVAL = {}
+for _g in GAP_PAGES:
+    for _r in _g.get("rows", []):
+        _sw = _RIVAL.get(f'{_g["slug"]}|{_r.get("url")}')
+        if _sw and _r.get("cells", {}).get("price") == _sw["from"]:
+            _r["cells"]["price"] = _sw["to"]
 from focus import BUYBOX, DEAL_ROW, BUY_FIRST
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from kits import KITS
@@ -344,9 +357,23 @@ def verified_span(prods):
 
 
 def verified_on(p):
-    """The date this product's price was read on the store: VERIFIED, or the record's own `verified` for products added
-    after the last weekly re-check (they are folded in at the next one)."""
-    return p.get("verified", VERIFIED)
+    """The date this product's price was read on the store: the latest price read (src/price_reads.json) when it found the
+    record's own price, else the record's `verified`, else VERIFIED. Amazon records keep their record date here (it dates
+    their specs; their price carries the amazon_prices.json date)."""
+    own = p.get("verified", VERIFIED)
+    r = PRICE_READS["prices"].get(p["slug"])
+    if r is None or is_amazon(p) or p.get("price") is None or abs(float(r) - float(p["price"])) >= 0.01:
+        return own
+    return max(own, PRICE_READS["date"])
+
+
+# src/price_reads.json (2026-11-17 freshness sweep): {"date": <UTC date of the read>, "prices": {slug: price read}}, written
+# from tools/pricecheck.py's report. A read that matches the record's price moves the record's "verified" date to the read;
+# a read that differs leaves the old date until the record's price is updated, so no price shows a date it wasn't read on.
+try:
+    PRICE_READS = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "price_reads.json"), encoding="utf-8"))
+except FileNotFoundError:
+    PRICE_READS = {"date": "", "prices": {}}
 
 
 def return_policy(p):
@@ -1100,7 +1127,7 @@ def products_index():
     n_coded = sum(1 for p in PRODUCTS if codes_for(p))
     body = f"""
 <h1>Products: {n_coded} of {len(PRODUCTS)} with a code tested daily in the brand's cart</h1>
-<p class="lead">{len(PRODUCTS)} products from {len(brands)} brands, each with the discount code that applies and what it saves (tested daily in the brand's own US store cart, last check {latest_code_date()}), a price verified on the brand's own US store on {VERIFIED}, a normalized spec sheet and the buy link. Machine-readable copy: <a href="/offers.json">/offers.json</a>.</p>
+<p class="lead">{len(PRODUCTS)} products from {len(brands)} brands, each with the discount code that applies and what it saves (tested daily in the brand's own US store cart, last check {latest_code_date()}), a price read on the brand's own US store (each product shows the date it was read; most recent {catalog_price_day()}), a normalized spec sheet and the buy link. Machine-readable copy: <a href="/offers.json">/offers.json</a>.</p>
 <p class="agent">{html.escape(site_note())}</p>
 <p class="small">Brands: {", ".join(html.escape(b) for b in brands)}. Coverage grows as merchant partnerships are approved; the <a href="/data/">schema</a> describes every field.</p>
 {sections}
@@ -1113,7 +1140,7 @@ def products_index():
           "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{p['slug']}/", "name": p["name"]} for i, p in enumerate(PRODUCTS)]}
     # DLC-32: Bing flagged the old title (105 characters with the suffix) and description (181); now under 60 and 120-160.
     return ("Electronics: verified prices and tested codes",
-            html.escape(f"{len(PRODUCTS)} electronics products from {len(brands)} brands: price verified on each brand's US store on {VERIFIED}, any discount code that worked in its cart, and what it saves.", quote=True), body, ld)
+            html.escape(f"{len(PRODUCTS)} electronics products from {len(brands)} brands: price read on each brand's US store (latest read {catalog_price_day()}), any discount code that worked in its cart, and what it saves.", quote=True), body, ld)
 
 
 def guide_deal_line(slug):
@@ -1262,7 +1289,7 @@ def brand_codes_page(brand):
                 f"last passing on {checked}, with the saving per product and the buy link.")
     elif untested:
         title = f"{brand} discount codes: none listed"
-        desc = f"No {brand} discount code is listed; verified {brand} store prices and the buy link, checked {VERIFIED}."
+        desc = f"No {brand} discount code is listed; verified {brand} store prices and the buy link, prices read {verified_span(prods)}."
     else:
         title = f"{brand} discount codes, checked {checked}"
         desc = f"No working {brand} discount code as of {checked}; the codes coupon sites list were rejected at checkout."
@@ -1405,10 +1432,41 @@ def compare_where_to_buy(ours, c, filler=True):
     return (f'<div class="note"><strong>Where to buy</strong>{f"<p>{line}</p>" if filler else ""}<ul>{"".join(items)}</ul></div>')
 
 
+def row_price_day(c, r):
+    """The date the price shown in one comparison row was read, or None when the row shows no price: our product's store
+    check (Amazon records: the amazon_prices.json read); an Amazon row's read; another brand's row: the date in its price
+    cell ("$1,239 (maker, 2026-11-17)"), else the page's `checked`."""
+    if r.get("slug"):
+        p = BY_SLUG[r["slug"]]
+        if is_amazon(p):
+            a = amz_price(p["asin"])
+            return a[1] if a else None
+        return verified_on(p)
+    if r.get("asin"):
+        a = amz_price(r["asin"])
+        return a[1] if a else None
+    cell = str(r.get("cells", {}).get("price", ""))
+    if "$" not in cell:
+        return None
+    m = re.search(r"\b(20\d\d-\d\d-\d\d)\b", cell)
+    return m.group(1) if m else c.get("checked")
+
+
 def price_days(c):
-    """Every date a comparison page's prices were read: our products' store checks, plus `checked` for other brands' rows."""
-    return sorted({verified_on(BY_SLUG[r["slug"]]) for r in c["rows"] if r.get("slug")}
-                  | ({c["checked"]} if c.get("checked") and any(not r.get("slug") for r in c["rows"]) else set()))
+    """Every date a comparison page's prices were read (row_price_day), or `checked` alone when no row shows a price."""
+    days = {d for r in c["rows"] if (d := row_price_day(c, r))}
+    return sorted(days or ({c["checked"]} if c.get("checked") else set()))
+
+
+def catalog_price_day():
+    """The most recent date any of our brand-store prices was read."""
+    return max((verified_on(p) for p in PRODUCTS if not is_amazon(p)), default=VERIFIED)
+
+
+def our_price_span(rows):
+    """'2026-11-17', or '2026-11-13 to 2026-11-17': the dates our own rows' prices were read."""
+    d = sorted({verified_on(BY_SLUG[r["slug"]]) for r in rows if r.get("slug") and not is_amazon(BY_SLUG[r["slug"]])})
+    return "" if not d else d[0] if len(d) == 1 else f"{d[0]} to {d[-1]}"
 
 
 def page_dates(c):
@@ -2015,16 +2073,16 @@ def compare_page(c):
 <tr><th>Model</th>{heads}<th>Price</th><th>Code</th></tr>
 {rows}
 </table></div>
-<p class="small">Rows marked with a code and buy link are products {SITE['brand']} lists: the price was verified on the brand's own US store on {VERIFIED}
+<p class="small">Rows marked with a code and buy link are products {SITE['brand']} lists: the price was verified on the brand's own US store on {our_price_span(c["rows"]) or VERIFIED}
 and the code is tested daily in that brand's cart; the date shown is its last pass (last check {latest_code_date()}). The other rows ({', '.join(makers)}) are included so the
-comparison is complete; their figures and prices were read from the makers' own US pages on {c['checked']} and are not re-checked daily. The buy links are
+comparison is complete; their figures were read from the makers' own US pages on {c['checked']}; a price with a date beside it was read on that date, any other on {c['checked']}. The buy links are
 affiliate links: they open the brand's official US store at no cost to the shopper, and the commission pays for the testing; see the <a href="/disclosure/">disclosure</a>.{amazon_note}</p>
 {video_html}{compare_where_to_buy_compact(ours) if c.get("ai_note") else ""}{compare_fill(c['after'])}
 <h2>Sources</h2>
 <ul>
 {"".join(f'<li>{html.escape(claim)} — <a href="{html.escape(u)}" rel="nofollow noopener">{html.escape(u.split("//", 1)[-1].split("/")[0])}</a></li>' for claim, u in c["sources"])}
 </ul>
-<p class="small">Published {c['published']}; figures for other brands read on {c['checked']}; our prices verified {VERIFIED}. Corrections welcome at <a href="mailto:{SITE['email']}">{SITE['email']}</a>
+<p class="small">Published {c['published']}; figures for other brands read on {c['checked']}; prices read {" to ".join(dict.fromkeys([price_days(c)[0], price_days(c)[-1]])) if price_days(c) else c['checked']}. Corrections welcome at <a href="mailto:{SITE['email']}">{SITE['email']}</a>
 or <a href="/feedback">/feedback</a>.</p>
 """
     ld = {"@context": "https://schema.org", "@type": "Article", "headline": c["h1"], "description": c["desc"],
