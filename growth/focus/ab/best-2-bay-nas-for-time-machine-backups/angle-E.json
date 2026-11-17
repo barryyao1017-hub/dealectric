@@ -1,0 +1,122 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got gives a power or noise figure measured by a named reviewer for any candidate. NASCompares measured the UGREEN NASync DH2300 at about 9.5 W idle and 31–32 dBA with two 4 TB IronWolf drives. Hardware Busters measured the TerraMaster F2-425 at roughly 11–12 W idle and 26.8 dBA at 1 m on its medium fan setting. Blackvoid timed a Mac Studio writing to the Synology DS225+ over SMB at 263 MB/s, while the only Synology power and noise figures any reviewer printed are Synology's own (16.98 W during access, 6.08 W with the drives asleep, 19.6 dB(A)).",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages and the top uncited results. Apple's page (support.apple.com/en-us/102423) covers only SMB versus AFP and has no product figures. The cited Synology KB page loaded with no article body, and it is a setup guide anyway. Android Central's best-home-NAS list (DS225+, DS223j, AS5402T) has specs only, with no watts, dB or MB/s. Laptopbee, ranked 12th and not cited, has a writer's informal transfer speeds: about 95 MB/s for a first 120 GB Time Machine backup to the DS223j, about 110 MB/s for the DH2300 and over 280 MB/s for the DXP2800. It has no power or noise figures and names no lab or method. Synology's compare pages give rated figures, not measured ones. None of these pages has wall-socket power or a dB(A) reading with the distance stated.",
+ "decides": "This confirms the pick rather than changing it. For a box that runs 24/7 just to take Time Machine backups, the measured figures favour the low-power, quiet units. The DH2300 at about 9.5 W idle works out to roughly 83 kWh a year (9.5 W × 8,760 h). On noise, the F2-425 and the DXP2800 measured close to silent. The DXP2800 GT (Ryzen) idled at 14.8–20.1 W in Notebookcheck's test, which is high for two bays, so the GT is not worth it for backups only. The DS225+ is the one with a timed Mac result: 263 MB/s SMB writes over 2.5GbE. That speed only matters for a wired first backup. Over Wi-Fi, or on the 1GbE DS223/DS223j/DH2300, the link caps it at about 110–125 MB/s. No reviewer measured power or noise for the DS225+, DS223 or DS223j, so the page can't say Synology is quieter or uses less power from measurements.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS223",
+  "Synology DS223j",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP2800 GT",
+  "TerraMaster F2-425",
+  "QNAP TS-262"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Idle power at the wall (NASCompares)",
+   "value": "about 9.5 W idle; 12–13 W during transfers",
+   "source": "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/",
+   "source_title": "UGREEN DH2300 NAS Review – Cloud Subscription Killer (NASCompares, Rob Andrews, 2025-10-15)",
+   "read": "2026-11-17",
+   "note": "Two 4 TB Seagate IronWolf HDDs, fan on Low, CPU under 5%. The table gives 12 W for file activity on the Auto fan and 13 W sustained or at max load. 9.5 W × 8,760 h ≈ 83 kWh/yr."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Noise (NASCompares)",
+   "value": "31–32 dBA idle; 33–35 dBA light activity; 38–41 dBA heavy read/write; 44–45 dBA max fan",
+   "source": "https://nascompares.com/2025/10/15/ugreen-dh2300-nas-review/",
+   "source_title": "UGREEN DH2300 NAS Review – Cloud Subscription Killer (NASCompares, Rob Andrews, 2025-10-15)",
+   "read": "2026-11-17",
+   "note": "Same two IronWolf drives. The article does not state the microphone distance."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Idle and standby power (Hardware Busters)",
+   "value": "roughly 11–12 W idle, fully populated; about 1.1 W standby; about 20 W brief spike at startup",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review – Performance (Hardware Busters, 2025-10-09)",
+   "read": "2026-11-17",
+   "note": "The page reports SSD temperatures, so the bays appear to hold SSDs, and HDD idle would be higher. Measured on a 2.5GbE test system."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Noise (Hardware Busters)",
+   "value": "13.7 dBA Low fan; 26.8 dBA Medium; 33.6 dBA Full",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review – Performance (Hardware Busters, 2025-10-09)",
+   "read": "2026-11-17",
+   "note": "Hemi-anechoic chamber with about 6 dBA background, 28 °C ambient, microphone at 1 m."
+  },
+  {
+   "product": "TerraMaster F2-425",
+   "label": "Large-file transfer over 2.5GbE (Hardware Busters)",
+   "value": "about 270 MB/s NAS→PC; about 250 MB/s PC→NAS",
+   "source": "https://hwbusters.com/networking/terramaster-f2-425-nas-review/6/",
+   "source_title": "TerraMaster F2-425 NAS Review – Performance (Hardware Busters, 2025-10-09)",
+   "read": "2026-11-17",
+   "note": "One large file, as reported by Windows. The page does not state the protocol or the RAID layout."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Power and noise (igor'sLAB)",
+   "value": "0.6 W off with Wake-on-LAN; 5.6 W standby; 14.5 W during data transfer; noise 33.2 dB(A) idle (same as the room) and 35.6 dB(A) under load",
+   "source": "https://www.igorslab.de/ugreen-nasync-dxp2800-nas-im-test/8/",
+   "source_title": "UGREEN NASync DXP2800 NAS im Test (igor'sLAB, Tim Kutzner, 2024-05-08, updated 2025-05-31)",
+   "read": "2026-11-17",
+   "note": "Measured at the wall with one NVMe SSD and no HDDs, so real use with two HDDs will draw more. Voltcraft SL-200 meter at 40 cm. At idle the unit was no louder than the 33.2 dB(A) room."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Idle/max power and RAID 1 write (OCinside)",
+   "value": "about 7 W idle; 34.7 W max under a CPU+RAM+disk stress test; about 181 MB/s writing a 50 GB file to RAID 1 (290 s)",
+   "source": "https://www.ocinside.de/review/ugreen_dxp2800/4/",
+   "source_title": "Ugreen DXP2800 NAS Review, page 4 (OCinside)",
+   "read": "2026-11-17",
+   "note": "The page shows no date or author and doesn't say which drives gave the idle figure. iperf3 averaged 950 Mbit/s because the test network was 1GbE."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Idle/load power and noise (Notebookcheck)",
+   "value": "14.84–20.14 W idle; 31.1 W CPU load; 35.9 W max with CPU and drives loaded; 29.11 dB(A) idle at 30 cm; drive-access peaks of 41 dB(A)",
+   "source": "https://www.notebookcheck.net/Small-fast-and-surprisingly-quiet-Ugreen-NASync-DXP2800-GT-review.1423049.0.html",
+   "source_title": "Small, fast, and surprisingly quiet – Ugreen NASync DXP2800 GT review (Notebookcheck, Daniel Schmidt, 2026-10-13)",
+   "read": "2026-11-17",
+   "note": "Two WD Red HDDs, spinning but idle. AMD Ryzen Embedded R2514. The reviewer called the idle draw on the high side for a 2-bay NAS. The page lists an RRP of $510."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "SMB transfer to and from a Mac (Blackvoid)",
+   "value": "263 MB/s average write from a Mac Studio (34.51 GB in 2:14); 282 MB/s peak read (2:05)",
+   "source": "https://www.blackvoid.club/synology-ds225-review.md",
+   "source_title": "Synology DS225+ review (Blackvoid, Luka Manestar, 2025-09-08, updated 2025-09-22)",
+   "read": "2026-11-17",
+   "note": "One large file over the single 2.5GbE port, with two 8 TB 7,200 rpm HAT3310 drives in RAID 0 (not RAID 1). CPU was about 25% during the write."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Mixed small-file backup throughput (Blackvoid)",
+   "value": "about 108 MB/s average (76.3 GB, about 13,000 files in 1,800 folders, 12 min)",
+   "source": "https://www.blackvoid.club/synology-ds225-review.md",
+   "source_title": "Synology DS225+ review (Blackvoid, Luka Manestar, 2025-09-08, updated 2025-09-22)",
+   "read": "2026-11-17",
+   "note": "This is a Hyper Backup job from an RS2423+, not Time Machine. The reviewer says speeds were 150–200 MB/s on large files and dropped to 30–120 MB/s on many small files, which is the closest measured stand-in for Time Machine's many small files. Its power (16.98 W / 6.08 W) and noise (<20 dB) figures are Synology's specs, not measurements."
+  }
+ ],
+ "unsourced": [
+  "DS225+ power and noise measured by a reviewer: NASCompares (2025-08-04) and Blackvoid both repeat Synology's 16.98 W / 6.08 W / 19.6 dB(A). Trusted Reviews' DS225+ review (a 13 W peak; 76 MB/s write and 55 MB/s read on a 6.5 GB mixed folder in RAID 1) appeared only in search snippets. trustedreviews.com/reviews/synology-diskstation-ds225 returned HTTP 530 twice, and fetching it with curl was not approved, so these numbers are left out.",
+  "DS223 and DS223j wattage or dB measured by a reviewer: I found only Synology's spec figures, relayed by NASCompares and Tech ARP. Tech ARP's DS223j transfer test (about 100 MB/s large files, about 48 MB/s small files) and StorageReview's DS223j numbers were not opened.",
+  "A Time Machine backup timed by a named lab for any candidate: Notebookcheck, NASCompares, Blackvoid, Hardware Busters and igor'sLAB don't test Time Machine. Laptopbee's roughly 95 MB/s first backup to the DS223j comes from an informal test by a writer, Surbhi, with no method given.",
+  "QNAP TS-262 measured power or noise: no review turned up. A Toshiba lab report gives about 30 W idle for the TS-264, but I didn't open it.",
+  "DH2300 transfer speed measured by a named reviewer: NASCompares gives no MB/s figure. Digital Camera World's 110–115 MB/s and OCinside's DH2300 benchmark page were not opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1491581000000002
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that on Synology DSM 7.3, shared-folder quotas (the per-share way to cap each Mac's Time Machine backup) work only on a Btrfs volume, that per-user quotas on an ext4 volume stop at 4 TB, and that the DS223j has had Btrfs only since DSM 7.2-64570.",
+ "standout": 2,
+ "standout_why": "I compared against Apple's 102423 page (cited), rottenwifi.com's '10 Best NAS for Mac in 2026', androidcentral.com's 'Best home NAS 2026' and laptopbee.com's '8 Best NAS Devices for Macs'. Apple's page and rottenwifi already say AFP is not supported in macOS 27 or later. None of them mention the Btrfs requirement for shared-folder quotas, the 4 TB ext4 quota cap, the DSM build the DS223j needs for Btrfs, QNAP's 2 TB standard-user quota limit or UGREEN's minimum firmware for Time Machine. On drives, laptopbee lists only 'Some third-party drive compatibility concerns' as a DS225+ con, and Android Central says only 'No issues installing Seagate or WD drives'. None cites Synology's DSM 7.3 press release, which says 2025 model-year Plus, Value and J units accept third-party drives.",
+ "decides": "This supports ChatGPT's pick of the DS223 or DS225+ and its advice to give each Mac its own quota. On any Synology, the pool has to be formatted Btrfs, not ext4, for that advice to work, and a DS223j has to be on DSM 7.2-64570 or later. For the DS225+, the 'two NAS-rated hard drives' advice holds without Synology-branded drives only on DSM 7.3 or later. For QNAP picks, larger Macs need the HBS 3 Time Machine user rather than a standard-user quota: QNAP's 2022 note caps standard-user quotas at 2 TB. UGREEN units need UGOS 1.9.0.0035 or later and a Mac on macOS 12 or later.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS223",
+  "Synology DS223j",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "QNAP TS-233",
+  "QNAP TS-262"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Synology Time Machine over SMB, supported macOS versions",
+   "value": "macOS 10.12 and later",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/dsm",
+   "source_title": "DSM Technical Specifications | Synology Inc. (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "Quote: 'Supports Time Machine on macOS 10.12 and later versions' under SMB. The same page lists 'Supports Bonjour Time Machine broadcast' under AFP."
+  },
+  {
+   "product": "general",
+   "label": "Synology shared-folder quota needs a Btrfs volume",
+   "value": "Btrfs only (not ext4)",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/dsm",
+   "source_title": "DSM Technical Specifications | Synology Inc. (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "Quote: 'Certain features require Btrfs volumes (e.g., cloning, data checksum, file compression, shared folder quotas, WriteOnce)'. With one Time Machine share per Mac, the share quota is the per-Mac cap, so the storage pool has to be formatted Btrfs."
+  },
+  {
+   "product": "general",
+   "label": "Synology maximum quota on an ext4 volume",
+   "value": "4 TB",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/dsm",
+   "source_title": "DSM Technical Specifications | Synology Inc. (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "Quote: 'Maximum quota for ext4 volume: 4 TB'. Also: 'Users in the \"administrators\" group have unlimited quota', so a per-Mac Time Machine user that is an admin is not capped by its quota."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "SMB3 Multichannel to Macs",
+   "value": "x86 models only; macOS 11.3 and above",
+   "source": "https://www.synology.com/en-global/dsm/7.3/software_spec/dsm",
+   "source_title": "DSM Technical Specifications | Synology Inc. (DSM 7.3)",
+   "read": "2026-11-17",
+   "note": "The spec says SMB3 Multichannel 'Only supports models using x86 platforms', with client support on 'macOS 11.3 and above'. The DS225+ (Intel J4125) is x86. The DS223 and DS223j use Realtek ARM chips, so this feature does not apply to them. That last point is my inference from the CPU type."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Minimum DSM for Btrfs (needed for shared-folder quotas)",
+   "value": "DSM 7.2-64570",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DiskStation DS223j | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Spec footnote: 'Btrfs file system is available from DSM 7.2-64570.' The same footnote applies to Snapshot Replication. The page also lists 1 GB DDR4 and a 2-year warranty."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "2.5-inch SSD mounting",
+   "value": "Needs the optional Type C drive holder, sold separately",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DiskStation DS223j | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Quote: 'optional drive holder (Type C) must be purchased separately'."
+  },
+  {
+   "product": "general",
+   "label": "Third-party drives on 2025 model-year Synology Plus, Value and J units",
+   "value": "Installation and storage pool creation allowed from DSM 7.3 (8 Oct 2025); M.2 pools and cache still need drives on the compatibility list",
+   "source": "https://www.synology.com/en-af/company/news/article/dsm73",
+   "source_title": "Synology Releases DiskStation Manager 7.3 ... and Expanded Storage Flexibility",
+   "read": "2026-11-17",
+   "note": "Quote: '2025 model-year DiskStation Plus, Value, and J Series running DSM 7.3 will support installation and storage pool creation with third-party drives'. Quote: 'Creation of M.2 based storage pool and cache still requires drives on the HCL.' The release was updated on Oct 13. It names no models. Treating the DS225+ as a 2025 model-year unit is my inference from its '25' model number."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Drive and RAM compatibility as stated on the product page",
+   "value": "2× 3.5-inch SATA HDD or 2.5-inch SATA SSD; Synology 'only guarantees full functionality ... for compatible drives'; RAM expansion is the D4NS01-4G module, up to 6 GB",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DiskStation DS225+ | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The page also says Synology 'will not provide complete product warranty or technical support' if non-Synology memory is installed. Warranty is 3 years, extendable to 5. AFP and SMB are both listed as file protocols."
+  },
+  {
+   "product": "general",
+   "label": "Apple NAS protocol requirement for Time Machine",
+   "value": "SMB only; AFP 'isn't supported in macOS 27 or later'",
+   "source": "https://support.apple.com/en-us/102423",
+   "source_title": "Backup disks you can use with Time Machine - Apple Support",
+   "read": "2026-11-17",
+   "note": "Published 14 Sep 2026. ChatGPT's cited page and rottenwifi already state this, so it is not new. It is included because it rules out AFP-only setups and AirPort Time Capsule."
+  },
+  {
+   "product": "QNAP TS-233",
+   "label": "Standard-user Time Machine quota cap",
+   "value": "2 TB (QTS quota limit); the workaround is the HBS 3 Time Machine user",
+   "source": "https://www.qnap.com/en/how-to/faq/article/time-machine-backup-with-quota-higher-than-2tb",
+   "source_title": "Time Machine Backup with Quota higher than 2TB | QNAP",
+   "read": "2026-11-17",
+   "note": "Quote: 'Due to the limitation in the QTS Quota (2TB), it is not possible to set a quota higher than 2TB'. The note applies to 'All NAS Series' on firmware 4.4.3. It was last modified 2022-03-30 and I found no QTS 5 restatement, so this cap may be out of date."
+  },
+  {
+   "product": "QNAP TS-262",
+   "label": "QNAP Time Machine over SMB 3: requirements and quota behaviour",
+   "value": "QTS 4.3.0 or later, macOS 10.12 or later; Highest SMB version set to SMB 3; quota at least 2× the Mac's storage; the backup fails if it exceeds the quota",
+   "source": "https://www.qnap.com/en-us/how-to/tutorial/article/using-time-machine-to-back-up-macs-to-a-qnap-nas-via-smb-3",
+   "source_title": "Using Time Machine to Back Up Macs to a QNAP NAS via SMB 3",
+   "read": "2026-11-17",
+   "note": "The tutorial recommends a dedicated user per Mac so each Mac gets its own quota. Quote: 'If the backup data size is greater than the quota, the Time Machine backup will fail' (said of the HBS 3 shared account). Last modified 2022-07-20."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Minimum firmware and macOS for Time Machine",
+   "value": "UGOS 1.9.0.0035 or later; macOS Monterey 12 or later; SMB plus Bonjour",
+   "source": "https://ai.ugreen.com/blogs/buying-guide/manage-mac-files-with-nas",
+   "source_title": "UGREEN buying guide: manage Mac files with NAS",
+   "read": "2026-11-17",
+   "note": "Dated 27 Nov 2024. It says the DH2300 'supports SMB, Bonjour, and Time Machine' and calls the DXP2800 'the stronger two-bay option'. It advises setting 'a capacity quota for the shared folder'. The firmware wording is 'UGOS firmware', not 'UGOS Pro'."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Minimum firmware and macOS for Time Machine",
+   "value": "UGOS 1.9.0.0035 or later; macOS 12 or later",
+   "source": "https://ai.ugreen.com/blogs/buying-guide/manage-mac-files-with-nas",
+   "source_title": "UGREEN buying guide: manage Mac files with NAS",
+   "read": "2026-11-17",
+   "note": "The guide states one firmware floor for its Time Machine steps without naming a model, so applying it to the DXP2800 is my inference. The DXP2800 itself is named in the same guide."
+  }
+ ],
+ "unsourced": [
+  "Body text of Synology's Time Machine KB article (kb.synology.com, How_to_back_up_files_from_Mac_to_Synology_NAS_with_Time_Machine): the page loads its text with JavaScript and returned only the title, so I could not get Synology's own per-Mac quota steps.",
+  "Synology's drive-policy FAQ (kb.synology.com, Drive_compatibility_policies) naming the DS225+, DS223 and DS223j: the page also loaded with JavaScript and returned only its title. Tom's Hardware and Android Central bodies were truncated, so I found no source that names the DS225+ under the DSM 7.3 change.",
+  "Synology DSM release notes for the DS225+ listing the current DSM build and any Time Machine or macOS 26/27 fixes: the page returned no notes.",
+  "An official Apple or Synology notice on Time Machine over SMB failing on macOS Tahoe 26.2 or macOS 27: only Apple Community and Synology forum threads turned up.",
+  "A QTS 5.x QNAP document confirming or lifting the 2 TB standard-user quota cap, and a TS-262 spec page listing Time Machine.",
+  "Asustor's own statement on Time Machine support and per-folder quota for the Drivestor 2 Pro Gen2, and the Ubiquiti UNAS 2 quota setting: not researched within the tool budget.",
+  "TerraMaster's own document on Time Machine quota behaviour in TOS 6 for the F2-425 and F2-425 Plus: not researched within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2785585999999998
+ }
+}

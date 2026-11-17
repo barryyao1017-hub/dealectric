@@ -1,0 +1,116 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got explains what 'supports Time Machine over SMB' actually requires, or that Time Machine keeps filling whatever space the share reports and only then deletes older backups. That makes how each NAS caps space per Mac the deciding detail for a couple of Macs. UGREEN's cap applies to the whole shared folder, so Macs that share one folder share one quota, and 'One Mac with rapid data growth can therefore reduce the space available for the others'. Asustor ADM caps each Apple device, and QNAP caps each Time Machine user.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Apple page (support.apple.com/en-us/102423, published 2026-09-14). Its only NAS requirement is 'supports Time Machine over the SMB network protocol', plus the note that AFP isn't supported in macOS 27 or later. It doesn't list the SMB features Apple's spec requires, and it doesn't say how space is shared between Macs. I couldn't read the cited Synology KB tutorial: it loads its text with JavaScript and came back empty on 3 tries. Our current page says Synology's guide covers quota sizing (2–3× the Mac's data), and ChatGPT's own answer already tells the shopper to set 'a separate SMB Time Machine destination and quota for each Mac'. So the advice to set a quota per Mac partly exists already. What's new: why the cap is needed (Apple: Time Machine deletes older backups only as the disk fills; Samba: without a size cap Time Machine can take the whole disk), and the fact that brands set the cap at different levels: UGREEN per shared folder, Asustor per Apple device, QNAP per user, Ubiquiti not documented.",
+ "decides": "This confirms that an SMB 3 NAS from any of the listed brands can do the job, so the deciding question becomes whether its quota can cap each Mac separately. Synology (per user, according to our current page; I couldn't re-source it today), QNAP (a Time Machine user with a quota for each Mac) and Asustor ADM ('Each Apple device will not store more than the value set') can all cap each Mac. UGREEN's DXP2800 and DH2300 can do the same only if you make one shared folder per Mac: UGREEN's own guide warns that Macs sharing one folder compete for one quota. Ubiquiti's UNAS help article says nothing about quotas, which counts against the UNAS 2 for this use. TerraMaster's Time Machine quota is backed only by a forum thread I couldn't open (403).",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS223",
+  "Synology DS223j",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH2300",
+  "QNAP TS-262",
+  "QNAP TS-233",
+  "TerraMaster F2-425",
+  "Asustor Drivestor 2 Pro Gen2",
+  "Ubiquiti UniFi UNAS 2"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What an SMB server must implement for Time Machine (Apple's spec)",
+   "value": "SMB 3.x including SMB 3.x signing; SMB2_CREATE_DURABLE_HANDLE_REQUEST_V2 with the Timeout field honoured ('Time Machine clients may set timeouts as short as 30 seconds or less'); lease V2 and durable-handle reconnect V2; Bonjour discovery; Apple's F_FULLFSYNC extension to SMB2 FLUSH, under which the server must 'flush the physical disk's track cache' before replying",
+   "source": "https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/",
+   "source_title": "Time Machine over SMB Specification (Apple Developer archive)",
+   "read": "2026-11-17",
+   "note": "Archived Apple document, last updated 2016-09-13 and marked as no longer updated. It's still the only place Apple spells out what 'supports Time Machine over SMB' means. The Mac checks these features by creating .com.apple.timemachine.supported on the share."
+  },
+  {
+   "product": "general",
+   "label": "How a NAS shows up as a Time Machine destination",
+   "value": "It publishes _smb._tcp on port 445 and _adisk._tcp under the same service name, with the TXT record dk0=adVN=<share>,adVF=0x82 (0x0002 = SMB supported, 0x0080 = Time Machine allowed)",
+   "source": "https://developer.apple.com/library/archive/releasenotes/NetworkingInternetWeb/Time_Machine_SMB_Spec/",
+   "source_title": "Time Machine over SMB Specification (Apple Developer archive)",
+   "read": "2026-11-17",
+   "note": "This is why NAS makers include a 'Bonjour' or 'Time Machine' switch. If that switch is off, the share doesn't appear in Time Machine's disk list."
+  },
+  {
+   "product": "general",
+   "label": "Apple's NAS requirement and AFP cutoff (the cited rival)",
+   "value": "'Time Machine can back up to a third-party NAS device that supports Time Machine over the SMB network protocol.' Backup to NAS over AFP 'isn't supported in macOS 27 or later.'",
+   "source": "https://support.apple.com/en-us/102423",
+   "source_title": "Backup disks you can use with Time Machine - Apple Support",
+   "read": "2026-11-17",
+   "note": "Published 2026-09-14. ChatGPT cited this page. It gives no technical detail beyond 'over SMB'."
+  },
+  {
+   "product": "general",
+   "label": "Time Machine fills the destination before it deletes anything",
+   "value": "'as your backup disk fills up, Time Machine deletes older backups to make room for new ones'",
+   "source": "https://support.apple.com/guide/mac-help/change-time-machine-settings-mh15137/mac",
+   "source_title": "Change Time Machine settings on Mac - Apple Support (Mac User Guide)",
+   "read": "2026-11-17",
+   "note": "The page's version selector lists macOS 27 first. Without a cap, each Mac's backup keeps growing until the share is full."
+  },
+  {
+   "product": "general",
+   "label": "How Samba caps a Time Machine share (the SMB server most NAS operating systems are built on)",
+   "value": "fruit:time machine max size 'limits the reported disksize, thus preventing Time Machine from using the whole real disk'. It counts only Time Machine sparsebundle images, so you 'MUST NOT use this volume to store other content'. The size is calculated as band size × number of band files.",
+   "source": "https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html",
+   "source_title": "vfs_fruit (8) - Samba manual page",
+   "read": "2026-11-17",
+   "note": "Turning on fruit:time machine also forces durable handles = yes and posix locking = no, and registers the share over mDNS. I didn't confirm which NAS OS uses this exact option."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DH2300",
+   "label": "Time Machine requirements and how the quota works with several Macs",
+   "value": "Needs 'SMB, Bonjour, and a designated backup folder' and UGOS 1.9.0.0035 or later with macOS Monterey 12 or later. The quota is set on the shared folder. 'If several Macs use the same Time Machine shared folder, plan the quota around their combined capacity… One Mac with rapid data growth can therefore reduce the space available for the others.'",
+   "source": "https://ai.ugreen.com/blogs/buying-guide/manage-mac-files-with-nas",
+   "source_title": "Manage Mac files with NAS - UGREEN NAS blog",
+   "read": "2026-11-17",
+   "note": "UGREEN's own page, published 2024-11-27. It also says 'Bonjour allows the Mac to discover the NAS as a Time Machine destination.' To cap each Mac separately, make one Time Machine folder per Mac."
+  },
+  {
+   "product": "Asustor Drivestor 2 Pro Gen2",
+   "label": "Time Machine quota in ADM",
+   "value": "A Time Machine option on ADM's SMB settings page (introduced in ADM 4.3): 'Storage quotas can be set here. Each Apple device will not store more than the value set.' It also says 'Time Machine settings will be synchronized with AFP settings.'",
+   "source": "https://www.asustor.com/en/online/online_help?id=17",
+   "source_title": "SMB | Online Help | ASUSTOR NAS",
+   "read": "2026-11-17",
+   "note": "This is ADM-wide help, not specific to the Drivestor 2 Pro Gen2. It does document the Time Machine option that our current page lists as 'Not confirmed'. The tie to AFP settings matters because Apple drops AFP in macOS 27."
+  },
+  {
+   "product": "QNAP TS-262 / TS-233",
+   "label": "SMB version and per-Mac quota (QTS tutorial)",
+   "value": "Set 'Highest SMB version' to SMB 3. Each Time Machine user can have an optional quota, recommended at 'at least twice your Mac's total storage space'. With the shared HBS 3 account: 'If the backup data size is greater than the quota, the Time Machine backup will fail.'",
+   "source": "https://www.qnap.com/en-us/how-to/tutorial/article/using-time-machine-to-back-up-macs-to-a-qnap-nas-via-smb-3",
+   "source_title": "Using Time Machine to Back Up Macs to a QNAP NAS via SMB 3",
+   "read": "2026-11-17",
+   "note": "Last modified 2022-07-20. Requires QTS 4.3.0+ and macOS 10.12+. The page doesn't mention Bonjour."
+  },
+  {
+   "product": "Ubiquiti UniFi UNAS 2",
+   "label": "How Time Machine is turned on",
+   "value": "UniFi Drive > Settings > Services > File Services: 'Enable the SMB and Time Machine settings.' 'If you ever disable SMB settings, the Time Machine settings will be disabled automatically.' Every UNAS user with a personal drive can then back up a Mac.",
+   "source": "https://help.ui.com/hc/en-us/articles/17299776030999-macOS-Time-Machine-Backups-on-UNAS",
+   "source_title": "macOS Time Machine Backups on UNAS - Ubiquiti Help Center",
+   "read": "2026-11-17",
+   "note": "The page has no date (footer ©2024). It says nothing about quotas or size limits."
+  }
+ ],
+ "unsourced": [
+  "Synology DSM's own wording on 'Bonjour Time Machine broadcast via SMB' and per-user Time Machine quotas: kb.synology.com loads its text with JavaScript, and three URLs (the en-in and en-us tutorials and the DSM AFP/Mac help) came back without the article text.",
+  "UGREEN's help-center article on Time Machine: knowledge.ugnas.com returned 404 and the knowledge-test copy returned only its title, so I used UGREEN's own blog instead.",
+  "TerraMaster TOS 6 Time Machine quota behaviour: the help.terra-master.com doc returned 404, and the forum thread about a quota hiding the share returned 403.",
+  "Whether UGOS Pro, ADM, TOS or UniFi Drive implement their caps with Samba's fruit:time machine max size or with a filesystem quota: none of the maker pages I opened says.",
+  "Whether Asustor ADM's Time Machine option still works with AFP turned off, given that ADM help ties Time Machine settings to AFP settings.",
+  "Per-Mac quota on Ubiquiti UNAS 2: Ubiquiti's Time Machine article doesn't cover it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1423252
+ }
+}

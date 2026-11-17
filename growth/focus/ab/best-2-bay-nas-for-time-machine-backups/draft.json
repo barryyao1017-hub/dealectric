@@ -1,0 +1,178 @@
+{
+ "status": "ok",
+ "angle": "D",
+ "why_angle": "Apple's cited page only says 'SMB, not AFP', and the Synology compare pages and roundups name models without explaining that Time Machine keeps filling whatever space the share reports. None of them says where each brand caps each Mac's space: Synology share quotas need Btrfs and ext4 quotas stop at 4 TB, UGREEN caps per shared folder, Asustor per Apple device and QNAP per user, while UniFi documents no cap. This page adds that, sourced from each maker's own pages.",
+ "slug": "best-2-bay-nas-for-time-machine-backups",
+ "must": [
+  "the Synology DS225+",
+  "shared-folder quotas need Btrfs, and ext4 quotas stop at 4 TB"
+ ],
+ "products": [],
+ "page": {
+  "title": "Best 2-bay NAS for Time Machine backups from a couple of Macs (2026)",
+  "h1": "Best 2-bay NAS for Time Machine backups from a couple of Macs (2026)",
+  "desc": "Two Macs backing up to one 2-bay NAS: where Synology, UGREEN, Asustor, QNAP and UniFi cap each Mac's Time Machine space, what each box draws, and why the Synology DS225+ is the pick.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best 2-bay NAS for Time Machine backups from a couple of Macs is the Synology DS225+. Time Machine fills whatever space the SMB share reports, so give each Mac its own share and quota: on DSM, shared-folder quotas need Btrfs, and ext4 quotas stop at 4 TB.</p>",
+  "columns": [
+   [
+    "cap",
+    "How each Mac's space is capped"
+   ],
+   [
+    "tm",
+    "Time Machine needs"
+   ],
+   [
+    "lan",
+    "Network"
+   ],
+   [
+    "ram",
+    "Memory"
+   ],
+   [
+    "power",
+    "Rated power: access / drives asleep"
+   ]
+  ],
+  "rows": [
+   {
+    "slug": "synology-ds225-plus",
+    "model": "Synology DiskStation DS225+",
+    "cells": {
+     "cap": "One share per Mac with a shared-folder quota (Btrfs volume), or a per-user quota (Synology DSM 7.3 spec)",
+     "tm": "SMB, macOS 10.12 or later (DSM 7.3)",
+     "lan": "1× 1GbE + 1× 2.5GbE",
+     "ram": "2 GB DDR4 (max 6 GB)",
+     "power": "16.98 W / 6.08 W (Synology)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dh2300",
+    "model": "UGREEN NASync DH2300",
+    "cells": {
+     "cap": "Quota per shared folder, shared by every Mac that backs up to it (UGREEN); one folder per Mac gives each its own cap",
+     "tm": "UGOS 1.9.0.0035 or later, macOS 12 or later, SMB + Bonjour",
+     "lan": "1GbE",
+     "ram": "4 GB LPDDR4X",
+     "power": "13.72 W / 3.30 W (UGREEN lab, Seagate 2 TB drives)"
+    }
+   },
+   {
+    "slug": "synology-ds223j",
+    "model": "Synology DiskStation DS223j",
+    "cells": {
+     "cap": "Same as DS225+; Btrfs (needed for share quotas) from DSM 7.2-64570",
+     "tm": "SMB, macOS 10.12 or later (DSM 7.3)",
+     "lan": "1× 1GbE",
+     "ram": "1 GB DDR4",
+     "power": "16.31 W / 4 W (Synology)"
+    }
+   },
+   {
+    "slug": "ugreen-nasync-dxp2800",
+    "model": "UGREEN NASync DXP2800",
+    "cells": {
+     "cap": "Quota per shared folder, shared by every Mac that backs up to it (UGREEN); one folder per Mac gives each its own cap",
+     "tm": "UGOS 1.9.0.0035 or later, macOS 12 or later, SMB + Bonjour",
+     "lan": "2.5GbE",
+     "ram": "8 GB DDR5",
+     "power": "16.38 W / 5.24 W (UGREEN lab, Seagate 2 TB drives)"
+    }
+   },
+   {
+    "slug": "asustor-as5402t",
+    "model": "Asustor Nimbustor 2 Gen2 AS5402T",
+    "cells": {
+     "cap": "Time Machine usage limit per Apple device (ADM 4.3 or later)",
+     "tm": "SMB Time Machine option; ADM syncs it with AFP settings",
+     "lan": "2× 2.5GbE",
+     "ram": "4 GB DDR4 (max 16 GB)",
+     "power": "22.9 W / 12.7 W (Asustor)"
+    }
+   }
+  ],
+  "after": "<h2>What the differences mean</h2><p><strong>Running cost.</strong> Each figure assumes 8 hours of drive access and 16 hours with drives asleep per day, at the EIA's August 2026 US residential average of 18.16¢/kWh. Formula: (access W × 8 + asleep W × 16) × 365 ÷ 1000.</p><ul><li>DH2300: (13.72×8 + 3.30×16) × 365 ÷ 1000 = 59.3 kWh a year, about $10.78.</li><li>DS223j: (16.31×8 + 4×16) × 365 ÷ 1000 = 71.0 kWh, about $12.89.</li><li>DXP2800: (16.38×8 + 5.24×16) × 365 ÷ 1000 = 78.4 kWh, about $14.24.</li><li>DS225+: (16.98×8 + 6.08×16) × 365 ÷ 1000 = 85.1 kWh, about $15.45.</li><li>AS5402T: (22.9×8 + 12.7×16) × 365 ÷ 1000 = 141.0 kWh, about $25.61.</li></ul><p>Each maker tests with its own drives, so treat gaps of a few dollars a year as ties. The one real gap is the AS5402T: its 12.7 W with drives asleep is about twice the next-highest.</p><p><strong>First full backup.</strong> Blackvoid timed a Mac Studio writing to the DS225+ over its 2.5GbE port at 263 MB/s. That test used one large file on two drives in RAID 0. For a 1 TB Mac that works out to 1,000,000 MB ÷ 263 MB/s ≈ 3,800 s, or about 63 minutes. A 1GbE port tops out near 125 MB/s, so the same backup takes at least 1,000,000 ÷ 125 = 8,000 s, about 2.2 hours. Time Machine writes many small files, and Blackvoid's mixed-file job on the same box averaged about 108 MB/s. After the first run, hourly backups are small enough that link speed matters little, and a Mac on Wi-Fi rarely fills even 1GbE.</p><p><strong>Sizing the quotas.</strong> QNAP advises a Time Machine quota of at least twice the Mac's storage. For a 1 TB Mac and a 512 GB Mac that means 2 TB + 1 TB = 3 TB of quotas. Two 4 TB drives in RAID 1 give 4 TB usable, which leaves room for both.</p><table><thead><tr><th>Your setup</th><th>Fits</th></tr></thead><tbody><tr><td>Two Macs, one of them wired, and you want a 3-year warranty, extendable to 5</td><td>Synology DS225+</td></tr><tr><td>Two laptops backing up over Wi-Fi, lowest running cost</td><td>UGREEN DH2300 {buy:ugreen-nasync-dh2300}</td></tr><tr><td>Lowest-cost Synology, backups only (2-year warranty)</td><td>Synology DS223j, updated to DSM 7.2-64570 or later before you create the pool</td></tr><tr><td>Backups plus file sharing or apps over 2.5GbE</td><td>UGREEN DXP2800 {buy:ugreen-nasync-dxp2800}</td></tr><tr><td>You want a cap per Mac without one share per Mac</td><td>Asustor AS5402T, if you accept its 12.7 W draw with drives asleep</td></tr></tbody></table><h2>Why each Mac needs its own cap, and where each brand puts it</h2><p>Apple's Mac User Guide says that as the backup disk fills, Time Machine deletes older backups to make room for new ones. It doesn't stop at a fair share. Over the network, the backup disk is whatever size the NAS share reports. The Samba manual describes its Time Machine size option as limiting the reported disk size, \"thus preventing Time Machine from using the whole real disk\". With two Macs on one uncapped share, the Mac that grows faster takes the other Mac's space. Apple supports a NAS only over SMB: AFP isn't supported in macOS 27 or later. So each brand's SMB cap is the setting that matters.</p><ul><li><strong>Synology DSM.</strong> DSM 7.3 lists shared-folder quotas among the features that need a Btrfs volume, and caps quotas on an ext4 volume at 4 TB. Format the pool as Btrfs and give each Mac its own Time Machine share with a quota. Don't use an admin account for backups: users in the administrators group have unlimited quota. On the DS223j, Btrfs is available from DSM 7.2-64570.</li><li><strong>UGREEN UGOS.</strong> The quota belongs to the shared folder. UGREEN's own guide says that if several Macs share one Time Machine folder, you have to plan the quota around their combined size, and one fast-growing Mac leaves less room for the others. Make one folder per Mac. UGREEN requires UGOS 1.9.0.0035 or later and macOS Monterey 12 or later.</li><li><strong>Asustor ADM.</strong> The SMB settings page has a Time Machine usage limit, introduced in ADM 4.3: \"Each Apple device will not store more than the value set.\" The same help page says Time Machine settings are synchronized with AFP settings. Keep that in mind now that macOS 27 drops AFP for Time Machine.</li><li><strong>QNAP QTS.</strong> QNAP's guide sets Highest SMB version to SMB 3 and lets you give each Mac its own optional Time Machine user with a quota, recommended at at least twice the Mac's storage. With the shared HBS 3 account, a backup larger than the quota fails.</li><li><strong>Ubiquiti UniFi Drive.</strong> You turn on Time Machine under Settings &gt; Services &gt; File Services, and turning off SMB also turns it off. Ubiquiti's help article doesn't mention a quota or size limit.</li></ul><p>The DS225+ wins because it runs the same Synology quota setup as the cheaper models, adds a 2.5GbE port for the first full backup, and comes with a 3-year warranty that Synology's Extended Warranty Plus extends to 5. Synology's product page ties full functionality to drives on its compatibility list, so check that list before you buy drives.</p><h2>Not recommended</h2><p><strong>Ubiquiti UniFi UNAS 2 for a couple of Macs.</strong> At $199.00 on Ubiquiti's US store ($219.00 with the surcharge the store adds, 2026-11-17), it is a low-cost 2-bay box with 2.5GbE. But its Time Machine help article documents no per-user or per-share quota. With nothing to cap them, two Macs back up into one shared pool until it is full, which is the problem this page is about. The store page also doesn't state the CPU, memory or standard warranty.</p>",
+  "sources": [
+   [
+    "Time Machine needs a NAS that supports SMB; AFP isn't supported in macOS 27 or later",
+    "https://support.apple.com/en-us/102423"
+   ],
+   [
+    "Time Machine deletes older backups only as the backup disk fills",
+    "https://support.apple.com/guide/mac-help/change-time-machine-settings-mh15137/mac"
+   ],
+   [
+    "Samba's Time Machine max size limits the reported disk size so Time Machine can't use the whole disk",
+    "https://www.samba.org/samba/docs/current/man-html/vfs_fruit.8.html"
+   ],
+   [
+    "DSM 7.3: Time Machine over SMB on macOS 10.12+, shared-folder quotas need Btrfs, ext4 quota max 4 TB, admins have unlimited quota",
+    "https://www.synology.com/en-global/dsm/7.3/software_spec/dsm"
+   ],
+   [
+    "DS225+ and DS223j CPU, memory, LAN, warranty, power, Btrfs from DSM 7.2-64570",
+    "https://www.synology.com/en-us/products/compare/DS223/DS223j/DS225%2B"
+   ],
+   [
+    "UGREEN Time Machine needs UGOS 1.9.0.0035+ and macOS 12+; quota is per shared folder; DH2300 1GbE/4 GB, DXP2800 2.5GbE/8 GB",
+    "https://ai.ugreen.com/blogs/buying-guide/manage-mac-files-with-nas"
+   ],
+   [
+    "UGREEN lab power figures for DH2300 and DXP2800 (access and lower-power state)",
+    "https://ai.ugreen.com/blogs/knowledge/how-much-power-does-your-nas-consume"
+   ],
+   [
+    "Asustor ADM Time Machine usage limit per Apple device, synced with AFP settings",
+    "https://www.asustor.com/en/online/online_help?id=17"
+   ],
+   [
+    "Asustor AS5402T CPU, memory, 2× 2.5GbE, 22.9 W / 12.7 W, 3-year warranty",
+    "https://www.asustor.com/en/product/spec?p_id=81"
+   ],
+   [
+    "QNAP Time Machine over SMB 3: per-user quota at twice the Mac's storage; backups over quota fail",
+    "https://www.qnap.com/en-us/how-to/tutorial/article/using-time-machine-to-back-up-macs-to-a-qnap-nas-via-smb-3"
+   ],
+   [
+    "UniFi UNAS Time Machine setup, with no quota setting described",
+    "https://help.ui.com/hc/en-us/articles/17299776030999-macOS-Time-Machine-Backups-on-UNAS"
+   ],
+   [
+    "UniFi UNAS 2 price $199.00 ($219.00 with surcharge) and 2.5GbE (Ubiquiti store, 2026-11-17)",
+    "https://store.ui.com/us/en/category/integrations-storage/products/unas-2"
+   ],
+   [
+    "DS225+ Mac Studio SMB write 263 MB/s and mixed-file job about 108 MB/s (Blackvoid)",
+    "https://www.blackvoid.club/synology-ds225-review.md"
+   ],
+   [
+    "US residential electricity average 18.16¢/kWh, August 2026 (EIA)",
+    "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a"
+   ]
+  ]
+ },
+ "new_page": false,
+ "searched_as": [
+  "Synology DS225+ Time Machine SMB macOS support drive compatibility 2026",
+  "Synology DS223 vs DS225+ specifications 2 bay Time Machine"
+ ],
+ "query": "best 2-bay nas for time machine backups from a couple of macs",
+ "verified_changes": 7,
+ "verified_removed": 1,
+ "fix_pass": {
+  "errors": [
+   "copy says guaranteed or addresses AI",
+   "banned wording: guarantee"
+  ],
+  "log": [
+   "Banned wording 'guarantee' (the only 'guarantee' and the only match for the 'guaranteed / addresses AI' check): in page.after, rewrote \"Synology's product page says it guarantees full functionality only with drives on its compatibility list, so check that list before buying drives.\" as \"Synology's product page ties full functionality to drives on its compatibility list, so check that list before you buy drives.\" The meaning and the existing Synology source are unchanged, so no new fact or source was needed. No tool calls were made because this was only a wording fix.",
+   "Checked the rest of the page copy (title, h1, desc, answer, cells, after) for other 'guarantee' wording or text addressed to an AI and found none. 'ai.ugreen.com' appears only in source URLs, which are UGREEN's real domain, so I left them as they were. Nothing else was changed."
+  ]
+ },
+ "gate": {
+  "date": "2026-11-17",
+  "pass": true,
+  "g": null
+ }
+}
