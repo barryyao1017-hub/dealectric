@@ -1,0 +1,73 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a conventional direct-on-line well-pump motor draws up to seven times its nominal current in the first milliseconds of starting, while a soft-start pump or drive ramps to full speed over about 2 seconds. That inrush is what decides whether an inverter's surge rating can start the pump at all.",
+ "standout": 2,
+ "standout_why": "Compared against the cited Franklin SubDrive/MonoDrive FAQ, the cited SubDrive Connect product page and the uncited top Franklin results. The FAQ only says soft start gives 'lower start-up current compared to conventional water systems' and 'Two-wire motors do not have soft start ability'. The SubDrive Connect page says 'Soft start maximizes system life' and gives no starting-current figure. Neither page states how large the inrush is or mentions inverters or generators at all. ChatGPT's own answer said only 'high surge capacity' and gave no number.",
+ "decides": "This turns 'high surge' into a number you can check. A Franklin 1 HP 230 V 2-wire motor is rated 8.2 A full load and 10.4 A at service factor. At up to 7× that is roughly 13–17 kVA for the first instant. That is an inference: it applies Grundfos's generic multiple to a Franklin motor, because Franklin's locked-rotor table could not be read. On that figure, the 18,000 W low-frequency split-phase units (Sun Gold Power 6000W 48V, AIMS 6000W) clear it. The Victron MultiPlus-II's 9,000 VA peak and the EG4 6000XP's 12,000 W surge fall below it for a 1 HP direct-on-line motor. They become plausible only for smaller motors, or when the pump soft-starts (Grundfos SQ/SQE, or a Franklin SubDrive on a 3-wire or 3-phase motor). It confirms the page's current pick of a low-frequency 18 kW-surge split-phase unit for 1 HP-class 240 V pumps. It also adds a second route: a soft-start pump lets a smaller inverter work.",
+ "candidates": [
+  "Sun Gold Power 6000W 48V split phase (LFP)",
+  "AIMS Power PICOGLF60W48V240VS 6000 W",
+  "EG4 6000XP",
+  "Victron MultiPlus-II 48/5000/70-95 120V",
+  "Sun Gold Power SPH6548P 6.5 kW hybrid"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Starting current of a conventional direct-on-line (DOL) 4-inch well-pump motor",
+   "value": "up to 7× nominal current in the first milliseconds",
+   "source": "https://www.grundfos.com/us/learn/ecademy/all-courses/grundfos-sq-sqe/sq-sqe-protection-features-soft-start",
+   "source_title": "SQ/SQE Protection features: Soft Start (Grundfos eCademy)",
+   "read": "2026-11-17",
+   "note": "Grundfos calls DOL 'the most common starting method for 4\" conventional pumps' and says motor current can be 'up to seven times higher than the nominal value' during the first milliseconds."
+  },
+  {
+   "product": "Grundfos SQ/SQE",
+   "label": "Soft-start time to reach nominal speed",
+   "value": "2 s",
+   "source": "https://www.grundfos.com/us/learn/ecademy/all-courses/grundfos-sq-sqe/sq-sqe-protection-features-soft-start",
+   "source_title": "SQ/SQE Protection features: Soft Start (Grundfos eCademy)",
+   "read": "2026-11-17",
+   "note": "The SQ/SQE motor 'reaches the nominal value within a period of 2 seconds'. This avoids the DOL inrush, so a smaller inverter can start it."
+  },
+  {
+   "product": "Franklin Electric SubDrive / MonoDrive",
+   "label": "Soft start limitation",
+   "value": "Soft start gives lower start-up current; two-wire motors have no soft start",
+   "source": "https://www.franklinwater.com/support/faqs/faqs/subdrivemonodrive",
+   "source_title": "SubDrive/MonoDrive FAQ | Franklin Water",
+   "read": "2026-11-17",
+   "note": "Cited rival page. It says the drive 'starts and increases the motor speed slowly' with 'lower start-up current compared to conventional water systems', and that 'Two-wire motors do not have soft start ability.' It gives no figure. Input must be 190–260 VAC (F2 fault below 180 VAC), so the drive needs a 240 V inverter."
+  },
+  {
+   "product": "Franklin Electric 2445089003GS (4-inch 1 HP 230 V 2-wire motor)",
+   "label": "Full-load / service-factor current",
+   "value": "8.2 A full load, 10.4 A service factor, 230 VAC",
+   "source": "https://www.franklinwater.com/products/submersible-motors-and-control-boxes/4-inch-submersible-motors/4-inch-induction-motor/4-inch-2-wire-single-phase-models--sku-collection/2445089003gs/",
+   "source_title": "2445089003 GS — 2W,1,230,60,W | Franklin Water",
+   "read": "2026-11-17",
+   "note": "Arithmetic: 8.2 A × 230 V = 1,886 VA; × 7 = 13.2 kVA. 10.4 A × 230 V = 2,392 VA; × 7 = 16.7 kVA. This is an upper-bound estimate using Grundfos's generic 'up to 7×' figure, not Franklin's published locked-rotor amps, which this page does not list."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V split phase",
+   "label": "Price and design",
+   "value": "$1,220, low-frequency, 120/240 V split-phase output",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-17",
+   "note": "Maker Shopify store via storecheck: price 1220.0, available. The listing says 'Low frequency' and 'can provide 120VAC or 240VAC output'. The product handle reads 'peak-18000w'."
+  }
+ ],
+ "unsourced": [
+  "Franklin locked-rotor amps for 4-inch single-phase 230 V motors and the AIM Table 5 minimum generator sizes. Franklin's PDFs (2026 AIM via franklinwater.com/widen and the Nebraska DWEE copy, the 2011 Spanish AIM, the SubDrive Connect OM) were too large or could not be parsed by the fetcher, and Bash text extraction was not permitted. Franklin's motor SKU page does not list locked-rotor amps.",
+  "Grundfos SQ/SQE generator sizing rule (P1 + 10% / + 50%). The installation-instruction PDF could not be parsed, and the Grundfos FAQ page returned 403.",
+  "Sun Gold Power 6000W surge hold time (18,000 W for 20 s). The product page returned 429 when re-checked today, so only the price, the low-frequency design and 'peak-18000w' in the URL were confirmed.",
+  "Surge hold times for the EG4 6000XP and Victron MultiPlus-II, and any inverter maker's own statement on well-pump starting. Not checked because the tool-call budget ran out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.3685748999999994
+ }
+}

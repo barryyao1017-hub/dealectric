@@ -7752,6 +7752,23 @@ PRODUCTS = [
  "fit": "Movie nights where a 2.5-hour film has to finish on battery, and plugged-in viewing where you want close to 400 lumens without the MoGo 4's 48–52 dBA Performance mode.",
  "caveats": ["Charges only from its 19 V/4.74 A adapter through a proprietary power port and has no USB-C port, so a USB-C power bank can't top it up (Nebula user guide; ProjectorCentral).", 'Switches to Eco automatically on battery when Auto is on (ProjectorCentral), which drops it to about 145 lumens.', 'Heavier than the MoGo 4: 3.7 lb vs 2.9 lb (ProjectorCentral).', "The store page shows an '$80 OFF' badge next to the $599.99 listed price; check the cart total."]},
 
+{"slug": 'sungoldpower-8kw-48v-split-phase-inverter',
+ "brand": 'Sun Gold Power',
+ "program": 'awin:sungoldpower',
+ "asin": None,
+ "category": 'inverter',
+ "name": 'Sun Gold Power 8KW 48V Split Phase Solar Inverter (UL 1741 by ETL, 6 HP loaded-motor rating)',
+ "model": '8KW 48V Split Phase Solar Inverter',
+ "url": 'https://sungoldpower.com/products/8kw-off-grid-solar-inverter-ul1741',
+ "price": 1305.0,
+ "verified": '2026-11-17',
+ "specs": [('Rated output', '8,000 W'), ('Max peak power', '16,000 W (no hold time stated)'), ('Loaded motor capacity', '6 HP (maker rating)'), ('AC output', '120/240 V split phase or 120 V single phase'), ('Battery', '48 V; AGM, gel, flooded or lithium, plus a user mode'), ('Battery charging', 'up to 200 A'), ('Solar input', '2 MPPT, 500 VDC max open-circuit voltage'), ('Parallel', 'up to 6 units, 48 kW'), ('Certification', 'UL 1741 by ETL (off-grid)')],
+ "warranty": '12 months, per Sun Gold\'s FAQ ("Our products come with 12 months warranty"). Sun Gold\'s warranty page says terms run 1–25 years depending on the product, from the original purchase date, and are not transferable. It names no term for this model.',
+ "returns": '30 days from delivery. The item must be new, undamaged, unmodified and in its original packaging, and you must email sales@sungoldpower.com before sending it back. Sun Gold pays return shipping only for carrier damage, a defective unit or a wrong item. Otherwise the buyer pays shipping both ways.',
+ "summary": 'An 8,000 W all-in-one 48 V inverter-charger with 120/240 V split-phase output, two solar MPPTs and a maker-stated 6 HP loaded-motor capacity.',
+ "fit": "Backup or off-grid power for a 240 V well pump. That covers a Franklin SubDrive20 or SubDrive30 Connect from one unit, and a plain across-the-line pump within the maker's 6 HP motor rating.",
+ "caveats": ["The 16,000 W peak and the 6 HP motor rating are Sun Gold's own figures. No named reviewer has measured them, and the listing gives no peak hold time.", "Franklin publishes its 1.5× sizing rule for generators. Applying it to an inverter's continuous rating is our proxy.", 'A SubDrive50 (11,000 W bar) needs two units in parallel.', 'Two-wire pump motors get no soft start, so with one of those the start relies on the peak rating.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

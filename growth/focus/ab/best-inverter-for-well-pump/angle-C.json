@@ -1,0 +1,130 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which battery inverter can start which size of pump motor. The only horsepower figure any of our candidates' makers publish is Sun Gold Power's store listing: 'loaded motor capacity 6HP' for its 8 kW and 10 kW split-phase units and '4HP' for its 5000 W unit. The same store gives no HP figure for the SPH6548P or the 6000 W low-frequency unit, and AIMS and Signature Solar (EG4 6000XP) give none for theirs.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Franklin SubDrive/MonoDrive FAQ and the SubDrive Connect product page, plus the uncited SubDrive Connect manual (generator table on ManualsLib p.12) and the SubDrive Utility manual. All are Franklin variable-frequency-drive (VFD) documents. They cover drive input voltage (190–260 VAC), generator sizing (1.5× drive input watts; SubDrive20 Connect needs 5,700 W) and a warning that the SubDrive Utility is 'not compatible with inverter-controlled generators'. None of them pairs a battery inverter or inverter-charger with a pump horsepower, and none names a battery inverter. Rivals already cover the Franklin generator and input-voltage limits, so the new part is only the inverter-maker motor-HP data and the fact that most makers leave it out.",
+ "decides": "It partly changes the picks. Of the products on our page, none has a maker-stated horsepower rating for motor loads. The page should not claim any of them starts a given HP. It can say Sun Gold rates its larger SPH units (8 kW/10 kW) at 6 HP of loaded motor and the 5000 W unit at 4 HP, so a shopper with a 1.5–2 HP 240 V pump who wants a maker number should look at the 8 kW SPH ($1,305, seen 2026-11-17) rather than the SPH6548P. A second point comes from combining sources: Franklin's FAQ says a SubDrive needs 190–260 VAC from L1 to L2, and Victron's MultiPlus-II 120V models are single 120 V units. So a single 120 V MultiPlus-II cannot feed a SubDrive or a 240 V pump without a second unit or an autotransformer.",
+ "candidates": [
+  "Sun Gold Power 6000W 48V split phase (LF)",
+  "AIMS Power PICOGLF60W48V240VS",
+  "EG4 6000XP",
+  "Victron MultiPlus-II 48/5000/70-95 120V",
+  "Sun Gold Power SPH6548P 6.5 kW",
+  "Sun Gold Power 8KW 48V Split Phase Solar Inverter",
+  "Franklin Electric SubDrive20 Connect 5870205313C"
+ ],
+ "findings": [
+  {
+   "product": "Sun Gold Power 8KW 48V Split Phase Solar Inverter",
+   "label": "Maker-stated motor capacity",
+   "value": "Loaded motor capacity 6 HP; 8,000 W rated, 16,000 W peak; 120/240 V split phase; $1,305",
+   "source": "https://sungoldpower.com/products/8kw-off-grid-solar-inverter-ul1741",
+   "source_title": "8KW 48V Split Phase Solar Inverter – Sun Gold Power",
+   "read": "2026-11-17",
+   "note": "From the maker's Shopify store data (storecheck search), highlight text quoted: 'loaded motor capacity 6HP'. The page doesn't say how long the peak lasts."
+  },
+  {
+   "product": "Sun Gold Power 10KW 48V Split Phase Solar Inverter",
+   "label": "Maker-stated motor capacity",
+   "value": "Loaded motor capacity 6 HP; 10,000 W rated, 20,000 W peak; $1,422",
+   "source": "https://sungoldpower.com/products/10kw-48v-split-phase-solar-inverter",
+   "source_title": "10KW 48V Split Phase Solar Inverter – Sun Gold Power",
+   "read": "2026-11-17",
+   "note": "Maker store highlight text, read through storecheck search."
+  },
+  {
+   "product": "Sun Gold Power 5000W 48V Solar Charger Inverter (SPH5048P)",
+   "label": "Maker-stated motor capacity",
+   "value": "Loaded motor capacity 4 HP; 120 V output only from a single unit; $530",
+   "source": "https://sungoldpower.com/products/5000w-48v-solar-charger-inverter",
+   "source_title": "5000W 48V Solar Charger Inverter – Sun Gold Power",
+   "read": "2026-11-17",
+   "note": "Maker store text: '5000 Watt Inverter Pure Sine Wave 110V AC output, loaded motor capacity 4HP'. 120/240 V split phase needs units in parallel ('more than 2 unit in parallel')."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5 kW",
+   "label": "Motor capacity statement",
+   "value": "No HP figure in the maker listing; 6,500 W rated, 13,000 VA peak; split phase 120/240 V; $1,035",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P – Sun Gold Power",
+   "read": "2026-11-17",
+   "note": "Store highlight text read through storecheck search. It lists rated and peak power, but unlike the 5 kW, 8 kW and 10 kW listings it has no 'loaded motor capacity' figure."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V split phase (LF)",
+   "label": "Input/output pairing",
+   "value": "Requires 240 VAC input; outputs 120 VAC or 240 VAC; 50/60 Hz set by SW4; auto generator start; $1,220",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger – Sun Gold Power",
+   "read": "2026-11-17",
+   "note": "Maker store text read through storecheck search. No motor/HP statement. The full product page returned HTTP 429 twice, so I couldn't read per-leg limits."
+  },
+  {
+   "product": "AIMS Power PICOGLF60W48V240VS",
+   "label": "Surge and transfer-switch ratings",
+   "value": "18,000 W surge for 20 s; transfer switch 75 A at 120 VAC and 40 A at 240 VAC; split phase 120 & 240 VAC; no motor/pump/HP statement; $2,248.86",
+   "source": "https://invertersrus.com/?p=62405",
+   "source_title": "AIMS Power 6000 Watt Pure Sine Inverter Charger 48Vdc / 240Vac Input & 120/240Vac Split Phase Output",
+   "read": "2026-11-17",
+   "note": "AIMS's own store. The page lists no motor HP rating."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Retailer listing coverage",
+   "value": "6,000 W rated, 120/240 V split phase, parallel up to 16 units; listing states no surge figure and no motor/pump/HP rating; price shown as $1,499.99 (also $1,629.99 on page, unlabelled)",
+   "source": "https://signaturesolar.com/eg4-6000xp-off-grid-inverter-split-phase/",
+   "source_title": "EG4 6000XP Off-Grid Inverter | Split Phase – Signature Solar",
+   "read": "2026-11-17",
+   "note": "I couldn't read the EG4 manual and spec PDFs (binary, no text extraction)."
+  },
+  {
+   "product": "Victron MultiPlus-II 120V",
+   "label": "Output voltage per unit",
+   "value": "Lineup is single-output 120 V models (e.g. 48/5000/70-95 120V); peak power 5,500–9,000 W across 120V models",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii",
+   "source_title": "MultiPlus-II – Victron Energy",
+   "read": "2026-11-17",
+   "note": "The page doesn't cover split phase or motor starting. Combined with Franklin's 190–260 VAC input requirement, one 120V unit can't feed a SubDrive or 240 V pump on its own (inference, not stated by Victron)."
+  },
+  {
+   "product": "Franklin Electric SubDrive Connect",
+   "label": "Minimum generator size per drive",
+   "value": "SubDrive15 3,500 W; SubDrive20 5,700 W; SubDrive30 7,000 W; SubDrive50 11,000 W (1.5 × max drive input watts); do not use with GFCI",
+   "source": "https://www.manualslib.com/manual/2952850/Franklin-Electric-Subdrive-Connect.html?page=12",
+   "source_title": "Franklin Electric SUBDRIVE CONNECT Owner's Manual, p.12 – ManualsLib",
+   "read": "2026-11-17",
+   "note": "Already in a rival result (the SubDrive Connect manual, uncited). Included for context, not as the gap."
+  },
+  {
+   "product": "Franklin Electric SubDrive Utility",
+   "label": "Inverter-generator exclusion",
+   "value": "Not compatible with inverter-controlled generators; recommended minimum generator 6,000 W nominal",
+   "source": "https://manualslib.fr/manual/348419/Franklin-Electric-Subdrive-Utility.html?page=9",
+   "source_title": "Franklin Electric SubDrive Utility manual, p.9 – ManualsLib",
+   "read": "2026-11-17",
+   "note": "The exclusion names inverter-controlled generators only, not battery inverter-chargers. Same document as rival result 11 (SDUtility.pdf, uncited)."
+  },
+  {
+   "product": "Franklin Electric SubDrive Connect",
+   "label": "Supply and motor pairing",
+   "value": "Line voltage 190–260 VAC L1–L2; works with 1/2–5 HP single-phase 2-wire, 3-wire or three-phase motors; optimised for Franklin motors; 2-wire motors get no soft start; GFCI/AFCI not recommended",
+   "source": "https://www.franklinwater.com/support/faqs/faqs/subdrivemonodrive",
+   "source_title": "SubDrive/MonoDrive FAQ | Franklin Water",
+   "read": "2026-11-17",
+   "note": "From the cited rival pages (FAQ and product page), so rivals already have this."
+  }
+ ],
+ "unsourced": [
+  "Per-leg (L1/L2) limits for 120 V loads on the Sun Gold 6000W LF and AIMS PICOGLF60W48V240VS: the Sun Gold product page returned HTTP 429 three times and the AIMS manual PDF came back as unreadable binary.",
+  "EG4 6000XP surge rating and any motor/pump guidance: the EG4 manual PDF (eg4electronics.com) came back as unreadable binary and the Signature Solar listing doesn't state it.",
+  "Victron Autotransformer 120/240V step-up ratings for running a 240 V pump from one MultiPlus-II 120V: Victron's autotransformer pages returned 404, and the only figures I found were in retailer snippets I didn't open.",
+  "Franklin AIM manual generator table (minimum kW per motor HP): the 2026 60 Hz AIM PDF was over the fetch size limit.",
+  "Any maker statement that a battery inverter-charger (as opposed to an inverter-controlled generator) is or isn't compatible with Franklin SubDrive drives: not found on Franklin's FAQ, product page or manual pages I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2174037999999998
+ }
+}

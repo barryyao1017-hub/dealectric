@@ -1,0 +1,66 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that The Solar Lab tested the EG4 6000XP at 7.3–7.5 kW of surge for 3–5 seconds, about 61–63% of EG4's 12,000 W / ≈3.5 s rating.",
+ "standout": 2,
+ "standout_why": "I read ChatGPT's two cited pages. The franklinwater.com SubDrive/MonoDrive FAQ gives only the drive's input voltage limits (190–260 VAC, F2 below 180 VAC) and says 'lower start-up current' with no number. The SubDrive Connect product page lists 1/2–5 hp, NEMA 3R and filter accessory ratings, and says 'soft start' without a figure. Neither page mentions inverters, generators or battery backup. The other results are Franklin manuals and news posts about VFDs. None of the pages ChatGPT got has a measured surge or motor-start figure for any battery inverter, so a measured surge number is new.",
+ "decides": "This finding is a warning about the EG4 6000XP, not a new pick. A buyer who trusts the 12,000 W surge rating may expect a large well pump to start. The Solar Lab only held 7.3–7.5 kW for a few seconds. That figure also covers both legs: EG4's 3,000 W per leg is a rating, not a measurement, and a 120 V pump uses one leg. This backs putting the low-frequency transformer units (Sun Gold Power 6000W 48V split phase, AIMS PICOGLF60W48V240VS, rated 18,000 W for 20 s) ahead for hard-starting pumps. Those 18,000 W figures are still maker ratings: I found no named measurement for the Sun Gold, AIMS or Victron units. The page should tell readers to compare the pump's nameplate locked-rotor amps with the surge rating, and it should not claim those units measured better.",
+ "candidates": [
+  "Sun Gold Power 6000W 48V split phase (LFP6K48V240VSP)",
+  "AIMS Power PICOGLF60W48V240VS",
+  "EG4 6000XP",
+  "Victron MultiPlus-II 48/5000/70-95 120V",
+  "Sun Gold Power SPH6548P"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Measured surge (The Solar Lab)",
+   "value": "7.3–7.5 kW for 3–5 s",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review: Is it the Ultimate All-in-One Solar Power Solution? (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Quoted from the review: 'managed between 7.3 and 7.5kW for 3 to 5 seconds'. Against the 12,000 W ≈3.5 s rating the same page quotes, that is 7.3/12 = 61% to 7.5/12 = 63%. The page gives no author, no publication date (only a 'Copyright © 2026' footer) and no instruments, so cite it as 'The Solar Lab measured'."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Measured continuous overload (The Solar Lab)",
+   "value": "6.25 kW held before tripping (rated 6 kW)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Quoted: pushed 'past its rating of 6kw to 6.25kW, and it held strong before eventually tripping'. The page gives no duration for this test."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Measured idle draw (The Solar Lab)",
+   "value": "about 50 W (0.9–1.2 A)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Quoted: 'only consumes about 50 watts in idle mode' and 0.9–1.2 A drawn during the idle tests. The page doesn't say whether the current is DC- or AC-side. This matters for a well-pump backup that idles most of the day: 50 W is about 1.2 kWh a day."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Motor start (The Solar Lab)",
+   "value": "Started the reviewers' compressor (no figure given)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Quoted: 'the very first inverter we have ever tested that could actually run our hefty compressor'. This is a pass on one motor load. The page gives no inrush figure and has no well pump test."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer or lab measurement of surge or motor starting for the Sun Gold Power 6000W 48V split phase. I searched The Solar Lab, Hobotech and forum threads and found only the maker's 18,000 W / 20 s rating and anonymous owner posts.",
+  "A named measurement for the AIMS PICOGLF60W48V240VS. I searched for independent reviews and found only retailer listings repeating 18,000 W / 20 s.",
+  "A named measurement for the Victron MultiPlus-II 48/5000 120 V. EnergyBee's review (team byline, updated 2026-10-13) reports a 1.5 HP pool pump start (4.5 kW inrush) and '9kW peak for 30 minutes' on a 5 kVA model. That page names no tester and gives no method or instruments, it tested a South African unit rather than the US 120 V model, and a 9 kW peak held for 30 minutes isn't credible as a surge figure, so I left it out.",
+  "A named measurement for the Sun Gold Power SPH6548P. I found none.",
+  "A Will Prowse (DIY Solar Power with Will) surge figure for the EG4 6000XP. Searches turned up only forum mentions of his review, with no figures.",
+  "Franklin Electric AIM-manual locked-rotor amps for 4-inch 230 V 1–2 hp motors, which would let the page compare pump inrush with these surge figures. The 2026 AIM PDF on the Nebraska DWEE site was over the size limit, and the metatek.org (HTTP 402) and RCWorst (HTTP 404) copies failed. Franklin's own AIM page lists the PDF, but I didn't open it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 22,
+  "cost_usd_list": 1.1043259
+ }
+}

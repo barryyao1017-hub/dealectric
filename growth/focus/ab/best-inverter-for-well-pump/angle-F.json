@@ -1,0 +1,154 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got says which battery inverters can run a SubDrive-controlled well pump. Franklin's SubDrive Connect manual sets the minimum generator at 1.5× the drive's maximum input watts: 5,700 W for a SubDrive20, so the drive draws up to about 3,800 W at 240 V. Because the drive soft-starts the motor, the inverter's continuous 240 V rating decides the pick, not its surge rating. A 3,840 W BLUETTI Apex 300 barely covers a SubDrive20, while a $1,220 Sun Gold Power 6000W 48V split-phase unit covers a SubDrive20 or SubDrive30.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages. The Franklin SubDrive/MonoDrive FAQ makes no statement about generators, inverters or battery backup, and only gives a 190–260 VAC line-voltage range and an F2 fault below 180 VAC. The SubDrive Connect product page lists 1/2–5 hp, soft start and three SKUs, but no input watts, no generator sizing and no prices. The generator table sits in the uncited owner's manual results (#6, #7, #8, #13, and the same ManualsLib manual as #15, one page later), so the raw generator figure is partly available. None of the 16 results ties it to an inverter's continuous rating, and none names or prices any battery inverter. ChatGPT's own answer only said 'pure sine wave inverter with high surge capacity', which points the shopper at surge when the soft-starting SubDrive makes continuous 240 V output the limit.",
+ "decides": "This changes the ranking for shoppers who already have, or are buying, ChatGPT's top pick (the Franklin SubDrive). Surge rating stops mattering, and our current page's surge column is the wrong lead spec for them. Continuous 240 V output decides instead: it must exceed about 3,800 W for a SubDrive20, about 4,670 W for a SubDrive30, and about 7,330 W for a SubDrive50. The Sun Gold Power 6000W 48V split-phase ($1,220) and SPH6548P ($1,035) clear the SubDrive20 and SubDrive30. For a SubDrive50, only the Sun Gold 8KW ($1,305) or larger units clear it. The BLUETTI Apex 300's 3,840 W has only 40 W of headroom over a SubDrive20. For a plain across-the-line well pump with no SubDrive, the surge-first ranking still holds, and the Sun Gold 6000W 48V (18,000 W for 20 s, $1,220) beats the AIMS unit with the same 18,000 W / 20 s surge by $1,028.86.",
+ "candidates": [
+  "Franklin Electric SubDrive20 Connect 5870205313C",
+  "Grundfos CUE",
+  "Grundfos RSI",
+  "Sun Gold Power 6000W 48V split phase (LFP)",
+  "Sun Gold Power SPH6548P 6.5 kW",
+  "Sun Gold Power 8KW 48V split phase",
+  "AIMS Power PICOGLF60W48V240VS",
+  "EG4 6000XP",
+  "Victron MultiPlus-II 48/5000/70-95 120V",
+  "BLUETTI Apex 300",
+  "Anker SOLIX F3800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Franklin Electric SubDrive Connect (all models)",
+   "label": "Generator sizing rule",
+   "value": "1.5 × maximum input watts consumed by the drive, rounded up to next standard generator size",
+   "source": "https://www.manualslib.com/manual/2952850/Franklin-Electric-Subdrive-Connect.html?page=12",
+   "source_title": "Franklin Electric SUBDRIVE CONNECT Owner's Manual, p. 12 (Generator Sizing)",
+   "read": "2026-11-17",
+   "note": "Quoted from the manual: 'Basic generator sizing for the SubDrive Connect system is 1.5 times the maximum input watts consumed by the drive.' The same page says 'Do not use with a Ground Fault Circuit Interrupter (GFCI).' The section does not mention inverters."
+  },
+  {
+   "product": "Franklin Electric SubDrive20 Connect",
+   "label": "Minimum generator",
+   "value": "5,700 W",
+   "source": "https://www.manualslib.com/manual/2952850/Franklin-Electric-Subdrive-Connect.html?page=12",
+   "source_title": "Franklin Electric SUBDRIVE CONNECT Owner's Manual, p. 12",
+   "read": "2026-11-17",
+   "note": "The extracted table lists SubDrive15/20/30/50 against 3,500/5,700/7,000/11,000 W in order. I matched models to values by that order, and the Spanish manual on manualslib.mx gives the same sequence. Implied maximum input is 5,700 / 1.5 = 3,800 W. Since the generator figure is rounded up, the real maximum input is at most 3,800 W. Check the mapping against the printed page before publishing."
+  },
+  {
+   "product": "Franklin Electric SubDrive30 Connect",
+   "label": "Minimum generator",
+   "value": "7,000 W (implied maximum input about 4,667 W)",
+   "source": "https://www.manualslib.com/manual/2952850/Franklin-Electric-Subdrive-Connect.html?page=12",
+   "source_title": "Franklin Electric SUBDRIVE CONNECT Owner's Manual, p. 12",
+   "read": "2026-11-17",
+   "note": "Same order-based mapping caveat. 7,000 / 1.5 = 4,667 W."
+  },
+  {
+   "product": "Franklin Electric SubDrive50 Connect",
+   "label": "Minimum generator",
+   "value": "11,000 W (implied maximum input about 7,333 W)",
+   "source": "https://www.manualslib.com/manual/2952850/Franklin-Electric-Subdrive-Connect.html?page=12",
+   "source_title": "Franklin Electric SUBDRIVE CONNECT Owner's Manual, p. 12",
+   "read": "2026-11-17",
+   "note": "11,000 / 1.5 = 7,333 W. That is more than the 6,000 W continuous of any 6 kW inverter on our current page."
+  },
+  {
+   "product": "Franklin Electric SubDrive Connect",
+   "label": "Supply voltage",
+   "value": "190–260 VAC; F2 undervoltage fault below 180 VAC L1–L2",
+   "source": "https://www.franklinwater.com/support/faqs/faqs/subdrivemonodrive",
+   "source_title": "SubDrive/MonoDrive FAQs | Franklin Water",
+   "read": "2026-11-17",
+   "note": "This means the backup source must deliver 240 V. A 120 V-only inverter or power station cannot run it. The page also says GFCI/AFCI breakers 'may cause nuisance trips'."
+  },
+  {
+   "product": "Franklin Electric SubDrive Connect",
+   "label": "Range and soft start",
+   "value": "1/2–5 hp; soft start included; single-phase 2-wire, 3-wire or three-phase motors",
+   "source": "https://www.franklinwater.com/products/drives-starters-and-protection/variable-frequency-drives/subdrive-connect-variable-frequency-drive/",
+   "source_title": "SubDrive Connect | Franklin Water",
+   "read": "2026-11-17",
+   "note": "Soft start is why the inverter's continuous rating, not its surge rating, limits a SubDrive system. The FAQ adds that two-wire motors cannot soft start. The page lists no price."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V split phase (LFP)",
+   "label": "Price",
+   "value": "$1,220 (compare-at $4,713), in stock",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger",
+   "read": "2026-11-17",
+   "note": "From the maker's Shopify store via storecheck. The listing says it is UL1741, low-frequency, has auto generator start, and outputs 120/240 VAC. Its 6,000 W continuous covers a SubDrive20 (3,800 W) and SubDrive30 (4,667 W) but not a SubDrive50 (7,333 W)."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5 kW",
+   "label": "Price and peak",
+   "value": "$1,035 (compare-at $4,526); 6,500 W rated, 13,000 VA peak",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P",
+   "read": "2026-11-17",
+   "note": "Maker store via storecheck. The listing does not give a hold time for the peak. It loses to the 6000W LFP unit when an across-the-line pump needs a long surge, and wins on price and built-in MPPT for SubDrive users."
+  },
+  {
+   "product": "Sun Gold Power 8KW 48V split phase",
+   "label": "Price and motor rating",
+   "value": "$1,305; 8,000 W rated, 16,000 W peak, 'loaded motor capacity 6HP'",
+   "source": "https://sungoldpower.com/products/8kw-off-grid-solar-inverter-ul1741",
+   "source_title": "8KW 48V Split Phase Solar Inverter",
+   "read": "2026-11-17",
+   "note": "Maker store via storecheck; the 6 HP figure is the maker's own claim. It is the cheapest single unit I priced today above the implied 7,333 W SubDrive50 input."
+  },
+  {
+   "product": "AIMS Power PICOGLF60W48V240VS",
+   "label": "Price and surge",
+   "value": "$2,248.86; 6,000 W continuous; 18,000 W for 20 s; split-phase 120/240 VAC",
+   "source": "https://invertersrus.com/?p=62405",
+   "source_title": "AIMS Power 6000 Watt Pure Sine Inverter Charger 48Vdc / 240Vac Input & 120/240Vac Split Phase Output",
+   "read": "2026-11-17",
+   "note": "Loses on price: it has the same 18,000 W / 20 s surge as the Sun Gold 6000W 48V and costs $1,028.86 more ($2,248.86 − $1,220)."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Price",
+   "value": "$1,499.99 (page also shows $1,629.99); 6,000 W rated; 120/240 V split phase",
+   "source": "https://signaturesolar.com/eg4-6000xp-off-grid-inverter-split-phase/",
+   "source_title": "EG4 6000XP Off-Grid Inverter | Signature Solar",
+   "read": "2026-11-17",
+   "note": "The page shows two prices without labeling which is current; $1,499.99 is likely the sale price. The page gives no surge rating or per-leg limit."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Price and output",
+   "value": "$1,499 (compare-at $1,699, Black Friday Early Access Nov 5–18); 3,840 W output; 2,764.8 Wh",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-17",
+   "note": "Its 3,840 W is only 40 W over a SubDrive20's implied 3,800 W input, and below a SubDrive30's 4,667 W. The page does not say whether a single unit outputs 240 V on its own, and gives no surge watts or duration ('7,680W Lifting Power' only). The Apex 300 + B300K + Home Backup Kit (Single Apex 300) bundle costs $3,199 (storecheck, same date, https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300)."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Output",
+   "value": "6,000 W AC total; 120 V/240 V dual-voltage per unit; 240 V unavailable while charging on 120 V AC",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus",
+   "read": "2026-11-17",
+   "note": "Shown as sold out with no price on the maker page today, so it loses on availability. The page gives no surge rating."
+  }
+ ],
+ "unsourced": [
+  "Today's price for the Franklin SubDrive20 Connect 5870205313C: Franklin's pages list no price, and the RC Worst product page returned HTTP 429 twice. ChatGPT's $2,850.00 card did not name the retailer.",
+  "Grundfos CUE price ($4,500.82 on ChatGPT's card): I did not open a retailer or Grundfos page for it, and its retailer is unknown.",
+  "Grundfos RSI price and specs: not researched within the call budget.",
+  "Victron MultiPlus-II 48/5000/70-95 120V price today: not re-checked; our page's $1,307.32 at NAZ Solar Electric is dated 2026-11-06.",
+  "Exact SubDrive model-to-generator-watts mapping from the printed manual table: the text extraction was garbled, and pdftotext was not permitted, so the mapping is by order.",
+  "Franklin guidance on running a SubDrive from a battery inverter rather than a generator: neither the FAQ, the product page nor manual p. 12 mentions inverters.",
+  "EG4 6000XP surge rating and hold time: not on the Signature Solar page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0154298000000004
+ }
+}

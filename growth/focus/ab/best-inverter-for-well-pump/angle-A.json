@@ -1,0 +1,112 @@
+{
+ "angle": "A",
+ "gap": "None of the results ChatGPT got turns the inverters' different surge claims (W or VA, with or without a hold time) into one 240 V figure, or says that The Solar Lab measured the EG4 6000XP's rated '12,000 W for about 3.5 s' surge at only 7.3–7.5 kW for 3–5 s.",
+ "standout": 2,
+ "standout_why": "I compared against the two pages ChatGPT cited: the Franklin SubDrive/MonoDrive FAQ and the Franklin SubDrive Connect product page. I also scanned the titles of the other Franklin results, which are all SubDrive product pages and manuals. The two pages I read cover the drive's input voltage (190–260 VAC), the 1/2–5 hp range and soft start. Neither says anything about inverter or generator sizing, surge ratings or starting current. ChatGPT's answer only says to use a 'pure sine wave inverter with high surge capacity' and gives no numbers. No rival compares surge ratings across brands or uses a measured surge figure.",
+ "decides": "It backs leading with the low-frequency transformer units (Sun Gold Power 6000W 48V and AIMS 6000 W). Their surge rating is about 18,000 W, which is about 75 A at 240 V. The EG4 6000XP is rated 12,000 W (50 A) on paper, but The Solar Lab measured about 7.5 kW (about 31 A at 240 V). For a motor start, that puts it below both low-frequency units and below the SPH6548P's rated 13,000 VA. The SPH6548P's figure is unmeasured and has no published hold time. One Victron MultiPlus-II gives 120 V only, so a 240 V well pump needs two units. The table footnote should carry this.",
+ "candidates": [
+  "Sun Gold Power 6000W 48V split phase (LF)",
+  "AIMS Power PICOGLF60W48V240VS",
+  "EG4 6000XP",
+  "Victron MultiPlus-II 48/5000/70-95 120V",
+  "Sun Gold Power SPH6548P 6.5 kW"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge, rated vs measured (The Solar Lab)",
+   "value": "Rated 12,000 W for about 3.5 s; measured 7.3–7.5 kW for 3–5 s",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review: Is it the Ultimate All-in-One Solar Power Solution? (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "The Solar Lab calls the measured result 'pretty much exactly what they advertised'. The measured figure is about 62% of the 12 kW rating. Dividing by 240 V gives about 50 A rated and about 31 A measured. The page names no author or date (©2026)."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Per-leg continuous limit",
+   "value": "3,000 W per 120 V leg; both legs used for 240 V; 6,000 W total continuous",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "The Solar Lab also says it pushed the unit to 6.25 kW before it tripped. A 240 V well pump runs across both legs, so the 3,000 W per-leg limit matters only for 120 V pumps."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Price and the surge spec on the retailer page",
+   "value": "$1,499.99 (the page also shows $1,629.99, without saying which is the regular price); the page gives 'Rated Output Power: 6,000W' and no surge figure",
+   "source": "https://signaturesolar.com/eg4-6000xp-off-grid-inverter-split-phase/",
+   "source_title": "EG4 6000XP Off-Grid Inverter (Signature Solar)",
+   "read": "2026-11-17",
+   "note": "The retailer product page does not list surge, so a shopper on that page sees no surge figure."
+  },
+  {
+   "product": "Victron MultiPlus-II 48/5000/70-95 120V",
+   "label": "Continuous vs peak",
+   "value": "5,000 VA / 4,000 W continuous at 25 °C; 9,000 W peak; no peak duration given",
+   "source": "https://www.victronenergy.com/inverters-chargers/multiplus-ii",
+   "source_title": "MultiPlus-II (Victron Energy)",
+   "read": "2026-11-17",
+   "note": "The output is 120 V only. The page says the unit 'supports parallel and three-phase configurations' and does not mention 120/240 V split phase. A 240 V pump therefore needs a second unit. 9,000 W at 120 V is 75 A on one leg, not a 240 V figure."
+  },
+  {
+   "product": "Sun Gold Power 6000W 48V split phase",
+   "label": "Price, design and peak in the maker store listing",
+   "value": "$1,220 (compare-at $4,713); 'Low frequency'; 120 VAC or 240 VAC output; the product URL slug reads '6000w-peak-18000w'",
+   "source": "https://sungoldpower.com/products/6000w-peak-18000w-dc-48v-split-pure-sine-wave-inverter-with-charger",
+   "source_title": "6000W DC 24V/ 48V Split Phase Pure Sine Wave Inverter With Charger (Sun Gold Power)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on the maker's Shopify store. In this read, 18,000 W appears only in the URL slug. Peak 18,000 W ÷ 240 V = 75 A, the same as the AIMS unit on our current page. When I tried to re-check the 20 s hold time on the product page, the store returned HTTP 429."
+  },
+  {
+   "product": "Sun Gold Power SPH6548P 6.5 kW",
+   "label": "Peak and motor rating",
+   "value": "$1,035 (compare-at $4,526); 'Rated Output Power: 6500W, Max Peak Power: 13,000VA'; no hold time and no loaded-motor HP stated",
+   "source": "https://sungoldpower.com/products/6500w-48v-solar-charge-inverter-parallel-wifi-monitor",
+   "source_title": "6.5KW 48V Split Phase Solar Inverter SPH6548P (Sun Gold Power)",
+   "read": "2026-11-17",
+   "note": "13,000 VA ÷ 240 V ≈ 54 A, with no hold time given. On the same store, Sun Gold Power lists a 'loaded motor capacity' of 6 HP for its 8KW and 10KW SPH units and 4 HP for the 5000W unit, but gives no HP figure for the SPH6548P."
+  },
+  {
+   "product": "Sun Gold Power 8KW / 10KW SPH and 5000W",
+   "label": "Maker's own motor-HP rating (normalising aid)",
+   "value": "8KW: 16,000 W peak, 6 HP loaded motor; 10KW: 20,000 W peak, 6 HP; 5000W 48V: 4 HP",
+   "source": "https://sungoldpower.com/products/10kw-48v-split-phase-solar-inverter",
+   "source_title": "10KW 48V Split Phase Solar Inverter (Sun Gold Power)",
+   "read": "2026-11-17",
+   "note": "Read from the storecheck search output for these sibling listings ($1,305 / $1,422 / $530). This is the only maker in the set that states surge as motor horsepower, the unit a well-pump buyer actually knows."
+  },
+  {
+   "product": "general",
+   "label": "Soft start depends on motor type (Franklin SubDrive)",
+   "value": "'Two-wire motors do not have soft start ability'; the drive needs 190–260 VAC line voltage",
+   "source": "https://www.franklinwater.com/support/faqs/faqs/subdrivemonodrive",
+   "source_title": "SubDrive/MonoDrive FAQ (Franklin Water)",
+   "read": "2026-11-17",
+   "note": "A rival page ChatGPT cited. It says the SubDrive lowers start-up current but gives no input amps or inverter/generator sizing. With a 2-wire motor, or with no drive at all, the inverter has to supply the full locked-rotor current."
+  },
+  {
+   "product": "general",
+   "label": "SubDrive Connect scope (rival page)",
+   "value": "1/2–5 hp; single-phase 2-wire and 3-wire and three-phase motors; soft start; no input-current or generator/inverter sizing stated",
+   "source": "https://www.franklinwater.com/products/drives-starters-and-protection/variable-frequency-drives/subdrive-connect-variable-frequency-drive/",
+   "source_title": "SubDrive Connect (Franklin Water)",
+   "read": "2026-11-17",
+   "note": "A cited rival page. I checked it for anything about surge or inverter sizing and found nothing."
+  }
+ ],
+ "unsourced": [
+  "Locked-rotor amps for typical 1/2–2 HP 230 V Franklin 4-inch motors, to set against each inverter's surge in amps. The 2026 60 Hz AIM PDF on dwee.nebraska.gov is over 10 MB and could not be fetched, the metatek.org copy returned 402, the RCWorst copy returned 404, and searches for motor model numbers turned up no Franklin LRA page that I could open.",
+  "Franklin's AIM generator-sizing table (minimum kW per motor HP), which would be the closest maker guidance for sizing an inverter. Same fetch failures as above.",
+  "Hold time for the Sun Gold Power 6000W 48V's 18,000 W surge. Our current page has 20 s, but the maker's product page returned HTTP 429 twice today.",
+  "AIMS PICOGLF60W48V240VS surge and price from the AIMS store. The guessed aimscorp.net URL returned 404, and I ran out of budget before finding the right one.",
+  "EG4's own 6000XP spec sheet surge figures (12 kW for about 3.5 s / 11 kW for about 5 s appear only in search snippets). The santansolar copy returned 403, and the ressupply PDF could not be read through fetch.",
+  "Victron MultiPlus-II 120V peak-power duration and its 120/240 V split-phase pairing. The datasheet PDF could not be read through fetch, and the product page states neither.",
+  "Any named reviewer's motor-start or well-pump test on the Sun Gold Power, AIMS or Victron units."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.1990951
+ }
+}
