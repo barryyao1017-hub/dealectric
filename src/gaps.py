@@ -1676,91 +1676,23 @@ GAP_PAGES = [
  "checked": '2026-11-14',
  "updated": '2026-11-14'},
 
-{'slug': 'universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter',
- 'question': 'G93 (Awin brands: universal travel adapter with a built-in 220V to 110V voltage converter)',
- 'lead_first': True,
- 'product_result': {'slug': 'tessan-250w-voltage-converter-travel-adapter-tc03',
-                    'item_id': 'TESSAN-TC03',
-                    'title': 'TESSAN TC03, 250 W converter + universal adapter',
-                    'description': '220 V in, 110 V out, 250 W max; 2 AC outlets, 2 USB-C, 2 USB-A; Type A/C/G/I plugs. $43.99.',
-                    'image_url': 'https://cdn.shopify.com/s/files/1/0747/5439/2376/files/TS-TC03US00-GR.jpg'},
- 'title': 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
- 'h1': 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
- 'desc': 'Yes, but most travellers do not need one: phone, laptop and camera chargers are 100–240 V and only a plug adapter is required. For the '
-         "single-voltage 110 V gadgets under 250 W that remain, TESSAN's TC03 converter-adapter ($43.99, 2 AC outlets, 2 USB-C, 2 USB-A, Type A/C/G/I plugs) "
-         "against BESTEK's 200–250 W converters ($24.99–59.99) and Foval's, with what a 250 W converter cannot run and the prices seen on 2026-11-03.",
- 'intro': '\n'
-          '<p class="lead"><strong>Short answer.</strong> Yes, but first check whether you need one: nearly every phone, laptop, tablet and camera charger is '
-          '100–240 V and needs only a plug adapter, and running a dual-voltage device through a converter can damage it. For a single-voltage 110 V gadget '
-          'under 250 W, the <strong>TESSAN TC03</strong> ({buy:tessan-250w-voltage-converter-travel-adapter-tc03}) is a universal travel adapter with a '
-          "built-in 220V to 110V voltage converter: $43.99 on 2026-11-03 for 250 W, two AC outlets, two USB-C and two USB-A. BESTEK's 250 W converter was "
-          '$24.99–33.99 at Walmart and eBay.</p>\n'
-          "<p>What to know: 250 W runs an electric shaver, a small CPAP, a sound machine, a sewing machine's motor or an older game console; it does not run a "
-          "hair dryer, straightener, curling iron, kettle or anything that heats, which TESSAN's own page says in so many words, and the same limit applies to "
-          'BESTEK\'s and Foval\'s 200–250 W units. Check the label on the device: "100–240 V" means no converter, "110 V" or "120 V" alone means it needs one. '
-          "TESSAN's unit covers Type A, C, G and I plugs for 150+ countries and charges six devices at once; it is about $10–17 more than the BESTEK 250 W "
-          "listings we found and cheaper than BESTEK's $59.99 plug-set version on Newegg. Returns at tessan.com are 7 days, with a 12–24-month warranty.</p>\n",
- 'columns': [('watts', 'Converter'), ('outlets', 'AC outlets'), ('usb', 'USB'), ('plugs', 'Plugs')],
- 'rows': [{'slug': 'tessan-250w-voltage-converter-travel-adapter-tc03',
-           'model': 'TESSAN TC03',
-           'cells': {'watts': '220–230 V to 110 V, 250 W', 'outlets': '2', 'usb': '2 USB-C (one PD) + 2 USB-A', 'plugs': 'Universal Type A, C, G, I'}},
-          {'brand': 'BESTEK',
-           'model': '250W converter, 4 USB',
-           'url': 'https://www.walmart.com/ip/BESTEK-250W-Universal-Travel-Adapter-220V-110V-Travel-Voltage-Converter-4-Port-USB-US-AU-EU-UK-India-South-Africa-Worldwide-Plug-Adapter-Red/244740790',
-           'cells': {'watts': '250 W',
-                     'outlets': '1 (per listing)',
-                     'usb': '4 USB-A',
-                     'plugs': 'US, AU, EU, UK, India, South Africa adapters',
-                     'price': '$33.99 at Walmart; a black 250 W listing $26.63, 2026-11-03'}},
-          {'brand': 'BESTEK',
-           'model': '250W with plug set (MRJ201GU-1)',
-           'url': 'https://www.newegg.com/bestek-mrj201gu-1/p/2VH-010E-000E0',
-           'cells': {'watts': '250 W', 'outlets': 'not read', 'usb': '4 USB-A', 'plugs': 'Type G/D/M/AU/US set', 'price': '$59.99 at Newegg, 2026-11-03'}},
-          {'brand': 'BESTEK',
-           'model': '200W with 35 W USB-C',
-           'url': 'https://www.walmart.com/',
-           'cells': {'watts': '200 W',
-                     'outlets': 'not read',
-                     'usb': 'USB-C 35 W + USB-A',
-                     'plugs': 'not read',
-                     'price': '$32.39 (was $35.99) at Walmart, 2026-11-03'}},
-          {'brand': 'Foval',
-           'model': 'Step-down converter, 4 USB',
-           'url': 'https://www.desertcart.com.cy/products/462072394-220v-to-110v-converter-travel-adapter-foval-international-step-down',
-           'cells': {'watts': 'about 200–230 W',
-                     'outlets': 'not read',
-                     'usb': '4 USB-A (a USB-C PD version exists)',
-                     'plugs': 'not read',
-                     'price': '$39.98 at Walmart; USB-C PD version $29.99, 2026-11-03'}}],
- 'after': '\n'
-          '<h2>Do you need a converter at all?</h2>\n'
-          "<p>Almost certainly not for electronics. Wirecutter's travel-adapter guide (2020, republished by Engadget) says most people only need a plug "
-          "adapter because modern chargers adjust to the local voltage, and TESSAN's own blog says the same. The exceptions are heating and motor appliances "
-          'sold for the US market only: hair dryers, straighteners, curling irons, some shavers, CPAP machines and older gadgets with a "120 V" label. A '
-          'dual-voltage hair dryer or a travel-sized one bought locally is cheaper and safer than any converter.</p>\n'
-          '<h2>What 250 W does and does not run</h2>\n'
-          '<p>Runs: shavers, toothbrush chargers, sound machines, small CPAPs (check the label: many are 100–240 V anyway), sewing machines, older game '
-          'consoles and small fans. Does not run: anything that heats. A hair dryer is 1,200–1,875 W, a straightener 40–200 W at best but often more, a kettle '
-          "1,500 W; TESSAN warns against heating appliances on the product page, and BESTEK's and Foval's listings carry the same warning.</p>\n"
-          '<h2>Why TESSAN costs more than BESTEK</h2>\n'
-          '<p>Two AC outlets instead of one, two USB-C ports including Power Delivery, and the universal retractable plugs built in rather than a bag of '
-          "adapter heads. If you only ever travel to one region and only need USB-A, BESTEK's $25–34 unit does the job for less.</p>\n"
-          '<h2>Returns and warranty</h2>\n'
-          "<p>TESSAN's FAQ gives 7 days from delivery for returns, unused and in the original packaging, and 12–24 months of warranty depending on the "
-          'product.</p>\n'
-          '<h2>What we could not verify</h2>\n'
-          "<p>The dimensions and weight of any converter here, BESTEK's and Foval's exact outlet counts and warranties, Wirecutter's current guidance, and any "
-          'Reddit thread on converters (none surfaced in search).</p>\n',
- 'sources': [('TESSAN 250W Voltage Converter with Universal Travel Adapter TC03',
-              'https://tessan.com/products/250w-voltage-converter-with-universal-travel-adapter-tc03'),
-             ('TESSAN: travel adapter vs voltage converter guide', 'https://tessan.com/blogs/news/travel-adapter-vs-voltage-converter-guide'),
-             ('TESSAN FAQ (returns)', 'https://tessan.com/pages/faq'),
-             ('BESTEK 250W converter at Walmart',
-              'https://www.walmart.com/ip/BESTEK-250W-Universal-Travel-Adapter-220V-110V-Travel-Voltage-Converter-4-Port-USB-US-AU-EU-UK-India-South-Africa-Worldwide-Plug-Adapter-Red/244740790'),
-             ("Wirecutter's travel adapter guide, as published by Engadget (2020)", 'https://www.engadget.com/2020/01/11/the-best-travel-plug-adapter/'),
-             ('SmarterTravel: adapters vs converters', 'https://www.smartertravel.com/electricity-overseas-converters-adapters-beyond/')],
- 'published': '2026-11-03', "updated": '2026-11-08',
- 'checked': '2026-11-03'},
+# ---------------- universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter (research method ab-2026-11, 2026-11-17) ----------------
+{"slug": 'universal-travel-adapter-with-built-in-220v-to-110v-voltage-converter',
+ "question": 'G93 (Awin brands: universal travel adapter with a built-in 220V to 110V voltage converter)',
+ "method": 'ab-2026-11',
+ "angle": 'C',
+ "searched_as": ['travel voltage converter adapter 220v to 110v limitations hair dryer transformer universal adapter'],
+ "title": 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
+ "h1": 'Is there a universal travel adapter that also converts 220V to 110V for US devices? (2026)',
+ "desc": 'Yes, but the wattage and the socket decide what runs. TESSAN TC03 (250 W) for electronics, a 2000 W outlet for knob-control hair dryers, and only a pure-sine unit for Dyson.',
+ "answer": '<p class="lead"><strong>Short answer.</strong> Yes, there is a universal travel adapter that also converts 220V to 110V for US devices: the TESSAN TC03, a 250 W voltage converter for electronics, not a hair dryer. For a US hair dryer, the Ceptics LX-C2000 2000W outlet runs knob or button dryers only, not Dyson.</p>',
+ "columns": [('converts', 'Outlets that step 220–240 V down to 110 V'), ('dryers', 'Hair dryers, per the maker'), ('usb', 'USB ports'), ('plugs', 'Plug types included')],
+ "rows": [{'slug': 'tessan-250w-voltage-converter-travel-adapter-tc03', 'model': 'TC03', 'cells': {'converts': '2 AC outlets, 250 W max total (220/230 V in, 110 V out)', 'dryers': 'No: TESSAN lists phones, tablets, cameras and small electronics; Techaeris says dryers trip it', 'usb': '2 USB-C (one with 20 W PD, per Techaeris) + 2 USB-A', 'plugs': 'C, G, I/A, F (Gadget Flow)'}}, {'brand': 'Ceptics', 'model': 'LX-C2000', 'url': 'https://www.ceptics.com/products/2000w-travel-voltage-converter-2-usa-outlets-separate-2000w-outlet-for-hair-dryers-3-usb-a-1-usb-c-220v-to-110v-lx-c2000', 'cells': {'converts': '2 outlets at 200 W + 1 separate hair-dryer outlet at 2000 W', 'dryers': 'Mechanical button or knob dryers only; not Dyson or Shark FlexStyle', 'usb': '3 USB-A + 1 USB-C, 6.4 A max', 'plugs': 'A, B, C, E/F, G, I', 'price': '$49.99 (maker, 2026-11-17)'}}, {'brand': 'Ceptics', 'model': 'VC-S2000', 'url': 'https://www.ceptics.com/products/2000w-pure-sine-wave-step-down-converter-2x-2000w-outlets-2x-usb-a-2x-usb-c-ac-220-240v-to-110v-120v-travel-voltage-converter-vc-s2000', 'cells': {'converts': '2 outlets, up to 2000 W, pure sine wave', 'dryers': 'Dyson: maker says connect nothing else while it runs', 'usb': '2 USB-A + 2 USB-C, 40 W max', 'plugs': 'A, B, C, E/F, G, I', 'price': '$129.99 (maker, 2026-11-17)'}}, {'brand': 'Ceptics', 'model': 'LX2-M2000', 'url': 'https://www.ceptics.com/products/2000w-200w-step-down-converter-2x-2000w-1x-200w-dual-voltage-outlets-2x-usb-a-2x-usb-c-ac-220-240v-to-110v-120v-travel-voltage-converter-lx2-m2000', 'cells': {'converts': '2 outlets at 2000 W; the 200 W outlet does not convert', 'dryers': 'Maker warns some hair dryers may not be compatible', 'usb': '2 USB-A + 2 USB-C, up to 3 A', 'plugs': 'A, B, C, E/F, G, I', 'price': '$49.99 (maker, 2026-11-17)'}}, {'brand': 'TESSAN', 'model': 'Universal Travel Adapter 220V to 110V with 4 USB (2000W/200W)', 'url': 'https://www.tessan.com/products/tessan-universal-travel-adapter-with-4-usb-ports-1-usb-c', 'cells': {'converts': 'Converter area 2000 W peak; the 200 W area is for 100–240 V devices', 'dryers': 'Listed for hair dryers, straighteners, kettles, curling irons', 'usb': '3 USB-A + 1 USB-C, 17 W total', 'plugs': 'C, G, I, L', 'price': '$45.99 (maker, 2026-11-17)'}}, {'brand': 'Ceptics', 'model': 'PU-200C', 'url': 'https://www.ceptics.com/products/200w-compact-travel-voltage-converter-2-ac-outlets-1-usb-a-1-usb-c-220v-240v-to-110-120v-step-down-converter-pu-200c-ws', 'cells': {'converts': '2 US outlets, 200 W max', 'dryers': 'No: for curling irons, straighteners and chargers up to 200 W', 'usb': '1 USB-A + 1 USB-C', 'plugs': 'A, E/F, G, I (Type C cord)', 'price': '$34.99 (maker, 2026-11-17)'}}],
+ "after": '\n<h2>What the differences mean</h2><p>A full-size US hair dryer such as the Conair 141WRW draws 1,875 W at 120 V. That is 7.5 times the TESSAN TC03\'s limit (1,875 / 250 = 7.5) and 9.4 times the Ceptics PU-200C\'s (1,875 / 200 = 9.4). No 200–250 W travel adapter can run it.</p><p>The Ceptics VC-S2000 leaves only a small margin over that dryer: 2,000 / 1,875 = 1.07.</p><p>Dyson support costs extra: VC-S2000 vs LX-C2000 is $129.99 − $49.99 = $80.</p><p>Cost per converted watt: TC03 $43.99 / 250 W = $0.176/W. LX-C2000 dryer outlet $49.99 / 2,000 W = $0.025/W. The cheap 2000 W outlet is cheap because it is built for simple heating loads.</p><table><thead><tr><th>Your US device</th><th>What fits</th><th>Why</th></tr></thead><tbody><tr><td>Phone, laptop or camera charger labeled 100–240 V</td><td>Any plug adapter, including the TC03</td><td>Needs no conversion; Ceptics puts these on its non-converting dual-voltage outlet</td></tr><tr><td>110 V-only electronics, shaver or trimmer, under 250 W in total</td><td>TESSAN TC03</td><td>2 converting AC outlets, 250 W total, 2 USB-C + 2 USB-A</td></tr><tr><td>Curling iron or straightener up to 200 W</td><td>Ceptics PU-200C</td><td>Ceptics names curling irons and straighteners up to 200 W</td></tr><tr><td>Hair dryer with a mechanical button or knob</td><td>Ceptics LX-C2000 (2000 W outlet)</td><td>Ceptics says this outlet runs mechanically controlled dryers</td></tr><tr><td>Dyson or other digital-control dryer</td><td>Ceptics VC-S2000, nothing else plugged in</td><td>Pure sine output; the only listing with Dyson-use instructions</td></tr></tbody></table><h2>Which hair dryers a 2000 W outlet will run</h2><p>The wattage on a travel converter does not tell you which dryer it can run. Ceptics says the 2000 W outlet on its LX-C2000 "will work with electric hair dryers that are controlled by a mechanical button or knob". It adds that it "is NOT compatible with digital temperature control and auto shut off hair dryers with electronic circuit boards such as Dyson and Shark Flexstyle products."</p><p>BESTEK draws the same line on its 2000 W EU-plug converter: hair dryers with non-DC motors only, "not available for Dyson". Culture Column explains why: many inexpensive travel converters are built for resistive heating loads and "produce a modified waveform".</p><p>The Ceptics VC-S2000 is the pure sine wave model in the line. It is also the only one whose listing tells you how to run a Dyson: with nothing else connected to the other outlets.</p><p>TESSAN\'s 2000W/200W combo lists hair dryers for its converter area but says nothing about digital dryers. Treat a Dyson as unsupported on it.</p><p>At the low end, BESTEK says not to run any hair dryer on its 300 W converter "regardless of their wattage". Techaeris (Alex Hernandez, 2026-10-02) lists hair dryers, flat irons, curling irons and kettles as loads that trip the TC03\'s protection. In the same review he ran camera battery chargers, laptop bricks and electric trimmers on the TC03 at IFA 2026 "without buzzing, whining, or emitting excessive heat". That makes it the right buy for electronics: {buy:tessan-250w-voltage-converter-travel-adapter-tc03}.</p><h2>Not recommended</h2><p>Don\'t plug a 110 V-only device into the 200 W outlet of a 2000W/200W combo. Ceptics states that the LX2-M2000\'s "200W port DOES NOT CONVERT VOLTAGE", so the device gets the full 220–240 V from the wall. BESTEK says the same of the 200 W outlet and USB ports on its 2000 W EU unit. TESSAN describes the 200 W area of its 4-USB combo as for 100–240 V devices.</p><p>On these units, a 110 V-only device belongs only in an outlet marked as converting. If you just need to run small US electronics, a converter whose AC outlets all convert, like the TC03, avoids the mix-up.</p>\n',
+ "sources": [('TESSAN TC03: 220/230 V in, 110 V out, 250 W max; 2 AC + 2 USB-C (20 W PD) + 2 USB-A; listed devices; $43.99 (read 2026-11-17)', 'https://www.tessan.com/products/250w-voltage-converter-with-universal-travel-adapter-tc03'), ('TC03 hands-on with chargers and trimmers; dryers, irons and kettles trip it; one USB-C port with 20 W PD (Techaeris, Alex Hernandez, 2026-10-02; read 2026-11-17)', 'https://techaeris.com/2026/10/02/tessan-tc03-voltage-converter-review/'), ('TC03 plug types C, G, I/A, F; no hair dryers (Gadget Flow, Madhurima Nag; read 2026-11-17)', 'https://thegadgetflow.com/blog/tessan-250w-voltage-converter-travel-adapter-tc03-review/'), ('Ceptics LX-C2000: 2000 W outlet for mechanical-control dryers only, not Dyson or Shark FlexStyle; ports; plugs; $49.99 (read 2026-11-17)', 'https://www.ceptics.com/products/2000w-travel-voltage-converter-2-usa-outlets-separate-2000w-outlet-for-hair-dryers-3-usb-a-1-usb-c-220v-to-110v-lx-c2000'), ('Ceptics VC-S2000: pure sine, 2 outlets up to 2000 W, 40 W USB, Dyson note; $129.99 (read 2026-11-17)', 'https://www.ceptics.com/products/2000w-pure-sine-wave-step-down-converter-2x-2000w-outlets-2x-usb-a-2x-usb-c-ac-220-240v-to-110v-120v-travel-voltage-converter-vc-s2000'), ('Ceptics LX2-M2000: 200 W port does not convert voltage; ports; plugs; $49.99 (read 2026-11-17)', 'https://www.ceptics.com/products/2000w-200w-step-down-converter-2x-2000w-1x-200w-dual-voltage-outlets-2x-usb-a-2x-usb-c-ac-220-240v-to-110v-120v-travel-voltage-converter-lx2-m2000'), ('Ceptics PU-200C: 200 W, curling irons and straighteners, ports, plugs; $34.99 (read 2026-11-17)', 'https://www.ceptics.com/products/200w-compact-travel-voltage-converter-2-ac-outlets-1-usb-a-1-usb-c-220v-240v-to-110-120v-step-down-converter-pu-200c-ws'), ('TESSAN 2000W/200W 4-USB combo: converter area 2000 W peak, 200 W area for 100–240 V devices, 17 W USB, plugs C/G/I/L; $45.99 (read 2026-11-17)', 'https://www.tessan.com/products/tessan-universal-travel-adapter-with-4-usb-ports-1-usb-c'), ('Typical US hair dryer: Conair 141WRW, 1,875 W at 120 V (read 2026-11-17)', 'https://argo.webstaurantstore.com/conair-141wrw-full-size-brushed-metal-salon-style-hair-dryer-1875w/930141WRW.html'), ('BESTEK 2000W EU unit: non-DC-motor dryers only, not Dyson; 200 W AC and USB ports do not convert (read 2026-11-17)', 'https://www.bestekdirect.com/products/bestek-2000w-voltage-converter-us-to-europe-220v-to-110v-step-down-transformer-for-european-travel-type-c-power-converter-adapter-for-eu-de-fr-it-es'), ('BESTEK 300W: no hair dryers regardless of wattage (read 2026-11-17)', 'https://www.bestekdirect.com/products/bestek-300w-travel-voltage-converter-five-adapters'), ('Cheap heating-load converters produce a modified waveform (Culture Column; read 2026-11-17)', 'https://www.culturecolumn.com/story/adapter-vs-voltage-converter-what-is-the-difference')],
+ "published": '2026-11-03',
+ "checked": '2026-11-17',
+ "updated": '2026-11-17'},
 
 # ---------------- power-station-as-a-ups-for-a-nas-usb-shutdown (research method ab-2026-11, 2026-11-08) ----------------
 {"slug": 'power-station-as-a-ups-for-a-nas-usb-shutdown',
