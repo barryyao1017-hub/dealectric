@@ -26,6 +26,24 @@ def retailer(merchant: str):
     return next((n for k, n in NAMES if k in m), None)
 
 
+SPEC = re.compile(r"(\d+(?:\.\d+)?)\s*(mah|wh|kwh|ah|w|v|k)\b", re.I)
+
+
+def specs(t: str) -> dict:
+    out = {}
+    for n, u in SPEC.findall(re.sub(r"(?<=\d),(?=\d{3})", "", t or "")):   # "1,024 Wh"
+        out.setdefault(u.lower(), set()).add(float(n))
+    return out
+
+
+def same_item(card_title: str, product_name: str) -> bool:
+    """A card for a sibling model (10000 mAh vs our 25000 mAh, 2K vs 4K) shares the name but not the spec: reject a card
+    that states a capacity, wattage or resolution the product's own name contradicts (11-17, Baseus FC41)."""
+    ps, cs = specs(product_name), specs(card_title)
+    near = lambda x, vs: any(abs(x - v) <= 0.02 * v for v in vs)   # "1451.6 Wh" is the 1,451 Wh unit
+    return all(any(near(x, ps[u]) for x in cs[u]) for u in cs if u in ps)   # "25W wireless, 45W cable" names ours too
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("report"); ap.add_argument("slugs", nargs="+"); ap.add_argument("--force", action="store_true")
@@ -39,8 +57,18 @@ def main():
         r, p = rep[s], B.BY_SLUG[s]
         if r.get("verdict") != "cheapest" and not a.force:
             print(f"refused {s}: verdict {r.get('verdict')}"); continue
-        best = {}
+        name = f"{p.get('brand', '')} {p.get('name', '')} {s.replace('-', ' ')}"
+        cards = [c for c in r["cards"] if same_item(c["title"], name)]
         for c in r["cards"]:
+            if c not in cards:
+                print(f"  {s}: dropped other-item card {c['merchant']} ${c['price']} {c['title'][:80]}")
+        if not a.force and any(c["price"] < float(r["after"]) for c in cards if c["kind"] in ("retailer", "brand")):
+            print(f"refused {s}: a same-item card is below our price"); continue
+        brand_cards = [c["price"] for c in cards if c["kind"] == "brand"]
+        if r.get("brand_shown") not in (None, "", "None") and float(r["brand_shown"]) not in brand_cards:
+            r["brand_shown"] = min(brand_cards) if brand_cards else None   # the brand price was read off another item's card
+        best = {}
+        for c in cards:
             n = retailer(c["merchant"])
             if n and c["kind"] in ("retailer", "brand") and c["price"] < best.get(n, 1e9):
                 best[n] = c["price"]
@@ -49,6 +77,9 @@ def main():
             best["Amazon"] = amz[0]
         sellers = sorted(best.items(), key=lambda x: x[1])[:4]
         shown = r.get("brand_shown")   # the brand store's price as Google Shopping shows it today, else our record's
+        if shown not in (None, "", "None") and r.get("list") and float(shown) > 1.10 * float(r["list"]):
+            print(f"  {s}: brand card ${shown} is over 10% above the store price we read (${r['list']}): a bundle or another item, using ours")
+            shown = None
         sellers.append((f"{B.store_host(p)} without the link", float(shown) if shown not in (None, "", "None") else float(p["price"])))
         out["products"][s] = {"date": date, "sellers": [[n, x] for n, x in sellers]}
         print(s, out["products"][s])
