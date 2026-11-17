@@ -20,7 +20,27 @@ import urllib.parse
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 
 
+def _chrome_get(url: str) -> str:
+    """The page's HTML from a background tab of the Agent Chrome (localhost:9222): Amazon blocks curl for hours at a time
+    (11-17: 122 of 140 searches empty), not a real browser."""
+    import os, time
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import codesweep as C
+    t = C.Tab(url)
+    try:
+        end = time.monotonic() + 25
+        while time.monotonic() < end and t.eval("document.readyState") != "complete":
+            time.sleep(0.5)
+        time.sleep(1.5)
+        return t.eval("document.documentElement.outerHTML") or ""
+    finally:
+        t.close()
+
+
 def _get(url: str) -> str:
+    import os
+    if os.environ.get("AMZ_CHROME"):
+        return _chrome_get(url)
     p = subprocess.run(["curl", "-s", "-4", "--compressed", "--max-time", "25", "-A", UA, "-H", "Accept-Language: en-US", url],
                        capture_output=True, text=True, errors="replace")
     return p.stdout

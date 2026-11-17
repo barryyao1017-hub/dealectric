@@ -84,8 +84,11 @@ def match():
         if key in out and (out[key].get('asin') or out[key].get('seen') or not c['results']):
             continue
         toks, mw, pick, li = tokens(model), words(brand + " " + model), None, {}
-        for r in c['results']:
+        for i, r in enumerate(c['results']):
             t = r.get('title') or ''
+            if not t and i < 4:   # a search read in Chrome can leave a card's title unrendered: read it on the listing
+                t = amzcheck.listing(r['asin']).get('title') or ''; time.sleep(2)
+                r = {**r, 'title': t}
             if not t:
                 continue
             nt, tw = norm(t), words(t)
@@ -98,7 +101,8 @@ def match():
             li = amzcheck.listing(r['asin']); time.sleep(4)   # search titles drop the brand: check it on the listing
             if li.get('found') and norm(brand.split()[0]) in norm(li.get('title') or '') \
                     and (not toks or all(x in norm(li['title']) for x in toks)) and not ((words(li['title']) & EDITIONS) - mw) \
-                    and not (ACCESSORY.search(li['title']) and not ACCESSORY.search(model)):
+                    and not (ACCESSORY.search(li['title']) and not ACCESSORY.search(model)) \
+                    and not re.search(r"renewed|refurbished|open box|pre-owned", li['title'], re.I):
                 pick = r; break
         if not pick:
             out[key] = {"asin": None, "why": "no title match", "seen": [r.get('title', '')[:90] for r in c['results'][:4]]}
