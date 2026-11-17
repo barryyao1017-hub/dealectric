@@ -1,0 +1,115 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what each all-NVMe box draws at idle for each M.2 slot, or what that comes to per year. From named reviewers' wall-meter idle readings: Asustor Flashstor 6 Gen2 is 13.1 W ÷ 6 = 2.2 W per slot (115 kWh/yr), TerraMaster F8 SSD Plus is 19.7 W ÷ 8 = 2.5 W per slot (173 kWh/yr) and UGREEN DXP480T Plus is 18 W ÷ 4 = 4.5 W per slot (158 kWh/yr).",
+ "standout": 2,
+ "standout_why": "I compared against computingforgeeks.com (cited), homelabcompass.com (cited) and starryhope.com (top result). ComputingForGeeks already converts PCIe lanes to GB/s and compares each slot with a 10GbE port. It also prices a fully loaded box. StarryHope gives SSD $/TB. None of the three gives idle watts per box or per M.2 slot, or yearly kWh. None works out the price per slot either.",
+ "decides": "This adds to the pick rather than changing it. For an always-on box, the Flashstor 6 Gen2 has the lowest idle draw per slot and per year, even with six slots on Gen4 lanes. The F8 SSD Plus gives the most slots for little more power per slot. But each slot is Gen3 x1, so one drive can't fill 10GbE (1.25 ÷ 0.985 = 1.27, so at least two drives striped). The DXP480T Plus costs about twice as much idle power per slot as the other two. You get the i5 and Thunderbolt for that. The three reviewers used different drive setups, so the per-slot figures are a guide, not a ranking from one lab.",
+ "candidates": [
+  "Asustor Flashstor 6 Gen2 (FS6806X)",
+  "TerraMaster F8 SSD Plus",
+  "UGREEN NASync DXP480T Plus",
+  "TerraMaster F4 SSD",
+  "TerraMaster F8 SSD",
+  "Beelink ME mini",
+  "Asustor Flashstor 6 (FS6706T)",
+  "QNAP TBS-464",
+  "LincPlus LincStation N2"
+ ],
+ "findings": [
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Measured idle draw and idle per M.2 slot",
+   "value": "13.1 W idle; 2.2 W per slot",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/asustor-flashstor-6-gen-2-fs6806x-nas-review/15/",
+   "source_title": "KitGuru: Asustor Flashstor 6 Gen 2 FS6806X NAS review (Simon Crisp, 2025-02-26)",
+   "read": "2026-11-17",
+   "note": "KitGuru measured 13.1 W idle, 27.2 W on reads and 32.8 W on writes with 'the mix of disks we used' (drive count not stated). Per slot: 13.1 ÷ 6 = 2.18 W."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Idle energy per year",
+   "value": "115 kWh/yr",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/asustor-flashstor-6-gen-2-fs6806x-nas-review/15/",
+   "source_title": "KitGuru: Asustor Flashstor 6 Gen 2 FS6806X NAS review",
+   "read": "2026-11-17",
+   "note": "13.1 W × 8,760 h ÷ 1,000 = 114.8 kWh at 24/7 idle."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "M.2 lane layout and total SSD-side bandwidth compared with its 10GbE port",
+   "value": "1× Gen4 x4, 3× Gen4 x2, 2× Gen4 x1 = 12 Gen4 lanes ≈ 23.6 GB/s, about 19× one 10GbE port",
+   "source": "https://www.asustor.com/en/product/spec?p_id=90",
+   "source_title": "ASUSTOR FS6806X specifications",
+   "read": "2026-11-17",
+   "note": "Asustor lists the per-slot lanes. 4 + 3×2 + 2×1 = 12 lanes; 12 × 1.969 GB/s per Gen4 lane (the per-lane figure ComputingForGeeks uses) = 23.6 GB/s; 23.6 ÷ 1.25 GB/s (10 Gb/s ÷ 8) = 18.9. Asustor's own rating is 17.9 W in operation and 1.2 W asleep, with a 90 W adapter."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Measured idle draw and idle per M.2 slot",
+   "value": "19.7 W idle; 2.5 W per slot",
+   "source": "https://liliputing.com/terramaster-f8-ssd-plus-review/",
+   "source_title": "Liliputing: TerraMaster F8 SSD Plus review (Ian W Morrison, 2024-10-13)",
+   "read": "2026-11-17",
+   "note": "Measured with eight 4 TB NVMe drives installed: 19.7 W idle, 36.2 W writing to the NAS, 41.6 W reading from it, 2.2 W when shut down. Per slot: 19.7 ÷ 8 = 2.46 W."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Idle energy per year",
+   "value": "173 kWh/yr",
+   "source": "https://liliputing.com/terramaster-f8-ssd-plus-review/",
+   "source_title": "Liliputing: TerraMaster F8 SSD Plus review",
+   "read": "2026-11-17",
+   "note": "19.7 W × 8,760 h ÷ 1,000 = 172.6 kWh."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Drives that must be striped to fill one 10GbE port",
+   "value": "2 drives (one Gen3 x1 slot tops out at about 79% of 10GbE)",
+   "source": "https://liliputing.com/terramaster-f8-ssd-plus-review/",
+   "source_title": "Liliputing: TerraMaster F8 SSD Plus review",
+   "read": "2026-11-17",
+   "note": "Liliputing gives each drive's ceiling as 8 Gb/s (about 984.62 MB/s, one Gen3 lane). 0.985 ÷ 1.25 = 0.79, and 1.25 ÷ 0.985 = 1.27, which rounds up to 2 drives."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Measured idle draw and idle per M.2 slot",
+   "value": "about 18 W idle; 4.5 W per slot",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "Liliputing: UGREEN NASync DXP480T Plus review (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-17",
+   "note": "Measured: about 18 W idle (UGOS Pro, on Ethernet), about 42 W reading, about 55 W writing, 1.4 W off. Lanes: bays 1–2 x4, bays 3–4 x2. Per slot: 18 ÷ 4 = 4.5 W."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Idle energy per year",
+   "value": "158 kWh/yr",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "Liliputing: UGREEN NASync DXP480T Plus review",
+   "read": "2026-11-17",
+   "note": "18 W × 8,760 h ÷ 1,000 = 157.7 kWh."
+  },
+  {
+   "product": "general",
+   "label": "Per-lane and 10GbE throughput constants used above",
+   "value": "Gen3 ≈ 0.985 GB/s per lane; Gen4 ≈ 1.969 GB/s per lane; 10GbE = 1.25 GB/s",
+   "source": "https://computingforgeeks.com/best-all-flash-nvme-nas/",
+   "source_title": "ComputingForGeeks: Best All-Flash NVMe NAS (2026): Lanes vs 10GbE",
+   "read": "2026-11-17",
+   "note": "This is the rival's own conversion. I used it so the per-slot figures match the bandwidth figures the reader may already have seen."
+  }
+ ],
+ "unsourced": [
+  "Today's (2026-11-17) maker-store prices for TerraMaster F8 SSD Plus, F4 SSD and F8 SSD (terra-master.com), UGREEN DXP480T Plus (nas.ugreen.com, us.ugreen.com) and Beelink ME mini (bee-link.com). Every fetch returned HTTP 429, and the storecheck.py and amzcheck.py tools were blocked in this session. Without prices there is no $ per M.2 slot or $ per Gb/s figure.",
+  "A US price for the Asustor FS6806X: Asustor has no US store, and Newegg returned HTTP 403.",
+  "Measured idle draw for TerraMaster F4 SSD, F8 SSD, Beelink ME mini, LincStation N2, QNAP TBS-464 and Flashstor 6 FS6706T. I didn't search these within the tool budget.",
+  "How many drives KitGuru had in the FS6806X idle test (the review says only 'the mix of disks we used'), and how many SSDs Liliputing had in the DXP480T Plus. So the per-slot idle figures don't come from matched drive setups.",
+  "TechRadar's FS6806X review didn't load, so I couldn't use its numbers.",
+  "A sourced US average $/kWh rate to turn yearly kWh into dollars."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9522583
+ }
+}

@@ -1,0 +1,110 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states Asustor's own memory rule for the Flashstor 6 Gen2 (FS6806X): it has 2 SO-DIMM slots and a 64 GB maximum, and ECC is switched off if a non-ECC module is installed or mixed with an ECC one. Asustor's own spec page and datasheet also disagree on whether the 8 GB module it ships with is ECC.",
+ "standout": 2,
+ "standout_why": "I compared the two cited pages, computingforgeeks.com and homelabcompass.com, plus the uncited #2 result, starryhope.com. Computingforgeeks says only 'buy an ECC module if you want one' and claims the datasheet lists the shipped module as non-ECC, but Asustor's datasheet page today says ECC. It gives no slot count and no rule about mixing modules. Homelabcompass calls the FS6806X non-ECC outright and says its USB4 is for 'direct-attach work'. Asustor's spec page says host-to-host USB4 is not supported, so that is wrong. Starryhope does say the FS6806X's USB4 can't connect directly to a computer and gives the per-slot lane map. That direct-attach point is therefore not new, which is why the ECC rule is the gap.",
+ "decides": "This settles the main compatibility split under $900. Among the shortlisted boxes, only the UGREEN DXP480T Plus can be linked directly to a PC over a cable: Liliputing ran Thunderbolt 4 direct at about 1.51 GB/s. Asustor says the FS6806X's USB4 ports take only USB4/Thunderbolt 3/4 storage devices and cannot connect host-to-host. A shopper who wants a direct cable to a laptop should take the DXP480T Plus. A shopper who wants ECC should take the FS6806X, but should confirm the stock module is ECC or replace it, because adding an ECC module next to a non-ECC one switches ECC off. Our page also needs two fixes. Asustor publishes the FS6806X lane map (1× Gen4 x4, 3× x2, 2× x1), so 'lane routing unverified' can go. And our FS6806X link (p_id=93) opens the Lockerstor 12R/16R Pro Gen2 page; the right page is p_id=90.",
+ "candidates": [
+  "UGREEN NASync DXP480T Plus",
+  "Asustor Flashstor 6 Gen2 (FS6806X)",
+  "TerraMaster F8 SSD Plus",
+  "TerraMaster F4 SSD",
+  "Beelink ME mini"
+ ],
+ "findings": [
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Memory slots, maximum and ECC rule",
+   "value": "2 SO-DIMM slots, ships 8 GB DDR5-4800 (1 × 8 GB), maximum 64 GB; ECC is disabled if non-ECC memory is installed or mixed with ECC memory",
+   "source": "https://www.asustor.com/product/spec?p_id=90",
+   "source_title": "ASUSTOR FS6806X – Hardware & Packaging",
+   "read": "2026-11-17",
+   "note": "Asustor's spec page. This page describes the shipped module as '8GB DDR5-4800 SO-DIMM' and does not say ECC."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Shipped module per Asustor datasheet page",
+   "value": "8GB ECC DDR5-4800 SO-DIMM (8GB x1, expandable, max 64GB)",
+   "source": "https://www.asustor.com/datasheet?p_id=90",
+   "source_title": "ASUSTOR – Datasheet (FS6806X)",
+   "read": "2026-11-17",
+   "note": "This contradicts the spec page above, which leaves out 'ECC'. Computingforgeeks says the datasheet lists the module as non-ECC. Check the module's label before relying on ECC."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "USB4 direct connection",
+   "value": "2 × USB4 (40 Gb/s per port); host-to-host connectivity not supported; for USB4, Thunderbolt 3 and Thunderbolt 4 storage devices",
+   "source": "https://www.asustor.com/datasheet?p_id=90",
+   "source_title": "ASUSTOR – Datasheet (FS6806X)",
+   "read": "2026-11-17",
+   "note": "The spec page p_id=90 also states 'Host-to-Host connectivity is not supported'. The datasheet footnote says AMD's Ryzen Embedded V3000 series does not support direct USB4 host-to-host networking."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "M.2 slots and lanes",
+   "value": "6 × M.2 2280 NVMe: 1 × PCIe 4.0 x4, 3 × PCIe 4.0 x2, 2 × PCIe 4.0 x1",
+   "source": "https://www.asustor.com/product/spec?p_id=90",
+   "source_title": "ASUSTOR FS6806X – Hardware & Packaging",
+   "read": "2026-11-17",
+   "note": "Replaces our cell 'lane routing for all six unverified'. Only M.2 2280 is listed. The datasheet's 'up to PCIe 4.0 x4' refers to the best slot only."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Warranty and drive expansion",
+   "value": "3 years; up to 12 bays with an expansion unit (spec page) or 18 bays with the AS5004U on USB (datasheet)",
+   "source": "https://www.asustor.com/product/spec?p_id=90",
+   "source_title": "ASUSTOR FS6806X – Hardware & Packaging",
+   "read": "2026-11-17",
+   "note": "The two Asustor pages give different maximum bay counts (12 and 18)."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Our page's product URL",
+   "value": "p_id=93 is the Lockerstor 12R Pro Gen2 / 16R Pro Gen2 page; the FS6806X is p_id=90",
+   "source": "https://www.asustor.com/en/product?p_id=93",
+   "source_title": "ASUSTOR Lockerstor 12R/16R Pro Gen2 product page",
+   "read": "2026-11-17",
+   "note": "I opened p_id=93 and it describes a rackmount unit with a Gen5 M.2 slot and 192 GB maximum RAM. The FS6806X link was found by search and p_id=90 was opened."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Thunderbolt 4 direct connection to a PC",
+   "value": "Works: link of 10–20 Gb/s depending on the PC; average 1.51 GB/s receive and 1.42 GB/s send",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "Liliputing – UGREEN NASync DXP480T Plus review (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-17",
+   "note": "Ian Morrison connected Windows and Ubuntu PCs directly with a Thunderbolt 4 cable; MTU was capped at 4070 on the PC. No Mac was tested."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "M.2 lanes, RAM slots",
+   "value": "Bays 1–2 PCIe Gen4 x4, bays 3–4 x2 (Liliputing says all four bays are Gen4); separate system SSD at PCIe Gen3 x2; 2 DDR5 SO-DIMM slots, up to 64 GB; ships with 1 × 8 GB",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "Liliputing – UGREEN NASync DXP480T Plus review (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-17",
+   "note": "Starryhope says bays 3–4 are PCIe 3.0 x2, so the disagreement over the x2 bays' generation is still open. Four thermal pads come in the box and the drives are M.2 2280."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Third-party OS",
+   "value": "UGREEN does not support systems that aren't running UGOS Pro; it first said a third-party OS voids the warranty, then said it was not intentionally blocking them",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "Liliputing – UGREEN NASync DXP480T Plus review (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-17",
+   "note": "Computingforgeeks quotes UGREEN's warranty page as saying a third-party OS leaves the hardware warranty unchanged. I did not open UGREEN's warranty page."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own document on Thunderbolt direct connection for the DXP480T Plus (supported models, Windows driver, minimum UGOS version): the only copy I found is on knowledge-test.ugnas.com and it loaded empty; nas.ugreen.com and ai.ugreen.com returned 429 or 403, and storecheck got 403.",
+  "UGREEN's maker spec for the DXP480T Plus (lanes per M.2 slot, SSD thickness or heatsink limit, memory compatibility list): its product pages returned 429, and the manuals.plus PDF copy had no readable text.",
+  "TerraMaster F8 SSD Plus memory slots and maximum, lanes per slot and third-party OS policy from terra-master.com: the product page returned 429. TechPowerUp and Neowin returned 403. Virtualization Howto (Brandon Lee) gives only '16–32 GB DDR5' and believes the slots are Gen3.",
+  "Asustor FS6806X Quick Installation Guide (FS6806X/FS6812X, Ver. 5.0.1015) notes on heatsinks and SSD thickness: the PDF text did not extract, and saving it locally needed permissions I did not have.",
+  "Today's prices for every candidate: storecheck was blocked (403) and the Shopify stores rate-limited (429), so no prices were taken."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.2855595000000004
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the CPU's PCIe lane budget that limits each box. Intel lists 20 lanes in total for the DXP480T Plus's i5-1235U, and its Gen4 lanes come only from the CPU, which has at most 8 on U/P-series chips. Liliputing's slot map gives those 8 to drive slots 1–2, so slots 3–4, the OS drive and the 10GbE port must run on the Gen3 PCH lanes. Intel's N95 and i3-N305 have only 9 PCIe Gen3 lanes in total, which are shared by up to eight NVMe slots and the 10GbE NIC.",
+ "standout": 2,
+ "standout_why": "Of the two pages ChatGPT cited, computingforgeeks.com/best-all-flash-nvme-nas lists each slot's lane width and the F8 SSD Plus's ASM2806 switch. It labels the DXP480T Plus's x2 slots 'generation disputed', citing Liliputing (Gen4) against TechRadar (Gen3), and says the page gives no CPU lane count for any product. homelabcompass.com/alternatives/best-all-flash-nas only says the N305 'does not have enough PCIe lanes', with no number, and calls the DXP480T Plus '4x M.2 Gen4' without lane widths. Neither page settles the dispute from Intel's own lane budget, and neither gives the 9-lane figure for the N95/N305. Our own page also left both questions open: 'reviews disagree on Gen3 or Gen4 for the x2 pair' and 'lanes not published' for the F8 SSD.",
+ "decides": "This confirms the pick and does not change it. Even if the DXP480T Plus's slots 3–4 are Gen3 x2, each still moves about 1.97 GB/s, more than one 10GbE port carries (1.25 GB/s raw). Over the network all four slots are limited by the port, not the slot. The lane split only matters for drive-to-drive copies or Thunderbolt transfers inside the box. On the TerraMaster F8 SSD, F8 SSD Plus and F4 SSD, every drive and the NIC share a ceiling of 9 Gen3 lanes. Adding more drives there buys capacity, not more speed per drive, which supports recommending them for capacity per dollar rather than speed.",
+ "candidates": [
+  "UGREEN NASync DXP480T Plus",
+  "TerraMaster F8 SSD Plus",
+  "TerraMaster F8 SSD",
+  "TerraMaster F4 SSD",
+  "Asustor Flashstor 6 Gen2 (FS6806X)"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "i5-1235U PCIe lane budget (Intel)",
+   "value": "20 PCIe lanes in total; CPU lanes are PCIe Gen 4, PCH lanes are PCIe Gen 3",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/226266/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz-with-ipu/specifications.html",
+   "source_title": "Intel Core i5-1235U Processor (12M Cache, up to 4.40 GHz, with IPU) – Specifications",
+   "read": "2026-11-17",
+   "note": "Intel's spec fields: 'Microprocessor PCIe Revision: Gen 4', 'Chipset / PCH PCIe Revision: Gen 3', 'Max # of PCI Express Lanes: 20'. This is the variant 'with IPU'. Our unverified assumption is that the NAS uses the same silicon, so the lane budget is the same."
+  },
+  {
+   "product": "general",
+   "label": "Alder Lake U/P-series CPU PCIe 4.0 lanes (Intel)",
+   "value": "Up to 8 PCIe 4.0 lanes on the CPU (U/P series)",
+   "source": "https://www.intel.com/content/www/us/en/products/platforms/details/alder-lake-p.html",
+   "source_title": "Intel Alder Lake-P platform details",
+   "read": "2026-11-17",
+   "note": "Intel's text: 'Up to eight lanes PCIe 4.0 on the CPU (U/P series)'. The same page's IoT SKU table lists '16 (CPU) 12 (PCH)' for the i7-1265UE, which contradicts the text. 8 CPU lanes plus 12 PCH lanes matches the i5-1235U's total of 20 on Intel's spec page."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "PCIe lane map (reviewer)",
+   "value": "x4 for 10GbE; x2 for OS NVMe; x4 + x4 for storage slots 1–2; x2 + x2 for storage slots 3–4 (18 lanes)",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review: A speedy NAS with 10 GbE networking and four M.2 SSD slots – Liliputing (Ian W Morrison, 2024-09-10)",
+   "read": "2026-11-17",
+   "note": "Liliputing says all four bays are 'PCIe Gen 4'. The arithmetic does not allow that: the CPU has at most 8 Gen4 lanes and slots 1–2 at x4 + x4 use all 8. The remaining 10 lanes (slots 3–4 at 2 + 2, OS drive 2, NIC 4) fit only within the 12 Gen3 PCH lanes. So slots 3–4 must be Gen3 x2, about 0.985 × 2 = 1.97 GB/s each, which supports TechRadar's Gen3. This is an inference from Intel's lane budget, not a reading taken from the box with lspci."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "i3-N305 PCIe lane budget (Intel)",
+   "value": "9 PCIe Gen 3 lanes in total",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231805/intel-core-i3n305-processor-6m-cache-up-to-3-80-ghz/specifications.html",
+   "source_title": "Intel Core i3-N305 Processor – Specifications",
+   "read": "2026-11-17",
+   "note": "Intel's spec fields: 'Chipset / PCH PCIe Revision: Gen 3', 'Max # of PCI Express Lanes: 9'; also 'Max Memory Size: 16 GB' and 'ECC: No'. Eight NVMe slots plus a 10GbE NIC on 9 Gen3 lanes is why the box needs a PCIe switch and the slots run at x1. The total ceiling is about 9 × 0.985 ≈ 8.9 GB/s before any port is subtracted. Intel's 16 GB memory limit is lower than the 32 GB maximum some listings claim; we have not checked that."
+  },
+  {
+   "product": "TerraMaster F8 SSD / F4 SSD",
+   "label": "Intel N95 PCIe lane budget (Intel)",
+   "value": "9 PCIe Gen 3 lanes in total; max memory 16 GB",
+   "source": "https://www.intel.com/content/www/us/en/products/sku/231800/intel-processor-n95-6m-cache-up-to-3-40-ghz/specifications.html",
+   "source_title": "Intel Processor N95 (6M Cache, up to 3.40 GHz) – Specifications",
+   "read": "2026-11-17",
+   "note": "TerraMaster does not publish the F8 SSD's lane map. This sets an upper bound: 8 slots plus the 10GbE NIC share 9 Gen3 lanes, so the slots average x1 or less. Intel's 16 GB limit contradicts the '32 GB' maximum our current page lists for the F4 SSD."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "M.2 slot interface (Asustor datasheet)",
+   "value": "Six M.2 NVMe slots, 'Supports up to PCIe 4.0 x4'; 1× 10GbE; 2× USB4 (40 Gb/s per port, host-to-host not supported)",
+   "source": "https://www.asustor.com/datasheet?p_id=90",
+   "source_title": "ASUSTOR FS6806X datasheet",
+   "read": "2026-11-17",
+   "note": "Asustor gives only the maximum width ('up to'), not each slot's width. computingforgeeks puts the slots at Gen4 x4 down to Gen4 x1. The datasheet also lists 8 GB ECC DDR5 (max 64 GB), while homelabcompass calls the FS6806X non-ECC. That conflict is not resolved here. The datasheet line 'Host-to-Host connectivity is not supported' means USB4 cannot serve as a direct PC-to-NAS network link, unlike the DXP480T Plus's Thunderbolt."
+  }
+ ],
+ "unsourced": [
+  "The DXP480T Plus's x2 slot generation as read on the box (lspci LnkSta) or stated by UGREEN: ugreen.com returned HTTP 429 to WebFetch and HTTP 403 to storecheck, and a search found no lspci output.",
+  "TerraMaster's own F8 SSD Plus / F8 SSD page, for slot lanes and price: terra-master.com returned HTTP 429 to WebFetch and HTTP 403 to storecheck.",
+  "The AMD Ryzen Embedded V3C14's total PCIe lane count from AMD: the amd.com V3000 pages timed out twice; a search snippet said 20 Gen4 lanes, but I did not open that source, so the figure is left out.",
+  "Asustor's own per-slot lane split for the FS6806X: the datasheet says only 'up to PCIe 4.0 x4'."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0390367000000003
+ }
+}

@@ -1,0 +1,333 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "D",
+  "why_angle": "ComputingForGeeks and HomelabCompass both list slot widths, but neither gives any processor's total PCIe lane count. ComputingForGeeks also leaves the UGREEN DXP480T Plus's x2 slots as 'generation disputed'. This page uses Intel's own lane counts (20 lanes for the i5-1235U, of which up to 8 are Gen4 on the CPU; 9 Gen3 lanes for the N95 and i3-N305) to settle that question and to show what the extra drives add. It also pairs this with the Asustor FS6806X, which is now under $900 and has 12 Gen4 lanes feeding its six slots.",
+  "slug": "best-all-nvme-nas-under-900",
+  "must": [
+   "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "12 PCIe 4.0 lanes"
+  ],
+  "products": [
+   {
+    "slug": "asustor-flashstor-6-gen2-fs6806x",
+    "brand": "Asustor",
+    "program": "amazon:us",
+    "asin": "B0DKJG5QXS",
+    "category": "nas",
+    "name": "Asustor Flashstor 6 Gen2 FS6806X 6-Bay All-NVMe NAS, AMD Ryzen Embedded V3C14, 8 GB DDR5, 10GbE, 2× USB4 (diskless)",
+    "model": "FS6806X",
+    "url": "https://www.amazon.com/dp/B0DKJG5QXS",
+    "price": null,
+    "verified": "2026-11-17",
+    "specs": [
+     [
+      "M.2 slots",
+      "6 × M.2 2280 NVMe: 1 × PCIe 4.0 x4, 3 × PCIe 4.0 x2, 2 × PCIe 4.0 x1 (Asustor)"
+     ],
+     [
+      "Lanes feeding the drives",
+      "12 PCIe 4.0 lanes, about 23.6 GB/s"
+     ],
+     [
+      "Network",
+      "1 × 10GbE"
+     ],
+     [
+      "USB",
+      "2 × USB4 at 40 Gb/s; host-to-host not supported (Asustor)"
+     ],
+     [
+      "Memory",
+      "8 GB DDR5-4800 in 2 SO-DIMM slots, up to 64 GB, ECC supported (Asustor)"
+     ],
+     [
+      "Idle at the wall",
+      "13.1 W (KitGuru)"
+     ],
+     [
+      "Power adapter",
+      "90 W (Asustor)"
+     ]
+    ],
+    "warranty": "3 years (Asustor)",
+    "returns": null,
+    "summary": "Six M.2 slots on 12 PCIe 4.0 lanes. Even its slowest x1 slot outruns the 10GbE port, so any single drive can fill the network link.",
+    "fit": "Buyers filling up to six NVMe drives who want the fastest link per slot over 10GbE and the lowest idle draw of the 10GbE boxes here.",
+    "caveats": [
+     "Asustor's datasheet lists the 8 GB module it ships with as ECC, but its spec page does not say. ECC switches off if any non-ECC module is installed, so check the module's label before relying on ECC.",
+     "The USB4 ports do not support host-to-host connections, so the box can't be cabled straight to a PC as a network link.",
+     "Asustor does not say which slot number gets which link width.",
+     "Asustor lists no video output or hardware video transcoding. ComputingForGeeks reports that the AMD 10GbE controller needed out-of-tree patches on Debian."
+    ]
+   },
+   {
+    "slug": "terramaster-f8-ssd-plus",
+    "brand": "TerraMaster",
+    "program": "amazon:us",
+    "asin": "B0D9HWLDX5",
+    "category": "nas",
+    "name": "TerraMaster F8 SSD Plus 8-Bay All-NVMe NAS, Intel Core i3-N305, 16 GB DDR5, 10GbE (diskless)",
+    "model": "F8 SSD Plus",
+    "url": "https://www.amazon.com/dp/B0D9HWLDX5",
+    "price": null,
+    "verified": "2026-11-17",
+    "specs": [
+     [
+      "M.2 slots",
+      "8 × M.2 NVMe, each PCIe 3.0 x1; slots 5–8 sit behind an ASM2806 switch on a 2-lane uplink (Liliputing)"
+     ],
+     [
+      "CPU PCIe lanes",
+      "i3-N305: 9 PCIe 3.0 lanes in total (Intel)"
+     ],
+     [
+      "Lanes feeding the drives",
+      "6 PCIe 3.0 lanes, about 5.9 GB/s across eight slots"
+     ],
+     [
+      "Network",
+      "1 × 10GbE"
+     ],
+     [
+      "Idle at the wall",
+      "19.7 W with eight SSDs (Liliputing)"
+     ],
+     [
+      "Power adapter",
+      "72 W, 12 V 6 A (Liliputing)"
+     ]
+    ],
+    "warranty": "2 years (ComputingForGeeks)",
+    "returns": null,
+    "summary": "The most M.2 slots here, but every slot is a single Gen3 lane and drives 5–8 share one 2-lane uplink.",
+    "fit": "Buyers who need seven or eight NVMe drives for capacity rather than speed per drive.",
+    "caveats": [
+     "One drive moves about 0.985 GB/s, 79% of a 10GbE port, so a transfer needs two drives striped to fill the link.",
+     "ComputingForGeeks reports that Debian, Ubuntu and TrueNAS SCALE failed to boot fully with drives on the PCIe switch.",
+     "Intel lists 16 GB as the i3-N305's maximum memory."
+    ]
+   },
+   {
+    "slug": "terramaster-f4-ssd",
+    "brand": "TerraMaster",
+    "program": "amazon:us",
+    "asin": "B0F8BD112M",
+    "category": "nas",
+    "name": "TerraMaster F4 SSD 4-Bay All-NVMe NAS, Intel N95, 8 GB DDR5, 5GbE (diskless)",
+    "model": "F4 SSD",
+    "url": "https://www.amazon.com/dp/B0F8BD112M",
+    "price": null,
+    "verified": "2026-11-17",
+    "specs": [
+     [
+      "M.2 slots",
+      "4 × M.2 NVMe: two PCIe 3.0 x2, two PCIe 3.0 x1 (NASCompares)"
+     ],
+     [
+      "CPU PCIe lanes",
+      "Intel N95: 9 PCIe 3.0 lanes in total (Intel)"
+     ],
+     [
+      "Network",
+      "1 × 5GbE (HWBusters)"
+     ],
+     [
+      "USB",
+      "3 × USB 3.2 Gen 2, two Type-A and one Type-C (HWBusters)"
+     ],
+     [
+      "Idle at the wall",
+      "9 W with all four slots filled (HWBusters)"
+     ],
+     [
+      "Noise at 1 m",
+      "9.1 / 18.5 / 24.4 dBA at low / medium / full fan (HWBusters)"
+     ],
+     [
+      "Power adapter",
+      "48 W (HWBusters)"
+     ]
+    ],
+    "warranty": "2 years (HWBusters)",
+    "returns": null,
+    "summary": "The lowest-power all-NVMe box here: 9 W idle with four drives, and any one drive fills its 5GbE port.",
+    "fit": "A quiet, always-on home file and media store where 5GbE is fast enough.",
+    "caveats": [
+     "The 5GbE port caps transfers at about 0.625 GB/s.",
+     "HWBusters lists 32 GB as the maximum memory, while Intel lists 16 GB for the N95."
+    ]
+   }
+  ],
+  "page": {
+   "title": "Best all-NVMe (SSD-only) NAS under $900 (2026): slots, lanes and what four drives add",
+   "h1": "Best all-NVMe NAS under $900 (2026)",
+   "desc": "The Asustor Flashstor 6 Gen2 feeds six M.2 slots with 12 PCIe 4.0 lanes. We compare it with the UGREEN DXP480T Plus, TerraMaster F8 SSD Plus and F4 SSD on CPU lanes, 10GbE and idle watts.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> The best all-NVMe (all-flash) NAS under $900 is the Asustor Flashstor 6 Gen2 (FS6806X): its six M.2 slots share 12 PCIe 4.0 lanes, while the TerraMaster F8 SSD Plus feeds eight slots from an i3-N305 with 9 Gen3 lanes in all, and the UGREEN DXP480T Plus runs two of four slots at x2.</p>",
+   "columns": [
+    [
+     "slots",
+     "M.2 slots and link per slot"
+    ],
+    [
+     "budget",
+     "Lanes feeding the drives"
+    ],
+    [
+     "port",
+     "Network, and drives needed to fill it"
+    ],
+    [
+     "idle",
+     "Idle at the wall"
+    ]
+   ],
+   "rows": [
+    {
+     "slug": "asustor-flashstor-6-gen2-fs6806x",
+     "model": "Asustor Flashstor 6 Gen2 (FS6806X)",
+     "cells": {
+      "slots": "6: one PCIe 4.0 x4, three x2, two x1 (Asustor)",
+      "budget": "12 × Gen4, about 23.6 GB/s",
+      "port": "10GbE; any one drive fills it",
+      "idle": "13.1 W (KitGuru)"
+     }
+    },
+    {
+     "slug": "ugreen-nasync-dxp480t-plus",
+     "model": "UGREEN NASync DXP480T Plus",
+     "cells": {
+      "slots": "4: two PCIe 4.0 x4, two x2 (Liliputing); the x2 pair runs Gen3 by Intel's lane count",
+      "budget": "8 × Gen4 + 4 × Gen3, about 19.7 GB/s, from the i5-1235U's 20 lanes (Intel)",
+      "port": "10GbE, plus Thunderbolt 4 direct to a PC at 1.51 GB/s (Liliputing); any one drive fills 10GbE",
+      "idle": "About 18 W (Liliputing)"
+     }
+    },
+    {
+     "slug": "terramaster-f8-ssd-plus",
+     "model": "TerraMaster F8 SSD Plus",
+     "cells": {
+      "slots": "8: all PCIe 3.0 x1; slots 5–8 behind a 2-lane switch (Liliputing)",
+      "budget": "6 × Gen3, about 5.9 GB/s, from the i3-N305's 9 lanes (Intel)",
+      "port": "10GbE; needs two drives striped",
+      "idle": "19.7 W with eight SSDs (Liliputing)"
+     }
+    },
+    {
+     "slug": "terramaster-f4-ssd",
+     "model": "TerraMaster F4 SSD",
+     "cells": {
+      "slots": "4: two PCIe 3.0 x2, two x1 (NASCompares)",
+      "budget": "6 × Gen3, about 5.9 GB/s, from the N95's 9 lanes (Intel)",
+      "port": "5GbE; any one drive fills it",
+      "idle": "9 W with four SSDs (HWBusters)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><p>A 10GbE port carries 1.25 GB/s (10 Gb/s ÷ 8). One PCIe 3.0 lane moves about 0.985 GB/s and one PCIe 4.0 lane about 1.969 GB/s. These are the per-lane conversions ComputingForGeeks uses.</p><ul><li><strong>Asustor Flashstor 6 Gen2:</strong> 4 + 2 + 2 + 2 + 1 + 1 = 12 Gen4 lanes; 12 × 1.969 ≈ 23.6 GB/s to the drives. Even its x1 slot (1.97 GB/s) is faster than the 10GbE port.</li><li><strong>UGREEN DXP480T Plus:</strong> 2 × 7.9 GB/s (x4 Gen4) + 2 × 1.97 GB/s (x2 Gen3) ≈ 19.7 GB/s. Every slot is faster than 10GbE.</li><li><strong>TerraMaster F8 SSD Plus:</strong> 6 Gen3 lanes × 0.985 ≈ 5.9 GB/s across eight slots. One x1 slot is 0.985 ÷ 1.25 = 79% of 10GbE, so a transfer needs two drives striped to fill the port. Drives 5–8 share one 2-lane uplink: 2 × 0.985 ≈ 1.97 GB/s between them.</li><li><strong>TerraMaster F4 SSD:</strong> 2 × 2 + 2 × 1 = 6 Gen3 lanes ≈ 5.9 GB/s. Its 5GbE port carries 0.625 GB/s, so any single drive fills it.</li><li><strong>Left on 24/7 at idle:</strong> 13.1 W × 8,760 h ≈ 115 kWh a year for the Flashstor 6 Gen2, 19.7 W × 8,760 h ≈ 173 kWh for the F8 SSD Plus with eight drives, 18 W × 8,760 h ≈ 158 kWh for the DXP480T Plus and 9 W × 8,760 h ≈ 79 kWh for the F4 SSD. The reviewers used different drive sets, so treat these as a guide.</li></ul><table><thead><tr><th>Use</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Up to six drives, fastest slots over 10GbE</td><td>Asustor Flashstor 6 Gen2 {buy:asustor-flashstor-6-gen2-fs6806x}</td><td>12 Gen4 lanes, ECC-capable memory, 3-year warranty (Asustor)</td></tr><tr><td>A cable straight into a Windows or Linux PC; Docker and VMs</td><td>UGREEN DXP480T Plus {buy:ugreen-nasync-dxp480t-plus}</td><td>Thunderbolt 4 direct link at 1.51 GB/s and a Core i5-1235U (Liliputing)</td></tr><tr><td>Seven or eight drives, for capacity</td><td>TerraMaster F8 SSD Plus {buy:terramaster-f8-ssd-plus}</td><td>Eight slots, each limited to one Gen3 lane</td></tr><tr><td>Small budget, lowest power, 5GbE is enough</td><td>TerraMaster F4 SSD {buy:terramaster-f4-ssd}</td><td>9 W idle with all four slots filled (HWBusters)</td></tr></tbody></table><h2>Lanes: what the third and fourth drives add</h2><p>Every M.2 slot needs PCIe lanes, and the processor's lane total sets how many slots can get a wide link. It is the number to check before counting slots.</p><p><strong>UGREEN DXP480T Plus.</strong> Intel lists 20 PCIe lanes for the Core i5-1235U: the CPU's own lanes are Gen4 and the chipset's are Gen3. For U/P-series chips, Intel puts up to eight PCIe 4.0 lanes on the CPU. Liliputing's lane map for this box is: x4 + x4 for drive slots 1–2, x2 + x2 for slots 3–4, x2 for the OS drive and x4 for the 10GbE port, 18 lanes in all. Slots 1–2 use all eight Gen4 lanes, so the other ten can only come from the Gen3 chipset lanes. By Intel's figures, slots 3–4 therefore run at Gen3 x2, which is what TechRadar reported (as cited by ComputingForGeeks), although Liliputing lists them as Gen4. That still gives each of the third and fourth drives about 1.97 GB/s, more than 10GbE carries. Over the network they are no slower than slots 1–2. The difference shows up only in copies inside the box and over Thunderbolt.</p><p><strong>TerraMaster F8 SSD Plus and F4 SSD.</strong> Intel lists 9 PCIe 3.0 lanes in total for both the i3-N305 and the N95. On the F8 SSD Plus, Liliputing traced 2 lanes to the 10GbE port, one lane each to drives 1–4, and 2 lanes to an ASM2806 switch that serves drives 5–8. Drives 5–8 add capacity, not throughput, because together they share about 1.97 GB/s. On the F4 SSD, NASCompares reports two slots at Gen3 x2 and two at x1. The third and fourth drives get about 0.985 GB/s each, still more than the 5GbE port carries.</p><p><strong>Asustor Flashstor 6 Gen2.</strong> Asustor lists every slot as PCIe 4.0: one x4, three x2 and two x1. It does not say which slot number gets which width. The box has two SO-DIMM slots taking up to 64 GB. ECC switches off if any non-ECC module is installed or mixed in. Asustor's datasheet lists the shipped 8 GB module as ECC but its spec page does not say, so check the module's label. Its USB4 ports do not support host-to-host connections. Unlike the DXP480T Plus's Thunderbolt, they cannot serve as a direct cable link to a PC.</p><h2>Not recommended</h2><p><strong>TerraMaster F8 SSD Plus for six drives or fewer.</strong> On Amazon on 2026-11-17 it was priced the same as the Flashstor 6 Gen2. For that money you get 6 Gen3 lanes feeding the drives instead of 12 Gen4: about 5.9 GB/s against 23.6 GB/s, a quarter of the bandwidth. Its idle draw with eight drives is also higher (19.7 W against 13.1 W). ComputingForGeeks also reports that Debian, Ubuntu and TrueNAS SCALE failed to boot fully with drives on its PCIe switch. Buy it only if you need the seventh and eighth slots.</p>",
+   "sources": [
+    [
+     "Flashstor 6 Gen2 slot lanes, memory slots and ECC rule, USB4 host-to-host, 90 W adapter, warranty",
+     "https://www.asustor.com/en/product/spec?p_id=90"
+    ],
+    [
+     "Flashstor 6 Gen2 shipped module listed as ECC; USB4 host-to-host not supported",
+     "https://www.asustor.com/datasheet?p_id=90"
+    ],
+    [
+     "Flashstor 6 Gen2 measured 13.1 W idle",
+     "https://www.kitguru.net/professional/networking/simon-crisp/asustor-flashstor-6-gen-2-fs6806x-nas-review/15/"
+    ],
+    [
+     "DXP480T Plus lane map, Thunderbolt 4 direct link at 1.51 GB/s, about 18 W idle",
+     "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/"
+    ],
+    [
+     "Core i5-1235U: 20 PCIe lanes, CPU Gen4, chipset Gen3",
+     "https://www.intel.com/content/www/us/en/products/sku/226266/intel-core-i51235u-processor-12m-cache-up-to-4-40-ghz-with-ipu/specifications.html"
+    ],
+    [
+     "Alder Lake U/P series: up to eight PCIe 4.0 lanes on the CPU",
+     "https://www.intel.com/content/www/us/en/products/platforms/details/alder-lake-p.html"
+    ],
+    [
+     "i3-N305: 9 PCIe 3.0 lanes, 16 GB maximum memory",
+     "https://www.intel.com/content/www/us/en/products/sku/231805/intel-core-i3n305-processor-6m-cache-up-to-3-80-ghz/specifications.html"
+    ],
+    [
+     "N95: 9 PCIe 3.0 lanes",
+     "https://www.intel.com/content/www/us/en/products/sku/231800/intel-processor-n95-6m-cache-up-to-3-40-ghz/specifications.html"
+    ],
+    [
+     "F8 SSD Plus lane map and ASM2806 switch, 19.7 W idle with eight SSDs, 72 W adapter",
+     "https://liliputing.com/terramaster-f8-ssd-plus-review/"
+    ],
+    [
+     "F4 SSD slots: two PCIe 3.0 x2, two x1",
+     "https://nascompares.com/review/terramaster-f4-ssd-nas-review/"
+    ],
+    [
+     "F4 SSD 9 W idle fully populated and noise by fan setting",
+     "https://hwbusters.com/networking/terramaster-f4-ssd-silent-and-solid-state-performance/6/"
+    ],
+    [
+     "F4 SSD 5GbE port, 48 W adapter, 2-year warranty",
+     "https://hwbusters.com/networking/terramaster-f4-ssd-silent-and-solid-state-performance/"
+    ],
+    [
+     "Per-lane GB/s conversions; TechRadar's Gen3 report for the DXP480T Plus x2 slots; F8 SSD Plus boot issues and 2-year warranty",
+     "https://computingforgeeks.com/best-all-flash-nvme-nas/"
+    ],
+    [
+     "Flashstor 6 Gen2 listing on Amazon, read 2026-11-17",
+     "https://www.amazon.com/dp/B0DKJG5QXS"
+    ]
+   ]
+  }
+ },
+ "checked": 62,
+ "changed": [
+  {
+   "where": "products[asustor-flashstor-6-gen2-fs6806x].caveats[0]",
+   "was": "Asustor's spec page and its datasheet disagree on whether the 8 GB module it ships with is ECC. ECC switches off if any non-ECC module is installed, so check the module's label before relying on ECC.",
+   "now": "Asustor's datasheet lists the 8 GB module it ships with as ECC, but its spec page does not say. ECC switches off if any non-ECC module is installed, so check the module's label before relying on ECC.",
+   "why": "Read 2026-11-17: the spec page (asustor.com/en/product/spec?p_id=90) lists the pre-installed module as '8GB (1 x 8GB)' and says only 'Supports ECC memory'. It does not call the module non-ECC. The datasheet lists '8GB ECC DDR5-4800'. The two pages don't contradict each other; the spec page just leaves it out."
+  },
+  {
+   "where": "page.after (Asustor Flashstor 6 Gen2 paragraph)",
+   "was": "ECC switches off if any non-ECC module is installed or mixed in, and Asustor's spec page and datasheet disagree on whether the shipped 8 GB module is ECC, so check the module's label.",
+   "now": "ECC switches off if any non-ECC module is installed or mixed in. Asustor's datasheet lists the shipped 8 GB module as ECC but its spec page does not say, so check the module's label.",
+   "why": "Same finding as the caveat: the spec page is silent on the module's ECC status and does not disagree with the datasheet."
+  },
+  {
+   "where": "products[asustor-flashstor-6-gen2-fs6806x].caveats[3]",
+   "was": "No integrated GPU for transcoding.",
+   "now": "Asustor lists no video output or hardware video transcoding.",
+   "why": "The Asustor spec page (read 2026-11-17) lists no GPU, shows 'Multimedia Output: N/A' and mentions only on-the-fly transcoding of RAW images and audio. It does not say outright that there is no integrated GPU, so the sentence now states only what the maker lists."
+  },
+  {
+   "where": "products[asustor-flashstor-6-gen2-fs6806x].specs USB",
+   "was": "2 × USB4 at 40 Gb/s, for storage devices only; host-to-host not supported (Asustor)",
+   "now": "2 × USB4 at 40 Gb/s; host-to-host not supported (Asustor)",
+   "why": "The Asustor spec page and datasheet support 40 Gb/s per port and 'Host-to-Host connectivity is not supported'. Neither page I read says the ports are 'for storage devices only'."
+  },
+  {
+   "where": "Amazon prices (why_angle 'now under $900'; Not recommended 'On Amazon on 2026-11-17 it was priced the same as the Flashstor 6 Gen2'); source https://www.amazon.com/dp/B0DKJG5QXS",
+   "was": "unchanged",
+   "now": "unchanged",
+   "why": "Not re-read: amzcheck.py returned blocked:true for B0DKJG5QXS, B0D9HWLDX5 and B0F8BD112M, and WebFetch got HTTP 503 for both Amazon listings. Kept as the research agents recorded them today. For reference only: ComputingForGeeks' Amazon check on 2026-10-19 had the FS6806X at about $980 from a third-party seller and the F8 SSD Plus at about $765. That is an older date, so I didn't treat it as contradicting today's figures, but the 'same price' and 'under $900' claims should be re-checked from Dealectric's daily price records before publishing."
+  }
+ ],
+ "removed": [
+  {
+   "where": "products[terramaster-f4-ssd].caveats: \"NVMe heatsinks are not included (HWBusters).\"",
+   "why": "The HWBusters review pages I opened on 2026-11-17 (page 1 spec table and page 2 bundle) don't mention M.2 heatsinks at all. The bundle list names only two spare M.2 screws. The cited source doesn't hold the claim, and no other source was given."
+  }
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 0.648281
+ }
+}

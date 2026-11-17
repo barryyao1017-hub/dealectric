@@ -1,0 +1,138 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states any measured figure for the TerraMaster F4 SSD. In its lab review, HWBusters measured 9 W at idle with the unit fully populated and SSDs at 38–39 °C after an hour in a 29 °C room. On noise, it measured 9.1, 18.5 and 24.4 dBA at 1 m (fan on low, medium and full).",
+ "standout": 2,
+ "standout_why": "I compared against the two cited rivals and the top uncited result. ComputingForGeeks (cited, updated 2026-10-21) already has the measured idle power, throughput and noise for the F8 SSD Plus, DXP480T Plus, FS6806X and Beelink ME Mini, each with its source. It explicitly lists the F4 SSD as having no independent review, and states that no NVMe temperature figures were published for any box. HomelabCompass (cited, 2026-11-02) has no measured power, noise or temperature at all, only link-speed arithmetic. Starry Hope (2026-11-02, uncited) repeats Liliputing's figures for the DXP480T Plus and F8 SSD Plus, plus Beelink idle power. It has no F4 SSD figures and no SSD temperatures. So the side-by-side power and noise for the main picks is mostly already on rival pages. The new parts are the F4 SSD lab measurements, a measured SSD temperature, and OCinside's 74 W draw during a copy for the DXP480T Plus (Liliputing measured about 55 W while writing).",
+ "decides": "This settles the low-power pick under $900. With all four slots filled, the F4 SSD idles at 9 W (HWBusters). That is under half of the DXP480T Plus (about 18 W, Liliputing) and the F8 SSD Plus (19.7 W, Liliputing), and below the Beelink ME Mini with six SSDs (about 16.9 W, NASCompares). HWBusters also measured idle SSD temperatures without heatsinks, which helps a quiet, always-on home box. It does not change the performance pick. The DXP480T Plus has Gen4 x4 bays 1–2 and Gen4 x2 bays 3–4 (Liliputing's lane readout), plus 1.09–1.15 GB/s over 10GbE. HWBusters published F4 SSD throughput only as chart images; it says the 5GbE link was saturated.",
+ "candidates": [
+  "UGREEN NASync DXP480T Plus",
+  "TerraMaster F4 SSD",
+  "TerraMaster F8 SSD Plus",
+  "Asustor Flashstor 6 Gen2 (FS6806X)",
+  "Beelink ME mini"
+ ],
+ "findings": [
+  {
+   "product": "TerraMaster F4 SSD",
+   "label": "Idle power at the wall, fully populated",
+   "value": "9 W (occasional peaks to 15 W); 1.6 W standby; 15–19 W briefly at startup",
+   "source": "https://hwbusters.com/networking/terramaster-f4-ssd-silent-and-solid-state-performance/6/",
+   "source_title": "TerraMaster F4 SSD: Silent and Solid State Performance – Performance (HWBusters)",
+   "read": "2026-11-17",
+   "note": "HWBusters review, published 2025-07-11 and updated 2026-06-26. Measured with all four M.2 slots filled. TerraMaster's own rating is 32 W read/write and 8 W hibernation."
+  },
+  {
+   "product": "TerraMaster F4 SSD",
+   "label": "Noise at 1 m by fan setting",
+   "value": "9.1 dBA low, 18.5 dBA medium, 24.4 dBA full",
+   "source": "https://hwbusters.com/networking/terramaster-f4-ssd-silent-and-solid-state-performance/6/",
+   "source_title": "TerraMaster F4 SSD: Silent and Solid State Performance – Performance (HWBusters)",
+   "read": "2026-11-17",
+   "note": "Measured in a hemi-anechoic chamber with about 6 dBA background and 25–28 °C ambient. Not comparable with Liliputing's room readings taken next to the device. No single figure is given for the automatic fan setting."
+  },
+  {
+   "product": "TerraMaster F4 SSD",
+   "label": "SSD and CPU temperature at idle",
+   "value": "SSDs 38–39 °C; CPU about 42 °C",
+   "source": "https://hwbusters.com/networking/terramaster-f4-ssd-silent-and-solid-state-performance/6/",
+   "source_title": "TerraMaster F4 SSD: Silent and Solid State Performance – Performance (HWBusters)",
+   "read": "2026-11-17",
+   "note": "After one hour, room at 29 °C, fans on automatic, no SSD heatsinks (HWBusters lists 'NVMe heatsinks are not included' as a con). Idle only; no load temperature published."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Power at the wall",
+   "value": "about 18 W idle; about 42 W reading and about 55 W writing a 100 GB copy; 82 W peak and about 61 W average under CPU stress; 1.4 W off",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review: A speedy NAS with 10 GbE networking and four M.2 SSD slots (Liliputing)",
+   "read": "2026-11-17",
+   "note": "Ian W Morrison, 2024-09-10. The review does not say how many drives were installed for the power readings."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Power during a 50 GB copy over 10 Gb/s",
+   "value": "74 W (16–18 W idle, 74 W constant under full CPU stress, about 2 W standby)",
+   "source": "https://www.ocinside.de/review/ugreen_dxp480t_plus/7/",
+   "source_title": "Ugreen DXP480T Plus NAS Review – Temperature and power consumption (OCinside)",
+   "read": "2026-11-17",
+   "note": "Measured with a Shelly Plug S, which the author calls not very accurate. Drive population not stated, and the page gives no date. This is higher than Liliputing's about 55 W while writing."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "Noise and CPU temperature",
+   "value": "<30 dBA idle; 40–42 dBA during a 100 GB copy to the NAS; 56 dBA falling to 49 dBA under CPU stress; CPU about 69 °C after the copy, about 71 °C under stress",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review (Liliputing)",
+   "read": "2026-11-17",
+   "note": "Sound meter next to the device; room at 19.6 °C. No SSD temperatures reported."
+  },
+  {
+   "product": "UGREEN NASync DXP480T Plus",
+   "label": "PCIe link per bay and 10GbE / Thunderbolt transfer",
+   "value": "Bays 1–2 Gen4 x4, bays 3–4 Gen4 x2, OS drive Gen3 x2. 100 GB copy: 1.09 GB/s receiving and 1.15 GB/s sending over 10GbE; 1.51 / 1.42 GB/s over Thunderbolt 4",
+   "source": "https://liliputing.com/ugreen-nasync-dxp480t-plus-review-a-speedy-nas-with-10-gbe-networking-and-four-m-2-ssd-slots/",
+   "source_title": "UGREEN NASync DXP480T Plus Review (Liliputing)",
+   "read": "2026-11-17",
+   "note": "Lane widths as the review reports them from the system. ComputingForGeeks says TechRadar reports Gen3 for bays 3–4; I did not open TechRadar's DXP480T Plus review."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Power and noise by state",
+   "value": "Idle 19.7 W / 33.0 dBA; Jellyfin in Docker 20.7 W / 34.3 dBA; 100 GB copy to the NAS 36.2 W / 37.9 dBA; 100 GB copy from the NAS 41.6 W / 40.3 dBA; VM setup 31.4 W / 51.3 dBA; off 2.2 W",
+   "source": "https://liliputing.com/terramaster-f8-ssd-plus-review/",
+   "source_title": "TerraMaster F8 SSD Plus review (Liliputing)",
+   "read": "2026-11-17",
+   "note": "Ian W Morrison, 2024-10-13. Eight 4 TB SSDs were installed (4× Lexar NM790, 2× Samsung 990 Pro, 2× PNY CS2241), but the review does not tie the power table to a drive count. ComputingForGeeks' 'with eight SSDs' is an inference. CPU reached 94 °C in Cinebench and settled at about 72 °C. No SSD temperatures reported."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Power and noise with four drives",
+   "value": "14 W idle; 35 W writing to all four drives with the network saturated; about 39–40 dB under load against a 32 dB room",
+   "source": "https://the-diy-life.com/i-tried-the-new-terramaster-f8-ssd-plus-is-it-any-good/",
+   "source_title": "I Tried The New TerraMaster F8 SSD Plus, Is It Any Good? (The DIY Life)",
+   "read": "2026-11-17",
+   "note": "Michael Klements, 2024-09-18, with 4× Crucial P3 Plus. A 70 GB write to the NAS settled at a little under 650 MB/s; reads held at about 1.1 GB/s."
+  },
+  {
+   "product": "TerraMaster F8 SSD Plus",
+   "label": "Power range and noise",
+   "value": "22–42 W in use; 35–36 dBA in a studio with a 34 dBA noise floor",
+   "source": "https://www.servethehome.com/terramaster-f8-ssd-plus-nas-a-10gbe-8x-m-2-ssd-nas/5/",
+   "source_title": "TerraMaster F8-SSD Plus Power Consumption and Noise (ServeTheHome)",
+   "read": "2026-11-17",
+   "note": "Patrick Kennedy, 2024-10-02. Idle and load are not separated, and the drives used are not stated."
+  },
+  {
+   "product": "Asustor Flashstor 6 Gen2 (FS6806X)",
+   "label": "Power at the wall during CrystalDiskMark 8",
+   "value": "13.1 W idle; 27.2 W during reads; 32.8 W during writes (averages)",
+   "source": "https://www.kitguru.net/professional/networking/simon-crisp/asustor-flashstor-6-gen-2-fs6806x-nas-review/all/1",
+   "source_title": "Asustor Flashstor 6 Gen 2 FS6806X NAS Review (KitGuru)",
+   "read": "2026-11-17",
+   "note": "Simon Crisp, 2025-02-26. Six 2 TB Gen4 test drives are listed, but the review does not confirm all six were installed during the power test. ATTO on RAID 5 over 10GbE: about 1,110 MB/s read and write. No noise or temperature reported."
+  },
+  {
+   "product": "Beelink ME mini",
+   "label": "Power, panel temperatures and noise",
+   "value": "6.0–6.9 W idle with no SSDs; about 16.9 W idle with six SSDs; 28–31 W peak; top panel 48–51 °C and base 58–60 °C over 24 hours of periodic access; 31–34 dBA idle and 37–40 dBA at full load",
+   "source": "https://nascompares.com/?p=80693",
+   "source_title": "Reviewing the Beelink ME Mini NAS – Flashy Brilliance (NASCompares)",
+   "read": "2026-11-17",
+   "note": "Reviewed 2025-06-04. Temperatures are chassis surface readings, not SSD sensors. Internally: about 740 MB/s read from a Gen3 x1 slot; about 580–600 MB/s combined over both 2.5GbE ports."
+  }
+ ],
+ "unsourced": [
+  "SSD temperatures under sustained load for the DXP480T Plus, F8 SSD Plus and FS6806X. Liliputing (both), OCinside, KitGuru and The DIY Life report none, ServeTheHome reports none for the F8 SSD Plus, and StorageReview's DXP480T Plus review was not opened.",
+  "Measured dBA for the Asustor Flashstor 6 Gen2 (FS6806X). KitGuru gives none, and the TechRadar and Android Central pages returned only their titles.",
+  "TechPowerUp's TerraMaster F8 SSD Plus review (measured power, noise and temperatures) returned HTTP 403.",
+  "HWBusters' F4 SSD throughput numbers: published only as chart images, with the text saying the 5GbE link was saturated.",
+  "Measurements for the F8 SSD (N95), Flashstor 6 FS6706T, QNAP TBS-464 and LincStation N2 were not researched within the call budget.",
+  "Beelink ME mini idle figures from Liliputing (11.5 W) and Level1Techs (about 11 W) appear only on Starry Hope's page; I did not open the originals."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1109240000000002
+ }
+}
