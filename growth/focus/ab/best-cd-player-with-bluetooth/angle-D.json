@@ -1,0 +1,93 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Bluetooth A2DP standard makes SBC the only codec every transmitter and every headphone must support (Bluetooth SIG, A2DP 1.4 §4.2.1). Better codecs are optional and work only when both ends share one. The FiiO DM13 sends aptX, aptX HD, aptX Low Latency and SBC but not AAC, so AirPods Pro 3 (AAC and SBC), soundcore Space One (SBC, AAC and LDAC) and Marshall Major V (SBC, AAC and LC3) all fall back to SBC. That is the only codec the Shanling EC Play transmits.",
+ "standout": 2,
+ "standout_why": "I opened rottenwifi.com and macmyths.com, ranks 3 and 2, and theaudiotalk.com, rank 10. All three explain transmit versus receive, and ChatGPT's own answer does too. None of them mentions SBC, codec negotiation or what happens with AirPods. rottenwifi goes no further than saying 'Bluetooth 5.0 also does not, by itself, confirm support for AAC, aptX, low-latency audio.' macmyths stops at 'Do not infer codec support from the Bluetooth version.' theaudiotalk covers no codecs at all. av.com (rank 1) returned 403, so I could not check it.",
+ "decides": "This confirms the plan works: any transmitting CD player will play through any A2DP headphone or speaker, because SBC is mandatory on both sides. It changes how to pick between the DM13 and the EC Play. The DM13's aptX HD only matters with headphones that also take aptX HD. With AirPods, soundcore Space One or Marshall Major V, both players send SBC, so that codec advantage disappears. The choice then comes down to battery (DM13 10 h rated, EC Play 12 h), skip protection and price. The EC Play's LDAC and AAC only work in its receive mode (phone to player), not when it sends CD audio.",
+ "candidates": [
+  "FiiO DM13 BT",
+  "Shanling EC Play",
+  "Panasonic SC-PM270",
+  "1Mii B06TX",
+  "Coby CD201BK",
+  "GPX BCB119B"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "SBC is the one codec every A2DP device must support",
+   "value": "SBC mandatory for both source (encoder) and sink (decoder); all other codecs optional",
+   "source": "https://www.bluetooth.com/specifications/specs/html/?src=A2DP_v1.4/out/en/index-en.html",
+   "source_title": "Bluetooth SIG, Advanced Audio Distribution Profile 1.4",
+   "read": "2026-11-17",
+   "note": "§4.2.1: 'A2DP mandates low complexity subband Coding (SBC). The device shall implement an SBC encoder when the device is the SRC' and 'an SBC decoder when the device is the SNK'. Table 4.1 marks SBC M and every other codec O."
+  },
+  {
+   "product": "general",
+   "label": "When a better codec gets used",
+   "value": "Only when both source and sink support the same codec",
+   "source": "https://www.bluetooth.com/specifications/specs/html/?src=A2DP_v1.4/out/en/index-en.html",
+   "source_title": "Bluetooth SIG, Advanced Audio Distribution Profile 1.4",
+   "read": "2026-11-17",
+   "note": "§4.2.2: 'When both the SRC and the SNK support the same Optional codec interoperability requirements, these may be used.' §4.2.3 says the profile specifies nothing for vendor codecs such as aptX and LDAC. Falling back to SBC follows from SBC being mandatory on both ends; the spec does not use the word 'fallback'."
+  },
+  {
+   "product": "FiiO DM13 BT",
+   "label": "Bluetooth transmit codecs",
+   "value": "aptX, aptX Low Latency, aptX HD, SBC (no AAC or LDAC listed)",
+   "source": "https://www.fiio.com/dm13",
+   "source_title": "FiiO DM13 product page",
+   "read": "2026-11-17",
+   "note": "Quote: 'aptX, aptX Low Latency, aptX HD codecs as well as the standard SBC codec', on a 'Qualcomm Bluetooth platform'. Also: 'Standard version cannot transmit Bluetooth', so the shopper needs the BT version. 10 h rated battery from 3,750 mAh."
+  },
+  {
+   "product": "Shanling EC Play",
+   "label": "Bluetooth transmit vs receive codecs",
+   "value": "Transmit SBC only; receive LDAC/AAC/SBC; Bluetooth 6.0",
+   "source": "https://en.shanling.com/article/101206",
+   "source_title": "Shanling EC Play launch article",
+   "read": "2026-11-17",
+   "note": "Quote: 'Bluetooth Transmitter: SBC' and 'Bluetooth Receiver: LDAC/AAC/SBC'. Battery 3,450 mAh, up to 12 h. MSRP $199, with the note '(Check with dealers for USA pricing)'."
+  },
+  {
+   "product": "Apple AirPods Pro 3",
+   "label": "Codecs supported",
+   "value": "AAC, SBC",
+   "source": "https://www.whathifi.com/us/headphones/apple-airpods-pro-3",
+   "source_title": "What Hi-Fi, Apple AirPods Pro 3 review (Kashfia Kabir, 13 January 2026)",
+   "read": "2026-11-17",
+   "note": "Spec line 'Codec support: AAC, SBC'. The DM13 does not send AAC, so the shared codec is SBC."
+  },
+  {
+   "product": "soundcore Space One",
+   "label": "Codecs supported",
+   "value": "SBC, AAC, LDAC; $99.99",
+   "source": "https://www.soundcore.com/products/space-one-a3035011",
+   "source_title": "soundcore Space One product page",
+   "read": "2026-11-17",
+   "note": "No aptX, so paired with either the DM13 or the EC Play it runs SBC. Price as shown on the soundcore page today."
+  },
+  {
+   "product": "Marshall Major V",
+   "label": "Codecs supported",
+   "value": "SBC, MPEG-2 AAC, LC3; Bluetooth 5.3",
+   "source": "https://www.marshall.com/us/en/product/major-v",
+   "source_title": "Marshall Major V product page (US)",
+   "read": "2026-11-17",
+   "note": "No aptX, so with the DM13 it runs SBC. LC3 belongs to LE Audio, which neither CD player lists for transmit."
+  }
+ ],
+ "unsourced": [
+  "EarFun Air Pro 4 maker codec list, to confirm a listed headphone that would get aptX or aptX HD from the DM13: myearfun.com failed with a self-signed certificate error twice, earfun.com did not resolve, and search snippets disagree on whether it has aptX HD.",
+  "Qualcomm's own wording that aptX Adaptive headphones fall back to aptX or aptX HD: the aptX Adaptive product brief PDF came back as unreadable binary, qualcomm.com/audio/aptx-adaptive returned 404, and the OnQ post had no body text.",
+  "Whether the DM13 can send Bluetooth and play through its wired outputs at the same time: the FiiO page does not say.",
+  "Coby CD201BK and GPX BCB119B transmit codecs: I did not open those maker pages within the call budget.",
+  "RTINGS AirPods Pro 3 codec list and latency: the review URL I tried returned 404."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 0.9644952
+ }
+}
