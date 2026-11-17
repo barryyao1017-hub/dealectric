@@ -85,7 +85,9 @@ PAGES = {
     "o2-solar-recharge-fastest": page(["pp004", "pm022"], "which solar generator recharges fastest from solar panels in one day", NONE,
         "stations we list with high solar input", "Measured result: hours of sun to refill (battery Wh / usable solar input), with "
         "measured solar input where tested; also answer 'which power station takes the fewest hours of sun to refill with two panels' "
-        "in one after-section h2. Distinct from the kits-with-panels page.", "solar-generator-that-recharges-fastest-from-solar", "solar-generator-with-panels-included-fastest-recharge"),
+        "in one after-section h2. Distinct from the kits-with-panels page: this one compares bare stations by their maximum solar "
+        "input with whatever panels the buyer adds, so the title must say so (for example 'with the panels you add' or 'by maximum "
+        "solar input'), not 'panels included'.", "solar-generator-that-recharges-fastest-from-solar", "solar-generator-with-panels-included-fastest-recharge"),
     "o2-linked-together": page(["pq016"], "which power stations can be linked together for more power", NONE, "units we list that link or parallel",
         "Measured result: combined output and 240 V when two units are linked, with the exact kit or cable needed (maker document).",
         "power-stations-that-can-be-linked-together"),
