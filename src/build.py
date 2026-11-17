@@ -2262,6 +2262,8 @@ def bf_sale_html(brand, short=False):
                  for ph in phs]
         return "; ".join(items)
     checked = d.get("checked", BFCM["checked"])
+    if d.get("unread"):   # the refresh pass couldn't load the brand's site (bot check, network): say so, claim nothing
+        return f"{html.escape(brand)}'s US site could not be read when we checked ({checked}); see the store for its Black Friday plans."
     ly = d.get("last_year")
     last = (f" Last year: {html.escape(ly['name'])}, {html.escape(bf_span(ly))} {ly['start'][:4]}" + (f", {html.escape(ly['headline'])}" if ly.get("headline") else "") + "."
             if ly and ly.get("start") else "")
