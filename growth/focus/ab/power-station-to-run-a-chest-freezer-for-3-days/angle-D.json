@@ -1,0 +1,80 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX F3800 shuts itself off only when its output buttons are off and no load is seen for 12 hours, so a freezer that draws almost nothing between compressor cycles will not trip it.",
+ "standout": 2,
+ "standout_why": "I compared against the top non-maker result ChatGPT got, the Solar Waypoint F3800 vs DELTA Pro 3 vs Explorer 5000 Plus comparison (2026-01-08, opened 2026-11-17). It lists UPS transfer times and per-port solar input for all three, but it says nothing about AC auto-off, energy-saving mode or idle draw, and nothing about freezer compressors cycling off. ChatGPT's own answer warns about startup surge only. The cited EcoFlow DELTA Pro 3 pages returned HTTP 429 when I tried them, so I could not check them myself.",
+ "decides": "The auto-off timer is what decides whether this plan works at all. Between cycles the freezer draws close to nothing, and a station that switches its AC outlet off at low load will cut the freezer and leave it off, whatever the battery size. From Anker's own guide, the F3800 does not do this while the AC outlet is switched on, so the F3800 holds up as a pick. For the EcoFlow DELTA Pro 3 and Jackery Explorer 5000 Plus, the page should tell shoppers to set the AC timeout to 'never' or turn Energy Saving Mode off. I could not open the maker documents with those defaults (see unsourced), so the page should not state default values for them yet.",
+ "candidates": [
+  "Anker SOLIX F3800",
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 5000 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Automatic power-off condition",
+   "value": "Powers off only when the output buttons are turned off and no load is detected for 12 hours (default). The time can be changed in the Anker app.",
+   "source": "https://service.anker.com/article-description/Anker-SOLIX-F3800-Portable-Power-Station-USERGUIDE",
+   "source_title": "Anker SOLIX F3800 Portable Power Station USER GUIDE",
+   "read": "2026-11-17",
+   "note": "From the 'Powering On / Off' section: 'power off automatically if the output buttons are turned off and no power loads are detected for 12 hours.' With the AC outlet switched on, the near-zero draw while the compressor is off does not meet this condition."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "UPS switchover time",
+   "value": "20 ms",
+   "source": "https://service.anker.com/article-description/Anker-SOLIX-F3800-Portable-Power-Station-USERGUIDE",
+   "source_title": "Anker SOLIX F3800 Portable Power Station USER GUIDE",
+   "read": "2026-11-17",
+   "note": "Specifications list 'UPS: 20ms'. Devices plug into the UPS AC outputs while the station is on wall power."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Solar input",
+   "value": "2,400 W max (1,200 W per input). 32–60 V at 25 A; 11–32 V limited to 10 A.",
+   "source": "https://service.anker.com/article-description/Anker-SOLIX-F3800-Portable-Power-Station-USERGUIDE",
+   "source_title": "Anker SOLIX F3800 Portable Power Station USER GUIDE",
+   "read": "2026-11-17",
+   "note": "Section 'Solar Panel Recharging (2400W Max)' and FAQ Q2. At 11–32 V and 10 A, one input tops out around 320 W, so low-voltage panel strings charge much more slowly."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Solar input and UPS transfer (third-party listing)",
+   "value": "2,600 W max: input 1 is 1,600 W at 30–150 V, 15 A; input 2 is 1,000 W at 11–60 V, 20 A. UPS/EPS transfer 10 ms.",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Third-party comparison. I could not open EcoFlow's own pages (HTTP 429) or its manual PDFs (too large or 404) to confirm."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Solar input and UPS transfer (third-party listing)",
+   "value": "5,200 W max: input 1 is 4,000 W at 135–450 V, 15 A, MC4; input 2 is 1,200 W at 16–60 V, 21 A, 8 mm. UPS transfer 0 ms.",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Third-party comparison. Jackery's own pages returned HTTP 429 and its manual PDF could not be parsed."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of AC auto-off",
+   "value": "Absent. The comparison page has no AC auto-off, energy-saving or idle-draw entry for any of the three stations.",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Its only mention of refrigerators is the 12 V car socket. It says nothing about compressors cycling off."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 AC timeout default and EcoFlow's advice to set it to 'never' for a refrigerator. I tried the manual PDFs at s1.solacity.com, ecoflow.no and ecoflow.ie (too large or unreadable), nfm.com (timed out), skanbatt.no and 7sun.eu (404), and manuals.ecoflow.com (renders with JavaScript, no text). Search snippets suggest the DELTA 3 and RIVER 3 manuals recommend 'never' for fridges and that DELTA 2 defaults to 12 h, but I could not open those pages.",
+  "Jackery Explorer 5000 Plus Energy Saving Mode threshold and timer. A search snippet says AC ≤25 W for 12 h, on by default, turned off by long-pressing the AC and main power buttons. The jackery.com product and blog pages returned HTTP 429 or no body text, the FAQ article returned 404, the US manual PDF could not be parsed and notice-facile returned 403.",
+  "Idle draw with AC on for the DELTA Pro 3, F3800 and Explorer 5000 Plus. Over 72 hours this decides whether the energy for 3 days is there. I found no maker figure and no reviewer measurement within the call budget.",
+  "Current prices for all three. The maker stores returned HTTP 429, so I did not check prices."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 35,
+  "cost_usd_list": 1.2641809
+ }
+}

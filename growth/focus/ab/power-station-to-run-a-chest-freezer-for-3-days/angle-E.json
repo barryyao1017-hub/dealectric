@@ -1,0 +1,119 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states the inverter's own idle draw. The Solar Lab measured about 70–80 W for the Anker SOLIX F3800 and about 58 W for the Jackery Explorer 5000 Plus with the AC inverter on. Over 72 hours that is roughly 4.2–5.8 kWh, more than the freezer itself uses (1.8–3 kWh) and more than the F3800 holds. So ChatGPT's '3.3 days' (F3800) and '4.3 days' (5000 Plus) estimates, which leave idle draw out, are too high by about half.",
+ "standout": 3,
+ "standout_why": "I opened ChatGPT's results: the Solar Waypoint F3800 vs DELTA Pro 3 vs Explorer 5000 Plus comparison (rank 11), the WattNerds DELTA Pro 3 spec page (rank 17) and the cited EcoFlow and Anker product pages. Solar Waypoint shows only maker specs and says itself that it has no idle, standby or measured usable-capacity figures. WattNerds is maker specs only, with no idle figure and no freezer runtime. The maker pages give no idle figure; the Anker F3800 Plus page text I could read showed none. None of them has a named, measured idle draw or usable capacity, and ChatGPT's runtime math (capacity × 85% ÷ 1 kWh/day) has no idle term.",
+ "decides": "It overturns ChatGPT's ranking for a freezer-only job. On a 3-day outage, a 6,000–7,200 W inverter idling at 58–80 W drains more than the freezer does. The F3800 measured 2,905 Wh usable (Notebookcheck), and at about 75 W idle plus about 42 W average for the freezer (1 kWh/day) that lasts roughly 25 hours, not 3.3 days. The 5000 Plus (5,040 Wh, 58 W idle) lasts about 2 days at 1 kWh/day, before conversion losses. A low-idle unit such as the BLUETTI Elite 300 (15 W, The Solar Lab) wastes only about 1.1 kWh over 72 h, but at 2.67 kWh measured usable (StorageReview) it still comes up short of 3 days without solar unless the freezer uses well under 0.6 kWh/day. So solar is not optional: about 400 W of panels has to cover idle plus freezer each day. For a big-inverter unit that is about 2.4–2.9 kWh/day (more than 400 W of panels gives); for the Elite 300 it is about 1–1.4 kWh/day. The pick should weigh measured idle draw and usable Wh, not rated capacity or surge.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 / F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "BLUETTI Elite 300",
+  "EcoFlow DELTA 3 Ultra"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw, AC inverter on (estimated during a 24-hour blackout test)",
+   "value": "over 70 W",
+   "source": "https://www.thesolarlab.com/how-tos/idle-consumption",
+   "source_title": "The Solar Lab – idle consumption how-to",
+   "read": "2026-11-17",
+   "note": "The Solar Lab: 'the Anker F3800 must have been consuming over 70 watts per hour just to stay on', worked out with 'napkin math' from a 24-hour blackout simulation with a fridge and Wi-Fi router plugged in. It is not a bench reading with nothing plugged in. Page shows no date or author. Over 72 h: 70 W × 72 = 5.04 kWh."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Idle draw (as cited in The Solar Lab's 5000 Plus review)",
+   "value": "80 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Real Competition for the Anker F3800 and DELTA Pro Ultra? – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The review says the 5000 Plus is 'actually better than the F3800's 80W idle rate'. Same lab as the 70 W figure, so give the range as 70–80 W. 80 W × 72 h = 5.76 kWh, more than the 3,840 Wh rated capacity."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured usable AC energy from full charge",
+   "value": "2,905 Wh (about 75% of 3,840 Wh rated)",
+   "source": "https://www.notebookcheck.net/Anker-Solix-F3800-hands-on-review-The-monster-power-station-can-even-charge-electric-cars-via-solar-power.880306.0.html",
+   "source_title": "Anker Solix F3800 hands-on review – Notebookcheck (Marcus Schwarten)",
+   "read": "2026-11-17",
+   "note": "Constant load of about 260 W for about 11 h, from 100% until shutoff at 1%. Published 2024-08-27, updated 2026-10-05. The same review measured 4,669 Wh from the wall for a 1–100% charge, peak AC input 2,966 W and about 42 dB at 1 m under 3,000 W. The article also says 'a rather weak 3,000 Wh', which doesn't match the 2,905 Wh. Freezer math: 2,905 Wh ÷ (75 W idle + 42 W freezer average at 1 kWh/day) ≈ 25 h."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Measured inverter efficiency at heavy load; measured solar peak",
+   "value": "about 84% at 5,100 W (37 min); 1,200 W solar peak with 200 W panels",
+   "source": "https://www.thesolarlab.com/review/testing-the-anker-f3800",
+   "source_title": "Putting the Anker F3800 Power Station to the Test – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The 1,200 W solar peak was limited by the lab's own panels (about 25 V, 10 A each). The rated input is 2,400 W. Page shows no date or author. The fridge and freezer ran 'effortlessly' but no runtime was logged."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw, AC inverter on, no load",
+   "value": "about 58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The review: 'sitting around 58W per hour when we turned the inverter on'. It works out idle-only runtime as about 3.5 days. Page shows no date or author. With a 1 kWh/day freezer: 5,040 Wh ÷ (58 + 42 W) ≈ 50 h ≈ 2.1 days, before inverter losses."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw, inverter on, no external load (HOBOTECH, second-hand)",
+   "value": "about 85 W (vs 52 W for EcoFlow DELTA Pro Ultra)",
+   "source": "https://www.ecoflow.com/us/blog/jackery-explorer-5000-plus-review",
+   "source_title": "Jackery Explorer 5000 Plus Review: Specs, Testing, and Verdict – EcoFlow blog",
+   "read": "2026-11-17",
+   "note": "This is HOBOTECH's measurement as reported by EcoFlow, a competitor, on a page dated 2026-10-21. I did not open HOBOTECH's original. Treat it as the high end of a 58–85 W range."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw, AC on",
+   "value": "about 15 W (idle-only runtime about 8.3 days)",
+   "source": "https://www.thesolarlab.com/review/delta-3-ultra-vs-bluetti-elite-300",
+   "source_title": "EcoFlow DELTA 3 Ultra vs BLUETTI Elite 300 – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The review: 'the Elite 300 only consumed around 15 watts per hour while idling'. 15 W × 72 h = 1.08 kWh. The same page measured a full solar recharge of about 2.5 h in ideal sun. Our current page says 'about 19 W measured', which conflicts with this figure; check it."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Measured usable AC energy; UPS switchover",
+   "value": "2.67 kWh out vs 3.49 kWh in (about 76% round trip); 8 ms switchover (8.25 ms on return)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review",
+   "source_title": "BLUETTI Elite 300 review – StorageReview (Dylan Bryan)",
+   "read": "2026-11-17",
+   "note": "Kill-A-Watt readings, 0–100% charge and full discharge. Article dated 2026-08-27. The 76% is my arithmetic (2.67 ÷ 3.49). Freezer math: 2,670 Wh ÷ (15 W idle + 25 W freezer at 0.6 kWh/day) ≈ 67 h ≈ 2.8 days."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "Idle draw, AC on; efficiency",
+   "value": "about 22 W (idle-only runtime about 5.7 days); about 82% efficiency",
+   "source": "https://www.thesolarlab.com/review/delta-3-ultra-vs-bluetti-elite-300",
+   "source_title": "EcoFlow DELTA 3 Ultra vs BLUETTI Elite 300 – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "The review: 'ran closer to 22 watts per hour'. Measured full solar recharge about 4 h in ideal sun. 22 W × 72 h = 1.58 kWh."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured efficiency at near-maximum load; AC charge time",
+   "value": "about 89% at 3,650 W for 60 min; AC 0–100% in about 2 h 54 min (rated 2 h 20 min)",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-3-review",
+   "source_title": "EcoFlow DELTA Pro 3 review – The Solar Lab",
+   "read": "2026-11-17",
+   "note": "No idle figure, solar wattage or switchover time was measured. A 5,100 W surge held for nearly a minute. Page shows no date or author."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 idle draw with the AC inverter on. Searched The Solar Lab, Notebookcheck, HOBOTECH, CNET, OutdoorGearLab and CleanTechnica and found no named measurement. A Medium/vancamping 'test review' reports 0.91%/h idle on the 240 V inverter (about 37 W at 4,096 Wh), but the page returned 403 and I couldn't open it.",
+  "Anker SOLIX F3800 Plus idle draw. A search snippet quotes Anker's F3800 Plus page claiming idle cut by 50% to about 40 W, but the page text I could open didn't show it. How-To Geek's review on Yahoo (idle F3800 Plus empty in 'just over two days') returned 403. Zelpio says only 'high idle consumption', with no number.",
+  "Measured usable capacity for the DELTA Pro 3 and the Explorer 5000 Plus. No named lab reported a full-discharge Wh figure in the pages I opened.",
+  "ALLPOWERS R4000 idle draw. I found no named measurement.",
+  "A measured chest-freezer runtime on any of these units. The Solar Lab's F3800 test ran a fridge and freezer but logged no duration or energy."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0853158
+ }
+}

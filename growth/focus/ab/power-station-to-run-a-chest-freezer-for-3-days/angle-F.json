@@ -1,0 +1,164 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that the cheapest in-stock setup sized for 3 days at 1 kWh/day is BLUETTI's Apex 200 + B300K: 5,324.8 Wh for $2,199 at bluettipower.com on 2026-11-17. That is $0.41/Wh, about 4.5 freezer-days at ChatGPT's own 85% assumption. It also has 30% more capacity than the $3,099 DELTA Pro 3 ChatGPT picked, and both other ChatGPT picks (the Anker F3800/F3800 Plus and the Jackery 5000 Plus) are sold out at their makers' US stores.",
+ "standout": 3,
+ "standout_why": "I compared against the cited pages. us.ecoflow.com's DELTA Pro 3 page is the only cited product page and would not load (HTTP 429). ankersolix.com's F3800 and F3800 Plus pages show 'Price Loading' and 'Sold Out'. solarwaypoint.com's F3800 vs DELTA Pro 3 vs Jackery 5000 Plus comparison gives no price, $/Wh, idle draw or freezer runtime and lists no other models. None of these pages prices the category or names any station outside those three. ChatGPT's answer also had no sub-$2,500 option and showed the Jackery as available at $4,639.",
+ "decides": "It changes the pick on value. At ChatGPT's 1 kWh/day freezer and 85% usable energy, Apex 200 + B300K gives 5,324.8 × 0.85 ÷ 1,000 ≈ 4.5 days for $2,199. DELTA Pro 3 (4,096 Wh) gives about 3.5 days at ChatGPT's $3,099, or at the $2,799 our page read on 2026-11-03. The bundle also takes up to 3,000 W of solar (2,000 W of that on the 60–280 V MC4 input), so the 'does solar help' half is covered too. The cheaper single units each miss 72 h at 1 kWh/day: Elite 300 gets about 2.6 days at $1,199, Apex 200 alone about 2.2 days at $1,099, and EcoFlow says the DELTA 3800 Gen4 at $1,699 'powers a refrigerator for up to 70 hours'. They only make 3 days with an efficient 0.6 kWh/day freezer or with solar help.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800",
+  "Anker SOLIX F3800 Plus",
+  "Jackery Explorer 5000 Plus",
+  "BLUETTI Apex 200 + B300K",
+  "BLUETTI Apex 200",
+  "BLUETTI Elite 300",
+  "BLUETTI AC200L + B300K",
+  "ALLPOWERS R4000",
+  "EcoFlow DELTA Pro",
+  "EcoFlow DELTA 3800 Gen4",
+  "EcoFlow DELTA 3"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 200 + B300K",
+   "label": "Price, maker US store",
+   "value": "$2,199 (compare-at $2,599), in stock",
+   "source": "https://www.bluettipower.com/products/apex-200-b300k",
+   "source_title": "Apex 200 + B300K | BLUETTI",
+   "read": "2026-11-17",
+   "note": "From the Shopify product JSON (storecheck product). The page itself also shows US$2,199.00, down from $2,599.00."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Capacity / AC output / solar input / UPS",
+   "value": "2,560 Wh; 3,200 W continuous; up to 3,000 W solar (2,000 W HV MC4 at 60–280 V + 1,000 W LV XT60); ≤15 ms UPS",
+   "source": "https://www.bluettipower.com/products/apex-200-b300k",
+   "source_title": "Apex 200 + B300K | BLUETTI",
+   "read": "2026-11-17",
+   "note": "The bundle page gives the Apex 200's figures but not a combined capacity."
+  },
+  {
+   "product": "BLUETTI B300K",
+   "label": "Capacity and standalone price",
+   "value": "2,764.8 Wh; $1,099 (compare-at $1,699)",
+   "source": "https://www.bluettipower.com/products/bluetti-b300k-expansion-battery",
+   "source_title": "BLUETTI B300K Expansion Battery | 2,764.8Wh",
+   "read": "2026-11-17",
+   "note": "From BLUETTI store search results. Combined with Apex 200: 2,560 + 2,764.8 = 5,324.8 Wh. $2,199 ÷ 5,324.8 Wh = $0.41/Wh. At 1 kWh/day × 85% usable (ChatGPT's assumptions): 5.3248 × 0.85 = 4.5 days."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Price alone, maker US store",
+   "value": "$1,099 (compare-at $1,399), in stock",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "Apex 200 Versatile Power Station",
+   "read": "2026-11-17",
+   "note": "Loses alone: 2,560 × 0.85 = 2.2 days at 1 kWh/day, short of 3 days without solar. Store search also lists Apex 200 + B300K + 2× 200 W panels at $2,799."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Price, maker US store",
+   "value": "$1,199, in stock; with 2× 200 W panels $1,699",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-17",
+   "note": "3,014 Wh → $0.40/Wh, the lowest $/Wh priced here. Loses: 3,014 × 0.85 = 2.6 days at 1 kWh/day, so it covers 3 days only with an efficient freezer (about 4.3 days at 0.6 kWh/day) or with solar."
+  },
+  {
+   "product": "BLUETTI AC200L",
+   "label": "Price and stock, maker US store",
+   "value": "$899, sold out; AC200L + 2× B300K bundle $2,999, sold out",
+   "source": "https://www.bluettipower.com/products/ac200l-portable-power-station",
+   "source_title": "BLUETTI AC200L Portable Power Station | 2,400W,2,048Wh",
+   "read": "2026-11-17",
+   "note": "Loses: the base unit can't be bought from BLUETTI today, although the B300K is in stock."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Price and stock, maker US store",
+   "value": "$3,499; 'sold out due to high demand. Pre-order now, ships Dec 2'",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-17",
+   "note": "From Jackery store search results. $3,499 appears to be the lowest variant price, because the same figure shows on every 5000 Plus bundle. 5,040 Wh → $0.69/Wh, 4.3 days at 1 kWh/day. Loses: costs $1,300 more than Apex 200 + B300K for 285 Wh less, and doesn't ship until 2026-12-02. ChatGPT showed the Solar Generator bundle at $4,639. The add-on Battery Pack 5000 Plus is $2,899."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Stock, maker US store",
+   "value": "Sold Out, no price shown",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Page shows 'Price Loading' and 'Sold Out'. Specs on the page: 3,840 Wh, 6,000 W, solar 2 × 1,600 W at 11–165 V (3,200 W total), 20 ms UPS, 5-year warranty. Loses: can't be bought from Anker."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Stock, maker US store",
+   "value": "Sold out, no price shown",
+   "source": "https://www.ankersolix.com/products/f3800",
+   "source_title": "Anker SOLIX F3800 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "This is the page ChatGPT cited. Loses: can't be bought from Anker."
+  },
+  {
+   "product": "ALLPOWERS R4000",
+   "label": "Price and stock, maker US store",
+   "value": "$1,499 (compare-at $3,299), sold out; every R4000 solar kit also sold out",
+   "source": "https://iallpowers.com/products/allpowers-r4000-power-station",
+   "source_title": "ALLPOWERS R4000 Portable Power Station | 4000W 3456Wh",
+   "read": "2026-11-17",
+   "note": "3,456 Wh → $0.43/Wh, 2.9 days at 1 kWh/day. Loses: out of stock at ALLPOWERS."
+  },
+  {
+   "product": "EcoFlow DELTA 3800 Gen4",
+   "label": "Price and maker's fridge-runtime claim",
+   "value": "$1,699 (compare-at $3,999); 'Powers a refrigerator for up to 70 hours'; <10 ms UPS; 3,600 W",
+   "source": "https://us.ecoflow.com/products/delta-3800-gen4",
+   "source_title": "EcoFlow DELTA 3800 Gen4 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "From EcoFlow US store search results; the product page returned 429. Loses: by EcoFlow's own claim it runs a refrigerator 70 h, under the 72 h the shopper needs (the claim's test conditions weren't readable)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro",
+   "label": "Price, maker US store",
+   "value": "$1,799 (compare-at $4,998); 3.6 kWh, expandable to 25 kWh",
+   "source": "https://us.ecoflow.com/products/delta-pro-portable-power-station",
+   "source_title": "EcoFlow DELTA Pro Portable Power Station",
+   "read": "2026-11-17",
+   "note": "From EcoFlow US store search results. 3,600 × 0.85 = 3.1 days at 1 kWh/day. Loses: essentially no margin over 72 h, while Apex 200 + B300K adds about 1.4 days for $400 more."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Price, maker US store",
+   "value": "$579 (compare-at $1,349); 1 kWh base, expandable to 5 kWh",
+   "source": "https://us.ecoflow.com/products/delta-3-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Portable Power Station",
+   "read": "2026-11-17",
+   "note": "Loses: about 0.9 day at 1 kWh/day without extra batteries."
+  },
+  {
+   "product": "general",
+   "label": "Rival comparison page content",
+   "value": "Solar Waypoint's F3800 vs DELTA Pro 3 vs Jackery 5000 Plus comparison gives capacity (3,840 / 4,096 / 5,040 Wh), solar (2,400 / 2,600 / 5,200 W), weight and 5-year warranties, but no prices, idle draw or freezer runtime",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Its solar figures for the F3800 (2,400 W) and Jackery (5,200 W) differ from the makers' current pages (3,200 W; 4,000 W)."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 price today: us.ecoflow.com returned HTTP 429 to storecheck (three tries) and WebFetch. Store search didn't return the DELTA Pro 3 listing. ChatGPT showed $3,099; our page read $2,799 on 2026-11-03.",
+  "EcoFlow DELTA 3800 Gen4 capacity in Wh, solar input and the test conditions behind the 70 h fridge claim: the product page returned 429.",
+  "Anker SOLIX F3800 / F3800 Plus price: ankersolix.com shows 'Price Loading', storecheck got 404, and I didn't try Amazon.",
+  "Anker SOLIX S5000 price: ankersolix.com/products/s5000 returned 404.",
+  "BLUETTI Apex 200 warranty years: the bundle page says 'Global Warranty' and gives no number of years.",
+  "Prices for Growatt HELIOS 3600, OSCAL PowerMax 3600 SE (us.oscal.hk storecheck failed, HTTP 0), Mango Power E, Nature's Generator L3600/L6000, EcoFlow DELTA 3 Ultra, EcoFlow DELTA 2 Max and ALLPOWERS R3500: not checked within the call budget.",
+  "AC idle draw for any candidate: not stated on any maker page I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0661856
+ }
+}

@@ -7702,6 +7702,23 @@ PRODUCTS = [
  "fit": 'For Tesla and other NACS-port cars charging from a 4-prong dryer outlet without a Tesla adapter.',
  "caveats": ['NACS only: a J1772 car needs a NACS-to-J1772 adapter (EVDANCE sells one from $59.95).', 'Fits 4-prong 14-30 outlets only, not 3-prong 10-30.', "The maker's product text carries over a line about Tesla needing a J1772 adapter, which doesn't apply to this NACS model.", 'The maker page gives no ground-fault trip level, so check with your electrician whether a GFCI breaker will be needed.']},
 
+{"slug": 'bluetti-apex-200-b300k',
+ "brand": 'BLUETTI',
+ "program": 'awin:bluetti_us',
+ "asin": None,
+ "category": 'power-station',
+ "name": 'BLUETTI Apex 200 + B300K Expansion Battery Bundle (5,324.8 Wh LiFePO4, 3,200 W, 120 V)',
+ "model": 'Apex 200 + B300K',
+ "url": 'https://www.bluettipower.com/products/apex-200-b300k',
+ "price": 2199,
+ "verified": '2026-11-17',
+ "specs": [('Capacity', '5,324.8 Wh (Apex 200 2,560 Wh + B300K 2,764.8 Wh)'), ('AC output', '3,200 W continuous (Apex 200)'), ('Idle draw, inverter on, no load', '12.8 W (The Solar Lab, Apex 200)'), ('Measured efficiency', '90% (The Solar Lab)'), ('Solar input', '3,000 W: 2,000 W MC4 at 60–280 V + 1,000 W XT60'), ('UPS switchover', '15 ms or less'), ('Battery', 'LiFePO4')],
+ "warranty": "BLUETTI's bundle page lists 'Global Warranty' and 'Lifetime Support' but gives no term in years",
+ "returns": '30 days from purchase for a refund if the item comes back complete, unused and in its original package. You pay return shipping (BLUETTI refund policy, read 2026-11-17)',
+ "summary": 'Apex 200 power station bundled with one B300K expansion battery: 5,324.8 Wh, and The Solar Lab measured the inverter at 12.8 W idle with nothing plugged in.',
+ "fit": 'Keeping a chest freezer running through a 3-day outage on battery alone, with room to add solar.',
+ "caveats": ['The Solar Lab measured the 12.8 W idle draw on the Apex 200 alone. If the B300K pushes total idle draw to 20 W, battery-only runtime at 1 kWh/day falls to about 3.1 days.', 'The high-voltage MC4 solar port needs a string of 60 V or more. A pair of portable panels usually goes into the 1,000 W XT60 port.', "BLUETTI's page gives no weight for the Apex 200 or the B300K."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

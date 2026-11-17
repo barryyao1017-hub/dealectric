@@ -1,0 +1,128 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the original Anker SOLIX F3800's solar input depends on its firmware: on firmware 1.7.8 or earlier it takes only 10 A at 11–32 V (25 A at 32–60 V), and 2.1.1 or later allows 27 A from 15–60 V. Below 32 V, an un-updated unit is therefore limited to about 320 W per port instead of 1,200 W.",
+ "standout": 2,
+ "standout_why": "Pages compared: the cited Anker page (ankersolix.com/products/f3800, which now loads F3800 Plus content), the cited EcoFlow DELTA Pro 3 product pages, the uncited Solar Waypoint three-way comparison and WattNerds. Solar Waypoint and the Anker F3800 page give the F3800 only as '11–60 V, 27 A, 1,200 W per port' or as a 2,400 W total. None of the pages I opened gives the firmware-dependent current limits. They also name no expansion-battery models and give no guidance on wiring panels together. The Anker page ChatGPT cited does carry the F3800-vs-Plus voltage comparison, and probably the FAQ saying rooftop solar can't recharge the unit through the Home Power Panel, so those two points are not new.",
+ "decides": "This doesn't change the pick. It adds a condition to answering 'does solar help' for anyone buying a base F3800 (often discounted, refurbished or second-hand): update to firmware 2.1.1 or later before relying on low-voltage panels. Otherwise a parallel bank of 12 V-class panels (under 32 V) is limited to 10 A, about 320 W per port. That is still enough to cover a 0.6–1 kWh/day freezer on a sunny day, but far below the 400–800 W ChatGPT assumed. The F3800 Plus avoids this with 11–165 V, 17 A inputs. For homes with rooftop solar, Anker says the F3800 Plus can't be recharged from rooftop solar through the Home Power Panel during an outage. Portable panels must plug into the unit directly, which supports ChatGPT's 'battery + portable panels' advice for that setup.",
+ "candidates": [
+  "Anker SOLIX F3800",
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 5000 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Solar input limits by firmware",
+   "value": "Firmware 1.7.8 or earlier: 11–32 V at 10 A, 32–60 V at 25 A, 1,200 W max per port. Firmware 2.1.1 or later: 11–15 V at 10 A, 15–60 V at 27 A, 1,200 W max per port. Two XT-60 ports, 2,400 W total.",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery | Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Comparison spec on the maker's page. My arithmetic: on old firmware, an array under 32 V is capped at 10 A × ≤32 V = ≤320 W per port (≈200 W at a 20 V operating point), against 1,200 W after the update."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input per port, and stated damage limit",
+   "value": "2 ports, 11–165 V, 17 A max, 1,600 W max each (3,200 W total). Anker: 'Exceeding 165V may cause damage to the solar input ports.'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery | Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Same figures appear on ankersolix.com/products/f3800, which now shows F3800 Plus content."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Rooftop solar during an outage (maker's exclusion)",
+   "value": "Can't be recharged from rooftop solar through the Home Power Panel during an outage; solar panels must connect directly to the unit's 11–165 V inputs",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery | Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "From the FAQ on the maker's page. The page ChatGPT cited (ankersolix.com/products/f3800) appears to carry the same FAQ."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Expansion battery and maximum count",
+   "value": "BP3800, 3,840 Wh, 72.8 lb; up to 6 per F3800 Plus",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery | Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Page wording: 'Up to 6 × Expansion Batteries (3.84kWh each)'. My arithmetic: one BP3800 brings a single unit to 7,680 Wh."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Other stated limits",
+   "value": "240 V output can't be used while charging from 120 V AC. 'Designed for North American Power Standards Only.' Generator Adapter supports a single F3800 Plus only. With a 120 V generator, the TT-30R outlet works on L1 only.",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery | Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "Maker's FAQ and spec notes."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Switchover time",
+   "value": "20 ms when plugged into a 120 V wall outlet; 30 ms F3800 Plus to generator; 50 ms generator to F3800 Plus",
+   "source": "https://www.ankersolix.com/products/f3800",
+   "source_title": "Anker SOLIX F3800 Portable Power Station - 3840Wh | 6000W - Anker SOLIX US",
+   "read": "2026-11-17",
+   "note": "This URL now loads F3800 Plus content. Stock on 2026-11-17: 'Sold Out', no price shown ('Price Loading')."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Price, stock and warranty terms",
+   "value": "$2,799 (was $3,299); sold out, 'limited quantity expected in late January'. Warranty: 3 years standard plus 2 years extended with EcoFlow App registration.",
+   "source": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "source_title": "Powerful Yet Simple: DELTA Pro 3 | EcoFlow",
+   "read": "2026-11-17",
+   "note": "ChatGPT's card showed $3,099. Our page's flat '5 years' depends on registering in the app."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Compatibility stated on the product page",
+   "value": "Expandable from 4 to 48 kWh; recharges automatically when paired with the Smart Generator 4000; Smart Home Panel 2 must be installed before use",
+   "source": "https://us.ecoflow.com/products/delta-pro-3-portable-power-station",
+   "source_title": "Powerful Yet Simple: DELTA Pro 3 | EcoFlow",
+   "read": "2026-11-17",
+   "note": "Page text was truncated before the per-port solar table."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Solar input per port (third-party)",
+   "value": "Input 1: 1,600 W, 30–150 V, 15 A, XT60/XT60i. Input 2: 1,000 W, 11–60 V, 20 A, XT60/XT60i. 2,600 W total.",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Solar Waypoint is a rival result (rank 11, not cited). I couldn't open the maker's spec table (HTTP 429), so this comes from Solar Waypoint, not EcoFlow. My arithmetic: the 30 V minimum on Input 1 means a single 12 V-class panel can't charge through it."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Solar input per port (third-party)",
+   "value": "Input 1: 4,000 W, 135–450 V, 15 A, MC4. Input 2: 1,200 W, 16–60 V, 21 A, 8 mm connector.",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Solar Waypoint is a rival result, not the maker. My arithmetic: the 135 V floor means 400–800 W of portable panels like ChatGPT suggested would normally use the low-voltage input, which is capped at 1,200 W."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Expansion range (third-party)",
+   "value": "53,760 Wh expandable capacity; 5-year warranty; 20 ms transfer",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-vs-ecoflow-delta-pro-3-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 vs EcoFlow DELTA Pro 3 vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-17",
+   "note": "Solar Waypoint names no expansion battery models."
+  }
+ ],
+ "unsourced": [
+  "From EcoFlow: the DELTA Pro 3 per-port solar specs and which Smart Extra Battery models work with it. Searched us.ecoflow.com product and extra-battery pages (HTTP 429) and the DELTA Pro 3 manual PDFs on solacity, nfm and ecoflow.ie (too large, timed out, or unreadable). Retailer listings disagree on whether the original DELTA Pro's extra battery works.",
+  "From Jackery: the Explorer 5000 Plus per-port solar specs, panel series/parallel rules and Battery Pack 5000 Plus maximum count. jackery.com returned HTTP 429 or truncated pages, and I couldn't parse the US user manual PDF. Only the Solar Waypoint figures above were readable.",
+  "Whether the BP3800 expansion battery works with the base (non-Plus) F3800: the Anker page states 'up to 6' only for the F3800 Plus.",
+  "Low-load AC auto-off or energy-saving settings and their defaults on the F3800 Plus, DELTA Pro 3 and Explorer 5000 Plus. These could switch off a freezer between compressor cycles. Searched the Anker site and both manuals and found nothing readable.",
+  "Idle or self-consumption with AC on for the F3800 Plus, DELTA Pro 3 and Explorer 5000 Plus: not on any maker or rival page I opened.",
+  "The DELTA Pro 3 price via storecheck.py, which returned HTTP 429. The price above was read from the maker's page instead."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2438317999999997
+ }
+}
