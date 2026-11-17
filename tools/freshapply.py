@@ -134,7 +134,9 @@ def main() -> int:
         item = {"slug": r["slug"], "old": old, "new": new, "compare_at": r.get("live_compare"),
                 "available": r.get("live_available"), "move": round((new - old) / old, 3)}
         why = None
-        if abs(new - old) / old > MAX_MOVE:
+        if p.get("verified") == day:
+            why = f"the record was already updated today by another read (it says {old}); not overwritten"
+        elif abs(new - old) / old > MAX_MOVE:
             why = f"moved {item['move']:+.0%}"
         else:
             words = [p.get("model", "")] + p.get("model", "").split()
@@ -193,15 +195,17 @@ def apply(out: dict, reads: dict, day: str, rv: dict, skip: set) -> None:
     pp = src / "products.py"
     s = pp.read_text()
     for it in out["ours"]["applied"]:
-        i = s.index(f'{{"slug": "{it["slug"]}"')
-        j = s.find('{"slug": "', i + 10)
-        j = len(s) if j < 0 else j
+        m0 = re.search(r'\{"slug": ["\']' + re.escape(it["slug"]) + r'["\']', s)
+        assert m0, it["slug"]
+        i = m0.start()
+        m1 = re.compile(r'\{"slug": ["\']').search(s, i + 10)
+        j = m1.start() if m1 else len(s)
         block = s[i:j]
         new_price = repr(int(it["new"])) if float(it["new"]).is_integer() else repr(it["new"])
-        b2, n = re.subn(r'"price": [\d.]+', f'"price": {new_price}', block, count=1)
+        b2, n = re.subn(r'"price": [\d.]+(?=[,\s}])', f'"price": {new_price}', block, count=1)
         assert n == 1, it["slug"]
-        if '"verified": "' in b2:
-            b2 = re.sub(r'"verified": "\d{4}-\d\d-\d\d"', f'"verified": "{day}"', b2, count=1)
+        if re.search(r'"verified": ["\']\d{4}-\d\d-\d\d["\']', b2):
+            b2 = re.sub(r'"verified": ["\']\d{4}-\d\d-\d\d["\']', f'"verified": "{day}"', b2, count=1)
         else:
             b2 = b2.replace(f'"price": {new_price}', f'"price": {new_price}, "verified": "{day}"', 1)
         s = s[:i] + b2 + s[j:]
