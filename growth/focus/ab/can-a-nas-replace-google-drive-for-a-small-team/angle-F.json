@@ -1,0 +1,166 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that Synology rates its own 2-bay DS225+ for only 10 Synology Drive users and 100,000 Drive-hosted files, while the 4-bay DS425+ with the same 2 GB of memory is rated for 20 users and 500,000 files. The cheapest Synology can fall short of a team moving years of Google Drive files, and the pick moves to the DS425+ or a UGREEN NASync.",
+ "standout": 2,
+ "standout_why": "I compared against the three cited pages: the Synology Drive Technical Specifications page, the Drive Admin Console help and the Drive Quick Start Guide for administrators. I also checked the top uncited results (the Drive release notes, the QuickConnect pages and the DSM spec pages). The Drive spec page gives no per-model numbers; it says only that 'the recommended number of concurrent computer-client connections varies by Synology model' and points to each product page. None of these pages has a price or names a model. ChatGPT itself said only '4-bay Synology' with a guessed $1,000–1,500, and it priced Workspace at $12 a user a month, while Google's page today says $14 for Business Standard. Our current page has the DS225+ 10-user rating but not the 100,000-file cap. It also assumes about $250 of B2 over three years, which is too low at today's $6.95/TB rate.",
+ "decides": "The cap changes which Synology to buy, not the yes-or-no answer. The DS223j (5 users, 100k files) and the DS225+ (10 users, 100k files) are both too tight for five people bringing an existing Drive archive. Synology's own figures put the 4-bay DS425+ (20 users, 500k files) or the DS925+ (80 users, 500k files) at the floor, which matches ChatGPT's '4-bay' advice and gives it a reason. On cost: 5 seats of Business Standard at $14 come to $2,520 over three years, against roughly $620 for a UGREEN DXP4800 Plus plus drives plus $250–500 of offsite backup on B2 (1–2 TB). Business Starter, at 5 × $7 × 36 = $1,260, only gives 30 GB pooled per user, so it is no real Drive replacement. For a remote team that edits files rather than chats in Docs, the NAS still wins on three-year cost.",
+ "candidates": [
+  "Synology DS223j",
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DH4300 Plus",
+  "UGREEN NASync DXP4800 GT",
+  "UGREEN NASync DXP4800 Plus",
+  "QNAP TS-264-8G",
+  "QNAP TS-464-8G",
+  "Asustor AS5402T",
+  "TerraMaster F2-212",
+  "Google Workspace Business Starter",
+  "Google Workspace Business Standard",
+  "Hetzner Storage Share NX11/NX21",
+  "Backblaze B2 (offsite backup)"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Drive suggested maximum users / maximum hosted files",
+   "value": "10 users; 100,000 files",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "Synology's load assumption is 20% of users doing file operations and 80% idle. The file cap 'applies to files indexed or hosted by Synology Drive'. Synology Office is also rated for 10 users. Memory is 2 GB DDR4 non-ECC, up to 6 GB. Snapshots: 128 per shared folder; immutable snapshots listed."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Synology Drive suggested maximum users / maximum hosted files",
+   "value": "20 users; 500,000 files",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "Same 2 GB default (6 GB max) as the DS225+, but 5× the file cap. Office is rated for 20 users. Immutable snapshots supported."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Synology Drive suggested maximum users / maximum hosted files",
+   "value": "80 users; 500,000 files",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "4 GB DDR4 ECC, up to 32 GB. Office is rated for 80 users. Snapshots: 256 per shared folder, 2,048 per system. Immutable snapshots supported. Loses to the DS425+ for 5 people: same file cap, headroom they don't need."
+  },
+  {
+   "product": "Synology DS223j",
+   "label": "Synology Drive suggested maximum users / maximum hosted files",
+   "value": "5 users; 100,000 files",
+   "source": "https://www.synology.com/en-us/products/DS223j#specs",
+   "source_title": "DS223j | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "1 GB memory. Office is rated for 5 users. The page doesn't mention immutable snapshots. Loses because a 5-person team is already at its suggested user ceiling."
+  },
+  {
+   "product": "general",
+   "label": "Synology Drive per-file version limit (cited rival page)",
+   "value": "32 versions per file; per-model connection figures not given",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_drive",
+   "source_title": "Synology Drive Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This is the page ChatGPT cited. It says the recommended concurrent client connections 'vary by Synology model' and gives no numbers. On-demand sync needs Windows 10 1809+ or macOS 12.3+. No prices."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Price, UGREEN US store",
+   "value": "$389.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-nas-storage",
+   "source_title": "UGREEN NASync DXP2800",
+   "read": "2026-11-17",
+   "note": "Read from Shopify product JSON via storecheck.py. The refurbished unit at $269.99 is out of stock."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-17",
+   "note": "storecheck.py. The DXP4800 Pro is $679.99 at https://nas.ugreen.com/products/ugreen-nasync-dxp4800-pro-4-bay-nas."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 GT",
+   "label": "Price, UGREEN US store",
+   "value": "$559.99 (compare-at $854.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-gt-4-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP4800 GT",
+   "read": "2026-11-17",
+   "note": "storecheck.py. The cheapest UGREEN x86 4-bay in the store today. Not yet in our catalog."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Price, UGREEN US store",
+   "value": "$373.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NASync DH4300 Plus",
+   "read": "2026-11-17",
+   "note": "storecheck.py. An ARM home model; it can't run Docker x86 images such as the Collabora setup our page describes, so it loses on the office-editing column."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 GT",
+   "label": "Price, UGREEN US store",
+   "value": "$429.99 (compare-at $634.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp2800-gt-2-bay-nas-storage",
+   "source_title": "UGREEN NASync DXP2800 GT",
+   "read": "2026-11-17",
+   "note": "storecheck.py."
+  },
+  {
+   "product": "Google Workspace Business Standard",
+   "label": "US list price and storage",
+   "value": "$14 per user a month; 2 TB pooled per user",
+   "source": "https://workspace.google.com/pricing",
+   "source_title": "Compare Flexible Pricing Plan Options | Google Workspace",
+   "read": "2026-11-17",
+   "note": "The page shows a promo at $7 for Dec 1, 2026 to Mar 1, 2027 ('up to 50% off your first 3 months'). A footnote says the intro price runs 12 months for the first 20 users, which conflicts with that. Arithmetic: 5 × $14 × 36 = $2,520 at list. With the 3-month half price: $2,520 − (5 × $7 × 3) = $2,415. ChatGPT used $12, which is out of date."
+  },
+  {
+   "product": "Google Workspace Business Starter",
+   "label": "US list price and storage",
+   "value": "$7 per user a month; 30 GB pooled per user",
+   "source": "https://workspace.google.com/pricing",
+   "source_title": "Compare Flexible Pricing Plan Options | Google Workspace",
+   "read": "2026-11-17",
+   "note": "5 × $7 × 36 = $1,260 over three years. Loses because 150 GB pooled is too small to be the shared drive. Business Plus is $22 with 5 TB: 5 × $22 × 36 = $3,960."
+  },
+  {
+   "product": "Hetzner Storage Share NX11 / NX21",
+   "label": "Price, Hetzner",
+   "value": "NX11 1 TB €4.29/mo; NX21 5 TB €14.19/mo; NX31 10 TB €27.39/mo (ex-VAT)",
+   "source": "https://www.hetzner.com/storage/storage-share/",
+   "source_title": "Storage Share - Hetzner",
+   "read": "2026-11-17",
+   "note": "Unlimited users. Simultaneous connections: 50 / 100 / 200. The page doesn't mention Nextcloud Office or Collabora; it says Hetzner can't support extra apps. NX11 over three years: €4.29 × 36 = €154.44 ex-VAT. Loses on office editing and on EU-only hosting for a US team."
+  },
+  {
+   "product": "Backblaze B2",
+   "label": "Offsite backup price",
+   "value": "$6.95 per TB per month; free egress up to 3× stored",
+   "source": "https://www.backblaze.com/cloud-storage/pricing",
+   "source_title": "Cloud Storage Pricing | Backblaze B2",
+   "read": "2026-11-17",
+   "note": "No minimum storage duration; first 10 GB free. Three years: 1 TB × $6.95 × 36 = $250.20; 2 TB = $500.40. Our page's 'B2 about $250' only holds for 1 TB."
+  }
+ ],
+ "unsourced": [
+  "Today's US price for Synology DS223j, DS225+, DS425+ and DS925+: Synology has no US store; amzcheck.py was blocked on every ASIN; B&H, Newegg and Micro Center returned 403; NASCompares' buy page shows no US price. Only undated deal posts were left, and those are not usable.",
+  "Today's price for QNAP TS-264-8G, QNAP TS-464-8G and Asustor AS5402T: both sell mainly through Amazon US, which was walled; I didn't reach a maker store.",
+  "TerraMaster F2-212 price: storecheck on shop.terra-master.com returned only a drive tray for 'F2-212', not the NAS.",
+  "Google Workspace monthly flexible (no-commitment) price: the pricing page shows the same per-user figures under 'Annual (Save 16%)' and gives no separate flexible rate.",
+  "A UGREEN UGOS Pro limit on sync-client users or files comparable to Synology's per-model Drive ratings: I didn't find a published figure in the calls I had."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0358803
+ }
+}

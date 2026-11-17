@@ -1,0 +1,75 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that if the internet line hosting the NAS uses carrier-grade NAT (a WAN address in 100.64.0.0/10, which RFC 6598 calls 'not globally routable'), the direct port-forwarded or DDNS route that keeps Drive sync fast cannot be set up from home. That leaves the five remote laptops on Synology's QuickConnect relay, which Synology says 'may be slower than port-forwarded connections', or on Tailscale, which falls back to its slower DERP relays when both ends are behind a hard NAT.",
+ "standout": 2,
+ "standout_why": "Pages compared: Synology Drive spec (cited), Drive Admin Console and Drive admin Quick Start (cited; both load only a title and footer, no article text), and the uncited DSM 'Network and External Access' spec. ChatGPT's answer says remote access 'requires setup', offers 'VPN or QuickConnect', and warns about 20 Mbps upload. The cited Drive spec says nothing about remote access, QuickConnect or relays. The uncited DSM spec has the 'relay slower than port-forwarded' line and says the relay 'may not work in some regions' because of ISP restrictions, but it never names CGNAT. Our current page already says QuickConnect is a Drive bottleneck and suggests 'use DDNS/direct'. No page tells the shopper that DDNS/direct is impossible on a CGNAT line, or how to check for one (a router WAN address starting 100.64–100.127). Each fact is known on its own; joining them into this check is the new part.",
+ "decides": "This is a go/no-go check before buying any NAS, not a choice between Synology and UGREEN. Look at the WAN IP on the office or home router where the NAS would sit. If it is a public address, set up port forwarding/DDNS for Synology Drive, or Tailscale, and the NAS plan works within that line's upload speed. If it falls in 100.64.0.0/10 (CGNAT), every remote sync goes through a relay: QuickConnect for Synology, UGREENlink for UGREEN, or Tailscale DERP if a direct path fails. In that case, either buy a public IPv4 from the ISP or switch to a hosted option such as Hetzner Storage Share or Google Workspace, which removes the problem. This firms up the hosted rows as the fallback for CGNAT connections.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus",
+  "Hetzner Storage Share NX11",
+  "Google Workspace Business Standard"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "CGNAT shared address block and routability",
+   "value": "100.64.0.0/10, 'designated for Service Provider use with the purpose of facilitating CGN deployment'; 'not globally routable address space'",
+   "source": "https://www.rfc-editor.org/rfc/rfc6598.html",
+   "source_title": "RFC 6598 (BCP 153): IANA-Reserved IPv4 Prefix for Shared Address Space",
+   "read": "2026-11-17",
+   "note": "Published April 2012. Providers use it to number the link between their CGN and the customer's router. If the router's WAN IP is in 100.64.0.0–100.127.255.255, nothing on the internet can open an inbound connection to the NAS, so port forwarding and DDNS cannot work."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "QuickConnect relay vs direct (DSM 7.4 spec)",
+   "value": "'Relayed QuickConnect connections may be slower than port-forwarded connections because of increased network latency'; 'The relay service may not work in some regions because of restrictions imposed by specific Internet service providers'; 'Some services and packages that require direct mapping to an IP address or DDNS are not supported'",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/network_external_access",
+   "source_title": "DSM 7.4 Technical Specifications: Network and External Access | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This was result 18 in ChatGPT's list and was not cited. The same page says QuickConnect 'Automatically applies required port forwarding rules to compatible UPnP routers', which cannot get past a carrier's NAT. It applies to every DSM 7.4 model, including the DS425+."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "VPN client limit in DSM (same spec)",
+   "value": "'Supports one concurrent VPN connection' (DSM as VPN client)",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/network_external_access",
+   "source_title": "DSM 7.4 Technical Specifications: Network and External Access | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This is the NAS's own outbound VPN client, not VPN Server. It matters only if the plan is to tunnel the NAS out to a rented VPS to get around CGNAT."
+  },
+  {
+   "product": "general",
+   "label": "Tailscale direct vs relayed (DERP)",
+   "value": "'Tailscale can't establish a direct connection if both devices are behind a hard NAT'; DERP servers 'have limited quality of service' and 'may offer lower maximum throughput'",
+   "source": "https://tailscale.com/kb/1257/connection-types",
+   "source_title": "Connection types · Tailscale Docs",
+   "read": "2026-11-17",
+   "note": "Page last validated 2026-06-01. Tailscale publishes no numeric DERP throughput cap. It falls back to a Peer Relay first if one is set up, then to DERP. A CGNAT line plus a remote worker on a restrictive hotel or office network is the case that ends up on DERP."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Tailscale package on DSM 7: port forwarding and caveats",
+   "value": "Reach the NAS 'without opening firewall ports' (NAT traversal). On DSM 7, outbound connections from other Synology apps need a boot-up script running 'tailscale configure-host', and it must be re-run after every package upgrade. A firewall exception for 100.64.0.0/10 is needed if the DSM firewall is on.",
+   "source": "https://tailscale.com/kb/1131/synology",
+   "source_title": "Access Synology NAS from anywhere · Tailscale Docs",
+   "read": "2026-11-17",
+   "note": "Page last validated 2026-01-05. The page does not mention Synology Drive, so it does not show Drive Client working over Tailscale. Tailscale also says the Package Center build is outdated and recommends its own package server. Each of the five laptops needs the Tailscale client."
+  }
+ ],
+ "unsourced": [
+  "Starlink's own help-center wording that its router 'does not support port forwarding' and needs a Public IP (Priority plans) to forward ports: the starlink.com support articles (e3e6bb65…, 1192f3ef…) load as JavaScript and returned only 'Starlink' when opened, so the wording is from search snippets only and is not used",
+  "T-Mobile Home Internet's own statement on CGNAT and no port forwarding: only third-party blogs and community posts came up, no T-Mobile support page",
+  "Synology's own Drive speed article (kb.synology.com/en-us/DSM/tutorial/how_to_increase_Drive_speed), which names 'the QuickConnect server bottleneck', and the KB pages giving port 6690 for Drive sync and listing Drive as QuickConnect-supported: kb.synology.com loads as JavaScript and returned no article text",
+  "A numeric bandwidth cap for the Synology QuickConnect relay: the QuickConnect White Paper PDF (global.synologydownload.com and cndl.synology.cn) could not be text-extracted here, and the ~52 Mbit/s figure comes only from a forum user",
+  "UGREEN's documentation on whether UGREENlink relays traffic and how fast: not researched within the call budget, and our page already lists it as 'speed unpublished'"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0355865000000002
+ }
+}

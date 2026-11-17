@@ -1,0 +1,128 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that existing Google Docs, Sheets and Slides only leave Google as .docx, .xlsx and .pptx files. Synology's Active Backup for Google Workspace converts them, and Cloud Sync converts them only in download-only tasks. Synology Office then has to import those files, and on the 2 GB DS225+ it caps a spreadsheet at 2,000,000 cells instead of the 5,000,000 it allows with 4 GB or more.",
+ "standout": 2,
+ "standout_why": "I compared against ChatGPT's cited pages: the Synology Drive spec, the Drive Admin Console KB and the Drive admin Quick Start. I also checked the uncited results: the Drive release notes, the Drive Client and ShareSync KBs, the QuickConnect pages and the DSM spec pages. The cited Drive spec already covers client OS limits (Windows 10 2004+, no Windows-on-ARM before Win 11 25H2), the on-demand sync requirements, and the iOS 18 floor for the mobile app, so those findings add nothing new. None of these pages covers moving native Google files out of Google, the formats Synology Office imports, the RAM-based spreadsheet cell limit, the snapshot-restore exclusion for the homes folder, or that Tailscale's own documentation calls the Synology Package Center version unsupported. Our current page also says 'Tailscale package', which Tailscale's documentation now contradicts.",
+ "decides": "This confirms Synology over UGREEN for a team leaving Google Drive. Synology has an official, free path out of Google: Active Backup for Google Workspace or Cloud Sync produces Office files, Synology Office imports them, and up to 10 users can edit them on a DS225+. UGREEN offers only Nextcloud and Collabora in Docker. It also sharpens the model choice. On a stock 2 GB DS225+, spreadsheets are capped at 2 million cells and Drive is rated for 10 users. The DS925+ comes with 4 GB, which lifts the cap to 5 million cells, and it is rated for 80 Drive users and 80 Office users. So a team with big Sheets should take the DS925+ or put 4 GB or more in the DS225+. Two setup rules follow. Keep shared work in Team Folders, which are ordinary shared folders, because the homes folder can't be rolled back to a snapshot. And install Tailscale from Tailscale's own package, not from Package Center.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Active Backup for Google Workspace: what happens to native Google files",
+   "value": "Google Docs are backed up as .docx, Sheets as .xlsx and Slides as .pptx, and each is restored to its Google format. Forms become .zip (Forms over 10 MB are not backed up), Drawings become .jpeg, Apps Script becomes .json and Jamboard becomes .pdf. Cross-domain restore is not supported. It covers My Drive, shared drives, Gmail, Contacts and Calendar.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/abg",
+   "source_title": "Active Backup for Google Workspace Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "From Synology's DSM 7.4 spec page. That page lists no model or RAM requirements and says nothing on licensing."
+  },
+  {
+   "product": "general",
+   "label": "Cloud Sync and Google Drive: conversion only in download-only tasks",
+   "value": "In download-only tasks, Cloud Sync converts Google Docs to Microsoft Office or JPEG formats. It supports Google Workspace accounts and can make a separate connection for each Shared Drive. It does not do incremental updates, so a changed file is re-synced in full.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/cloud_sync",
+   "source_title": "Cloud Sync Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The page doesn't describe how two-way or upload-only tasks handle Google Docs."
+  },
+  {
+   "product": "general",
+   "label": "Synology Office: import formats and browser floor",
+   "value": "Imports .docx, .doc, .rtf, .odf, .xlsx, .xlsm, .xls, .ods, .csv, .pptx, .ppt and .odp. Exports .docx, .odt, .xlsx, .ods, .pptx, .odp and PDF. Needs Chrome or Edge 111+, Firefox 128+ or Safari 17+.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/office",
+   "source_title": "Synology Office Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The page lists import formats but doesn't say whether Microsoft Office files are converted or edited natively."
+  },
+  {
+   "product": "general",
+   "label": "Synology Office spreadsheet size limit by NAS RAM",
+   "value": "2,000,000 cells on systems with less than 4 GB of RAM; 5,000,000 cells with 4 GB or more",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/office",
+   "source_title": "Synology Office Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Combined with the DS225+ spec (2 GB pre-installed, 6 GB max), a stock DS225+ falls under the 2 million cap. The DS925+ ships with 4 GB."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Drive users, Office users, RAM, drive policy",
+   "value": "Synology Drive: up to 10 users (tested with 20% of users active), 100,000 hosted files. Synology Office: up to 10 users. RAM: 2 GB DDR4 non-ECC pre-installed, 6 GB max (2 GB + 4 GB). Synology 'only guarantees full functionality… for compatible drives'. Immutable snapshots are listed; limits are 128 snapshots per shared folder and 1,024 per system.",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "The Office user count may be lower depending on the client PCs: Synology tested with clients using an Intel Core i3-3220 and 8 GB of RAM."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Drive users, Office users, RAM",
+   "value": "Synology Drive: up to 80 users, 500,000 hosted files. Synology Office: up to 80 users. RAM: 4 GB DDR4 ECC pre-installed, 32 GB max (16 GB × 2). Immutable snapshots are listed.",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Synology Inc. (specifications)",
+   "read": "2026-11-17",
+   "note": "The 4 GB stock RAM clears the Office threshold for the 5,000,000-cell limit."
+  },
+  {
+   "product": "Synology DS225+ / DS925+",
+   "label": "Third-party drives on 2025 Plus models",
+   "value": "With DSM 7.3, 2025 model-year DiskStation Plus, Value and J series units support installing third-party drives and creating storage pools on them. M.2 storage pools and M.2 cache still need drives on the HCL.",
+   "source": "https://www.synology.com/en-global/company/news/article/dsm73",
+   "source_title": "Synology Releases DiskStation Manager 7.3… Expanded Storage Flexibility | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Press release dated 2025-10-08 and updated 2025-10-13. Cheaper third-party HDDs fit the 3-year cost row."
+  },
+  {
+   "product": "general",
+   "label": "Snapshot Replication: restore exclusions",
+   "value": "The homes shared folder doesn't support 'restore to this snapshot', switchover, failover or re-protect. Hybrid Share and USB shared folders support neither snapshots nor replication. WriteOnce folders don't support 'restore to this snapshot'. Immutable snapshots exist only on supported models.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/snapshot_replication",
+   "source_title": "Snapshot Replication Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The Drive spec says Team Folders are shared folders an admin enables, so team data in a Team Folder can be rolled back as a whole. My inference, not stated by Synology: data kept in homes needs a per-file restore instead."
+  },
+  {
+   "product": "general",
+   "label": "Synology Drive Client and app: platform exclusions",
+   "value": "Windows 10 build 2004 or later. Windows-on-ARM and Windows Server are excluded, except that the x64 client runs on ARM from Windows 11 25H2. macOS 12+, 64-bit. Ubuntu 20.04+. On-demand sync needs Windows 10 1809+ or macOS 12.3+, and can't use a folder already used by OneDrive Files On-Demand or iCloud Drive. Mobile app needs iOS 18.0+ or Android 10+. File locking needs clients 4.0.0+. .pst files are not supported.",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_drive",
+   "source_title": "Synology Drive Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "ChatGPT cited this page, so it isn't new. Apple's App Store listing for Synology Drive 3.9.0 also says iOS 18.0 / iPadOS 18.0 or later (https://apps.apple.com/us/app/synology-drive/id1267275421, read 2026-11-17)."
+  },
+  {
+   "product": "general",
+   "label": "Tailscale on Synology: install path and limits",
+   "value": "Tailscale's doc says the Tailscale package in Synology Package Center is no longer supported; download the SPK from Tailscale's package server and install it manually. On DSM 7, other packages can't reach tailnet nodes until a boot-up task runs 'tailscale configure-host' (needs v1.22.2+, rerun after upgrades). --accept-routes is not supported, and Tailscale SSH doesn't run on Synology.",
+   "source": "https://tailscale.com/kb/1131/synology",
+   "source_title": "Access Synology NAS from anywhere · Tailscale Docs",
+   "read": "2026-11-17",
+   "note": "Our page currently says 'Tailscale package'. It should say Tailscale's own SPK."
+  },
+  {
+   "product": "UGREEN NASync DXP2800 / DXP4800 Plus",
+   "label": "UGREEN client platforms",
+   "value": "iOS 15.0 or later; Android 7.0 or later; separate macOS builds for Intel and Apple Silicon; no Linux desktop client",
+   "source": "https://ai.ugreen.com/pages/app-download",
+   "source_title": "UGREEN NAS Download",
+   "read": "2026-11-17",
+   "note": "No Windows or macOS version floor is given, and on-demand files aren't mentioned."
+  }
+ ],
+ "unsourced": [
+  "Synology's own statement that each user's Synology Drive 'My Drive' lives in the homes shared folder. The KB pages (Drive Quick Start, Drive Admin Console) rendered empty when opened, and the DSM 7.3 user guide and 2023 Solution Guide PDFs were over the fetch size limit.",
+  "Synology's per-model drive compatibility FAQ (kb.synology.com Drive_compatibility_policies): whether a DS225+ shows warnings or loses features with unlisted HDDs. The page rendered empty when opened.",
+  "Which packages work through QuickConnect (Drive desktop client, ShareSync, Office) from Synology's KB article 'Which packages and services support QuickConnect?'. The page rendered empty when opened.",
+  "Minimum Windows and macOS versions for UGREEN's desktop sync client, and whether it supports on-demand (placeholder) files. UGREEN's download page lists neither.",
+  "The list of Synology models that support immutable snapshots. The Snapshot Replication spec only links to a 'supported models' list, which I didn't open; the DS225+ and DS925+ spec pages both list immutable snapshots.",
+  "Whether Synology Office edits .docx natively or converts it to its own format. The Office spec lists import and export formats without saying."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1304048000000002
+ }
+}

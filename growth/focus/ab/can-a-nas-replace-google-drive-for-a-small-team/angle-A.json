@@ -1,0 +1,128 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states Synology's per-model Drive ratings. The DS225+ is rated for 10 Drive users and only 100,000 hosted files, the DS425+ for 20 users and 500,000 files, and Google allows 500,000 items in one shared drive. So for the same five people, the 2-bay box holds one-fifth as many files as the Google setup it would replace. Its '32 versions' is also a count cap, while Google's limit is time-or-count (30 days or 100 newer versions).",
+ "standout": 3,
+ "standout_why": "I compared against the cited Synology Drive Technical Specifications page (DSM 7.4). It gives 32 versions per file and 500,000 files per client, and on users only says 'the recommended number of concurrent computer-client connections varies by Synology model', with no per-model figure. The cited Drive Admin Console and Quick Start pages showed no per-model user, file or version numbers when I fetched them, though only their title and navigation loaded. None of the 27 results is a DS225+ or DS425+ product spec page, a Google Drive version-retention or shared-drive-limit page, a Nextcloud versioning page or a UGREEN sync page. ChatGPT's answer recommends a generic 4-bay unit without saying why. Our current page has the DS225+ '~10 Drive users' figure but not the 100,000 hosted-file cap. It also lists 32 versions without saying this is a count cap that may cover less time than Google's 30 days.",
+ "decides": "This changes the Synology pick depending on file count. Five users is within the DS225+'s rated 10, but a team bringing over a Google Drive with more than 100,000 files and folders goes past what Synology rates the DS225+ to host. That is only 20,000 per person. The DS425+ is rated for 500,000, the same as one Google shared drive, and has the same Celeron J4125 and 2 GB of RAM, so the extra bays are not the only difference. The page should say: count your files first. Under 100k, the DS225+ is fine. Over 100k, pick the DS425+ (or DS925+, rated 80 users and 500,000 files). On versions, Synology and UGREEN both cap at 32 per file, and UGREEN keeps only 8 unless an admin raises it. A file saved 10 times a day uses up 32 versions in about 3 days. Google keeps up to 100 versions for up to 30 days, and Nextcloud/Hetzner thins versions over time (hourly for a day, daily for 30 days, weekly after). So 'version history' is not the same feature across these products. For heavily edited files, use Synology Intelliversioning plus snapshots.",
+ "candidates": [
+  "Synology DS225+",
+  "Synology DS425+",
+  "Synology DS925+",
+  "UGREEN NASync DXP2800",
+  "Google Workspace Business Standard",
+  "Hetzner Storage Share NX11"
+ ],
+ "findings": [
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Drive maximum number of users",
+   "value": "10 users",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Synology bases this on a workload where 20% of users randomly perform file operations and 80% are logged in but idle. A 5-person team is half of the rating."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Drive maximum number of hosted files",
+   "value": "100,000 files",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The footnote says this 'applies to files indexed or hosted by Synology Drive'. For 5 users that is 20,000 files each. It is one-fifth of the DS425+ figure and of Google's per-shared-drive item limit."
+  },
+  {
+   "product": "Synology DS225+",
+   "label": "Synology Office maximum number of users; SMB connections (FSCT-based)",
+   "value": "10 Office users; 5 SMB connections",
+   "source": "https://www.synology.com/en-us/products/DS225+#specs",
+   "source_title": "DS225+ | Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "The SMB figure is the FSCT benchmark. Remote users on Drive Client count against the Drive limit, not the SMB one. Same spec page: Intel Celeron J4125, 2 GB DDR4 (max 6 GB), 128 snapshots per shared folder."
+  },
+  {
+   "product": "Synology DS425+",
+   "label": "Synology Drive maximum users / maximum hosted files",
+   "value": "20 users / 500,000 files",
+   "source": "https://www.synology.com/en-us/products/DS425+#specs",
+   "source_title": "DS425+ | Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Same 20%-active / 80%-idle workload basis. The DS425+ has the same 2 GB DDR4 (max 6 GB) as the DS225+ but 5× the hosted-file rating. Synology Office is rated for 20 users and SMB for 10 connections."
+  },
+  {
+   "product": "Synology DS925+",
+   "label": "Synology Drive maximum users / maximum hosted files",
+   "value": "80 users / 500,000 files",
+   "source": "https://www.synology.com/en-us/products/DS925+#specs",
+   "source_title": "DS925+ | Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "Same workload basis. Synology Office 80 users, SMB 40 connections, 4 GB DDR4 ECC (max 32 GB). Its file cap is the same as the DS425+, so for 5 users it only buys more headroom on users and RAM."
+  },
+  {
+   "product": "general (Synology Drive)",
+   "label": "Versions per file; files per Drive Client",
+   "value": "up to 32 versions per file; 500,000 files per client",
+   "source": "https://www.synology.com/en-global/dsm/7.4/software_spec/synology_drive",
+   "source_title": "Synology Drive Technical Specifications | Synology Inc.",
+   "read": "2026-11-17",
+   "note": "This is a count cap with no time limit. Rotation is first-in-first-out or Intelliversioning. The page says the recommended number of concurrent computer-client connections 'varies by Synology model' and gives no per-model figures; those are on the product spec pages above. On-demand sync needs Windows 10 1809+ or macOS 12.3+."
+  },
+  {
+   "product": "Google Workspace Business Standard",
+   "label": "Version retention for uploaded (non-Google) files",
+   "value": "deleted after 30 days or once there are 100 newer versions, unless pinned 'Keep forever'",
+   "source": "https://support.google.com/drive/answer/2409045",
+   "source_title": "Check activity & file versions - Google Drive Help",
+   "read": "2026-11-17",
+   "note": "Google's wording: 'A version might be permanently deleted after 30 days or if there are 100 newer versions.' Docs, Sheets and Slides version history works differently. The Synology/UGREEN 32-version cap can cover a shorter period than Google's: at 10 saves a day, 32 versions is about 3 days."
+  },
+  {
+   "product": "Google Workspace Business Standard",
+   "label": "Shared drive item limit and daily upload limit",
+   "value": "500,000 items per shared drive; 750 GB upload/copy per user per 24 h; files up to 5 TB",
+   "source": "https://support.google.com/a/answer/7338880",
+   "source_title": "Shared drive limits in Google Drive - Google Workspace Admin Help",
+   "read": "2026-11-17",
+   "note": "The 500,000 count includes files, folders, shortcuts and items in trash. It matches the DS425+/DS925+ hosted-file rating and is 5× the DS225+."
+  },
+  {
+   "product": "UGREEN NASync DXP2800",
+   "label": "Sync folder version retention",
+   "value": "8 versions by default, up to 32",
+   "source": "https://ai.ugreen.com/blogs/how-to/ugreen-nas-file-sync",
+   "source_title": "UGREEN NAS File Sync (UGREEN how-to blog, dated 06/05/2026)",
+   "read": "2026-11-17",
+   "note": "Quote: 'UGOS retains eight versions by default and supports up to 32.' Version Retention is turned on automatically for sync folders. On a conflict it keeps the newer file and renames the older one with a suffix, without merging. No Linux desktop client. The page gives no user or file-count limit."
+  },
+  {
+   "product": "Hetzner Storage Share NX11",
+   "label": "Simultaneous connections, users, storage, price",
+   "value": "50 simultaneous connections; unlimited users; 1 TB; €4.29/month excl. VAT",
+   "source": "https://www.hetzner.com/storage/storage-share/",
+   "source_title": "Storage Share - Hetzner",
+   "read": "2026-11-17",
+   "note": "Hetzner caps connections rather than users. The NX21 (5 TB, €14.19) allows 100 and the NX31 (10 TB, €27.39) allows 200. Hosted in Falkenstein, Germany."
+  },
+  {
+   "product": "Hetzner Storage Share NX11",
+   "label": "Version retention (Nextcloud default)",
+   "value": "1 per 2 s for first 10 s, 1 per 10 s for first minute, 1/min for first hour, 1/hour for first 24 h, 1/day for first 30 days, 1/week after; never more than 50% of the user's free space",
+   "source": "https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_versioning.html",
+   "source_title": "Versions — Nextcloud latest Administration Manual",
+   "read": "2026-11-17",
+   "note": "This keeps versions over time rather than up to a count: it can keep months of weekly versions, limited by free space. Of the four products, this is the only versioning scheme with no fixed count."
+  }
+ ],
+ "unsourced": [
+  "Synology Drive's default (as opposed to maximum) version count: the Drive Admin Console KB page only returned its title and navigation.",
+  "Any UGREEN DXP2800 limit on sync users, concurrent connections or hosted files: the product page returned HTTP 429, and UGREEN's file-sync how-to gives no count.",
+  "Whether the cited Quick Start and Admin Console pages contain per-model limits: only their navigation loaded, so I'm treating them as lacking these limits without having read the full text.",
+  "Current Amazon prices for the DS225+ and DS425+: the amzcheck tool needed approval I didn't have, so I left Amazon prices out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.8705493999999997
+ }
+}
