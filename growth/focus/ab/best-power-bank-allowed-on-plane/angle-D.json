@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 100 Wh test is applied to the Wh rating printed on the case, which the rule calculates as rated amp-hours times the cell's nominal voltage. The top 99 Wh packs use 3.6 V cells, so about 27,700 mAh is the real ceiling, not the 27,000 mAh that ChatGPT's 3.7 V table gives.",
+ "standout": 2,
+ "standout_why": "I read three rival sources: the Cornell copy of 49 CFR 175.10 (in ChatGPT's results but not cited), the UK CAA notice and the ICAO news page. None of them gives a voltage for converting mAh to Wh or says the Wh figure must be on the case. ChatGPT's own answer assumed 3.7 V and called 27,000 mAh (99.9 Wh) the limit, and it never said the shopper should look for the Wh on the label. The new part is the label rule in 49 CFR 173.185(a)(5) together with the 3.6 V arithmetic. I could not open the cited IATA PDF (the text is compressed and my extraction step was blocked), the cited AA pages (HTTP 403) or the uncited faa.gov pages (HTTP 403). The FAA pages may already explain V × Ah, so this score is somewhat uncertain.",
+ "decides": "This confirms that the biggest bank allowed with no approval is the one with the highest Wh on its label below 100. The 27,600 to 27,650 mAh class qualifies: AOHi lists its pack at 99.36 Wh, and the Anker and EcoFlow 27,650 mAh packs work out to 99.54 Wh at 3.6 V (our page's figure; I could not confirm it on their pages today). mAh alone can't sort them, because the same mAh at 3.85 V would be over 100 Wh. Above 100 Wh up to 160 Wh you need the airline's approval, for example for the AOHi Starship 40K. Since 27 March 2026, ICAO rules also cap each person at two power banks and forbid recharging them on board.",
+ "candidates": [
+  "AOHi Future Starship 240W 27,600 mAh",
+  "Anker Prime 27,650 mAh 250W (A1340)",
+  "EcoFlow RAPID Pro 27,650 mAh 300W",
+  "AOHi Starship 40,000 mAh 140W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "How the rule defines Wh rating",
+   "value": "Wh = rated capacity (Ah) × nominal voltage (V)",
+   "source": "https://www.law.cornell.edu/cfr/text/49/171.8",
+   "source_title": "49 CFR § 171.8 - Definitions and abbreviations (LII)",
+   "read": "2026-11-17",
+   "note": "Exact wording: 'The Watt-hour rating of a lithium ion cell or battery is determined by multiplying the rated capacity of a cell or battery in ampere-hours, by its nominal voltage.' Nominal voltage means the cell's voltage (about 3.6 to 3.85 V), not the 5 to 28 V USB output."
+  },
+  {
+   "product": "general",
+   "label": "Wh rating must be marked on the case",
+   "value": "Required on each lithium-ion battery since 10 May 2024",
+   "source": "https://www.law.cornell.edu/cfr/text/49/173.185",
+   "source_title": "49 CFR § 173.185 - Lithium cells and batteries (LII)",
+   "read": "2026-11-17",
+   "note": "§173.185(a)(5): 'Beginning May 10, 2024, each lithium ion battery must be marked with the Watt-hour rating on the outside case.' §173.185(c)(1)(i) sets the same rule for small batteries, starting 31 Dec 2015."
+  },
+  {
+   "product": "general",
+   "label": "US passenger limits for spare lithium-ion batteries",
+   "value": "≤100 Wh with no approval; 100 to 160 Wh needs operator approval, at most two such spares per person, carry-on only, each protected against short circuit",
+   "source": "https://www.law.cornell.edu/cfr/text/49/175.10",
+   "source_title": "49 CFR § 175.10 - Exceptions for passengers, crewmembers, and air operators (LII)",
+   "read": "2026-11-17",
+   "note": "§175.10(a)(18). Quotes include 'no more than two individually protected lithium ion batteries each exceeding 100 Wh, but not exceeding 160 Wh, may be carried per person as spare batteries in carry-on baggage.'"
+  },
+  {
+   "product": "general",
+   "label": "ICAO power bank amendment, effective 27 March 2026",
+   "value": "At most two power banks per person; must not be recharged on board; should not be used to charge other devices on board; 100 to 160 Wh still allowed with operator approval",
+   "source": "https://caa.co.uk/commercial-industry/airlines/dangerous-goods/changes-to-rules-on-the-carriage-of-lithium-cellsbatteries-and-power-banks",
+   "source_title": "UK CAA - Changes to rules on the carriage of lithium cells/batteries and power banks",
+   "read": "2026-11-17",
+   "note": "The CAA text says power banks over 100 Wh but not over 160 Wh 'requires approval from the operator'. This contradicts ChatGPT's claim that the 2026 IATA guidance caps power banks at 100 Wh. Note this rule is ICAO/international; for US domestic flights the source of record is 49 CFR 175.10. ICAO's own news page (https://www.icao.int/zh-hans/news/new-power-bank-restrictions-will-safeguard-international-aviation, read 2026-11-17, Chinese) confirms the two-per-person cap, no in-flight charging and the 27 March 2026 date."
+  },
+  {
+   "product": "AOHi Future Starship 240W 27,600 mAh",
+   "label": "Rated energy and implied cell voltage",
+   "value": "99.36 Wh at 27,600 mAh, which works out to 3.6 V nominal",
+   "source": "https://iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-display-power-bank",
+   "source_title": "AOHI The Future Starship 240W 27,600mAh LED Display Power Bank (iaohi.com)",
+   "read": "2026-11-17",
+   "note": "AOHi's listing (the 99.36 Wh and 'TSA-compliant' wording came from bundle listings for the same pack on iaohi.com) says: 'TSA-compliant with a 99.36Wh battery'. 99.36 / 27.6 Ah = 3.60 V. At 3.6 V the 100 Wh ceiling is 100 / 3.6 = 27,778 mAh; at ChatGPT's 3.7 V it is 27,027 mAh."
+  },
+  {
+   "product": "AOHi Future Starship 240W 27,600 mAh",
+   "label": "Price (maker's US store)",
+   "value": "$119.00 (compare-at $169.00), in stock",
+   "source": "https://iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-display-power-bank",
+   "source_title": "AOHi store (via storecheck search)",
+   "read": "2026-11-17",
+   "note": "Listing title is '[Discounted Price: $99] … with 240W C-C Cable', but the store's price field shows $119.00."
+  },
+  {
+   "product": "EcoFlow RAPID Pro 27,650 mAh 300W",
+   "label": "Capacity and price on the maker's US page",
+   "value": "27,650 mAh; $175.99 (was $199); no Wh figure on the page",
+   "source": "https://www.ecoflow.com/us/rapid-pro-power-bank",
+   "source_title": "EcoFlow RAPID Pro Power Bank (ecoflow.com/us)",
+   "read": "2026-11-17",
+   "note": "The page gives mAh only, with no Wh and no airline statement. 27.65 Ah × 3.6 V = 99.54 Wh. That calculation assumes 3.6 V cells, which the page doesn't state."
+  }
+ ],
+ "unsourced": [
+  "Anker Prime 27,650 mAh (A1340) Wh rating, cell voltage and US price: anker.com/products/a1340-250w-power-bank returned 404, us.anker.com returned HTTP 429 to both WebFetch and storecheck, and I didn't try a named reviewer.",
+  "EcoFlow RAPID Pro Wh rating from the maker: the US product page lists mAh only, and I didn't find a manual or spec PDF.",
+  "AOHi Starship 40,000 mAh Wh rating (our page says 146 Wh): the iaohi.com listings I searched give mAh only.",
+  "FAA PackSafe wording on calculating Wh and on unmarked batteries: faa.gov returned HTTP 403 for all three PackSafe URLs.",
+  "Exact text of the cited IATA power bank guidance PDF: the PDF text is compressed, and extracting it locally needed shell approval, which was refused.",
+  "American Airlines' current power bank wording: aa.com returned HTTP 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.0243987999999997
+ }
+}

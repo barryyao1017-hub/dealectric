@@ -1,0 +1,102 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the makers of the biggest carry-on banks rate their cells at 3.6 V rather than 3.7 V. At 3.6 V the largest pack under 100 Wh is about 27,777 mAh, not 27,000 mAh. So the 27,600 to 27,650 mAh banks (AOHi Future Starship 99.36 Wh, Anker Prime A1340 99.54 Wh, EcoFlow RAPID Pro 99.54 Wh) need no airline approval, even though ChatGPT's 3.7 V table would put them at about 102 Wh and in the 'approval required' row.",
+ "standout": 2,
+ "standout_why": "ChatGPT's own answer converts mAh to Wh at 3.7 V. By that table, anything above 27,000 mAh needs approval, and 43,200 mAh is the 160 Wh ceiling. Neither holds for these 3.6 V-rated products: at 3.6 V the ceilings are about 27,777 mAh and about 44,444 mAh. The cited IATA PDF (iata.org guidance-to-operators---power-banks.pdf) downloaded but its text could not be extracted. The faa.gov and aa.com pages returned HTTP 403, so I could not read them. FAA pages usually give the generic Wh = V × Ah formula, so rivals may hold part of this. They do not give per-product Wh figures or the 3.6 V rating these makers use, and that is what puts a 27,650 mAh bank under 100 Wh. I scored 2 instead of 3 because I could not confirm what the FAA and AA pages say.",
+ "decides": "It confirms the page's picks. The largest banks that need no approval are the ~27,600 to 27,650 mAh class, labelled 99.36 to 99.54 Wh, not '27,000 mAh' as ChatGPT says. The column the page should show is the printed Wh figure, not mAh. Separately, the UK CAA page (effective 27 March 2026) still allows 100–160 Wh with operator approval, two power banks per person, and no recharging on board. That contradicts ChatGPT's line that 2026 IATA guidance caps power banks at 100 Wh, so the AOHi 40K (146 Wh) stays as the 'needs airline approval' row.",
+ "candidates": [
+  "AOHi Future Starship 240W 27,600 mAh",
+  "Anker Prime 27,650 mAh 250W (A1340)",
+  "EcoFlow RAPID Pro 27,650 mAh 300W",
+  "UGREEN Nexode Power Bank 25,000 mAh 200W",
+  "AOHi Starship 40,000 mAh 140W"
+ ],
+ "findings": [
+  {
+   "product": "AOHi Future Starship 240W 27,600 mAh",
+   "label": "Printed energy rating and implied cell voltage",
+   "value": "99.36 Wh; 27,600 mAh → 3.6 V",
+   "source": "https://iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-power-bank-140w-gan-pro-fast-charger-adonis-led-usb4-2-0-c-c-cable",
+   "source_title": "AOHI The Future Starship 240W 27,600mAh LED Power Bank + 140W GaN+ PRO Fast Charger + Adonis LED USB4 2.0 C-C Cable (iaohi.com)",
+   "read": "2026-11-17",
+   "note": "The listing says 'TSA-compliant with a 99.36Wh battery'. 99.36 Wh ÷ 27.6 Ah = 3.60 V. At ChatGPT's 3.7 V the same 27,600 mAh would be 102.1 Wh. Read from the bundle listing in AOHi's Shopify store search; it is the same power bank."
+  },
+  {
+   "product": "AOHi Future Starship 240W 27,600 mAh",
+   "label": "Price, standalone with 240 W cable",
+   "value": "$119.00 (compare-at $169.00), in stock",
+   "source": "https://iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-display-power-bank",
+   "source_title": "[Discounted Price: $99] AOHI The Future Starship 240W 27,600mAh LED Display Power Bank with 240W C-C Cable",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search of iaohi.com. The title says '$99 discounted' but the store's listed price is $119."
+  },
+  {
+   "product": "Anker Prime 27,650 mAh 250W (A1340)",
+   "label": "Printed energy rating and maker's airline statement",
+   "value": "99.54 Wh; 27,650 mAh → 3.6 V",
+   "source": "https://www.anker.com/uk/products/a1340-250w-power-bank",
+   "source_title": "Anker Prime 27,650mAh Power Bank, 250W Multi-Device Fast Charger (Anker UK)",
+   "read": "2026-11-17",
+   "note": "Quote: 'this power bank is 99.54Wh … meets the requirements of the TSA(<100Wh) to be taken on airplanes as carry-on baggage'. 99.54 ÷ 27.65 = 3.60 V; at 3.7 V it would be 102.3 Wh. The US page (us.anker.com/products/a1340-250w-power-bank) returned HTTP 429, so this is Anker's UK page for the same model number A1340."
+  },
+  {
+   "product": "EcoFlow RAPID Pro 27,650 mAh 300W",
+   "label": "Capacity and price on the maker's US page",
+   "value": "27,650 mAh; $175.99 (was $199)",
+   "source": "https://www.ecoflow.com/us/rapid-pro-power-bank",
+   "source_title": "EcoFlow RAPID Pro Power Bank (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "The page gives no Wh figure and no cell voltage. Output 140 W single port / 300 W multi-port; input 140 W single port / 320 W multi-port or pogo pin. The RAPID Pro X (also 27,650 mAh) is a separate product at $249.99."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20,000 mAh 130W",
+   "label": "Maker spells out the voltage behind its mAh figure",
+   "value": "20,000 mAh / 72 Wh (14.4 V × 5,000 mAh)",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-20000mah-130w",
+   "source_title": "UGREEN Nexode Power Bank 20000mAh 130W with Smart Digital Display (UGREEN US)",
+   "read": "2026-11-17",
+   "note": "Technical Specifications: 'Power Capacity: 20,000mAh/72Wh（14.4V*5000mAh）'. 14.4 V is four cells at 3.6 V; 72 Wh ÷ 20 Ah = 3.6 V. This shows directly that the advertised mAh is the 3.6 V cell-equivalent. It supports the footnote; the model is not itself a pick."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 25,000 mAh 200W",
+   "label": "Price",
+   "value": "$129.99, in stock",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-power-bank-25000mah-200w-with-smart-digital-display",
+   "source_title": "UGREEN Nexode Power Bank 25000mAh 200W with Smart Digital Display",
+   "read": "2026-11-17",
+   "note": "From storecheck.py search of us.ugreen.com. Opening the product page for the Wh line returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "Largest capacity under each limit when cells are rated at 3.6 V vs ChatGPT's 3.7 V",
+   "value": "100 Wh: 27,777 mAh at 3.6 V vs 27,027 mAh at 3.7 V. 160 Wh: 44,444 mAh at 3.6 V vs 43,243 mAh at 3.7 V",
+   "source": "https://www.anker.com/uk/products/a1340-250w-power-bank",
+   "source_title": "Anker Prime 27,650mAh Power Bank (Anker UK), with AOHi and UGREEN pages above",
+   "read": "2026-11-17",
+   "note": "mAh = Wh ÷ V × 1000. The 3.6 V comes from the maker figures above: AOHi 99.36/27.6, Anker 99.54/27.65, UGREEN 72/20. This is my arithmetic. The airline check is against the printed Wh label, not mAh."
+  },
+  {
+   "product": "general",
+   "label": "Power bank rules from 27 March 2026 (ICAO Doc 9284 addendum, as published by the UK CAA)",
+   "value": "Max 2 power banks per person; ≤100 Wh with no approval; >100 to 160 Wh with operator approval; carry-on only; must not be recharged on board; should not be used to charge other devices in flight",
+   "source": "https://caa.co.uk/commercial-industry/airlines/dangerous-goods/changes-to-rules-on-the-carriage-of-lithium-cellsbatteries-and-power-banks",
+   "source_title": "Changes to rules on the carriage of lithium cells/batteries and power banks (UK CAA)",
+   "read": "2026-11-17",
+   "note": "This contradicts ChatGPT's claim that 2026 IATA guidance limits power banks to 100 Wh: the 100–160 Wh band with approval remains. The page says nothing about 1 January 2027 or the 68th edition DGR."
+  }
+ ],
+ "unsourced": [
+  "Wh rating for the EcoFlow RAPID Pro on an EcoFlow page: ecoflow.com/us shows only 27,650 mAh. Retailers (digitec.ch, galaxus) show 99.54 Wh in search titles, but I did not open them, and I found no EcoFlow manual PDF.",
+  "Wh line for the UGREEN Nexode 25,000 mAh 200W: the us.ugreen.com product page returned HTTP 429 twice. Search snippets said 90 Wh but I did not open a page that confirms it.",
+  "AOHi Starship 40,000 mAh Wh rating (146 Wh on our current page) and its price today: the iaohi.com product page returned HTTP 429 twice. The store search showed $179.00, but no Wh line was in the text I got back.",
+  "Anker Prime A1340 US price today: us.anker.com returned HTTP 429, and storecheck on anker.com returned HTTP 404.",
+  "Text of the cited IATA power bank guidance PDF: it downloaded, but reading the text locally needed a shell-command approval I did not get, and WebFetch could not extract it. FAA and American Airlines pages returned HTTP 403, so I could not compare their wording on mAh→Wh conversion.",
+  "Baseus EnerFill FC41 Wh rating and AOHi Black Warrior / Future Starship weights: not checked within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.1566223
+ }
+}
