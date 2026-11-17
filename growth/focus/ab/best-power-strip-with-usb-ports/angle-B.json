@@ -1,0 +1,132 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how long each strip's USB-C port takes to refill a laptop. Using Apple's 53.8 Wh 13-inch MacBook Air battery, the 20 W strips (Anker 351, TESSAN PS07, TESSAN Tower) need at least 2.7 h and the Anker 12-in-1 needs 1.5 h, or 2.7 h once a second port is in use. The 65–67 W hubs need about 0.8 h, and the Anker Nano still needs only 1.8 h with all four USB ports busy.",
+ "standout": 2,
+ "standout_why": "LaptopBee has one phone charge time (an iPhone 15 to 50% in about 26 min on an Anker strip) and shared-budget totals, but no laptop hours. iTechGuides says outright that it does not work out laptop charge time or cost per watt. ChatGPT's own answer only says laptops 'benefit from 65W or higher'. I could not open Tom's Guide, the cited page (the fetch returned only its title), so I can't rule out that it has charge times. That is why this scores 2 and not 3.",
+ "decides": "For phones it confirms the Anker 351, ChatGPT's pick. For anyone who wants to charge a laptop from the strip it overturns that pick: the 351 and the PS07 cap USB-C at 20 W, half of the 40 W adapter Apple ships with the M5 Air. That makes the TESSAN 65 W GaN hub ($29.99, 0.83 h, $0.46 per USB-C watt) or the Anker Nano 67 W the right choice. The Nano is sold out at anker.com.",
+ "candidates": [
+  "Anker 351 Power Strip (A9192)",
+  "Anker USB Power Strip 12-in-1, 35W (A91F4)",
+  "Anker Nano Charging Station 6-in-1, 67W (A9129)",
+  "Anker Prime 6-in-1 Charging Station, 140W (A9128)",
+  "TESSAN PS07 20W Surge Protector Power Strip",
+  "TESSAN 14-in-1 Tower Power Strip",
+  "TESSAN Vertical GaN Desktop Power Hub 65W",
+  "onn 7-Outlet Surge Protector with USB-A + USB-C"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Reference laptop battery (13-inch MacBook Air, M5)",
+   "value": "53.8 Wh; ships with a 40 W adapter",
+   "source": "https://www.apple.com/macbook-air/specs/",
+   "source_title": "MacBook Air - Technical Specifications - Apple",
+   "read": "2026-11-17",
+   "note": "Divisor for every hour figure below. Hours = 53.8 Wh ÷ port watts. This is a lower bound: it ignores taper near full and conversion loss."
+  },
+  {
+   "product": "Anker 351 Power Strip (A9192)",
+   "label": "Hours to refill a 13-inch MacBook Air from USB-C (lower bound)",
+   "value": "2.7 h (only with both USB-A ports idle)",
+   "source": "https://www.anker.com/products/a9192",
+   "source_title": "Anker 351 Power Strip - Anker US",
+   "read": "2026-11-17",
+   "note": "53.8 Wh ÷ 20 W = 2.69 h. Anker: '20W USB-C charging is only available when the 2 USB-A ports are not in use.' 12 outlets, 2,100 J, 1,875 W AC."
+  },
+  {
+   "product": "Anker 351 Power Strip (A9192)",
+   "label": "Price, anker.com",
+   "value": "$28.99 → $1.45 per USB-C watt",
+   "source": "https://www.anker.com/products/a9192",
+   "source_title": "Anker 351 Power Strip - Anker US",
+   "read": "2026-11-17",
+   "note": "$28.99 ÷ 20 W = $1.45/W"
+  },
+  {
+   "product": "Anker USB Power Strip 12-in-1, 35W (A91F4)",
+   "label": "Hours to refill a 13-inch MacBook Air from USB-C1 (lower bound)",
+   "value": "1.5 h alone; 2.7 h with any other USB port in use",
+   "source": "https://www.anker.com/products/a91f4",
+   "source_title": "Anker USB Power Strip (12-in-1, 35W) - Anker US",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 35 W = 1.54 h. Anker's table drops USB-C1 to '20W Max' whenever C2 or a USB-A port is used: 53.8 ÷ 20 = 2.69 h. 900 J, 1,875 W AC."
+  },
+  {
+   "product": "Anker USB Power Strip 12-in-1, 35W (A91F4)",
+   "label": "Price, anker.com",
+   "value": "$29.99 → $0.86 per USB-C watt",
+   "source": "https://www.anker.com/products/a91f4",
+   "source_title": "Anker USB Power Strip (12-in-1, 35W) - Anker US",
+   "read": "2026-11-17",
+   "note": "$29.99 ÷ 35 W = $0.86/W"
+  },
+  {
+   "product": "Anker Nano Charging Station 6-in-1, 67W (A9129)",
+   "label": "Hours to refill a 13-inch MacBook Air (lower bound)",
+   "value": "0.80 h alone; 1.2 h with one USB-A busy; 1.8 h with all 4 USB ports busy",
+   "source": "https://anker.com/products/a9129-charging-station-67w",
+   "source_title": "Anker Nano Charging Station (6-in-1, 67W) - Anker US",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 67 = 0.80 h; 53.8 ÷ 45 = 1.20 h (C + A row: 45W + 12W); 53.8 ÷ 30 = 1.79 h (4-port row: 20W + 30W + 15W shared). Shown as 'Sold Out' on anker.com on the read date, with no price."
+  },
+  {
+   "product": "Anker Prime 6-in-1 Charging Station, 140W (A9128)",
+   "label": "Hours to refill two 13-inch MacBook Airs at once (lower bound)",
+   "value": "0.83 h each (65 W + 65 W); 0.90 h for the second laptop with all 4 ports busy",
+   "source": "https://www.anker.com/products/a9128-6-in-1-charging-station",
+   "source_title": "Anker Prime 6-in-1 Charging Station (140W) - Anker US",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 65 = 0.83 h; 4-port row is 65W + 60W + 15W, so 53.8 ÷ 60 = 0.90 h. AC total is only 1,000 W (10 A), versus 1,875 W on the Anker strips. 'Sold Out' on anker.com, no price."
+  },
+  {
+   "product": "TESSAN PS07 20W Surge Protector Power Strip",
+   "label": "Hours to refill a 13-inch MacBook Air from USB-C (lower bound)",
+   "value": "2.7 h; $28.99 → $1.45 per USB-C watt",
+   "source": "https://www.tessan.com/products/surge-protector-power-strip-ps07",
+   "source_title": "TESSAN 20W Surge Protector Power Strip PS07",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 20 W = 2.69 h; $28.99 ÷ 20 = $1.45/W. Store data: 'USB-C PD output up to 20W', 2× USB-C + 2× USB-A, 8 AC outlets 'up to 1250W', 2,100 J. Read through storecheck's store JSON; the product page itself returned HTTP 429."
+  },
+  {
+   "product": "TESSAN 14-in-1 Tower Power Strip",
+   "label": "Hours to refill a 13-inch MacBook Air from USB-C1 (lower bound)",
+   "value": "2.7 h; $34.99 → $1.75 per USB-C watt",
+   "source": "https://www.tessan.com/products/14-in-1-tower-power-strip-with-usb-c-fast-charging",
+   "source_title": "TESSAN 14-in-1 Tower Power Strip with USB-C Fast Charging - cETLus Certified",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 20 W = 2.69 h; $34.99 ÷ 20 = $1.75/W. 'USB-C1 delivers up to 20W PD, while USB-C2 provides up to 15W'; 11 AC outlets, 1,500 J, 6 ft braided cord, cETLus."
+  },
+  {
+   "product": "TESSAN Vertical GaN Desktop Power Hub 65W",
+   "label": "Hours to refill a 13-inch MacBook Air from USB-C (lower bound)",
+   "value": "0.83 h; $29.99 → $0.46 per USB-C watt",
+   "source": "https://www.tessan.com/products/tessan-desk-charging-station-for-multiple-devices-65w",
+   "source_title": "TESSAN Vertical GaN Desktop Power Hub Charging Station with PD",
+   "read": "2026-11-17",
+   "note": "53.8 ÷ 65 W = 0.83 h; $29.99 ÷ 65 = $0.46/W. Store data: '65W USB C', 3 outlets + 6 USB, 'rated 1250W'. Read through storecheck's store JSON; the page itself returned HTTP 429."
+  },
+  {
+   "product": "general",
+   "label": "Only phone charge time among the rival pages",
+   "value": "iPhone 15 from 0 to 50% in about 26 min (Anker strip, 20 W PD)",
+   "source": "https://www.laptopbee.com/best-power-strips-with-usb-ports/",
+   "source_title": "10 Best Power Strips With USB Ports (November 2026) Tested - LaptopBee",
+   "read": "2026-11-17",
+   "note": "LaptopBee's measurement. No rival page gives laptop hours."
+  }
+ ],
+ "unsourced": [
+  "TESSAN PS07 and 65W hub: per-port watts when several USB ports are used at once (the product pages returned HTTP 429; the store JSON gives single-port maximums only)",
+  "Anker 351 (A9192): the exact USB-C watts while the USB-A ports are busy (the Anker page only says 20 W needs them idle; our current page's '15 W shared' figure was not re-confirmed on Anker's page)",
+  "Anker A91F4: cord length and outlet count are not on the anker.com page (third-party listings say 8 outlets and 5 ft)",
+  "onn 7-Outlet Surge Protector (Walmart): USB-C wattage and price, because I did not open the Walmart page",
+  "Anker Nano 67W and Prime 140W: current price, since both show Sold Out on anker.com with no price",
+  "Tom's Guide (the cited rival): I could not read its content, so I couldn't check whether it gives charge times"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0438152
+ }
+}
