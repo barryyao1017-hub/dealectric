@@ -6327,7 +6327,7 @@ GAP_PAGES = [
 # ---------------- best-budget-electric-hunting-bike (research method ab-2026-11, 2026-11-17) ----------------
 {"slug": 'best-budget-electric-hunting-bike',
  "question": 'G335 (brand page for Himiway: best budget electric hunting bike)',
- "method": 'ab-2026-11',
+ "method": 'ab-2026-11', "all_links": True,
  "angle": 'E',
  "searched_as": ['Lectric XPeak 2.0 official price battery range rear rack payload 2026;Velotric Nomad 2 official specs price;Aventon Aventure 3 official specs price', '2026 best budget fat tire hunting electric bikes Aventon Aventure 3 Velotric Nomad 2 prices range payload'],
  "title": 'Best Budget Electric Hunting Bike (2026): Mid-Drive Climbing for Less',
@@ -6346,7 +6346,7 @@ GAP_PAGES = [
 # ---------------- best-solar-powered-robotic-pool-cleaner (research method ab-2026-11, 2026-11-17) ----------------
 {"slug": 'best-solar-powered-robotic-pool-cleaner',
  "question": 'G336 (brand page for WYBOT: solar powered robotic pool cleaner)',
- "method": 'ab-2026-11',
+ "method": 'ab-2026-11', "all_links": True,
  "angle": 'C',
  "searched_as": ['2026 best solar powered pool surface skimmer Betta SE Plus Aiper Surfer S2 reviews comparison', 'Betta SE Plus vs Aiper Surfer S2 solar skimmer review 2026'],
  "title": 'Best Solar Powered Robotic Pool Cleaner (2026): Floor Robots vs. Solar Skimmers',
