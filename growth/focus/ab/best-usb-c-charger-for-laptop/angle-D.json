@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states why the cable matters. A USB-C cable without an e-marker chip is limited to 3 A, which is 20 V × 3 A = 60 W, so a 65 W, 100 W or 140 W charger delivers no more than 60 W through it. Anything above 100 W also needs USB PD 3.1's 28 V mode on the charger, the laptop and an e-marked EPR cable.",
+ "standout": 1,
+ "standout_why": "I compared against the Anker Prime 100W A2688 page and the Anker A120F 100W page, both in ChatGPT's results, and against ChatGPT's answer. The A2688 page says 'For optimal 100W charging, use an E-Marker cable', and ChatGPT says to use a cable 'rated for at least 100W'. So the cable advice is partly covered already. None of these pages says that an ordinary 3 A cable caps the laptop at 60 W. None says that 140 W needs 28 V (PD 3.1), which the laptop must also support, plus an EPR cable. The A120F page does not mention cables at all.",
+ "decides": "The finding confirms the pick rather than changing it. A 65 W charger gives about the same 60 W with any cable, so it is the safe default for ultrabooks. A 100 W pick, such as the UGREEN Nexode 100W or the Anker Prime A2688, only pays off with a 5 A e-marked cable, so the page should pair it with one (Dealectric lists the Baseus 100W cable and the UGREEN 100W charger + cable bundle). The AOHi 140W row only reaches 140 W from one port, to a PD 3.1 laptop, over an EPR cable. Anyone else gets 100 W at most, and less when two USB-C ports are in use.",
+ "candidates": [
+  "UGREEN Nexode 65W 3-Port",
+  "UGREEN Nexode 100W 4-Port",
+  "Anker Prime 100W 3-Port (A2688)",
+  "Anker 100W USB-C GaN Charger (A120F)",
+  "AOHi The Youth 140W",
+  "Baseus GaN5 Pro 65W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "USB PD power limit before PD 3.1, and the voltages needed above 100 W",
+   "value": "100 W max (20 V on a 5 A-rated cable). 140 W, 180 W and 240 W need fixed 28 V, 36 V and 48 V",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB-IF: USB Charger (USB Power Delivery)",
+   "read": "2026-11-17",
+   "note": "Quote: 'Prior to this update, USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A.' and 'New 28V, 36V, and 48V fixed voltages enable up to 140W, 180W and 240W power levels, respectively.'"
+  },
+  {
+   "product": "general",
+   "label": "Cable current limit without an e-marker",
+   "value": "3 A, which is 60 W at 20 V. More than 3 A needs a 5 A e-marked cable",
+   "source": "https://satechi.com/blogs/news/identifying-usb-c-e-mark-cables",
+   "source_title": "Satechi: Identifying USB-C E-Mark Cables (2024-07-12)",
+   "read": "2026-11-17",
+   "note": "Satechi is a cable maker. Quotes: 'cables with a transmission current at or below 3A are not required to have E-Marker chip inside', 'if the power adapter's electric current output is greater than 3A, a 5A wire with an E-Mark chip will be required', 'many USB-PD charging cables sold individually in the market do not reach more than 60W.' Arithmetic: 20 V × 3 A = 60 W."
+  },
+  {
+   "product": "general",
+   "label": "EPR (more than 100 W) cable requirement",
+   "value": "All EPR cables must be e-marked, rated 50 V / 5 A, and carry the USB-IF EPR icon",
+   "source": "https://www.cnx-software.com/2021/05/27/usb-type-c-specification-2-1-allows-up-to-240w-extended-power-range-epr/",
+   "source_title": "CNX Software: USB Type-C Specification 2.1 allows up to 240W Extended Power Range (EPR)",
+   "read": "2026-11-17",
+   "note": "The article quotes the USB Type-C 2.1 spec: 'All EPR cables shall be Electronically Marked and include EPR-specific information in the eMarker' and 'EPR cables shall functionally support a reported 50 V and 5 A operation.'"
+  },
+  {
+   "product": "Anker Prime 100W 3-Port (A2688)",
+   "label": "Port output and cable note",
+   "value": "USB-C1/C2 up to 20 V⎓5 A (100 W). 100 W max with two ports in use, 89 W with three. Anker: 'For optimal 100W charging, use an E-Marker cable.'",
+   "source": "https://www.anker.com/products/a2688-anker-prime-charger-100w-3-ports-gan?variant=43931966079126",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, GaN) - Anker US",
+   "read": "2026-11-17",
+   "note": "The page also says 'When using both USB-C ports simultaneously, use the upper port for charging laptops.' It showed Sold Out with no price on 2026-11-17."
+  },
+  {
+   "product": "Anker 100W USB-C GaN Charger (A120F)",
+   "label": "Output and protocols",
+   "value": "One USB-C port, up to 20 V⎓5 A (100 W). Supports PD 3.1, PPS and AVS. $59.99",
+   "source": "https://www.anker.com/products/a120f-100w-usb-c-gan-charger-battery-care?variant=67633274650774",
+   "source_title": "Anker 100W USB-C GaN Charger (Battery Care and Smart Display) - Anker US",
+   "read": "2026-11-17",
+   "note": "The page does not say which cable is needed. The 80% charge limit needs the Anker Charging Manager desktop app. Price is from anker.com on 2026-11-17 (marked 'Save $10.00')."
+  },
+  {
+   "product": "AOHi The Youth 140W",
+   "label": "Which port gives 140 W, and the split with two devices",
+   "value": "Only one USB-C port is rated 140 W (PD 3.1). Two devices at once drop to 65 W each",
+   "source": "https://www.notebookcheck.net/AOHI-The-Youth-debuts-as-new-up-to-140W-three-way-power-brick-for-under-70.831858.0.html",
+   "source_title": "Notebookcheck (Deirdre O'Donnell, 2024-04-27): AOHI The Youth debuts as new up-to-140W three-way power brick for under $70",
+   "read": "2026-11-17",
+   "note": "Quotes: 'only 1 of the newer accessory's USB-C port is rated for that top charging rate', 'rated for 140W of power delivery via PD 3.1 USB-C', and that two devices can charge at once 'so long as they are both rated for the 65W standard they drop to when used at once.' Under the USB-IF figures above, 140 W means the 28 V EPR mode, so the laptop must support PD 3.1 and the cable must be EPR/240 W."
+  }
+ ],
+ "unsourced": [
+  "The AOHi Youth 140W per-port voltages (28 V⎓5 A on USB-C1), the cable requirement and today's price from AOHi's own page. iaohi.com/products/aohi-140w-pd3-1-gan-3-port-fast-charger-the-youth returned HTTP 429 three times, aohi.com URLs returned 404, and the Newegg listing returned 403.",
+  "Whether the UGREEN Nexode 100W 4-Port page says which cable to use, and its per-port split. ugreen.com returned HTTP 429 twice.",
+  "A USB-IF primary text for the 3 A / 60 W non-e-marked cable limit. The USB-IF trademark-requirements PDF downloaded but could not be converted to text without shell approval, so the 3 A figure comes from Satechi, a cable maker.",
+  "The Anker Nano 100W price ChatGPT showed ($35.99) and the Anker A2688 price. A2688 shows Sold Out on anker.com, and I did not check the Nano."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0097243
+ }
+}
