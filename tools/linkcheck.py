@@ -88,6 +88,9 @@ MAX_BODY = 3_000_000
 # www.soundcore.com is a non-Shopify front end whose /products/<handle>.js is its 404 page).
 JSON_HOST = {"www.soundcore.com": "us.soundcore.com"}
 SAME_HOST = [{"www.soundcore.com", "us.soundcore.com"}]
+# Stores with /products/<handle> pages but no Shopify product JSON at all (<page>.js is a 404 while the page answers 200):
+# stock comes from the page's schema.org availability, and the missing JSON is not read as "delisted" (Creality, 2026-11-17).
+NO_JSON = {"store.creality.com"}
 # CJ and Awin click hosts: never requested, never followed (a request there is a click on our account).
 AFFILIATE = re.compile(r"(^|\.)(tkqlhce|anrdoezrs|dpbolvw|jdoqocy|kqzyfj|qksrv|emjcd|awin1|awin|zenaps)\.(com|net)$", re.I)
 LISTING = re.compile(r"^(/[a-z]{2}(-[a-z]{2})?)?(/(collections|collection|products|search|pages|shop|category|categories|catalog)(/.*)?)?$", re.I)
@@ -289,7 +292,7 @@ def product_json_url(p: dict, final_url: str) -> str | None:
     """`<URL without query>.js` on the store's Shopify host, for the page the product now lands on."""
     s = urlsplit(final_url)
     h = handle_of(s.path)
-    if not h:
+    if not h or (s.hostname or "") in NO_JSON:
         return None
     host = JSON_HOST.get(s.hostname or "", s.hostname or "")
     return f"https://{host}/products/{urllib.parse.quote(h)}.js"

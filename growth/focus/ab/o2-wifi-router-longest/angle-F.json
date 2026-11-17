@@ -1,0 +1,148 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got puts a price on its own large-station picks alongside measured idle draw. Jackery's US store has the Explorer 2000 v2 at $999 on pre-order (ships Nov 16). Solar Lab measured 17 W idle (via wattpowerstation), and Best Batteries measured 1,920 Wh usable at an unstated load and port. A 15 W router on AC therefore gets about 1,920 ÷ (15 + 17) ≈ 60 h, or 2.5 days, not the 3–5 days ChatGPT showed. On the DC side, BLUETTI's US store now rates the $289.99 Elite 30 V2 at 4.5 W standby, half the 9 W the cited powerstations.reviews table attributes to BLUETTI.",
+ "standout": 1,
+ "standout_why": "I compared against wattpowerstation.com/guides/portable-power-station-small-loads (cited), outagemath.com/appliances/wifi-router (cited), en.best-batteries.com restored-capacity-46-measurements (cited) and powerstations.reviews/guides/power-station-standby-draw (cited). wattpowerstation already has idle watts for the 2000 v2 (17 W) and the DELTA Pro 3 (49 W with AC on, about 13 W with DC only), but no prices and no router runtimes. outagemath lists 54 models with runtimes computed as Wh × 0.85 ÷ 15 W, with no idle draw and no prices. best-batteries has measured Wh but no idle or sub-20 W data and only UK prices. powerstations.reviews has only maker standby figures, no prices, and lists the Elite 30 V2 at 9 W. None of them combines today's US price with idle-adjusted hours. The parts already exist in those pages, so only the combination and the newer 4.5 W BLUETTI claim are new.",
+ "decides": "This confirms that the big AC picks ChatGPT carded lose for a router. Their own idle draw (17 W for the Jackery 2000 v2; Jackery's listed 50 W for the 5000 Plus; 49 W with AC on for the DELTA Pro 3) is as big as or bigger than the router load, so dollars per hour of Wi-Fi are poor ($999 for about 60 h on AC). For the DC-only question it points to the small, cheap units run from DC: the EcoFlow TRAIL DC series (from $109; EcoFlow claims 0.01 W no-load) and the Anker SOLIX C300 DC. The BLUETTI Elite 30 V2 ($289.99, maker now claims 4.5 W standby) stays the pick when the router needs AC plus UPS switchover. I could not open a US price for the C300 DC or the TRAIL 300 DC variant, so the DC-only pick is unpriced.",
+ "candidates": [
+  "EcoFlow DELTA Pro 3",
+  "Jackery Explorer 2000 v2",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800",
+  "Anker SOLIX C1000 Gen 2",
+  "BLUETTI Elite 30 V2",
+  "EcoFlow DELTA 3 Plus",
+  "EcoFlow RIVER 2 Max",
+  "BLUETTI EB3A",
+  "EcoFlow TRAIL 300 DC",
+  "Anker SOLIX C300 DC",
+  "Anker SOLIX C300X DC",
+  "EcoFlow RIVER 3",
+  "Jackery Explorer 240 v2",
+  "Tenergy T320",
+  "ALLPOWERS R600"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Maker US price",
+   "value": "$999 (compare-at $1,899); sold out, pre-order ships Nov 16",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-15",
+   "note": "Read from Jackery's Shopify store data with storecheck. 2,042 Wh rated. The store says switchover is under 20 ms."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Idle draw",
+   "value": "17 W",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-small-loads/",
+   "source_title": "Why Portable Power Stations Run Out Early on Small Loads",
+   "read": "2026-11-15",
+   "note": "The page attributes this to a Solar Lab idle test. It is a cited rival, so this figure is not new."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Measured restored energy",
+   "value": "1,920 Wh of 2,042 Wh (94.0%)",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity - Best Batteries",
+   "read": "2026-11-15",
+   "note": "Appears in the page's 'mains socket ranking'; the load is not stated. Router estimate: 1,920 Wh ÷ (15 W router + 17 W idle) ≈ 60 h ≈ 2.5 days on AC. ChatGPT showed 3–4 days and 4–5 days."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Maker US price",
+   "value": "$3,499 (compare-at $13,489); sold out, pre-order ships Nov 28",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-15",
+   "note": "Read from Jackery's Shopify store data with storecheck. 5,040 Wh. powerstations.reviews lists Jackery's own figure of 50 W standby. Using rated Wh with no conversion loss, 15 W + 50 W gives 5,040 ÷ 65 ≈ 78 h, against the 6–10 days ChatGPT showed."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker US price",
+   "value": "$289.99 (alone); $399.99 with 60 W panel; $489.99 with 100 W panel",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-15",
+   "note": "Read from BLUETTI's Shopify store data with storecheck. In stock. UPS switchover ≤10 ms."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Maker standby claim",
+   "value": "4.5 W standby ('up to 50% less self-consumption')",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-15",
+   "note": "This is BLUETTI's claim, not a measurement. The cited powerstations.reviews table lists 9 W self-consumption, also attributed to BLUETTI's product page. Our page uses 7–11 W DC-on from Zelpio / The Technology Man."
+  },
+  {
+   "product": "EcoFlow TRAIL DC series (TRAIL 200 DC / 300 DC)",
+   "label": "Maker US price, lowest variant",
+   "value": "from $109 (compare-at $250), in stock",
+   "source": "https://us.ecoflow.com/products/trail-series",
+   "source_title": "EcoFlow TRAIL Series DC Portable Power Station",
+   "read": "2026-11-15",
+   "note": "storecheck search returned only the listing's lowest variant price. The variant-level fetch got HTTP 429 three times, so this may be the TRAIL 200 DC rather than the 300 DC. The listing text says 'Up to 288Wh' and 'Pure DC'."
+  },
+  {
+   "product": "EcoFlow TRAIL 300 DC",
+   "label": "No-load consumption",
+   "value": "0.01 W (EcoFlow claim)",
+   "source": "https://powerstations.reviews/guides/power-station-standby-draw",
+   "source_title": "Power station standby draw: what it uses with nothing plugged in",
+   "read": "2026-11-15",
+   "note": "The page attributes this to EcoFlow's TRAIL series page. It is a cited rival, and ChatGPT already quoted it."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Idle draw, AC on vs DC only",
+   "value": "about 49 W with AC on; about 13 W with DC outputs only",
+   "source": "https://wattpowerstation.com/guides/portable-power-station-small-loads/",
+   "source_title": "Why Portable Power Stations Run Out Early on Small Loads",
+   "read": "2026-11-15",
+   "note": "Attributed to Hobotech. Rough estimate: 4,096 Wh ÷ (15 + 49) ≈ 64 h on AC, about 2.7 days, against the 8–10 days ChatGPT showed. This uses rated Wh with no conversion loss; the 500 W restored test was 3,911 Wh."
+  },
+  {
+   "product": "Anker SOLIX C300X DC",
+   "label": "Measured restored energy",
+   "value": "272.9 Wh of 288 Wh (94.8%)",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity - Best Batteries",
+   "read": "2026-11-15",
+   "note": "The page puts it in its 'mains socket ranking', but the C300X DC has no AC outlet, so the port and load are not really stated. ChatGPT presented this as the C300 DC's DC efficiency."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max",
+   "label": "Measured restored energy by port",
+   "value": "USB-C 450 Wh, 12 V 443 Wh, AC 377 Wh of 512 Wh",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity - Best Batteries",
+   "read": "2026-11-15",
+   "note": "Load not stated for the per-port rows. The model is losing on price now: EcoFlow US lists the 499 Wh RIVER 2 Max 500 at $309, and I found no 512 Wh RIVER 2 Max listing (https://us.ecoflow.com/products/river-2-max-500-portable-power-station, read 2026-11-15)."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Measured restored energy by port",
+   "value": "USB-C 937 Wh, 12 V 895 Wh, AC 860 Wh of 1,024 Wh",
+   "source": "https://en.best-batteries.com/blog/insights/restored-capacity-46-measurements/",
+   "source_title": "46 measurements of real restored capacity - Best Batteries",
+   "read": "2026-11-15",
+   "note": "Load not stated. Already in cited rivals and in ChatGPT's answer. EcoFlow store search did not return a DELTA 3 Plus listing; the closest 1,024 Wh model it returned was the DELTA 3 Classic at $459."
+  }
+ ],
+ "unsourced": [
+  "US price for the Anker SOLIX C300 DC and C300X DC. anker.com/products/a1726 and /a17260z1 returned 404 and the anker.com store search returned 404. Best Buy's search page lists both (JJ858RSLZV, JJ858R9FC3) without prices, and the Best Buy product page timed out, so ChatGPT's $239.99 is unconfirmed.",
+  "Variant-level price for the EcoFlow TRAIL 300 DC. us.ecoflow.com/products/trail-series returned HTTP 429 three times; only the series-lowest $109 was returned.",
+  "Today's EcoFlow US prices for the RIVER 3, DELTA 3 Plus and DELTA Pro 3, and Anker US prices for the C1000 Gen 2 and F3800. Store searches did not return those listings, and EcoFlow then rate-limited.",
+  "A measured DC-on, no-load idle draw for the Anker SOLIX C300 DC. A search turned up reviews from Dustin Abbott, the-gadgeteer and CyberShack, none with a wattage.",
+  "Today's price for the BLUETTI EB3A and Jackery Explorer 240 v2. I ran out of the call budget; our page has the 240 v2 at $249, out of stock, as of 2026-11-14."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.2373774999999998
+ }
+}

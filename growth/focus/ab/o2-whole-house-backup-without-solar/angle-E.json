@@ -1,0 +1,136 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states named measurements of idle (standby) draw for the grid-charged backup units: The Solar Lab measured about 20 W for the BLUETTI Apex 300 (ESS News 19.5 W), about 58 W for the Jackery Explorer 5000 Plus and 80 W for the original Anker F3800. That works out to roughly 0.5, 1.4 and 1.9 kWh a day that a battery with no solar has to make up from the grid, or loses from its reserve during an outage.",
+ "standout": 2,
+ "standout_why": "Compared against outagereadyhq.com (cited; it says outright 'We have not run these systems ourselves'; its only idle figure is an unsourced '20W idle draw' for the Apex 300 listed as a drawback, with nothing for the other units), solutionenergy.com/batteries/without-solar (maker specs, EnergySage price averages and FranklinWH's own 90% round-trip figure; no named test and no standby figures), and the franklinwh.com overview and datasheet (maker claims only). energysavvyhomes.com (cited) would not load because of a certificate error, so I could not check it. None of the pages I read set measured idle draw, measured usable Wh or measured inverter efficiency for the candidates side by side, with a tester and a date.",
+ "decides": "Without solar, every kWh comes from the grid, and during an outage nothing tops the battery back up. That makes standby drain and usable energy count for more than the label capacity. On The Solar Lab's numbers the Apex 300 idles at about a third of the Jackery 5000 Plus and a quarter of the original F3800. That strengthens the case for the Apex 300, which Dealectric lists, for a 'charge and wait' backup. Against that, Outdoor Life got only 2,290 Wh (83%) out of the Apex 300's 2,765 Wh rating under a dehumidifier load. OutdoorGearLab got 3,790 Wh (93%) out of the DELTA Pro 3's 4,096 Wh. For hours of runtime per dollar, the DELTA Pro 3's measured energy is the stronger figure. No independent measurement exists for the Powerwall 3, FranklinWH aPower 2 or Enphase IQ 5P, so the installed systems can only be compared on maker specs.",
+ "candidates": [
+  "Tesla Powerwall 3",
+  "FranklinWH aPower 2",
+  "Enphase IQ Battery 5P",
+  "EcoFlow DELTA Pro 3",
+  "Anker SOLIX F3800 Plus",
+  "BLUETTI Apex 300",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro Ultra"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw, inverter on, no load",
+   "value": "about 20 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "The Solar Lab: Bluetti Apex 300 review",
+   "read": "2026-11-17",
+   "note": "The Solar Lab: 'a single Apex 300 had an idle draw of right around 20W'. The reviewer estimates about 6 days on standby before a full unit drains, and says many similar stations idle at roughly double. 20 W x 24 h = 0.48 kWh/day. No tester name or test date is given; the page carries a 2026 copyright."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle self-consumption, inverters on",
+   "value": "about 19.5 W",
+   "source": "https://www.ess-news.com/?p=6613",
+   "source_title": "ESS News: Hands-on with the Bluetti Apex 300 portable power station",
+   "read": "2026-11-17",
+   "note": "Tristan Rayner, 2025-09-17: 'An idle Apex 300, with inverters on, consumed around 19.5 W ... while we watched'. The manual says about 20 W. The article does not say whether the unit was EU or US spec."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Idle draw, inverter on, no load",
+   "value": "about 58 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "The Solar Lab: Jackery Explorer 5000 Plus Review",
+   "read": "2026-11-17",
+   "note": "The reviewer writes 'sitting around 58W per hour' (read as 58 W continuous) and gives about 3.5 days of idle runtime on 5,040 Wh. 58 W x 24 h = 1.39 kWh/day. No tester name or date; 2026 copyright."
+  },
+  {
+   "product": "Anker SOLIX F3800 (original, not Plus)",
+   "label": "Idle draw, inverter on, no load",
+   "value": "about 80 W",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "The Solar Lab: Jackery Explorer 5000 Plus Review",
+   "read": "2026-11-17",
+   "note": "Stated in The Solar Lab's Jackery review as 'better than the F3800's 80W idle rate'. This figure is for the original F3800. I found no measured idle draw for the F3800 Plus that Dealectric lists. 80 W x 24 h = 1.92 kWh/day."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Surge measured",
+   "value": "ran 8,000 W and 9,500 W loads for 20-30 s; failed to start a 10,000 W-surge air conditioner (claim 14,400 W)",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "The Solar Lab: Jackery Explorer 5000 Plus Review",
+   "read": "2026-11-17",
+   "note": "The Solar Lab's surge test. Jackery's own spec lists 14,400 W surge (outagereadyhq quotes it the same way)."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Measured energy output (usable capacity)",
+   "value": "3,790 Wh of 4,096 Wh rated (93%)",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "OutdoorGearLab: EcoFlow DELTA Pro 3 review",
+   "read": "2026-11-17",
+   "note": "Kenji Mowrey, Senior Review Editor, review dated 2026-01-13. Measured on OutdoorGearLab's test jig. 3,790 / 4,096 = 92.5%."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Wall (AC) charge from a 15 A outlet",
+   "value": "3.2 h to full, average 1,293 Wh/h, peak input above 1,600 W",
+   "source": "https://www.outdoorgearlab.com/reviews/camping-and-hiking/power-station/ecoflow-delta-pro-3",
+   "source_title": "OutdoorGearLab: EcoFlow DELTA Pro 3 review",
+   "read": "2026-11-17",
+   "note": "Kenji Mowrey, 2026-01-13. Standard 15 A residential outlet; rated input up to 1,800 W."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Efficiency under load",
+   "value": "89% at a 3,650 W load",
+   "source": "https://www.thesolarlab.com/quiz-results/ecoflow-delta-pro-3-power-station",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro 3 power station",
+   "read": "2026-11-17",
+   "note": "The Solar Lab (Cody and Robbie quoted in the verdict); no test date. The same page measured AC charging at 2 h 54 min and a 5,100 W surge held for nearly a minute. It says idle draw was tested but publishes no value."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured energy output (usable capacity)",
+   "value": "2,290 Wh of 2,765 Wh rated (83%)",
+   "source": "https://outdoorlife.com/gear/bluetti-apex-300-the-latest-entry-in-the-stackable-power-station-wars",
+   "source_title": "Outdoor Life: Bluetti Apex 300, the latest entry in the stackable power station wars",
+   "read": "2026-11-17",
+   "note": "Laura Lancaster, 2025-05-20. High-draw test with a dehumidifier load, measured on a Kill-a-Watt meter; load wattage not stated. The same test got 90% from an Anker C1000 and 86% from a Jackery 1000 Plus."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Efficiency under load",
+   "value": "about 85%",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "The Solar Lab: Bluetti Apex 300 review",
+   "read": "2026-11-17",
+   "note": "Measured by running a variety of loads through the six AC outlets. Load wattages not given."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Efficiency under load",
+   "value": "84% at 6,000 W",
+   "source": "https://www.thesolarlab.com/quiz-results/anker-solix-f3800-plus",
+   "source_title": "The Solar Lab: Anker SOLIX F3800 Plus",
+   "read": "2026-11-17",
+   "note": "The Solar Lab pushed the 6,000 W inverter from a full battery; its pass bar is 80%. It also measured AC charging at 1,800 W (120 V) as just over 2 h to full. No test date."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Wall charging power measured",
+   "value": "508 W silent / 1,442 W auto / 2,330 W turbo",
+   "source": "https://www.notebookcheck.net/Bluetti-APEX-300-battery-storage-system-review-More-than-just-a-balcony-power-station.1083982.0.html",
+   "source_title": "Notebookcheck: Bluetti APEX 300 battery storage system review",
+   "read": "2026-11-17",
+   "note": "Christian Hintze, 2025-08-10. Measured from a wall outlet; the review appears to cover the 230 V EU unit, so US 120 V charging power may differ."
+  }
+ ],
+ "unsourced": [
+  "Independent measurements (round-trip efficiency, standby draw, usable kWh) for the Tesla Powerwall 3, FranklinWH aPower 2 and Enphase IQ Battery 5P. Searched for lab or reviewer tests: Netzero Labs' Powerwall retention analyses (2025-03, 2025-10) give no Powerwall 3 figures, only that its capacity is 'slightly lower' than the Powerwall 2's. Owner-forum figures (3-4 kWh/day self-use) are unnamed anecdotes. Tesla's 89% round-trip figure is a maker spec. An installer's 'Powerwall 3 after 1 year without solar panels' page (expertelectrical.co.uk) is blocked behind a bot check.",
+  "Measured idle draw for the Anker SOLIX F3800 Plus, EcoFlow DELTA Pro 3 and EcoFlow DELTA Pro Ultra. The Solar Lab says it tested DELTA Pro 3 idle draw but publishes no number; the only F3800 figure (80 W) is for the original F3800.",
+  "Measured usable Wh for the Jackery Explorer 5000 Plus, Anker SOLIX F3800 Plus and EcoFlow DELTA Pro Ultra (searched OutdoorGearLab, The Solar Lab, batteryskills; none published a discharge test).",
+  "energysavvyhomes.com/whole-home-battery-backup-guide (a cited result) would not load (certificate error), so I could not check it for measurements."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}

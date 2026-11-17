@@ -1,0 +1,145 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states the measured no-load inverter draw of each candidate (HOBOTECH 85 W Jackery Explorer 5000 Plus, 52 W EcoFlow DELTA Pro Ultra; The Solar Lab ~80 W Anker F3800, 36 W DELTA Pro Ultra X, ~20 W BLUETTI Apex 300; pv magazine ~10 W Anker SOLIX S5000). At a 40-50 W fan that overhead is as large as the fan itself, so the 5,024 Wh S5000 gives more fan nights (about 10) than the 6,144 Wh DELTA Pro Ultra (about 7), and the F3800 drops from ChatGPT's 8-10 nights to about 3.",
+ "standout": 3,
+ "standout_why": "Compared against the cited Solar Waypoint F3800 vs DELTA Pro Ultra vs Jackery 5000 Plus comparison (rated Wh only, no measurements), RuntimeWise home-backup best list (says runtimes are calculated at a flat 85% and 'We haven't hands-on tested these units'), BackupPowerHub home-backup list (flat 0.85 factor, 'doesn't run lab tests', no idle figure) and EnoughWatts' power-station table (capacity, output, price only). GearSpec Outpost returned HTTP 429 twice, so it was not checked. Both ChatGPT answers rank by Wh × 85%. The second one says 'actual runtime may be lower due to idle inverter draw' but gives no number for any model.",
+ "decides": "It changes the pick. Counting fan + measured idle for 8 h a night at 50 W: Anker SOLIX S5000 ≈ 10.1 nights (4,870 Wh delivered / 480 Wh a night), EcoFlow DELTA Pro Ultra ≈ 7.4 (about 6,021 Wh / 816), Jackery Explorer 5000 Plus ≈ 4.1 (4,450 / 1,080), BLUETTI Apex 300 ≈ 4.2 (about 2,350 / 560), Anker F3800 ≈ 2.9 (2,980 / 1,040). Among single base units, the S5000 (which Dealectric lists on Rakuten) runs a fan for the most nights, ahead of the larger DELTA Pro Ultra that ChatGPT picked. Only the two-battery DELTA Pro Ultra X (12,288 Wh, 36 W idle, about 15 nights on an assumed 85% usable) runs longer, at whole-home-system cost. The Apex 300 matches the Jackery 5000 Plus with roughly half the battery. These figures treat draw under a 40-50 W load as fan watts plus the no-load idle. That is an approximation: no named source measured an actual fan run.",
+ "candidates": [
+  "Anker SOLIX S5000",
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow DELTA Pro Ultra X",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "No-load AC draw (inverter on, nothing plugged in), HOBOTECH",
+   "value": "85 W (515 Wh used in 6 h; 2,060 Wh per 24 h)",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "HOBOTECH: The biggest Jackery ever, Explorer 5000 Plus home backup solar generator (2024-11-25)",
+   "read": "2026-11-17",
+   "note": "HOBOTECH measured 515 Wh over 6 h with the inverter on and no load, which is 85 W."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Usable capacity delivered, HOBOTECH discharge test",
+   "value": "4,450 Wh at 120 V (88% of 5,040 Wh); 4,440 Wh at 240 V",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "HOBOTECH: The biggest Jackery ever, Explorer 5000 Plus home backup solar generator (2024-11-25)",
+   "read": "2026-11-17",
+   "note": "Full discharge test. Fan nights at 50 W: (50 + 85) W × 8 h = 1,080 Wh a night, 4,450 / 1,080 = 4.1 nights. ChatGPT said about 10 nights at 50 W and 13.4 at 40 W."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "No-load AC draw, The Solar Lab",
+   "value": "about 58 W ('could run about 3.5 days idling')",
+   "source": "https://www.thesolarlab.com/review/jackery-explorer-5000-plus-review",
+   "source_title": "The Solar Lab: Jackery Explorer 5000 Plus Review (no publish date on page)",
+   "read": "2026-11-17",
+   "note": "Inverter on through a full charge with no load. This second reviewer reads lower than HOBOTECH. With 58 W: (50 + 58) × 8 = 864 Wh a night, 4,450 / 864 = 5.2 nights."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "No-load AC draw, HOBOTECH",
+   "value": "52 W",
+   "source": "https://hobotech.tv/blog/the-biggest-jackery-ever-explorer-5000-plus-home-backup-solar-generator/",
+   "source_title": "HOBOTECH: The biggest Jackery ever, Explorer 5000 Plus home backup solar generator (2024-11-25)",
+   "read": "2026-11-17",
+   "note": "Quoted by HOBOTECH as his own DELTA Pro Ultra idle measurement, for comparison with the Jackery."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "No-load AC draw, The Solar Lab",
+   "value": "about 45 W (Ultra X review) / about 60 W (Ultra vs Ultra X comparison)",
+   "source": "https://www.thesolarlab.com/review/delta-pro-ultra-vs-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra vs DELTA Pro Ultra X",
+   "read": "2026-11-17",
+   "note": "The Solar Lab gives two figures for the original in two articles, 'roughly 60W' here and 'around a 45W idle draw' at https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x. Neither states the method."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Discharge efficiency near max load, The Solar Lab",
+   "value": "98% (59 min at just under 6,000 W)",
+   "source": "https://www.thesolarlab.com/review/testing-the-ecoflow-delta-pro-ultra",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra real-world testing",
+   "read": "2026-11-17",
+   "note": "6,144 Wh × 0.98 ≈ 6,021 Wh. Fan nights at 50 W with HOBOTECH's 52 W idle: (50 + 52) × 8 = 816 Wh a night, so 7.4 nights (6.8 at 60 W idle, 7.9 at 45 W). ChatGPT said about 13 nights at 50 W and 16.3 at 40 W."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra X",
+   "label": "No-load AC draw, The Solar Lab",
+   "value": "about 36 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X home backup unit",
+   "read": "2026-11-17",
+   "note": "'idle draw averaged around 36W' during testing; method not stated. 12,288 Wh base (two batteries). No measured usable capacity found. On an assumed 85%: 10,445 / ((50 + 36) × 8 = 688) ≈ 15 nights."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "No-load AC draw, The Solar Lab",
+   "value": "about 80 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-pro-ultra-x",
+   "source_title": "The Solar Lab: EcoFlow DELTA Pro Ultra X home backup unit",
+   "read": "2026-11-17",
+   "note": "'pulls closer to 80W while idling'. The same figure ('80W idle rate') appears in The Solar Lab's Jackery 5000 Plus review. Original F3800. Anker claims a firmware or Plus-model cut to about 40 W, which no named reviewer has measured."
+  },
+  {
+   "product": "Anker SOLIX F3800",
+   "label": "Usable capacity delivered, StorageReview",
+   "value": "2,980 Wh (78% of 3,840 Wh)",
+   "source": "https://www.storagereview.com/review/anker-solix-f3800-do-we-really-need-gas-generators",
+   "source_title": "StorageReview: Anker SOLIX F3800, do we really need gas generators? (Kevin OBrien, 2024-06-21)",
+   "read": "2026-11-17",
+   "note": "'took 4,930Wh to charge from 0 to 100 percent and delivered 2,980Wh before cutting off the inverter'. Fan nights at 50 W: (50 + 80) × 8 = 1,040 Wh a night, 2,980 / 1,040 = 2.9 nights. ChatGPT said about 8 nights at 50 W and 10.2 at 40 W."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "No-load AC draw at 120 V, pv magazine USA",
+   "value": "about 10 W (lost 5% state of charge in 24 h, 120 V output on, nothing connected)",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "pv magazine USA: Anker Solix S5000 deep-dive review, 5 kWh on wheels, tested through a real power outage (Andrew Riha, 2026-10-28)",
+   "read": "2026-11-17",
+   "note": "5% of 5,024 Wh = 251 Wh / 24 h = 10.5 W. 240 V idle was not tested. Anker's spec page lists 'Idle Power 8.8W' (https://www.ankersolix.com/s5000, read 2026-11-17)."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Usable capacity delivered, pv magazine USA",
+   "value": "4,870 Wh (97% of 5,024 Wh nameplate), app reading",
+   "source": "https://pv-magazine-usa.com/2026/10/28/anker-solix-s5000-deep-dive-review-5-kwh-on-wheels-tested-through-a-real-power-outage/",
+   "source_title": "pv magazine USA: Anker Solix S5000 deep-dive review, 5 kWh on wheels, tested through a real power outage (Andrew Riha, 2026-10-28)",
+   "read": "2026-11-17",
+   "note": "Read from Anker's app, not an external meter. 78% round trip against 6.24 kWh drawn from the wall. Fan nights at 50 W: (50 + 10) × 8 = 480 Wh a night, 4,870 / 480 = 10.1 nights (12.2 at a 40 W fan)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "No-load AC draw (inverters on), ESS News",
+   "value": "about 19.5 W",
+   "source": "https://www.ess-news.com/2025/09/17/hands-on-with-the-bluetti-apex-300-portable-power-station/",
+   "source_title": "ESS News: Hands-on with the Bluetti Apex 300 portable power station (Tristan Rayner, 2025-09-17)",
+   "read": "2026-11-17",
+   "note": "'An idle Apex 300, with inverters on, consumed around 19.5 W per hour while we watched.'"
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "No-load AC draw and efficiency, The Solar Lab",
+   "value": "about 20 W idle; about 85% efficiency",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "The Solar Lab: Bluetti Apex 300 review",
+   "read": "2026-11-17",
+   "note": "Idle 'right around 20W' ('about 6 days' powered on). Efficiency 'right around 85%', method not given. 2,764.8 Wh × 0.85 ≈ 2,350 Wh. Fan nights at 50 W: (50 + 20) × 8 = 560 Wh a night, 4.2 nights, the same as the Jackery 5000 Plus with 55% of its battery."
+  }
+ ],
+ "unsourced": [
+  "No named reviewer has run an actual fan or other 40-50 W AC load overnight on any candidate. Total draw under load is approximated as fan watts plus no-load idle; inverter loss at low load may differ.",
+  "Measured usable capacity of the EcoFlow DELTA Pro Ultra X and of the BLUETTI Apex 300 in Wh delivered: looked in The Solar Lab and ESS News reviews and found only efficiency percentages or rated Wh.",
+  "A named measurement of the Anker SOLIX F3800 Plus idle draw after Anker's claimed cut to about 40 W: only Anker's claim and unmetered reports (50-70 W, 'slightly less') were found.",
+  "S5000 idle in 240 V mode: pv magazine did not test it. Anker's 14-day standby claim at 240 V is a maker figure.",
+  "GearSpec Outpost's cited expandable-capacity article (HTTP 429 direct and via r.jina.ai), so I could not confirm it lacks idle figures.",
+  "Current maker-store prices for the S5000 (storecheck search on ankersolix.com returned HTTP 404) and the Apex 300 (the bluettipower.com search returned only Apex 200 listings): not needed for this angle and not read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5 (in-session subagent; claude -p at its weekly limit until 2026-11-18)"
+ }
+}

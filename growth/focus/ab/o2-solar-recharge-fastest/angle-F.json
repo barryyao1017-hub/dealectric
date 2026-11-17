@@ -1,0 +1,143 @@
+{
+ "angle": "F",
+ "gap": "None of the results ChatGPT got says that the BLUETTI Elite 100 V2 makes the same maker claim as ChatGPT's pick, the EcoFlow DELTA 3 Plus: a full charge in 70 minutes on 1,000 W of solar. None says it sells for $499 on BLUETTI's US store today (2026-11-15). And none says it reaches that through one solar input where the DELTA 3 Plus has two.",
+ "standout": 2,
+ "standout_why": "I compared against three result pages. Solarwaypoint's DELTA 3 Plus vs Anker C1000 page (2024-09-13) covers only those two models, gives no dollar figures and only says prices 'change all the time'. EcoFlow's DELTA 3 Series page (result 1 in chat 2) shows no prices, and the only models it gives solar figures for are the DELTA 3 and DELTA 3 Plus. Anker's C1000 Gen 2 page (cited) shows no price. ChatGPT's own answers list DELTA 3 Plus, C1000 Gen 2, AC180 and RIVER 3 Plus with no prices and never mention the Elite 100 V2 or ALLPOWERS P1800. I couldn't open three rival pages: solargenreview.com returned HTTP 429, thiswatt.com failed on a certificate error, and I didn't open the rest within the call budget. I can't rule out that one of them names the Elite 100 V2, so this is a 2, not a 3.",
+ "decides": "On the makers' own claims the answer is a tie, not EcoFlow alone: the DELTA 3 Plus and the BLUETTI Elite 100 V2 both claim a full charge in 70 minutes on 1,000 W of solar. Which one fits 'two panels' depends on wiring. The DELTA 3 Plus takes each panel on its own 500 W input. The Elite 100 V2 has one 1,000 W input, so two panels must be wired in series into it, and the pair has to land inside its voltage window (our current page gives 50–60 V). Every other 1 kWh model I checked caps solar lower: Anker C1000 Gen 2 at 600 W (Anker claims 1.8 h), ALLPOWERS P1800 at 650 W, and EcoFlow DELTA 3 at 500 W (EcoFlow claims 2 h). So those confirm the two 1,000 W models win on hours. The price tie-break between them is still open because EcoFlow's US store returned HTTP 429 on every try, so the DELTA 3 Plus has no price today.",
+ "candidates": [
+  "EcoFlow DELTA 3 Plus",
+  "BLUETTI Elite 100 V2",
+  "Anker SOLIX C1000 Gen 2",
+  "ALLPOWERS P1800",
+  "EcoFlow DELTA 3",
+  "BLUETTI AC180",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow RIVER 3 Plus",
+  "DJI Power 1000 V2"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price, BLUETTI US store, unit alone",
+   "value": "$499.00 (compare-at $499.00, in stock)",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Read through storecheck.py (Shopify product JSON)."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Maker's solar refill claim",
+   "value": "1,000 W solar input, 'Full charge in 70 mins'",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 100 V2 Portable Power Station | 1,800W 1,024Wh",
+   "read": "2026-11-15",
+   "note": "Text on the product listing, with no test conditions given. Arithmetic: 1,024 Wh ÷ 1,000 W = 61 min if nothing is lost, so the 70-minute claim implies roughly 88% charging efficiency. It's the same time EcoFlow claims for the DELTA 3 Plus."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Price with BLUETTI panels, BLUETTI US store",
+   "value": "$679 with 100 W panel; $729 with 200 W panel; $1,099 with 350 W panel",
+   "source": "https://www.bluettipower.com/products/elite-100-v2-200w-solar",
+   "source_title": "Elite 100 V2 + 200W",
+   "read": "2026-11-15",
+   "note": "All three prices come from the same storecheck search of bluettipower.com. The 100 W and 350 W bundles are at /products/elite-100-v2-100w and /products/elite-100-v2-350w-solar. None of the bundles comes close to the 1,000 W input limit."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "label": "Maker's solar refill claim",
+   "value": "'500W MPPT × 2 charges fully in 70 minutes'",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "The only condition given is a general footnote about EcoFlow's internal testing. The page shows no price."
+  },
+  {
+   "product": "EcoFlow DELTA 3",
+   "label": "Maker's solar refill claim",
+   "value": "'500W MPPT recharges in 2 hours'",
+   "source": "https://www.ecoflow.com/us/delta-3-series-portable-power-station",
+   "source_title": "DELTA 3 Series | EcoFlow US",
+   "read": "2026-11-15",
+   "note": "Where it loses: one 500 W input, so it takes about 1.7 times as long as the DELTA 3 Plus's 70 minutes."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Price, EcoFlow US store",
+   "value": "$459.00 (compare-at $1,299.00)",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Classic Portable Power Station (1024Wh)",
+   "read": "2026-11-15",
+   "note": "Read from the storecheck search of us.ecoflow.com. I haven't confirmed this listing is the same model as the 'DELTA 3' on EcoFlow's series page, and the listing gives no solar figure."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input and maker's refill claim",
+   "value": "600 W max, 60 V max (11–28 V at 8.2 A; 29–60 V at 14.5 A); 'recharge fully in just 1.8 hours'",
+   "source": "https://www.ankersolix.com/products/c1000-gen2",
+   "source_title": "Anker SOLIX C1000 Gen 2 Portable Power Station - 1,024Wh | 2,000W - Anker SOLIX US",
+   "read": "2026-11-15",
+   "note": "The page showed no price. Where it loses: 600 W cap, so 1.8 h against the 70 minutes claimed for the DELTA 3 Plus and the Elite 100 V2."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Price, Amazon US",
+   "value": "$529.99",
+   "source": "https://www.amazon.com/dp/B0FN7MSY4L",
+   "source_title": "Anker SOLIX C1000 Gen 2 Solar powered Generator",
+   "read": "2026-11-15",
+   "note": "Read through amzcheck.py. The Anker US store returned no price: ankersolix.com showed none, the anker.com search returned 404, and us.soundcore.com returned 429."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Price and solar cap, ALLPOWERS US store",
+   "value": "$399.00 (compare-at $1,059.98); 'Up to 650W solar input via XT60'",
+   "source": "https://www.iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-15",
+   "note": "The cheapest 1 kWh model I found. Where it loses: 1,024 Wh ÷ 650 W ≈ 1.6 h even with no losses, and it has one XT60 input. The P1800 with 600 W of panels is $798 at /products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Price, BLUETTI US store",
+   "value": "$499.00 (compare-at $1,232.00)",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-15",
+   "note": "Same price as the Elite 100 V2. I didn't open the AC180's solar spec today, so it gets no 'loses because' line here."
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "label": "Price of the two-panel bundle, Amazon US",
+   "value": "$849.00 for Solar Generator 1000 v2 + 2 × 100 W panels",
+   "source": "https://www.amazon.com/dp/B0D66VD3X4",
+   "source_title": "Jackery Solar Generator 1000 v2 and 2x100W Solar Panel,1024Wh LiFePO4",
+   "read": "2026-11-15",
+   "note": "Two panels totaling 200 W into a 1,024 Wh battery: at least 5.1 h even with no losses (1,024 ÷ 200). The jackery.com search didn't list a standalone Explorer 1000 v2, and its product page returned 429."
+  },
+  {
+   "product": "Jackery HomePower 1000 v2",
+   "label": "Price, Jackery US store",
+   "value": "$549.00 (compare-at $1,049.00)",
+   "source": "https://www.jackery.com/products/jackery-homepower-1000-v2",
+   "source_title": "Jackery HomePower 1000 v2",
+   "read": "2026-11-15",
+   "note": "1,024 Wh. The listing says the black version is sold out. It gives no solar input figure."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA 3 Plus price today: us.ecoflow.com returned HTTP 429 on 3 storecheck tries and a WebFetch; it wasn't in the storecheck search of us.ecoflow.com; ecoflow.com/us shows no price; amzcheck search found no DELTA 3 Plus ASIN.",
+  "Anker SOLIX C1000 Gen 2 price on Anker's own US store: ankersolix.com shows no price, anker.com search returned 404, us.soundcore.com returned 429.",
+  "Jackery Explorer 1000 v2 standalone price and solar input: the jackery.com product page returned 429 and the store search didn't list it.",
+  "BLUETTI AC180 solar input limit: didn't open the spec within the call budget (ChatGPT's 500 W figure is unchecked).",
+  "EcoFlow RIVER 3 Plus price and solar input: not checked within the call budget.",
+  "DJI Power 1000 V2 (B0H2MFBDZL, came up in Amazon search) price and solar input: not checked.",
+  "Rival pages solargenreview.com (HTTP 429) and thiswatt.com (certificate error) couldn't be read, so I can't confirm whether they name the Elite 100 V2."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.1406138
+ }
+}

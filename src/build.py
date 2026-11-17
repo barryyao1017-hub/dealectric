@@ -141,7 +141,7 @@ from gaps import GAP_PAGES
 from focus import BUYBOX, DEAL_ROW, BUY_FIRST
 from products import PRODUCTS, CATEGORIES, VERIFIED, RETIRED
 from kits import KITS
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 import html
 import sys
 
@@ -229,7 +229,9 @@ def buy_url(p):
     c = best_offer(p)[0]
     if where == "applied":
         path = s.path + (f"?{s.query}" if s.query else "")
-        return f"{s.scheme}://{s.netloc}/discount/{quote(c['code'])}?redirect={quote(path, safe='')}"
+        # unquote first: a store handle that is already percent-encoded (ALLPOWERS' "...-kit-%E5%89%AF%E6%9C%AC") was
+        # encoded twice and landed on the store's 404 page (2026-11-17)
+        return f"{s.scheme}://{s.netloc}/discount/{quote(c['code'])}?redirect={quote(unquote(path), safe='')}"
     if where == "checkout":
         return f"{s.scheme}://{s.netloc}/cart/{p['cart_variant']}:1" + (f"?discount={quote(c['code'])}" if c else "")
     return p["url"]
@@ -1758,8 +1760,13 @@ def pick_line(c):
     # listing); that pick links the seller's own page
     if c.get("keep_pick") and first.get("url"):   # accuracy first (Barry 11-12): the seller's own page
         u = html.escape(first["url"])
-        return (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
+        line = (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
                 f'<a href="{u}" rel="nofollow noopener">{u}</a>')
+        if c.get("buy_by_name"):   # open2 run: the pick has no link of ours, so name the best row we do link, as other pages do
+            nxt = next((r for r in c["rows"][1:] if r.get("slug")), None)
+            if nxt:
+                line += ours(nxt, "Dealectric link")
+        return line
     if c.get("all_links") and not c.get("keep_pick"):
         if first.get("asin"):
             link = amazon_row_link(first["asin"])
@@ -2255,6 +2262,8 @@ def bf_sale_html(brand, short=False):
                  for ph in phs]
         return "; ".join(items)
     checked = d.get("checked", BFCM["checked"])
+    if d.get("unread"):   # the refresh pass couldn't load the brand's site (bot check, network): say so, claim nothing
+        return f"{html.escape(brand)}'s US site could not be read when we checked ({checked}); see the store for its Black Friday plans."
     ly = d.get("last_year")
     last = (f" Last year: {html.escape(ly['name'])}, {html.escape(bf_span(ly))} {ly['start'][:4]}" + (f", {html.escape(ly['headline'])}" if ly.get("headline") else "") + "."
             if ly and ly.get("start") else "")
@@ -2522,6 +2531,108 @@ def bf_brand_block(brand):
             f'All brands: <a href="/black-friday-deals">Black Friday deals</a>, <a href="/cyber-monday-deals">Cyber Monday deals</a>.</p>')
 
 
+# Brand Black Friday deal pages (Barry, 2026-11-17): one page per brand that is selling (ALLPOWERS, BLUETTI) plus a
+# solar-kit page across brands. Each row is the cheapest way to pay that the brand's own cart confirmed on the test date:
+# the store's automatic discount alone, or a code (which on these stores replaces the automatic discount rather than
+# adding to it). Rows come from src/bfcm_brandpages.json, written by growth/bfcm/brandpages.py from the cart-test logs.
+try:
+    BF_BRANDPAGES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "bfcm_brandpages.json"), encoding="utf-8"))
+except FileNotFoundError:
+    BF_BRANDPAGES = {"pages": []}
+
+
+def bfbp_how(r):
+    """'code DEALECTRIC10' / 'the store's automatic discount' / 'no discount'."""
+    b = r["best"]
+    if b["how"] == "code":
+        return f'code <code>{html.escape(b["code"])}</code>'
+    if b["how"] == "auto":
+        return "the store's own checkout discount, no code"
+    return "no discount applies"
+
+
+def bfbp_stock(p):
+    """stock_note without a pre-order ship date that has already passed (some records keep the launch date)."""
+    if preorder(p):
+        when = p["preorder"].rsplit(",", 1)[0]
+        try:
+            d = datetime.datetime.strptime(p["preorder"], "%b %d, %Y").date()
+        except ValueError:
+            d = None
+        return f" (pre-order, ships {when})" if d and d >= datetime.date.today() else " (pre-order)"
+    return "" if in_stock(p) else " (sold out)"
+
+
+def bfbp_rows(spec):
+    rows = []
+    for r in spec["rows"]:
+        p = BY_SLUG.get(r["slug"])
+        if p and not is_amazon(p):
+            rows.append((p, r))
+    return rows
+
+
+def bfbp_table(rows, brand_col=False):
+    out = ""
+    for p, r in rows:
+        b = r["best"]
+        save = r["store"] - b["pay"]
+        pct = f" ({round(save / r['store'] * 100)}% off)" if save > 0.004 else ""
+        alt = [f'<code>{html.escape(a["code"])}</code> ' + ("not accepted" if a.get("note") == "not accepted" else money(a["pay"]) + (f' ({html.escape(a["note"])})' if a.get("note") else ""))
+               for a in r.get("others", [])]
+        if r["auto"] < r["store"] - 0.004 and b["how"] == "code":
+            alt.insert(0, f'no code {money(r["auto"])} (the store\'s own checkout discount)')
+        alt = "; ".join(alt)
+        out += (f'<tr>' + (f'<td><a href="{codes_path(p["brand"])}">{html.escape(p["brand"])}</a></td>' if brand_col else "")
+                + f'<td><a href="/products/{p["slug"]}/">{html.escape(bf_name(p))}</a>{bfbp_stock(p)}</td><td>{money(r["store"])}</td>'
+                f'<td>{bfbp_how(r)}' + (f'<br><span class="small">{alt}</span>' if alt else "") + '</td>'
+                f'<td><strong>{money(b["pay"])}</strong>{pct}<br><span class="small">cart test {short_date(r["tested"])}</span></td>'
+                f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
+    head = ("<th>Brand</th>" if brand_col else "") + "<th>Product</th><th>Store price</th><th>Cheapest way to pay</th><th>You pay</th><th>Buy link</th>"
+    return f'<div class="scroll"><table><tr>{head}</tr>{out}</table></div>'
+
+
+def bfcm_brand_deal_page(spec):
+    rows = bfbp_rows(spec)
+    rows.sort(key=lambda pr: (not in_stock(pr[0]), -(pr[1]["store"] - pr[1]["best"]["pay"]) / pr[1]["store"]))
+    live = [pr for pr in rows if in_stock(pr[0])]
+    brands = list(dict.fromkeys(p["brand"] for p, _ in rows))
+    top = (next((pr for pr in live if pr[0]["slug"] == spec.get("lead_slug")), None)
+           or max(live, key=lambda pr: (pr[1]["store"] - pr[1]["best"]["pay"]) / pr[1]["store"], default=None))
+    tested = max((r["tested"] for _, r in rows), default=BF_BRANDPAGES.get("checked", ""))
+    if top:
+        p, r = top
+        b = r["best"]
+        lead = (f'{spec["lead_head"]} the {html.escape(bf_name(p))} at <strong>{money(b["pay"])}</strong> (store price {money(r["store"])}) '
+                f'with {bfbp_how(r)}, confirmed in {html.escape(p["brand"])}\'s own US cart on {short_date(r["tested"])}: '
+                f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>.')
+    else:
+        lead = "No product passed a cart test on our last check."
+    sales = "; ".join(f"{html.escape(b)}: {bf_sale_html(b, short=True)}" for b in brands)
+    body = f"""
+<p class="small"><a href="/black-friday-deals">Black Friday deals</a> › {html.escape(spec['crumb'])}</p>
+<h1>{html.escape(spec['h1'])}</h1>
+<p class="lead"><strong>Short answer.</strong> {lead} {spec['concern']} {sales}.</p>
+<h2>{html.escape(spec['table_head'])}</h2>
+<p class="small">Each price is what the cart charged for one unit on the test date, before tax and shipping. Where a code beat the store's own discount the row names the code; where it didn't, the row says to pay the store's price with no code, even though our code is listed elsewhere on this site.</p>
+{bfbp_table(rows, brand_col=len(brands) > 1)}
+{spec.get('sections_html', '')}
+<h2>Black Friday and Cyber Monday 2026 dates</h2>
+{bf_calendar(brands)}
+{BF_HOW}
+<p>More: <a href="/black-friday-deals">all Black Friday 2026 deals</a>, <a href="/black-friday-power-station-deals">Black Friday power station deals</a>, <a href="/cyber-monday-deals">Cyber Monday deals</a>.</p>
+{DISCLOSURE}
+"""
+    ld = {"@context": "https://schema.org", "@type": "WebPage", "name": spec["h1"], "dateModified": tested, "url": SITE["url"] + "/" + spec["slug"],
+          "mainEntity": {"@type": "ItemList", "itemListElement": [
+              {"@type": "ListItem", "position": i + 1, "url": SITE["url"] + f"/products/{p['slug']}/", "name": full_name(p)} for i, (p, _) in enumerate(rows[:25])]}}
+    if spec.get("faq"):
+        ld = [ld, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in spec["faq"]]}]
+    desc = spec["desc_head"] + (f" Lowest confirmed: {bf_name(top[0])} {money(top[1]['best']['pay'])} (cart test {short_date(top[1]['tested'])})." if top else "")
+    return spec["title"], html.escape(desc, quote=True), body, ld
+
+
 def main():
     import tempfile
     final = os.path.join(os.path.dirname(__file__), "dist")
@@ -2588,6 +2699,8 @@ def main():
     pages["/cyber-monday-deals/"] = bfcm_hub(cyber=True)
     for g in BFCM["groups"]:
         pages[f"/{g['slug']}/"] = bfcm_group_page(g)
+    for spec in BF_BRANDPAGES["pages"]:
+        pages[f"/{spec['slug']}/"] = bfcm_brand_deal_page(spec)
     for path, (title, desc, body, ld, *img) in pages.items():
         d = os.path.join(out, path.strip("/"))
         os.makedirs(d, exist_ok=True)
