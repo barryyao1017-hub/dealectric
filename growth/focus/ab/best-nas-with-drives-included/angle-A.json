@@ -1,0 +1,113 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that an \"8 TB\" NAS with drives can mean very different usable space: Synology's BeeStation Plus 8 TB (one drive, no RAID) gives about 6.98 TB usable, while Buffalo's LinkStation 720D 8 TB is 2 × 4 TB set to RAID 1 at the factory, so only 4 TB (decimal) holds files.",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat has no result pages at all, so no cited rival covers this. Its answer showed two product cards, Synology DS224+ and UGREEN DXP4800 Plus. Both are sold without drives: Synology says 'Storage drives are sold separately', and UGREEN's store sells the DXP4800 Plus as the bare unit for $619.99. Its 4–8 / 8–16 / 20–40 TB chips never say whether TB means raw or usable. Our current page shows usable space only for the two BeeStations (6.98 and 3.45). For the LinkStation it says '2 × 4 TB, RAID preconfigured' without the usable figure.",
+ "decides": "For a shopper who picks by the TB number on the box, the mirrored Buffalo 8 TB stores about half of what the BeeStation Plus 8 TB stores. That half is the cost of a second copy of every file; the BeeStation has none, and Synology itself says 'Data safety comes from backups, not RAID'. The table needs a 'usable TB' column and a footnote. It should also point out that neither product ChatGPT showed includes any storage. Without verified prices for the drive-included units, this finding cannot settle cost per usable TB.",
+ "candidates": [
+  "Synology BeeStation Plus 8 TB (BST170-8T)",
+  "Synology BeeStation 4 TB (BST151-4T)",
+  "Synology BeeStation 4 TB (BST150-4T)",
+  "Buffalo LinkStation 720D 8 TB (LS720D0802)",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DH4300 Plus",
+  "Synology DS224+",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Synology BeeStation Plus 8 TB (BST170-8T)",
+   "label": "Usable capacity vs labelled capacity",
+   "value": "8 TB labelled, about 6.98 usable (no unit given beyond 'TB'); 1 drive, no RAID",
+   "source": "https://www.synology.com/en-us/store/BST170-8T",
+   "source_title": "Synology Store – BeeStation Plus 8 TB (BST170-8T)",
+   "read": "2026-11-17",
+   "note": "Page quote: 'The actual usable capacity is approximately 6.98 for 8 TB.' FAQ: 'only one built-in hard drive (no RAID)' and 'Data safety comes from backups, not RAID.' 6.98/8 = 87% of the label. Warranty 3 years. The page showed no price."
+  },
+  {
+   "product": "Synology BeeStation 4 TB (BST151-4T)",
+   "label": "Usable capacity vs labelled capacity",
+   "value": "4 TB labelled, about 3.45 TB usable; 1 drive, no RAID; 2 GB DDR4; 1GbE",
+   "source": "https://www.synology.com/en-us/store/BST151-4T",
+   "source_title": "Synology Store – BeeStation 4 TB (BST151-4T)",
+   "read": "2026-11-17",
+   "note": "Page quote: 'Actual usable capacity for 4 TB is approximately 3.45 TB.' 3.45/4 = 86%. This is a newer model than the BST150-4T on our current page, which has 1 GB of RAM (same page wording). Warranty 3 years. The page showed no price."
+  },
+  {
+   "product": "Synology BeeStation 4 TB (BST150-4T)",
+   "label": "Usable capacity vs labelled capacity",
+   "value": "4 TB labelled, about 3.45 TB usable; 1 GB DDR4; 1GbE",
+   "source": "https://www.synology.com/en-us/store/BST150-4T",
+   "source_title": "Synology Store – BeeStation 4 TB (BST150-4T)",
+   "read": "2026-11-17",
+   "note": "Same usable-capacity statement as the BST151-4T. Memory is 1 GB here, 2 GB on the BST151."
+  },
+  {
+   "product": "Buffalo LinkStation 720D 8 TB (LS720D0802)",
+   "label": "Drive layout and factory RAID mode",
+   "value": "4 TB × 2, set to RAID 1 at the factory → 4 TB (decimal) usable for files",
+   "source": "https://www.buffalo.jp/product/detail/print/ls720d0802.html",
+   "source_title": "Buffalo Japan – LS720D0802 product spec sheet (print view)",
+   "read": "2026-11-17",
+   "note": "Page quotes: 'LS720D0802：4TB×2'; RAID modes 'RAID 1 / RAID 0 / 通常モード'; '※出荷時はRAID 1に設定されています' (ships set to RAID 1). The maker states no usable figure, so the 4 TB comes from my arithmetic: a RAID 1 mirror stores one drive's worth. That is about 3.64 TiB before filesystem overhead, so roughly half of what the BeeStation Plus 8 TB stores in Synology's units. Released November 2020. The Japanese page gives a 1-year warranty, which may not match US terms."
+  },
+  {
+   "product": "Buffalo LinkStation 720D 8 TB (LS720D0802)",
+   "label": "US maker page: RAID options",
+   "value": "2 bays, RAID 0/1/JBOD supported; 4 TB, 8 TB and 16 TB models",
+   "source": "https://buffaloamericas.com/products/linkstation-700-series-desktop",
+   "source_title": "Buffalo Americas – LinkStation 700 Series Desktop",
+   "read": "2026-11-17",
+   "note": "The US page names no default RAID mode, gives no usable figure, shows no price ('Click to check price') and states no warranty length. Switching to RAID 0 would give about 8 TB but removes the mirror; no source states that figure."
+  },
+  {
+   "product": "Synology DS224+",
+   "label": "Drives included",
+   "value": "None (0 TB); 2 × 3.5\" bays",
+   "source": "https://www.synology.com/en-us/products/DS224+",
+   "source_title": "Synology DS224+ product page",
+   "read": "2026-11-17",
+   "note": "Page quote: 'Storage drives are sold separately.' ChatGPT showed this as a card for 'nas with storage'."
+  },
+  {
+   "product": "UGREEN NASync DXP4800 Plus",
+   "label": "Price, sold without drives",
+   "value": "$619.99 (compare-at $1,129.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dxp4800-plus-nas-storage",
+   "source_title": "UGREEN NAS Store – UGREEN NASync DXP4800 Plus",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py. Searching the store for drive bundles found only docking-station bundles; UGREEN sells no NASync with drives. ChatGPT showed this as a card."
+  },
+  {
+   "product": "UGREEN NASync DH2300",
+   "label": "Price, sold without drives",
+   "value": "$239.99 (compare-at $394.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh2300-nas-storage",
+   "source_title": "UGREEN NAS Store – UGREEN NASync DH2300",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py. Drives cost extra, so usable TB depends on the drives bought and on RAID 1 (half of raw)."
+  },
+  {
+   "product": "UGREEN NASync DH4300 Plus",
+   "label": "Price, sold without drives",
+   "value": "$373.99 (compare-at $564.98), in stock",
+   "source": "https://nas.ugreen.com/products/ugreen-nasync-dh4300-plus-nas-storage",
+   "source_title": "UGREEN NAS Store – UGREEN NASync DH4300 Plus",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py."
+  }
+ ],
+ "unsourced": [
+  "US prices for the BeeStation Plus 8 TB, BeeStation 4 TB and LinkStation 720D 8 TB. Synology's store pages show no price, Amazon blocked amzcheck for ASINs B0CGHQ2JGH and B0GX2YVY3M, and B&H and Newegg Business returned 403. So there is no cost per usable TB.",
+  "A maker-stated usable capacity for the LinkStation 720D 8 TB in RAID 1. Neither the Buffalo Americas page nor the buffalo.jp sheet gives one, so the 4 TB is arithmetic.",
+  "The unit behind Synology's '6.98' (TB or TiB). The page gives no unit, and I found no Synology footnote explaining it.",
+  "The US warranty length for the LS720D0802. Buffalo Americas states none; retailer listings say 2 years, but I could not open them to confirm.",
+  "WD My Cloud EX2 Ultra / My Cloud Home Duo, a candidate that ships mirrored. WD's US product URLs returned 404 or a business-login wall, and the datasheet PDF timed out, so I have no maker figure or current price."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0729574
+ }
+}

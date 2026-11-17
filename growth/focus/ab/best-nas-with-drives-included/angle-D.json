@@ -1,0 +1,94 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a drives-included single-disk box like Synology's BeeStation has no RAID, so one drive failure loses whatever isn't backed up elsewhere. Synology's own words: 'only has one built-in hard drive (no RAID)… Data safety comes from backups, not RAID.'",
+ "standout": 2,
+ "standout_why": "ChatGPT's saved chat lists no search results and no cited pages. Its answer only showed two diskless boxes as cards (Synology DS224+, UGREEN DXP4800 Plus) and asked the shopper how much storage they need. It never says whether those boxes come with drives, never mentions redundancy, and never says which drives a Synology will accept. With no rival page to compare against, Synology's no-RAID statement is new to anyone who reads that answer. Our current page has part of it as a table cell ('1, no mirror'), but not the maker's reason or what it means for the buyer.",
+ "decides": "This splits 'NAS with storage' into two different products. A one-disk box with the drive already inside (BeeStation 4 TB / Plus 8 TB) is the easiest to set up. But Synology says the only protection is a separate backup, to another Synology NAS, an external drive or its paid BeeProtect cloud. A shopper who wants protection against a dead drive inside the box needs two bays mirrored. That means the Buffalo LinkStation 720D, which ships with two drives and RAID already set up, or a diskless 2-bay plus two drives the shopper buys. For that build-it-yourself route, Synology's DSM 7.3 press release confirms that 2025-model-year DiskStation Plus units (DS225+, the successor to the DS224+ ChatGPT showed) can create storage pools on third-party hard drives that Synology hasn't validated, so cheaper drives work. M.2 storage pools still need drives from Synology's compatibility list.",
+ "candidates": [
+  "Synology BeeStation Plus 8 TB (BST170-8T)",
+  "Synology BeeStation 4 TB (BST150-4T)",
+  "Buffalo LinkStation 720D 8 TB (LS720D0802)",
+  "UGREEN NASync DH2300",
+  "UGREEN NASync DH4300 Plus",
+  "Synology DS225+",
+  "Synology DS224+",
+  "UGREEN NASync DXP4800 Plus"
+ ],
+ "findings": [
+  {
+   "product": "Synology BeeStation Plus 8 TB (BST170-8T)",
+   "label": "Drive redundancy",
+   "value": "One built-in hard drive, no RAID",
+   "source": "https://www.synology.com/en-us/store/BST170-8T",
+   "source_title": "Synology Store – BeeStation Plus 8 TB (BST170-8T)",
+   "read": "2026-11-17",
+   "note": "From the page FAQ: the product 'only has one built-in hard drive (no RAID)'. The same FAQ says RAID 'does not protect against accidental deletion, ransomware, theft, fire or flood, or multiple drive failures'."
+  },
+  {
+   "product": "Synology BeeStation Plus 8 TB (BST170-8T)",
+   "label": "Synology's own data-safety statement",
+   "value": "\"Data safety comes from backups, not RAID.\"",
+   "source": "https://www.synology.com/en-us/store/BST170-8T",
+   "source_title": "Synology Store – BeeStation Plus 8 TB (BST170-8T)",
+   "read": "2026-11-17",
+   "note": "The FAQ says RAID is 'designed to keep some multi-bay systems online during a single-drive failure', which the one-bay BeeStation cannot do."
+  },
+  {
+   "product": "Synology BeeStation Plus 8 TB (BST170-8T)",
+   "label": "Usable capacity",
+   "value": "about 6.98 TB of the 8 TB",
+   "source": "https://www.synology.com/en-us/store/BST170-8T",
+   "source_title": "Synology Store – BeeStation Plus 8 TB (BST170-8T)",
+   "read": "2026-11-17",
+   "note": "Footnote reads 'approximately 6.98 for 8 TB'. The unit is missing on the page; TB is assumed from context."
+  },
+  {
+   "product": "Synology BeeStation Plus 8 TB (BST170-8T)",
+   "label": "Backup targets the maker names",
+   "value": "Another Synology NAS or an external drive (local); BeeProtect cloud backup service",
+   "source": "https://www.synology.com/en-us/store/BST170-8T",
+   "source_title": "Synology Store – BeeStation Plus 8 TB (BST170-8T)",
+   "read": "2026-11-17",
+   "note": "These are the only protections against a drive failure on a one-disk unit. The page also lists a 3-year Acronis True Image Essentials license for one computer and SMB access when local access is enabled."
+  },
+  {
+   "product": "general (Synology 2025-model-year DiskStation Plus, Value, J, e.g. DS225+)",
+   "label": "Third-party hard drives on DSM 7.3",
+   "value": "Installation and storage pool creation with non-validated third-party drives are supported",
+   "source": "https://www.synology.com/en-us/company/news/article/dsm73/",
+   "source_title": "Synology® Releases DiskStation Manager 7.3 (press release, 2025-10-08)",
+   "read": "2026-11-17",
+   "note": "Quote: '25 model year DiskStation Plus, Value, and J series running DSM 7.3 will support the installation and storage pool creation of non-validated third-party drives'. This reverses the 2025 lock-in for shoppers who buy a diskless Synology and add their own drives."
+  },
+  {
+   "product": "general (Synology 2025-model-year DiskStation)",
+   "label": "M.2 SSD exception",
+   "value": "M.2 storage pools and cache still require drives on Synology's compatibility list",
+   "source": "https://www.synology.com/en-us/company/news/article/dsm73/",
+   "source_title": "Synology® Releases DiskStation Manager 7.3 (press release, 2025-10-08)",
+   "read": "2026-11-17",
+   "note": "Quote: 'Creation of M.2 based storage pool and cache still requires drives on the HCL.'"
+  },
+  {
+   "product": "Buffalo LinkStation 720D 8 TB (LS720D0802)",
+   "label": "RAID modes and shipping state",
+   "value": "RAID 0, RAID 1 or JBOD; RAID 'already configured' at shipping; one 2.5GBASE-T port",
+   "source": "https://buffaloamericas.com/products/linkstation-700-series-desktop",
+   "source_title": "Buffalo Americas – LinkStation 700 Series Desktop",
+   "read": "2026-11-17",
+   "note": "Buffalo's page says its NAS units ship with RAID already configured but does not name the mode. If it ships in RAID 1, 2 × 4 TB gives about 4 TB usable (arithmetic: a mirror keeps one drive's capacity)."
+  }
+ ],
+ "unsourced": [
+  "The factory RAID mode and usable capacity of the Buffalo LS720D0802. The maker page doesn't name the mode. B&H and Newegg Business (search snippets said RAID 1, 4 TB usable) both returned 403. The Buffalo manual PDF from Ingram Micro couldn't be read as text.",
+  "Whether a user can replace the BeeStation's built-in drive. Synology's store page says nothing about it, and I found no Synology Knowledge Center article. Only NASCompares and StorageReview cover it.",
+  "The per-series table in Synology's Knowledge Center 'Drive compatibility policies FAQs… starting from 2025 (DSM 7.3 and above)' (kb.synology.com/en-uk/DSM/tutorial/Drive_compatibility_policies). The page loads its content with JavaScript and returned only the title, so the press release is the Synology wording used here.",
+  "Prices weren't checked for this angle (Mechanism)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.955553
+ }
+}
