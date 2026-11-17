@@ -1,0 +1,125 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that, in named tests, the Apex 300's UPS transfer measured 16 ms rather than the 0 ms BLUETTI advertises (StorageReview). Nor does any state that the Apex 200 idles at 12.8 W against about 20 W for the Apex 300 and converts at 90% against 85% (The Solar Lab). Those measured numbers leave the two units within about 2% of each other in usable AC energy, even though the Apex 300's battery is 8% larger.",
+ "standout": 2,
+ "standout_why": "The cited BLUETTI comparison (bluettipower.com/blogs/buying-guide/apex-200-vs-apex-300, 2026-11-05) contains no third-party measurements. It uses an assumed 90% inverter efficiency and 20 W self-consumption for the Apex 300 and labels its runtimes as model-based estimates. The cited Apex 200 and Apex 300 product pages give only maker claims: ≤15 ms UPS for the Apex 200, and 0 ms UPS with 20 W idle loss for the Apex 300. Neither states efficiency. ChatGPT's own runtime table assumed 85% for both units. No rival page has a measured transfer time, a measured delivered Wh or a measured idle draw for either unit.",
+ "decides": "The measurements confirm the pick: choose by whether you need 240 V. They also remove two reasons to pay about $400 more for the Apex 300 when 120 V is enough. First, its 0 ms UPS claim measured 16 ms, the same range as the Apex 200's ≤15 ms spec. Second, its larger battery yields about the same usable AC energy because of higher idle draw and lower efficiency. For a 120 V fridge-and-router outage, the Apex 200 delivers about the same energy and lasts about 8.3 days on idle drain alone, against about 5.8 for the Apex 300. The Apex 300 stays the pick only for 240 V loads or for a 240 V home-integration setup.",
+ "candidates": [
+  "BLUETTI Apex 200",
+  "BLUETTI Apex 300"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "UPS transfer time, utility to battery (measured)",
+   "value": "16 ms",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "Bluetti Apex 300 review: 3840W, 240V, grid input limit, UPS (StorageReview, Kevin OBrien)",
+   "read": "2026-11-17",
+   "note": "Oscilloscope capture at about 100 W and about 700 W loads in 120 V mode, with no dropout on return to line. BLUETTI advertises 0 ms. StorageReview's comparison table lists 0 ms for transfer back to utility, but the text says the 0 ms figure is BLUETTI's. Byline 2026-11-09; page metadata says 2026-11-10."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Energy delivered, single unit (measured)",
+   "value": "2.39 kWh (86% of 2,764.8 Wh)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "Bluetti Apex 300 review (StorageReview, Kevin OBrien)",
+   "read": "2026-11-17",
+   "note": "Full discharge until the unit powered off. Recharge drew 3.30 kWh from the wall, so the round trip was about 72%. Apex 300 plus 2× B300K delivered 7.38 kWh (89% of 8,294.4 Wh), and recharge took 10.01 kWh (about 74% round trip)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Energy delivered in a high-draw test (measured)",
+   "value": "2,290 Wh (83% of 2,765 Wh)",
+   "source": "https://outdoorlife.com/gear/bluetti-apex-300-the-latest-entry-in-the-stackable-power-station-wars",
+   "source_title": "Bluetti Apex 300: The Latest Entry in the Stackable Power Station Wars (Outdoor Life, Laura Lancaster, 2025-05-20)",
+   "read": "2026-11-17",
+   "note": "Dehumidifier load measured with a Kill A Watt meter. The load's wattage is not stated."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Idle draw, inverter on (measured)",
+   "value": "about 20 W (The Solar Lab); about 19.5 W (ESS News)",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "The Solar Lab page shows no date or byline. ESS News, Tristan Rayner, 2025-09-17 (https://www.ess-news.com/2025/09/17/hands-on-with-the-bluetti-apex-300-portable-power-station/): 'An idle Apex 300, with inverters on, consumed around 19.5 W.' Idle drain alone: 2,764.8 Wh ÷ 20 W = about 138 h = about 5.8 days."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC output efficiency (measured)",
+   "value": "about 85%",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-300",
+   "source_title": "Bluetti Apex 300 review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Calculated across a variety of loads on the AC outlets. 2,764.8 Wh × 0.85 = about 2,350 Wh, close to StorageReview's 2.39 kWh measured."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Idle draw, inverter on with no load (measured)",
+   "value": "12.8 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-200",
+   "source_title": "BLUETTI Apex 200 Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "The page shows no date or byline. The reviewer derives about 8.3 days of idle runtime (2,560 Wh ÷ 12.8 W = 200 h). This is about 36% less idle draw than the Apex 300's roughly 20 W. Reviewed (TJ Donegan, 2026-11-05) lists 'Standby draw: 10.5W' in a spec list, apparently not its own measurement."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "AC efficiency (measured)",
+   "value": "90%",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-200",
+   "source_title": "BLUETTI Apex 200 Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "Load conditions are not stated. 2,560 Wh × 0.90 = about 2,304 Wh, against about 2,350 Wh for the Apex 300 at The Solar Lab's 85%. That is about 2% more usable AC energy from 8% more nameplate capacity. Both figures come from the same outlet but not necessarily the same method."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "AC wall recharge, empty to full (measured)",
+   "value": "about 2 h 21 min, about 1,800 W drawn",
+   "source": "https://www.thesolarlab.com/review/bluetti-apex-200",
+   "source_title": "BLUETTI Apex 200 Review (The Solar Lab)",
+   "read": "2026-11-17",
+   "note": "From a standard wall outlet. The Solar Lab also reports full 3,000 W solar input with both inputs in use, and says surge 'easily exceeded' 3,600 W without giving a measured figure."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC wall charging power by mode (measured, EU 230 V unit)",
+   "value": "508 W Silent / 1,442 W Auto / 2,330 W peak Turbo",
+   "source": "https://www.notebookcheck.net/Bluetti-APEX-300-battery-storage-system-review-More-than-just-a-balcony-power-station.1083982.0.html",
+   "source_title": "Bluetti APEX 300 battery storage system review (Notebookcheck, Christian Hintze)",
+   "read": "2026-11-17",
+   "note": "Published 2025-08-10, updated 2026-10-05. The EU unit charges at 230 V, so these figures may not match the US 120 V unit."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,099 (list $1,399; Super Early-Bird ends Nov 18)",
+   "source": "https://www.bluettipower.com/products/apex-200-expandable-power-station",
+   "source_title": "BLUETTI Apex 200 Expandable Power Station - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page says it is 'expected to ship in late January for orders placed on or after Nov. 14'. Our page's 'In stock' status is out of date."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Price, BLUETTI US store",
+   "value": "$1,499 (list $1,699)",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Home Battery Backup - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page says it is 'expected to ship in late January'. Our page's 'Ships from Nov 20' status is out of date. Bundles cost $2,069–$4,399."
+  }
+ ],
+ "unsourced": [
+  "Apex 200 measured energy delivered (Wh) and measured UPS transfer time: no StorageReview, Notebookcheck or CleanTechnica test exists. The Solar Lab and Reviewed give neither, and Backup Power Hub says no test had been published as of 2026-11-04.",
+  "Popular Mechanics' Apex 200 refrigerator runtime (27 hours, as quoted by New Atlas on 2026-11-11): popularmechanics.com is blocked for our fetcher, so I could not open the original.",
+  "Trusted Reviews' Apex 300 measurements (Simon Handby, October 2025: 2.55 kWh at 3.8 kW, 92%; Turbo recharge 3.35 kWh in 95 min; 48% battery drop over 12 h in Time of Use mode): trustedreviews.com/reviews/bluetti-apex-300 returned HTTP 530 twice. I saw these figures only through Backup Power Hub and a search summary.",
+  "Measured noise (dB) for either unit: The Solar Lab, Notebookcheck, ESS News and StorageReview give only qualitative remarks. Reviewed's '50dB max' for the Apex 200 is a spec-list figure.",
+  "A measured 240 V output test of the Apex 300 (sustained load or efficiency at 240 V): StorageReview reports only app-read leg loads (717 W on L1, 1,101 W on L2)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0373495
+ }
+}
