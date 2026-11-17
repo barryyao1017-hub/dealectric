@@ -1,0 +1,128 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the physical reason the plan splits in two: a battery can only offset the home's bill through a wall outlet if its inverter is grid-interactive (UL 1741/IEEE 1547 anti-islanding), and that same feature makes it stop feeding the house in a blackout, while a portable power station cannot push power into an outlet at all and only runs what is plugged into it.",
+ "standout": 2,
+ "standout_why": "ChatGPT ran no searches, so it had no result pages, and its answer cites no sources. Its answer says a portable generator 'powers appliances plugged directly into it' and warns that backfeeding is 'not automatically legal or safe'. It never names the cause: anti-islanding shutdown, the current entering below the breaker where the breaker can't see it, or the smart-meter zero-export control. The top organic results (Anker SOLIX UK blogs, ecowizard.co.uk, Bright Saver) are UK-focused or cover only part of this. Bright Saver says a power station 'cannot feed energy into an outlet' and that the microinverter 'shuts down without the grid', but it doesn't tie either point to UL 3700 or the breaker-blind overload.",
+ "decides": "This settles the pick by goal. If the shopper wants a lower bill through the outlet, only a grid-interactive unit works. In the US that means the EcoFlow STREAM Ultra: UL 1741/IEEE 1547, 800 W standalone or 1,200 W with the microinverter or several units, a smart meter needed to stop backfeed, and sold for plug-and-play only in Utah. Even that unit gives no whole-house backup, only power to loads plugged into the Ultra itself. If the shopper wants outage power in an apartment in any state, the BLUETTI AC180 or Elite 200 V2 solar kits are the plan that works, because they never touch home wiring. Their savings come only from running appliances plugged directly into them.",
+ "candidates": [
+  "EcoFlow STREAM Ultra",
+  "BLUETTI AC180 + 200 W solar kit",
+  "BLUETTI Elite 200 V2 + 200 W solar kit",
+  "Hoymiles HiFlow Pro (Bright Saver 360 W kit)",
+  "Anker SOLIX Solarbank"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "UL 3700 shock mechanism at the plug",
+   "value": "UL 3700 'requires additional protection to shut down power export before a consumer can contact a hazardous voltage' at the plug; existing inverter shutdown requirements 'are too slow to address this shock risk'",
+   "source": "https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/",
+   "source_title": "US plug-in solar: questions remain over safety, certifications and regulation (PV Tech, Shreeyashi Ojha, 2026-08-26)",
+   "read": "2026-11-17",
+   "note": "Named trade-press reporter. The article gives no shutdown time in ms."
+  },
+  {
+   "product": "general",
+   "label": "Branch-circuit overload mechanism",
+   "value": "A plug-in PV system downstream of the breaker injects current the breaker cannot sense; 'This could overload parts of the circuit without the upstream breaker detecting it', most likely causing fire through gradual degradation of connections or insulation",
+   "source": "https://www.pv-tech.org/us-plug-in-solar-questions-remain-over-safety-certifications-and-regulation/",
+   "source_title": "US plug-in solar: questions remain over safety, certifications and regulation (PV Tech)",
+   "read": "2026-11-17",
+   "note": "This is why plug-in output is capped (1,200 W in state laws) and why UL 3700 reviews branch-circuit overcurrent protection."
+  },
+  {
+   "product": "general",
+   "label": "UL 3700 scope and publication",
+   "value": "Outline of Investigation for Interactive Plug-In PV (PIPV) Equipment and Systems, Ed. 1, published 2025-12-11; covers integrated energy storage used within PIPV equipment (UL 9540/9540A where applicable); requires a 'dedicated plug-in photovoltaic receptacle'; excludes equipment permanently connected to premises wiring",
+   "source": "https://www.intertek.com/solar/ul-3700-solutions/",
+   "source_title": "UL 3700 Certification for Balcony Solar and Plug-in PV Systems (Intertek)",
+   "read": "2026-11-17",
+   "note": "The ESS coverage and dedicated receptacle are quoted from Intertek's page. The 2025-12-11 date matches the ANSI webstore listing (seen in a search snippet only) and Florida Solar Design Group's 'published December 2025'."
+  },
+  {
+   "product": "general",
+   "label": "UL Solutions' own description of the UL 3700 hazards",
+   "value": "Requires 'features that mitigate accidental contact with hazardous electric parts', protects 'against overloads' and aims to 'prevent electric current from flowing in the wrong direction'",
+   "source": "https://www.ul.com/news/ul-solutions-debuts-testing-and-certification-framework-safer-plug-solar-across-united-states",
+   "source_title": "UL Solutions debuts testing and certification framework for safer plug-in solar across United States (2026-01-08)",
+   "read": "2026-11-17",
+   "note": "Standard-owner wording. The page gives no numeric limits."
+  },
+  {
+   "product": "general",
+   "label": "Plug-in solar with a home battery that islands",
+   "value": "A plug-in array keeps running when a home-backup battery islands the house ('It sees 120 volts, 60 Hz, everything nominal'). The battery inverter must raise frequency above 60 Hz to curtail it. The array then 'shuts down hard' and 'will not come back for five minutes', and some inverters 'do not have the capability to frequency shift'",
+   "source": "https://floridasolardesigngroup.com/plug-in-solar-is-here-and-it-was-never-designed-for-your-battery-system",
+   "source_title": "Plug-In Solar Is Here, and It Was Never Designed for Your Battery System (Jason Szumlanski, Florida Solar Design Group, 2026-07-26)",
+   "read": "2026-11-17",
+   "note": "Applies when the plug-in kit shares a house with a whole-home battery. Named installer's analysis."
+  },
+  {
+   "product": "EcoFlow STREAM Ultra",
+   "label": "How it exports and its limits",
+   "value": "Plugs into NEMA 5-15/5-20 sockets; max 800 W on-grid AC output standalone, 1,200 W with the STREAM Microinverter or 2–6 Ultra units; 'built-in anti-islanding protection'; 'UL1741-Certified & IEEE1547-Certified'; anti-backfeed relies on a smart meter that 'monitors real-time load and dynamically adjusts solar generation' (Shelly Pro 3EM recommended without net metering); 'only available for sale and plug-and-play installation in Utah'",
+   "source": "https://www.ecoflow.com/us/stream-ultra-home-solar-system",
+   "source_title": "EcoFlow STREAM Ultra Home Solar System (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "Maker's US product page. UL 3700 is not mentioned."
+  },
+  {
+   "product": "EcoFlow STREAM Ultra",
+   "label": "Outage behaviour",
+   "value": "'In an outage, backup power is reserved solely for essential appliances'; loads connected directly to the Ultra must have surge power below 1,200 W",
+   "source": "https://www.ecoflow.com/us/stream-ultra-home-solar-system",
+   "source_title": "EcoFlow STREAM Ultra Home Solar System (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "So no whole-apartment backup through the wall outlet."
+  },
+  {
+   "product": "EcoFlow STREAM Ultra",
+   "label": "Battery capacity range",
+   "value": "1.92 kWh expandable to 11.52 kWh",
+   "source": "https://www.ecoflow.com/us/stream-ultra-home-solar-system",
+   "source_title": "EcoFlow STREAM Ultra Home Solar System (EcoFlow US)",
+   "read": "2026-11-17",
+   "note": "No price shown in page text."
+  },
+  {
+   "product": "BLUETTI AC180 / Elite 200 V2 solar kits",
+   "label": "Grid connection",
+   "value": "BLUETTI says its portable panels with a power station 'do not feed electricity into home wiring or the utility grid', and its Elite stations 'do not connect to your home's wiring and are not grid-connected systems'",
+   "source": "https://www.bluettipower.com/blogs/knowledge/plug-in-solar-panels",
+   "source_title": "Plug-in solar panels (BLUETTI knowledge blog, 2026-09-20)",
+   "read": "2026-11-17",
+   "note": "Maker's words. The page names the Elite 100 V2 and Elite 300, not the AC180 or Elite 200 V2 specifically. The general statement covers BLUETTI power stations with portable panels."
+  },
+  {
+   "product": "general",
+   "label": "Power station vs plug-in kit in an outage",
+   "value": "'A portable power station cannot feed energy into an outlet'; 'A plug-in solar kit will not provide whole-home backup because the microinverter shuts down without the grid'",
+   "source": "https://www.brightsaver.org/post/does-adding-a-battery-to-plug-in-solar-pay-for-itself",
+   "source_title": "Does adding a battery to plug-in solar pay for itself? (Bright Saver)",
+   "read": "2026-11-17",
+   "note": "Dated 'Aug 28' with no year shown (footer © 2024-26) and no author listed."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro (Bright Saver 360 W kit)",
+   "label": "UL 3700 status and output",
+   "value": "Hoymiles calls it the first UL 3700-compliant plug-in microinverter in the US; up to four microinverters in parallel, each in a separate socket, for 1,200 W total",
+   "source": "https://www.hoymiles.com/us/product-release/hoymiles-introduces-hiflow-pro-the-first-ul-3700-compliant-plug-in-microinverter-in-the-us-to-boost-diy-solar.html",
+   "source_title": "Hoymiles Introduces HiFlow Pro, the First UL 3700-Compliant Plug-in Microinverter in the US (2026-07-15)",
+   "read": "2026-11-17",
+   "note": "The release does not mention battery compatibility, so this is a no-battery path."
+  }
+ ],
+ "unsourced": [
+  "Exact plug-pin de-energize time required by UL 3700: looked at the UL Solutions news page, Intertek's UL 3700 page, PV Tech and the Hoymiles release; none gives a number, and the two UL testimony PDFs on legislature.vermont.gov returned 404.",
+  "Verbatim text of Utah Code 54-15-102/54-15-601 (1,200 W portable solar device, outage anti-energizing device, UL/NEC compliance): le.utah.gov PDFs were unreadable compressed streams, the HB0340 HTML page held no bill text, Justia returned 403 and CounselStack returned 429.",
+  "Proposed NEC change for plug-in PV (NFPA TIA 1951): the PDF downloaded but couldn't be converted to text in this session.",
+  "Whether Anker SOLIX Solarbank (shown by ChatGPT) is sold or certified for US plug-in use: no Anker US page found; the only signal was secondary PromptQuorum commentary saying it is not on Anker's US store, so I left it out.",
+  "Today's EcoFlow STREAM Ultra US price: the maker page showed no price in its text, and I didn't check a store tool."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0189937999999998
+ }
+}
