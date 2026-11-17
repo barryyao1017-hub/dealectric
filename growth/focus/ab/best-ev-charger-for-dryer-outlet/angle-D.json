@@ -1,0 +1,76 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the NEC's permission to ground through the neutral on an old 3-wire circuit (250.140(B), 'for existing branch-circuit installations only') covers only the frames of ranges, wall-mounted ovens, counter-mounted cooking units, clothes dryers and their outlet or junction boxes. An EV charger plugged into a 3-prong NEMA 10-30 dryer outlet is not on that list.",
+ "standout": 2,
+ "standout_why": "I compared five pages. plugandrange.com/portable-chargers/nema-14-30 says a 10-30 'bonds neutral and ground together', which it says the code 'no longer allows for new work'. thechargecurve.com/home-ev-chargers/best-nema-14-30 says 'EV chargers rely on the ground for fault protection'. leveltwoclub.com/installation/ev-charger-on-a-dryer-outlet says the ground is 'load-bearing for its safety systems' and labels that as its own reasoning. voltandcable.com/guides/can-i-use-a-dryer-outlet-for-ev-charging only says 'three-prong, no ground'. None of them quotes 250.140 or says that its existing-circuit exception names only ranges, ovens, cooking units and dryers. Their warnings are general ('needs an electrician'), and ChatGPT's answer stops at 'requires special caution'. None of them states that NEC 625.54 requires GFCI protection on every receptacle used for EV charging, which would include a dryer receptacle. None mentions the 2026 TIA 1892 either, which EC&M says names 'unwanted tripping' caused by incompatible trip levels between an EVSE's own protection and a GFCI. leveltwoclub only passes on a ChargePoint note about outdoor and hardwired GFCI.",
+ "decides": "Our page lists two of its three EVDANCE products, and the Splitvolt and VEVOR rows, with NEMA 10-30 plugs. Under 250.140(B), only a dryer may use the neutral as its ground on that outlet; the code grants that to no EV charger. So the 10-30 products should come off the pick list and go into a 'needs rewiring to a 4-wire 14-30 first' note. The EVDANCE NEMA 14-30 24A J1772 ($229.95 Plug & Play on 2026-11-17) stays the J1772 pick. One more point for the page: 625.54 can require a GFCI on the dryer receptacle, and that GFCI can trip because of the charger's own ground-fault protection. EVDANCE publishes no leakage or GFCI figure, so the page should say that rather than promise trip-free charging.",
+ "candidates": [
+  "EVDANCE Level 2 NEMA 14-30 24A J1772",
+  "EVDANCE Level 2 NEMA 10-30 24A J1772",
+  "EVDANCE Level 2 NEMA 10-30 24A NACS",
+  "Tesla Mobile Connector + Gen 2 NEMA 14-30 adapter",
+  "Splitvolt Level 2 24A portable EV charger"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "NEC 250.140 scope: which equipment may use the neutral instead of a ground wire",
+   "value": "The section is headed '250.140 Frames of Ranges and Clothes Dryers' and covers 'Frames of electric ranges, wall-mounted ovens, counter-mounted cooking units, clothes dryers, and outlet or junction boxes'. (A): 'The circuit supplying the appliance shall include an equipment grounding conductor.' (B): 'For existing branch-circuit installations only, if an equipment grounding conductor is not present'.",
+   "source": "https://expertce.com/courses/electricians-guide-for-nec-2023/lessons/how-does-the-2023-nec-simplify-grounding-for-ranges-and-dryers/",
+   "source_title": "How does the 2023 NEC simplify grounding for ranges and dryers? (ExpertCE, NEC 2023 course, lesson 2.24)",
+   "read": "2026-11-17",
+   "note": "2023 NEC text as quoted by ExpertCE (Spark Digital LLC). I could not open NFPA's own copy. A NEMA 10-30 has no equipment ground, so any device plugged into it can only ground through the neutral. 250.140(B) grants that only to the appliances listed above, and EV supply equipment is not among them."
+  },
+  {
+   "product": "general",
+   "label": "NEC 625.54 GFCI requirement for EV charging receptacles, and the 2026 change",
+   "value": "TIA Log 1892 to 2026 NEC 625.54 proposes that 'receptacles installed for the connection of EVSE and WPTE shall be required to have GFCI protection for personnel'. Its stated reason: 'unintended consequences of the current code can cause unwanted tripping and result in issues for many electric vehicles', because of incompatible 'trip levels between the listed personnel protection system of the EVSE' and GFCI trip levels. Comments closed May 20, 2026. EC&M reports the TIA 'passed the ballot on May 29, 2026'.",
+   "source": "https://www.ecmweb.com/national-electrical-code/article/55369311/tia-proposed-for-2026-nec-regarding-gfci-protection-for-personnel",
+   "source_title": "TIA Proposed for 2026 NEC Regarding GFCI Protection for Personnel (EC&M, Michael Morris, 2026-04-07)",
+   "read": "2026-11-17",
+   "note": "The submitter is Bryce Nesbitt (EV Plugbox LLC/EV-Seg). Even in the proposed wording, receptacles that feed EV charging equipment still need GFCI protection, so a dryer receptacle used for EV charging falls under it. The submitter also cites overlap with 210.8(F). I did not find final issuance by the NFPA Standards Council."
+  },
+  {
+   "product": "EVDANCE Level 2 NEMA 14-30 24A J1772",
+   "label": "Price and current settings (maker store)",
+   "value": "$229.95 (ETL Listed / Plug & Play), $239.95 (ETL Listed / Wifi-Enabled). Current limit selectable at 10/16/20/24 A, 5.76 kW at 240 V, 25 ft cable, IP66.",
+   "source": "https://www.evdances.com/products/evdance-level-2-nema-14-30-24a-j1772-portable-ev-charger",
+   "source_title": "EVDANCE Level 2 NEMA 14-30 24A J1772 Portable EV Charger | ETL Certification",
+   "read": "2026-11-17",
+   "note": "Read from the maker's Shopify store with storecheck.py. The product text gives no GFCI, leakage-current or ground-detection specification and names no UL standard. The title says only 'ETL Certification'."
+  },
+  {
+   "product": "EVDANCE Level 2 NEMA 10-30 24A NACS",
+   "label": "Price and plug (maker store)",
+   "value": "$239.95, NEMA 10-30P plug, 24 A / 5.76 kW, current limit 10/16/20/24 A",
+   "source": "https://www.evdances.com/products/evdance-level-2-nema-10-30-24a-tesla-portable-ev-charger",
+   "source_title": "EVDANCE Level 2 NEMA 10-30 24A NACS Portable EV Charger | ETL Certification",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search. The page does not say how the charger handles the missing ground on a 3-wire 10-30."
+  },
+  {
+   "product": "EVDANCE Level 2 NEMA 10-30 24A J1772",
+   "label": "Price, and the listing text contradicts its own title",
+   "value": "$239.95. The title says 'NEMA 10-30 24A', but the body text describes 'up to 40A output and 9.6kW power on a 240V NEMA 14-50 outlet' with settings from 10 A to 40 A.",
+   "source": "https://www.evdances.com/products/evdance-level-2-nema-10-30-24a-j1772-portable-ev-charger",
+   "source_title": "EVDANCE Level 2 NEMA 10-30 24A J1772 Portable EV Charger | ETL Certification",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search. The body text looks copied from the 14-50 product. Our page should not take specs from this listing until EVDANCE fixes it."
+  }
+ ],
+ "unsourced": [
+  "Official NFPA 70 text of 625.54 (2020/2023) and 250.140. NFPA's free-access viewer can't be fetched, the Mike Holt forum returned 403, the Mike Holt 250.140 PDF and the NFPA TIA 1892 PDF came back as unreadable binary, and the PDF text-extraction command was not permitted here.",
+  "Final status of TIA 1892 (issued by the NFPA Standards Council or not). I found only EC&M's note that it passed the ballot on 2026-05-29.",
+  "EVDANCE leakage-current trip level, GFCI/CCID spec, and how its 10-30 units wire the charger's ground pin. The maker pages are silent, and I found no PDF of the EV-ACS2405UAP manual.",
+  "Trip thresholds for EVSE CCID (UL 2231, 20 mA) vs Class A GFCI breakers. I opened no maker or standards page that gives the numbers.",
+  "Tesla NEMA 14-30 installation guide wording on GFCI and grounding. tesla.com returned 403.",
+  "Splitvolt setup-guide wording on GFCI and 10-30 grounding. manuals.online returned 403.",
+  "wattsimple.com rival page. It returned HTTP 429 and was not compared."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.2598921999999997
+ }
+}

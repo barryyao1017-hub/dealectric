@@ -7686,6 +7686,22 @@ PRODUCTS = [
  "fit": "Homeowners with a large solar array, or plans for one, who want indoor whole-home backup through EcoFlow's Smart Home Panel 10, including 240V central AC.",
  "caveats": ['Costs more per Wh than the Jackery Explorer 5000 Plus and Anker SOLIX S5000 on Amazon (arithmetic, read 2026-11-15)', "≤20 ms switchover, against ≤10 ms on the Anker S5000 and 0 ms on the Jackery's 5-20 outlets", 'IP20 indoor-only unit, 121.3 lb with no wheels; not a camping or RV station', 'The 10 kW output figure needs solar connected. Whole-home use needs the Smart Home Panel 10 and installation (pv magazine USA).', 'Only two 5-20R outlets and one L14-50R on the unit', 'Will not charge below 32°F']},
 
+{"slug": 'evdance-level-2-nema-14-30-24a-nacs',
+ "brand": 'EVDANCE',
+ "program": 'awin:evdance',
+ "category": 'ev-charger',
+ "name": 'EVDANCE Level 2 NEMA 14-30 24A NACS Portable EV Charger',
+ "model": 'Level 2 NEMA 14-30 24A NACS',
+ "url": 'https://www.evdances.com/products/evdance-level-2-nema-14-30-24a-tesla-portable-ev-charger',
+ "price": 229.95,
+ "verified": '2026-11-17',
+ "specs": [('Plug', 'NEMA 14-30P (4-prong dryer outlet)'), ('Max current', '24 A, settable to 10 / 16 / 20 / 24 A'), ('Power', '5.76 kW at 240 V'), ('Car connector', 'NACS (Tesla)'), ('Cable', '25 ft'), ('Enclosure', 'IP66'), ('Display', '2.4 in, shows current, voltage, kWh and time'), ('Listing', 'ETL (maker listing title)')],
+ "warranty": "1 year against defects in materials and workmanship, for the original buyer only, per EVDANCE's written warranty terms. The clock starts at first use if you email EVDANCE the install date, serial and order number within 30 days; otherwise it starts on the purchase date. EVDANCE's site banner advertises a 3-year warranty, but the written terms say 1 year.",
+ "returns": "30 days from purchase. Used or damaged chargers can't be returned. EVDANCE pays return postage on defective or wrong items. On a wrong-purchase or no-longer-needed return you pay the postage plus a 30% fee, and the policy also lists a 30% restocking fee.",
+ "summary": "Plugs straight into a 4-prong NEMA 14-30 dryer outlet with a NACS connector. Its top setting is 24 A, so it can't draw more than a 30 A dryer circuit allows for continuous charging. On EVDANCE's store it costs the same $229.95 as the J1772 version.",
+ "fit": 'For Tesla and other NACS-port cars charging from a 4-prong dryer outlet without a Tesla adapter.',
+ "caveats": ['NACS only: a J1772 car needs a NACS-to-J1772 adapter (EVDANCE sells one from $59.95).', 'Fits 4-prong 14-30 outlets only, not 3-prong 10-30.', "The maker's product text carries over a line about Tesla needing a J1772 adapter, which doesn't apply to this NACS model.", 'The maker page gives no ground-fault trip level, so check with your electrician whether a GFCI breaker will be needed.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

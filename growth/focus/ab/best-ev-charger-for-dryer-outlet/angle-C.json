@@ -1,0 +1,97 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Tesla's NEMA adapters are tied to the Mobile Connector generation (AC Works: Gen 1 Tesla adapters no longer fit the Gen 2 Mobile Connector), or that an adapter plugged into a Tesla adapter (for example a 14-30-to-14-50 pigtail on Tesla's 14-50 adapter) does not lower the Mobile Connector's current. The connector sets its amps from the Tesla adapter it sees, so it would draw the 14-50 rate on a 30 A dryer circuit.",
+ "standout": 1,
+ "standout_why": "I compared against plugandrange.com/portable-chargers/nema-14-30 and thechargecurve.com/home-ev-chargers/best-nema-14-30, the two top dryer-outlet buying guides, and against the cited help.getneocharge.com adapters page. The Charge Curve says only that 'adapters made for the Gen 2 Mobile Connector let it plug into a 14-30 outlet' and never names Gen 1 or a newer connector. Plug & Range does not cover Mobile Connector generations at all. NeoCharge says its adapters 'automatically reduce your charge rate to 24 Amps' but names no generation and no exclusions. ChatGPT's own answer already tells shoppers to avoid generic 14-30-to-14-50 adapters, so the stacking warning only partly closes a gap. Both rivals already cover the J1772-vs-NACS pairing and the adapter a NACS EVDANCE needs for a J1772 car, plus the Grizzl-E Mini's included 14-30P adapter and its 24 A DIP-switch cap. So this finding partly overlaps what is already out there.",
+ "decides": "This confirms the Tesla pick rather than changing it. The Tesla row should say the dryer-outlet setup is a Gen 2 Mobile Connector plus a Gen 2 (or Gen 2-compatible) 14-30 or 10-30 adapter that plugs straight into the connector. Stacking a pigtail on the 14-50 adapter, or using a Gen 1 adapter, is excluded. That suits a Tesla owner who already has a Gen 2 connector. For J1772 cars it leaves the EVDANCE 14-30 J1772 (native plug, no adapter) as the simpler pick, because nothing sits between the plug and the charger that could set the wrong current.",
+ "candidates": [
+  "EVDANCE Level 2 NEMA 14-30 24A J1772",
+  "EVDANCE Level 2 NEMA 10-30 24A J1772",
+  "EVDANCE Level 2 NEMA 10-30 24A NACS",
+  "EVDANCE Level 2 NEMA 14-30 24A NACS",
+  "Tesla Mobile Connector (Gen 2) + Gen 2 NEMA 14-30 / 10-30 adapter",
+  "Splitvolt Level 2 Portable EV Charger 24A NEMA 14-30 / 10-30",
+  "Grizzl-E Mini 40A with 14-30P adapter",
+  "Lectron J1772 to Tesla (NACS) adapter, 80A, UL 2252"
+ ],
+ "findings": [
+  {
+   "product": "Tesla Mobile Connector (Gen 1 vs Gen 2)",
+   "label": "Adapter fit between Mobile Connector generations",
+   "value": "Gen 1 adapters do not fit the Gen 2 Mobile Connector",
+   "source": "https://acworks.com/blogs/ac-works-connector/gen2-tesla-mobile-connector-compatibility",
+   "source_title": "AC Works: Gen 2 Tesla Mobile Connector compatibility",
+   "read": "2026-11-17",
+   "note": "AC Works, a maker of third-party Tesla adapters, writes: 'Gen 1 Tesla adapters no longer fit the Gen 2 Mobile Connector.' The article is dated 2019-11-08 and does not cover any Mobile Connector released after 2019. Tesla's own page returned 403, so this is a named third party, not the maker."
+  },
+  {
+   "product": "Tesla Mobile Connector (Gen 1 vs Gen 2)",
+   "label": "Rated current by generation",
+   "value": "Gen 2: 32 A; Gen 1: 40 A",
+   "source": "https://acworks.com/blogs/ac-works-connector/gen2-tesla-mobile-connector-compatibility",
+   "source_title": "AC Works: Gen 2 Tesla Mobile Connector compatibility",
+   "read": "2026-11-17",
+   "note": "Quote: 'The Gen 2 is rated for 32 Amps when the Gen 1 was rated for 40 Amps.' Neither number is the limit on a dryer outlet. The NEMA adapter sets that limit at 24 A."
+  },
+  {
+   "product": "Tesla Mobile Connector + stacked adapters",
+   "label": "Exclusion: adapters that plug into Tesla's adapters",
+   "value": "These do not limit charging current",
+   "source": "https://acworks.com/blogs/ac-works-connector/gen2-tesla-mobile-connector-compatibility",
+   "source_title": "AC Works: Gen 2 Tesla Mobile Connector compatibility",
+   "read": "2026-11-17",
+   "note": "AC Works says some adapters 'plug into the Tesla supplied adapters, and not directly into the Mobile Connector' and that they 'will NOT limit the charging capabilities', which can cause overheating. Applied to a dryer outlet: a 14-30-to-14-50 pigtail on Tesla's 14-50 adapter lets the connector see a 14-50 and charge above the 24 A that a 30 A circuit allows on a continuous load."
+  },
+  {
+   "product": "NeoCharge NEMA 14-30 / 10-30 adapters for Tesla Mobile Connector",
+   "label": "Current limit the adapter sets",
+   "value": "24 A",
+   "source": "https://help.getneocharge.com/en-US/adapters-349597",
+   "source_title": "NeoCharge Help: Adapters",
+   "read": "2026-11-17",
+   "note": "Quote: the adapters 'automatically reduce your charge rate to 24 Amps'. The page names no Mobile Connector generation. It also says 'we do not recommend using a NEMA adapter with the Tesla Mobile Connector' and points readers to a Tesla adapter instead. ChatGPT already cited this page."
+  },
+  {
+   "product": "Tesla Gen 2 Mobile Connector, adapters on sale",
+   "label": "NEMA adapters AC Works lists as sold by Tesla",
+   "value": "NEMA 5-15, 6-15, 6-20, 5-20, 10-30, 6-50, 14-30, 14-50",
+   "source": "https://acworks.com/blogs/ac-works-connector/gen2-tesla-mobile-connector-compatibility",
+   "source_title": "AC Works: Gen 2 Tesla Mobile Connector compatibility",
+   "read": "2026-11-17",
+   "note": "This was the 2019 lineup. Current availability of the 10-30 adapter on shop.tesla.com could not be checked because the page returned 403."
+  },
+  {
+   "product": "Grizzl-E Mini 40A (J1772)",
+   "label": "How it pairs with a dryer outlet",
+   "value": "14-30P adapter included; ships at 40 A, internal DIP switch caps it at 24 A",
+   "source": "https://plugandrange.com/portable-chargers/nema-14-30",
+   "source_title": "Best NEMA 14-30 EV Chargers for a Dryer Outlet (2026) | Plug & Range",
+   "read": "2026-11-17",
+   "note": "Named reviewer, Plug & Range. Included adapters: 14-30P, 6-50P, TT-30P, 5-15P. A rival already states this, so it is not a gap."
+  },
+  {
+   "product": "EVDANCE Level 2 NEMA 14-30 24A NACS",
+   "label": "Connector pairing with J1772 cars",
+   "value": "Charges a J1772 car only through a NACS-to-J1772 adapter",
+   "source": "https://thechargecurve.com/home-ev-chargers/best-nema-14-30",
+   "source_title": "Best NEMA 14-30 EV Chargers for a Dryer Outlet (Live Prices) | The Charge Curve",
+   "read": "2026-11-17",
+   "note": "Quote from The Charge Curve: 'Will not charge a J1772 car without a separate NACS-to-J1772 adapter.' Plug & Range adds that EVDANCE's NACS store page carries over text telling Tesla owners they need a J1772 adapter. Rivals already have this."
+  }
+ ],
+ "unsourced": [
+  "Tesla's own compatibility statement for Gen 2 NEMA adapters (which Mobile Connector generations they fit, whether the 10-30 adapter is still sold, price). shop.tesla.com/product/mobile-connector, /product/gen-2-nema-adapters and tesla.com/support/home-charging-installation/mobile-connector all returned 403, including through a reader proxy.",
+  "Whether the Mobile Connector Tesla sells now (post-2024) accepts Gen 2 NEMA adapters, and whether Tesla says it works with non-Tesla NACS cars. The Tesla pages above were blocked and the AC Works article is from 2019.",
+  "Tesla Gen 2 Mobile Connector owner's manual spec table. The digitalassets.tesla.com PDF is image-only and could not be read. The NHTSA-hosted manuals ChatGPT cited (MC-11008828, MC-11008784) are over the 10 MB fetch limit.",
+  "EVDANCE maker pages for the 14-30 J1772, 14-30 NACS and 10-30 models (vehicle list, circuit requirement, the 6-32 A vs 24 A conflict, price today). evdances.com returned HTTP 429 to storecheck.py and to WebFetch on every try.",
+  "The vehicle list and exclusions for the Lectron J1772-to-NACS adapter (Tesla models, Cybertruck, non-Tesla NACS cars). ev-lectron.com returned HTTP 429. A search snippet mentioned Supercharger incompatibility, but I did not open a page that says so.",
+  "Splitvolt charger and splitter-switch documents (cable length 16.4 ft vs 26 ft, which chargers the splitter accepts, price). splitvolt.com failed with a self-signed certificate error, and the manuals.plus copy of the manual returned 403.",
+  "Today's prices for every candidate. Every maker store I tried was rate-limited or blocked, so this angle reports no prices."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.1256355000000005
+ }
+}
