@@ -15,7 +15,7 @@
 // no chat text. worker/README.md has the table and the test commands.
 
 const SITE = "https://dealectric.com";
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 const PROTOCOLS = ["2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"];
 const CACHE_MS = 5 * 60 * 1000;
 
@@ -189,19 +189,26 @@ function words(s) {
   return String(s || "").toLowerCase().replace(/[^a-z0-9.+-]+/g, " ").split(" ").filter((w) => w && !STOP.has(w));
 }
 
+// Whole-word matching: "17" must be a word of the product's name, id or model, not part of "170" (a query word of
+// four letters or more may also open a longer word, so "elite" finds "elite-200"). A name of up to three words has to
+// match in full and a longer one by three quarters. Looser than that, "iPhone 17 Pro" answered with a card case made
+// for the iPhone 17 (found 2026-11-18 on the listing's own test prompt).
 function findProduct(q, data) {
   const s = String(q || "").trim().toLowerCase();
   if (!s) return null;
   const exact = data.products.find((p) => p.id === s);
   if (exact) return exact;
-  const ws = words(s);
+  const ws = [...new Set(words(s).flatMap((w) => [w, ...w.split("-")]).filter(Boolean))];
+  if (!ws.length) return null;
+  const need = ws.length <= 3 ? 1 : 0.75;
   let best = null, bestScore = 0;
   for (const p of data.products) {
-    const hay = `${p.id} ${p.name} ${p.model || ""} ${p.brand}`.toLowerCase();
-    const score = ws.filter((w) => hay.includes(w)).length / ws.length;
+    const toks = new Set(words(`${p.id} ${p.name} ${p.model || ""} ${p.brand}`).flatMap((t) => [t, ...t.split("-")]));
+    const hit = (w) => toks.has(w) || (w.length >= 4 && [...toks].some((t) => t.startsWith(w)));
+    const score = ws.filter(hit).length / ws.length;
     if (score > bestScore) { best = p; bestScore = score; }
   }
-  return bestScore >= 0.6 ? best : null;
+  return bestScore >= need ? best : null;
 }
 
 function appLink(p) {
