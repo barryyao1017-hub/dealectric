@@ -288,10 +288,13 @@ PRODUCTS = [
 
 {"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI AC200L Portable Power Station", "model": "AC200L",
- "url": "https://www.bluettipower.com/products/ac200l", "price": 899, "list_price": 1599,
- # DLC-71 (2026-10-28): this page renders no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
- # (build.py buy_url); tools/linkcheck.py flags the day the variant sells out.
- "cart_variant": 44449450852571,
+ # DLC-305 (2026-11-18): BLUETTI removed the remaining-stock page /products/ac200l (it 302/301s here) and its variant
+ # 44449450852571 (/variants/<id> is a 404). This is the main AC200L listing: one variant, $899, marked Discontinued and
+ # not available in the store's product JSON, so the record is sold out until a read says otherwise (src/stock.json).
+ "url": "https://www.bluettipower.com/products/ac200l-portable-power-station", "price": 899, "list_price": 1599, "in_stock": False, "verified": '2026-11-18',
+ # DLC-71 (2026-10-28): the old page rendered no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
+ # (build.py buy_url); tools/linkcheck.py and tools/pricecheck.py read this variant's availability.
+ "cart_variant": 46352232349915,
  # DLC-77 fact fix: in the description, catalog card and agent note, so a stale stored copy still says it is ending
  "phase_out": "On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early November 2026.",
  # DLC-73 (2026-11-06): the product page links the successor right under the summary
@@ -5388,7 +5391,7 @@ PRODUCTS = [
  "category": 'kvm-switch',
  "name": 'AV Access iDock C20 KVM Docking Station for 2 Laptops and 2 Monitors',
  "model": 'iDock C20',
- "url": 'https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/',
+ "url": 'https://www.avaccess.com/products/idock-c20/',
  "price": 259.99,
  "verified": '2026-11-10',
  "specs": [('Computers', 'Two USB-C laptops; each port needs DP Alt Mode and DP MST for two extended screens'), ('Laptop charging', 'Up to 60 W to each laptop at the same time'), ('Power adapter', '20 V 10 A (200 W)'), ('Video out', '2× HDMI 2.0 (HDCP 2.2), up to two 4K 60 Hz; 3440×1440 at 60 Hz; 5120×1440 limited to 3840×1080'), ('Display mode', 'Extended on Windows, mirrored on a MacBook'), ('USB', '2× USB-A 5 Gb/s, 4× USB-A 2.0 (480 Mb/s), 1× USB-C 5 Gb/s'), ('Ethernet', 'Gigabit, RJ-45'), ('Switching', 'Panel button or optional remote, average 2-3 s (AV Access rating)')],
