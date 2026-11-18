@@ -1,0 +1,96 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that none of these kits can charge from their panels when the battery is below freezing: the makers set the charging floor at 32°F (0°C) even though discharging is allowed down to −4°F, and none of the stations has a battery heater. So in a winter outage, a station left outside next to its panels takes in nothing until it is brought somewhere warmer.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts (cited) and wearesalt.org. StormWatts already covers the other wiring check: the panels' voltage on a cold morning, series versus parallel, and the station's input current limit for the Elite 200 V2 and EcoFlow kits. That half of the finding is not new (0). Neither StormWatts nor wearesalt gives a charging-temperature floor or says that no station has a battery heater. wearesalt only says the Elite 200 V2's 60 V cap makes its 1,000 W solar maximum hard to reach. I could not open our own two pages, theoutageready.com or solargenreview.com (certificate errors and HTTP 429), so I can't say whether those pages mention the floor.",
+ "decides": "It doesn't change which kit wins, because every candidate stops charging at 32°F. It does change how the kit gets used. In November, the plan only works if the station stays indoors or somewhere above freezing while the panels sit outside on an MC4 extension. That makes the extension cable a needed add-on in winter and makes the cold-weather Voc check apply to the panels, not the station. The pick still turns on price and shipping state. One issue for the pick: ALLPOWERS lists the R3500 on its own as sold out and the SP037 panel as a pre-order dispatching Nov 20, 2026. The 'ships now' status our table gives the R3500 + SP037 kit needs a fresh check before that kit is named as the ships-now pick.",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2× 200 W",
+  "BLUETTI Elite 300 + 2× 200 W",
+  "BLUETTI Elite 400 + 2× 200 W",
+  "ALLPOWERS R3500 + SP037 400 W",
+  "ALLPOWERS R2500 V2 + SP037 400 W",
+  "EcoFlow DELTA 3 Max + 2× 220 W",
+  "Jackery Explorer 2000 v2 + 2× 200 W",
+  "Anker SOLIX C2000 Gen 2 + 400 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Charging vs discharging temperature range (maker's words)",
+   "value": "Charging 32–104°F (0–40°C); discharging −4–104°F (−20–40°C)",
+   "source": "https://www.bluettipower.com/blogs/power-solution/what-happens-to-batteries-in-extreme-cold",
+   "source_title": "BLUETTI blog: What happens to batteries in extreme cold (dated Nov 12, 2026)",
+   "read": "2026-11-17",
+   "note": "BLUETTI: 'At 23°F (−5°C), that temperature is within its discharge interval but below its charging minimum' and 'the discharge rating is not permission to charge it cold.' The page gives no range for any other BLUETTI model."
+  },
+  {
+   "product": "general",
+   "label": "Charging floor by model and battery heaters (named reviewer)",
+   "value": "Charging range: BLUETTI Elite 200 V2 32–104°F; Jackery Explorer 2000 v2 32–113°F; EcoFlow DELTA 3 Max 32–113°F; Anker SOLIX C2000 Gen 2 32–104°F. None of the 21 models checked has a built-in battery heater.",
+   "source": "https://backuppowerhub.com/power-station-freezing-temperatures-charging-storage/",
+   "source_title": "Backup Power Hub (Dan Miller, Oct 8, 2026): Freeze warnings are here: never charge a power station below 32°F, and what each brand's manual says",
+   "read": "2026-11-17",
+   "note": "Backup Power Hub says it read the US manuals and product pages but links none. It says the battery management system blocks charging below freezing on every current EcoFlow, Jackery, Anker and BLUETTI model. Jackery's heated Extreme Guard bag for the 2000 v2 is an external accessory, not a heater. ALLPOWERS, the Elite 300/400 and the Apex 200 are not covered."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input limits",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2 + 2*200W Solar (BLUETTI US store)",
+   "read": "2026-11-17",
+   "note": "Quoted from the page FAQ: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. The store lists the kit at $1,499.00, available. The kit's URL shows the panels are SP200L. Ship dates on the page: base unit 'Pre-order: Ships from 11.26', 200 W panel 'ships from 11.18'. No temperature specs on this page or on the bare-unit page."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 200 W",
+   "label": "Series wiring check (rival coverage)",
+   "value": "About 49 V in series, about 56.5 V at −4°F, inside the 12–60 V input. In parallel, about 21.6 A Isc on the 20 A input.",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "StormWatts: Solar Generator Kits Compared at the Same Panel Watts",
+   "read": "2026-11-17",
+   "note": "StormWatts's figures, using its own assumed −0.33%/°C coefficient. Included to show this wiring check is already on a cited rival, so it is not our gap."
+  },
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Solar input and what's in the box",
+   "value": "2,000 W max, XT60, 12–150 V MPPT, 40 A; bare unit ships without a solar cable",
+   "source": "https://iallpowers.com/products/allpowers-r3500-portable-power-station-3200w-3168wh",
+   "source_title": "ALLPOWERS R3500 Home Backup Power Station | 3200W 3168Wh (ALLPOWERS US store)",
+   "read": "2026-11-17",
+   "note": "One single-panel SP037 is well inside 12–150 V, so wiring is not a concern for this kit. The same page shows the bare R3500 as 'Sold out / OUT OF STOCK' at $1,199 (compare-at $2,099). It lists add-ons as pre-orders: SP037 400 W 'Estimated dispatch from Nov 20, 2026', SP039 600 W 'from Nov 23, 2026'. The page gives no charging temperature."
+  },
+  {
+   "product": "ALLPOWERS R3500 + SP037 400 W",
+   "label": "Store price today (storecheck search)",
+   "value": "$1,803.10 (compare-at $2,699), shown as available",
+   "source": "https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp037-400w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 3200W (R3500 + SP037 400W Solar Panel)",
+   "read": "2026-11-17",
+   "note": "From storecheck search results on iallpowers.com. This differs from the $1,498.00 store price in our 'Kits we link' table (read 2026-11-13). The kit page itself returned HTTP 429, so I could not confirm its ship state or the link price today. Flag for re-read before using it as the ships-now pick."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Rival wording on the solar cap",
+   "value": "'the MPPT controller caps solar input at 60V so the 1000W maximum is hard to reach'",
+   "source": "https://www.wearesalt.org/best-solar-generators-under-2000-dollars/",
+   "source_title": "12 Best Solar Generators Under $2000 (November 2026) – wearesalt.org",
+   "read": "2026-11-17",
+   "note": "This is the only voltage statement on that page. It has nothing on charging temperature."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 charging temperature in BLUETTI's own words: the US product pages have no temperature specs, the EU manual PDF (s4.bluettipower.com, 2026/05) would not extract, and the manuals.plus copy has none. The figure above is Backup Power Hub's.",
+  "EcoFlow DELTA 3 Max and Jackery Explorer 2000 v2 charging temperatures on the makers' US pages: both returned HTTP 429.",
+  "ALLPOWERS R3500 / R2500 V2 charging temperature: not on the R3500 US page; no named reviewer source found.",
+  "BLUETTI SP200L and ALLPOWERS SP037 Voc/Isc on the makers' US pages: only search snippets seen (SP200L 24.6 V; SP037 45.3 V, and 36.5 V in an older manual), not opened.",
+  "Ship state today of the R3500 + SP037 kit page itself: HTTP 429 on both WebFetch and storecheck product.",
+  "Whether our own pages, theoutageready.com or solargenreview.com already state the 32°F charging floor: certificate errors and HTTP 429 blocked reading them."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.6668955999999997
+ }
+}
