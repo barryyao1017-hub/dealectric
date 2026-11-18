@@ -51,6 +51,9 @@ MODELS = [("claude-opus-5-5", "high")]   # Barry 11-13: Opus 5.5 at high effort 
 METHOD = "ab-2026-11"
 _fable_out = threading.Event()   # set once Fable reports a usage limit; every later call goes straight to Opus
 SLOTS = threading.Semaphore(6)   # claude -p processes at once, across pages
+# Compose, verify and fix calls get their own slots (DLC-314, 2026-11-18): they used to queue behind later pages' angle
+# agents, so a page with all six reports waited 25 minutes for a slot (under-1500 and under-2000 in the kits-1117 run).
+WRITE_SLOTS = threading.Semaphore(3)
 
 ANGLES = {
     "A": ("Normalise", "Specs the makers state differently, made comparable: cycle life to 80% vs 70%, surge vs continuous, "
@@ -149,7 +152,7 @@ def harvest(slug: str, runs: list[str]) -> dict:
 
 # ---------------------------------------------------------------- claude -p
 
-def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
+def claude(prompt: str, tools: bool = True, timeout: int = 3600, slots: threading.Semaphore | None = None) -> dict:
     """One agent call on each model in MODELS in turn (Opus 5.5 high only since 11-10); a usage-limit reply moves to the next, if any."""
     import evallib as E
     t = str(ROOT / "tools")
@@ -161,7 +164,7 @@ def claude(prompt: str, tools: bool = True, timeout: int = 3600) -> dict:
         cmd = [E.claude_cli(), "-p", prompt, "--model", model, "--effort", effort, "--output-format", "json"]
         cmd += (["--tools", "WebSearch,WebFetch,Bash", "--allowedTools", *allowed] if tools else ["--tools", ""])
         for attempt in range(4):   # transient 429 / overloaded: wait and retry the same model
-            with SLOTS:
+            with (slots or SLOTS):
                 p = subprocess.run(cmd + list(E.CLI_ISOLATION), capture_output=True, text=True, timeout=timeout, cwd=E.cli_cwd())
             try:
                 d = json.loads(p.stdout)
@@ -407,13 +410,13 @@ def _research(slug: str, new_page: bool, force: bool, d: Path) -> dict:
         return {"slug": slug, "status": "error", "reason": "fewer than 3 angle reports came back"}
     comp = jload(d / "compose.json")
     if force or not comp or comp.get("status") not in ("ok", "skip"):
-        comp = claude(compose_prompt(slug, h, q, angles, new_page))
+        comp = claude(compose_prompt(slug, h, q, angles, new_page), slots=WRITE_SLOTS)
         jsave(d / "compose.json", comp)
     if comp.get("status") != "ok":
         return {"slug": slug, "status": comp.get("status"), "reason": comp.get("reason")}
     ver = jload(d / "verify.json")
     if force or not ver or not ver.get("draft"):
-        ver = claude(verify_prompt({k: v for k, v in comp.items() if k != "_meta"}))
+        ver = claude(verify_prompt({k: v for k, v in comp.items() if k != "_meta"}), slots=WRITE_SLOTS)
         jsave(d / "verify.json", ver)
     if not ver.get("draft"):
         return {"slug": slug, "status": "error", "reason": "verifier returned no draft: " + str(ver.get("reason"))[:200]}
@@ -569,7 +572,7 @@ def apply(slug: str, local: bool) -> dict:
         return {"slug": draft.get("slug"), "status": "skipped: no product we list"}
     errs += pick_check(draft)
     if errs and not draft.get("fix_pass"):   # one sourced fix pass, then re-check
-        fx = claude(fix_prompt(draft, errs))
+        fx = claude(fix_prompt(draft, errs), slots=WRITE_SLOTS)
         if fx.get("draft"):
             keep = {k: draft[k] for k in ("new_page", "searched_as", "angle", "why_angle", "query", "slug") if k in draft}
             draft = {**fx["draft"], **keep, "status": "ok", "fix_pass": {"errors": errs, "log": fx.get("log")}}

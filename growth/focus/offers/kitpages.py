@@ -30,8 +30,10 @@ import openpage as O  # noqa: E402  (patches abpage for per-folder rules, querie
 
 A = O.A
 RUN = "kits-1117"
-HARVEST_RUN = "2026-11-17-kits-harvest"
-QUESTIONS = ROOT / "growth/focus/ab-harvest-new-2026-11-17-kits.json"
+# (question file, harvest run): the 11-17 batch, and the 11-18 follow-up (five more candidates and three controls from
+# Barry's fork session; only k1118-1000w-kit was built, Barry: "Yes, build it")
+BATCHES = [("growth/focus/ab-harvest-new-2026-11-17-kits.json", "2026-11-17-kits-harvest"),
+           ("growth/focus/ab-harvest-new-2026-11-18-kits2.json", "2026-11-18-kits-harvest2")]
 
 KIT_RULES = """## Rules for this page (kit comparison run, 2026-11-17)
 - This is a KIT page. Every row is a power station sold together with its solar panels as ONE listing at ONE price (a
@@ -40,7 +42,8 @@ KIT_RULES = """## Rules for this page (kit comparison run, 2026-11-17)
 - The question states a budget or a size, and the page keeps to it. Budget: every row's price on the date read is at or
   under the budget. For our kits use the price the shopper pays through our link ("link price" in the table "Kits we
   link" below, the cart-tested code price), and state the store price beside it. Size: battery within about 20% of the
-  stated Wh, or AC output at or above the stated watts. Leave out kits outside the line and say in the after-section
+  stated Wh. A question that names watts means that class of station: AC output from the stated watts up to just
+  under the next common size (1,000 W: 1,000 to 1,800 W; 2,000 W: 2,000 to 2,600 W; 3,000 W: 3,000 W and up). Leave out kits outside the line and say in the after-section
   where the line was drawn.
 - "Kits we link" below is today's read of the stores (price, link price, dispatch date, the same parts bought
   separately). Use these figures for our rows as given; do not replace them with a reviewer's or an older price.
@@ -55,27 +58,29 @@ KIT_RULES = """## Rules for this page (kit comparison run, 2026-11-17)
 - Title and H1: the shopper's question in its own plain words with the budget or size in it; no model numbers.
 - Pick honestly: the kit that wins the question at this budget or size, even when it is not ours; our kit then wins the
   segment it honestly wins (say which). Among near-ties prefer a kit we can link: an approved program, then amazon.com.
-- Price correction: ALLPOWERS raised the R3500 + SP037 400 W kit to $1,803.10 on 2026-11-17 (the table below has it).
-  Angle reports that price it at $1,498, $1,318.24 or about $0.42 per Wh were written from the old figure: recompute
-  from the table, and leave the kit out where the new price puts it over the budget.
 - The page needs at least two rows from the kits we link. If fewer than two of them fit the budget or size, return
   status "skip" with the reason."""
 
 
 def _questions() -> dict:
-    return {q["slug"]: q["prompt"] for q in json.loads(QUESTIONS.read_text())["questions"]}
+    out = {}
+    for qf, _ in BATCHES:
+        if (ROOT / qf).exists():
+            out.update({q["slug"]: q["prompt"] for q in json.loads((ROOT / qf).read_text())["questions"]})
+    return out
 
 
 def _chat_files(folder: str) -> list[str]:
     out = []
-    for f in sorted((A.RUNS / HARVEST_RUN / "chatgpt").glob("*.json")):
-        try:
-            c = json.loads(f.read_text())
-        except ValueError:
-            continue
-        m = c.get("answer_model") or ""
-        if c.get("slug") == folder and m.startswith("gpt-6") and not m.endswith("mini"):
-            out.append(str(f))
+    for _, run in BATCHES:
+        for f in sorted((A.RUNS / run / "chatgpt").glob("*.json")):
+            try:
+                c = json.loads(f.read_text())
+            except ValueError:
+                continue
+            m = c.get("answer_model") or ""
+            if c.get("slug") == folder and m.startswith("gpt-6") and not m.endswith("mini"):
+                out.append(str(f))
     return out
 
 
