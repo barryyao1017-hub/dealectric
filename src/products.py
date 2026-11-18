@@ -4450,6 +4450,26 @@ PRODUCTS = [
  "fit": '12–17.3-inch laptops with two video-capable outputs, including 17-inch models that most clip-on extenders do not list.',
  "caveats": ['Each screen needs its own video output; check that the laptop drives two external displays', "FOPO's S7 page names no Mac chips: it says MacBook compatibility depends on the model's video ports and its supported number of external displays", '250 cd/m² panels']},
 
+# FOPO S10 (DLC-290, 2026-11-18). Sources: https://www.fopomonitor.com/products/fopo-s10-dual-screen-extender (key
+#   specifications, fit and Mac notes, box contents) and /products.json (Black 62712053465458 and Silver 62712053432690,
+#   both 299.99, compare-at 599.99, available; the Black variant went into the cart on 2026-11-18)
+{"slug": 'fopo-s10-dual-15-6-inch-laptop-screen-extender', "cart_variant": 62712053465458,
+ "brand": 'FOPO',
+ "program": 'awin:fopo',
+ "asin": None,
+ "category": 'portable-monitor',
+ "name": 'FOPO S10 Dual 15.6-inch Laptop Screen Extender, 2× 1920×1080 IPS, driver-free',
+ "model": 'S10',
+ "url": 'https://www.fopomonitor.com/products/fopo-s10-dual-screen-extender',
+ "price": 299.99, "list_price": 599.99,
+ "verified": '2026-11-18',
+ "specs": [('Extension displays', '15.6-inch × 2'), ('Resolution per display', '1920 × 1080, 16:9, IPS, non-touch'), ('Refresh rate', '60 Hz'), ('Viewing angle / contrast', '178° / 1000:1'), ('Net weight', 'about 1.9 kg (4.19 lb)'), ('Laptop size range', "12.0–17.3 inches, subject to physical fit (FOPO's range)"), ('Connection', 'Two video-capable USB-C ports, or one video-capable USB-C port plus HDMI with USB-A power for the second screen'), ('Driver', 'Not required on compatible laptops'), ('Mac chips', 'Base M1, M2 and M3 MacBooks are not supported for the two-screen setup (FOPO)'), ('Screen adjustment', 'Up to 215° horizontal rotation; the left screen flips up to 360°'), ('In the box', '2 USB-C to USB-C cables, 1 USB-A cable, 1 HDMI cable, carrying bag'), ('Colours', 'Black, Silver')],
+ "warranty": '1 year (FOPO store policy)',
+ "returns": '30 days for eligible orders (FOPO store policy)',
+ "summary": "Two 15.6-inch 1080p screens that make a three-screen setup with no driver, on laptops up to 17.3 inches by FOPO's own range.",
+ "fit": '15.6 to 17.3-inch Windows laptops with two video-capable USB-C ports, or one plus HDMI, for buyers who want no display driver.',
+ "caveats": ["17.3 inches is the top of FOPO's range, and FOPO says the diagonal alone does not guarantee a physical fit: measure the lid first", 'Each screen needs its own video signal; one cable cannot run both', "FOPO's S9G has larger 16-inch 1920×1200 panels at the same store price on 2026-11-18, but FOPO states no laptop size range for it"]},
+
 {"slug": 'mobile-pixels-duex-max-ds', "brand": 'Mobile Pixels', "program": 'cj:mobilepixels', "category": 'portable-monitor',
  "name": 'Mobile Pixels Duex Max DS Attachable Laptop Monitor, 14.1" 1080p', "model": 'Duex Max DS',
  "url": 'https://www.mobilepixels.us/products/duex-ds-series', "price": 175.99, "list_price": 299.99, "verified": '2026-11-18',
