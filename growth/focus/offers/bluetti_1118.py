@@ -111,7 +111,7 @@ C = {
  "EPANEL": dict(label="Epanel", long="Epanel smart distribution panel", price=499, row=("Distribution panel", "Epanel smart distribution panel"), role=None),
  "EPAD": dict(label="Epad", long="Epad control screen", price=399, row=("Control screen", "Epad central control screen"), role=None),
 }
-C["TROLLEY"] = dict(label="Foldable Trolley", long="Foldable Trolley", price=249, row=("Trolley", "BLUETTI Foldable Trolley"), role="rolls the stack to where it is needed")
+C["TROLLEY"] = dict(label="Trolley", long="Foldable Trolley", price=249, row=("Trolley", "BLUETTI Foldable Trolley"), role="rolls the stack to where it is needed")
 PANELS = {"P60": 60, "P100": 100, "P200": 200, "P350": 350, "P500": 500}
 NUMW = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
 
@@ -250,7 +250,7 @@ G3 = [
  ("un047", "bluetti-2-apex-200-2-b500k-hub-a1", "Apex 200", 2, [("B500K", 2), ("A1", 1)], []),
  ("un046", "bluetti-2-apex-300-2-b500k-hub-a1", "Apex 300", 2, [("B500K", 2), ("A1", 1)], []),
  ("un044", "bluetti-2-apex-300-4-b300k-hub-a1", "Apex 300", 2, [("B300K", 4), ("A1", 1)], []),
- ("un041", "bluetti-2-apex-300-4-b300k-hub-a1-2-solarx-4k-trolley", "Apex 300", 2, [("B300K", 4), ("A1", 1), ("SX4K", 2), ("TROLLEY", 1)], []),
+ ("un041", "bluetti-2-apex-300-4-b300k-hub-a1-2-solarx-4k", "Apex 300", 2, [("B300K", 4), ("A1", 1), ("SX4K", 2), ("TROLLEY", 1)], []),
 ]
 # group 4: expansion batteries and panels. (qid, slug, name, category, model, panel watts in the item, spec rows, warranty, summary, fit, caveats)
 HOST = "BLUETTI lists this battery separately for each host station; this is the listing for the {h}, so check that its cable fits your unit before ordering."
