@@ -8183,7 +8183,7 @@ PRODUCTS = [
  "returns": "Amazon's return terms for this listing apply.",
  "summary": 'A 7,200 W, 5,040 Wh portable station sold with two 200 W panels as one amazon.com listing. It has the highest AC output of the kits rated 4,000 W or more that we compared, with half the panel watts of the Anker S5000 two-panel kit.',
  "fit": 'Shoppers whose loads go past 5,000 W and who will add more panels later; the 400 W in the box is a top-up source, returning about 6 minutes of a 4,000 W load per hour of full sun at rated output.',
- "caveats": ["Jackery's own US store listed the 5000 Plus station as a pre-order shipping Dec 2, 2026 when read on 2026-11-18; the delivery date for this listing is the one amazon.com shows.", '400 W of panels is 10% of a 4,000 W load and 5.6% of the 7,200 W rating (arithmetic).', 'Dealectric has not tested this kit.']},
+ "caveats": ["Jackery's own US store listed the 5000 Plus station as a pre-order shipping Dec 2, 2026 when read on 2026-11-18. The amazon.com listing read Currently unavailable the same day; its delivery date, once it is offered, is the one amazon.com shows.", '400 W of panels is 10% of a 4,000 W load and 5.6% of the 7,200 W rating (arithmetic).', 'Dealectric has not tested this kit.']},
 
 {"slug": 'allpowers-r3500-2x-sp039-solar-kit',
  "brand": 'ALLPOWERS',
