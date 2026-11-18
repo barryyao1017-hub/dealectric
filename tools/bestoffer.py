@@ -85,6 +85,10 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
             dropped.append(c)
         else:
             keep.append(c)
+    # the brand's own storefront on a retailer ("Walmart - Baseus") is another seller we cannot link, not the brand store
+    for c in keep:
+        if c["kind"] == "brand" and " - " in c["merchant"] and BC.retailer(c["merchant"].split(" - ")[0]):
+            c["kind"], c["merchant"] = "retailer", BC.retailer(c["merchant"].split(" - ")[0])
     brand_cards = [c["price"] for c in keep if c["kind"] == "brand" and c["price"] >= 0.85 * p["price"]]
     # "$1,424 with code": the brand's own code as its Google Shopping card advertises it, a price the shopper gets without us
     own_code = [float(m.group(1).replace(",", "")) for c in keep if c["kind"] == "brand"
@@ -124,8 +128,13 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
         entry["beaten"] = [low[0], low[1]]
     elif ours is not None and low and low[1] <= ours + margin(ours):
         entry["tie"] = [low[0], low[1]]   # within $1 or 1% of ours: ours is as low as any, but not "the lowest"
-    if ours is not None and store <= ours + margin(ours) and "beaten" not in entry:
+    coded = bool(B.best_offer(p)[0])
+    if coded and ours is not None and store <= ours + margin(ours) and "beaten" not in entry:
         entry["tie"] = [f"{B.store_host(p)}'s own price or code without the link", store]
+    if not coded:   # no code: the store's price is the price through our link, so it is not listed as another seller
+        entry["sellers"] = [x for x in entry["sellers"] if not x[0].endswith(" without the link")]
+        if store < p["price"] - 0.005 and "beaten" not in entry:   # the brand's own Shopping card is below the record's price
+            entry["beaten"] = [f"{B.store_host(p)}'s own listed price", store]
     a = sellers.get("Amazon")
     action = ("amazon leads" if a and (not B.in_stock(p) or (ours is not None and ours - a >= margin(ours)))
               else "sold out at the store" if not B.in_stock(p)
