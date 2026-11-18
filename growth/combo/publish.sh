@@ -54,7 +54,7 @@ sys.path.insert(0, "tools"); sys.path.insert(0, "src")
 import indexnow, gaps
 sent_p = Path("growth/combo/indexnow-sent.json")
 sent = set(json.loads(sent_p.read_text())) if sent_p.exists() else set()
-new = [g["slug"] for g in gaps.GAP_PAGES if g.get("run") in ("combo-1113", "kits-1118j") and g["slug"] not in sent]   # this worktree's runs
+new = [g["slug"] for g in gaps.GAP_PAGES if (g.get("run") in ("combo-1113", "kits-1118j") or g["slug"] == "drone-with-thermal-camera") and g["slug"] not in sent]   # this worktree's runs
 if new:
     real = urllib.request.urlopen
     def op(req, *a, **k):   # dealectric.com sits behind the work network's McAfee gateway; the key file is live (checked 11-11)
