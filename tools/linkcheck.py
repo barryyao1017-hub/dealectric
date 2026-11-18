@@ -12,7 +12,8 @@ slugs are not in PRODUCTS) this script
      us.soundcore.com, as in CART_HOST in tools/codesweep.py) for whether the variant is available; elsewhere (Tenergy's
      BigCommerce) it reads the schema.org availability on the page itself;
   3. requests https://dealectric.com/go/<slug> without following the redirect and checks that the Location header is the
-     deep link in worker/src/links-map.json with the Worker's sub-ID (<slug>.<click id>) in it.
+     deep link in worker/src/links-map.json with the Worker's sub-ID (<slug>.<click id>) in it, in the network's own
+     sub-ID parameter (CJ sid, Awin clickref, Rakuten u1).
 
 Findings: BROKEN (404/410, any other 4xx or a 5xx that repeats, a redirect loop, a "not found" page served as a 200),
 MOVED (the final URL is on another path or another host; the query string and a trailing slash are ignored, a Shopify
@@ -91,8 +92,10 @@ SAME_HOST = [{"www.soundcore.com", "us.soundcore.com"}]
 # Stores with /products/<handle> pages but no Shopify product JSON at all (<page>.js is a 404 while the page answers 200):
 # stock comes from the page's schema.org availability, and the missing JSON is not read as "delisted" (Creality, 2026-11-17).
 NO_JSON = {"store.creality.com"}
-# CJ and Awin click hosts: never requested, never followed (a request there is a click on our account).
-AFFILIATE = re.compile(r"(^|\.)(tkqlhce|anrdoezrs|dpbolvw|jdoqocy|kqzyfj|qksrv|emjcd|awin1|awin|zenaps)\.(com|net)$", re.I)
+# CJ, Awin and Rakuten click hosts: never requested, never followed (a request there is a click on our account).
+AFFILIATE = re.compile(r"(^|\.)(tkqlhce|anrdoezrs|dpbolvw|jdoqocy|kqzyfj|qksrv|emjcd|awin1|awin|zenaps|linksynergy)\.(com|net)$", re.I)
+# The query parameter each network carries our sub-ID in, as worker/src/index.js sets it; any other network is Awin's.
+SUB_KEY = {"cj": "sid", "rakuten": "u1"}
 LISTING = re.compile(r"^(/[a-z]{2}(-[a-z]{2})?)?(/(collections|collection|products|search|pages|shop|category|categories|catalog)(/.*)?)?$", re.I)
 NOT_FOUND_TITLE = re.compile(r"<title[^>]*>[^<]*(\b404\b|not found|page not found|no longer available)[^<]*</title>", re.I)
 AVAIL = re.compile(r"schema\.org/(InStock|OutOfStock|SoldOut|Discontinued|PreOrder|PreSale|BackOrder|LimitedAvailability|OnlineOnly|InStoreOnly)", re.I)
@@ -107,7 +110,7 @@ class Refused(Exception):
 def guard(url: str) -> None:
     s = urlsplit(url)
     if AFFILIATE.search(s.hostname or ""):
-        raise Refused(f"not followed: {s.hostname} is a CJ/Awin click host (a request there counts as a click)")
+        raise Refused(f"not followed: {s.hostname} is a CJ/Awin/Rakuten click host (a request there counts as a click)")
     if re.search(r"/cart(\.js|/|$)", s.path):
         raise Refused(f"not requested: {s.path} is a cart endpoint")
 
@@ -355,16 +358,31 @@ def go_request(slug: str) -> dict:
         conn.close()
 
 
+def sub_key(entry: dict) -> str:
+    return SUB_KEY.get(entry.get("network"), "clickref")
+
+
+def map_slot(entry: dict) -> str | None:
+    """Why the map's deep link is wrong before any request: it has no slot for the sub-ID in its network's parameter."""
+    sub = sub_key(entry)
+    if sub not in {k for k, _ in urllib.parse.parse_qsl(urlsplit(entry.get("url") or "").query, keep_blank_values=True)}:
+        return f"the deep link in links-map.json has no {sub}= parameter for the {entry.get('network')} sub-ID (rebuild)"
+    return None
+
+
 def go_matches(location: str | None, entry: dict, slug: str) -> tuple[bool, bool, str]:
     """(matches, literal, detail): the Location is the map's deep link with the sub-ID set to <slug>.<10 hex click id>.
 
-    The Worker sets the sub-ID with URLSearchParams.set (worker/src/index.js), which replaces the map's placeholder value
-    in place, so the Location starts with the deep link up to the sub-ID key (`literal`). `matches` compares the parsed
-    URL (scheme, host, path, every other query parameter) so an encoding difference alone is not a finding."""
+    The sub-ID sits in the network's own query parameter (SUB_KEY: CJ sid, Rakuten u1, Awin clickref; DLC-306, every
+    Rakuten link used to be flagged for having no clickref). The Worker sets it with URLSearchParams.set
+    (worker/src/index.js), which replaces the map's placeholder value in place, so the Location starts with the deep link
+    up to the sub-ID key (`literal`). `matches` compares the parsed URL (scheme, host, path, every other query parameter)
+    so an encoding difference alone is not a finding. A Location with no sub-ID in that parameter, or with it in another
+    network's parameter, is a finding."""
     deep = entry.get("url") or ""
     if not location:
         return False, False, "no Location header"
-    sub = "sid" if entry.get("network") == "cj" else "clickref"
+    sub = sub_key(entry)
     L, D = urlsplit(location), urlsplit(deep)
     if (L.scheme, L.netloc, L.path) != (D.scheme, D.netloc, D.path):
         return False, False, f"goes to {L.scheme}://{L.netloc}{L.path}, the map says {D.scheme}://{D.netloc}{D.path}"
@@ -385,6 +403,8 @@ def go_matches(location: str | None, entry: dict, slug: str) -> tuple[bool, bool
 def judge_go(slug: str, entry: dict | None, r: dict) -> tuple[str, str]:
     if entry is None:
         return "map", "no entry in worker/src/links-map.json"
+    if (why := map_slot(entry)):
+        return "map", why
     if r.get("error"):
         return "unanswered", r["error"]
     if r["status"] != 302:
