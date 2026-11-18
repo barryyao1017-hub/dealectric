@@ -19,7 +19,8 @@ Findings: BROKEN (404/410, any other 4xx or a 5xx that repeats, a redirect loop,
 MOVED (the final URL is on another path or another host; the query string and a trailing slash are ignored, a Shopify
 product keeps its handle wherever /products/<handle> sits, and www.soundcore.com / us.soundcore.com and www./bare are
 the same host), DELISTED (it lands on the store's home, a collection, search or pages URL, or the store's product JSON
-no longer has the variant or the handle), SOLD OUT (no available variant while the record does not say in_stock False;
+no longer has the variant or the handle), SOLD OUT (the record's variant is not available, matched as tools/pricecheck.py
+matches it, while the record does not say in_stock False;
 already recorded sold-outs are listed, not flagged), BACK IN STOCK (the record says in_stock False, the store has stock),
 THROTTLED (the store answered 429 and r.jina.ai could not read the URL either: "throttled, not checked", never counted
 as broken), UNANSWERED (bot challenge or network error after one retry, never counted as broken; a store that answers a
@@ -433,10 +434,15 @@ def judge_stock(p: dict, page: dict, js: dict | None) -> dict:
                             "detail": f"variant {want} is no longer on {js['url'][:-3]}"}
                 avail = bool(v.get("available"))
             else:
-                v = next((x for x in variants if x.get("available")), variants[0] if variants else None)
+                # the record's own variant, matched by name and price as the daily stock read does (DLC-306); the first
+                # available one only where the record can't be matched or the JSON lacks what the match needs
+                try:
+                    v, how = pricecheck.record_variant(p, variants)
+                except (KeyError, TypeError, AttributeError):
+                    v, how = next((x for x in variants if x.get("available")), variants[0] if variants else None), ""
                 avail = bool(v and v.get("available"))
             price = (v.get("price") / 100) if v and isinstance(v.get("price"), (int, float)) else None
-            return {"available": avail, "source": "product json" + (f" (variant {want})" if want else "")
+            return {"available": avail, "source": "product json" + (f" (variant {want})" if want else f" ({how})" if how else "")
                     + (" via r.jina.ai" if js.get("via") else ""), "store_price": price, "detail": ""}
     # No Shopify product JSON: the page's own schema.org availability (the first one on the page is the product's).
     m = AVAIL.search(page.get("body") or "")
@@ -659,7 +665,7 @@ def run(args) -> int:
         if st.get("gone"):
             findings.append({"slug": s, "kind": "delisted", "detail": st["detail"]})
         elif st.get("available") is False and row["in_stock"] is not False:
-            findings.append({"slug": s, "kind": "sold out", "detail": f"no available variant ({st.get('source')}); products.py does not say in_stock False"})
+            findings.append({"slug": s, "kind": "sold out", "detail": f"not available ({st.get('source')}); products.py does not say in_stock False"})
         elif st.get("available") is True and row["in_stock"] is False:
             findings.append({"slug": s, "kind": "back in stock", "detail": f"available ({st.get('source')}); products.py says in_stock False"})
         elif st.get("throttled"):
