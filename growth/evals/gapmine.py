@@ -53,7 +53,7 @@ ROOT = Path(__file__).resolve().parents[2]
 BRANDS = json.loads((ROOT / "growth/gapmine/brands.json").read_text())["brands"]
 RUN: Path = ROOT / "growth/gapmine/runs" / date.today().isoformat()
 MODEL = "claude-sonnet-5-5"
-UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0 Safari/537.36"
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"   # full version: Bing's osjson answers an empty 204 to "Chrome/156.0" (11-17: every Bing call failed, so no seed finished or got labelled)
 
 # Templates: the shopper-intent stems a searcher types after a category noun. Letters a-z after "for" walk the long tail.
 STEMS = ["{s}", "best {s}", "{s} for", "best {s} for", "{s} vs", "{s} with", "{s} under", "{s} that", "{s} without",
