@@ -8185,6 +8185,22 @@ PRODUCTS = [
  "fit": 'Shoppers whose loads go past 5,000 W and who will add more panels later; the 400 W in the box is a top-up source, returning about 6 minutes of a 4,000 W load per hour of full sun at rated output.',
  "caveats": ["Jackery's own US store listed the 5000 Plus station as a pre-order shipping Dec 2, 2026 when read on 2026-11-18; the delivery date for this listing is the one amazon.com shows.", '400 W of panels is 10% of a 4,000 W load and 5.6% of the 7,200 W rating (arithmetic).', 'Dealectric has not tested this kit.']},
 
+{"slug": 'allpowers-r3500-2x-sp039-solar-kit',
+ "brand": 'ALLPOWERS',
+ "program": 'cj:allpowers',
+ "category": 'solar-kit',
+ "name": 'ALLPOWERS R3500 + 2× SP039 600 W Solar Generator Kit (3,168 Wh, 3,200 W, 1,200 W of panels)',
+ "model": 'R3500 + 2× SP039 600 W',
+ "url": 'https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp039-600w-solar-panel?variant=43451064320153',
+ "price": 2562.15,
+ "verified": '2026-11-18',
+ "specs": [('Battery', '3,168 Wh LiFePO4'), ('AC output', '3,200 W pure sine wave'), ('Panels in the kit', '2 × SP039 600 W foldable panels (1,200 W)'), ('Solar input', '2,000 W max, XT60, 12–150 V MPPT, 40 A'), ('Cycle life (maker)', 'over 3,500 charging cycles; no capacity end point stated'), ('UPS switchover', '15 ms'), ('Panel weight', '27.5 lb each (SP039 listing)'), ('In the box', 'R3500, AC charging cable, two 600 W panels, one solar PV connection cable')],
+ "warranty": "5-year warranty stated on the kit listing; the SP039 panel's own listing states 24 months (ALLPOWERS, read 2026-11-18)",
+ "returns": '30-day return policy; the buyer pays return shipping unless the item arrived damaged or incorrect (ALLPOWERS refund policy, read 2026-11-18)',
+ "summary": "The R3500 station sold with two 600 W SP039 panels as one variant of ALLPOWERS' kit listing. 1,200 W is the most panel wattage in any kit we list under $4,000, and 800 W below the station's 2,000 W solar limit.",
+ "fit": "Home outage backup where the panels have to replace each day's use: on paper 1,200 W yields about 4,590 Wh on a 4.5-sun-hour day, more than a 3,284 Wh/day essentials load.",
+ "caveats": ['Price is the store price read 2026-11-18; our checkout code has been cart-tested on the one-panel variant only.', "ALLPOWERS' page gives the SP039 panels an estimated dispatch from Nov 23, 2026 and ships panels and station separately.", "ALLPOWERS states over 3,500 charging cycles with no capacity end point, against 6,000 cycles to 80% for BLUETTI's Apex 300.", "The listing gives the SP039's voltage as 44 V and no open-circuit voltage; check the panel label before wiring two in series.", 'The 3,168 Wh battery holds under one day of a 3,284 Wh/day load without sun.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
