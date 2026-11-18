@@ -1,0 +1,151 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Elite 400's single solar input is limited to 12–60 V and 20 A, so its 2× 350 W kit (33 V open-circuit per panel) cannot be wired in series (66 V) and in parallel tops out below 660 W of its 700 W rating.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited StormWatts pages (240 V solar-input comparison; bundle vs buying separately), the cited PowerSized DELTA Pro 3 review and StormWatts' uncited same-panel-watts kit page. The solar-input comparison gives voltage and current windows only for the Explorer 5000 Plus, SOLIX S5000, DELTA Pro 3 and F3800 Plus. The bundle page gives only watt caps and does not mention the Elite 400 or R3500. PowerSized gives only '2,600W solar input'. The same-panel-watts page does the same series/parallel check for the Elite 200 V2 (12–60 V, 20 A, two SP200L) and the HomePower 3600 Plus, so the method is not new, but it does not cover the Elite 400, the 350 W panel or any 3,840 Wh kit.",
+ "decides": "Among the four Elite 400 kits in the size range, the input window decides which panel sets the station can fully use. The 2× 200 W kit fits in series (49.2 V, 10.8 A) and the single 350 W kit fits, so their rated-output refill figures hold as arithmetic. The 2× 350 W kit ($2,325.60 link price) cannot deliver its 700 W into a 20 A input, so its refill column should use the under-660 W ceiling (more than 5.8 h, not 5.5 h) and it should not be named the fastest-refill option for the money. No Elite 400 kit can ever exceed 1,000 W of solar (3.84 h at best), whereas StormWatts lists the DELTA Pro 3 at 2,600 W across two inputs and ALLPOWERS states 2,000 W for the R3500. This does not change the ship-now rule: every Elite 400 kit is a pre-order, and the Elite 400 page today says mid-January for orders placed on or after Nov. 18.",
+ "candidates": [
+  "BLUETTI Elite 400 + 2× 200 W kit",
+  "BLUETTI Elite 400 + 350 W kit",
+  "BLUETTI Elite 400 + 500 W kit",
+  "BLUETTI Elite 400 + 2× 350 W kit",
+  "ALLPOWERS R3500 + SP037 400 W kit",
+  "ALLPOWERS R3500 + SP039 600 W kit",
+  "Jackery HomePower 3600 Plus + 2× 200 W kit",
+  "EcoFlow DELTA Pro 3 + 400 W kit"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input window (maker's words)",
+   "value": "\"Solar: 1,000 W Max., 12–60 V, 20 A Max.\"",
+   "source": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "source_title": "BLUETTI Elite 400 Portable Power Station | 3,840Wh, 2,600W",
+   "read": "2026-11-18",
+   "note": "One solar spec line on the page; no second or high-voltage PV input is listed. The same line appears on the Elite 400 + 2×350 W and + 500 W kit pages. Capacity 3,840 Wh and AC 2,600 W on the same page."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel (the panel in the Elite 400 + 350 W and + 2× 350 W kits)",
+   "label": "Open-circuit voltage and supplied cable",
+   "value": "33 V Voc; MC4 connectors; box includes one '20A MC4 to XT60 Solar Charging Cable (1.5m)'",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel",
+   "read": "2026-11-18",
+   "note": "Page text: 'industry-standard MC4 connectors and a 33V open-circuit voltage (Voc)'. The page lists the Elite 400 as compatible. Its Tech Specs section is empty, so no Isc, Vmp or Imp. Identified as the kit panel by price: $1,499 station + $649 panel = $2,148, which is $299 over the $1,849 kit, matching the kit table's 'vs parts' figure."
+  },
+  {
+   "product": "BLUETTI Elite 400 + 2× 350 W kit",
+   "label": "Series wiring vs the 60 V limit",
+   "value": "2 × 33 V = 66 V open-circuit, above the 12–60 V input range",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "Elite 400+2*350W",
+   "read": "2026-11-18",
+   "note": "Arithmetic from the two maker figures above (Voc at standard test conditions; cold raises it further). The two panels therefore have to be wired in parallel. The kit page gives no wiring instruction and does not list the panel model or cables. Store price $2,448.00 read the same day via storecheck."
+  },
+  {
+   "product": "BLUETTI Elite 400 + 2× 350 W kit",
+   "label": "Most solar power the station can take from this kit in parallel",
+   "value": "under 660 W of the 700 W rated (20 A × 33 V = 660 W upper bound)",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "Elite 400+2*350W",
+   "read": "2026-11-18",
+   "note": "Arithmetic: power = current × voltage; current is capped at 20 A and a panel's working voltage is always below its 33 V open-circuit voltage, so the real ceiling is lower than 660 W. Refill arithmetic: 3,840 Wh / 700 W = 5.5 h at rated output, 3,840 / 660 = 5.8 h at the bound. Dealectric has not tested this."
+  },
+  {
+   "product": "BLUETTI Elite 400 + 350 W kit",
+   "label": "Single 350 W panel vs the input window",
+   "value": "33 V Voc is inside 12–60 V; 350 W needs at least 10.6 A at 33 V, under the 20 A cap",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel",
+   "read": "2026-11-18",
+   "note": "Arithmetic: 350 / 33 = 10.6 A is a lower bound; the working current is higher because the working voltage is below Voc, but still well under 20 A. Refill at rated output: 3,840 / 350 = 11.0 h."
+  },
+  {
+   "product": "BLUETTI 200W Portable Solar Panel (SP200L, the panel in the Elite 400 + 2× 200 W kit)",
+   "label": "Open-circuit voltage and short-circuit current",
+   "value": "24.6 V Voc, 10.8 A Isc, MC4",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI 200W Portable Solar Panel",
+   "read": "2026-11-18",
+   "note": "Identified as the kit panel by price: $1,499 + 2 × $399 = $2,297, which is $398 over the $1,899 kit, matching the kit table. The page's compatibility list names the Elite 200 V2 and Elite 300; the fetch did not show the Elite 400 in it."
+  },
+  {
+   "product": "BLUETTI Elite 400 + 2× 200 W kit",
+   "label": "Series vs parallel on the 12–60 V, 20 A input",
+   "value": "Series: 49.2 V, 10.8 A (fits). Parallel: 24.6 V, 21.6 A short-circuit (over 20 A)",
+   "source": "https://www.bluettipower.com/products/elite-400-2-200w",
+   "source_title": "Elite 400+2*200W",
+   "read": "2026-11-18",
+   "note": "Arithmetic from the SP200L figures and the Elite 400 input line; the kit URL was read via storecheck search only ($1,899.00). Series is the layout that fits both limits, so the full 400 W can reach the station. Refill at rated output: 3,840 / 400 = 9.6 h."
+  },
+  {
+   "product": "BLUETTI Elite 400 (any kit)",
+   "label": "Fastest possible solar refill at the input cap",
+   "value": "3.84 h (3,840 Wh / 1,000 W)",
+   "source": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "source_title": "BLUETTI Elite 400 Portable Power Station | 3,840Wh, 2,600W",
+   "read": "2026-11-18",
+   "note": "Arithmetic at the stated 1,000 W cap; real output is lower. Reaching 1,000 W at 20 A needs an array working at 50 V or more, which leaves little room under the 60 V ceiling."
+  },
+  {
+   "product": "BLUETTI Elite 400 (all kits)",
+   "label": "Dispatch text on the store page today",
+   "value": "\"expected to ship in mid-January for orders placed on or after Nov. 18\"; a second banner says \"Elite 400 ships from mid-December\"",
+   "source": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "source_title": "BLUETTI Elite 400 Portable Power Station | 3,840Wh, 2,600W",
+   "read": "2026-11-18",
+   "note": "The two banners conflict on the same page, and the same text appears on the + 2×350 W and + 500 W kit pages. Today is Nov. 18, so the mid-January line applies to an order placed now."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Reviewer check of the solar spec",
+   "value": "1,000 W max, 12 to 60 V, 20 A max; combined AC + solar up to 2,800 W",
+   "source": "https://storagereview.com/review/bluetti-elite-400-review-3840wh-2600w-6ms-ups-switchover-on-wheels",
+   "source_title": "BLUETTI Elite 400 Review (StorageReview, Dylan Bryan, 2026-11-02)",
+   "read": "2026-11-18",
+   "note": "Dylan Bryan repeats the rated figures and says actual solar input 'depends on the panel configuration, sunlight, temperature, and other conditions'. The review reports no measured solar wattage and no panel wiring."
+  },
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Solar charge ceiling (maker's words)",
+   "value": "\"Maximum 2000W solar charge in 2.5 hours\"; 3,168 Wh; 3,200 W inverter",
+   "source": "https://iallpowers.com/products/allpowers-r3500-portable-power-station-3200w-3168wh",
+   "source_title": "ALLPOWERS R3500 Home Backup Power Station | 3200W 3168Wh",
+   "read": "2026-11-18",
+   "note": "Read from the store's product record via storecheck search (station $1,199.00; SP037 kit $1,803.10; SP039 kit $1,993.10). The product page itself returned HTTP 429 to WebFetch, so the voltage and current window was not read. 3,168 Wh is 20.8% under 4,000 Wh, at the edge of the size line."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Solar inputs as StormWatts quotes them",
+   "value": "High-PV 30–150 V, 15 A, 1,600 W max; Low-PV 11–60 V, 20 A, 1,000 W max; 2,600 W total",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input (StormWatts, 2026-11-16)",
+   "read": "2026-11-18",
+   "note": "StormWatts' figures, not read on EcoFlow's page by this angle. Shown for contrast: a second, 150 V input is what lets panels be strung in series, which the Elite 400 does not have. PowerSized reported the DELTA Pro 3 solar kits out of stock at EcoFlow on 2026-11-17 (https://powersized.com/reviews/ecoflow-delta-pro-3/)."
+  },
+  {
+   "product": "Jackery HomePower 3600 Plus",
+   "label": "Solar inputs as StormWatts lists them",
+   "value": "2 × DC8020 ports, 16–60 V, 12 A each, 1,000 W combined; SolarSaga 500 X 'parallel only, never in series'",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts (StormWatts, 2026-11-08)",
+   "read": "2026-11-18",
+   "note": "StormWatts' figures, not read on Jackery's page by this angle. Same 60 V ceiling and 1,000 W cap as the Elite 400, but split across two 12 A ports."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI 350W Solar Panel Vmp, Imp and Isc: the maker's US page has an empty Tech Specs section, the US PV350D page redirect-looped, and the FactoryPure listing (a search snippet showed Vmp 27.6 V, Imp 12.7 A) returned HTTP 429. A sourced Vmp would tighten the 2×350 W ceiling from 'under 660 W' to about 550 W.",
+  "BLUETTI SORA 500 (500 W panel) Voc, Isc, Vmp and Imp: the maker's US page has an empty Tech Specs section, so the Elite 400 + 500 W kit could not be checked against the 60 V and 20 A limits.",
+  "Elite 400 user manual text on solar: whether it says not to use panels above 60 V open-circuit and whether current above 20 A is limited or refused. The manual PDF (https://s4.bluettipower.com/bluetti_lgf/support/2025/11/6d0ed58b-2881-45d6-afa0-77005ff6e6c3.pdf) is over WebFetch's 10 MB limit and curl was blocked in this session; BLUETTI's support page FAQ answers are blank.",
+  "Whether the Elite 400 + 2×350 W kit ships a parallel (Y-branch) MC4 cable: the kit page lists only the station's box contents.",
+  "ALLPOWERS R3500 PV voltage range, current limit and number of PV ports, and SP037 / SP039 Voc and Isc: iallpowers.com returned HTTP 429, and allpowers.com is a corporate site with no R3500 page.",
+  "Temperature coefficient of Voc for the SP200L and 350 W panels, needed for cold-weather headroom under 60 V: not published on either maker page.",
+  "Maker-page solar input figures and today's kit prices and stock for the EcoFlow DELTA Pro 3, Jackery HomePower 3600 Plus and Anker SOLIX F3800 Plus: not opened by this angle (tool budget spent); only StormWatts' quoted figures are given."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.6937737999999993
+ }
+}
