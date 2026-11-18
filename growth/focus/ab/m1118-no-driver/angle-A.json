@@ -1,0 +1,112 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got lines up what 'driver-free' means across the products it named. Each driver-free dual extender needs one video-capable (DisplayPort Alt Mode) USB-C cable per added screen, which takes two video ports on the laptop. A one-cable connection to both screens needs the maker's display driver (Mobile Pixels Trio 3 Pro). So on a base M1 or M2 MacBook, a 'driver-free' dual extender adds only one screen.",
+ "standout": 1,
+ "standout_why": "Pages compared: the cited FOPO S11 page (fopomonitor.com), deskgearhq.com (results #8 and #1 in the two chats), and Apple's MacBook Air M2 spec page. The cited FOPO S11 page already says 'Can I connect both screens with one USB-C cable? No' and that base M1/M2/M3 chips are not supported, so a cited rival has part of the finding. No page lines this up across products, though. Deskgearhq marks the Trio 3 Pro 'No driver required' and in the same entry says it runs 'off one USB-C cable'. That conflates two modes: Macworld's review says the single-cable mode needs Mobile Pixels' software, and the two-cable mode is the driver-free one. Deskgearhq also never states how many video ports any dual unit needs and never mentions base M-series limits. I could not open the UPERFECT Best Buy page, the TUTT S10 page or the Plugable pages: they returned 429 errors or timed out.",
+ "decides": "This confirms the pick depends on the laptop more than on the screen. (1) A Windows laptop, or an M-series Pro/Max MacBook, with two DP Alt Mode USB-C ports (or one plus HDMI): a FOPO dual extender (S1, S7 or S11) runs both screens driver-free on two cables. The Trio 3 Pro is driver-free only in its two-cable mode. (2) A base M1 or M2 MacBook (Apple: one external display): no dual extender gives two screens without a driver. The honest driver-free pick is a single screen on one Alt Mode cable, such as the Mobile Pixels Duex Max DS. Getting two screens there means accepting the Trio 3 Pro's driver. (3) The FOPO S788 needs FOPO's UsbDisplay driver on every connection, so it drops out of a driver-free page.",
+ "candidates": [
+  "FOPO S1",
+  "FOPO S7",
+  "FOPO S11",
+  "Mobile Pixels Trio 3 Pro",
+  "Mobile Pixels Duex Max DS",
+  "FOPO S788 (excluded: driver required)"
+ ],
+ "findings": [
+  {
+   "product": "FOPO S11",
+   "label": "Cables needed for two screens without a driver",
+   "value": "2 video connections: one full-featured USB-C cable per screen, or USB-C to one screen plus HDMI-to-Mini-HDMI with separate USB power to the other. One USB-C cable for both screens is not supported.",
+   "source": "https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender",
+   "source_title": "FOPO S11 Dual 16″ Laptop Screen Extender | 1920 × 1200 IPS, Plug & Play",
+   "read": "2026-11-18",
+   "note": "FOPO FAQ quote: 'Can I connect both screens with one USB-C cable?' answered 'No'. Also 'Driver-free with compatible video ports' and 'USB-A supplies power in the HDMI setup; it does not carry the display signal.'"
+  },
+  {
+   "product": "FOPO S11",
+   "label": "Mac support for the dual setup",
+   "value": "M1/M2/M3 Pro and Max supported; base M1, M2 and M3 not supported",
+   "source": "https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender",
+   "source_title": "FOPO S11 Dual 16″ Laptop Screen Extender | 1920 × 1200 IPS, Plug & Play",
+   "read": "2026-11-18",
+   "note": "FOPO quote: 'Base M1, M2 and M3 chips are not supported for this S11 dual-extension setup.' The page gives no wattage figure, only 'sufficient power'. The page showed 'Sold out' and a confusing price display (regular $399.99, sale $699.99). Our record's $399.99 store price stands as given."
+  },
+  {
+   "product": "FOPO S1",
+   "label": "Cables needed for two screens without a driver",
+   "value": "2 video connections, one per screen; no driver",
+   "source": "https://www.fopomonitor.com/products/fopo-s1-14-inch-dual-screen-laptop-extender",
+   "source_title": "FOPO S1 14-Inch Dual-Screen Laptop Extender | 1080P Portable Monitors",
+   "read": "2026-11-18",
+   "note": "Read through the store's Shopify search endpoint (storecheck.py search) because the product page returned HTTP 429. Quote: 'DRIVER-FREE SETUP Two displays. Two video connections. Each S1 screen needs its own supported video connection... no driver installation required.' Store price $159.99 on the same read."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Driver-free vs one-cable connection",
+   "value": "Driver-free only with 2 USB-C cables into 2 DP-enabled USB-C ports (at least one port on each side of a MacBook). Running both screens from 1 cable needs Mobile Pixels' software.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary)",
+   "read": "2026-11-18",
+   "note": "Macworld quotes the manual: with 'two DP enabled USB-C ports … driver installation is not necessary'. The software lets you 'run both screens from the single cable connection'. Tested on a 14-inch MacBook Pro. The included USB-C cables are 20 in (0.5 m). This contradicts deskgearhq's entry, which marks it 'No driver required' and also says it runs 'off one USB-C cable'."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Base M-series Macs",
+   "value": "Plain M1 and M2 Macs (and MacBook Neo) drive one external monitor, so two screens need the software. M1/M2/M3 Pro/Max and any M4/M5 MacBook run both screens without the download.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary)",
+   "read": "2026-11-18",
+   "note": "Macworld's wording on M3 is loose. It names M1 and M2 as limited, and in another line groups 'standard M1/M2/M3'. I've kept its exact claims."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Power",
+   "value": "Screens can't reach maximum brightness on laptop power alone; an adapter on the Trio passes up to 65 W through to the laptop",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary)",
+   "read": "2026-11-18",
+   "note": "Reviewer's statement."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Video path",
+   "value": "USB-C or Mini HDMI input, no drivers or software (one added screen)",
+   "source": "https://www.mobilepixels.us/products/duex-ds-series",
+   "source_title": "Duex DS Series (Mobile Pixels)",
+   "read": "2026-11-18",
+   "note": "Read through the store's search endpoint. Quote: 'Hybrid-Signal Input: Features USB-C and Mini HDMI ports for fast and easy connectivity without the need for drivers or software.' A single screen needs one Alt Mode port (or HDMI), so it stays within a base M1/M2 MacBook's one-external-display limit."
+  },
+  {
+   "product": "general",
+   "label": "Base MacBook external display count",
+   "value": "MacBook Air (M2, 2022): one external display, up to 6K at 60 Hz, alongside the built-in display",
+   "source": "https://support.apple.com/en-us/111867",
+   "source_title": "MacBook Air (M2, 2022) - Tech Specs",
+   "read": "2026-11-18",
+   "note": "This is Apple's own limit. It means any dual extender on this laptop adds one screen driver-free, and a second screen needs a DisplayLink-type driver."
+  },
+  {
+   "product": "FOPO S788",
+   "label": "Video path",
+   "value": "Display driver (UsbDisplay) required; external PD supply included",
+   "source": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender",
+   "source_title": "FOPO S780 / S788 Triple Laptop Screen Extender",
+   "read": "2026-11-18",
+   "note": "Taken from today's Dealectric record as given in the brief. I did not reopen the page. This excludes it from a driver-free page."
+  }
+ ],
+ "unsourced": [
+  "FOPO S7 connection section: the product page returned HTTP 429 and the store search returned only the CSS head of the description, so the per-screen cable rule for the S7 is not confirmed from the S7 page itself.",
+  "Power draw in watts for the FOPO S1, S7 and S11: FOPO's S11 page says only 'sufficient power' and I could not open the S1 page in full.",
+  "UPERFECT 14-inch dual extender (Best Buy, cited by ChatGPT): the page timed out, so I could not read its cable count or Mac support.",
+  "TUTT S10 (tutt.ca, cited) and Plugable USBC-MSTH2 (cited): HTTP 429, so I could not check whether Plugable's page states the macOS MST mirroring limit.",
+  "Mobile Pixels Trio 3 Pro and Duex Float 2 Pro product pages: HTTP 429. The Trio driver/cable rule comes from Macworld quoting the manual, not from the maker's page.",
+  "gradedpicks.com (rank 9 and 2, dated 2026-11-17): the fetch failed with a self-signed certificate error, so I could not compare against it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2268877999999996
+ }
+}

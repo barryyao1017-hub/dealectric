@@ -1,0 +1,102 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that a dual extender with no driver needs a separate DisplayPort video stream from the laptop for each added screen, or that clip-on extenders run with the lid open. Apple's own specs give the lid-open count: the base M1 and M3 MacBook Air drive one external display with the lid open (the M3 drives a second only with the lid closed), while the M4 MacBook Air drives two external displays with its built-in screen on. So a driver-free two-screen extender gives you both extra screens on an M4/M5 or Pro/Max Mac, but only one on a base M1, M2 or M3 Mac.",
+ "standout": 2,
+ "standout_why": "I read deskgearhq.com (2026-07-26). It says every pick runs over one USB-C cable using DisplayPort Alt Mode with 'zero driver install' and never mentions Mac external-display limits, lid position, DisplayLink or MST. I also read theofficejournal.com (2026-07-31). It warns that DisplayPort Alt Mode 'isn't universal across every USB-C port' but gives no number of video ports needed and never mentions Mac limits, the lid, DisplayLink or MST. Plugable's USBC-MSTH2 product page, which ChatGPT cited, returned HTTP 429 when I tried it, so I could not read it. Plugable's own help article for that adapter says Macs mirror over MST, so that cited page likely covers the MST-mirroring part. ChatGPT's answer already said that base M1/M2/M3 Macs are 'generally limited to one' external display. No rival page I opened gives Apple's lid-open versus lid-closed numbers per chip, or says that an M4/M5 base Mac drives two screens natively. I could not open gradedpicks.com (TLS error), the FOPO S11 and TUTT S10 pages (HTTP 429), or the Best Buy UPERFECT listing (timeout), so I have not checked those against this finding.",
+ "decides": "It splits the pick by laptop. On a Windows laptop with two USB-C ports that carry DisplayPort, or on an M4/M5, Pro or Max MacBook, a dual extender connected with one cable per screen works without a driver, so the Mobile Pixels Trio 3 Pro and the FOPO S7, S11 and S1 dual models are candidates (their own connection paths still need checking). On a base M1, M2 or M3 MacBook, or a MacBook Neo, only one added screen runs natively with the lid open. A single-screen extender such as the Mobile Pixels Duex Max DS, using one USB-C cable with DisplayPort Alt Mode, is then the honest driver-free pick. For a second screen on those Macs you need a driver (Mobile Pixels' software or DisplayLink), and an MST splitter only mirrors on macOS. The FOPO S788 needs FOPO's UsbDisplay driver according to our record, so it fails the question's no-driver terms.",
+ "candidates": [
+  "Mobile Pixels Trio 3 Pro",
+  "Mobile Pixels Duex Max DS",
+  "FOPO S7",
+  "FOPO S11",
+  "FOPO S1",
+  "FOPO S788"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MacBook Air (M1, 2020) external displays with the built-in display on",
+   "value": "1 external display (up to 6K 60 Hz)",
+   "source": "https://support.apple.com/en-us/111883",
+   "source_title": "MacBook Air (M1, 2020) - Tech Specs - Apple Support",
+   "read": "2026-11-18",
+   "note": "Apple's words: 'Simultaneously supports full native resolution on the built-in display at millions of colors and: One external display with up to 6K resolution at 60Hz'; 'Native DisplayPort output over USB-C'."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air (13-inch, M3, 2024) external displays, lid open vs lid closed",
+   "value": "1 external display with the lid open; a second external display (up to 5K 60 Hz) only with the lid closed",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-18",
+   "note": "Apple's words: 'One external display with up to 6K resolution at 60Hz'; 'Close the MacBook Air lid to use a second external display with up to 5K resolution at 60Hz'. A clip-on extender is used with the lid open, so the lid-closed second display doesn't apply to it."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air (13-inch, M4, 2025) external displays with the built-in display on",
+   "value": "Up to 2 external displays (up to 6K 60 Hz each)",
+   "source": "https://support.apple.com/en-us/122209",
+   "source_title": "MacBook Air (13-inch, M4, 2025) - Tech Specs - Apple Support",
+   "read": "2026-11-18",
+   "note": "Apple's words: 'Simultaneously supports full native resolution on the built-in display at 1 billion colors and: Up to two external displays with up to 6K resolution at 60Hz'; 'Support for native DisplayPort 1.4 output over USB-C'; two Thunderbolt 4 (USB-C) ports with DisplayPort."
+  },
+  {
+   "product": "general",
+   "label": "Native external displays by Apple chip (Plugable's list)",
+   "value": "Base M1/M2: 1; M1/M2 Pro: 2; base M3: 2 only with the lid closed (macOS 14.6); base M4: 2; base M5: 2; M5 Pro: 3",
+   "source": "https://kb.plugable.com/question/3016647",
+   "source_title": "Understanding External Display Support on Apple M1, M2, M3, M4 and M5 Chips (Plugable KB, last updated 2026-08-28)",
+   "read": "2026-11-18",
+   "note": "Plugable's words for base M3: 'the MacBook Air and MacBook Pro laptops with a Base M3 CPU supports two external displays when the lid is closed'. For base M5: 'Supports two external displays via Thunderbolt ports up to 6K at 60Hz'. Plugable notes the list mostly applies to both MacBook Air and MacBook Pro."
+  },
+  {
+   "product": "general",
+   "label": "macOS and MST (one USB-C cable split into two displays)",
+   "value": "On macOS the screens mirror the same image instead of showing two separate desktops",
+   "source": "https://kb.plugable.com/en_US/if-i-connect-the-plugable-usbc-msth2-to-a-macbook-would-i-be-able-to-see-two-distinct-screens-or-would-both-screens-display-the-same-content",
+   "source_title": "If I connect the Plugable USBC-MSTH2 to a MacBook would I be able to see two distinct screens? (Plugable KB, last updated 2026-11-04)",
+   "read": "2026-11-18",
+   "note": "Plugable's words: 'macOS does not support MST for multiple independent extended displays through standard MST adapters' and 'the external monitors will mirror the same content instead of displaying separate desktops'. Plugable's suggested alternative is DisplayLink, which is a driver."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Video path for its two screens",
+   "value": "Two USB-C cables, one per screen. No driver needed if the laptop has two USB-C ports that carry DisplayPort. Base M1/M2 Macs and the MacBook Neo need Mobile Pixels' free driver software.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-18",
+   "note": "Simon Jary quotes the manual: 'if your laptop has two DP enabled USB-C ports … driver installation is not necessary'. Users of plain M1/M2 Macs and the MacBook Neo 'will need to download and install free software (rather like DisplayLink)'. Jary says 'an M1/M2/M3 Pro/Max or any M4/M5 MacBook should be fine' without it."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: deskgearhq.com Best Laptop Screen Extenders 2026",
+   "value": "Says one USB-C cable with DisplayPort Alt Mode and 'zero driver install'; no Mac display limits, lid position, DisplayLink or MST",
+   "source": "https://deskgearhq.com/guides/best-laptop-screen-extenders-2026",
+   "source_title": "Best Laptop Screen Extenders 2026",
+   "read": "2026-11-18",
+   "note": "Compared against the finding. The page lists the Trio 3 Pro as 'USB-C only' and doesn't mention that two screens need two video streams."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage: theofficejournal.com Best USB-C Laptop Screen Extenders",
+   "value": "Warns that DisplayPort Alt Mode 'isn't universal across every USB-C port'; no number of video ports needed, no Mac limits, no lid position, no MST, no DisplayLink",
+   "source": "https://www.theofficejournal.com/desk-setup/best-usb-c-laptop-screen-extenders",
+   "source_title": "Best USB-C Laptop Screen Extenders for Home Offices (2026) | The Office Journal",
+   "read": "2026-11-18",
+   "note": "Compared against the finding."
+  }
+ ],
+ "unsourced": [
+  "How the FOPO S11, S7 and S1 drive two screens without a driver (one cable per screen, MST over one cable, or USB-C plus HDMI) and what FOPO says about base M1/M2/M3 Macs. fopomonitor.com returned HTTP 429 to WebFetch and to storecheck.py on four tries; I didn't find a FOPO manual for these models.",
+  "What the cited Plugable USBC-MSTH2 product page itself says about macOS. It returned HTTP 429; I used Plugable's help article for the same adapter instead.",
+  "The cited TUTT S10 page (tutt.ca) and the Best Buy UPERFECT 14-inch dual listing. TUTT returned HTTP 429 and Best Buy timed out, so I couldn't check what they say about cables per screen or Mac limits.",
+  "gradedpicks.com (the most recent rival, dated 2026-11-17). WebFetch failed with a self-signed certificate error.",
+  "Apple's own spec page for the MacBook Neo's external display count. I have only Macworld's statement that it is limited to one monitor."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2172859000000003
+ }
+}
