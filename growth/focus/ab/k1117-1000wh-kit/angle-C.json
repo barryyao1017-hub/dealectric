@@ -1,0 +1,88 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180's solar input is capped at 10 A (12–60 V, 500 W max, DC7909 port). With that cap, the two 200 W panels in the AC180 + 2× 200 W kit give close to their rated 400 W only when wired in series. Wired in parallel, the current cap holds them to about 10 A × panel Vmp, which is roughly 200 W for 20 V-class panels, about half the panels' rating. BLUETTI's manual says panels can go 'in series or parallel' and gives no warning about this.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts (cited), Volt & Valley's combo page and their search-result pages. StormWatts gives 12–60 V / 20 A / 1,000 W for the Elite 100 V2 and Elite 200 V2 and works out series versus parallel for the Elite 200 V2 with two SP200L panels. It does not give the AC180's input current or cover any AC180 kit wiring. Volt & Valley gives only 'AC180 500W, 2x 220-250W panels', with no voltage or current, and says no station's voltage window is on its page. Following that pairing in parallel would hit the 10 A cap. OutageReady, UnpluggedWatts and our own page would not load because of a TLS error, so I could not check them.",
+ "decides": "The pick does not change, because the AC180 kits are pre-orders that dispatch Dec 14, 2026 and the pick must ship now. The finding adds a condition to the AC180 + 2× 200 W row ($1,170.40 at the link price, $1,232 store price): it reaches 400 W of solar only in series. Series gives about 49.2 V Voc from two panels at StormWatts' SP200L figure of 24.6 V each, under the 60 V limit. Parallel gives 21.6 A Isc against a 10 A input. By StormWatts' 12–60 V / 20 A figures, the Elite 100 V2 handles 400 W of panels either way, so it is the safer 1 kWh station for a 400 W kit. Note also that our kit table lists 'AC 400 W' for bluetti-ac180-2x200w-solar-kit. The AC180's AC output is 1,800 W, so that cell is an error to fix.",
+ "candidates": [
+  "BLUETTI AC180",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 100 mini",
+  "BLUETTI Pioneer Na",
+  "ALLPOWERS P1800",
+  "ALLPOWERS R1500",
+  "Anker SOLIX C1000 Gen 2",
+  "Jackery Explorer 1000 v2",
+  "EcoFlow DELTA 3 Plus"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar (DC) input limits and port",
+   "value": "12–60 V Voc, 10 A max, 500 W max; DC7909 interface",
+   "source": "https://manuals.plus/m/99e29fb959fc3bee0bfd2ddaf31dcbf02197d4389f9b92f0359cb5ffcb38ecc3",
+   "source_title": "BLUETTI AC180 Portable Power Station User Manual (hosted on manuals.plus)",
+   "read": "2026-11-17",
+   "note": "From the specs table ('Power: 500W/10A Max.', 'Voltage: 12-60VDC', 'Interface: DC7909') and section 4.3.2 ('Voc: 12V-60V, Input Current: 10A Max., Input Power: 500W Max.'). BLUETTI's own manual PDF (cdn.shopify.com/.../AC180_User_Manual.pdf, dated 2023-06-16) downloaded but its text could not be extracted here, so this mirror was used."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "Maker's wiring guidance and Voc exclusion",
+   "value": "'Connect the solar panels (in series or parallel) to AC180 via the solar charging cable'; 'The open circuit voltage of solar panels cannot exceed 60V, otherwise it will damage the device.'",
+   "source": "https://manuals.plus/m/99e29fb959fc3bee0bfd2ddaf31dcbf02197d4389f9b92f0359cb5ffcb38ecc3",
+   "source_title": "BLUETTI AC180 Portable Power Station User Manual (hosted on manuals.plus)",
+   "read": "2026-11-17",
+   "note": "The manual allows either wiring and says nothing about the 10 A cap limiting parallel strings. Manualslib's copy, p. 3, has the same rule: 'Do not use solar panels with open circuit voltage higher than 60V.' The box includes a 16 AWG, 1,500 mm solar charging cable (p. 9). The AC180P manual says over-60 V damage is not covered by warranty, but I only saw that in a search snippet and did not open it."
+  },
+  {
+   "product": "BLUETTI AC180 + 2× 200 W kit",
+   "label": "Wiring arithmetic for the 400 W kit on a 10 A input",
+   "value": "Series: about 49.2 V Voc and 10.8 A Isc, within 12–60 V. Parallel: about 21.6 A Isc against a 10 A cap, so about 10 A × panel Vmp, roughly 200 W from 400 W of panels",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "Panel figures are StormWatts' BLUETTI SP200L values (Voc 24.6 V, Isc 10.8 A); the station limits are from the AC180 manual above. Series Voc = 2 × 24.6 = 49.2 V; parallel Isc = 2 × 10.8 = 21.6 A. StormWatts estimates about 56.5 V at −4°F for two SP200L in series, still under 60 V. This is arithmetic at rated values, not a measurement. I could not confirm on a BLUETTI page that the AC180 kit's 200 W panel is the SP200L."
+  },
+  {
+   "product": "BLUETTI AC180",
+   "label": "AC180 bundle variants and store prices",
+   "value": "AC180 alone $549; + SP100L $679; + 200 W $769 (compare-at $899); + 350 W $1,088; + 2× 200 W $1,232; + 200 W + Charger 1 $1,018",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-17",
+   "note": "Read from the store's product data with storecheck.py. A 350 W panel kit also exists, but I could not open a BLUETTI page with the 350 W panel's Voc to check it against the 60 V limit."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input limits (rival-stated)",
+   "value": "1,000 W, 12–60 V, 20 A",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "The BLUETTI US store listing (storecheck.py, 2026-11-17) confirms '1,000W Solar Input' but gives no volts or amps. At 20 A, two 10.8 A Isc panels in parallel (21.6 A) are only just over the limit, whereas the AC180's 10 A is far below it. The BLUETTI product page would not load (redirect loop), so the V/A figures are from StormWatts."
+  },
+  {
+   "product": "Jackery SolarSaga 200W (kit panel)",
+   "label": "Panel shipping state on Jackery US store",
+   "value": "'200w Panel: Pre-order, ships by Nov 28'",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2 (Jackery US store)",
+   "read": "2026-11-17",
+   "note": "The same text appears on the HomePower 1000 Plus v2 and 1500 Ultra bundle listings. A store search for 'Explorer 1000 v2 solar generator' found no Explorer 1000 v2 bundle on jackery.com that day."
+  }
+ ],
+ "unsourced": [
+  "The model and Vmp/Voc of the 200 W panel in BLUETTI's US AC180 + 200 W and + 2× 200 W kits. bluettipower.com product and .json pages returned redirect loops; bluettipower.ca and bluettipower.ph returned HTTP 429. For the BLUETTI PV200D (Vmp 20.4 V, Voc 24.6 V) I saw figures only in a search snippet of a BLUETTI flyer and did not open the flyer.",
+  "The ALLPOWERS P1800's solar input voltage, current and maximum watts, and whether the P1800 + 600 W kit's panels exceed that maximum. The ALLPOWERS store search with storecheck.py returned no JSON, and I ran out of tool calls before trying the manual.",
+  "The Jackery Explorer 1000 v2's solar input (V/A/W, DC8020) and its two-panel connection rule. jackery.com returned HTTP 429 to WebFetch, and the store search did not list the 1000 v2.",
+  "The Anker SOLIX C1000 Gen 2's solar input voltage and current from Anker's own page. StormWatts gives only '600 W, 60 V max'. I did not reach Anker's page within the tool-call budget.",
+  "The BLUETTI Elite 100 mini and Pioneer Na solar input V/A, and the BLUETTI 350 W panel's Voc for the Elite 100 V2 / Elite 100 mini / Pioneer Na 350 W kits. These were not reached within the budget.",
+  "The compatibility content of the OutageReady, UnpluggedWatts and Dealectric pages, which failed with a self-signed certificate error in WebFetch, and Bash fetches were not permitted."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.5397450000000001
+ }
+}
