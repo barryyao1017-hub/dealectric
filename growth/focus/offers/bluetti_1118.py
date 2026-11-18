@@ -628,8 +628,13 @@ def literal(d):
     return "{" + "\n".join(lines)[1:].rstrip(",") + "},\n"
 
 
+LIVE = HERE / "data" / "bluetti-live.txt"   # slugs already published: every apply keeps them, whatever --group / --keep say
+
+
 def apply(groups, keep, need_test=True):
-    recs, dropped = records(groups, keep, need_test)
+    live = set(LIVE.read_text().split()) if LIVE.exists() else set()
+    allrecs, dropped = records(None, None, need_test)
+    recs = [d for d in allrecs if d["slug"] in live or ((not groups or d["_group"] in groups) and (keep is None or d["slug"] in keep))]
     path = ROOT / "src" / "products.py"
     s = open(path).read()
     i = s.find(BEGIN)
@@ -645,11 +650,13 @@ def apply(groups, keep, need_test=True):
     Cj = json.load(open(path))
     code = next(c for c in Cj["codes"] if c["brand"] == "BLUETTI" and c["code"] == "DEALECTRIC")
     ours = {row[1] for _, rows in GROUPS.values() for row in rows}
-    code["tests"] = [t for t in code["tests"] if t["product"] not in ours] + [d["_test"] for d in recs if "_test" in d]
+    # a newer test already in coupons.json (the daily sweep re-tests published slugs) stays; ours fills in the rest
+    newer = {t["product"]: t for t in code["tests"] if t["product"] in ours and any(d["slug"] == t["product"] and "_test" in d and t["date"] > d["_test"]["date"] for d in recs)}
+    code["tests"] = [t for t in code["tests"] if t["product"] not in ours] + [newer.get(d["slug"], d["_test"]) for d in recs if "_test" in d]
     with open(path, "w") as f:   # the layout tools/codes_merge.py writes: one code per line
         f.write('{\n "_notes": ' + json.dumps(Cj["_notes"], ensure_ascii=False) + ',\n "checked": ' + json.dumps(Cj["checked"]) + ',\n "codes": [\n')
         f.write(",\n".join("  " + json.dumps(c, ensure_ascii=False) for c in Cj["codes"]) + "\n ]\n}\n")
-    print(f"applied {len(recs)} records; not written: {dropped}")
+    print(f"applied {len(recs)} records ({len([d for d in recs if d['slug'] in live])} already live); not written: {dropped}")
 
 
 if __name__ == "__main__":
