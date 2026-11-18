@@ -514,7 +514,11 @@ def as_low_as_any(p):
             or (datetime.date.today() - datetime.date.fromisoformat(b["date"])).days > BESTOFFER_DAYS):
         return False
     c = best_offer(p)[0]
-    return not (c and borrowed_test(p, c)) and not any(x < link_price(p) - max(1.0, 0.01 * link_price(p)) for _, x in b["sellers"])
+    if c:   # the code price must rest on a cart test of this very product from the day of the check or the day before
+        t = last_test(c, p)
+        if borrowed_test(p, c) or (datetime.date.fromisoformat(b["date"]) - datetime.date.fromisoformat(t["date"])).days > 1:
+            return False
+    return not any(x < link_price(p) - max(1.0, 0.01 * link_price(p)) for _, x in b["sellers"])
 
 
 def lowest_tail(p):

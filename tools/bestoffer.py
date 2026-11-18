@@ -17,10 +17,12 @@ It writes src/bestoffer.json, which src/build.py reads (amazon_lead, best_seller
     python3.12 tools/bestoffer.py table [slug ...]        # what each page does now, from src/bestoffer.json
 
 The hand file is the same-item pass a person or model made over the cards the matcher let through:
-    {slug: {"asin": "B0...", "drop": ["merchant substring", ...], "beaten": ["seller", price], "note": "..."}}
+    {slug: {"asin": "B0...", "drop": ["merchant substring", ...], "keep": ["merchant substring", ...],
+            "beaten": ["seller", price], "add": [["seller", price], ...], "note": "..."}}
 "drop" removes a merchant's cards for that product (a sibling model, a bundle, a deal blog that is not a seller, a
 listing priced under 60% of the store's price at an unknown shop). Marketplace sellers (eBay, AliExpress, TikTok Shop,
 third-party sellers on Walmart or Newegg) and used or open-box listings never count, as on the rest of the site.
+For a kit or bundle no other seller's card counts unless "keep" names its merchant.
 """
 from __future__ import annotations
 
@@ -33,7 +35,7 @@ import build as B  # noqa: E402
 import buycompare as BC  # noqa: E402
 
 OUT = ROOT / "src" / "bestoffer.json"
-MARKET = ("tiktok", "ebay", "aliexpress", "temu", "alibaba", "mercari", "poshmark", "facebook", "usually $", "(€", "(£")
+MARKET = ("tiktok", "ebay", "aliexpress", "temu", "alibaba", "mercari", "poshmark", "facebook", "usually $", "(€", "(£", "pre-owned", "/ct")
 
 
 def margin(x: float) -> float:
@@ -71,10 +73,15 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
     ours = B.link_price(p)
     name = f"{p['brand']} {p['name']} {p['slug'].replace('-', ' ')}"
     drop = [d.lower() for d in hand.get("drop", [])]
+    # a kit or bundle: Shopping's matcher returns every bundle built on the same station, so another seller's card counts
+    # only when the hand pass names that merchant in "keep" (its title lists the same contents)
+    kit = "kit" in p["slug"] or "bundle" in p["slug"] or "+" in B.short_name(p)
+    only = [k.lower() for k in hand.get("keep", [])] if (kit or "keep" in hand) else None
     keep, dropped = [], []
     for c in cards:
         m = c["merchant"].lower()
-        if c["kind"] in ("used", "marketplace") or any(k in m for k in MARKET) or any(d in m for d in drop) or not BC.same_item(c["title"], name):
+        if (c["kind"] in ("used", "marketplace") or any(k in m for k in MARKET) or any(d in m for d in drop) or not BC.same_item(c["title"], name)
+                or (only is not None and c["kind"] != "brand" and not any(k in m for k in only))):
             dropped.append(c)
         else:
             keep.append(c)
@@ -83,6 +90,10 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
     own_code = [float(m.group(1).replace(",", "")) for c in keep if c["kind"] == "brand"
                 for m in [re.search(r"\$([\d,]+(?:\.\d\d)?) with code", c.get("promo") or "")] if m]
     brand_cards += [x for x in own_code if x >= 0.85 * p["price"]]
+    if kit:   # the brand's cards for a kit mix every variant of the listing: take one only when it restates the cart's no-code
+              # total or shows the brand's own code price level with ours (BLUETTI's Google Shopping code, 11-18)
+        ref = [cart.get("store", p["price"])] + ([ours] if ours is not None else [])
+        brand_cards = [x for x in brand_cards if any(abs(x - r) <= 0.015 * r for r in ref)]
     store = min([cart.get("store", p["price"])] + [x for x in brand_cards if x <= p["price"] + 0.01])
     sellers: dict[str, float] = {}
     for c in keep:
