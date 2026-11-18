@@ -296,19 +296,21 @@ PRODUCTS = [
  # (build.py buy_url); tools/linkcheck.py and tools/pricecheck.py read this variant's availability.
  "cart_variant": 46352232349915,
  # DLC-77 fact fix: in the description, catalog card and agent note, so a stale stored copy still says it is ending
- "phase_out": "On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early November 2026.",
+ "phase_out": "Discontinued: BLUETTI's AC200L listing is marked Discontinued and was not orderable on 2026-11-18; the Apex 200 replaces it.",
+ # DLC-318 (2026-11-18): while it is sold out, /go/ opens the 2 kWh model BLUETTI still takes orders for at the same price
+ "sold_out_alt": ("bluetti-elite-200-v2", "The same 2 kWh class at the same $899 and still orderable: 2,073.6 Wh LiFePO4, 2,600 W and 6,000+ cycles, "
+                  "but no expansion port and no TT-30 RV outlet. For those two, see the Apex 200."),
  # DLC-73 (2026-11-06): the product page links the successor right under the summary
  "newer": ("bluetti-apex-200", "BLUETTI's replacement for the AC200L, on sale since 2026-11-04: 2,560 Wh, 3,200 W, the same TT-30 RV outlet, "
-           "expandable to 33 kWh, at $1,099 (launch price to Nov 18), $200 more than the AC200L's remaining stock."),
+           "expandable to 33 kWh, at $1,099 on 2026-11-18, $200 more than the AC200L's last price."),
  "specs": [("Capacity", "2,048 Wh, expandable to 8,192 Wh (2× B300); 7,577.6 Wh with 2× B300K"), ("Chemistry", "LiFePO4, 3,000+ cycles to 80%"), ("AC output", "2,400 W continuous; 3,600 W Power Lifting; 4× 120 V + 1× TT-30 RV outlet"),
            ("USB", "2× USB-C 100 W, 2× USB-A 18 W"), ("DC", "12 V / 10 A car port; 48 V / 8 A DC port"), ("Solar input", "Up to 1,200 W, 12–145 V, 15 A"), ("AC input", "2,400 W; 80% in 45 min, full in ~1.5 h"),
            ("UPS", "20 ms"), ("Size / weight", "420 × 280 × 366 mm, 28.3 kg"), ("App", "Yes")],
  "warranty": "5 years (proof of purchase from an official store)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping",
  "summary": "The expandable 2 kWh BLUETTI: same price as the Elite 200 V2 but it takes expansion batteries up to 8 kWh and has an RV outlet.",
  "fit": "RV owners and anyone planning to grow a backup system.",
- "caveats": ["BLUETTI is replacing the AC200L with the Apex 200 (US launch in early November 2026). Its main AC200L listing says "
-             "Discontinued, while BLUETTI still sells remaining units at $899 from a separate page that showed no working buy button "
-             "on 2026-10-28, so our buy link opens BLUETTI's checkout with the AC200L in the cart.",
+ "caveats": ["Discontinued and sold out: BLUETTI's AC200L listing is marked Discontinued and was not orderable on 2026-11-18, and the "
+             "separate page that sold remaining units at $899 is gone. BLUETTI replaced it with the Apex 200, on sale since 2026-11-04.",
              "Fewer cycles (3,000+) than the Elite 200 V2 (6,000+).", "Heavier at 28 kg."]},
 
 {"slug": "bluetti-elite-30-v2", "cart_variant": 47190054568155, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
@@ -342,7 +344,7 @@ PRODUCTS = [
  "warranty": "5 years (proof of purchase from an official store)", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping",
  "summary": "The mid-size BLUETTI: 1.1 kWh and an 1,800 W inverter that runs most kitchen appliances, at a price that is often discounted.",
  "fit": "Weekend trips, power-tool charging, short outages.",
- "caveats": ["Pre-order: BLUETTI's page says the AC180 ships from December 14 (read 2026-11-17).", "No expansion port; it can only be topped up from a B80/B230/B300 battery in Power Bank Mode.", "$449 is the AC180 alone in BLUETTI's cart on 2026-11-02 and 11-03, after BLUETTI's automatic $50 cart discount on its $499 store price; BLUETTI gives no end date. Code DEALECTRIC was rejected on it in the 11-02 cart test (BLUETTI excludes items on sale). The store's $599 option is a bundle with a 100 W solar panel."]},
+ "caveats": ["Pre-order: BLUETTI's page says the AC180 ships from December 14 (read 2026-11-17).", "No expansion port; it can only be topped up from a B80/B230/B300 battery in Power Bank Mode.", "$549 is BLUETTI's US store price for the AC180 alone on 2026-11-18. It was $499 from 2026-11-07 to 11-15, and $449 in BLUETTI's cart on 2026-11-02 and 11-03 after an automatic $50 cart discount. Code DEALECTRIC was last cart-tested on it at $499 on 2026-11-15. The store's $679 option is a bundle with a 100 W solar panel."]},
 
 # ---------------- ALLPOWERS (CJ 7797916) ----------------
 # ALLPOWERS records carry no list_price (DLC-75/76, Barry 2026-10-28: "Drop them"): its compare-at prices were never seen
@@ -4529,15 +4531,17 @@ PRODUCTS = [
  "category": 'travel-adapter',
  "name": 'TESSAN 65W GaN Universal Travel Adapter, 2 AC + 3× USB-C + 2× USB-A (WTA09)',
  "model": 'WTA09',
- "url": 'https://www.tessan.com/products/65w-gan-universal-travel-adapter-wta09',
- "price": 27.99, "list_price": 49.99,
- "verified": '2026-11-17',
+ # DLC-318 (2026-11-18): $27.99 was this listing's 28 W version (SKU TS-WTA08). The 65 W version is the variant named
+ # in the URL, so tools/pricecheck.py reads its price and not the cheaper sibling's.
+ "url": 'https://www.tessan.com/products/65w-gan-universal-travel-adapter-wta09?variant=51244789793080',
+ "price": 59.99,
+ "verified": '2026-11-18',
  "specs": [('Plug sliders', 'Type C (most of Europe incl. Italy, Switzerland), Type G (UK, Ireland), Type I, Type A'), ('AC outlets', '2: universal front outlet (all plugs except South Africa) and a 2-prong side outlet (US/Japan)'), ('USB-C3', '65 W max (single-port use)'), ('USB-C1, C2, A1, A2', '15 W max per port'), ('Protection', 'Double 10 A fuse; no surge protection'), ('Voltage', 'For 100–250 V devices; not a voltage converter'), ('Size', '2.72 × 1.97 × 2.16 in'), ('Weight', '7.18 oz')],
  "warranty": "12 to 24 months depending on the model, per TESSAN's warranty policy; the exact term for each model is printed in the manual in the box",
  "returns": 'Within 7 business days of delivery if unused and in the original packaging, or within 30 business days if the product has a manufacturing defect; proof of purchase required, and TESSAN sends a return shipping label once the return is approved',
  "summary": 'Universal slider adapter with Type C and Type G plugs for all of Europe, including the UK and Ireland, two AC outlets and a 65 W USB-C port (C3) that charges a USB-C laptop without its own brick.',
  "fit": 'Travellers to the UK plus the continent, or anyone charging a USB-C laptop, phone and more from one wall socket.',
- "caveats": ['Only USB-C3 gives 65 W, and only when used alone; the other four USB ports stop at 15 W each.', "Its Type C pins fall under the Europlug standard's 2.5 A at 250 V (about 575 W on 230 V); TESSAN does not state a higher pin rating, so keep hair dryers and other heat tools off it.", 'Not a voltage converter: devices must accept 100–250 V.', 'The side AC outlet is 2-prong only; a 3-prong US cord needs the front outlet.']},
+ "caveats": ["TESSAN's listing sells two versions: the 65 W one this page covers ($59.99 on 2026-11-18) and a 28 W one (SKU TS-WTA08, $27.99), which cannot charge a laptop at 65 W.", 'Only USB-C3 gives 65 W, and only when used alone; the other four USB ports stop at 15 W each.', "Its Type C pins fall under the Europlug standard's 2.5 A at 250 V (about 575 W on 230 V); TESSAN does not state a higher pin rating, so keep hair dryers and other heat tools off it.", 'Not a voltage converter: devices must accept 100–250 V.', 'The side AC outlet is 2-prong only; a 3-prong US cord needs the front outlet.']},
 
 {"slug": 'sungoldpower-sgr-8k10e-off-grid-solar-kit',
  "brand": 'Sun Gold Power',
