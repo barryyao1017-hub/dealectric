@@ -1,0 +1,87 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI AC180's solar input is capped at 10 A (500W max, Voc 12-60 VDC), so the two 200 W panels in the AC180 + 2× 200 W kit only reach about 400 W if they are wired in series. Wired in parallel at roughly 20 V panel voltage, the 10 A cap holds them to about 200 W, and the second panel adds almost nothing in full sun.",
+ "standout": 2,
+ "standout_why": "I compared against the two cited pages. StormWatts (stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts, 2026-11-08) already explains series versus parallel against each station's amp limit for the Elite 200 V2 (12-60 V, 20 A), the DELTA 3 Max (13 A, Isc 18 A) and the Jackery 2000 v2 (400 W cap). It does not cover the AC180 or the single-panel ALLPOWERS SP037 kits. Our own page (dealectric.com/solar-generator-with-panels-included) lists the AC180 + 2× 200 W kit with no solar input spec. It applies the amp-band logic only to the Anker C1000 Gen 2 (8.2 A band, about 164 W). So the mechanism is partly known to rivals, but nobody has applied it to the AC180 kit or to the one-panel 400 W kits.",
+ "decides": "This argues against the AC180 + 2× 200 W kit (link price $1,170.40, pre-order, dispatch Dec 14, 2026) for a shopper who will plug both panels in side by side. Its 400 W only appears with series wiring, and the kit is also a pre-order. It supports the single-panel ALLPOWERS kits that ship now: R2500 V2 + SP037 at $913.49 and S2000 Pro + SP037 at $917.93. There, one 400 W panel rated at 37.4 V goes into one XT60 input, so there is no series-or-parallel choice to get wrong. Among the 2× 200 W kits, the Elite 200 V2 (20 A per StormWatts) has the most room for parallel wiring of the BLUETTI options rivals cover. One pick-level fact for the writer: on the S2000 Pro + SP037 page, ALLPOWERS's own copy says the S2000 Pro takes '2* solar panel 200W in parallel (400W max)' and '650W max' with more panels. The kit's one 400 W panel is therefore already at the figure ALLPOWERS gives for a two-panel setup.",
+ "candidates": [
+  "BLUETTI AC180 + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 2× 200 W",
+  "BLUETTI Pioneer Na + 2× 200 W",
+  "ALLPOWERS R2500 V2 + SP037 400 W",
+  "ALLPOWERS S2000 Pro + SP037 400 W",
+  "ALLPOWERS P1800 + SP037 400 W",
+  "EcoFlow DELTA 3 Max + 2× 220 W",
+  "Jackery Explorer 2000 v2 + 2× SolarSaga 200 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI AC180",
+   "label": "Solar input limit",
+   "value": "500 W max, Voc 12-60 VDC, 10 A",
+   "source": "https://www.bluettipower.eu/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station (BLUETTI EU)",
+   "read": "2026-11-17",
+   "note": "The page says verbatim: 'Solar Input: 500W Max., VOC 12-60VDC, 10A'. The US page (bluettipower.com/products/ac180) returned HTTP 429 twice. A search snippet of the US page showed the same '500W Max., VOC 12-60VDC, 10A', but I could not open it. The page gives no series or parallel guidance."
+  },
+  {
+   "product": "BLUETTI AC180 + 2× 200 W",
+   "label": "Usable solar watts by wiring (arithmetic at the 10 A cap)",
+   "value": "about 200 W in parallel; up to about 400 W in series",
+   "source": "https://www.bluettipower.eu/pages/ac180",
+   "source_title": "BLUETTI AC180 Portable Power Station (BLUETTI EU)",
+   "read": "2026-11-17",
+   "note": "This is arithmetic, not a test. Parallel: two 12 V-class 200 W panels run at about 20 V, so 10 A × ~20 V ≈ 200 W, about half of the 400 W of panels. Series: the panel voltages add, so about 10 A × ~40 V ≈ 400 W. StormWatts gives the SP200L at Voc 24.6 V and Isc 10.8 A, so two in series are about 49 V, which is under the 60 V ceiling. I could not confirm which BLUETTI 200 W panel model ships in the AC180 kit."
+  },
+  {
+   "product": "BLUETTI AC180 + 2× 200 W",
+   "label": "Kit listing and store price",
+   "value": "'AC180+2*200W Solar | 1800W,1152Wh,400W Solar Kit' $1,232.00, available",
+   "source": "https://www.bluettipower.com/products/ac180",
+   "source_title": "BLUETTI AC180 Solar Portable Power Station | 1,800W 1,152Wh",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py (Shopify product JSON). This matches the store price in the Kits table. Separately, the Kits table lists 'AC 400 W' for this kit and for the Elite 200 V2 + 2× 200 W. That looks like the panel wattage entered as AC output; the station is rated 1,800 W AC."
+  },
+  {
+   "product": "BLUETTI SP200L (200 W panel)",
+   "label": "Panel electrical figures and series voltage",
+   "value": "Voc 24.6 V, Isc 10.8 A; two in series about 49 V (about 56.5 V at -4°F by StormWatts' assumed coefficient)",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "This is a rival page's figure, used here only as the panel input for the series-voltage arithmetic. StormWatts states it for the Elite 200 V2 kit."
+  },
+  {
+   "product": "ALLPOWERS S2000 Pro + SP037 400 W",
+   "label": "Maker's stated solar wiring",
+   "value": "'supports to be charged by 2* solar panel 200W in parallel (400W max)... 650W max'",
+   "source": "https://iallpowers.com/products/allpowers-solar-generator-kit-2400w-s2000-pro-sp037-400w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 2400W (S2000 Pro + SP037 400W Solar Panel)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on the ALLPOWERS US store, which showed $1,043.10 and available. The same text says the bundled panel is polycrystalline. The kit's one SP037 goes into the single XT60 input, so the shopper has no wiring choice to make."
+  },
+  {
+   "product": "ALLPOWERS SP037 400 W",
+   "label": "Panel operating voltage",
+   "value": "37.4 V",
+   "source": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel",
+   "source_title": "ALLPOWERS 400W Foldable Solar Panel SP037",
+   "read": "2026-11-17",
+   "note": "The store text says verbatim: 'ALLPOWERS 400W solar panel provides 37.4V huge power for your solar generators'. Read with storecheck.py, which showed $379.05 and available. 400 W / 37.4 V ≈ 10.7 A at rated output, so one panel needs about 10.7 A at a single input."
+  }
+ ],
+ "unsourced": [
+  "The AC180's current below 32 V. A Medium review by 'vancamping' reportedly measured 8 A at low voltage and 10 A from 32 V; the page returned 403, so I left it out. The BLUETTI community thread 'AC180 limits solar to 8amps below 32volts' now redirects to forum.bluettipower.com and I did not open it.",
+  "The AC180 user manual's solar section. The PDF at invertersrus.com downloaded, but I could not extract its text in this session.",
+  "The BLUETTI Pioneer Na input current. The US manual PDF at s4.bluettipower.com is over 10 MB and could not be fetched. A search snippet gave 12-60 V, and an unopened retailer listing gave 10 A. If it is 10 A, the Pioneer Na + 2× 200 W kit (ships now, $1,423.10) has the same series-only catch as the AC180.",
+  "The ALLPOWERS P1800, R2500 V2 and R3500 solar input current (snippets gave 11-60 V, 13 A, 650 W for the P1800 and 12-150 V, 13 A, 1,000 W for the R2500 V2). iallpowers.com product pages returned HTTP 429 and I did not open a manual.",
+  "The SP037's current Voc and Isc on the US page. Snippets gave Voc 45.3 V and Isc 11.45 A for the V3 / May 2025 cell revision, and Voc 36.5 V and Isc 14.42 A for the older one. The US product page returned 429.",
+  "Which BLUETTI 200 W panel model (PV200D or SP200L) ships in the AC180 + 2× 200 W and Pioneer Na + 2× 200 W kits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.6401412000000002
+ }
+}
