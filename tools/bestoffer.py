@@ -35,7 +35,7 @@ import build as B  # noqa: E402
 import buycompare as BC  # noqa: E402
 
 OUT = ROOT / "src" / "bestoffer.json"
-MARKET = ("tiktok", "ebay", "aliexpress", "temu", "alibaba", "mercari", "poshmark", "facebook", "usually $", "(€", "(£", "pre-owned", "/ct")
+MARKET = ("tiktok", "ebay", "aliexpress", "temu", "alibaba", "mercari", "poshmark", "facebook", "usually $", "pre-owned", "refurbished", "/ct")
 
 
 def margin(x: float) -> float:
@@ -80,7 +80,8 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
     keep, dropped = [], []
     for c in cards:
         m = c["merchant"].lower()
-        if (c["kind"] in ("used", "marketplace") or any(k in m for k in MARKET) or any(d in m for d in drop) or not BC.same_item(c["title"], name)
+        if (c["kind"] in ("used", "marketplace") or any(k in m for k in MARKET) or m.startswith("(")   # "(€250)": a foreign-currency listing
+                or any(d in m for d in drop) or not BC.same_item(c["title"], name)
                 or (only is not None and c["kind"] != "brand" and not any(k in m for k in only))):
             dropped.append(c)
         else:
@@ -128,6 +129,8 @@ def decide(p: dict, cards: list[dict], hand: dict, cart: dict, chat: dict | None
         entry["beaten"] = [low[0], low[1]]
     elif ours is not None and low and low[1] <= ours + margin(ours):
         entry["tie"] = [low[0], low[1]]   # within $1 or 1% of ours: ours is as low as any, but not "the lowest"
+    if ours is not None and sellers.get("Amazon") is not None and abs(sellers["Amazon"] - ours) <= margin(ours) and "beaten" not in entry:
+        entry.setdefault("tie", ["Amazon", sellers["Amazon"]])   # level with Amazon: neither leads on price, ours stays first
     coded = bool(B.best_offer(p)[0])
     if coded and ours is not None and store <= ours + margin(ours) and "beaten" not in entry:
         entry["tie"] = [f"{B.store_host(p)}'s own price or code without the link", store]
