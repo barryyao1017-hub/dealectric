@@ -1,0 +1,123 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Anker SOLIX S5000 kit delivers its full 4,500 W only from the 240 V L14-30R outlet (2,400 W at a 120 V 5-20R, 3,600 W at the TT-30R), accepts only BP5000 expansion batteries and does not work with Anker's Home Power Panel (checked against the cited StormWatts page only; the other results were not opened).",
+ "standout": 2,
+ "standout_why": "Compared against the one cited rival page I could open, StormWatts '5 kWh-Class Solar Generators Compared on Solar Input' (2026-11-16). It already has per-port solar voltage, current and watt limits for the S5000, DELTA Pro 3, F3800 Plus and Explorer 5000 Plus, panel Voc figures and series/parallel layouts, so solar-port pairing is not new. It gives only total AC output at 120/240 V and has no per-outlet watt limits, no connector types or cables, no expansion-battery rule for the S5000 and no home-panel compatibility. The cited Anker F3800 Plus bundle page covers only the F3800 Plus. The cited EcoFlow bundle page returned HTTP 429 on four tries, and the uncited results (solarwaypoint, solargenreview, outletpowered, theoutageready, powerlockdown, powersized) were not opened, so the gap is verified against StormWatts only.",
+ "decides": "It confirms the Anker SOLIX S5000 + 2x 400 W kit as the linkable row that clears 4,000 W, with a condition: a single 4,000 W load must be a 240 V appliance on the L14-30R, because Anker caps 120 V at 3,600 W (TT-30R) and 2,400 W (5-20R). Later expansion is BP5000 only, and home tie-in is by transfer switch or inlet box, not Anker's Home Power Panel. It does not flip the pick against the EcoFlow DELTA Pro 3 + 2x 400 W bundle, because EcoFlow's per-outlet limits could not be opened. Shipping conflict to resolve before the page names a pick: Anker's kit page today says orders placed on or after November 6 ship within 11-12 weeks and the 400 W panel ships separately, while the 'Kits we link' table has this kit as 'ships now'. The BLUETTI Elite 400 kits fit only on battery size (3,840 Wh); their 2,600 W AC is below 4,000 W.",
+ "candidates": [
+  "Anker SOLIX S5000 + 2x 400W Solar Panel",
+  "EcoFlow DELTA Pro 3 + 2x 400W Solar Panel",
+  "Anker SOLIX F3800 Plus + 400W Solar Panel",
+  "Jackery Explorer 5000 Plus + 2x SolarSaga 500W",
+  "BLUETTI Elite 400 + 2x 350W / 500W / 2x 200W / 350W kits",
+  "BLUETTI 5kWh RV Kit + 100W panels"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Maximum output per outlet type (maker FAQ)",
+   "value": "120 V NEMA 5-20R: 2,400 W; 120 V TT-30R: 3,600 W; 240 V L14-30R: 4,500 W",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel",
+   "source_title": "Anker SOLIX S5000 + 400W Bifacial Solar Panel - Anker SOLIX US",
+   "read": "2026-11-18",
+   "note": "A single load above 3,600 W has to be a 240 V load on the L14-30R. The same FAQ says loads above 4,500 W trigger overload protection and the 8,000 W peak 'lasts only a fraction of a second'."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Expansion battery compatibility (maker FAQ)",
+   "value": "BP5000 only: 'Anker SOLIX S5000 supports only BP5000 expansion batteries. Third-party batteries and previous models, including BP3800 and BP3000, are incompatible.'",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel",
+   "source_title": "Anker SOLIX S5000 + 400W Bifacial Solar Panel - Anker SOLIX US",
+   "read": "2026-11-18",
+   "note": "BP5000 add-on was listed at $2,000.00 on the same page that day. Anker's S5000 landing page lists 'S5000 + 1x Battery (10kWh)' and 'S5000 + 5x Batteries (30kWh)'."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Home panel compatibility (maker FAQ)",
+   "value": "Not compatible with the Anker SOLIX Home Power Panel; connects to a home electrical panel 'via a compatible transfer switch or power inlet box'",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel",
+   "source_title": "Anker SOLIX S5000 + 400W Bifacial Solar Panel - Anker SOLIX US",
+   "read": "2026-11-18",
+   "note": "Anker's Home Backup Kit add-on was listed at $499.99 on the same page that day."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Solar input ports (maker landing page)",
+   "value": "Solar Panel Input 1: 11-60 V, 17 A max, 1,000 W max; Solar Panel Input 2: 16-165 V, 17 A max, 2,000 W max; 3,000 W solar max",
+   "source": "https://www.ankersolix.com/s5000",
+   "source_title": "Anker SOLIX S5000 (landing page)",
+   "read": "2026-11-18",
+   "note": "Port names on the page: 'High-PV Input Port' and 'Low-PV / Car Input Port'. The same page lists generator input at 4,500 W max for the Anker Smart Generator and for third-party generators. StormWatts already publishes these port limits."
+  },
+  {
+   "product": "Anker SOLIX S5000 + 2x 400W Solar Panel",
+   "label": "Which port takes the kit's two panels (arithmetic)",
+   "value": "Two in series: 115.2 V open-circuit, which fits only Solar Input 2 (16-165 V). A single panel at 57.6 V sits 2.4 V under Solar Input 1's 60 V ceiling.",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input | StormWatts",
+   "read": "2026-11-18",
+   "note": "Arithmetic: 2 x 57.6 V = 115.2 V, using StormWatts's figure for the Anker PS400 (57.6 V open-circuit, 48 V / 8.33 A operating). Anker's US kit page does not name the panel model or give its Voc. StormWatts states this layout already and adds that a single PS400 on port 1 may exceed 60 V in cold weather, so this cell is not new."
+  },
+  {
+   "product": "Anker SOLIX S5000 + 2x 400W Solar Panel",
+   "label": "Kit price and shipping text on the maker's page",
+   "value": "$3,599.99; 'Orders placed on or after November 6th will ship within 11 - 12 weeks.' 'If your order includes the 400W solar panel, it will ship separately.'",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel",
+   "source_title": "Anker SOLIX S5000 + 400W Bifacial Solar Panel - Anker SOLIX US",
+   "read": "2026-11-18",
+   "note": "The price matches the 'Kits we link' table. The shipping text conflicts with the table's 'ships now' and needs a recheck. Other variants that day: station $2,599.99; + 400W Bifacial panel $3,099.99; + Expansion Battery + 2x 400W $5,599.99. A promo on the page read 'Buy $3,000+: Get a 200W Solar Panel'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input and maker-stated limits",
+   "value": "2 MPPT inputs, each 11-165 V, 17 A max, 1,600 W max (3,200 W total); 'exceeding 165V may cause damage to the solar input ports'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-expansion-battery-400w-solar-panel",
+   "source_title": "Anker SOLIX F3800 Plus + Expansion Battery + 400W Solar Panel - Anker SOLIX US",
+   "read": "2026-11-18",
+   "note": "The same page says the Anker SOLIX Generator Adapter is required for generator input and supports only a single F3800 Plus, Storm Guard requires a Home Power Panel, and existing rooftop solar cannot charge it during an outage (panels of 11-165 V connect directly). This bundle showed 'Sold Out' with no price loaded."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input and box contents (maker page)",
+   "value": "Solar: 1,000 W max, 12-60 V, 20 A max; AC 2,600 W rated; box lists station, AC charging cable (1.8 m), grounding screw and user manual, with no solar cable",
+   "source": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "source_title": "BLUETTI Elite 400 Portable Power Station | 3,840Wh, 2,600W",
+   "read": "2026-11-18",
+   "note": "2,600 W is below the 4,000 W in the question, so these kits qualify only on battery size (3,840 Wh). The 60 V ceiling means any panel pair totalling more than 60 V open-circuit cannot be wired in series on this station."
+  },
+  {
+   "product": "BLUETTI Elite 400 + 2x 350W",
+   "label": "Kit page: price, box list and dispatch text",
+   "value": "$2,448.00; 'The Elite 400 is expected to ship in mid-January for orders placed on or after Nov. 18.'",
+   "source": "https://www.bluettipower.com/products/elite-400-2-350w",
+   "source_title": "Elite 400+2*350W | BLUETTI",
+   "read": "2026-11-18",
+   "note": "The price matches the table's store price. The page's 'In the box' section lists only the station's items; it does not name the panel model, a solar cable or a parallel cable. The page also carries an older line, 'Elite 400 ships from mid-December'."
+  },
+  {
+   "product": "general",
+   "label": "Compatibility cells the cited rival already states (do not repeat as new)",
+   "value": "DELTA Pro 3: High-PV 30-150 V / 15 A / 1,600 W, Low-PV 11-60 V / 20 A / 1,000 W, EcoFlow 400W panel 48 V open-circuit. Explorer 5000 Plus: two Low-PV ports of 16-60 V / 10.5 A / 600 W each, and Jackery's FAQ allows no more than two SolarSaga 500 X.",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input | StormWatts",
+   "read": "2026-11-18",
+   "note": "StormWatts's figures, read on its page and not re-opened on the makers' pages. Arithmetic for the EcoFlow bundle: 2 x 48 V = 96 V in series, inside the High-PV range. StormWatts puts the Jackery pair at about 876 W because of the 10.5 A port limit."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow DELTA Pro 3 + 2x 400W bundle: today's price, shipping state, box cables and per-outlet watt limits. us.ecoflow.com returned HTTP 429 on two WebFetch and two storecheck attempts, and the manual PDFs found (skanbatt.no, bsai.com.mx) could not be read (download blocked; file over the size limit).",
+  "Anker S5000 kit panel: model name, Voc/Isc and connector for the '400W Solar Panel' in the 2x bundle, and whether an MC4-to-XT-60 cable is in the box. Anker's US kit page has an empty 'What's in the Box' section, and the Anker service article on series/parallel wiring returned 404.",
+  "Anker S5000 solar port connector types and Anker's own series/parallel rule. Neither the landing page nor the kit page states them; no S5000 manual was found.",
+  "BLUETTI PV350 and SORA 500 panel Voc/Isc, needed to say whether the Elite 400 + 2x 350 W kit must be wired in parallel under the 60 V / 20 A input. The BLUETTI PV350 page ended in a redirect loop, and the kit page names no panel model or cable.",
+  "BLUETTI 5kWh RV Kit (RV5 Power Hub): PV input range, 120 V-only output and install requirements from BLUETTI's own page. Only retailer search snippets were seen and no page was opened, so no figures are reported.",
+  "BLUETTI Elite 400 output voltage (120 V only or 120/240 V), outlet list and expansion support. The maker page read today does not state them.",
+  "Jackery Explorer 5000 Plus + 2x 500 W bundle on Jackery's US store (price, shipping, cables). Not opened within the call budget.",
+  "The uncited results (solarwaypoint, solargenreview, outletpowered, theoutageready, powerlockdown, powersized, second StormWatts article) were not opened, so whether any of them states the S5000 per-outlet limits, the BP5000-only rule or the Home Power Panel exclusion is unchecked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.708539899999999
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 600 W in BLUETTI's Apex 300 + 3× 200 W kit cannot be wired as one series string (3 × 24.6 V Voc = 73.8 V against a 12–60 V solar input), while the ALLPOWERS 600 W kits use one 44 V folding panel on one MC4-to-XT60 cable into inputs rated 1,000 W (R2500 V2) and 2,000 W (R3500).",
+ "standout": 1,
+ "standout_why": "Compared against StormWatts (cited), OutageReady, and Dealectric's own under-$3,000 (cited), panels-included and under-$1,000 pages. StormWatts already gives the SP200L's Voc 24.6 V and Isc 10.8 A and does the series/parallel arithmetic for two panels on the Elite 200 V2, and it flags a kit whose panel exceeds the station's cap (Explorer 2000 v2 + 500 W). OutageReady states the general rule that series adds voltage and the input range must not be exceeded. Dealectric's under-$1,000 page already says the P1800 is rated 650 W so its 600 W panel is not clipped, and the under-$3,000 page says the R3500 takes up to 2,000 W. What none of them has is the three-panel case for a 600 W BLUETTI kit, and none gives Voc, Isc or wiring for the EcoFlow DELTA 3800 Gen4's 4 × 160 W panels. So rivals hold the method and most of the numbers; only the 600 W-specific application is new. I could not open ALLPOWERS's full spec tables today (HTTP 429), so the ALLPOWERS side rests on listing text only.",
+ "decides": "It confirms rather than changes the pick. The ALLPOWERS kits that ship now deliver their 600 W as a single SP039 panel with the cable in the box, so there is no wiring decision: the R3500 + SP039 ($1,753.93 link price, $1,993.10 store) runs at 30% of its 2,000 W solar rating. The BLUETTI Apex 300 + 3× 200 W ($2,279.05 link price, $2,399.00 store, pre-order to late January 2027) needs its three panels split across the station's two solar inputs, because three in series exceed 60 V on BLUETTI's own range. That is a second reason, after the dispatch date, to name it as the wait-for option and not the pick. The R2500 V2 + SP039 (pre-order, Dec 11, 2026) fits its 1,000 W input with room to spare.",
+ "candidates": [
+  "ALLPOWERS R3500 + SP039 600 W kit",
+  "ALLPOWERS R2500 V2 + SP039 600 W kit",
+  "ALLPOWERS P1800 + 600 W kit",
+  "BLUETTI Apex 300 + 3× 200 W kit",
+  "EcoFlow DELTA 3800 Gen4 + 4× 160 W kit",
+  "ABOK Ark2000 600 W kit",
+  "ABOK Elux1 600 W kit"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input limits in BLUETTI's own compatibility table",
+   "value": "2,400 W max, 40 A max input current, 12–60 V",
+   "source": "https://www.bluettipower.com/blogs/news/connecting-solar-panels-to-solar-generator",
+   "source_title": "Connecting solar panels to solar generator (BLUETTI blog, published 2026-11-04)",
+   "read": "2026-11-18",
+   "note": "Table row verbatim: 'Apex 300 2400 W 40 A 12 V - 60 V'. The same page says to 'Ensure the total voltage stays within the generator's range' and that series wiring raises voltage while parallel raises current. It does not mention Voc, over-voltage behaviour or clipping."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Number of built-in solar inputs, per StormWatts",
+   "value": "two native 1,200 W inputs",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-18",
+   "note": "StormWatts' wording, dated 2026-11-08. Consistent with BLUETTI's 2,400 W / 40 A total, but BLUETTI's blog table does not split the figure per port."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Open-circuit voltage and short-circuit current, per StormWatts",
+   "value": "Voc 24.6 V, Isc 10.8 A",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-18",
+   "note": "StormWatts names the SP200L as the panel in BLUETTI's 200 W kits, including Apex 300 + 2× 200 W. BLUETTI's blog lists the SP200L only as 200 W with 23.40% cell efficiency, without Voc or Isc."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 3× 200 W kit",
+   "label": "Three 200 W panels in one series string against the 12–60 V input",
+   "value": "73.8 V Voc, 13.8 V over the 60 V ceiling",
+   "source": "https://www.bluettipower.com/blogs/news/connecting-solar-panels-to-solar-generator",
+   "source_title": "Connecting solar panels to solar generator (BLUETTI blog)",
+   "read": "2026-11-18",
+   "note": "Arithmetic: 3 × 24.6 V (StormWatts' SP200L Voc) = 73.8 V against BLUETTI's 12–60 V range. Two in series = 49.2 V, which fits; StormWatts puts two in series at about 56.5 V on a −4°F morning using its own assumed −0.33%/°C coefficient. Three in parallel = 3 × 10.8 A = 32.4 A Isc, under the 40 A total. A layout inside the published numbers is two in series on one input and the third on the other. This assumes the kit's panels are SP200L, which the listing does not state."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 3× 200 W kit",
+   "label": "Store price and listing line",
+   "value": "$2,399.00 (compare-at $2,899.00), listed '3,840W | 2,764.8Wh | 600W Solar', available",
+   "source": "https://www.bluettipower.com/products/apex-300-3-200w",
+   "source_title": "Apex 300+3*200W | BLUETTI US",
+   "read": "2026-11-18",
+   "note": "Read with storecheck.py. The product page says the Apex 300 'is expected to ship in late January for orders placed on or after Nov. 14'. The page's '4,000W solar input' headline 'Requires a SolarX 4K', which this kit does not include."
+  },
+  {
+   "product": "ALLPOWERS SP039 600 W panel",
+   "label": "Panel voltage, connector and cables in the box, from the store listing",
+   "value": "44 V, MC4 output; box holds an MC4-to-XT60 cable and a 1.5 m MC4 extension cable; 6 folding sections, 27.5 lb",
+   "source": "https://iallpowers.com/products/allpowers-sp039-600w-monocrystalline-portable-solar-panel",
+   "source_title": "ALLPOWERS 600W Foldable Solar Panel SP039",
+   "read": "2026-11-18",
+   "note": "Listing text returned by the store's search endpoint via storecheck.py; the full product page returned HTTP 429 on every attempt. ALLPOWERS's wording is 'provides 44V huge power' and does not say whether 44 V is Voc or operating voltage. Panel alone $599.00."
+  },
+  {
+   "product": "ALLPOWERS R2500 V2 + SP039 600 W kit",
+   "label": "Station solar input rating against the kit's 600 W panel",
+   "value": "1,000 W max via XT60; the 600 W panel is 60% of the rating",
+   "source": "https://iallpowers.com/products/allpowers-r2500-v2-600w-solar-panel-2500w-solar-generator-kit",
+   "source_title": "ALLPOWERS R2500 V2 + 600W Solar Panel | 2500W Solar Generator Kit",
+   "read": "2026-11-18",
+   "note": "Listing text verbatim: 'Maximum 1000W solar input via XT60 port'. Arithmetic: 600 / 1,000 = 60%. Store price $1,228.05 read the same way. Read via storecheck.py search; full page returned HTTP 429."
+  },
+  {
+   "product": "ALLPOWERS R3500 + SP039 600 W kit",
+   "label": "Station solar input rating against the kit's 600 W panel",
+   "value": "2,000 W max solar charge; the 600 W panel is 30% of the rating",
+   "source": "https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp039-600w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 3200W (R3500 + SP039 600W Solar Panel)",
+   "read": "2026-11-18",
+   "note": "Listing text verbatim: 'Maximum 2000W solar charge in 2.5 hours'. That claim needs 2,000 W of panels; this kit has 600 W. Arithmetic at rated output: 3,168 Wh / 600 W = 5.3 hours of full sun; real output is lower. Store price $1,993.10 read the same way. Read via storecheck.py search; full page returned HTTP 429."
+  },
+  {
+   "product": "ALLPOWERS P1800 + 600 W kit",
+   "label": "Store listing and price",
+   "value": "$798.00 (compare-at $1,059.98), available; listing says 'The included 600W solar panel'",
+   "source": "https://iallpowers.com/products/allpowers-1800w-solar-generator-p1800-1024wh-with-600w-solar-panel",
+   "source_title": "ALLPOWERS 1800W Solar Generator P1800 1024Wh with 600W Solar Panel",
+   "read": "2026-11-18",
+   "note": "Read via storecheck.py search. The listing text gives no solar input limit and no panel model. Dealectric's under-$1,000 page states 'up to 650 W solar via XT60' for the P1800, citing ALLPOWERS's P1800 page, but I could not reopen that page today, so the 650 W figure is not re-verified here."
+  },
+  {
+   "product": "EcoFlow DELTA 3800 Gen4 + 4× 160 W kit",
+   "label": "What the cited rival gives for the 640 W kit's solar side",
+   "value": "'max 2,000 W solar; ships late Nov'; $2,599 web-only ($3,299 store), 3,763 Wh",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-18",
+   "note": "StormWatts' figures as of 2026-11-08, not a price read at EcoFlow today. StormWatts publishes no Voc, Isc, voltage range or wiring layout for the four 160 W panels."
+  },
+  {
+   "product": "general",
+   "label": "What the non-cited top result says about the mechanism",
+   "value": "'Every solar input has a voltage range. Go above it and you risk damage.' and 'Wiring panels in series adds their voltages together.'",
+   "source": "https://theoutageready.com/guides/best-portable-power-station-with-solar-panel/",
+   "source_title": "Best Portable Power Station With Solar Panel (2026): 6 Bundles and How to Match Panels | OutageReady",
+   "read": "2026-11-18",
+   "note": "The general rule is already in a result ChatGPT got; its only worked example is two Jackery SolarSaga 500 X panels (48.5 V Voc each) on a 60 V input. No kit on that page has 600 W of panels."
+  }
+ ],
+ "unsourced": [
+  "ALLPOWERS P1800 solar input voltage range, current limit and maximum watts from ALLPOWERS's own page or manual: iallpowers.com returned HTTP 429 on the kit page and the station page, and a manual search turned up only R1500 and S1500 documents.",
+  "ALLPOWERS SP039 open-circuit voltage, short-circuit current and operating current: the SP039 product page returned HTTP 429; only the '44V' line in the listing text was read.",
+  "Which panel model ships in the ALLPOWERS P1800 + 600 W kit: the listing text says 'included 600W solar panel' without naming the SP039.",
+  "ALLPOWERS R3500 and R2500 V2 solar input voltage range and current limit: only the maximum-watt lines in the listing text were read.",
+  "BLUETTI Apex 300 per-port limits (1,200 W / 20 A per input) and the 'PV parallel' setting from BLUETTI's manual: the manual PDF found was the EU copy and exceeded the fetch size limit; the per-port figure appeared only in a search snippet of a BLUETTI community thread, which I did not open.",
+  "Which 200 W panel model ships in the Apex 300 + 3× 200 W kit, and whether BLUETTI includes series or parallel cables for three panels: the kit page lists only '600W Solar' and gives no wiring instructions.",
+  "EcoFlow DELTA 3800 Gen4 solar input voltage and current limits, the 160 W panel's Voc and Isc, and today's kit price at EcoFlow's US store: not opened within the tool budget.",
+  "ABOK Ark2000 and Elux1 solar input limits and panel Voc for the Walmart 600 W kits (3 × 200 W; 400 W + 200 W): not opened within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 2.4587708000000004
+ }
+}

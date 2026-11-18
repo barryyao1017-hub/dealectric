@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "None of the three result pages I could open (StormWatts solar-input comparison, StormWatts kit comparison, MachineFanatic) states that the AC watt rating on these 5 kWh kits is tied to one outlet and voltage: Anker's own S5000 page caps every 120 V outlet at 3,600 W or less and gives the full 4,500 W only on the 240 V L14-30R, so that kit never reaches 5,000 W.",
+ "standout": 2,
+ "standout_why": "StormWatts' 240 V solar-input page (cited in chat 1) lists every station only as '120/240 V' with no outlet ratings. StormWatts' kit page gives no 120 V or 240 V output figures at all. MachineFanatic gives only overall ratings and one unrelated 15 A input figure. The solar-side mechanism is already on StormWatts (Jackery's 4,000 W port is 135-450 V, its low-voltage ports are 10.5 A, about 876 W from portable panels), so that part scores 0. Caveat: the cited solargenreview.com page returned HTTP 429 on three tries and solargenadvisor.com failed on a certificate error, so I could not check either for outlet ratings.",
+ "decides": "Read as 5,000 W of AC output, the Anker S5000 + 2x 400 W kit ($3,599.99) falls short: 4,500 W, and only on the 240 V L14-30R. It qualifies for the page on battery size (5,024 Wh) only. The BLUETTI 5kWh RV kits are the only kits we link whose maker page states 5,000 W continuous, but they are a wall-mounted install (drilling template, wood screws, distribution-panel wiring pack) with at most 600 W of panels in the listing. Jackery's 7,200 W Explorer 5000 Plus is a pre-order (station ships Dec 2, 500X panel by Dec 5), so it cannot be the ships-now pick. Shipping check needed before the Anker kit is called 'ships now': Anker's S5000 page today says orders placed on or after November 6 ship within 11-12 weeks and the 400 W panel ships separately, which conflicts with the 'ships now' entry in the kits table.",
+ "candidates": [
+  "BLUETTI 5kWh RV Kit + 6 x 100W",
+  "BLUETTI 5kWh RV Kit + 4 x 100W",
+  "BLUETTI 5kWh RV Kit + 2 x 100W",
+  "Anker SOLIX S5000 + 2x 400W Solar Panel",
+  "Jackery Solar Generator 5000 Plus (Explorer 5000 Plus + 2x SolarSaga 500 X)",
+  "BLUETTI Apex 300 + B300K solar kits"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Max AC output per outlet (maker FAQ)",
+   "value": "120V NEMA 5-20R: 2,400 W; 120V TT-30R: 3,600 W; 240V L14-30R: 4,500 W",
+   "source": "https://www.ankersolix.com/products/s5000-portable-power-station",
+   "source_title": "Anker SOLIX S5000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-18",
+   "note": "Page headline: '4,500W Rated Output/ 8,000W Peak', '120V / 240V Output'. No 14-50R is listed. The page does not say whether the 120 V figures are per leg. The spec table is an image, so these come from the page's FAQ text."
+  },
+  {
+   "product": "Anker SOLIX S5000 + 2x 400W Solar Panel",
+   "label": "Maker bundle price and shipping statement",
+   "value": "$3,599.99 bundle; $2,599.99 station alone; orders placed on or after November 6th ship within 11-12 weeks; the 400W solar panel ships separately",
+   "source": "https://www.ankersolix.com/products/s5000-portable-power-station",
+   "source_title": "Anker SOLIX S5000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-18",
+   "note": "Price matches the kits table. The shipping text conflicts with the table's 'ships now', so re-check before publishing. The page read through a fetch summary; the bundle label also says 'Free 400W Solar Panel', which leaves the panel count ambiguous on that page."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Solar inputs, as StormWatts quotes Anker's spec page",
+   "value": "Input 1: 11-60 V, 17 A max, 1,000 W max; Input 2: 16-165 V, 17 A max, 2,000 W max; 3,000 W total",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input (StormWatts)",
+   "read": "2026-11-18",
+   "note": "Named-reviewer relay of the maker spec; Anker's own spec table is an image I could not read. A rival already has this. Arithmetic at rated output for the kit: 5,024 Wh / 800 W = 6.3 hours of full sun; real output is lower."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit + 6 x 100W",
+   "label": "AC and DC output, price, delivery (maker page)",
+   "value": "5,000 W continuous AC, 10,000 W surge, 1,620 W DC output at 12 V/24 V; US$4,599.00 (was US$4,999.00); '2-5 Business Days Delivery (Except for pre-sale products)'",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-3-200w",
+   "source_title": "5kWh RV Kit + 6 x 100W (BLUETTI US store)",
+   "read": "2026-11-18",
+   "note": "The page does not state the AC voltage. Box contents: RV5 Power Hub, B4810 battery, Epanel, Epad, drilling template, eight M8 wood screws, eight anchors, wiring packs for battery, alternator charger and distribution panel. The FAQ says most RV owners can install it with basic DIY skills. Arithmetic at rated output: 5,120 Wh / 600 W = 8.5 hours of full sun; real output is lower."
+  },
+  {
+   "product": "BLUETTI 5kWh RV kits",
+   "label": "Store search read of the three panel kits",
+   "value": "+ 2 x 100W $3,999; + 4 x 100W $4,299; + 6 x 100W $4,599; all available: true",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-200w",
+   "source_title": "BLUETTI US store search via storecheck.py ('5kWh RV Kit')",
+   "read": "2026-11-18",
+   "note": "Store prices before the DEALECTRIC code; they match the kits table. The 6-panel product page marks the panel-less '5kWh RV Kit' as 'Out of Stock' in its selector, while storecheck returned available: true for it."
+  },
+  {
+   "product": "BLUETTI RV5 Power Hub (EU manual)",
+   "label": "AC output in the manual's specifications table",
+   "value": "Rated output 230 V, 22 A, 50 Hz, 5,000 W; system voltage 48 V; switchover 20 ms or less",
+   "source": "https://www.manualslib.com/manual/4214861/Bluetti-Rv5.html?page=49",
+   "source_title": "Bluetti RV5 User Manual, page 49, Specifications (ManualsLib)",
+   "read": "2026-11-18",
+   "note": "This is the 230 V edition of the manual. It shows the hub has one single-voltage AC output at its 5,000 W rating. The US voltage and current are in 'unsourced'."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Maker listing: output, solar claim, price, ship dates",
+   "value": "7,200 W rated (14,400 W surge), 'Supports both 120V and 240V', 'up to 4000W input'; $3,499; '5000 Plus sold out due to high demand. Pre-order now, ships Dec 2. 500X Solar Panel: Pre-order, ships by Dec 5'",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-5000-plus",
+   "source_title": "Jackery Solar Generator 5000 Plus (Jackery US store search via storecheck.py)",
+   "read": "2026-11-18",
+   "note": "Read from the store's search listing; the product page itself returned HTTP 429. $3,499 is the lowest variant (station only). The 2x SolarSaga 500 X bundle price is in 'unsourced'."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus + SolarSaga 500 X",
+   "label": "Why the bundle's panels cannot use the 4,000 W solar port (StormWatts, citing Jackery's listing and FAQ)",
+   "value": "High-voltage port 135-450 V, 15 A, 4,000 W; two low-voltage ports 16-60 V, 10.5 A each (600 W one port, 1,200 W both); SolarSaga 500 X: 48.5 V Voc, 41.7 V / 12.0 A operating; StormWatts' portable-panel figure about 876 W",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input (StormWatts)",
+   "read": "2026-11-18",
+   "note": "Arithmetic: 10.5 A x 41.7 V = 438 W per port, 876 W for two panels rated 1,000 W. StormWatts' kit page (https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/, read 2026-11-18) adds that Jackery's page says to connect the 500 X in parallel only, never in series. A rival already has this, so it scores 0 for standout."
+  },
+  {
+   "product": "general",
+   "label": "What the three opened result pages lack on AC output",
+   "value": "StormWatts solar-input page: no outlet ratings, only '120/240 V'; StormWatts kit page: no 120 V or 240 V output figures; MachineFanatic: overall ratings only, no per-outlet or per-voltage limits",
+   "source": "https://www.machinefanatic.com/guide/best-5000w-solar-generators",
+   "source_title": "Best 5000W Solar Generators (2026) (MachineFanatic)",
+   "read": "2026-11-18",
+   "note": "MachineFanatic also lists the Jackery 5000 Plus bundle as '2 x 200W included' and shows no prices."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 5000 Plus per-port AC limits (AC1+AC2 and AC3+AC4 at 120 V, 30 A, 3,600 W each; 7,200 W only across 240 V): seen only in a search snippet of a manual copy. Jackery's US manual PDF came back as unreadable binary, converting it to text was not permitted, and jackery.com product pages returned HTTP 429.",
+  "BLUETTI RV5 US AC output voltage and current (search snippets say 120 V, 42 A, 30 A per circuit): BLUETTI's US product pages show an empty Tech Specs section, and the US manual PDF link returned 404.",
+  "BLUETTI RV5 solar input window (search snippets say two MPPT inputs, 12-50 V, 50 A, 1,800 W each) and the Voc/Isc and wiring of the kit's 100 W panels: no maker page or US manual opened.",
+  "Jackery's own price for the Explorer 5000 Plus + 2x SolarSaga 500 X bundle: storecheck on the product URL returned HTTP 429.",
+  "Whether solargenreview.com (cited in chat 1) or solargenadvisor.com already state per-outlet or per-leg output limits: HTTP 429 on three tries and a certificate error.",
+  "Which 400 W panel model ships in Anker's S5000 + 2x 400 W bundle, and whether two fit Input 1 in parallel or need Input 2 in series: the Anker page names only '400W Solar Panel'.",
+  "BLUETTI Apex 300 output per 120 V leg in 240 V mode, and per-leg limits for EcoFlow DELTA Pro Ultra and PECRON F5000LFP: not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 2.6765003999999997
+ }
+}

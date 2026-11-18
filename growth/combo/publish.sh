@@ -23,16 +23,21 @@ python3.12 tools/repolock.py run combo-publish -- bash -c '
     for f in $(git diff --name-only --diff-filter=U); do
       case "$f" in
         docs/*|worker/src/links-map.json|worker/src/dash-meta.json) git checkout --theirs -- "$f" 2>/dev/null || git rm -q --cached "$f"; git add -A -- "$f" ;;   # rebuilt below
-        src/gaps.py|src/products.py|src/kits.py|growth/gapmine/ledger.jsonl|growth/evals/footprint.jsonl)   # both sides appended: keep both
+        src/gaps.py)   # both sides appended page records: keep both, closing our last record (merge_appended.py)
+          git show ":1:$f" > /tmp/combo-base; git show ":2:$f" > /tmp/combo-ours; git show ":3:$f" > /tmp/combo-theirs
+          git merge-file -p /tmp/combo-ours /tmp/combo-base /tmp/combo-theirs > "$f"; python3.12 growth/combo/merge_appended.py "$f" >/dev/null; git add -- "$f" ;;
+        src/products.py|src/kits.py|growth/gapmine/ledger.jsonl|growth/evals/footprint.jsonl)   # both sides appended: keep both
           git show ":1:$f" > /tmp/combo-base; git show ":2:$f" > /tmp/combo-ours; git show ":3:$f" > /tmp/combo-theirs
           git merge-file --union -p /tmp/combo-ours /tmp/combo-base /tmp/combo-theirs > "$f"; git add -- "$f" ;;
+        growth/focus/ab/LIBRARY.md|growth/focus/ab/library.json) git checkout --theirs -- "$f"; git add -- "$f" ;;   # generated index: rebuilt below
         *) echo "UNRESOLVED $f"; git merge --abort; exit 4 ;;
       esac
     done
     python3.12 -c "import ast,sys; [ast.parse(open(f).read()) for f in (\"src/gaps.py\",\"src/products.py\",\"src/kits.py\")]" || { echo "merged src does not parse"; git merge --abort; exit 5; }
     REPOLOCK_HELD=1 python3.12 src/build.py > /tmp/combo-publish-build.log 2>&1 || { echo "build failed after merge"; tail -5 /tmp/combo-publish-build.log; git merge --abort; exit 6; }
     python3.12 tools/docsguard.py | tail -1
-    git add -A src docs worker/src
+    python3.12 -c "import sys; sys.path.insert(0, \"tools\"); import research_library; research_library.build()" >/dev/null 2>&1
+    git add -A src docs worker/src growth/focus/ab/LIBRARY.md growth/focus/ab/library.json
     git commit -q --no-edit -m "Merge main into the combo run; docs rebuilt from the merged src" || true
   fi
   git push -q origin HEAD:main || exit 7
@@ -49,7 +54,7 @@ sys.path.insert(0, "tools"); sys.path.insert(0, "src")
 import indexnow, gaps
 sent_p = Path("growth/combo/indexnow-sent.json")
 sent = set(json.loads(sent_p.read_text())) if sent_p.exists() else set()
-new = [g["slug"] for g in gaps.GAP_PAGES if g.get("run") == "combo-1113" and g["slug"] not in sent]
+new = [g["slug"] for g in gaps.GAP_PAGES if g.get("run") in ("combo-1113", "kits-1118j") and g["slug"] not in sent]   # this worktree's runs
 if new:
     real = urllib.request.urlopen
     def op(req, *a, **k):   # dealectric.com sits behind the work network's McAfee gateway; the key file is live (checked 11-11)

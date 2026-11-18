@@ -1,0 +1,170 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that BLUETTI's 5kWh RV Kit, the 5,000 W kit Dealectric links that ships now, has a strict 50 V open-circuit limit on its solar input, so its panels must all be wired in parallel and never in series.",
+ "standout": 2,
+ "standout_why": "Compared against StormWatts' 5 kWh solar-input article (cited), StormWatts' same-panel-watts kit article and MachineFanatic's 5000W guide. StormWatts already has the port-by-port solar limits and panel wiring for the Jackery Explorer 5000 Plus and Anker SOLIX S5000, including Jackery's two-panel cap on the SolarSaga 500 X, so that part of this angle is taken. None of the three mentions the BLUETTI RV5 kit, its 50 V limit, or that it is a wired-in system. None states that the S5000 does not work with Anker's Home Power Panel and takes only BP5000 batteries. MachineFanatic gives no volts, amps or connectors. solargenreview.com (cited) returned HTTP 429 and solargenadvisor.com a certificate error, so neither was read.",
+ "decides": "It splits the answer by use rather than changing one winner. The BLUETTI 5kWh RV Kit meets 5,000 W and ships now, but it is a 48 V system screwed and wired into an RV or van, with parallel-only panels under 50 V. It wins the RV/van-install segment, not the roll-it-out home-backup one. The portable 120/240 V answer, Jackery's Explorer 5000 Plus with 2× SolarSaga 500 X, was a pre-order on Jackery's store today (station ships Dec 2, panels by Dec 5). The Anker S5000 kit is 4,500 W, under the line, and cannot join a Home Power Panel. Anker's page for it also showed an 11–12 week ship window, which conflicts with the 'ships now' in the kits table and needs a re-check before it is named as a ships-now row.",
+ "candidates": [
+  "BLUETTI 5kWh RV Kit + 6 × 100W",
+  "BLUETTI 5kWh RV Kit + 4 × 100W",
+  "BLUETTI 5kWh RV Kit + 2 × 100W",
+  "Jackery Explorer 5000 Plus + 2× SolarSaga 500 X",
+  "Anker SOLIX S5000 + 2× 400 W",
+  "Sun Gold Power SGM-5K5E",
+  "BLUETTI Apex 300 + B300K + 500 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI 5kWh RV Kit (RV5 Power Hub)",
+   "label": "Solar input voltage limit",
+   "value": "50 V open-circuit (Voc) maximum on the PV input",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit (BLUETTI US)",
+   "read": "2026-11-18",
+   "note": "BLUETTI's wording: 'The RV5 has a strict 50V VOC (Voltage Open Circuit) limit on the PV input.' It adds that standard residential panels, often 60–80 V Voc, 'WILL destroy the charge controller if connected directly.'"
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit (RV5 Power Hub)",
+   "label": "Panel wiring rule",
+   "value": "Parallel only, never series",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit (BLUETTI US)",
+   "read": "2026-11-18",
+   "note": "BLUETTI's wording: 'all panels MUST be wired in PARALLEL, never in series.' It recommends high-amp Y-branch adapters and 6-gauge cabling, and names the PV100 FX as the parallel-ready panel."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit (RV5 Power Hub)",
+   "label": "Alternator charging through PV2",
+   "value": "up to 1,200 W",
+   "source": "https://www.bluettipower.com/blogs/buying-guide/guide-of-bluetti-rv5-48v-diy-solar-inverter-kit",
+   "source_title": "A Deep Dive into the BLUETTI RV5 48V DIY Solar Inverter Kit (BLUETTI US)",
+   "read": "2026-11-18",
+   "note": "The PV2 input doubles as the alternator charger, so a solar array on PV2 shares that input with the alternator. The guide gives the B4810 as 51.2 V, 100 Ah, 5,120 Wh and says the Edock box 'allows for the integration of third-party 48V batteries.'"
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit + 6 × 100W",
+   "label": "AC output and what kind of product it is",
+   "value": "5,000 W continuous, 10,000 W surge; a system mounted and wired into the vehicle, not a portable station",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-3-200w",
+   "source_title": "5kWh RV Kit + 6 × 100W (BLUETTI US)",
+   "read": "2026-11-18",
+   "note": "The box list includes 8 M8 wood screws, 8 anchors, a drilling template, and battery, alternator-charger and distribution-panel wiring packs. The FAQ says 'no electrician required.' The page also lists total load 6,000 W max and DC output 1,620 W. Its spec table did not load, so no AC voltage was read."
+  },
+  {
+   "product": "BLUETTI 5kWh RV Kit",
+   "label": "Store listings today",
+   "value": "+2 × 100W $3,999.00; +4 × 100W $4,299.00; +6 × 100W $4,599.00; all available",
+   "source": "https://www.bluettipower.com/products/rv5-b4810-epanel-epad-3-200w",
+   "source_title": "BLUETTI US store search via storecheck.py",
+   "read": "2026-11-18",
+   "note": "These match the store prices in the kits table. The page states '2–5 Business Days Delivery (Except for pre-sale products)'. Link prices stay as given in the table."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus + SolarSaga 500 X",
+   "label": "Shipping state on Jackery's US store",
+   "value": "Station: pre-order, ships Dec 2. SolarSaga 500 X: pre-order, ships by Dec 5",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-5000-plus",
+   "source_title": "Jackery Solar Generator 5000 Plus (Jackery US), read via storecheck.py search",
+   "read": "2026-11-18",
+   "note": "Store notice: '5000 Plus sold out due to high demand. Pre-order now, ships Dec 2. 500X Solar Panel: Pre-order, ships by Dec 5.' The page itself returned HTTP 429 to a direct fetch, so the bundle's price was not read."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Maker's stated pairings",
+   "value": "7,200 W rated, 120 V and 240 V; up to 4,000 W solar from high- and low-voltage panels; Jackery 60A Smart Transfer Switch feeds up to 12 circuits at 120 V or 6 at 240 V",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-5000-plus",
+   "source_title": "Jackery Solar Generator 5000 Plus (Jackery US), read via storecheck.py search",
+   "read": "2026-11-18",
+   "note": "From the listing's description text. The transfer switch is a 'pair with' accessory in that text."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus + 2× SolarSaga 500 X",
+   "label": "What the two bundled panels can deliver (StormWatts' reading)",
+   "value": "about 438 W per panel, about 876 W for two",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input (StormWatts, 2026-11-16)",
+   "read": "2026-11-18",
+   "note": "StormWatts gives the Low-PV ports as 16–60 V, 10.5 A each (600 W one, 1,200 W both) and the High-PV port as 135–450 V, 15 A, 4,000 W. The panel runs at 41.7 V / 12.0 A, so the 10.5 A port limit caps it. StormWatts also reports Jackery's FAQ limit of two SolarSaga 500 X. A rival already holds this."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "Excluded pairings",
+   "value": "Not compatible with Anker SOLIX Home Power Panel; expansion only with BP5000",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel-2",
+   "source_title": "Anker SOLIX S5000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-18",
+   "note": "FAQ wording: 'Anker SOLIX S5000 is not compatible with Anker SOLIX Home Power Panel'; use 'a compatible transfer switch or power inlet box.' Also: 'Anker SOLIX S5000 supports only BP5000 expansion batteries'; BP3800, BP3000 and third-party batteries are excluded."
+  },
+  {
+   "product": "Anker SOLIX S5000",
+   "label": "AC output per outlet",
+   "value": "4,500 W rated, 8,000 W peak; 5-20R 2,400 W, TT-30R 3,600 W, 240 V L14-30R 4,500 W",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel-2",
+   "source_title": "Anker SOLIX S5000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-18",
+   "note": "The FAQ says loads above 4,500 W trigger overload protection, so the kit sits under a 5,000 W line."
+  },
+  {
+   "product": "Anker SOLIX S5000 + 2× 400 W",
+   "label": "Shipping text on Anker's page (conflicts with the kits table)",
+   "value": "Orders placed Nov 6 or later ship in 11–12 weeks; orders with the 400 W panel ship separately",
+   "source": "https://www.ankersolix.com/products/s5000-400w-solar-panel-2",
+   "source_title": "Anker SOLIX S5000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-18",
+   "note": "The kits table says 'ships now' (read 2026-11-17). The kit URL rendered with the station's title, so this text may belong to the station variant. Re-check before publishing the shipping column."
+  },
+  {
+   "product": "Anker SOLIX S5000 + 2× 400 W",
+   "label": "Solar ports against the bundled panel (StormWatts' reading)",
+   "value": "Input 1: 11–60 V, 17 A, 1,000 W; input 2: 16–165 V, 17 A, 2,000 W; PS400 panel 57.6 V open-circuit",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input (StormWatts, 2026-11-16)",
+   "read": "2026-11-18",
+   "note": "StormWatts estimates one PS400 on input 1 could pass 60 V at around 47–54 °F, using an assumed −0.33 %/°C coefficient. A rival already holds this."
+  },
+  {
+   "product": "Sun Gold Power SGM-5K5E",
+   "label": "Kit contents and output voltage",
+   "value": "5,000 W 48 V inverter with 120 V output; 6 × 200 W panels; 51.2 V 100 Ah battery; $2,831.00, available",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-5000w-48vdc-120v-5-12kwh-powerwall-battery-6-x-200-watts-solar-panels-sgm-5k5e",
+   "source_title": "Off-Grid Solar Kit 5000W 48VDC 120V 5.12KWH Battery 6 X 200 Watts Solar Panels SGM-5K5E (Sun Gold Power), read via storecheck.py search",
+   "read": "2026-11-18",
+   "note": "Also included: 50 ft PV extension cable set, 6 sets of Z-brackets, 160 A DC breaker, 25 A PV breaker, 4 AWG breaker-to-inverter cable. The listing names 120 V output only, and the parts are installed, not plugged in. The kit is not in the kits table, so this is the store price, not a cart-tested link price."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 500 W kits",
+   "label": "Maker's stated pairings and dispatch",
+   "value": "3,840 W, 120 V and 240 V at once; expansion with B300K and B500K; 4,000 W solar requires a SolarX 4K; ships late January for orders placed on or after Nov 14",
+   "source": "https://www.bluettipower.com/products/apex-300-500w",
+   "source_title": "Apex 300 + 500W (BLUETTI US)",
+   "read": "2026-11-18",
+   "note": "The 'In the Box' list read on this page shows an AC charging cable, car charging cable, grounding screw and manual, with no solar cable; the page capture was truncated. 3,840 W is under a 5,000 W line; the Apex 300 + B300K kits qualify only on battery size (5,529.6 Wh)."
+  },
+  {
+   "product": "general",
+   "label": "What the rival 5000W guide lists for the Jackery kit",
+   "value": "MachineFanatic lists the Jackery 5000 Plus with 2 × 200 W panels and gives no solar input volts, amps or connectors for any pick",
+   "source": "https://www.machinefanatic.com/guide/best-5000w-solar-generators",
+   "source_title": "Best 5000W Solar Generators (2026), MachineFanatic",
+   "read": "2026-11-18",
+   "note": "Used only to judge standout. The page shows no prices."
+  }
+ ],
+ "unsourced": [
+  "RV5 Power Hub AC output voltage (120 V only or 120/240 V): BLUETTI's kit, RV5 and RV5+B4810 pages loaded with empty spec tables, and no manual PDF was reached.",
+  "RV5 PV input amps and watts per input: 12–50 V, 50 A, 1,800 W appeared only in a search snippet.",
+  "BLUETTI PV100 FX panel Voc and Isc, to check the 2-, 4- and 6-panel parallel arrays against the RV5 input current limit.",
+  "BLUETTI Apex 300 native PV input range and connector, and SORA 500 Voc/Isc: bluettipower.com/products/apex-300 failed with a redirect loop and the kit page lists neither.",
+  "Jackery's own FAQ line capping the Explorer 5000 Plus at two SolarSaga 500 X, and the Jackery-store price of the 2× 500 X bundle: jackery.com returned HTTP 429 three times; the cap is reported only through StormWatts.",
+  "Anker S5000 + 2× 400 W kit box contents (panel model, MC4-to-XT-60 cable) and the kit's own price on Anker's page: the box section was blank and the price shown was ambiguous between station and kit.",
+  "Sun Gold Power SGM-5K5E inverter PV voltage range, panel Voc and required string layout: the product page returned HTTP 429.",
+  "EcoFlow DELTA Pro Ultra and TITAN 5000 Plus panel bundles on EcoFlow's US store (solar ports, bundled panel wiring, price): not reached within the call budget.",
+  "solargenreview.com (cited, HTTP 429) and solargenadvisor.com (certificate error) could not be opened, so the standout score rests on the two StormWatts pages and MachineFanatic."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 2.5798546
+ }
+}

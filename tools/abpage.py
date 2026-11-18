@@ -22,7 +22,7 @@ Per page, everything lives under growth/focus/ab/<slug>/:
 All six angle reports are kept, not only the one the page uses: tools/research_library.py indexes them by page
 (growth/focus/ab/library.json, LIBRARY.md) and searches their findings, so unused research can be reused later.
 
-Research runs in `claude -p` (plan usage): Opus 5.5 at high effort (Barry 11-13; Fable first until then).
+Research runs in `claude -p` (plan usage): Fable 5.2 at high effort, Opus 5.5 high when Fable is out of usage (Barry 11-17).
 usage (Barry 11-08). The agents never edit files; this script writes src/ only in `apply`.
 """
 from __future__ import annotations
@@ -47,7 +47,7 @@ import repolock  # noqa: E402  (one build at a time per working tree, DLC-267)
 AB = ROOT / "growth/focus/ab"
 RUNS = ROOT / "growth/evals/runs"
 DEFAULT_RUNS = ["2026-11-07-liveplain", "2026-11-07-liveplain-rest"]
-MODELS = [("claude-opus-5-5", "high")]   # Barry 11-13: Opus 5.5 at high effort for all research (was Fable 5.2 first, 11-11)
+MODELS = [("claude-fable-5-2", "high"), ("claude-opus-5-5", "high")]   # Barry 11-17: "research using fable"; Opus 5.5 high only when Fable is out of usage (Opus only 11-13..11-17)
 METHOD = "ab-2026-11"
 _fable_out = threading.Event()   # set once Fable reports a usage limit; every later call goes straight to Opus
 SLOTS = threading.Semaphore(6)   # claude -p processes at once, across pages
@@ -638,7 +638,7 @@ def apply(slug: str, local: bool) -> dict:
             what = f"Gap page G{gnum} /{draft['slug']} (new, research method)" if gnum else f"Research-method rebuild /{slug}"
             msg = (f"{what}: angle {draft.get('angle')}, {draft.get('why_angle') or ''}"[:250] +
                    f"\n\nResearched by tools/abpage.py (six angle agents, compose, verify; DLC-208). Research in growth/focus/ab/{slug}/.\n\n"
-                   "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n")
+                   "Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>\n")
             r = sh("git", "commit", "-q", "-m", msg)
             return {"slug": draft["slug"], "status": "committed" if r.returncode == 0 else "commit failed: " + (r.stderr or r.stdout)[-200:]}
         return {"slug": draft["slug"], "status": "passed (not committed)"}
