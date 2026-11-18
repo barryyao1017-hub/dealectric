@@ -211,4 +211,7 @@ BUY_FIRST = {
     "dabbsson-2000l",
     "dji-power-1000-v2",
     "ecoflow-titan-5000-plus",
+    # DLC-290 (2026-11-18): the screen extender cluster's two Mobile Pixels pages; every human click on them came from ChatGPT
+    "mobile-pixels-duex-float-2-pro",
+    "mobile-pixels-trio-3-pro",
 }
