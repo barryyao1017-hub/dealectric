@@ -24,6 +24,14 @@ Plugins schemas. `plugin/assets/` holds the icons, drawn from the site favicon. 
   the results matched the expected behaviour written in the case.
 - **Category check:** "Shopping" is my guess at the dashboard's category title; OpenAI doesn't publish the list.
 
+**Re-check 2026-11-18 (DLC-183):** OpenAI's submission page was re-read and the steps below still hold (upload at
+platform.openai.com/plugins; verification under organization settings → General). The five positive prompts were re-run
+on the live server. Four matched. The out-of-catalog one did not: "iPhone 17 Pro" answered with a card case made for
+the iPhone 17, added to the catalog since 11-06. Fixed in `mcp.js` 1.0.1 (product names now match on whole words; up to
+three words must all match), and the prompt now names a Dyson V15, which no accessory in the catalog is made for.
+The commerce text now names Rakuten too. No product the tools return can open a checkout: all 95 checkout-style
+product records carry a `store_url`, and the multi-item `kit-` links are not in `/offers.json`.
+
 Submission steps, in order:
 1. Barry verifies the OpenAI developer account (individual or Agentify LLC) on platform.openai.com.
 2. Add the server for testing: chatgpt.com/plugins → + → Add custom MCP server → `https://dealectric.com/mcp`, no

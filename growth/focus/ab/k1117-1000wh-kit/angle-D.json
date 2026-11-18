@@ -1,0 +1,81 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that the panel in the ALLPOWERS P1800 600 W kit (SP039) draws 13.63 A at its maximum power point. That is above the P1800's 13 A solar-input limit (we have this limit only from a search snippet; the page still needs opening), so the kit should top out near 572 W at rated output, not 600 W. A second SP039 would gain nothing: two in series make 105.6 V open-circuit, over the 60 V input range, and two in parallel hit the same 13 A limit.",
+ "standout": 2,
+ "standout_why": "I opened StormWatts (cited). It explains clipping, series versus parallel wiring, and input-current limits in general, and gives input V/A for the BLUETTI Elite 100 V2 (12–60 V, 20 A, 1,000 W) and the Anker C1000 Gen 2 (600 W, 60 V max). It says nothing about the ALLPOWERS P1800 or the SP039 panel, or the BLUETTI Elite 100 mini's 350 W solar limit. I could not open the other cited pages: theoutageready.com and unpluggedwatts.com failed with a self-signed certificate error, and solargenreview.com returned HTTP 429. So 'new' is judged against StormWatts and the result titles only. The score falls to 1 if those pages turn out to cover it.",
+ "decides": "This confirms the choice rather than changing it. The P1800 + 600 W kit is still the quickest-to-refill ~1 kWh kit we link: 1,024 Wh ÷ about 572 W is about 1.8 h of full sun at rated output, against 1,024 ÷ 600 = 1.7 h if nothing were clipped, so the clipping costs about 5%. The page should still say that this kit is the most solar the P1800 can use, so adding panels later does nothing. The opposite case is the BLUETTI Elite 100 V2, which takes 1,000 W at 12–60 V and 20 A (StormWatts), leaving about 650–900 W of room above its 100/200/350 W kits. The Elite 100 mini's 350 W kit already uses the station's whole 350 W solar input. The mini's 700 W total AC limit also means its kits cannot run the 1,500 W or larger appliances that both ChatGPT answers treat as the minimum.",
+ "candidates": [
+  "ALLPOWERS P1800 + 600 W (SP039) kit",
+  "ALLPOWERS P1800 + SP037 400 W kit",
+  "ALLPOWERS P1800 + SF200 200 W kit",
+  "ALLPOWERS R1500 + SF100 100 W kit",
+  "BLUETTI Elite 100 V2 + 100 W / 200 W / 350 W kits",
+  "BLUETTI Elite 100 mini + 100 W / 200 W / 350 W kits",
+  "BLUETTI AC180 + 200 W / 2× 200 W kits",
+  "BLUETTI Pioneer Na + 200 W / 350 W / 2× 200 W kits",
+  "Anker SOLIX C1000 Gen 2 + 200 W",
+  "Jackery Explorer 1000 v2 + 200 W SolarSaga",
+  "EcoFlow DELTA 3 Classic + 220 W"
+ ],
+ "findings": [
+  {
+   "product": "ALLPOWERS SP039 600 W panel (the 600 W panel ALLPOWERS sells; that it is the one in the P1800 600 W kit comes from a search snippet of iallpowers.eu, 'P1800 Power Station + SP039 600W Solar Panel')",
+   "label": "Electrical specs from the manual",
+   "value": "Peak power 600 W (±5%), Voc 52.8 V, Vmp 44 V, Imp 13.63 A, Isc 14.99 A",
+   "source": "https://manuals.plus/m/3a596ecf9d51e11e655526e3a2fdffb6d9bdd435e9e47a45ed4e01254d14e69c",
+   "source_title": "ALLPOWERS AP-SP-039 600W Foldable Solar Panel (user manual, manuals.plus)",
+   "read": "2026-11-17",
+   "note": "The manual also says 'Always check the power station's solar input voltage parameters and connect panels within the specified range.' Arithmetic: two in series = 105.6 V open-circuit, which is over a 60 V input range."
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "label": "Solar input limit (maker's US store text)",
+   "value": "Up to 650 W solar input via XT60",
+   "source": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "source_title": "ALLPOWERS P1800 Portable Power Station 1024Wh | 1800W",
+   "read": "2026-11-17",
+   "note": "Read through storecheck.py's search of iallpowers.com (product JSON text). Arithmetic: if the input is limited to 13 A, the SP039 at its Vmp gives 13 A × 44 V = 572 W, so the current limit sets the ceiling, not the 650 W one. The 13 A figure itself is not sourced; see unsourced."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "Solar input ceiling and AC output",
+   "value": "Up to 350 W solar; three AC outlets, 'Total output not to exceed 700W'; LFP battery",
+   "source": "https://bluettipower.com/products/elite-100-mini-portable-power-station",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station",
+   "read": "2026-11-17",
+   "note": "The 350 W kit already uses the full solar input, so there is no room to add panels. The 700 W AC limit rules out kettles, space heaters and microwaves of roughly 1,000 W and up."
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "label": "Solar input (as a cited rival reports it)",
+   "value": "1,000 W, 12–60 V, 20 A",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-17",
+   "note": "This rival already states it, so it is context, not new. It lists the BLUETTI SP200L at Voc 24.6 V and Isc 10.8 A."
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "label": "Solar input (as a cited rival reports it)",
+   "value": "600 W, 60 V max",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "Context only; a rival already has it."
+  }
+ ],
+ "unsourced": [
+  "The ALLPOWERS P1800's 13 A maximum solar-input current, 11–60 V range and '95V open-circuit voltage' figure: these appeared only in search snippets of iallpowers.com and iallpowers.eu. Every direct open of iallpowers.com, iallpowers.eu and za.iallpowers.com, by WebFetch and by storecheck.py product, returned HTTP 429. Open the US P1800 page before printing the 572 W ceiling.",
+  "Confirmation from the US kit page that the P1800 600 W kit ships the SP039 panel: the iallpowers.com kit page returned HTTP 429. Only the iallpowers.eu kit title (a search snippet) names the SP039.",
+  "The Elite 100 mini's solar-input voltage range and current limit: not on the BLUETTI product page. Two BLUETTI support PDFs came back as unreadable compressed data, and local text extraction was not allowed.",
+  "The BLUETTI AC180's solar-input current limit, which decides whether the 2× 200 W kit must be wired in series: bluettipower.com/products/ac180 returned HTTP 429 twice.",
+  "The ALLPOWERS SP037 400 W panel's Vmp and Imp, and the Jackery Explorer 1000 v2's input limits: not reached within the call budget.",
+  "Three cited rival pages (theoutageready.com, unpluggedwatts.com, solargenreview.com AC180 review) could not be opened: two failed with a self-signed certificate error and one returned HTTP 429. So it is unchecked whether they already cover the P1800/SP039 limit."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 1.5163686000000005
+ }
+}
