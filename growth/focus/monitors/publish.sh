@@ -15,12 +15,14 @@ for try in 1 2 3 4; do
       for f in $(git diff --name-only --diff-filter=U); do
         case "$f" in
           docs/*|worker/src/links-map.json|worker/src/dash-meta.json) git checkout --theirs -- "$f" 2>/dev/null || git rm -q --cached "$f"; git add -A -- "$f" ;;   # rebuilt below
+          growth/focus/ab/LIBRARY.md|growth/focus/ab/library.json) git checkout --theirs -- "$f"; git add -- "$f"; REINDEX=1 ;;   # generated index: rebuilt below
           *) echo "UNRESOLVED $f"; git merge --abort; exit 4 ;;
         esac
       done
       python3.12 -c "import ast; [ast.parse(open(f).read()) for f in (\"src/gaps.py\",\"src/products.py\")]" || { echo "merged src does not parse"; git merge --abort; exit 5; }
       REPOLOCK_HELD=1 python3.12 src/build.py > /tmp/claude-502/monitors-publish-build.log 2>&1 || { echo "build failed after merge"; tail -5 /tmp/claude-502/monitors-publish-build.log; git merge --abort; exit 6; }
       python3.12 tools/docsguard.py | tail -1
+      if [ "${REINDEX:-}" = 1 ]; then python3.12 tools/research_library.py build >/dev/null 2>&1; git add growth/focus/ab/LIBRARY.md growth/focus/ab/library.json; fi
       git add -A src docs worker/src
       git commit -q --no-edit -m "Merge main into the screen extender run (DLC-290); docs rebuilt from the merged src" || true
     ' || { log "merge failed ($?)"; exit 1; }
