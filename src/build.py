@@ -1109,6 +1109,8 @@ def where_line(p):
     if is_amazon(p):
         return f"Where to buy the {name}: " + (amz_price_text(p["asin"]) if amz_price(p["asin"]) else "Amazon, with the price on the Amazon page")
     co = checkable_offer(p)
+    if co and len(name) > 45 and p["slug"] in BESTOFFER["products"]:   # DLC-322: a long name pushes the buy link out of the opening
+        co = co.removesuffix(f", sold and shipped by {p['brand']}")
     if co:
         return f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)}; {co}"
     return (f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)} (checked {verified_on(p)}); "
