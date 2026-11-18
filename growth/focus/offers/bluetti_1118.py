@@ -103,9 +103,9 @@ C = {
              role="connects to the home's electrical panel through a 50 A transfer switch",
              cav=["The home backup kit has to be installed by an electrician.", "BLUETTI sells its Apex 300 Home Integration Kit at $699 (single) and $799 (parallel); this bundle's listing does not say which kit it holds, so no parts comparison is made."]),
  "TROLLEY2": dict(label="Foldable Trolley 2", long="Foldable Trolley 2", price=249, alone="sold out on its own that day", row=("Trolley", "Foldable Trolley 2 for Apex 300 / Apex 200"), role="rolls the stack to where it is needed"),
- "CAB30TT": dict(label="30A TT-30 AC Charging Cable", long="30 A TT-30 fast charging cable", price=79, row=("Charging cable", "30 A NEMA TT-30 fast charging cable"), role="charges from a 30 A RV pedestal or generator outlet"),
- "CAB30": dict(label="30A AC Charging Cable", long="30 A AC charging cable", price=99, row=("Charging cable", "30 A AC charging cable for the Apex 300"), role="charges from a 30 A outlet"),
- "CAB50": dict(label="50A AC Charging Cable", long="50 A AC charging cable", price=129, row=("Charging cable", "50 A AC charging cable for the Apex 300"), role="charges from a 50 A outlet"),
+ "CAB30TT": dict(label="30A TT-30 Cable", long="30 A TT-30 fast charging cable", price=79, row=("Charging cable", "30 A NEMA TT-30 fast charging cable"), role="charges from a 30 A RV pedestal or generator outlet"),
+ "CAB30": dict(label="30A Cable", long="30 A AC charging cable", price=99, row=("Charging cable", "30 A AC charging cable for the Apex 300"), role="charges from a 30 A outlet"),
+ "CAB50": dict(label="50A Cable", long="50 A AC charging cable", price=129, row=("Charging cable", "50 A AC charging cable for the Apex 300"), role="charges from a 50 A outlet"),
  "DISP1": dict(label="Display 1", long="Display 1 magnetic screen", price=99, row=("Display", "Display 1: magnetic external screen with a 2,000 mAh battery, 155 g (BLUETTI)"), role="shows the battery level without opening the app"),
  "BAG": dict(label="Carrying Bag", long="carrying bag", price=69, row=("Bag", "BLUETTI carrying case bag"), role="comes with a carrying bag"),
  "EPANEL": dict(label="Epanel", long="Epanel smart distribution panel", price=499, row=("Distribution panel", "Epanel smart distribution panel"), role=None),
@@ -141,7 +141,7 @@ G1 = [
  ("un053", "bluetti-apex-300-b300k-charger-2-dc-hub-2x350w-solar-kit", "Apex 300", 1, [("B300K", 1), ("C2", 1), ("DCHUB", 1), ("P350", 2)], []),
  ("un072", "bluetti-apex-300-b300k-hub-d1", "Apex 300", 1, [("B300K", 1), ("D1", 1)], []),
  ("un068", "bluetti-apex-300-b300k-trolley-2", "Apex 300", 1, [("B300K", 1), ("TROLLEY2", 1)], []),
- ("un048", "bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a-cable-solar-kit", "Apex 300", 1, [("B500K", 1), ("C2", 1), ("DCHUB", 1), ("P350", 2), ("CAB50", 1)], []),
+ ("un048", "bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a-kit", "Apex 300", 1, [("B500K", 1), ("C2", 1), ("DCHUB", 1), ("P350", 2), ("CAB50", 1)], []),
  ("un058", "bluetti-apex-300-b500k-solarx-4k", "Apex 300", 1, [("B500K", 1), ("SX4K", 1)], []),
  ("un088", "bluetti-apex-300-charger-1-bundle", "Apex 300", 1, [("C1", 1)], []),
  ("un084", "bluetti-apex-300-charger-1-hub-d1", "Apex 300", 1, [("C1", 1), ("D1", 1)], []),
@@ -459,7 +459,9 @@ def record(qid, slug, st, n_st, comps, extra):
     whtxt = f"{n_st}× {num(s['wh'])} Wh" if sep_units else f"{num(wh)} Wh"
     wtxt = s["w"] if n_st == 1 or sep_units else {"Apex 300": "7,680 W", "Apex 200": "up to 6,000 W"}[st]
     d = {"slug": slug, "brand": "BLUETTI", "program": "awin:bluetti_us", "asin": None, "category": "solar-kit" if panels else "power-station",
-         "_qid": qid, "name": f"BLUETTI {title} {kind} ({whtxt}, {wtxt})", "model": title,
+         "_qid": qid, "model": title,
+         # a long title is repeated in the page's opening line, so it drops the spec list to keep the buy link near the top
+         "name": f"BLUETTI {title} {kind} ({whtxt}, {wtxt})" if len(title) <= 44 else f"BLUETTI {title} {'Kit' if panels else 'Bundle'}",
          "url": B + it["handle"] + (f"?variant={it['variant_id']}" if qid in VARIANT_URL else ""),
          "price": price}
     if cmp_ and cmp_ > price:
