@@ -8151,6 +8151,23 @@ PRODUCTS = [
  "fit": 'Home backup that needs 240 V and can wait until about late January 2027 for delivery.',
  "caveats": ['Orders placed on or after Nov 6 ship within 9–10 weeks (Anker, read 2026-11-17).', "The free 400 W panel is part of Anker's Black Friday Early Access offer (Nov 10–18)."]},
 
+{"slug": 'jackery-homepower-3600-plus-2x200w-solar-kit',
+ "brand": 'Jackery',
+ "program": 'amazon:us',
+ "asin": 'B0FMXCPWBN',
+ "category": 'solar-kit',
+ "name": 'Jackery HomePower 3600 Plus + 2× 200 W Solar Panels (3,584 Wh, 3,600 W)',
+ "model": 'HomePower 3600 Plus + 2× SolarSaga 200 W',
+ "url": 'https://www.amazon.com/dp/B0FMXCPWBN',
+ "price": None,
+ "verified": '2026-11-18',
+ "specs": [('Battery', '3,584 Wh LiFePO4, expandable to 21 kWh (Jackery)'), ('AC output', '3,600 W'), ('Voltage', '120 V from one unit; 240 V needs two units connected (Jackery)'), ('Panels', '2× 200 W'), ('Cycle life', '6,000 cycles (Jackery; no end capacity stated)')],
+ "warranty": '5 years (Jackery store page)',
+ "returns": "Amazon's return policy for the listing",
+ "summary": "Jackery's 3.6 kWh home-backup station sold on Amazon with two 200 W panels.",
+ "fit": "A shopper who wants the larger 3,584 Wh battery and Jackery's 5-year warranty, and can accept that 400 W of panels takes about 9 hours of full sun to refill it.",
+ "caveats": ["On 2026-11-18 Jackery's own store listed the black 3600 Plus as a pre-order shipping by Dec 15 and its 200 W panel as a pre-order shipping by Nov 28.", '400 W of panels for 3,584 Wh: 3,584 ÷ 400 = 9.0 h of full sun at rated output.', '240 V output needs two units connected.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
