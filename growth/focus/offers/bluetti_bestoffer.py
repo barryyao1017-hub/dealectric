@@ -11,7 +11,7 @@ claim. A seller we cannot link that is cheaper is recorded as "beaten" by tools/
 `fallback` exists because Google stopped the Shopping reads with a CAPTCHA part-way (never solved by tools): a slug
 without a read gets the same tie entry from its cart test alone, marked with a note, so it still claims nothing.
 """
-import json, sys
+import json, re, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -34,6 +34,9 @@ if __name__ == "__main__":
         h = json.load(open(HAND)) if HAND.exists() else {}
         for d in recs:
             h[d["slug"]] = {"add": [[OWN, B.link_price(B.BY_SLUG[d["slug"]])]], "note": NOTE}
+            if re.match(r"\d+× ", d["model"]):   # a multi-pack: Shopping's matcher returns single units and other items, which are not this listing
+                h[d["slug"]]["keep"] = []
+                h[d["slug"]]["note"] += " Multi-pack: another seller's card counts only when its title lists the same quantity (none did)."
         HAND.write_text(json.dumps(dict(sorted(h.items())), indent=1, ensure_ascii=False) + "\n")
         print("hand entries:", len(h))
     elif sys.argv[1] == "fallback":
