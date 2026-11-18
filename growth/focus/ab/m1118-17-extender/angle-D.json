@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a natively driven extender needs its own USB-C port with DisplayPort Alt Mode for each added screen (otherwise each screen needs HDMI plus a separate power cable), or that a driver-based triple such as FOPO S788 doesn't depend on Alt Mode.",
+ "standout": 2,
+ "standout_why": "I read four of the pages ChatGPT got. WorkCocoon (#1) says only that 'not every USB-C port on a laptop supports video output' and never mentions DisplayLink or how many displays a laptop can drive. The Office Journal USB-C page tells readers to 'verify your laptop's USB-C port supports DisplayPort Alt Mode' but says nothing about one port per screen, driver-based extenders, display counts or Mac limits. Cevaton's 17-inch page says only to use 'the laptop's DisplayPort-enabled USB-C port', claims 'a docking station is required' for more than one screen, and never mentions DisplayLink or a maker's driver. The Office Journal USB-C page lists a 'driver may be required' quad but doesn't explain what that changes. ChatGPT's answers asked for the laptop model but never named the port check. Rivals cover part of it ('check Alt Mode'), but none covers one port per screen or the driver path that avoids Alt Mode altogether. I could not open gradedpicks.com (TLS certificate error) and did not open twelvetabs or lbdsoftware.",
+ "decides": "For a 17-inch laptop, which today is usually a Windows gaming, workstation or budget machine, the first check is how many of its USB-C ports carry DisplayPort Alt Mode. With two, a native dual extender runs on one cable per screen. With one or none, a native extender falls back to HDMI plus a separate power cable per screen. A driver-based triple (FOPO S788: display driver required, USB-C or dual-head USB-A to USB-C, PD power supply included, per our 2026-11-18 record) skips the Alt Mode check, but the shopper has to install FOPO's driver. That makes the FOPO S788 our row for a 17-inch laptop: its 12–18.5-inch fit range (FOPO's) covers 17 and 17.3 inches. The fit ranges also rule out Mobile Pixels Trio 3 Pro and Duex Float 2 Pro (both 15–16 inches, Mobile Pixels' range) as attached extenders. Of the screens we link, only S788 has a stated fit range that covers 17 inches in our records. S1, S7, S9G and S11 have no fit range in the specs given. Unless the writer sources a range that covers 17 inches for one of them, or adds S999 (18.5-inch triple, $1,099.99 in the partner list) or S10 as a new record with a sourced range, the page may fall under the two-row rule and should return 'skip'. A freestanding portable monitor (Arzopa A1M, Mobile Pixels Glance 16) avoids both the fit problem and the hinge problem. Notebookcheck's FOPO review recommends the kickstand 'to avoid straining the hinges of your laptop'.",
+ "candidates": [
+  "FOPO S788 16-inch Triple",
+  "FOPO S999 18.5-inch Triple",
+  "FOPO S10 Dual 15.6-inch",
+  "Mobile Pixels Trio 3 Pro",
+  "Mobile Pixels Duex Float 2 Pro",
+  "Mobile Pixels Glance 16",
+  "Arzopa A1M 17.3-inch"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What Windows reports when a USB-C port can't carry the screen's video",
+   "value": "Windows shows 'Display connection might be limited'. Microsoft's explanation: the device 'might use the DisplayPort or MHL Alternate Mode, which your PC, cable, or display may not fully support'. Its fixes include using 'the USB-C port on your PC that supports the correct Alternate Mode' and disconnecting other USB-C display devices because there may be too many connected",
+   "source": "https://support.microsoft.com/en-us/windows/fix-usb-c-problems-in-windows-f4e0e529-74f5-cdae-3194-43743f30eed2",
+   "source_title": "Fix USB-C problems in Windows | Microsoft Support",
+   "read": "2026-11-18",
+   "note": "Microsoft's own words, paraphrased closely by the fetch tool. This is the mechanism: single-cable USB-C video works only on a port with DisplayPort Alt Mode."
+  },
+  {
+   "product": "general",
+   "label": "How DisplayPort travels over USB-C",
+   "value": "'DisplayPort leverages the Alternate Mode Functional Extension of the USB Type-C interface'",
+   "source": "https://www.displayport.org/displayport-over-usb-c/",
+   "source_title": "DisplayPort over USB-C - DisplayPort (VESA)",
+   "read": "2026-11-18",
+   "note": "This is the standard body's own wording. The page doesn't say how a shopper can identify a port with Alt Mode."
+  },
+  {
+   "product": "FOPO 12-inch triple extender (older model)",
+   "label": "Cables per added screen",
+   "value": "On a laptop with two USB-C+DP ports: 'one cable for each monitor'. Without them: HDMI plus 'a second cable specifically for power', so two cables per screen",
+   "source": "https://www.notebookcheck.net/FOPO-12-inch-triple-monitor-extender-review-Clunky-and-more-fragile-than-standalone-portable-monitors.636422.0.html",
+   "source_title": "Notebookcheck: FOPO 12-inch triple monitor extender review (Allen Ngo)",
+   "read": "2026-11-18",
+   "note": "Tested on an HP Pavilion Plus 14 with two USB-C+DP ports. This is FOPO's older 12-inch model, not a 17-inch candidate. It shows the one-port-per-screen rule for natively driven extenders."
+  },
+  {
+   "product": "FOPO 12-inch triple extender (older model)",
+   "label": "Hinge load",
+   "value": "Notebookcheck (Allen Ngo) says the extender's hinges 'are not strong enough to hold the displays in place very well' and recommends the rear kickstand 'to avoid straining the hinges of your laptop'",
+   "source": "https://www.notebookcheck.net/FOPO-12-inch-triple-monitor-extender-review-Clunky-and-more-fragile-than-standalone-portable-monitors.636422.0.html",
+   "source_title": "Notebookcheck: FOPO 12-inch triple monitor extender review (Allen Ngo)",
+   "read": "2026-11-18",
+   "note": "This is about a different model, so it is context only. It matters more on the heavier, larger lid of a 17-inch laptop."
+  },
+  {
+   "product": "FOPO S788 16-inch Triple",
+   "label": "Video path",
+   "value": "Display driver (UsbDisplay) required. Connects by USB-C or dual-head USB-A to USB-C. External PD power supply included. Systems: Windows 10/11 and macOS from 2019, including M1, M2 and M3 (FOPO's list)",
+   "source": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender",
+   "source_title": "FOPO S788 Triple Laptop Screen Extender (fopomonitor.com)",
+   "read": "2026-11-18",
+   "note": "Taken from Dealectric's own 2026-11-18 record of this page, as the brief instructs. My own requests to fopomonitor.com returned HTTP 429 on 2026-11-18 (storecheck and fetch, several tries). Because it runs on a driver, it doesn't need a port with Alt Mode."
+  },
+  {
+   "product": "FOPO S788 16-inch Triple",
+   "label": "Laptop fit range",
+   "value": "12–18.5-inch laptops (FOPO's range, physical fit)",
+   "source": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender",
+   "source_title": "FOPO S788 Triple Laptop Screen Extender (fopomonitor.com)",
+   "read": "2026-11-18",
+   "note": "From Dealectric's 2026-11-18 record. My direct fetch got HTTP 429. Covers 17 and 17.3 inches."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Laptop fit range",
+   "value": "15–16-inch laptops (Mobile Pixels' range)",
+   "source": "https://www.mobilepixels.us/products/trio-3-pro",
+   "source_title": "Mobile Pixels Trio 3 Pro (mobilepixels.us)",
+   "read": "2026-11-18",
+   "note": "From Dealectric's 2026-11-17 record. My direct fetch got HTTP 429 on 2026-11-18. It falls outside a 17-inch laptop, so it doesn't belong in the table on the question's own terms."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Laptop fit range",
+   "value": "15–16-inch laptops (Mobile Pixels' range)",
+   "source": "https://www.mobilepixels.us",
+   "source_title": "Mobile Pixels US store",
+   "read": "2026-11-18",
+   "note": "From Dealectric's 2026-11-17 record. I did not open the product page myself. Outside a 17-inch laptop."
+  }
+ ],
+ "unsourced": [
+  "I could not open FOPO's own US product pages for S788, S788C, S999 and S10 on 2026-11-18 (HTTP 429 from storecheck and from fetch). I couldn't confirm the S999 or S10 fit range or video path myself.",
+  "FOPO S788 manual: the manuals.plus copy (redirected from ar.manuals.plus) returned HTTP 403. The search snippet's '12 to 18.5 inch' and 'USB flash drive with drivers' could not be confirmed from the page.",
+  "Mobile Pixels Trio 3 Pro product page: HTTP 429. Its fit range comes only from Dealectric's record.",
+  "Whether FOPO's UsbDisplay driver can show HDCP-protected video (streaming services) on the added screens: I looked for a FOPO statement and a reviewer test and found neither.",
+  "Apple's own support page on how many external displays a base M-series MacBook drives: search returned forums and news only, and I didn't open Apple's page. This is likely moot for a 17-inch laptop but unsourced here.",
+  "gradedpicks.com rival page (TLS certificate error), and twelvetabs.com and lbdsoftware.com rival pages (not opened within the tool budget)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 1.0592848
+ }
+}
