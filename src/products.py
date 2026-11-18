@@ -1513,14 +1513,14 @@ PRODUCTS = [
 
 {"slug": "soundcore-c50i", "brand": "Soundcore", "program": "cj:soundcore", "category": "earbuds",
  "name": "soundcore C50i Clip-On Open-Ear Earbuds", "model": "D1101",
- "url": "https://www.soundcore.com/products/d1101-c50i-comfortable-clip-on-earbuds", "price": 69.99, "verified": "2026-11-07",
+ "url": "https://www.soundcore.com/products/d1101-c50i-comfortable-clip-on-earbuds", "price": 34.99, "list_price": 69.99, "verified": "2026-11-18",
  "codes_excluded": "On sale: Soundcore's AFSC20 excludes sale items",
  "specs": [("Battery", "7 h music / 4.5 h calls; 28 h with case; 10 min = 2 h"), ("Water", "IP55"), ("Bluetooth", "6.0, multipoint"),
            ("Weight", "5.5 g per bud"), ("Mics", "2 with AI noise reduction"), ("Controls", "Buttons; app EQ")],
  "warranty": "Not printed on soundcore.com", "returns": "30-day money back (soundcore.com)",
- "summary": "A $40 clip-on earbud (on sale against $69.99 on 2026-11-05) that runners and all-day wearers rate for staying put and staying comfortable.",
+ "summary": "A $35 clip-on earbud (on sale against $69.99 on 2026-11-18) that runners and all-day wearers rate for staying put and staying comfortable.",
  "fit": "Running, the gym and budget buyers who mostly listen rather than talk.",
- "caveats": ["$39.98 is Soundcore's sale price on its clip-on collection page on 2026-11-05; the product page shows $69.99 less a $30 on-page coupon.",
+ "caveats": ["$34.99 is the price soundcore.com showed on 2026-11-18 with an on-page discount off $69.99 (it showed $39.98 on 2026-11-05); Soundcore lists its Black Friday prices as running to 2026-11-30.",
              "Leaks sound at moderate volume; not for quiet trains or offices (Soundcore support calls leakage unavoidable in open-ear designs)."]},
 
 {"slug": "ugreen-nexode-pro-160w-5-port", "brand": "UGREEN", "program": "cj:ugreen", "category": "usb-c-charger",
