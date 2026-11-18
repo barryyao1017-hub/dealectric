@@ -32,6 +32,7 @@ from products import PRODUCTS  # noqa: E402
 
 JSON_HOST = {"www.soundcore.com": "us.soundcore.com"}
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+JINA = "https://r.jina.ai/"
 MAX_MOVE = 0.25   # a title-only match priced further than this from the record is not taken as the record's variant
 
 
@@ -42,13 +43,21 @@ def _curl(url: str, extra: list[str] | None = None) -> tuple[int, str]:
     return (int(code) if code.isdigit() else 0), body
 
 
+def jina(url: str, fmt: str = "text", meta: bool = False) -> tuple[int, str]:
+    """One read of `url` through r.jina.ai, the outside reader the tools here fall back to when a store answers this
+    network with a 429 (also tools/linkcheck.py). `fmt` is its X-Return-Format (text, html). With `meta` the answer is
+    its JSON envelope: data.httpStatus (the store's own status), data.finalUrl, and data.text or data.html. Without a
+    key r.jina.ai answers 20 requests a minute; the caller paces."""
+    return _curl(JINA + url, ["-H", f"X-Return-Format: {fmt}"] + (["-H", "Accept: application/json"] if meta else []))
+
+
 def product_json(js_url: str) -> tuple[dict | None, str]:
     code, body = _curl(js_url)
     if code == 200 and body.lstrip().startswith("{"):
         return json.loads(body), "direct"
     via = f"direct {code}"
     for _ in range(2):
-        code, body = _curl("https://r.jina.ai/" + js_url, ["-H", "X-Return-Format: text"])
+        code, body = jina(js_url)
         i = body.find("{")
         if code == 200 and i >= 0:
             try:

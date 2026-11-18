@@ -90,8 +90,12 @@ product it GETs the record's `url` as a browser would (redirects followed, 3 s b
 ALLPOWERS and Soundcore, 20 s on BLUETTI), reads the Shopify product JSON (`<url>.js`, Soundcore's on `us.soundcore.com`) or the page's
 schema.org availability, and requests `dealectric.com/go/<slug>` without following it, to confirm the Location is the
 deep link in `worker/src/links-map.json` with the `<slug>.<click id>` sub-ID. It flags BROKEN, MOVED, DELISTED, SOLD
-OUT or BACK IN STOCK (against `in_stock`), a /go/ mismatch and a stale link map; a 429, a bot challenge or a network
-error is UNANSWERED, never broken, and a store that refuses both tries gets no more requests that run. Results go to
+OUT or BACK IN STOCK (against `in_stock`), a /go/ mismatch and a stale link map; a bot challenge or a network
+error is UNANSWERED, never broken, and a store that answers a challenge to both tries gets no more requests that run.
+A 429 is not waited out (DLC-306): requests go to the store that has waited longest, and a store that answers 429 has
+that URL and its next ones read through `https://r.jina.ai/<url>` (paced at 20 a minute; one direct retry once its
+Retry-After has passed). A URL neither the store nor r.jina.ai would answer is THROTTLED, "throttled, not checked",
+never broken. /go/ links are never read through r.jina.ai (that would be a click). Results go to
 `<date>-links.json` here and a "links:" line in the sweep's commit message. It only flags: the weekly price check
 (DLC-9) edits `products.py`. Each /go/ check is one row in D1 `clicks` with user agent `dealectric-linkcheck-bot`
 (`bot_like=1`, so the click counts in `worker/README.md` leave it out). Tenergy's store answers every non-browser client
