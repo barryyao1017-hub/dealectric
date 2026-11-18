@@ -1324,12 +1324,12 @@ PRODUCTS = [
  "fit": "Cat owners covering a whole room with one camera.",
  "caveats": ["Records no history without Petcube Care; Wyze's Cam Pan v4 and TP-Link's Tapo pan cameras record to a microSD card for a similar price.", "Corded; no battery."]},
 
-{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "cart_variant": 62712052089202, "category": "portable-monitor",
+{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "cart_variant": 62934751248754, "category": "portable-monitor",
  "name": "FOPO S788 16-inch Triple Laptop Screen Extender, 3× 1920×1200 IPS", "model": "S788",
  "url": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender", "price": 599.99, "verified": '2026-11-17', "list_price": 999.99,
  "specs": [("Displays", "Three 16-inch IPS panels, 1920 × 1200 each, 16:10, non-touch"), ("Panel", "100% sRGB, 60 Hz, 25 ms, W-LED"), ("Fits", "12–18.5-inch laptops (physical fit, FOPO's range)"), ("Connection", "USB-C, or dual-head USB-A to USB-C; display driver (UsbDisplay) required; external PD power supply included"), ("Systems", "Windows 10/11; macOS from 2019 including M1, M2, M3 (FOPO's list)"), ("Size and weight", "388 × 244 × 41.3 mm folded; 2.64 kg"), ("In the box", "Extender, carrying case, PD power supply, cables, driver USB drive")],
  "warranty": "1 year on hardware; registered members get a second year", "returns": "30-day returns (FOPO)",
- "summary": "Three 16-inch 1920 × 1200 panels around a laptop, the only triple extender at this size that is not 1080p, for $500 with FOPO's 10% code on top.",
+ "summary": "Three 16-inch 1920 × 1200 panels around a laptop, the only triple extender at this size that is not 1080p; FOPO's 10% code comes off the store price.",
  "fit": "Someone who works from a 15–17-inch laptop and wants three extra 16:10 screens that fold into one case.",
  "caveats": ["Driver-based (a USB display driver), not a native display connection: it needs a driver install, Screen Recording permission on a Mac, and a separate power supply.", "2.64 kg on top of the laptop; Notebookcheck called FOPO's smaller extender clunky next to standalone portable monitors.", "Fit is by laptop dimensions, not just screen diagonal; check clearance before buying."]},
 
