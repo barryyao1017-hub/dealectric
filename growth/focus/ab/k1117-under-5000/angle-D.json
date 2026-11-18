@@ -1,0 +1,119 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's own manual limits solar current to 8.2 A whenever the solar input voltage is 30 V or lower (in Non-Advanced Mode), so the Apex 300 + 2× 200 W kit (SP200L, Voc 24.6 V) makes at most about 200 W wired in parallel and about 330 W with one panel per input; it needs the panels wired in series (about 49 V Voc, inside the 60 V limit) or Advanced Mode to reach its 400 W.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts' 'Solar Generator Kits Compared at the Same Panel Watts' (cited in both chats). It lists the Apex 300 only as having 'two native 1,200 W inputs' and gives the SP200L's Voc (24.6 V) and Isc (10.8 A). Its series-wiring advice is for the Elite 200 V2, and the reason it gives is Isc (current), not the voltage-based 8.2 A limit. It does not mention Non-Advanced and Advanced Mode, the 30 V threshold, or the Elite 400. I could not read theoutageready.com (cited; certificate error) or solargenreview.com (cited; HTTP 429), so I can't rule them out. ChatGPT's answers never discuss whether a kit's panels can deliver their rated watts into the station.",
+ "decides": "The pick does not change: every Apex 300 kit is a pre-order (BLUETTI says 'expected to ship in late January'), so it can only be the wait-for-it option. It does change the advice for that option. The Apex 300 + 2× 200 W ($2,089.05 link), Apex 300 + B300K + 2× 200 W ($3,324.05) and Apex 300 + 2× B300K + 2× 200 W ($4,369.05) kits reach their 400 W only if the two panels are wired in series or Advanced Mode is switched on. The 2× 350 W kits cannot be wired in series on either the Apex 300 or the Elite 400 (2 × 33 V Voc = 66 V, over the 60 V limit), so the page should tell the shopper how to wire them. The single 500 W SORA panel kits operate above 30 V and are not affected.",
+ "candidates": [
+  "BLUETTI Apex 300 + 2× 200 W",
+  "BLUETTI Apex 300 + B300K + 2× 200 W",
+  "BLUETTI Apex 300 + 2× B300K + 2× 200 W",
+  "BLUETTI Apex 300 + 2× 350 W",
+  "BLUETTI Apex 300 + B300K + 2× 350 W",
+  "BLUETTI Apex 300 + 2× 500 W",
+  "BLUETTI Elite 400 + 2× 350 W",
+  "BLUETTI Elite 400 + 500 W",
+  "BLUETTI 5kWh RV Kit + 4× 100 W",
+  "ALLPOWERS R3500 + SP039 600 W",
+  "Jackery Explorer 5000 Plus + 2× SolarSaga 500X",
+  "Anker SOLIX F3800 Plus kit",
+  "EcoFlow DELTA Pro 3 + 400 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar (PV) input current limit by input voltage",
+   "value": "Non-Advanced Mode: 12 V ≤ U ≤ 30 V, I ≤ 8.2 A; 30 V < U ≤ 60 V, I ≤ 20 A. Advanced Mode: 12 V ≤ U ≤ 16 V, I ≤ 8.2 A; 16 V < U ≤ 60 V, I ≤ 20 A",
+   "source": "https://manuals.plus/m/4e4bdfa8d241cb1a55212a81be5d5be7269f29de204bfe2929930efdfefd3fc5",
+   "source_title": "BLUETTI Apex 300 Portable Power Station User Manual (V1.0), section 4.2.2 Solar Panel",
+   "read": "2026-11-17",
+   "note": "Manual footnote: 'U: Solar input voltage; I: Input current.' The manual does not say how to turn on Advanced Mode; it points to the app's Advanced Settings for other features."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar panel requirements",
+   "value": "Voc 12–60 V, 20 A max, 1,200 W max; 'Do not use solar panels with open circuit voltage higher than 60V'",
+   "source": "https://manuals.plus/m/4e4bdfa8d241cb1a55212a81be5d5be7269f29de204bfe2929930efdfefd3fc5",
+   "source_title": "BLUETTI Apex 300 Portable Power Station User Manual (V1.0)",
+   "read": "2026-11-17",
+   "note": "Quoted from the manual."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maximum solar input by charging mode",
+   "value": "Standard 1,440 W; Turbo 2,400 W (AC + solar 3,840 W); Silent 500 W",
+   "source": "https://manuals.plus/m/4e4bdfa8d241cb1a55212a81be5d5be7269f29de204bfe2929930efdfefd3fc5",
+   "source_title": "BLUETTI Apex 300 Portable Power Station User Manual (V1.0), section 5.2",
+   "read": "2026-11-17",
+   "note": "The manual adds: 'The data above is for reference only.'"
+  },
+  {
+   "product": "BLUETTI SP200L (panel in the Apex 300 2× 200 W kits)",
+   "label": "Open-circuit voltage and short-circuit current",
+   "value": "Voc 24.6 V, Isc 10.8 A",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-17",
+   "note": "This is a named reviewer's figure. I could not open the maker's SP200L page (HTTP 429)."
+  },
+  {
+   "product": "BLUETTI SP200 (sibling 200 W panel)",
+   "label": "Voltage and current at maximum power",
+   "value": "Vmp 20 V, Imp 10 A, Voc 24 V, Isc 11 A",
+   "source": "https://manuals.plus/m/0deea71c3f4ff39e37bb53b9b683d7fa247f24c0409335a121f51f7fb4902e25",
+   "source_title": "BLUETTI SP200 200W Solar Panel User Guide",
+   "read": "2026-11-17",
+   "note": "This is the SP200, not the SP200L. I used it only to estimate realistic watts under the 8.2 A limit."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2× 200 W kits",
+   "label": "Solar watts the station accepts from the kit's panels, by wiring (Non-Advanced Mode)",
+   "value": "Parallel on one input: ≤202 W (about 164 W at Vmp); one panel per input: ≤202 W each (about 164 W each, about 328 W total); series on one input: the full 400 W",
+   "source": "https://manuals.plus/m/4e4bdfa8d241cb1a55212a81be5d5be7269f29de204bfe2929930efdfefd3fc5",
+   "source_title": "BLUETTI Apex 300 Portable Power Station User Manual (V1.0)",
+   "read": "2026-11-17",
+   "note": "My arithmetic. A panel with Voc 24.6 V always operates below 30 V, so the 8.2 A limit applies. Upper bound: 8.2 A × 24.6 V = 202 W. At the SP200's Vmp of 20 V: 8.2 × 20 = 164 W. In series: Voc 49.2 V (StormWatts estimates about 56.5 V at −4 °F, still under 60 V) and Vmp about 40 V, which is above 30 V, so the 20 A limit applies and the panels' roughly 10 A passes in full. Advanced Mode moves the threshold to 16 V, which also removes the limit. These are rated-output estimates, not measurements."
+  },
+  {
+   "product": "BLUETTI 350W Solar Panel (US)",
+   "label": "Open-circuit voltage",
+   "value": "33 V Voc; two in series = 66 V, which is over the 60 V limit of both the Apex 300 and the Elite 400",
+   "source": "https://www.bluettipower.com/products/350w-solar-panel",
+   "source_title": "BLUETTI 350W Solar Panel | 350W",
+   "read": "2026-11-17",
+   "note": "The page says 'a 33V open-circuit voltage (Voc)'; its spec table was empty. A 33 V Voc means Vmp is lower still, so on the Apex 300 in Non-Advanced Mode the panel probably runs under 30 V and hits the 8.2 A limit. That is an inference: I found no Vmp for the US panel. EU listings for a 'PV350' give a conflicting 46.5 V Voc, so the US panel may be a different model."
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "label": "Solar input and ship date",
+   "value": "1,000 W max, 12–60 V, 20 A max; 'Elite 400 ships from mid-December'",
+   "source": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "source_title": "BLUETTI Elite 400 Portable Power Station | 3,840Wh, 2,600W",
+   "read": "2026-11-17",
+   "note": "The Elite 400 + 2× 350 W kit page lists only the station, AC cable, grounding screw and manual in the box, with no parallel connector. Its 'Elite 400 ships from mid-December' note refers to the station."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Ship date, DC output and 240 V",
+   "value": "'The Apex 300 is expected to ship in late January'; '*Hub D1 is required for DC power'; the manual has a 120 V/240 V output switch, NEMA 14-50R 3,840 W at 50 A, and a TT-30 limited to 16 A at 240 V",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-17",
+   "note": "The 240 V and outlet figures are from the Apex 300 manual on manuals.plus (same date)."
+  }
+ ],
+ "unsourced": [
+  "Whether the Elite 400 has the same low-voltage (8.2 A at 30 V or below) solar current limit: I searched for its manual's solar table and did not find it, and BLUETTI's own manual PDFs were not retrieved.",
+  "How to turn on Advanced Mode on the Apex 300: the manual names the mode but does not explain it.",
+  "SP200L Vmp/Imp from a BLUETTI page: the US product page returned HTTP 429, so the Vmp used is the SP200 manual's figure.",
+  "Vmp and Isc of the US BLUETTI 350W panel: the US page shows only Voc 33 V, which conflicts with EU 'PV350' listings (46.5 V).",
+  "SORA 500 Voc (49.1 V in search results) from a maker page: the EU and AU BLUETTI pages returned errors (too many redirects / HTTP 429).",
+  "Whether the cited theoutageready.com and solargenreview.com pages cover this limit: one failed with a certificate error, the other with HTTP 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.5937999999999999
+ }
+}

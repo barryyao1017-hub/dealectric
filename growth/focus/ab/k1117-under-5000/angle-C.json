@@ -1,0 +1,154 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300's built-in solar inputs (2 × XT60, 12–60 V, 20 A each) reject any panel string above 60 V open-circuit, so the two SORA 500 panels in the Apex 300 + 2 × 500 W kit (49.1 V Voc each) must each go on their own input and never in series (98.2 V). It also does not state that the Apex 300 box list has no MC4-to-XT60 solar cable, while BLUETTI's own $29 MC4-to-XT60 cable is marked Discontinued / Out of Stock.",
+ "standout": 2,
+ "standout_why": "I compared this against StormWatts 'Solar Generator Kits Compared at the Same Panel Watts' (cited), which says only 'two native 1,200 W inputs; 2,400 W cap' for the Apex 300 kits. It gives no voltage ceiling, no series rule and nothing about cables. I also compared it against StormWatts '5 kWh-Class … Solar Input Compared' (result 2, not cited), which covers input limits for the Jackery 5000 Plus, F3800 Plus, DELTA Pro 3 and S5000 but not BLUETTI. That page itself says connector types and adapters are 'not stated'. The cited Anker F3800 Plus page covers only Anker. theoutageready.com would not load (certificate error), and I did not read solargenreview. So the per-input numbers are partly in a rival page, but the 60 V series exclusion and the missing cable are new.",
+ "decides": "This does not change the ship-now pick, because every Apex 300 panel kit is a pre-order dispatching in late January 2027. It adds two lines to the rows for our larger BLUETTI kits (Apex 300 + 2 × 500 W, Apex 300 + B300K + 500 W, Apex 300 + B500K + 500 W): wire one SORA 500 per XT60 input and never in series, and check the cart has a way to connect MC4 to XT60, because BLUETTI's page for the Apex 300 + 2 × 500 W kit lists no such cable and its separate cable is listed as discontinued. Going past the built-in 2,400 W solar limit needs the $699 SolarX 4K, which takes 150–500 V strings and is a separate purchase.",
+ "candidates": [
+  "BLUETTI Apex 300 + 2× 500 W",
+  "BLUETTI Apex 300 + B300K + 500 W",
+  "BLUETTI Apex 300 + B500K + 500 W",
+  "BLUETTI Apex 200 + B500K + 2× 500 W",
+  "BLUETTI Elite 400 + 2× 350 W",
+  "BLUETTI 5kWh RV Kit + 4× 100 W",
+  "ALLPOWERS R3500 + SP039 600 W",
+  "Jackery Explorer 5000 Plus + 2× SolarSaga 500X",
+  "Anker SOLIX F3800 Plus + 400 W",
+  "EcoFlow DELTA Pro 3 + 400 W",
+  "EcoFlow DELTA 3800 Gen4 + 4× 160 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Built-in solar input per port",
+   "value": "2 inputs (XT60PM-M), Voc 12–60 V, 20 A max, 1,200 W max per input",
+   "source": "https://manuals.plus/m/a9e072079e7b8a7d1bcfae13b398bdfb6abfc31a5702c1e7b2aa3869b5f839f3",
+   "source_title": "BLUETTI Apex 300 Portable Power Station User Manual V2.1 (P/N 17.0303.0869-02A2), hosted by Manuals+",
+   "read": "2026-11-17",
+   "note": "Section 4.2.3 of the maker's manual. This is the 230 V edition: BLUETTI's own US EN PDF and AU PDF were too large to open (over 10 MB). The 2 × 1,200 W figure matches StormWatts' '2,400 W cap'. Normal mode: 12–30 V at 8.2 A or less, 30–60 V at 20 A or less."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Maker's voltage exclusion",
+   "value": "\"Do not use solar panels with open circuit voltage higher than 60V\"; error E033 = PV overvoltage",
+   "source": "https://manuals.plus/m/a9e072079e7b8a7d1bcfae13b398bdfb6abfc31a5702c1e7b2aa3869b5f839f3",
+   "source_title": "BLUETTI Apex 300 User Manual V2.1, hosted by Manuals+",
+   "read": "2026-11-17",
+   "note": "The manual's FAQ allows third-party panels only with Voc of 12–60 V and MC4 connectors, and says to avoid mixing panel types."
+  },
+  {
+   "product": "BLUETTI SORA 500 (500 W panel in the Apex kits)",
+   "label": "Panel electrical rating",
+   "value": "Voc 49.1 V max, Isc 13.31 A, output 40.92 V / 12.22 A max",
+   "source": "https://manuals.plus/bluetti/sora-500-panel-solar-manual",
+   "source_title": "BLUETTI SORA 500 Panel Solar User Manual (Manuals+, published 2026-02-21)",
+   "read": "2026-11-17",
+   "note": "BLUETTI's US page for this panel (bluettipower.com/products/500w-portable-solar-panel, $849) has an empty Tech Specs tab, and the UK page would not load. Arithmetic against the Apex 300 limits: 1 panel per input = 49.1 V and 13.31 A, both within 60 V and 20 A. 2 in series = 98.2 V, over 60 V, so not allowed. 2 in parallel on one input = 26.6 A, over 20 A, so not allowed either. The 2 × 500 W kit therefore needs both XT60 inputs, one panel each."
+  },
+  {
+   "product": "BLUETTI Apex 300 + 2× 500 W kit",
+   "label": "Box contents listed on the kit page",
+   "value": "Apex 300 ×1, AC charging cable 1.8 m, car charging cable 0.73 m, M5 grounding screw, manual. No solar or MC4-to-XT60 cable listed",
+   "source": "https://www.bluettipower.com/products/apex-300-2-500w",
+   "source_title": "BLUETTI Apex 300 + 2 × 500W (US store)",
+   "read": "2026-11-17",
+   "note": "No box list for the panel appears on the page. The same page shows $3,299, says the Apex 300 'is expected to ship in late January' and that 'each unit will be delivered separately'. By contrast, BLUETTI's 'Apex 300+B300K+Charger 1+Hub D1+2*350W' bundle is titled 'Free 2*PV Cable'."
+  },
+  {
+   "product": "BLUETTI Solar Charging Cable (20A MC4 to XT60)",
+   "label": "Fit and availability",
+   "value": "$29; 'Applicable Models: Apex300 / Elite 100 V2 / Elite 200 V2 / Elite 300 / Elite 400' (Apex 200 not listed); labelled 'Discontinued' and 'Out of Stock'",
+   "source": "https://www.bluettipower.com/products/apex300-solar-charging-cable",
+   "source_title": "Solar Charging Cable ( 20A MC4 to XT60 ) – BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page also has an old note: 'currently out of stock and will arrive in mid-to-late September'. No cable length is given. Dealectric also lists BLUETTI's own 'Solar Charging Cable, 20 A MC4 to XT60' (bluetti-solar-charging-cable-mc4-xt60-20a)."
+  },
+  {
+   "product": "BLUETTI SolarX 4K",
+   "label": "What is needed above 2,400 W solar, and its fit",
+   "value": "$699; 'Compatibility: Apex 300, Apex 200, B300, B300K, B300S, AC300, AC500'; takes 150–500 V panels and steps down to below 60 V; up to 4 kW",
+   "source": "https://www.bluettipower.com/products/solarx-4k-solar-charge-controller",
+   "source_title": "SolarX 4K & Locking Terminal to P090D Adapter Cable (for Single Use) – BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Read through storecheck.py search of the BLUETTI US store. The Apex 300 kit page says up to 4,000 W solar '* Requires a SolarX 4K'. None of the panel kits under $5,000 include one."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Expansion battery fit",
+   "value": "B300K and B500K named on the US page; 'Connect 2–3 units and up to 18 batteries for up to 11.52kW output and 58kWh capacity'; manual V2.1: up to 6 × B300K per unit (19,353.6 Wh), takes B300 and B300S but mixing them is not recommended, P090D cable sold separately",
+   "source": "https://www.bluettipower.com/products/apex-300-2-500w",
+   "source_title": "BLUETTI Apex 300 + 2 × 500W (US store)",
+   "read": "2026-11-17",
+   "note": "The 6 × B300K limit, the B300/B300S mixing note and the P090D cable come from the V2.1 manual at the Manuals+ URL above. Parallel use of 2–3 units needs Hub A1 (manual)."
+  },
+  {
+   "product": "BLUETTI Apex 300 Home Integration Kit",
+   "label": "Home-circuit fit",
+   "value": "$699 (compare-at $799); 'Compatible Models: Apex300'",
+   "source": "https://www.bluettipower.com/products/apex-300-home-integration-kit",
+   "source_title": "Apex 300 Home Integration Kit – BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Read through storecheck.py search of the BLUETTI US store. Separate BLUETTI listings exist for the AC300, AC500 and EP500Pro kits, so the kits are model-specific."
+  },
+  {
+   "product": "BLUETTI Apex 300 + SORA 500",
+   "label": "Measured solar input, single panel",
+   "value": "401 W from one 500 W SORA 500",
+   "source": "https://www.iphoneincanada.ca/2026/06/26/hands-on-bluetti-apex-300-sora-500-review/",
+   "source_title": "Hands-On: BLUETTI Apex 300 + SORA 500 Review (Austin Blake, iPhone in Canada)",
+   "read": "2026-11-17",
+   "note": "The review gives no sun, temperature or angle conditions and does not say which cable was used. 2026-06-26 is taken from the URL."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus + 2× SolarSaga 500X",
+   "label": "Panel limit (already in a rival page)",
+   "value": "Low-PV 16–60 V, 10.5 A, 600 W per port; Jackery FAQ: no more than two SolarSaga 500X; about 438 W each",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input | StormWatts",
+   "read": "2026-11-17",
+   "note": "StormWatts' figures, which they attribute to Jackery's FAQ. I did not open Jackery's own page in this run. This is listed to show what the rival page already has."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Solar input (already in a rival page)",
+   "value": "2 identical inputs, 11–165 V, 17 A, 1,600 W each; 'exceeding 165V may cause damage'",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input | StormWatts",
+   "read": "2026-11-17",
+   "note": "StormWatts quoting Anker's page. I did not open Anker's page in this run."
+  },
+  {
+   "product": "EcoFlow DELTA Pro 3",
+   "label": "Solar input (already in a rival page)",
+   "value": "High-PV 30–150 V, 15 A, 1,600 W; Low-PV 11–60 V, 20 A, 1,000 W",
+   "source": "https://stormwatts.com/articles/240v-solar-generators-solar-input-compared/",
+   "source_title": "5 kWh-Class Solar Generators Compared on Solar Input | StormWatts",
+   "read": "2026-11-17",
+   "note": "StormWatts quoting EcoFlow. StormWatts also says EcoFlow's 3-in-series example goes over 150 V below about 54 °F."
+  },
+  {
+   "product": "BLUETTI Apex 200",
+   "label": "Solar input (already in the cited rival page)",
+   "value": "XT60 1,000 W, 12–60 V, 25 A; MC4 2,000 W, 60–280 V",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts | StormWatts",
+   "read": "2026-11-17",
+   "note": "The Apex 200 has a high-voltage MC4 input that the Apex 300 lacks, so 2 × SORA 500 in series (98.2 V, my arithmetic) falls inside its 60–280 V range. BLUETTI's MC4-to-XT60 cable page does not list the Apex 200."
+  }
+ ],
+ "unsourced": [
+  "Whether the SORA 500 box includes an MC4-to-XT60 cable. BLUETTI's US page and the Manuals+ panel manual show the box contents only as an image, the UK page would not load (redirect loop), and the iPhone in Canada review does not say.",
+  "The US-edition spec table for the Apex 300 (120/240 V). BLUETTI's US EN PDF on s4.bluettipower.com and the copy on ussolarsupplier.com were too large to open (over 10 MB). The solar figures above come from the 230 V V2.1 manual.",
+  "What a single US Apex 300 needs to deliver 240 V. The US kit page says it powers '120V and 240V devices simultaneously' but names no hardware.",
+  "ALLPOWERS R3500 solar input (12–150 V, 40 A, 2,000 W XT60) and the Voc of the SP039 600 W panel. The R3500 figures came only from search snippets, storecheck search failed on allpowers.com (non-JSON response), and I found no SP039 Voc.",
+  "Solar input range of the BLUETTI RV5 Power Hub and the fit of the PV100 FX panels in the 5kWh RV kits (not reached within the call budget).",
+  "Jackery, Anker and EcoFlow figures from their own maker pages. These rows rely on StormWatts' quotes of those pages.",
+  "theoutageready.com/guides/solar-generator-for-home/ (cited) failed with a self-signed certificate error, and solargenreview.com (cited) was not read, so they are not part of the standout comparison."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.7417339
+ }
+}
