@@ -111,7 +111,9 @@ C = {
  "EPANEL": dict(label="Epanel", long="Epanel smart distribution panel", price=499, row=("Distribution panel", "Epanel smart distribution panel"), role=None),
  "EPAD": dict(label="Epad", long="Epad control screen", price=399, row=("Control screen", "Epad central control screen"), role=None),
 }
+C["TROLLEY"] = dict(label="Foldable Trolley", long="Foldable Trolley", price=249, row=("Trolley", "BLUETTI Foldable Trolley"), role="rolls the stack to where it is needed")
 PANELS = {"P60": 60, "P100": 100, "P200": 200, "P350": 350, "P500": 500}
+NUMW = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
 
 # (qid, slug, station, number of stations, [(component, qty)], extra caveats)
 G1 = [
@@ -187,7 +189,205 @@ G1 = [
  ("un074", "bluetti-rv5-b4810", "RV5", 1, [("B4810", 1)], []),
  ("un059", "bluetti-5kwh-rv-kit", "RV5", 1, [("B4810", 1), ("EPANEL", 1), ("EPAD", 1)], []),
 ]
-GROUPS = {1: G1}
+# group 2: the stations sold on their own. (qid, slug, station, name tail, category, summary, extra spec rows, extra caveats)
+ST["X60"] = dict(wh=614, w="DC only", battery="614 Wh LiFePO4", ac=None, solar=None, cap=None,
+    extra=[("DC outputs", "DC4017 12 V / 5 A, DC6530 16 V / 4 A, DC5525 24 V / 4 A"), ("USB", "USB-C up to 20 V / 5 A (100 W), USB-A 5 V / 3 A"),
+           ("Input", "200 W / 8 A max, 12.5–26 V; pass-through charging"), ("Weight", "7 kg (15 lb)")],
+    war="12 months (spec table on BLUETTI's X60 page)", what="BLUETTI's 614 Wh CPAP battery, the X60",
+    fit="Running a CPAP machine through the night while camping or in an outage, from its DC input rather than an inverter",
+    cav=["DC and USB outputs only: there is no AC outlet, so the CPAP needs a DC cord that matches one of its three DC ports.",
+         "BLUETTI's spec table says it is not TSA compliant, so it cannot be carried on a flight.",
+         "BLUETTI's \"up to 8 hours\" is its own figure and depends on the machine, the pressure and whether the humidifier is on."])
+G2 = [
+ ("un121", "bluetti-premium-100-v2", "Premium 100 V2", "Portable Power Station (1,024 Wh, 2,000 W)", "power-station",
+  "A 25 lb, 1 kWh LiFePO4 station with a 2,000 W inverter, 1,200 W wall charging and a 1,000 W solar input.", [], []),
+ ("un117", "bluetti-premium-200-v2", "Premium 200 V2", "Portable Power Station (2,073.6 Wh, 2,700 W)", "power-station",
+  "A 2 kWh LiFePO4 station with a 2,700 W inverter, 2,300 W wall charging and a 1,000 W solar input, at 53 lb.", [], []),
+ ("un122", "bluetti-x60-cpap-power-bank", "X60", "CPAP Power Bank (614 Wh, DC and USB outputs)", "power-bank",
+  "A 614 Wh LiFePO4 battery built to run a CPAP machine from its DC input, with 12 V, 16 V and 24 V ports and USB-C; it has no AC outlet.", [], []),
+ ("un123", "bluetti-elite-30-mini", "Elite 30 mini", "Portable Power Station (288 Wh, 300 W)", "power-station",
+  "BLUETTI's 7 lb, 288 Wh station with a 300 W outlet and a built-in retractable 140 W USB-C cable.", [], []),
+ ("un118", "bluetti-elite-400", "Elite 400", "Portable Power Station (3,840 Wh, 2,600 W)", "power-station",
+  "BLUETTI's wheeled 3.84 kWh station with a 2,600 W inverter and a 1,000 W solar input, sold as a pre-order.", [],
+  ["The store's own list shows a compare-at price ($1,399) below the selling price ($1,499) for this item, so no list price is given here."]),
+ ("un120", "bluetti-fridgepower", "FridgePower", "Refrigerator Backup Battery (2,016 Wh, 1,800 W)", "power-station",
+  "A 75 mm thick, 2 kWh LiFePO4 backup battery that stays plugged in beside a refrigerator and takes over in 10 ms when the power fails.", [],
+  ["BLUETTI sells it with one to three BC200 add-on batteries and as a pair on separate listings."]),
+ ("un119", "bluetti-rv5-power-hub", "RV5", "Power Hub for RVs (5,000 W, 48 V, battery sold separately)", "power-station",
+  "BLUETTI's 48 V RV power hub: a 5,000 W inverter, a 12 V supply for the coach and solar and alternator charging in one unit, sold here without a battery.", [],
+  ["No battery is included: the RV5 runs from BLUETTI's B4810 battery ($1,699 on 2026-11-18); BLUETTI's RV5 + B4810 bundle was $2,799 that day, $199 less than the two bought separately."]),
+]
+STATION_VARIANT_URL = {"un121", "un117"}
+
+
+def station(qid, slug, st, tail, cat, summary, rows, extra):
+    it, s = ITEMS[qid], ST[st]
+    d = {"slug": slug, "brand": "BLUETTI", "program": "awin:bluetti_us", "asin": None, "category": cat, "_qid": qid,
+         "name": f"BLUETTI {st} {tail}", "model": st,
+         "url": B + it["handle"] + (f"?variant={it['variant_id']}" if qid in STATION_VARIANT_URL else ""), "price": it["price_now"]}
+    if it["cmp_now"] and it["cmp_now"] > it["price_now"]:
+        d["list_price"] = it["cmp_now"]
+    notes = ship_notes(it, [])
+    pre = preorder_of(notes)
+    if pre:
+        d["preorder"] = pre
+    d["cart_variant"] = it["variant_id"]
+    d["verified"] = DAY
+    d["specs"] = ([("Battery", s["battery"])] if s.get("battery") else []) + ([("AC output", s["ac"])] if s.get("ac") else []) \
+        + ([("Solar input", s["solar"])] if s.get("solar") else []) + rows + [(k, v.replace("; panels extra", "").replace("; panel extra", "")) for k, v in s["extra"]]
+    d["warranty"] = s["war"]
+    d["returns"] = RET
+    d["summary"] = summary
+    d["fit"] = s["fit"] + "."
+    cav = ([("Pre-order: " if pre else "") + "BLUETTI's page says: " + "; ".join(notes) + f" (read {DAY})."] if notes else [])
+    d["caveats"] = cav + [c for c in s["cav"] if "MC4-to-XT60" not in c] + extra
+    return d
+
+
+# group 3: kits and bundles of $6,000 and up. The EnergyPro systems (un037-un040, un042, un043, un045 and the $4,849 un054)
+# are installed home systems and are not composed here yet.
+G3 = [
+ ("un047", "bluetti-2-apex-200-2-b500k-hub-a1", "Apex 200", 2, [("B500K", 2), ("A1", 1)], []),
+ ("un046", "bluetti-2-apex-300-2-b500k-hub-a1", "Apex 300", 2, [("B500K", 2), ("A1", 1)], []),
+ ("un044", "bluetti-2-apex-300-4-b300k-hub-a1", "Apex 300", 2, [("B300K", 4), ("A1", 1)], []),
+ ("un041", "bluetti-2-apex-300-4-b300k-hub-a1-2-solarx-4k-trolley", "Apex 300", 2, [("B300K", 4), ("A1", 1), ("SX4K", 2), ("TROLLEY", 1)], []),
+]
+# group 4: expansion batteries and panels. (qid, slug, name, category, model, panel watts in the item, spec rows, warranty, summary, fit, caveats)
+HOST = "BLUETTI lists this battery separately for each host station; this is the listing for the {h}, so check that its cable fits your unit before ordering."
+B3 = [("Capacity", "2,764.8 Wh LiFePO4{each}"), ("Weight", "65.04 lb (29.5 kg){each} (BLUETTI)")]
+B5 = [("Capacity", "5,120 Wh LiFePO4{each}")]
+W5 = "5 years on the B300K (BLUETTI US, with proof of purchase from an official store)"
+WB5 = "See BLUETTI's product warranty period page for the B500K's term"
+NOAC = "On its own the battery has no AC outlets; it powers household loads only through a compatible BLUETTI station."
+WP = "12 months on the solar panels (BLUETTI's product warranty period page)"
+
+
+def _rows(rows, q):
+    return [(k, (f"{q}× " if q > 1 else "") + v.format(each=" each" if q > 1 else "")) for k, v in rows]
+
+
+def _bat(qid, slug, model, q, host, price1, extra_rows=(), extra_cav=(), acc=()):
+    """A B300K or B500K listing: q batteries for a host family, with optional accessories (component keys)."""
+    it = ITEMS[qid]
+    big = model == "B500K"
+    wh = (5120.0 if big else 2764.8) * q
+    name = f"BLUETTI {f'{q}× ' if q > 1 else ''}{model} Expansion Battery" + "".join(f" + {C[k]['label']}" for k in acc) + (f" for {host}" if host else "") + f", {num(wh)} Wh"
+    cav = []
+    if q > 1 or acc:
+        parts = round(q * price1 + sum(C[k]["price"] for k in acc), 2)
+        ls = [f"{NUMW[q] if q > 1 else 'the'} {model}{'s' if q > 1 else ''} ({money(price1)}{' each' if q > 1 else ''})"] + [
+            f"the {C[k]['label']} ({money(C[k]['price'])}{', ' + C[k]['alone'] if C[k].get('alone') else ''})" for k in acc]
+        lst = ", ".join(ls[:-1]) + (" and " if len(ls) > 1 else "") + ls[-1]
+        diff = round(parts - it["price_now"], 2)
+        cav.append(f"Bought separately at BLUETTI's US store on {DAY}, {lst} came to {money(parts)}" + (f"; this listing saves {money(diff)}." if diff > 0.5 else
+                   f", {money(-diff)} less than this listing." if diff < -0.5 else ", the same as this listing."))
+    for k in acc:
+        cav += C[k].get("cav", [])
+    cav += [NOAC] + ([HOST.format(h=host)] if host else []) + list(extra_cav)
+    roles = [C[k]["role"] for k in acc if C[k].get("role")]
+    return (qid, slug, name, "expansion-battery", f"{q}× {model}" if q > 1 else model, [],
+            _rows(B5 if big else B3, q) + [("Fits", host)] * bool(host) + [C[k]["row"] for k in acc] + list(extra_rows),
+            (WB5 if big else W5),
+            (f"{NUMW[q].capitalize() if q > 1 else 'One'} {model} expansion batter{'ies' if q > 1 else 'y'} ({num(wh)} Wh{' in all' if q > 1 else ''})"
+             + (" with " + " and ".join(C[k]["long"] for k in acc) if acc else "") + (f", in BLUETTI's listing for the {host}" if host else "") + "."),
+            (f"Adding stored energy to a BLUETTI {host.split(' / ')[0]}-family system" if host else "Adding stored energy to a compatible BLUETTI station")
+            + (": the bundle " + " and ".join(roles) if roles else "") + ".",
+            cav)
+
+
+def _pan(qid, slug, w, q, model, name, extra_cav=()):
+    it = ITEMS[qid]
+    fx = model.startswith("PV100 FX")
+    one = (329, "PV100 FX 100 W flexible panel (41.4 V open-circuit, 3.05 A short-circuit, MC4, IP67, 4.85 lb / 2.2 kg, 1,000 × 590 mm)") if fx else K.PANEL[w]
+    voc = 41.4 if fx else {100: 24.62, 200: 24.6, 350: 44.0, 500: 49.1}[w]
+    cav = []
+    if fx and q > 2:
+        cav.append(f"The set costs {money(it['price_now'])}, the same as {NUMW[q // 2]} sets of two at BLUETTI's US store on {DAY} ($329 each).")
+    if q > 1 and not fx:
+        cav.append(f"The set costs {money(it['price_now'])}, " + ("the same as" if abs(q * one[0] - it["price_now"]) < 0.5 else f"{money(abs(round(q * one[0] - it['price_now'], 2)))} {'less' if q * one[0] > it['price_now'] else 'more'} than")
+                   + f" {NUMW[q]} single panels at BLUETTI's US store on {DAY} ({money(one[0])} each).")
+    if q > 1 and not fx:
+        cav.append(f"{NUMW[q].capitalize()} of these in series are {num(round(voc * q, 2))} V open-circuit" + (", inside a 12–60 V solar input." if voc * q <= 60 else
+                   ", over the 60 V limit of BLUETTI's 12–60 V solar inputs, so on those stations they are wired in parallel or split across two inputs."))
+    return (qid, slug, name, "solar-panel", f"{w} W {model}" if q == 1 else f"{q}× {w} W {model}", [w] * q,
+            [("Rated power", f"{q} × {w} W ({q * w:,} W)" if q > 1 else f"{w} W"), ("Panel", one[1])], WP,
+            (f"{NUMW[q].capitalize()} of BLUETTI's {w} W {model} panels sold as one set." if q > 1 else f"BLUETTI's {w} W {model} panel, sold on its own."),
+            "Recharging a BLUETTI station whose solar input accepts this panel's voltage; check the station's voltage and current limits first.",
+            cav + list(extra_cav))
+
+
+FX = ["A flexible panel with no stand, made to be fixed to an RV or van roof.", "At 41.4 V open-circuit each, the panels are wired in parallel on BLUETTI's RV5, whose solar input is limited to 50 V."]
+G4 = [
+ _bat("un154", "bluetti-b300k-for-ac200l-ac300", "B300K", 1, "AC200L / AC300", 1099),
+ _bat("un142", "bluetti-2-b300k-for-ac200l-ac300", "B300K", 2, "AC200L / AC300", 1099),
+ _bat("un153", "bluetti-b300k-for-ac500", "B300K", 1, "AC500", 1189.99),
+ _bat("un146", "bluetti-2-b300k-for-apex-300-200", "B300K", 2, "Apex 300 / Apex 200", 1099),
+ _bat("un138", "bluetti-3-b300k-for-apex-300-200", "B300K", 3, "Apex 300 / Apex 200", 1099),
+ _bat("un151", "bluetti-b500k-for-apex-300-200", "B500K", 1, "Apex 300 / Apex 200", 1599),
+ _bat("un140", "bluetti-2-b500k-for-apex-300-200", "B500K", 2, "Apex 300 / Apex 200", 1599),
+ _bat("un147", "bluetti-b500k-for-ac300-ac200l", "B500K", 1, "AC300 / AC200L", 1799),
+ _bat("un139", "bluetti-2-b500k-for-ac300-ac200l", "B500K", 2, "AC300 / AC200L", 1799),
+ _bat("un145", "bluetti-b500k-for-ac500", "B500K", 1, "AC500", 2049),
+ _bat("un137", "bluetti-2-b500k-for-ac500", "B500K", 2, "AC500", 2049),
+ _bat("un149", "bluetti-b500k-trolley-2", "B500K", 1, "", 1599, acc=("TROLLEY2",)),
+ _bat("un143", "bluetti-b500k-hub-d1", "B500K", 1, "", 1599, acc=("D1",)),
+ _bat("un144", "bluetti-b500k-charger-2", "B500K", 1, "", 1599, acc=("C2",)),
+ _bat("un141", "bluetti-b500k-charger-2-dc-hub", "B500K", 1, "", 1599, acc=("C2", "DCHUB")),
+ _bat("un152", "bluetti-b300k-charger-2", "B300K", 1, "", 1099, acc=("C2",)),
+ _bat("un148", "bluetti-b300k-charger-2-dc-hub", "B300K", 1, "", 1099, acc=("C2", "DCHUB")),
+ ("un150", "bluetti-b4810-51v-100ah", "BLUETTI B4810 LiFePO4 Battery, 51.2 V 100 Ah (5,120 Wh), self-heating", "lithium-battery", "B4810", [],
+  [("Voltage / capacity", "51.2 V, 100 Ah = 5,120 Wh"), ("Cold charging", "Self-heating; charges down to -4 °F (BLUETTI)"), ("Fits", "BLUETTI's RV5 power hub")],
+  "5 years on the B4810 (BLUETTI's product warranty period page)",
+  "The 48 V, 5.12 kWh battery for BLUETTI's RV5 power hub, sold on its own.", "Adding a second battery to an RV5 system, or replacing one.",
+  ["BLUETTI sold the RV5 + B4810 bundle at $2,799 on 2026-11-18, $199 less than the hub ($1,299) and this battery bought separately.",
+   "BLUETTI's page text gives no maximum discharge current for it."]),
+ ("un155", "bluetti-bc200-battery", "BLUETTI BC200 Add-on Battery for FridgePower, 2,016 Wh", "expansion-battery", "BC200", [],
+  [("Capacity", "2,016 Wh, 4,000+ cycles (BLUETTI)"), ("Fits", "BLUETTI FridgePower; up to three per FridgePower for about 8 kWh in all (BLUETTI)")],
+  "BLUETTI's product warranty period page did not list the BC200 when we read it; check the term on the product page",
+  "The 2 kWh add-on battery (BlueCell 200) for BLUETTI's FridgePower backup unit, sold on its own.", "Extending a FridgePower's runtime through a longer outage.",
+  ["BLUETTI sold the FridgePower + BC200 bundle at $1,699 on 2026-11-18, $149 less than the two bought separately.", "It is an add-on for the FridgePower, not a stand-alone power station."]),
+ ("un156", "bluetti-b1232-12v-314ah", "BLUETTI B1232 LiFePO4 Battery, 12.8 V 314 Ah (4,019 Wh)", "lithium-battery", "B1232", [],
+  [("Voltage / capacity", "12.8 V, 314 Ah (12.8 × 314 = 4,019 Wh)"), ("Monitoring", "Bluetooth (BLUETTI)")],
+  "See BLUETTI's product warranty period page for the B1232's term",
+  "BLUETTI's 12 V, 314 Ah LiFePO4 deep-cycle battery for RV and marine house banks.", "Replacing a 12 V lead-acid house bank in an RV or boat.",
+  ["BLUETTI's page text gives no maximum continuous or surge discharge current, weight or cycle rating for it."]),
+ _pan("un132", "bluetti-350w-solar-panel", 350, 1, "folding", "BLUETTI 350 W Folding Solar Panel"),
+ _pan("un126", "bluetti-350w-solar-panel-2-pack", 350, 2, "folding", "BLUETTI 350 W Folding Solar Panel, Set of 2 (700 W)"),
+ _pan("un124", "bluetti-350w-solar-panel-3-pack", 350, 3, "folding", "BLUETTI 350 W Folding Solar Panel, Set of 3 (1,050 W)"),
+ _pan("un125", "bluetti-sora-500-solar-panel-2-pack", 500, 2, "SORA 500", "BLUETTI SORA 500 Solar Panel, Set of 2 (1,000 W)",
+      ["The set's own line still reads \"ships from 11.28\"; the page's notice for orders placed on or after Nov. 18 says late January, which is the date used here."]),
+ _pan("un134", "bluetti-200w-solar-panel", 200, 1, "folding", "BLUETTI 200 W Portable Solar Panel"),
+ _pan("un129", "bluetti-200w-solar-panel-2-pack", 200, 2, "folding", "BLUETTI 200 W Portable Solar Panel, Set of 2 (400 W)"),
+ _pan("un127", "bluetti-200w-solar-panel-3-pack", 200, 3, "folding", "BLUETTI 200 W Portable Solar Panel, Set of 3 (600 W)"),
+ _pan("un136", "bluetti-sp100l-100w-solar-panel", 100, 1, "SP100L", "BLUETTI SP100L 100 W Solar Panel"),
+ _pan("un133", "bluetti-sp100l-100w-solar-panel-2-pack", 100, 2, "SP100L", "BLUETTI SP100L 100 W Solar Panel, Set of 2 (200 W)"),
+ _pan("un130", "bluetti-sp100l-100w-solar-panel-3-pack", 100, 3, "SP100L", "BLUETTI SP100L 100 W Solar Panel, Set of 3 (300 W)"),
+ _pan("un135", "bluetti-pv100-fx-flexible-solar-panel-2-pack", 100, 2, "PV100 FX flexible", "BLUETTI PV100 FX 100 W Flexible Solar Panel, Set of 2 (200 W)", FX),
+ _pan("un131", "bluetti-pv100-fx-flexible-solar-panel-4-pack", 100, 4, "PV100 FX flexible", "BLUETTI PV100 FX 100 W Flexible Solar Panel, Set of 4 (400 W)", FX),
+ _pan("un128", "bluetti-pv100-fx-flexible-solar-panel-6-pack", 100, 6, "PV100 FX flexible", "BLUETTI PV100 FX 100 W Flexible Solar Panel, Set of 6 (600 W)", FX),
+]
+G4_VARIANT_URL = {"un134", "un129", "un127", "un136", "un133", "un130", "un135", "un131", "un128"}
+
+
+def simple(qid, slug, name, cat, model, watts, rows, war, summary, fit, cav):
+    it = ITEMS[qid]
+    d = {"slug": slug, "brand": "BLUETTI", "program": "awin:bluetti_us", "asin": None, "category": cat, "_qid": qid, "name": name, "model": model,
+         "url": B + it["handle"] + (f"?variant={it['variant_id']}" if qid in G4_VARIANT_URL else ""), "price": it["price_now"]}
+    if it["cmp_now"] and it["cmp_now"] > it["price_now"]:
+        d["list_price"] = it["cmp_now"]
+    notes = ship_notes(it, [(next(k for k, v in PANELS.items() if v == w), 1) for w in set(watts)])
+    pre = preorder_of(notes)
+    if pre:
+        d["preorder"] = pre
+    d["cart_variant"] = it["variant_id"]
+    d["verified"] = DAY
+    d["specs"] = rows
+    d["warranty"], d["returns"], d["summary"], d["fit"] = war, RET, summary + (" Sold as a pre-order." if pre else ""), fit
+    d["caveats"] = ([("Pre-order: " if pre else "") + "BLUETTI's page says: " + "; ".join(notes) + f" (read {DAY})."] if notes else []) + cav
+    return d
+
+
+GROUPS = {1: ("record", G1), 2: ("station", G2), 3: ("record", G3), 4: ("simple", G4)}
 HELD_OUT = {"un054": "EnergyPro 6K + AT1 ($4,849) is an installed home system: prepared with the EnergyPro group (group 3)"}
 SKIP = {   # no record: the listing's own facts contradict each other or its dispatch date cannot be read from it
  "bluetti-ac180-350w-solar-kit": "the AC180 listing says the 350 W panel \"ships from Nov. 9th\" and, in the same notice, that it is out of stock with a restock expected late December",
@@ -221,12 +421,12 @@ def ship_notes(it, comps):
     watts = {PANELS[k] for k, _ in comps if k in PANELS}
     best = {}
     for n in (it.get("page_notes") or []) + (it.get("variant_notes") or []) + [x.strip() for x in str(it.get("pre_in") or "").split(";")]:
-        n = re.sub(r"^(likely: |Order today—)", "", n.strip()).rstrip(".")
-        if not n or n in ("False", "True") or "delivered separately" in n or not re.search(r"ship|restock", n, re.I):
+        n = re.sub(r"^.*Shipping Update:\s*", "", re.sub(r"^(likely: |Order today—)", "", n.strip())).rstrip(".")
+        if not n or n in ("False", "True") or "delivered separately" in n or not re.search(r"\bships?\b|restock", n, re.I):
             continue
         for p in [x.strip().rstrip(".") for x in re.split(r";|\.\s+(?=[A-Z]|\d+\s*W)", n) if x.strip()]:
             m = re.match(r"(?:The )?(\d+)\s*W\b", p)
-            if (m and int(m.group(1)) not in watts) or re.match(r"All other", p) or not re.search(r"ship|restock", p, re.I):
+            if (m and int(m.group(1)) not in watts) or re.match(r"All other", p) or "PV120" in p or not re.search(r"\bships?\b|restock", p, re.I):
                 continue
             p = p[0].upper() + p[1:]
             subj = re.sub(r"[^a-z0-9]", "", re.split(r"\bships?\b|\bis expected\b|\bcurrently\b", re.sub(r"^the ", "", p.lower()))[0].replace("solar", ""))
@@ -308,8 +508,8 @@ def record(qid, slug, st, n_st, comps, extra):
     # what it is for
     roles = [C[k]["role"] for k, _ in others if C[k].get("role")]
     plural = lambda x: x[:-1] + "ies" if x.endswith("battery") else x + "s"
-    with_ = ", ".join(([f"{'two' if q == 2 else 'three' if q == 3 else 'an' if C[k]['long'][0] in 'AEIOU' else 'a'} {plural(C[k]['long']) if q > 1 else C[k]['long']}" for k, q in others]
-                       + [f"{'a' if q == 1 else {2: 'two', 3: 'three'}[q]} {w} W solar panel{'s' if q > 1 else ''}" for w, q in panels]))
+    with_ = ", ".join(([f"{NUMW[q] if q > 1 else 'an' if C[k]['long'][0] in 'AEIOU' else 'a'} {plural(C[k]['long']) if q > 1 else C[k]['long']}" for k, q in others]
+                       + [f"{'a' if q == 1 else NUMW[q]} {w} W solar panel{'s' if q > 1 else ''}" for w, q in panels]))
     with_ = re.sub(r", ([^,]*)$", r" and \1", with_)
     head = f"Two BLUETTI {st} {'units' if st in ('FridgePower',) else 'stations'}" if n_st > 1 else f"The BLUETTI {st}"
     d["summary"] = (f"{head}{' sold as a pair' if not comps else ' with ' + with_} in one BLUETTI listing{', as a pre-order' if pre else ''}"
@@ -360,7 +560,7 @@ def parts_line(st, n_st, comps, price):
             p, nm, alone = K.PANEL[PANELS[k]][0], f"{PANELS[k]} W panel", ""
         else:
             p, nm, alone = C[k]["price"], C[k]["label"], (f", {C[k]['alone']}" if C[k].get("alone") else "")
-        items.append(f"{'the' if q == 1 else {2: 'two', 3: 'three'}[q]} {nm}{'s' if q > 1 and not nm.endswith('s') else ''} ({money(p)}{' each' if q > 1 else ''}{alone})"); total += q * p
+        items.append(f"{'the' if q == 1 else NUMW[q]} {nm}{'s' if q > 1 and not nm.endswith('s') else ''} ({money(p)}{' each' if q > 1 else ''}{alone})"); total += q * p
     total = round(total, 2)
     diff = round(total - price, 2)
     lst = ", ".join(items[:-1]) + (" and " if len(items) > 1 else "") + items[-1]
@@ -395,8 +595,8 @@ def records(groups=None, keep=None, need_test=True):
     for g in sorted(GROUPS):
         if groups and g not in groups:
             continue
-        for row in GROUPS[g]:
-            d = record(*row)
+        for row in GROUPS[g][1]:
+            d = globals()[GROUPS[g][0]](*row)
             d["_group"] = g
             t = tv.get(d["cart_variant"])
             if keep is not None and d["slug"] not in keep:
@@ -426,8 +626,8 @@ def literal(d):
     return "{" + "\n".join(lines)[1:].rstrip(",") + "},\n"
 
 
-def apply(groups, keep):
-    recs, dropped = records(groups, keep)
+def apply(groups, keep, need_test=True):
+    recs, dropped = records(groups, keep, need_test)
     path = ROOT / "src" / "products.py"
     s = open(path).read()
     i = s.find(BEGIN)
@@ -442,8 +642,8 @@ def apply(groups, keep):
     path = ROOT / "src" / "coupons.json"
     Cj = json.load(open(path))
     code = next(c for c in Cj["codes"] if c["brand"] == "BLUETTI" and c["code"] == "DEALECTRIC")
-    ours = {row[1] for g in GROUPS.values() for row in g}
-    code["tests"] = [t for t in code["tests"] if t["product"] not in ours] + [d["_test"] for d in recs]
+    ours = {row[1] for _, rows in GROUPS.values() for row in rows}
+    code["tests"] = [t for t in code["tests"] if t["product"] not in ours] + [d["_test"] for d in recs if "_test" in d]
     with open(path, "w") as f:   # the layout tools/codes_merge.py writes: one code per line
         f.write('{\n "_notes": ' + json.dumps(Cj["_notes"], ensure_ascii=False) + ',\n "checked": ' + json.dumps(Cj["checked"]) + ',\n "codes": [\n')
         f.write(",\n".join("  " + json.dumps(c, ensure_ascii=False) for c in Cj["codes"]) + "\n ]\n}\n")
@@ -455,9 +655,9 @@ if __name__ == "__main__":
     keep = set(sys.argv[sys.argv.index("--keep") + 1].split(",")) if "--keep" in sys.argv else None
     groups = {int(x) for x in sys.argv[sys.argv.index("--group") + 1].split(",")} if "--group" in sys.argv else None
     if cmd == "apply":
-        apply(groups, keep)
+        apply(groups, keep, "--untested" not in sys.argv)   # --untested: only to let the best-offer tools read a slug before its cart test lands; never commit that state
     elif cmd == "slugs":
-        print(" ".join(d["slug"] for d in records(groups, keep)[0]))
+        print(" ".join(d["slug"] for d in records(groups, keep, "--untested" not in sys.argv)[0]))
     elif cmd == "print":
         for d in records(groups, keep, need_test="--all" not in sys.argv)[0]:
             print(json.dumps({k: v for k, v in d.items() if k != "_runs"}, ensure_ascii=False, indent=1))
