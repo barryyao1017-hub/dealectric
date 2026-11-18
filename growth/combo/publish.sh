@@ -23,7 +23,10 @@ python3.12 tools/repolock.py run combo-publish -- bash -c '
     for f in $(git diff --name-only --diff-filter=U); do
       case "$f" in
         docs/*|worker/src/links-map.json|worker/src/dash-meta.json) git checkout --theirs -- "$f" 2>/dev/null || git rm -q --cached "$f"; git add -A -- "$f" ;;   # rebuilt below
-        src/gaps.py|src/products.py|src/kits.py|growth/gapmine/ledger.jsonl|growth/evals/footprint.jsonl)   # both sides appended: keep both
+        src/gaps.py)   # both sides appended page records: keep both, closing our last record (merge_appended.py)
+          git show ":1:$f" > /tmp/combo-base; git show ":2:$f" > /tmp/combo-ours; git show ":3:$f" > /tmp/combo-theirs
+          git merge-file -p /tmp/combo-ours /tmp/combo-base /tmp/combo-theirs > "$f"; python3.12 growth/combo/merge_appended.py "$f" >/dev/null; git add -- "$f" ;;
+        src/products.py|src/kits.py|growth/gapmine/ledger.jsonl|growth/evals/footprint.jsonl)   # both sides appended: keep both
           git show ":1:$f" > /tmp/combo-base; git show ":2:$f" > /tmp/combo-ours; git show ":3:$f" > /tmp/combo-theirs
           git merge-file --union -p /tmp/combo-ours /tmp/combo-base /tmp/combo-theirs > "$f"; git add -- "$f" ;;
         growth/focus/ab/LIBRARY.md|growth/focus/ab/library.json) git checkout --theirs -- "$f"; git add -- "$f" ;;   # generated index: rebuilt below
