@@ -1,8 +1,8 @@
 #!/usr/bin/env python3.12
 """Refresh the Amazon prices our pages show (Barry 2026-11-12: Amazon gave written permission to display prices).
 
-Every ASIN the site links (Amazon Associates product records in src/products.py and the "asin" rows of comparison
-tables in src/gaps.py) is opened in a background tab of the agent's Chrome (localhost:9222) and the buy-box price and
+Every ASIN the site links (Amazon Associates product records in src/products.py, the "asin" rows of comparison
+tables in src/gaps.py and the same-item listings in src/bestoffer.json) is opened in a background tab of the agent's Chrome (localhost:9222) and the buy-box price and
 stock line are read from the page. The result goes to src/amazon_prices.json:
 
     {"asins": {"B0...": {"price": 199.99, "at": "2026-11-12T06:50:12Z", "in_stock": true}, ...}}
@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -51,6 +52,9 @@ def all_asins() -> list[str]:
     import gaps
     out = [p["asin"] for p in PRODUCTS if p["program"].startswith("amazon:") and p.get("asin")]
     out += [r["asin"] for c in gaps.GAP_PAGES for r in c.get("rows", []) if r.get("asin")]
+    bo = ROOT / "src" / "bestoffer.json"   # DLC-320: the same item on Amazon for products we link at the brand's store
+    if bo.exists():
+        out += [v["asin"] for v in json.loads(bo.read_text())["products"].values() if v.get("asin")]
     return list(dict.fromkeys(out))
 
 
@@ -109,6 +113,9 @@ def main(argv: list[str]) -> int:
                 av = (r.get("avail") or "").lower()
                 prev["asins"][a] = {"price": price, "at": now,
                                     "in_stock": not any(w in av for w in ("unavailable", "out of stock"))}
+                rel = re.search(r"released on ([A-Z][a-z]+ \d{1,2}, \d{4})", r.get("avail") or "")
+                if rel:   # a pre-order listing: Amazon's own release date, shown beside the price (DLC-320)
+                    prev["asins"][a]["preorder"] = rel.group(1)
                 got += 1
             else:
                 prev["asins"].pop(a, None)   # no price read today: the page shows none rather than an old one

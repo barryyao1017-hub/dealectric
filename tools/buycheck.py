@@ -55,7 +55,8 @@ def parse_cards(text: str) -> list[dict]:
         if not m or i == 0 or len(lines[i - 1]) < 18 or PRICE.match(lines[i - 1]):
             continue
         j, was = i + 1, None
-        while j < len(lines) and (re.match(r"^\$?[\d,]+(\.\d\d)?$", lines[j]) or lines[j].startswith("Was")):
+        # "Usually $469" and "(€250)" sit between the price and the merchant like "Was $…" (11-18: they were read as the merchant)
+        while j < len(lines) and (re.match(r"^\$?[\d,]+(\.\d\d)?$", lines[j]) or lines[j].startswith(("Was", "Usually")) or re.match(r"^\([€£]", lines[j])):
             if lines[j].startswith("Was"):
                 was = lines[j]
             j += 1

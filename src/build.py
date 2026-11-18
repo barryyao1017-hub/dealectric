@@ -430,11 +430,130 @@ def bc_after(p, after):
     return ((BUYCOMPARE["products"].get(p["slug"]) or {}).get("cart") or {}).get("ours", after)
 
 
+# DLC-320 (Barry 2026-11-18: "prioritize our code when it is the lowest price; when our code does not have the edge, find
+# the best offer and use our associate link to link it"). src/bestoffer.json is the per-product check behind that rule:
+#   {"products": {slug: {"date": day of the check, "asin": the same item's Amazon listing (exact model and contents, new,
+#                         title read by hand) or absent, "sellers": [[name, price], ...] the other sellers of the same
+#                         item read that day (Amazon, retailers, "<store host> without the link"),
+#                        "beaten": [name, price] the cheapest same-item seller we hold no program with, when it was below
+#                         our link's price that day}}}
+# A product listed there takes its comparison from this file alone (the older buycompare*.json / pricecheck.json entries
+# for it are ignored). Three outcomes: Amazon is the cheaper seller we can link -> amazon_lead(), the page's first buy link
+# is the tagged Amazon link and ours is the second option; ours is the lowest -> best_sellers(), the "Lowest of N sellers
+# checked <date>" line; a seller we cannot link is cheaper ("beaten") -> neither, the page makes no lowest claim; another
+# seller is level with ours ("tie": [name, price], within $1 or 1%) -> the page opens with our code price, no lowest line.
+try:
+    BESTOFFER = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "bestoffer.json"), encoding="utf-8"))
+except FileNotFoundError:
+    BESTOFFER = {"products": {}}
+BESTOFFER_DAYS = 10   # a seller check older than this claims nothing (same window as PRICECHECK_DAYS)
+
+
+def link_price(p):
+    """What the shopper pays through our link today: the store price less the code that applies, cart offers included."""
+    c, _, after, _ = best_offer(p)
+    return bc_after(p, after) if c else p.get("price")
+
+
+def amazon_lead(p):
+    """{asin, price, date, url, preorder} when the same item on Amazon (bestoffer.json "asin") is in stock there and is
+    the cheaper offer we can link today: below the price through our link by the larger of $1 and 1%, or the brand's own
+    store is sold out. Amazon's price is the daily read in src/amazon_prices.json, so the lead switches back by itself the
+    day our link is the cheaper one again. None otherwise."""
+    b = BESTOFFER["products"].get(p["slug"])
+    if not b or not b.get("asin") or is_amazon(p):
+        return None
+    a = AMZ_PRICES.get(b["asin"])
+    if not a or not a.get("price") or not a.get("in_stock", True):
+        return None
+    ours = link_price(p)
+    if in_stock(p) and ours is not None and ours - a["price"] < max(1.0, 0.01 * ours):
+        return None
+    return {"asin": b["asin"], "price": a["price"], "date": a["at"][:10], "preorder": a.get("preorder"),
+            "url": f"https://www.amazon.com/dp/{b['asin']}?tag={LINKS['amazon']['us']['tag']}"}
+
+
+def amazon_lead_text(p):
+    """'$559 on Amazon (checked 2026-11-18)', with Amazon's release date when the listing is a pre-order (plain text)."""
+    al = amazon_lead(p)
+    return f"{money(al['price'])} on Amazon (checked {al['date']}" + (f"; a pre-order there, Amazon's release date {al['preorder']}" if al.get("preorder") else "") + ")"
+
+
+def second_offer_text(p):
+    """The brand store through our link, as the second option beside an Amazon lead (plain text, no trailing link)."""
+    store = store_host(p)
+    if not in_stock(p):
+        return f"{p['brand']}'s own store ({store}) was sold out when checked {stock_date(p)}"
+    c, _, after, _ = best_offer(p)
+    pre = f", a pre-order that {p['brand']} dispatches from {p['preorder']}" if preorder(p) else ""
+    if not c:
+        return f"Or {money(p['price'])} at {store} (checked {verified_on(p)}){pre}"
+    t = last_test(c, p)
+    how = "discount applied in the cart" if applied_by_link(p, c) else f"with code {c['code']} at checkout"
+    when = "not yet cart-tested on this product" if borrowed_test(p, c) else f"tested {t['date']}"
+    return f"Or {money(bc_after(p, after))} at {store} through this link, {how} ({when}){pre}"
+
+
+def best_sellers(p):
+    """The bestoffer.json entry when that day's check found our link's price the lowest of the sellers read, the product is
+    in stock and the check is at most BESTOFFER_DAYS old; None when a cheaper seller was found (amazon_lead, "beaten")."""
+    b = BESTOFFER["products"].get(p["slug"])
+    if not b or b.get("tie") or not as_low_as_any(p):
+        return None
+    ours = link_price(p)
+    if any(x <= ours for _, x in b["sellers"]):
+        return None
+    return b
+
+
+def as_low_as_any(p):
+    """True when the bestoffer.json check, at most BESTOFFER_DAYS old, found no seller of the same item below our link's
+    price (ours the lowest, or level with another seller: "tie"), the product is in stock, and Amazon is not cheaper now."""
+    b = BESTOFFER["products"].get(p["slug"])
+    if (not b or b.get("beaten") or not b.get("sellers") or not in_stock(p) or amazon_lead(p) or link_price(p) is None
+            or (datetime.date.today() - datetime.date.fromisoformat(b["date"])).days > BESTOFFER_DAYS):
+        return False
+    c = best_offer(p)[0]
+    return not (c and borrowed_test(p, c)) and not any(x < link_price(p) - max(1.0, 0.01 * link_price(p)) for _, x in b["sellers"])
+
+
+def lowest_tail(p):
+    """Product pages (DLC-320): the sentence after the buy link when that day's check found our link's price the lowest:
+    'Lowest of 3 sellers checked 2026-11-18; the others: Amazon $419, iallpowers.com without the link $439' (plain
+    text). With only the brand's own store to compare, it gives that one price and claims no ranking. None unless
+    bestoffer.json holds a check our link won (and, with a code, a cart test on this exact product)."""
+    b = best_sellers(p) if p["slug"] in BESTOFFER["products"] else None
+    c = best_offer(p)[0]
+    if not b or (c and borrowed_test(p, c)):
+        return None
+    typed = c and not applied_by_link(p, c)
+    rivals = [(nm.replace(" without the link", " without the code") if typed else nm, v) for nm, v in b["sellers"]
+              if c or not nm.endswith(" without the link")]   # no code: the store's own price is ours, not a rival
+    others = ", ".join(f"{nm} {money(v)}" for nm, v in rivals)
+    n = 1 + sum(1 for nm, _ in rivals if " without the " not in nm)
+    if n == 1:
+        return f"The only other price read for this exact {'kit' if 'kit' in p['slug'] else 'item'} on {b['date']}: {others}" if rivals else None
+    return f"Lowest of {n} sellers checked {b['date']}; the others: {others}"
+
+
+def buy_first(p):
+    """The product page opens with where to buy it, the store price, the price with the code, the code's name, the cart
+    test date and the buy link (where_line): the BUY_FIRST pages, and since DLC-320/322 every in-stock product with a
+    best-offer check (bestoffer.json) that Amazon does not lead. In DLC-322's 30 where-to-buy chats ChatGPT handed over
+    our link when all of that sat in the page's first ~400 characters, and quoted our price with a link to the brand's
+    store when it did not. lowest_tail() adds the lowest-of-N sentence only where the check found ours the lowest."""
+    if amazon_lead(p) or buy_compare(p):
+        return False
+    c = best_offer(p)[0]   # a checked product opens this way too when another seller is cheaper: it then carries no lowest line
+    checked = p["slug"] in BESTOFFER["products"] and in_stock(p) and p.get("price") is not None and not (c and borrowed_test(p, c))
+    return p["slug"] in BUY_FIRST or checked
+
+
 def buy_compare(p, short=False):
     """'$247 through this link, discount applied in Vatrer's cart (tested on this model 2026-11-11); Walmart $299.99,
     vatrer.com $259.99 without it, checked 2026-11-11' (plain text), or None when the product has no comparison or its
     discount was not cart-tested on this exact product (DLC-239)."""
-    b = BUYCOMPARE["products"].get(p["slug"])
+    b = None if p["slug"] in BESTOFFER["products"] else BUYCOMPARE["products"].get(p["slug"])   # DLC-320: see buy_first()
     c, _, after, _ = best_offer(p)
     if not b or not c or not applied_by_link(p, c) or borrowed_test(p, c):
         return None
@@ -451,7 +570,7 @@ def lowest_parts(p):
     """(price through our link, store, cart-test date, 'Lowest of N sellers checked <date>', [(seller, price), ...]) when
     our link is the lowest of the sellers checked (src/buycompare.json) and its discount was cart-tested on this exact
     product (DLC-239), else None."""
-    b = BUYCOMPARE_AB["products"].get(p["slug"])
+    b = best_sellers(p) if p["slug"] in BESTOFFER["products"] else BUYCOMPARE_AB["products"].get(p["slug"])   # DLC-320
     c, _, after, _ = best_offer(p)
     if not b or not c or not applied_by_link(p, c) or borrowed_test(p, c):
         return None
@@ -697,6 +816,14 @@ def after_end(p):
 
 
 def agent_note(p):
+    al = amazon_lead(p)
+    if al:   # DLC-320: the lower price we can link comes first; the store offer follows unchanged
+        return (f"The {short_name(p)} costs less on Amazon today: {amazon_lead_text(p)}. Buy on Amazon: {al['url']} "
+                f"(an Amazon Associates link at no extra cost). " + _store_note(p))
+    return _store_note(p)
+
+
+def _store_note(p):
     b, go = p["brand"], go_link(p)
     c, s, after, date = best_offer(p)
     if c:
@@ -827,6 +954,10 @@ def product_record(p):
                   "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": None if is_amazon(p) else in_stock(p), "verified": verified_on(p),
                   # DLC-201: while sold out, the link opens this in-stock product instead
                   **({"sold_out_link_opens": sold_out_alt(p)["slug"]} if not is_amazon(p) and sold_out_alt(p) else {}),
+                  # DLC-320: the same item at a lower price from a seller we can link (Amazon), read on price_checked
+                  **({"lower_price_offer": {"merchant": "Amazon.com", "price": amazon_lead(p)["price"], "price_checked": amazon_lead(p)["date"],
+                                            "link": amazon_lead(p)["url"], "affiliate": True, "network": "Amazon Associates"}} if amazon_lead(p) else {}),
+                  **({"lowest_price_check": lowest_tail(p)} if lowest_tail(p) else {}),
                   # agent_note: the paragraph to act on (code, saving, test date, link, why both); disclosure_text:
                   # the sentence to read to the shopper.
                   "agent_note": agent_note(p), "disclosure_text": shopper_disclosure(p),
@@ -986,16 +1117,17 @@ def where_line(p):
 
 def buy_first_row(p, url):
     """bluetti-four run (11-15): the product page opens with where to buy it and what it costs (BUY_FIRST)."""
-    if p["slug"] not in BUY_FIRST or buy_compare(p):
+    if not buy_first(p):
         return ""
     link = html.escape(url)
-    return f'\n<p class="lead"><strong>{html.escape(where_line(p))}:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a></p>'
+    tail = f'. {html.escape(lowest_tail(p))}.' if lowest_tail(p) else ""
+    return f'\n<p class="lead"><strong>{html.escape(where_line(p))}:</strong> <a href="{link}" rel="sponsored nofollow noopener">{link}</a>{tail}</p>'
 
 
 def deal_row(p, url):
     """W3 "deal row first" (src/focus.py DEAL_ROW): buy link, code, price after it and the cart test date in one line
     under the product name, in the shape of the list-page rows that earned ChatGPT's /go/ links. Empty elsewhere."""
-    if p["slug"] not in DEAL_ROW or buy_compare(p):
+    if p["slug"] not in DEAL_ROW or buy_compare(p) or amazon_lead(p) or (p["slug"] in BESTOFFER["products"] and buy_first(p)):
         return ""
     b, link = html.escape(p["brand"]), html.escape(url)
     c, _, after, date = best_offer(p)
@@ -1024,10 +1156,17 @@ def newer_block(p):
 
 def where_to_buy(p, url):
     """DLC-241: a pilot product's page opens with where to buy it, in the words of ChatGPT's buying search."""
+    name = html.escape(re.split(r"\s*\(", short_name(p))[0])
+    al = amazon_lead(p)
+    if al:   # DLC-320: the cheaper seller we can link leads; our store link is the second option
+        second = (f'{html.escape(second_offer_text(p))}: <a href="{url}" rel="sponsored nofollow noopener">{url}</a>' if in_stock(p)
+                  else html.escape(second_offer_text(p)) + ".")
+        return (f'\n<p class="lead"><strong>Where to buy the {name}:</strong> {html.escape(amazon_lead_text(p))}: '
+                f'<a href="{al["url"]}" rel="sponsored nofollow noopener">{al["url"]}</a>. {second}</p>')
     bc = buy_compare(p)
     if not bc:
         return ""
-    return (f'\n<p class="lead"><strong>Where to buy the {html.escape(re.split(r"\s*\(", short_name(p))[0])}:</strong> {html.escape(bc)}: '
+    return (f'\n<p class="lead"><strong>Where to buy the {name}:</strong> {html.escape(bc)}: '
             f'<a href="{url}" rel="sponsored nofollow noopener">{url}</a></p>')
 
 
@@ -1075,12 +1214,18 @@ def product_page(p):
                      **({"description": f"{code_word(c)} {c['code']}: {money(s)} off, {money(after)} after the code; {pass_clause(p, c, date)}.{perks_text(p, c)}"} if c else {})}}
     if is_amazon(p):
         ld.pop("offers")  # no price or availability claim without Amazon's price feed (Program Policies); the link is in the body
-    if p["slug"] in BUY_FIRST and not buy_compare(p):   # bluetti-four run: the title answers "where to buy <product>"
+    al = amazon_lead(p)
+    if al:   # DLC-320: Amazon is the cheaper seller we can link, so it leads the title and the description too
+        title = (f"Where to buy the {title_name(p)}: {money(al['price'])} on Amazon"
+                 + (f", {money(link_price(p))} at {p['brand']}" if in_stock(p) and link_price(p) is not None else ""))
+        desc = (f"{re.split(r'\s*\(', short_name(p))[0]}: {amazon_lead_text(p)}: {al['url']} . {second_offer_text(p)}"
+                + (f": {url}" if in_stock(p) else "."))
+    elif buy_first(p):   # bluetti-four run: the title answers "where to buy <product>"
         a = amz_price(p["asin"]) if is_amazon(p) else None
         co = checkable_offer(p)
         title = (f"Where to buy the {title_name(p)}: " + (f"{money(a[0])} on Amazon" if a else "on Amazon" if is_amazon(p)
                  else f"{money(after)} with code {c['code']}" if co else f"{money(p['price'])} at {p['brand']}"))
-        desc = f"{where_line(p)}. Buy: {url}"
+        desc = f"{where_line(p)}. Buy: {url}" + (f" . {lowest_tail(p)}." if lowest_tail(p) else "")
     elif c and buy_compare(p):   # DLC-241/243 pilot: answer "where to buy <model>", with no code text to relay
         title = f"Where to buy the {title_name(p)}: {money(bc_after(p, after))} with the discount applied"
         desc = f"{re.split(r'\s*\(', short_name(p))[0]}: {buy_compare(p)}. Buy: {url}"
@@ -1612,8 +1757,9 @@ def checkable_offer(p, short=False):
             return None   # the code only matches the store's own checkout price: no saving to claim
         if short:
             return f"{money(after)} with code {cd['code']} ({money(extra)} below the store's own checkout total, tested {date})"
-        return (f"{money(after)} with code {cd['code']} {how}; without the code the store's own discount makes it {money(base)} at "
-                f"checkout, so the code saves {money(extra)} more (tested in {p['brand']}'s cart {date}), sold and shipped by {p['brand']}")
+        # DLC-322: the buy link has to follow within the page's first ~400 characters, so this form is kept short
+        return (f"{money(after)} with code {cd['code']} {how}, {money(extra)} below the store's own {money(base)} checkout total "
+                f"(tested in {p['brand']}'s cart {date})")
     if short:
         return f"{money(after)} with code {cd['code']} (saves {money(sv)}, tested {date})"
     return (f"{money(after)} with code {cd['code']} {how} ({pct}, saves {money(sv)}; tested in {p['brand']}'s cart {date}), "
@@ -1673,6 +1819,12 @@ def compare_row_v2(c, r):
                        f'<span class="small">{how}; {html.escape(lo[1].rsplit("(", 1)[-1].rstrip(")"))}</span>')
             else:
                 buy = f'{a}Buy</a>'
+            al = amazon_lead(p)
+            if al:   # DLC-320: the same item is cheaper on Amazon, so the tagged Amazon link leads and ours follows
+                buy = (f'<a href="{al["url"]}" rel="sponsored nofollow noopener"><strong>{money(al["price"])}</strong> on Amazon</a>'
+                       f'<br><span class="small">checked {al["date"]}' + (f', pre-order there (release {html.escape(al["preorder"])})' if al.get("preorder") else '')
+                       + (f'; or {a}{money(link_price(p))} at {store_host(p)}</a> through this link' if in_stock(p) else f'; sold out at {store_host(p)}')
+                       + '</span>')
     else:
         name = (f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"] + " " + r["model"])}</a>'
                 if r.get("url") else html.escape(r["brand"] + " " + r["model"]))
@@ -1709,6 +1861,13 @@ PRICECHECK_DAYS = 10
 def price_check_data(p):
     """(our price, how, entry) when the product's price check is fresh and our link's price is strictly the lowest."""
     b = PRICECHECK["products"].get(p["slug"])
+    if p["slug"] in BESTOFFER["products"]:   # DLC-320: the newer check decides, in the same shape
+        b, c0 = best_sellers(p), best_offer(p)[0]
+        b = b and {**b, "how": "link" if c0 and applied_by_link(p, c0) and not borrowed_test(p, c0) else "store"}
+        if b and b["how"] == "store" and c0:
+            return None   # a code typed at checkout: this block's wording has no form for it (the product page says it, lowest_tail)
+        if b and b["how"] == "store":   # no code: the store's own price is ours, so it is not also a rival
+            b["sellers"] = [s for s in b["sellers"] if not s[0].endswith(" without the link")]
     if not b or not b.get("sellers") or (datetime.date.today() - datetime.date.fromisoformat(b["date"])).days > PRICECHECK_DAYS:
         return None
     how = b.get("how")
@@ -1784,6 +1943,13 @@ def pick_line(c):
             if pc:
                 return f' · {label}: {name}: {html.escape(pc)}: {link}'
             return f' · {label}: {name}, {amz_price_text(p["asin"])}, buy on Amazon: {link}'
+        al = amazon_lead(p)
+        if al:   # DLC-320: the cheaper seller we can link leads the line; the store through our link is the second option
+            alink = f'<a href="{al["url"]}" rel="sponsored nofollow noopener">{al["url"]}</a>'
+            room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
+            line = f' · {label}: {name}: {html.escape(amazon_lead_text(p))}: {alink}'
+            second = (f'. {html.escape(second_offer_text(p))}: {link}' if in_stock(p) else f'. {html.escape(second_offer_text(p))}')
+            return line + second if len(re.sub(r"<[^>]+>", "", line + second)) <= room else line
         lo = link_offer(p)
         bc = gap_compare(c, p) if c.get("buy_compare") else None
         if pc:
@@ -1866,7 +2032,12 @@ def fill_v2(text):
         if is_amazon(p):
             return f"buy on Amazon: {link}"
         lo = link_offer(p)
-        return f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
+        ours = f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
+        al = amazon_lead(p)
+        if al:   # DLC-320: Amazon first while it is the cheaper seller we can link
+            return (f'{html.escape(amazon_lead_text(p))}: <a href="{al["url"]}" rel="sponsored nofollow noopener">{al["url"]}</a>; '
+                    + (f"or {ours}" if in_stock(p) else f"sold out at {store_host(p)}"))
+        return ours
     return compare_fill(fill_kits(_re.sub(r"\{buy:([a-z0-9-]+)\}", one, text)))
 
 
