@@ -8168,6 +8168,23 @@ PRODUCTS = [
  "fit": "A shopper who wants the larger 3,584 Wh battery and Jackery's 5-year warranty, and can accept that 400 W of panels takes about 9 hours of full sun to refill it.",
  "caveats": ["On 2026-11-18 Jackery's own store listed the black 3600 Plus as a pre-order shipping by Dec 15 and its 200 W panel as a pre-order shipping by Nov 28.", '400 W of panels for 3,584 Wh: 3,584 ÷ 400 = 9.0 h of full sun at rated output.', '240 V output needs two units connected.']},
 
+{"slug": 'jackery-solar-generator-5000-plus-2x200w-solar-kit',
+ "brand": 'Jackery',
+ "program": 'amazon:us',
+ "asin": 'B0GWM1V7P6',
+ "category": 'solar-kit',
+ "name": 'Jackery Solar Generator 5000 Plus + 2× 200 W Solar Panels (5,040 Wh, 7,200 W, 400 W of panels)',
+ "model": 'Solar Generator 5000 Plus + 2× 200 W Panels',
+ "url": 'https://www.amazon.com/dp/B0GWM1V7P6',
+ "price": None,
+ "verified": '2026-11-18',
+ "specs": [('Battery', '5,040 Wh LiFePO4 (Jackery US store, read 2026-11-18)'), ('AC output', '7,200 W rated, 14,400 W surge, 120 V and 240 V (Jackery US store, read 2026-11-18)'), ('Panels in the kit', '2 × 200 W, 400 W in total (amazon.com listing title, read 2026-11-18)'), ('Low-voltage solar ports', 'Two ports, 16–60 V, 10.5 A, 600 W each (StormWatts, page dated 2026-11-16)'), ('High-voltage solar port', '135–450 V, 15 A, 4,000 W (StormWatts, page dated 2026-11-16)'), ("Full sun to refill from the kit's panels", '12.6 hours at rated output (5,040 Wh ÷ 400 W, arithmetic; real output is lower)')],
+ "warranty": 'As stated on the amazon.com listing; read the term there before ordering.',
+ "returns": "Amazon's return terms for this listing apply.",
+ "summary": 'A 7,200 W, 5,040 Wh portable station sold with two 200 W panels as one amazon.com listing. It has the highest AC output of the kits rated 4,000 W or more that we compared, with half the panel watts of the Anker S5000 two-panel kit.',
+ "fit": 'Shoppers whose loads go past 5,000 W and who will add more panels later; the 400 W in the box is a top-up source, returning about 6 minutes of a 4,000 W load per hour of full sun at rated output.',
+ "caveats": ["Jackery's own US store listed the 5000 Plus station as a pre-order shipping Dec 2, 2026 when read on 2026-11-18; the delivery date for this listing is the one amazon.com shows.", '400 W of panels is 10% of a 4,000 W load and 5.6% of the 7,200 W rating (arithmetic).', 'Dealectric has not tested this kit.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
