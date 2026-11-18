@@ -1,0 +1,156 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that Autel prints the same \"recognizing subjects at up to 100m\" claim on the 9.1 mm EVO Lite 640T and the 13 mm EVO II Dual 640T V3, although both are sold as \"640 × 512\" and the 13 mm lens puts about 1.43× as many pixels across the same target.",
+ "standout": 1,
+ "standout_why": "Compared against blog.dronetrader.com/thermal-drones-for-sale, bestthermaldrone.com/best-thermal-drones and /compare, the nighthunting.net/thermal-drones index and its EVO Lite 640T model page. Rivals already hold part of the lens finding: bestthermaldrone lists the 9.1 mm and 13 mm lenses and gives cm-per-pixel for the Matrice 4T (11.5 cm at 400 ft), Mavic 3T (15.6 cm) and Skydio X10, but gives no per-pixel figure for either Autel and says Autel does not publish thermal field of view. nighthunting's Lite 640T page already computes pixels-on-animal from 12 µm and 9.1 mm. None of them puts the two Autel drones side by side or notes the identical 100 m claim. None gives a hover time; DJI's own spec pages do (42 min Matrice 4T, 38 min Mavic 3T). The nine B&H compare pages returned HTTP 403, so I could not check whether they list hover time or thermal focal length; that is why this is 1 and not 2.",
+ "decides": "It confirms ChatGPT's picks but sharpens the choice between the two Autel drones Dealectric lists. The EVO Lite 640T ($3,359) has the wide 9.1 mm thermal lens, the same focal length nighthunting lists for the discontinued Mavic 3T class: fine for roofs and solar at low height, coarse for spotting animals or people from 400 ft. The EVO II Dual 640T V3 Rugged Bundle ($4,399 at autelpilot.com) buys the 13 mm lens for $1,040 more: about 43% more pixels on the same target and about 30% narrower ground strip. That is narrower than the Matrice 4T's 45° thermal lens as DJI specifies it, so on thermal detail alone the cheaper Autel is not behind the Matrice 4T. Separately, the Matrice 4T's 49-minute lead shrinks to 42 minutes when hovering, which is how inspections and searches are flown.",
+ "candidates": [
+  "Autel Robotics EVO Lite 640T Enterprise",
+  "Autel Robotics EVO II Dual 640T V3",
+  "DJI Matrice 4T",
+  "DJI Mavic 3T"
+ ],
+ "findings": [
+  {
+   "product": "Autel Robotics EVO Lite 640T Enterprise",
+   "label": "Thermal lens and maker's recognition claim",
+   "value": "9.1 mm lens, 16× digital zoom, \"capable of recognizing subjects at up to 100m\"",
+   "source": "https://shop.autelrobotics.com/products/evo-lite-6k-enterprise-copy",
+   "source_title": "EVO Lite 640T Enterprise (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "Read from the store's product description via storecheck search of shop.autelrobotics.com; the product page itself returned HTTP 429 on direct fetch."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Thermal lens and maker's recognition claim",
+   "value": "13 mm lens, 16× digital zoom, 30 Hz, \"capable of recognizing subjects at up to 100m\"",
+   "source": "https://shop.autelrobotics.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "EVO II Dual 640T Rugged Bundle V3 (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "Same wording as the 9.1 mm EVO Lite 640T listing. Read from the store's product description via storecheck search; the Enterprise Bundle V3 listing carries the identical sentence."
+  },
+  {
+   "product": "general",
+   "label": "Pixels on target, 13 mm vs 9.1 mm lens at the same distance",
+   "value": "1.43× (13 ÷ 9.1); ground strip 0.70× as wide",
+   "source": "https://shop.autelrobotics.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "EVO II Dual 640T Rugged Bundle V3 (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "Arithmetic from Autel's two stated focal lengths. Holds if both sensors share the same pixel pitch; 12 µm is sourced for the Lite (nighthunting.net) but I could not source the EVO II Dual 640T V3's pitch from Autel."
+  },
+  {
+   "product": "Autel Robotics EVO Lite 640T Enterprise",
+   "label": "Ground size of one thermal pixel (computed)",
+   "value": "13.2 cm at 100 m; 15.8 cm at 120 m (about 400 ft)",
+   "source": "https://www.nighthunting.net/thermal-drones/autel-evo-lite-640t-enterprise/",
+   "source_title": "Autel EVO Lite 640T Enterprise (nighthunting.net)",
+   "read": "2026-11-18",
+   "note": "nighthunting.net lists 640 × 512, 12 µm, 9.1 mm, f/1.0. 12 µm ÷ 9.1 mm = 1.319 mrad per pixel; × 100 m = 13.2 cm. Consistent with nighthunting's own 84 ft strip at 100 ft (640 px). A 0.5 m-wide person at Autel's 100 m spans about 3.8 px. Looking straight down over flat ground."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Ground size of one thermal pixel (computed, assuming 12 µm pitch)",
+   "value": "9.2 cm at 100 m; 11.1 cm at 120 m",
+   "source": "https://shop.autelrobotics.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "EVO II Dual 640T Rugged Bundle V3 (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "12 µm ÷ 13 mm = 0.923 mrad per pixel. The 13 mm is Autel's figure; the 12 µm pitch is an assumption carried over from the Lite and is listed under unsourced. A 0.5 m-wide person at 100 m would span about 5.4 px."
+  },
+  {
+   "product": "DJI Matrice 4T",
+   "label": "Thermal camera as DJI specifies it",
+   "value": "640 × 512, 12 µm pitch, 30 Hz, DFOV 45° ±0.3°, 53 mm equivalent, f/1.0, sensitivity ≤50 mK @ f/1.0, 28× digital zoom",
+   "source": "https://enterprise.dji.com/matrice-4-series/specs",
+   "source_title": "DJI Matrice 4 Series Specs",
+   "read": "2026-11-18",
+   "note": "DJI gives a diagonal field of view and an equivalent focal length, not the physical focal length Autel gives. 1280 × 1024 output only with Super Resolution on and Night Mode off; the detector is 640 × 512. bestthermaldrone.com computes 11.5 cm per pixel at 400 ft from the 45°."
+  },
+  {
+   "product": "DJI Mavic 3T",
+   "label": "Thermal camera as DJI specifies it",
+   "value": "640 × 512, 12 µm pitch, 30 Hz, DFOV 61°, 40 mm equivalent, f/1.0, ≤50 mK @ f/1.0, 28× digital zoom",
+   "source": "https://enterprise.dji.com/mavic-3-enterprise/specs",
+   "source_title": "DJI Mavic 3 Enterprise Series Specs",
+   "read": "2026-11-18",
+   "note": "Same 61° diagonal that nighthunting.net lists for the EVO Lite 640T. bestthermaldrone.com computes 15.6 cm per pixel at 400 ft and lists the Mavic 3 Thermal as discontinued."
+  },
+  {
+   "product": "DJI Matrice 4T",
+   "label": "Flight time vs hover time",
+   "value": "49 min forward flight; 42 min hover (standard propellers). 46 min and 39 min with low-noise propellers",
+   "source": "https://enterprise.dji.com/matrice-4-series/specs",
+   "source_title": "DJI Matrice 4 Series Specs",
+   "read": "2026-11-18",
+   "note": "49 min is measured flying at about 9 m/s with no payload, no wind, until 0% battery. Hover is measured at sea level, no wind, 100% to 0%. Hover is 7 min (14%) shorter. ChatGPT quoted \"up to 49 minutes\"."
+  },
+  {
+   "product": "DJI Mavic 3T",
+   "label": "Flight time vs hover time",
+   "value": "45 min forward flight; 38 min hover",
+   "source": "https://enterprise.dji.com/mavic-3-enterprise/specs",
+   "source_title": "DJI Mavic 3 Enterprise Series Specs",
+   "read": "2026-11-18",
+   "note": "45 min is measured at a constant 32.4 km/h, no wind, sea level, until 0% battery. Hover is 7 min (16%) shorter. ChatGPT quoted \"up to 45 minutes\"."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Flight time as stated by two sellers for the same Enterprise Bundle",
+   "value": "42 min on Autel's US store; 38 min on autelpilot.com. Rugged Bundle: 38 min on both",
+   "source": "https://shop.autelrobotics.com/products/evo-ii-dual-640t-enterprise-bundle-v3",
+   "source_title": "EVO II Dual 640T Enterprise Bundle V3 (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "Autel: \"Industry-leading 42 minutes flight time\" (Enterprise Bundle V3) and \"38 minutes\" (Rugged Bundle V3). autelpilot.com/products/evo-ii-dual-640t-v3-enterprise-bundle: \"Up to 38 Minutes Flight Time\". Neither listing text gives the test condition or a hover figure."
+  },
+  {
+   "product": "Autel Robotics EVO Lite 640T Enterprise",
+   "label": "Flight time as stated",
+   "value": "40 min",
+   "source": "https://shop.autelrobotics.com/products/evo-lite-6k-enterprise-copy",
+   "source_title": "EVO Lite 640T Enterprise (Autel Robotics US store)",
+   "read": "2026-11-18",
+   "note": "\"Industry-leading 40 minutes flight time\"; no test condition or hover figure in the listing text. nighthunting.net lists it as \"40 min (no wind)\"."
+  },
+  {
+   "product": "Autel Robotics EVO Lite 640T",
+   "label": "Price, Basic Combo",
+   "value": "$3,359 at autelpilot.com (Plus Combo $3,659); $3,359 on Autel's US store (compare-at $4,239)",
+   "source": "https://www.autelpilot.com/products/autel-robotics-evo-lite-640t-basic-combo",
+   "source_title": "Autel Robotics EVO Lite 640T Thermal Drone - Basic Combo (autelpilot.com)",
+   "read": "2026-11-18",
+   "note": "storecheck search of both stores, in stock on both. Matches the $3,359 ChatGPT showed."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Price, Rugged Bundle",
+   "value": "$4,399 at autelpilot.com; $4,799 on Autel's US store (compare-at $5,999)",
+   "source": "https://www.autelpilot.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "Autel Robotics EVO II Dual 640T V3 Thermal Drone - Rugged Bundle (autelpilot.com)",
+   "read": "2026-11-18",
+   "note": "storecheck search, in stock on both. autelpilot.com is $400 lower. The Rugged Bundle does not take the RTK module or speaker, per the autelpilot listing."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Price, Enterprise Bundle",
+   "value": "$4,899 at autelpilot.com; $5,299 on Autel's US store (compare-at $6,999)",
+   "source": "https://www.autelpilot.com/products/evo-ii-dual-640t-v3-enterprise-bundle",
+   "source_title": "Autel Robotics EVO II Dual 640T V3 Thermal Drone - Enterprise Bundle (autelpilot.com)",
+   "read": "2026-11-18",
+   "note": "storecheck search, in stock on both. autelpilot.com is $400 lower. The RTK V3 that ChatGPT showed at $5,399 is $5,399 at autelpilot.com (https://www.autelpilot.com/products/autel-evo-ii-dual-640t-rtk-v3)."
+  }
+ ],
+ "unsourced": [
+  "Hover time for the Autel EVO Lite 640T and EVO II Dual 640T V3: autelrobotics.com returned 403, the shop.autelrobotics.com and autelpilot.com product pages returned 429, and Autel's EVO II Dual 640T V3 brochure PDF downloaded but I could not extract its text. Without it the hover-vs-forward table covers only the two DJI drones.",
+  "Pixel pitch and thermal field of view of the EVO II Dual 640T V3 from Autel itself (a search snippet from a non-Autel PDF showed H33° V26° and 13 mm; I did not open it). The 9.2 cm and 11.1 cm per-pixel figures rest on an assumed 12 µm.",
+  "Autel's flight-time split by accessory for the EVO II Dual 640T V3 Enterprise (a search snippet of Autel's brochure showed 42 min without accessories, 38 min with strobe, 29 min with spotlight; not read on the page).",
+  "NETD for either Autel drone from Autel (nighthunting.net lists <50 mK for the Lite as a maker claim; bestthermaldrone.com says Autel does not publish it).",
+  "What the nine B&H compare pages state for hover time, thermal focal length and field of view: every B&H URL returned HTTP 403.",
+  "Current US prices for the DJI Matrice 4T and Mavic 3T: not checked; the $6,999 to $7,849 and $5,699 to $5,998 figures are ChatGPT's and the rivals', not mine.",
+  "Amazon prices: not checked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.759021
+ }
+}

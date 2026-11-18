@@ -1,0 +1,156 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 640 × 512 thermal drones it lists do not resolve the same detail: by DJI's own FOV figures one thermal pixel covers about 10 cm at 100 m on the Matrice 4T against about 14 cm on the Mavic 3T, and the 3 cm-per-pixel figure that FLIR-sourced guidance cites from IEC TS 62446-3 for detailed solar inspection therefore means flying at roughly 30 m and 21 m respectively.",
+ "standout": 2,
+ "standout_why": "Compared against blog.dronetrader.com/thermal-drones-for-sale, bestthermaldrone.com/best-thermal-drones, bestthermaldrone.com/compare and nighthunting.net/thermal-drones. dronetrader gives resolution and prices only, with no focal length, FOV, pixel pitch or range, and already says thermal does not see through glass. bestthermaldrone gives the inputs (9.1 mm and 13 mm Autel lenses, 45° and 61° DJI diagonal FOV, NETD, 30 Hz) but no pixel pitch, no per-pixel footprint and no distance rule. nighthunting shows bare 'mm' values with no range or pixels-on-target figure. None mentions the 3 cm-per-pixel solar rule. The B&H compare pages were not opened, so I cannot say whether they print pixel pitch. Rivals hold part of this (the lens figures); the per-pixel consequence and the flying-height limit are new. Autel's own pixel pitch was not sourced, so for the Autel drones Dealectric lists the finding rests on focal length alone.",
+ "decides": "ChatGPT told the shopper '640 × 512 is a good target' and showed three drones that all meet it, so resolution cannot separate them; the lens does. Among the Autel drones Dealectric lists, the EVO II Dual 640T V3 (13 mm) has a 1.43× longer thermal lens than the EVO Lite 640T (9.1 mm), so it is the pick for wildlife spotting, search and solar or roof work from height, provided both use the same detector pitch (not sourced for Autel). The EVO Lite 640T at $3,359 stays the pick for close-range work and budget, at $1,040 less than the EVO II Rugged Bundle on autelpilot.com. Autel's US store prints the same 'recognizing subjects at up to 100m' line for both lenses, so the maker's range claim does not separate them.",
+ "candidates": [
+  "Autel Robotics EVO Lite 640T",
+  "Autel Robotics EVO II Dual 640T V3",
+  "DJI Mavic 3 Thermal",
+  "DJI Matrice 4T"
+ ],
+ "findings": [
+  {
+   "product": "DJI Matrice 4T",
+   "label": "Thermal imager, pixel pitch, lens and frame rate (maker's words)",
+   "value": "uncooled vanadium oxide (VOx), 640 × 512, pixel pitch 12 μm, DFOV 45°±0.3°, 53 mm equivalent, f/1.0, 30 Hz, 8 μm to 14 μm",
+   "source": "https://enterprise.dji.com/matrice-4-series/specs",
+   "source_title": "DJI Matrice 4 Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "Maker spec page. 1280 × 1024 output appears only with Super Resolution on and Night Mode off; the detector is 640 × 512."
+  },
+  {
+   "product": "DJI Mavic 3 Thermal",
+   "label": "Thermal imager, pixel pitch, lens and frame rate (maker's words)",
+   "value": "Uncooled VOx Microbolometer, pixel pitch 12 μm, DFOV 61°, 40 mm equivalent, f/1.0, focus 5 m to ∞, 30 Hz, 8-14 μm",
+   "source": "https://enterprise.dji.com/mavic-3-enterprise/specs",
+   "source_title": "DJI Mavic 3 Enterprise Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "Maker spec page. Same detector resolution and pitch as the Matrice 4T, but a wider lens."
+  },
+  {
+   "product": "general",
+   "label": "Ground covered by one thermal pixel at 100 m (computed from DJI's diagonal FOV)",
+   "value": "Matrice 4T about 10.1 cm; Mavic 3 Thermal about 14.4 cm",
+   "source": "https://enterprise.dji.com/matrice-4-series/specs",
+   "source_title": "DJI Matrice 4 Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "My arithmetic, not DJI's. Diagonal of 640 × 512 = 819.6 pixels. Angle per pixel = 2·tan(DFOV/2)/819.6: Matrice 4T 2·tan(22.5°)/819.6 = 1.011 mrad; Mavic 3T 2·tan(30.5°)/819.6 = 1.437 mrad (DFOV 61° from https://enterprise.dji.com/mavic-3-enterprise/specs). Multiply by 100 m. Ignores lens distortion and blur."
+  },
+  {
+   "product": "general",
+   "label": "Geometric resolution asked for detailed solar-panel thermography under IEC TS 62446-3",
+   "value": "3 cm per pixel, which gives a five-by-five-pixel square inside each cell; minimum irradiance 600 W/m²",
+   "source": "https://www.commercialuavnews.com/energy/thermal-inspection-of-solar-panels",
+   "source_title": "Thermal Inspection of Solar Panels - Commercial UAV News (contributed guest article, 2022-07-07)",
+   "read": "2026-11-18",
+   "note": "Quotes: 'you need to fly at an altitude that would produce a 3 cm-per-pixel ground sample distance on the panels' and 'a five-by-five-pixel square inside of each cell'. This is a secondary source; the IEC text itself is paywalled and was not opened."
+  },
+  {
+   "product": "general",
+   "label": "Second source for the 3 cm/pixel rule, with a working flight height",
+   "value": "'The standard requires that you need a maximum Geometric resolution of 3cm/pixel'; Sitemark flies at 35 m for 5 cm/pixel and offers 23 m to meet 3 cm/pixel",
+   "source": "https://www.sitemark.com/blog/is-sitemark-iec-compliant/",
+   "source_title": "Is Sitemark IEC compliant? - Sitemark",
+   "read": "2026-11-18",
+   "note": "Solar inspection software vendor; no author or date on the page. The 23 m figure matches what a 12 μm, roughly 9 mm thermal camera gives (0.03 m × 9.1 mm / 0.012 mm = 22.8 m)."
+  },
+  {
+   "product": "general",
+   "label": "Flying distance that yields 3 cm per thermal pixel (computed)",
+   "value": "Matrice 4T about 29.7 m; Mavic 3 Thermal about 20.9 m",
+   "source": "https://enterprise.dji.com/mavic-3-enterprise/specs",
+   "source_title": "DJI Mavic 3 Enterprise Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "My arithmetic: 0.03 m ÷ angle per pixel (1.011 mrad and 1.437 mrad from the DFOV figures above). Distance is camera to panel, looking straight at it."
+  },
+  {
+   "product": "Autel Robotics EVO Lite 640T",
+   "label": "Thermal lens and maker's range claim",
+   "value": "640x512, 9.1mm lens and 16x digital zoom 'capable of recognizing subjects at up to 100m'; Radiometric Temperature Detection",
+   "source": "https://shop.autelrobotics.com/products/evo-lite-6k-enterprise-copy",
+   "source_title": "EVO Lite 640T Enterprise - Autel Robotics US store",
+   "read": "2026-11-18",
+   "note": "Read from the store's product data via storecheck.py search; the rendered page returned HTTP 429. The 16x zoom is digital, so it adds no detector pixels."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Thermal lens, refresh rate and maker's range claim",
+   "value": "640x512, 30Hz refresh rate, 13mm lens and 16x digital zoom 'capable of recognizing subjects at up to 100m'; Radiometric Temperature Detection",
+   "source": "https://shop.autelrobotics.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "EVO II Dual 640T Rugged Bundle V3 - Autel Robotics US store",
+   "read": "2026-11-18",
+   "note": "Read from the store's product data via storecheck.py search. Autel prints the same 100 m line for the 9.1 mm EVO Lite 640T. 13 ÷ 9.1 = 1.43× longer focal length, so each pixel covers about 30% less width at the same distance if both detectors share one pixel pitch (pitch not sourced for Autel)."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Lens described on the affiliate store",
+   "value": "'640 x 512 high-resolution thermal imaging camera featuring a 13mm focal length lens and 16x digital zoom'",
+   "source": "https://www.autelpilot.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "Autel Robotics EVO II Dual 640T V3 Thermal Drone - Rugged Bundle - autelpilot.com",
+   "read": "2026-11-18",
+   "note": "From storecheck.py search output. The page also says RTK modules, speakers and other accessories are not supported on the Rugged Bundle."
+  },
+  {
+   "product": "general",
+   "label": "Sensor damage warning (maker's words)",
+   "value": "'DO NOT expose the infrared camera lenses to strong sources of energy such as the sun, lava, or a laser beam.'",
+   "source": "https://enterprise.dji.com/mavic-3-enterprise/specs",
+   "source_title": "DJI Mavic 3 Enterprise Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "The Matrice 4 specs page carries the same line and adds that it can burn the sensor and cause permanent damage. DJI states it for its own uncooled VOx cameras; no Autel equivalent was opened."
+  },
+  {
+   "product": "DJI Matrice 4T",
+   "label": "Radiometric accuracy (maker)",
+   "value": "High Gain ±2 ℃ or ±2%, whichever is greater (-20 ℃ to 150 ℃); Low Gain ±5 ℃ or ±3% (0 ℃ to 550 ℃)",
+   "source": "https://enterprise.dji.com/matrice-4-series/specs",
+   "source_title": "DJI Matrice 4 Series - Specs - DJI Enterprise",
+   "read": "2026-11-18",
+   "note": "Mavic 3T lists the same accuracy with a 0 to 500 ℃ low-gain range (https://enterprise.dji.com/mavic-3-enterprise/specs). bestthermaldrone.com already prints these."
+  },
+  {
+   "product": "Autel Robotics EVO Lite 640T",
+   "label": "Price, Basic Combo",
+   "value": "$3,359.00, in stock (compare-at $3,299.00)",
+   "source": "https://www.autelpilot.com/products/autel-robotics-evo-lite-640t-basic-combo",
+   "source_title": "Autel Robotics EVO Lite 640T Thermal Drone - Basic Combo - autelpilot.com",
+   "read": "2026-11-18",
+   "note": "storecheck.py search. Matches the $3,359.00 ChatGPT showed. shop.autelrobotics.com lists EVO Lite 640T Enterprise at $3,359.00 too. Plus Combo is $3,659.00 on autelpilot.com."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Price, Rugged Bundle",
+   "value": "$4,399.00 on autelpilot.com, in stock; $4,799.00 on shop.autelrobotics.com",
+   "source": "https://www.autelpilot.com/products/evo-ii-dual-640t-rugged-bundle-v3",
+   "source_title": "Autel Robotics EVO II Dual 640T V3 Thermal Drone - Rugged Bundle - autelpilot.com",
+   "read": "2026-11-18",
+   "note": "storecheck.py search on both stores. Second price from https://shop.autelrobotics.com/products/evo-ii-dual-640t-rugged-bundle-v3."
+  },
+  {
+   "product": "Autel Robotics EVO II Dual 640T V3",
+   "label": "Price, Enterprise Bundle",
+   "value": "$4,899.00 on autelpilot.com, in stock; $5,299.00 on shop.autelrobotics.com",
+   "source": "https://www.autelpilot.com/products/evo-ii-dual-640t-v3-enterprise-bundle",
+   "source_title": "Autel Robotics EVO II Dual 640T V3 Thermal Drone - Enterprise Bundle - autelpilot.com",
+   "read": "2026-11-18",
+   "note": "storecheck.py search on both stores. Second price from https://shop.autelrobotics.com/products/evo-ii-dual-640t-enterprise-bundle-v3. The RTK V3 that ChatGPT showed at $5,399.00 is $5,399.00 on autelpilot.com (https://www.autelpilot.com/products/autel-evo-ii-dual-640t-rtk-v3)."
+  }
+ ],
+ "unsourced": [
+  "Autel EVO Lite 640T and EVO II Dual 640T V3 thermal pixel pitch and thermal FOV from Autel: autelpilot.com and shop.autelrobotics.com product pages returned HTTP 429 on every try, autelrobotics.com returned 403, and the Autel EVO II Dual 640T V3 brochure PDF (cdn.shopify.com/s/files/1/0047/0247/0190/files/EVO_II_Dual_640T_V3_Brochure-EN.pdf) downloaded but its text could not be extracted. Retailer search snippets gave 12 μm and 61° for the Lite; I did not open those pages, so they are left out.",
+  "Per-pixel ground footprint and 3 cm/pixel flying height for the two Autel drones: these need the pixel pitch or FOV above.",
+  "Autel's 'accurate temperature measurement distance' and thermal accuracy figure for either Autel drone: looked for it in the Autel spec tables and brochure, none of which could be read; a Frontier Precision search snippet mentioned 2-20 meters but the page was not opened.",
+  "EVO Lite 640T thermal frame rate from Autel.",
+  "The IEC TS 62446-3 clause text itself (paywalled); the 3 cm/pixel figure rests on the Commercial UAV News guest article and Sitemark's blog.",
+  "A named reviewer's measured detection or recognition distance for a person or deer with any of these four drones.",
+  "Whether the B&H compare pages ChatGPT retrieved print pixel pitch or thermal FOV: not opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 2.7107069999999998
+ }
+}
