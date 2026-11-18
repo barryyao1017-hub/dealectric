@@ -272,7 +272,7 @@ def _bat(qid, slug, model, q, host, price1, extra_rows=(), extra_cav=(), acc=())
     big = model == "B500K"
     wh = (5120.0 if big else 2764.8) * q
     name = f"BLUETTI {f'{q}× ' if q > 1 else ''}{model} Expansion Battery" + "".join(f" + {C[k]['label']}" for k in acc) + (f" for {host}" if host else "") + f", {num(wh)} Wh"
-    cav = []
+    cav, top = [], ""
     if q > 1 or acc:
         parts = round(q * price1 + sum(C[k]["price"] for k in acc), 2)
         ls = [f"{NUMW[q] if q > 1 else 'the'} {model}{'s' if q > 1 else ''} ({money(price1)}{' each' if q > 1 else ''})"] + [
@@ -281,6 +281,8 @@ def _bat(qid, slug, model, q, host, price1, extra_rows=(), extra_cav=(), acc=())
         diff = round(parts - it["price_now"], 2)
         cav.append(f"Bought separately at BLUETTI's US store on {DAY}, {lst} came to {money(parts)}" + (f"; this listing saves {money(diff)}." if diff > 0.5 else
                    f", {money(-diff)} less than this listing." if diff < -0.5 else ", the same as this listing."))
+        if diff < -0.5:   # said in the summary too, so a listing that costs more than its parts says so near the top of the page
+            top = f" It costs {money(-diff)} more than the same items bought separately at BLUETTI's US store on {DAY}."
     for k in acc:
         cav += C[k].get("cav", [])
     cav += [NOAC] + ([HOST.format(h=host)] if host else []) + list(extra_cav)
@@ -289,7 +291,7 @@ def _bat(qid, slug, model, q, host, price1, extra_rows=(), extra_cav=(), acc=())
             _rows(B5 if big else B3, q) + [("Fits", host)] * bool(host) + [C[k]["row"] for k in acc] + list(extra_rows),
             (WB5 if big else W5),
             (f"{NUMW[q].capitalize() if q > 1 else 'One'} {model} expansion batter{'ies' if q > 1 else 'y'} ({num(wh)} Wh{' in all' if q > 1 else ''})"
-             + (" with " + " and ".join(C[k]["long"] for k in acc) if acc else "") + (f", in BLUETTI's listing for the {host}" if host else "") + "."),
+             + (" with " + " and ".join(C[k]["long"] for k in acc) if acc else "") + (f", in BLUETTI's listing for the {host}" if host else "") + "." + top),
             (f"Adding stored energy to a BLUETTI {host.split(' / ')[0]}-family system" if host else "Adding stored energy to a compatible BLUETTI station")
             + (": the bundle " + " and ".join(roles) if roles else "") + ".",
             cav)
