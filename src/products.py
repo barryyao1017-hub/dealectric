@@ -8117,6 +8117,23 @@ PRODUCTS = [
  "fit": 'Pools with partial shade, or owners who want the skimmer to keep running through cloudy or winter weeks without buying anything extra.',
  "caveats": ["4 L basket, less than half the Beatbot iSkim's 9 L", "Picked up 15 of 20 leaves in The Hook Up's 1-hour test, against 18 for the Beatbot iSkim", "Digital Trends' Ian Bell found the iSkim cleared his pool surface in about half the time of the Aiper Surfer, his previous favorite skimmer", "Aiper's 35 h rating is measured after an adapter charge. The Hook Up's drain of 3.46% an hour works out to about 29 h on the battery alone"]},
 
+{"slug": 'anker-solix-f3000-400w-solar-kit',
+ "brand": 'Anker SOLIX',
+ "program": 'amazon:us',
+ "asin": 'B0GYP2LQQG',
+ "category": 'solar-kit',
+ "name": 'Anker SOLIX F3000 + 400 W Bifacial Solar Panel Kit (3,072 Wh, 3,600 W)',
+ "model": 'Anker SOLIX F3000 + 400 W bifacial panel',
+ "url": 'https://www.amazon.com/dp/B0GYP2LQQG',
+ "price": None,
+ "verified": '2026-11-17',
+ "specs": [('Battery', '3,072 Wh'), ('AC output', '3,600 W (2,400 W max from the 5-20R outlets, 3,600 W from TT-30R)'), ('AC surge', '7,200 W (Anker)'), ('Solar input', 'High-PV 11–165 V, 17 A, 1,600 W + Low-PV 11–60 V, 17 A, 800 W'), ('Panels in the kit', '1 × 400 W bifacial'), ('Cycle life', '4,000 cycles (Anker)'), ('Weight', '91.5 lb (station, Anker)')],
+ "warranty": '60 months (5 years) on the F3000 station, starting from the date of purchase. Purchases from authorized Anker resellers are covered with proof of purchase (Anker SOLIX warranty policy, read 2026-11-17).',
+ "returns": 'Anker SOLIX takes returns within 30 days of delivery for an exchange or refund, with items complete in their original packing. For purchases from an authorized dealer such as Amazon, the dealer usually handles returns and refunds (Anker SOLIX warranty policy, read 2026-11-17).',
+ "summary": 'A 3 kWh station with a 400 W bifacial panel. It has the highest solar ceiling here: 2,400 W across a 165 V high-voltage input and a 60 V low-voltage input.',
+ "fit": 'Shoppers who plan to add a lot of solar later and want 3,600 W of AC output.',
+ "caveats": ["Anker's own store says its F3000 + 400 W/200 W solar bundles ship from early December 2026 (read 2026-11-17).", "The 2,400 W solar total needs both inputs in use. The kit's single panel fills one.", 'At 91.5 lb, the station alone is heavy to move.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

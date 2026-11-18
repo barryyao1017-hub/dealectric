@@ -1,0 +1,78 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the ALLPOWERS R3500's one solar input takes 12–150 V, 40 A and 2,000 W (from the R3500 manual, V2.0). So the 600 W SP039 panel in the R3500 + SP039 kit (Voc 52.8 V) can be joined in series by a second SP039: 105.6 V Voc and 1,200 W rated, well inside the limit. A third SP039 in series would reach 158.4 V Voc, which is over the 150 V ceiling.",
+ "standout": 2,
+ "standout_why": "StormWatts (cited, 2026-11-08) lists solar-input limits and wiring for the EcoFlow DELTA 3 Ultra (one XT60i input, 11–60 V, 18 A, 800 W, so parallel wiring is out), the Jackery HomePower 3000 (16–60 V, 12 A / 500 W per port, 1,000 W dual), the BLUETTI Apex 300 (two 1,200 W inputs) and the Anker SOLIX F3000 (2,400 W). It does not cover the ALLPOWERS R3500 or the BLUETTI Elite 300 at all, and it gives no expansion-battery pairings. I could not read UnpluggedWatts (cited): both the fetch and curl failed on its certificate, so I could not check it for these facts. ChatGPT's own answers give only the max solar watts for Jackery and Anker and say 'verify model' for the Explorer 3000 v2. None of them name a panel string limit for any kit Dealectric links.",
+ "decides": "In the 3,000 Wh band (about 2,400–3,600 Wh), the only kits we link that ship now are the ALLPOWERS R3500 kits with SP037 or SP039 panels. Every Elite 300 and Apex 300 kit is a pre-order, and StormWatts says the Jackery HomePower 3000 kit ships from Nov 28. This finding backs the R3500 + SP039 as the ship-now pick for a buyer who answers ChatGPT's own warning that 400 W is not enough: the 600 W kit can grow to 1,200 W of identical panels on one input, all within the maker's stated limits. At rated output that cuts a full refill from 3,168/600 = 5.3 h to 3,168/1,200 = 2.6 h. By comparison, a named review (StorageReview) puts the BLUETTI Elite 300 at 12–60 V, 22 A and 1,200 W, so on the Elite 300 the ceiling for added panels is 60 V Voc instead of 150 V.",
+ "candidates": [
+  "ALLPOWERS R3500 + SP039 600 W kit",
+  "ALLPOWERS R3500 + SP037 400 W kit",
+  "BLUETTI Elite 300 + 2× 200 W kit",
+  "BLUETTI Elite 300 + 500 W kit",
+  "BLUETTI Apex 300 + 2× 200 W kit",
+  "Jackery HomePower 3000 + 2× SolarSaga 200W",
+  "EcoFlow DELTA 3 Ultra + 2× 220W",
+  "Anker SOLIX F3000 + 400W"
+ ],
+ "findings": [
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Solar input limits",
+   "value": "12–150 V, 40 A, 2,000 W max, one solar input",
+   "source": "https://manuals.plus/m/38c5e7b282e34c0294818f8751dbc30f2a4925e2d44a0c8ec73a45c1976b607b",
+   "source_title": "ALLPOWERS R3500 Portable Power Station User Manual (V2.0)",
+   "read": "2026-11-17",
+   "note": "Spec table quote: 'Solar Input: (12 ~ 150)V 40A, 2000W Max'. Section 3.4 shows only series wiring and says to confirm the panel output is 'within 150V'. The manual names no connector. This is the maker's manual, hosted on manuals.plus."
+  },
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Solar max and expansion battery as listed by the maker's US store",
+   "value": "2,000 W max solar; 4,000 W max AC + solar together; expands with the B3000 battery ('up to 101kWh')",
+   "source": "https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp039-600w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 3200W (R3500 + SP039 600W Solar Panel)",
+   "read": "2026-11-17",
+   "note": "Read through the store's Shopify search with storecheck.py. The listing text matches the manual's 2,000 W. Manual section 3.5 says added battery packs raise capacity only, not output, and to use the maker's own connection cable. On the same read, the R3500 + SP037 400 W kit listed at $1,803.10, not the $1,498.00 the kits table shows from 2026-11-13. The prices team should re-read it."
+  },
+  {
+   "product": "ALLPOWERS SP039 600 W panel",
+   "label": "Panel electrical ratings",
+   "value": "600 W ±5%, Voc 52.8 V, Isc 14.99 A, Vmp 44 V, Imp 13.63 A, MC4 connectors",
+   "source": "https://manuals.plus/m/3a596ecf9d51e11e655526e3a2fdffb6d9bdd435e9e47a45ed4e01254d14e69c",
+   "source_title": "ALLPOWERS AP-SP-039 600W Foldable Solar Panel User Manual",
+   "read": "2026-11-17",
+   "note": "The manual warns: 'Always check the power station's solar input voltage parameters and connect panels within the specified range', and says to string only similar panels together."
+  },
+  {
+   "product": "ALLPOWERS R3500 + SP039 kit",
+   "label": "Series string limit for added SP039 panels (arithmetic from the two manuals)",
+   "value": "2 in series: 105.6 V Voc, 13.63 A Imp, 1,200 W rated, inside 150 V / 40 A / 2,000 W. 3 in series: 158.4 V Voc, over the 150 V ceiling",
+   "source": "https://manuals.plus/m/38c5e7b282e34c0294818f8751dbc30f2a4925e2d44a0c8ec73a45c1976b607b",
+   "source_title": "ALLPOWERS R3500 Portable Power Station User Manual (V2.0)",
+   "read": "2026-11-17",
+   "note": "52.8 V × 2 = 105.6 V; 52.8 V × 3 = 158.4 V, using the Voc from the SP039 manual. Hours to refill at rated output: 3,168 Wh / 600 W = 5.3 h with the kit's panel; 3,168 / 1,200 = 2.6 h with two. Real output is lower. Cold weather raises Voc, which leaves less headroom than this arithmetic shows."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Solar input limits (named reviewer)",
+   "value": "12–60 V, 22 A max, 1,200 W max",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "StorageReview, BLUETTI Elite 300 review (Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "The spec table quotes '1,200W Max., 12-60V, 22A Max.' The review names no connector and does not mention expansion batteries. BLUETTI's US product page had an empty Tech Specs block on this read, and its manual PDF was too large to fetch."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 300 solar input from a BLUETTI page or manual: the US product page's Tech Specs block was empty, and the US manual PDF (s4.bluettipower.com, Elite 300 User Manual US EN-FR) was over the 10 MB fetch limit. Figures come from StorageReview instead.",
+  "BLUETTI SORA 500 Voc/Isc from a maker page: bluettipower.eu redirect-looped, bluettipower.com.au returned 429, and bluettipower.com/products/sora-500 redirect-looped. Without it I could not work out whether a second SORA 500 fits within the Elite 300's 60 V limit in series.",
+  "ALLPOWERS SP037 400 W panel Voc/Isc: iallpowers.com returned HTTP 429 to WebFetch and storecheck.",
+  "Whether the R3500 accepts parallel strings of SP039: the manual shows only series wiring.",
+  "UnpluggedWatts (cited rival) content: both WebFetch and curl failed on a self-signed certificate error, so I could not check whether it already states these limits.",
+  "Which BLUETTI expansion batteries pair with the Elite 300: not stated in the sources I opened."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.4370671000000002
+ }
+}

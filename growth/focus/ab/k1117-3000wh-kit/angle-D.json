@@ -1,0 +1,90 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the BLUETTI Apex 300 and Elite 300 solar inputs top out at 60 V. Because of that, two of BLUETTI's own 500 W panels (49.1 V Voc each, 98.2 V together) cannot be wired in series, and extra panels can only go in parallel, up to each input's 20 A or 22 A limit. The ALLPOWERS R3500 input accepts 12–150 V at 40 A, so three of its kit panel (SP037, 45.3 V Voc each) can go in series at 135.9 V.",
+ "standout": 2,
+ "standout_why": "I compared against stormwatts.com (cited in both chats, dated 2026-11-08). It gives voltage windows for the rival kits: EcoFlow DELTA 3 Ultra 11–60 V / 18 A / 800 W on one XT60i input, Jackery HomePower 3000 16–60 V / 1,000 W, and Apex 200 XT60 12–60 V plus MC4 60–280 V. For the Apex 300 it says only 'two native 1,200 W inputs', with no voltage window. It does not cover the Elite 300 or the R3500 at all. It also never checks the included panels' Voc and Isc against those windows, so it never shows which kits can add panels in series and which are limited to parallel. unpluggedwatts.com (the other cited page), lightsonlabs.com and solargenadvisor.com could not be read: the fetch failed with a TLS certificate error. None of the pages I read gives a charging temperature floor.",
+ "decides": "Both ChatGPT answers tell the shopper to aim for 800–1,000 W of panels 'provided the station supports them', and this finding settles that proviso. Among the kits we link in the 3 kWh range, the ALLPOWERS R3500 + SP037 kit can grow on one input with the same panel model: up to three in series (135.9 V Voc, under 150 V), and arrangements such as 3S2P reach the 2,000 W input cap. The Apex 300 and Elite 300 kits cannot put two 500 W panels in series. At rated values (arithmetic, not measured), two 500 W panels in parallel on one Apex 300 input are held to about 20 A × 40.92 V ≈ 818 W, so four panels give about 1,640 W rather than the 2,400 W headline. On the Elite 300's 22 A rating, two in parallel draw about 900 W. Before treating the R3500 kit as the pick for the 'grow your solar' segment, the price and stock should be checked again (see findings).",
+ "candidates": [
+  "ALLPOWERS R3500 + SP037 400 W kit",
+  "ALLPOWERS R3500 + SP039 600 W kit",
+  "BLUETTI Apex 300 + 2× 500 W kit",
+  "BLUETTI Apex 300 + 2× 200 W kit",
+  "BLUETTI Elite 300 + 500 W kit",
+  "BLUETTI Elite 300 + 2× 200 W kit",
+  "BLUETTI Apex 200 + 500 W kit",
+  "EcoFlow DELTA 3 Ultra + 2× 220 W",
+  "Jackery HomePower 3000 + 2× SolarSaga 200 W",
+  "Anker SOLIX F3000 + 400 W"
+ ],
+ "findings": [
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Solar input window",
+   "value": "12–150 V, 40 A, 2,000 W max, one solar input port",
+   "source": "https://manuals.plus/m/38c5e7b282e34c0294818f8751dbc30f2a4925e2d44a0c8ec73a45c1976b607b",
+   "source_title": "ALLPOWERS R3500 Portable Power Station User Manual (V2.0)",
+   "read": "2026-11-17",
+   "note": "The manual says: 'Solar Input: (12 ~ 150)V 40A, 2000W Max' and 'confirm that the solar panel's output voltage specification is within 150V'. It shows panels connected in series. This is the maker's manual, hosted on manuals.plus; the maker's own page returned HTTP 429."
+  },
+  {
+   "product": "ALLPOWERS SP037 400 W panel",
+   "label": "Panel electrical ratings",
+   "value": "Voc 45.3 V, Isc 11.45 A, Vmp 37.4 V, Imp 10.6 A",
+   "source": "https://manuals.plus/m/fd2814b597a1072abfbf76927cd728d01836b2621b64b689950e29c866721c3f",
+   "source_title": "ALLPOWERS AP-SP-037-BLA 400W Foldable Solar Panel User Manual",
+   "read": "2026-11-17",
+   "note": "Arithmetic: 3 in series = 135.9 V Voc, under the R3500's 150 V limit. 4 in series = 181.2 V, over the limit. 3S2P = 2,400 W rated at 112.2 V Vmp and 21.2 A, under 40 A, so the input reaches its 2,000 W cap. Voc rises in cold weather and a 3S string at 135.9 V leaves about 10% headroom; I found no temperature coefficient for this panel."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input window",
+   "value": "2 inputs × 1,200 W, 12–60 V DC, 20 A each; charging temperature 0–40 °C (32–104 °F)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review (Kevin OBrien, 2026-11-09)",
+   "read": "2026-11-17",
+   "note": "From StorageReview's spec table. Arithmetic: 1,200 W at 20 A needs 60 V, the very top of the window, so an input running panels at a typical Vmp below 60 V reaches less than that."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Solar input window",
+   "value": "1,200 W max, 12–60 V, 22 A max; charging temperature 0–40 °C (32–104 °F)",
+   "source": "https://www.storagereview.com/review/bluetti-elite-300-review-3014wh-2400w-and-an-8ms-ups-switchover-in-a-58-pound-box",
+   "source_title": "StorageReview: BLUETTI Elite 300 review (Dylan Bryan, 2026-08-27)",
+   "read": "2026-11-17",
+   "note": "From StorageReview's spec table and text ('accepts 12V to 60V'). The number of solar inputs is not stated."
+  },
+  {
+   "product": "BLUETTI SORA 500 (500 W panel in the Apex 300 / Elite 300 500 W kits)",
+   "label": "Panel electrical ratings",
+   "value": "Voc 49.1 V, Isc 13.31 A, Vmp 40.92 V, Imp 12.22 A, MC4",
+   "source": "https://www.ecowizard.co.uk/portable-solar-power/bluetti-sora-500",
+   "source_title": "Eco Wizard: Bluetti SORA 500 Foldable Solar Panel (500W)",
+   "read": "2026-11-17",
+   "note": "This is a UK retailer page; the BLUETTI US page I opened shows no electrical specs, and the BLUETTI EU and UK pages looped on redirects. Arithmetic: 2 in series = 98.2 V, over the 60 V limit on both stations. 2 in parallel = 24.44 A Imp and 26.62 A Isc, over the Apex 300's 20 A and the Elite 300's 22 A ratings. At the current limit that is about 818 W per Apex 300 input and about 900 W on the Elite 300, at 40.92 V Vmp."
+  },
+  {
+   "product": "ALLPOWERS R3500 + SP037 400 W kit",
+   "label": "Store price seen today (differs from the kit table)",
+   "value": "$1,803.10 (compare-at $2,699), shown available; R3500 alone $1,199.00",
+   "source": "https://iallpowers.com/products/allpowers-r3500-solar-generator-power-station-3200w-3168wh-with-sp037-400w-solar-panel",
+   "source_title": "ALLPOWERS Solar Generator Kit 3200W (R3500 + SP037 400W Solar Panel)",
+   "read": "2026-11-17",
+   "note": "Read with storecheck.py search on 2026-11-17. The 'Kits we link' table says $1,498.00 (read 2026-11-13). Per the page rules the table figures stand, but this kit's price should be checked again before publishing."
+  }
+ ],
+ "unsourced": [
+  "The Apex 300 solar input window from BLUETTI's own US page: bluettipower.com/products/apex-300 looped on redirects, so StorageReview's spec table is used instead.",
+  "SORA 500 Voc/Isc from a BLUETTI page: the US page shows no electrical specs and the EU and UK pages looped on redirects, so a UK retailer page is used.",
+  "Voc/Isc of the ALLPOWERS SP039 600 W panel: not searched within the call budget.",
+  "Number of solar input ports on the Elite 300: not stated in StorageReview's review.",
+  "Whether the Apex 300, Elite 300 or R3500 has battery self-heating for charging below 0 °C: neither StorageReview review nor the R3500 manual mentions it.",
+  "The SP037 Voc temperature coefficient, needed for the cold-weather margin on a 3-panel series string: not found.",
+  "The contents of unpluggedwatts.com, lightsonlabs.com and solargenadvisor.com: each fetch failed with a TLS certificate error, so I could not check whether they state these voltage windows."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.4948728999999998
+ }
+}
