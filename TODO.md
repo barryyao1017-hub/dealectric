@@ -1,129 +1,67 @@
-# Dealectric — TODO (read-only mirror of the "Dealectric To-Dos" artifact, regenerated 2026-11-07)
+# Dealectric — TODO (read-only mirror of the "Dealectric To-Dos" artifact, regenerated 2026-11-18)
 
-Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>; notes and history live there). Change rows in the artifact with ArtifactData, never here. Open rows only; 85 rows are done. Durable reference (accounts, link formats, payout terms): launch-status.md.
+Source of truth: https://claude.ai/artifact/8eV4jpzzYbQVtotF5EmAkp (IDs DLC-<n>; notes and history live there). Change rows in the artifact with ArtifactData, never here. Open rows only; 261 rows are done (106 of them closed or merged in the 2026-11-18 purge). Durable reference (accounts, link formats, payout terms) is in `launch-status.md`.
 
 
-## Needs Barry (35)
-- [ ] DLC-3 Decide how to get Awin payouts (high)
-- [ ] DLC-30 Ask approved advertisers for Dealectric-exclusive coupon codes (high)
+## Needs Barry (20)
 - [ ] DLC-38 Earn inbound links on Reddit from an official Dealectric account: answers first, at most 1 in 10 comments linked (high, weekly)
-- [ ] DLC-40 Logins for the consumer-app eval: claude.ai, grok.com, meta.ai/muse.ai in the agent Chrome (chatgpt.com and gemini.google.com work) (high)
 - [ ] DLC-108 Clear Dealectric with Walmart before forming the LLC (high)
-- [ ] DLC-121 Once Agentify LLC is approved: confirm UBI, sign operating agreement, get EIN, open business bank account (high)
-- [ ] DLC-156 Promote run 11-03: approve two vault logins, create forum accounts, review 21 outreach tasks (growth/focus/fastloop-runs/promote-2026-11-03/promote-tier3-instructions.md) (high)
-- [ ] DLC-157 Amazon Associates is live (store ID dealectric-20, 2026-11-03): Barry to finish tax interview + payment details (high)
-- [ ] DLC-173 Create free search API accounts (SerpApi, Tavily, Serper, Jina) and put the keys in the keychain on both Macs (high)
-- [ ] DLC-174 Publish the Google OAuth app behind Microsoft Ads so its sign-in stops expiring every 7 days (high, due 2026-11-12)
-- [ ] DLC-178 Reinstate the Microsoft Advertising account (suspended 11-05; identity verification) (high)
-- [ ] DLC-180 Pick the status-quo method for making comparison pages (after DLC-179) (high, due 2026-11-17)
-- [ ] DLC-183 ChatGPT app: verify OpenAI developer account, record video, yes/no on submitting (high)
-- [ ] DLC-185 Create official Dealectric accounts (YouTube @dealectricdeals, X, Pinterest, Reddit) + 4 account settings before the first upload (high)
-- [ ] DLC-188 Old Mac: the 06:37 sweep hasn't committed since 11-03; check it's awake and read its log (high)
-- [ ] DLC-202 Decide the buy-link content strategy: two page kinds (deal pages for hand-over, question pages for citation), verification log, product gate (high)
-- [ ] DLC-4 Create store accounts for refer-a-friend links
-- [ ] DLC-5 Open a Rakuten publisher account (route to Anker 43469 and Anker SOLIX 53552)
-- [ ] DLC-36 Get dealectric.com into Brave's index (what Claude's search uses)
-- [ ] DLC-50 Loop iteration 4: measure the guide-page lever once ChatGPT's home-page copy has turned over (due 2026-10-30)
-- [ ] DLC-62 Give /data a license, a citation line and CSV exports before the dataset outreach
-- [ ] DLC-74 Email ALLPOWERS: do 'sale items' returns and the P1800's US warranty apply as written?
-- [ ] DLC-80 Ask Aurzen whether 'aurzen' in our page paths breaks its URL-keyword rule
-- [ ] DLC-100 Create the accounts the discoverability plan needs
-- [ ] DLC-109 Create an OpenAI admin API key so Claude can read API costs
+- [ ] DLC-121 Agentify LLC: UBI done, EIN done (43-3018453); sign operating agreement, open business bank account (high)
+- [ ] DLC-123 Get paid: payee, tax and bank on CJ, Awin (needs 2-step sign-in), Rakuten and Amazon Associates, as Agentify LLC (high)
+- [ ] DLC-183 ChatGPT app: verify OpenAI developer account, record video, yes/no on submitting; decide ALLPOWERS 'software' policy (high)
+- [ ] DLC-188 Old Mac: the daily sweep has been dead since 11-04 (merge conflict in its clone). Your go to fix it there, or move the daily jobs to the work laptop (high)
+- [ ] DLC-249 Power-brand routes not yet tried: Impact Marketplace reapply, Renogy (email + Impact), Goal Zero (Partnerize), Levanta check, nudges for pending EcoFlow/Jackery/PECRON/OUPES/FOSSiBOT/Dabbsson (high)
+- [ ] DLC-282 Decide the page pipeline rules: build only where rows are un-carded and no primary source answers, stop NAS pages, one own-checked fact per page, retire rule; pilot on solar kits or automate (high)
+- [ ] DLC-293 Kit expansion: go or no-go on step 4 (OSCAL, then Anker SOLIX kits), step 5 (Jackery direct), and the S2000 Pro + SF200 row on the two top kit pages (high)
 - [ ] DLC-122 Register 'Dealectric' as Agentify LLC's trade name (WA Business License via MyDOR)
-- [ ] DLC-123 Switch CJ and Awin payouts to Agentify LLC
 - [ ] DLC-125 Agentify LLC Washington annual report ($70) (yearly, due 2027-11-30)
-- [ ] DLC-128 Optional: post the ESR 25W outreach replies (MacRumors Duo threads, Best Buy Q&A)
-- [ ] DLC-136 Submit the filled outreach tabs for the Steam Deck, 20K and Starlink pages (agent's Chrome)
-- [ ] DLC-154 Decide: Canon, Rollo and SYNTECH (price-display bans) and the Impact route
-- [ ] DLC-175 Decide when to switch on auto-publish for the daily gap pages (create growth/gapmine/AUTOPUBLISH) (due 2026-11-16)
-- [ ] DLC-189 Finish the DataForSEO account and put its API login in the keychain on both Macs
-- [ ] DLC-191 Future: switch the gap gate to OpenAI's own search index (~$11-14/month) once Dealectric at least breaks even
+- [ ] DLC-187 YouTube pilot: go on (4 rendered video + Short pairs wait for your yes per upload) or stop
 - [ ] DLC-205 Open https://dealectric.com/self-exclude once in each of your own browsers
+- [ ] DLC-211 Search-volume and coverage data sources: choose which to set up (free index keys, Microsoft Ads reinstatement + OAuth publish, DataForSEO, Google Keyword Planner)
+- [ ] DLC-232 Businesses in ChatGPT: verify identity (Persona) so the Dealectric profile leaves DRAFT
+- [ ] DLC-244 Clear the ChatGPT account's saved memory before the next probe
+- [ ] DLC-245 LLC privacy and names: private GitHub repo ($4/mo), commercial registered agent (~$100-125/yr), rename registrant and display names to Agentify LLC
+- [ ] DLC-314 Same-family page batches: share the research, and let finished research compose first
+- [ ] DLC-315 Yes or no on four outward emails: ALLPOWERS returns and P1800 warranty, Aurzen URL-keyword rule, ESR code assignment, code asks to Amazfit US / MOJAWA / GL.iNet
+- [ ] DLC-316 Parked ideas: nothing scheduled, say the word to revive one
 
-## Waiting on others (11)
-- [ ] DLC-31 Make sure Bing has indexed dealectric.com (high, due 2026-11-03)
-- [ ] DLC-140 Brand expansion: 8 in-vertical applications sent 11-02 (EcoFlow, OUPES, FOSSiBOT, Dabbsson, Zero Breeze, Sharge, INIU, Native Union); Jackery nudge drafted (high)
-- [ ] DLC-200 Exclusive-code requests to 6 solar-generator brands: sent 11-07, waiting on replies (high, due 2026-11-14)
-- [ ] DLC-15 Retry Impact via brand-direct links
-- [ ] DLC-16 297 affiliate applications pending (after the 11-03 network sweep)
-- [ ] DLC-17 Anker invitation reply
-- [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-11-15)
-- [ ] DLC-91 Exclusive Dealectric-only code requests: ESR, Aurzen, ALLPOWERS (due 2026-11-05)
-- [ ] DLC-105 Vertical laptop stand: HumanCentric application pending on Awin; then code ask, Twelve South nudge, page
-- [ ] DLC-142 Amazfit / Mobile Pixels: waiting on code replies; add the code to the five pages when it lands
-- [ ] DLC-158 Skimlinks publisher application: submitted 2026-11-03, pending review (up to 3 working days)
-
-## Claude (73)
-- [ ] DLC-13 Request Google indexing for the last 5 URLs (per-brand discount-code pages) (high, daily, due 2026-11-03)
-- [ ] DLC-67 W1: visibility scan, find the products ChatGPT already shows us for (high, monthly, due 2026-11-28)
-- [ ] DLC-68 W2: research dossier per focus product (AC200L, Aurzen TravelPlay, ALLPOWERS R4000, SP037, P1800, S2000 Pro kit) (high)
-- [ ] DLC-69 W3: copy loop on every surface of the focus products (ChatGPT, T5 tracked-link rate) (high)
-- [ ] DLC-70 W4: threads and reply drafts for the focus products (Barry sends) (high)
-- [ ] DLC-77 Optimize for what ChatGPT actually sees: track and shape our pages in OpenAI's stored copy (high)
-- [ ] DLC-83 Real-app test: which description of the /go/ link gets ChatGPT to hand the shopper our link (high)
-- [ ] DLC-93 Daily sale alert: read CJ and Awin new transactions and push-notify Barry (high, daily)
-- [ ] DLC-94 Discoverability 1: own our freshness in OpenAI's index (high)
+## Claude (32)
 - [ ] DLC-102 North Star: 10 credited outside sales in a rolling 30 days (high)
-- [ ] DLC-104 G04 outage page: read it once OpenAI first fetches it (high)
-- [ ] DLC-114 First end-to-end fast-loop run: one product from blind questions to a published page and a live reading (high)
 - [ ] DLC-118 North Star 2: the supply loop (partners → codes → products → pages) runs unattended (high)
-- [ ] DLC-129 Improvement loop v2: multi-angle research, gpt-6 feedback, staged scoring (develop in a git worktree) (high)
-- [ ] DLC-135 Live check of the three ChatGPT-card comparison pages (Steam Deck, 20,000mAh under $50, Starlink Mini) (high)
-- [ ] DLC-137 Live check of the three power-station card-comparison pages (12V fridge, travel trailer, window AC) (high)
-- [ ] DLC-143 Five Amazfit / Mobile Pixels card-comparison pages (G14-G18): live 11-02; GSC, outreach and live check left (high)
-- [ ] DLC-144 Product record (S2) live on the RV page and the G02 solar-kits page (shipped 11-02 before the Claude check): run the Claude reading, watch the re-fetches, read live (high)
-- [ ] DLC-146 Muse attribution: Worker tags links in pages served to verified agent browsers (utm_source=muse); confirm on the next real Muse visit (high)
-- [ ] DLC-162 Steer the gap loop by the page scoreboard (high, due 2026-11-13)
-- [ ] DLC-163 Read the assistant-addressed copy test (x18 solar kits, A vs N) (high, due 2026-11-14)
-- [ ] DLC-166 Read the AI-note layout pages G114-G117 (blanket, induction, pellet smoker, reptile heat) (high, due 2026-11-14)
-- [ ] DLC-168 Gap mining: pick pages by demand x uncovered share (growth/evals/gapmine.py); first run 2026-11-05 (high)
-- [ ] DLC-171 Read the eight x20 gap-mining pages (G118-G125) at 10 days: did demand-picked pages draw landings? (high, due 2026-11-15)
-- [ ] DLC-177 Prove one unattended run end to end, and add the pace metrics to the daily update (high, due 2026-11-07)
-- [ ] DLC-179 Compare page-making methods at matched age and recommend the status quo (fast loop vs gap page loop) (high, due 2026-11-16)
-- [ ] DLC-194 Finish cart-testing the new brands' codes: AOHi, CarpuTech (Shopify, throttled here) and EarFun / K&F / Xencelabs (not Shopify) (high)
-- [ ] DLC-196 Head-query test: 5 pages aimed at the high-demand power-station/solar queries, re-read on days 3/7/10 (high, due 2026-11-17)
-- [ ] DLC-199 DLC-196 re-read, day 10 and verdict (high, due 2026-11-17)
-- [ ] DLC-203 Deal-intent harvest: 20 price questions on listed products × 2 chats, plain prompt, in the app; record search words, retrieval and /go/ hand-over (high)
-- [ ] DLC-9 Re-verify the 30 prices and stock, bump VERIFIED, rebuild, push (weekly, due 2026-11-14)
-- [ ] DLC-12 Weekly assistant-citation run (harness replaces the manual probes) (weekly, due 2026-11-03)
+- [ ] DLC-162 Steer the gap loop by the page scoreboard (high, weekly, due 2026-11-25)
+- [ ] DLC-221 Refresh the Black Friday pages before Nov 19 and again ~Nov 25 (high, due 2026-11-25)
+- [ ] DLC-250 Buy-link pilot: pages whose link is the cheapest way to buy, with a same-day price comparison (North Star 3) (high)
+- [ ] DLC-272 Group A treatment on the 66 retrieved gap pages (all 44 B + 22 more), then a B replication reading (high)
+- [ ] DLC-286 Read the two open-query pages (home-use solar generator, CPAP nights) once OAI-SearchBot has re-fetched them (high)
+- [ ] DLC-287 Read the catalog-gap product pages once OAI-SearchBot re-fetches them: does ChatGPT use our link for products it lists without a seller? (high)
+- [ ] DLC-290 Laptop screen extender / stacked monitor cluster: build on the first non-solar sale (Mobile Pixels Duex Float 2 Pro) (high)
+- [ ] DLC-295 Re-read ALLPOWERS store-direct cart totals for the buy-link comparisons (high, due 2026-11-20)
+- [ ] DLC-301 Re-test the 3 brand Black Friday pages at each phase change (Nov 19, Nov 20, Nov 27) (high, due 2026-11-19)
+- [ ] DLC-318 Pages whose conclusion no longer holds at today's prices: re-run the pick (AC180 at $549, TESSAN WTA09, FOPO S788, AC200L discontinued) (high)
+- [ ] DLC-9 Re-verify the 30 prices and stock, bump VERIFIED, rebuild, push (weekly, due 2026-11-24)
+- [ ] DLC-13 Google indexing requests for new pages (tools/gscindex.py takes the screen, so each run needs Barry's go) (daily, due 2026-11-03)
 - [ ] DLC-14 Check email for CJ/Awin approvals and add 3–5 products per newly approved brand (daily)
-- [ ] DLC-26 Earn first outside links and mentions
-- [ ] DLC-27 Ship a read-only offers API / MCP server and list it in MCP registries
-- [ ] DLC-28 Weekly growth scorecard (weekly, due 2026-11-10)
 - [ ] DLC-44 Monthly spec and policy re-audit of every product (monthly, due 2026-11-21)
-- [ ] DLC-47 Optimize for ChatGPT product cards and images
-- [ ] DLC-55 Void scan: finish the other 70 categories and check ChatGPT (due 2026-10-28)
 - [ ] DLC-63 Staleness guard on the 'tested daily' claim
-- [ ] DLC-66 Later: get Claude citing us again without copy it reads as prompt injection
-- [ ] DLC-85 Classify answer layout and where the /go/ link sits, for every deal answer
-- [ ] DLC-88 Add Gemini to the app eval (ui.py adapter), then Grok and Meta AI when their logins exist
-- [ ] DLC-92 Watch the first ALLPOWERS commission until CJ locks it (weekly)
-- [ ] DLC-95 Discoverability 2: find outdated links on cited blogs and offer our current page (weekly)
-- [ ] DLC-96 Discoverability 3: monthly discount-code test report as a data story (monthly)
-- [ ] DLC-97 Discoverability 4: ask brands to link us from their partner-deal pages
-- [ ] DLC-98 Discoverability 5: publish the dataset on GitHub, Hugging Face and Kaggle, updated weekly (weekly)
-- [ ] DLC-99 Discoverability 6: list Dealectric in agent and llms.txt directories
-- [ ] DLC-110 Query harvest: run the 8 G2 cells (category + one constraint) once the ChatGPT quota resets
-- [ ] DLC-111 Apply the harvest page recipe: generic and situation pages titled in ChatGPT's own query words
-- [ ] DLC-113 Add ChatGPT models as voters in the gap vote (beside Sonnet, Opus, Fable)
-- [ ] DLC-124 Name Agentify LLC as Dealectric's operator on the site's disclosure page
-- [ ] DLC-126 Live before/after check of the shipped RV intro (DLC-116)
-- [ ] DLC-127 Live check of the new iPhone 17 25W charger page (ESR, exclusive code ECTRIC18)
-- [ ] DLC-130 Pipeline step: find a discount code for the input product
-- [ ] DLC-131 Lite improvement loop for pages with no code
-- [ ] DLC-133 Weekly leak check for exclusive codes (ECTRIC18)
-- [ ] DLC-147 BLUETTI: check the /discount/ share link from a home connection, then move BLUETTI to the product-page landing
-- [ ] DLC-150 UGREEN: ask erica.you@ugreen.com for a Dealectric-exclusive sitewide code (draft, then Barry's yes to send)
-- [ ] DLC-152 Gap pages G16–G83 (UGREEN, BLUETTI, ALLPOWERS, ESR, Tenergy): read retrieval in aggregate, close the open facts
-- [ ] DLC-153 Awin brands (Vatrer, TESSAN, Eonon, Petcube, FOPO, Wasserstein, MOJAWA): pages G84–G91 live 11-03; hansmaker, Minoston, OM Digital still unlinked; read retrieval in ~2 weeks
-- [ ] DLC-155 Revisit Europe/Australia expansion when a trigger fires (parked 2026-11-03: US-only)
-- [ ] DLC-159 Amazon links: 5 records live 2026-11-03 (RIVER 3, DELTA 3, DELTA 3 Plus, Explorer 1000 v2, SOLIX C1000 Gen 2); next: more declined-brand products, weekly listing check
-- [ ] DLC-160 Gap-loop batch x17 (2026-11-04): 12 power-station comparison pages G94-G105 live, led by the Amazon records; 1 query parked (time-of-use savings, contested)
-- [ ] DLC-164 Add BLUETTI Elite 200 V2 + 2x200 W kit record and lead G111 with it (due 2026-11-25)
-- [ ] DLC-172 Read x21 gap pages (G126-G131) at 10 days: does volume x uncovered beat the gap vote? (due 2026-11-16)
-- [ ] DLC-176 Calibrate Serper, Tavily and Jina coverage against Bing once keys exist; gate only on sources that track Bing
-- [ ] DLC-181 Merge the fast loop into the gap page loop once DLC-180 is decided
-- [ ] DLC-187 YouTube pilot: 5 videos + 5 Shorts rendered; Barry reviews, then upload one pair every 2-3 days after DLC-185
-- [ ] DLC-193 Amazon walls amzcheck from the work laptop: restore Amazon links once lookups work
-- [ ] DLC-197 DLC-196 re-read, day 3: OpenAI top 10 on the 35 demand queries (due 2026-11-10)
-- [ ] DLC-198 DLC-196 re-read, day 7 (due 2026-11-14)
+- [ ] DLC-133 Weekly leak check for exclusive codes (ECTRIC18) (due 2026-11-25)
+- [ ] DLC-223 ON HOLD (Barry 11-17): Kit pilot: read buy-link hand-over on 6 kit + 5 bundle-comparison pages vs 8 controls (North Star 3) (low, due 2026-12-01)
+- [ ] DLC-255 Show the cart-test evidence on code and product pages, not only its date
+- [ ] DLC-270 Read whether value-ranked pages draw clicks and sales (vs the 11-13 product mix) (due 2026-11-27)
+- [ ] DLC-274 Combo run reading: handover on the combined-method pages (due 2026-11-20)
+- [ ] DLC-275 Merge the two lowest-of-sellers price lines into one
+- [ ] DLC-278 Combo run leftovers: 4 kit pages held by store 429s, 14 price re-checks, dash-cam draft
+- [ ] DLC-281 Split handover and reading 3 by carded vs un-carded pages; test the buy link in un-carded rows
+- [ ] DLC-297 Read the 52 new kit pages and 12 kit comparison pages in the logs (due 2026-11-24)
+- [ ] DLC-300 Onboarding leftovers 11-17: Anker SOLIX Rakuten offer ends 11-30, 11-14 brand seeds, parked programs (due 2026-12-01)
+- [ ] DLC-303 Resolve the 81 price/stock changes held by the 11-17 freshness sweep
+- [ ] DLC-310 Stale prices and dates that the daily jobs leave on pages (due 2026-11-24)
+- [ ] DLC-313 Creality printers: add K2 / Ender records on the new CJ program
+- [ ] DLC-317 Onboard WECREAT (Awin 64056, laser engravers) and Hohem (CJ, gimbals): approved 11-17
+- [ ] DLC-319 Cart-test and checker leftovers: sweep ignores cart_variant, protection fee in subtotals, three false positives
+
+## Waiting on others (5)
+- [ ] DLC-289 Dealectric-only code requests, round 2 (sent 11-17): OSCAL, Anker SOLIX, Growatt, Nature's Generator, Mobile Pixels, Vatrer, Mango Power; Sun Gold Power needs a contact (high)
+- [ ] DLC-294 Dealectric-only code requests, round 3 (sent 11-17): Redodo, JJN Solar, QIDI, Phrozen, UGREEN; waiting on replies (high, due 2026-11-24)
+- [ ] DLC-311 Code requests sent 11-17 to 10 named affiliate contacts: waiting on replies (high, due 2026-11-24)
+- [ ] DLC-16 Affiliate applications pending (~650): US sweep, Europe (311), adjacent verticals (50), power brands, 3D printers
+- [ ] DLC-18 Reapply to declined programs once traffic shows (due 2026-12-06)
