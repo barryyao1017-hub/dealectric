@@ -106,6 +106,21 @@ def main(logs):
                 print("no metadata, skipped:", key); continue
             c = {"brand": key[0], "code": key[1], **META[key], "tests": []}
             data["codes"].append(c); by_key[key] = c
+        # A logged check runs the code only, so it cannot see what the store's own automatic discount charges without it
+        # (no_code_total, measured by a control run on that exact product). Carry the last measurement forward, with the
+        # day it was measured, while the code still passes at the same store price; without it the page would claim
+        # the full code saving where the store takes 5-7% off by itself (ALLPOWERS, BLUETTI's spend tiers; DLC-321).
+        old = {(t["product"], t["qty"]): t for t in c["tests"]}
+        for x in tests:
+            o = old.get((x["product"], x["qty"]))
+            if not o or o.get("no_code_total") is None:
+                continue
+            if x["discount"] > 0 and abs(o["subtotal"] - x["subtotal"]) < 0.005:
+                x["no_code_total"] = o["no_code_total"]
+                x["no_code_date"] = o.get("no_code_date") or o["date"]
+            else:
+                print(f"no_code_total dropped for {key[1]} on {x['product']}: " + ("the code was rejected" if x["discount"] <= 0 else
+                      f"the store price moved (${o['subtotal']} -> ${x['subtotal']}), so re-measure it with a control run"))
         hand = [t for t in c["tests"] if (t["product"], t["qty"]) not in {(x["product"], x["qty"]) for x in tests}]
         c["tests"] = sorted(hand + tests, key=lambda t: (t["product"], t["qty"]))
         if key in INCONCLUSIVE or META.get(key, {}).get("result") == "inconclusive":
