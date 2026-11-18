@@ -288,10 +288,13 @@ PRODUCTS = [
 
 {"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI AC200L Portable Power Station", "model": "AC200L",
- "url": "https://www.bluettipower.com/products/ac200l", "price": 899, "list_price": 1599,
- # DLC-71 (2026-10-28): this page renders no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
- # (build.py buy_url); tools/linkcheck.py flags the day the variant sells out.
- "cart_variant": 44449450852571,
+ # DLC-305 (2026-11-18): BLUETTI removed the remaining-stock page /products/ac200l (it 302/301s here) and its variant
+ # 44449450852571 (/variants/<id> is a 404). This is the main AC200L listing: one variant, $899, marked Discontinued and
+ # not available in the store's product JSON, so the record is sold out until a read says otherwise (src/stock.json).
+ "url": "https://www.bluettipower.com/products/ac200l-portable-power-station", "price": 899, "list_price": 1599, "in_stock": False, "verified": '2026-11-18',
+ # DLC-71 (2026-10-28): the old page rendered no buy button, so /go/ opens BLUETTI's cart permalink for this variant instead
+ # (build.py buy_url); tools/linkcheck.py and tools/pricecheck.py read this variant's availability.
+ "cart_variant": 46352232349915,
  # DLC-77 fact fix: in the description, catalog card and agent note, so a stale stored copy still says it is ending
  "phase_out": "On sale while BLUETTI's remaining AC200L stock lasts; the Apex 200 replaces it in early November 2026.",
  # DLC-73 (2026-11-06): the product page links the successor right under the summary
@@ -543,7 +546,10 @@ PRODUCTS = [
 {"slug": "allpowers-volix-p300-100w-solar-kit", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS VOLIX P300 + 100 W Solar Panel Kit (256 Wh, 300 W)", "model": "VOLIX P300 + SE100",
  "sold_out_alt": ("bluetti-elite-30-v2-100w-solar-kit", "The nearest in-stock small kit: 288 Wh LiFePO4, 600 W AC and a 100 W panel, at $489.99, more than twice the VOLIX kit's $218.99."),
- "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel", "price": 216.99, "list_price": 359.0, "in_stock": False, "verified": '2026-11-17', "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
+ # DLC-310 (2026-11-18): this record is the SE100 laminated-panel variant (46146600599705): $226.10 and available in the
+ # store's product JSON on 11-17 and 11-18 and in the 11-17 cart tests. The 11-17 re-read had given it the SP027
+ # variant's $216.99 and sold-out state.
+ "url": "https://iallpowers.com/products/volix-p300-100w-solar-panel?variant=46146600599705", "price": 226.1, "list_price": 359.0, "verified": '2026-11-18', "lowest_seen": {"price": 208.99, "date": "2026-10-24", "source": "our price checks"},
  "specs": [("Battery", "256 Wh LiFePO4"), ("AC output", "300 W (600 W surge)"), ("Panel", "1× SE100 100 W laminated"),
            ("Solar input", "110 W max, 11–30 V, 8 A"), ("Solar recharge with this kit", "Not published; a 100 W panel refills 256 Wh in roughly 4–5 h of good sun")],
  "warranty": "See ALLPOWERS warranty page", "returns": "30-day money-back for unused items in the original package; buyer pays return shipping unless defective (ALLPOWERS' refund page also says sale items can't be returned)",
@@ -1324,9 +1330,12 @@ PRODUCTS = [
  "fit": "Cat owners covering a whole room with one camera.",
  "caveats": ["Records no history without Petcube Care; Wyze's Cam Pan v4 and TP-Link's Tapo pan cameras record to a microSD card for a similar price.", "Corded; no battery."]},
 
-{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "cart_variant": 62712052089202, "category": "portable-monitor",
+{"slug": "fopo-s788-16-inch-triple-laptop-screen-extender", "brand": "FOPO", "program": "awin:fopo", "cart_variant": 62934751248754, "category": "portable-monitor",
  "name": "FOPO S788 16-inch Triple Laptop Screen Extender, 3× 1920×1200 IPS", "model": "S788",
- "url": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender", "price": 599.99, "verified": '2026-11-17', "list_price": 999.99,
+ # DLC-310 (2026-11-18): FOPO merged the 14-inch S780 into this listing and re-issued the variants: 62934751183218 is the
+ # 14-inch ($499.99), 62934751248754 the 16-inch S788 ($599.99). The old cart_variant 62712052089202 is gone, and the
+ # 11-17 cart test put the 14-inch in the cart.
+ "url": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender?variant=62934751248754", "price": 599.99, "verified": '2026-11-17', "list_price": 999.99,
  "specs": [("Displays", "Three 16-inch IPS panels, 1920 × 1200 each, 16:10, non-touch"), ("Panel", "100% sRGB, 60 Hz, 25 ms, W-LED"), ("Fits", "12–18.5-inch laptops (physical fit, FOPO's range)"), ("Connection", "USB-C, or dual-head USB-A to USB-C; display driver (UsbDisplay) required; external PD power supply included"), ("Systems", "Windows 10/11; macOS from 2019 including M1, M2, M3 (FOPO's list)"), ("Size and weight", "388 × 244 × 41.3 mm folded; 2.64 kg"), ("In the box", "Extender, carrying case, PD power supply, cables, driver USB drive")],
  "warranty": "1 year on hardware; registered members get a second year", "returns": "30-day returns (FOPO)",
  "summary": "Three 16-inch 1920 × 1200 panels around a laptop, the only triple extender at this size that is not 1080p, for $500 with FOPO's 10% code on top.",
@@ -3744,7 +3753,8 @@ PRODUCTS = [
  "category": 'cable',
  "name": 'Syncwire 3.5mm Nylon Braided Aux Cable, 3.3 ft, Black',
  "model": '3.5mm Auxiliary Audio Nylon Braided Cable',
- "url": 'https://www.syncwire.com/products/auxiliary-audio-nylon-braided-3-5mm-cable',
+ # DLC-303 (2026-11-18): "1m / 3.3ft / Black", $10.99; the listing's first variant is the 1.6 ft cable ($11.59).
+ "url": 'https://www.syncwire.com/products/auxiliary-audio-nylon-braided-3-5mm-cable?variant=45401411191065',
  "price": 10.99,
  "verified": '2026-11-17',
  "specs": [('Length', '3.3 ft (1 m); the store also sells 1.6 ft, 6.5 ft, 10 ft, 16.4 ft and 26.2 ft'), ('Connectors', '3.5 mm male to male, 24K gold-plated, aluminum housings'), ('Jacket', 'Nylon braided, double shielded'), ('Bend rating', '15,000+ bends (maker test)'), ('Case fit', 'Slim plug; maker says it does not fit LifeProof or OtterBox cases'), ('Colors', 'Black, Silver, Titanium, Pink, Gold, Blue')],
@@ -4452,7 +4462,9 @@ PRODUCTS = [
  "category": 'solar-kit',
  "name": 'BLUETTI AC180 + 2× 200 W Solar Panel Kit (1,152 Wh, 1,800 W, 400 W of panels)',
  "model": 'AC180 + 2 × SP200L',
- "url": 'https://www.bluettipower.com/products/ac180',
+ # DLC-310 (2026-11-18): the variant is named in the URL too, because the cart sweep reads only ?variant= (not cart_variant);
+ # without it the 11-17 test put the listing's first variant, the bare AC180 at $549, in the cart.
+ "url": 'https://www.bluettipower.com/products/ac180?variant=45791800885467',
  "price": 1232, "preorder": 'Dec 14, 2026',
  "verified": '2026-11-17',
  "specs": [('Battery', '1,152 Wh (36 Ah)'), ('AC output', '1,800 W rated, 2,700 W surge (Power Lifting, resistive loads)'), ('Solar input', '500 W max, 12–60 V Voc, 10 A'), ('Panels in the kit', '2 × 200 W SP200L (400 W)'), ('Cycle life', '3,500+ cycles to 80% of original capacity'), ('Station weight', 'about 35.27 lb'), ('AC charging', '0–80% in 45 min at 1,440 W')],
@@ -4770,10 +4782,12 @@ PRODUCTS = [
  "category": 'trail-camera',
  "name": 'GardePro Link 1.0 Long-Range WiFi Trail Camera System (Hub + R3 2.0 Pro), 1,600 ft typical range, no data plan',
  "model": 'Link 1.0 Hub + R3 2.0 Pro',
- "url": 'https://gardepro.com/products/gardepro-r3-2-0-pro-wi-fi-trail-camera',
+ # DLC-310 (2026-11-18): the store's price for "US/CA / 1 HUB+1 Camera / None" is $224.99. $229.68 was the 11-17 cart
+ # subtotal, which includes the $4.69 Seel "Worry-Free Purchase" line GardePro's cart adds (SAVE15 took 15% of $224.99).
+ "url": 'https://gardepro.com/products/gardepro-r3-2-0-pro-wi-fi-trail-camera?variant=53433853739297',
  "official_page": 'https://gardepro.com/products/gardepro-r3-2-0-pro-wi-fi-trail-camera',
- "price": 229.68, "list_price": 299.99,
- "verified": '2026-11-17',
+ "price": 224.99, "list_price": 299.99,
+ "verified": '2026-11-18',
  "specs": [('How it connects', 'Hub plugs into your router by Ethernet (powered over Ethernet); the camera talks to the hub over a long-range wireless link'), ('Rated reach, camera to hub', '1,600 ft (485 m) typical; up to 3,000 ft (1 km) in open air (maker)'), ('Cameras per hub', 'Up to 16'), ('Video', '4K'), ('Night vision', '940 nm no-glow infrared, up to 100 ft (30 m)'), ('Detection', 'Three PIR sensors plus on-camera AI that tells people from animals'), ('Power', 'Built-in 7,800 mAh rechargeable battery; GardePro SP300 or SP1000 solar panel optional'), ('Ongoing cost', 'No subscription required (maker, seen 2026-11-10); free cloud plan keeps 3 days'), ('Price seen 2026-11-10', '$239.99 with a 64 GB SD card; $224.99 without; add-on R3 2.0 Pro camera $179.99 with card'), ('Sold for', 'US and Canada only')],
  "warranty": '2 years when bought from the GardePro store',
  "returns": '30 days from delivery, unused and in original packaging; buyer prepays return shipping unless the item is faulty or GardePro made an error',
@@ -4787,7 +4801,9 @@ PRODUCTS = [
  "category": 'trail-camera',
  "name": 'GardePro E9 3.0 Pro Home WiFi Trail Camera, 4K, joins 2.4 GHz home Wi-Fi, 7,800 mAh battery',
  "model": 'E9 3.0 Pro',
- "url": 'https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera',
+ # DLC-310 (2026-11-18): 18 variants (1/2/4-pack x accessory bundle); this record is "1-Pack / None", $119.99. The 11-17
+ # cart test put the 2-pack ($219.99) in the cart, plus the store's $4.69 Seel protection line.
+ "url": 'https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera?variant=52569882034465',
  "official_page": 'https://gardepro.com/products/gardepro-e9-3-0-pro-wi-fi-trail-camera',
  "price": 119.99, "in_stock": False, "list_price": 139.99,
  "verified": '2026-11-17',
@@ -5388,7 +5404,7 @@ PRODUCTS = [
  "category": 'kvm-switch',
  "name": 'AV Access iDock C20 KVM Docking Station for 2 Laptops and 2 Monitors',
  "model": 'iDock C20',
- "url": 'https://www.avaccess.com/products/idock-c20-kvm-switch-docking-station/',
+ "url": 'https://www.avaccess.com/products/idock-c20/',
  "price": 259.99,
  "verified": '2026-11-10',
  "specs": [('Computers', 'Two USB-C laptops; each port needs DP Alt Mode and DP MST for two extended screens'), ('Laptop charging', 'Up to 60 W to each laptop at the same time'), ('Power adapter', '20 V 10 A (200 W)'), ('Video out', '2× HDMI 2.0 (HDCP 2.2), up to two 4K 60 Hz; 3440×1440 at 60 Hz; 5120×1440 limited to 3840×1080'), ('Display mode', 'Extended on Windows, mirrored on a MacBook'), ('USB', '2× USB-A 5 Gb/s, 4× USB-A 2.0 (480 Mb/s), 1× USB-C 5 Gb/s'), ('Ethernet', 'Gigabit, RJ-45'), ('Switching', 'Panel button or optional remote, average 2-3 s (AV Access rating)')],
@@ -6193,8 +6209,10 @@ PRODUCTS = [
  "model": 'Sentinel HD55P',
  "url": 'https://thedryair.com/products/alorair-120-pint-crawl-space-dehumidifier-sentinel-hd55p',
  "official_page": 'https://www.alorair.com/product-details/alorair-sentinel-hd55p-dehumidifier',
- "price": 742.0,
- "verified": '2026-11-17',
+ # DLC-310 (2026-11-18): the store's price. $742.00 was the 11-17 cart subtotal, which includes the Seel "Worry-Free
+ # Purchase" line thedryair.com's cart adds ($12.89); AWINBASE12 took 12% of $729.11.
+ "price": 729.11,
+ "verified": '2026-11-18',
  "specs": [('Capacity (AHAM, 80°F / 60% RH)', '55 pints/day'), ('Capacity at saturation (90°F / 90% RH)', '120 pints/day'), ('Sized for', '1,300 sq ft (spec table)'), ('Drain', 'Built-in pump or gravity drain'), ('Pump drain height', '19.6 ft'), ('Hoses included', '19.6 ft pump hose + 6.5 ft gravity hose'), ('Airflow', '153 CFM'), ('Rated power', '402 W'), ('Noise', '50 dBA'), ('Refrigerant', 'R32'), ('Energy Star', 'Yes (per store listing)'), ('Size', '17.64 × 11.69 × 11.85 in')],
  "warranty": '6-year limited: years 1–2 cover parts, labor or replacement; years 3–6 cover refrigeration-system parts only (compressor, condenser, evaporator), not labor or shipping. Register the unit. Orders on or after 2026-05-14.',
  "returns": '30 days from delivery, no restocking fee; unused and in original packaging unless defective. Discounted products are not eligible. Get authorization from support@alorair.com before shipping.',
@@ -6210,8 +6228,9 @@ PRODUCTS = [
  "name": 'AlorAir Sentinel HD35P WiFi Crawl Space Dehumidifier with Pump, 35 pints/day (AHAM)',
  "model": 'Sentinel HD35P WiFi',
  "url": 'https://thedryair.com/products/alorair-wifi-70-ppd-crawl-space-dehumidifier-sentinel-hd35p-wifi-size-for-1000-sq-ft',
- "price": 558.85,
- "verified": '2026-11-17',
+ # DLC-310 (2026-11-18): the store's price; $558.85 was the 11-17 cart subtotal with the Seel protection line ($10.19).
+ "price": 548.66,
+ "verified": '2026-11-18',
  "specs": [('Capacity (AHAM, 80°F / 60% RH)', '35 pints/day'), ('Capacity at saturation (90°F / 90% RH)', '70 pints/day'), ('Sized for', '1,000 sq ft'), ('Drain', 'Built-in pump or gravity drain'), ('Pump drain height', '19.6 ft'), ('Operating temperature', '33–105°F'), ('Humidity range', '25–80% RH'), ('Airflow', '115 CFM'), ('Noise', '50 dBA'), ('Weight', '38.18 lb'), ('Size', '15.2 × 11.2 × 11.4 in'), ('Control', 'Wi-Fi app'), ('Refrigerant', 'R32')],
  "warranty": '6-year limited: years 1–2 cover parts, labor or replacement; years 3–6 cover refrigeration-system parts only, not labor or shipping. Register the unit.',
  "returns": '30 days from delivery, no restocking fee; unused and in original packaging unless defective. Discounted products are not eligible.',
@@ -6228,8 +6247,10 @@ PRODUCTS = [
  "model": 'Galaxy 85P',
  "url": 'https://thedryair.com/products/alorair-galaxy-85p',
  "official_page": 'https://www.alorair.com/product/alorair-galaxy-85p',
- "price": 915.0,
- "verified": '2026-11-17',
+ # DLC-310 (2026-11-18): the store's price; $915.00 was the 11-17 cart subtotal with the Seel protection line ($15.89).
+ # The store's product JSON says not available on 11-18.
+ "price": 899.11, "in_stock": False,
+ "verified": '2026-11-18',
  "specs": [('Capacity (AHAM, 80°F / 60% RH)', '85 pints/day'), ('Capacity at saturation', '180 pints/day'), ('Sized for', '2,300 sq ft'), ('Drain', 'Built-in pump or gravity drain'), ('Operating temperature', '37.4–100.4°F'), ('Humidity range', '35–90% RH'), ('Airflow', '194 CFM'), ('Efficiency', '2.7 L/kWh'), ('Weight', '57.3 lb'), ('Size', '21.3 × 11.7 × 14.15 in'), ('Refrigerant', 'R32')],
  "warranty": '6-year limited: years 1–2 cover parts, labor or replacement; years 3–6 cover refrigeration-system parts only, not labor or shipping. Register the unit.',
  "returns": '30 days from delivery, no restocking fee; unused and in original packaging unless defective. Discounted products are not eligible.',
@@ -7047,7 +7068,9 @@ PRODUCTS = [
  "category": 'ev-charger',
  "name": 'EVDANCE Level 2 NEMA 10-30 24A J1772 Portable EV Charger',
  "model": 'Level 2 NEMA 10-30 24A J1772 Portable EV Charger',
- "url": 'https://evdances.com/products/evdance-level-2-nema-10-30-24a-j1772-portable-ev-charger',
+ # DLC-310 (2026-11-18): the "ETL Listed / Plug & Play" variant; the listing's first variant is the Wifi-Enabled one, $10 more,
+ # which is what the cart test had been adding.
+ "url": 'https://evdances.com/products/evdance-level-2-nema-10-30-24a-j1772-portable-ev-charger?variant=51589517705538',
  "price": 239.95,
  "list_price": 299.99,
  "verified": '2026-11-17',
@@ -7064,7 +7087,9 @@ PRODUCTS = [
  "category": 'ev-charger',
  "name": 'EVDANCE Level 2 NEMA 14-30 24A J1772 Portable EV Charger',
  "model": 'Level 2 NEMA 14-30 24A J1772 Portable EV Charger',
- "url": 'https://evdances.com/products/evdance-level-2-nema-14-30-24a-j1772-portable-ev-charger',
+ # DLC-310 (2026-11-18): the "ETL Listed / Plug & Play" variant; the listing's first variant is the Wifi-Enabled one, $10 more,
+ # which is what the cart test had been adding.
+ "url": 'https://evdances.com/products/evdance-level-2-nema-14-30-24a-j1772-portable-ev-charger?variant=51597869482306',
  "price": 229.95,
  "list_price": 299.99,
  "verified": '2026-11-17',
@@ -7081,7 +7106,9 @@ PRODUCTS = [
  "category": 'ev-charger',
  "name": 'EVDANCE Level 2 NEMA 10-30 24A NACS Portable EV Charger',
  "model": 'Level 2 NEMA 10-30 24A NACS Portable EV Charger',
- "url": 'https://evdances.com/products/evdance-level-2-nema-10-30-24a-tesla-portable-ev-charger',
+ # DLC-310 (2026-11-18): the "ETL Listed / Plug & Play" variant; the listing's first variant is the Wifi-Enabled one, $10 more,
+ # which is what the cart test had been adding.
+ "url": 'https://evdances.com/products/evdance-level-2-nema-10-30-24a-tesla-portable-ev-charger?variant=50913580024130',
  "price": 239.95,
  "list_price": 299.99,
  "verified": '2026-11-14',
@@ -7269,9 +7296,11 @@ PRODUCTS = [
  "category": 'security-dvr',
  "name": 'ZOSI 16-Channel 1080p HD 4-in-1 DVR (ZR16FK), optional 2TB/3TB/4TB hard drive',
  "model": 'ZR16FK',
- "url": 'https://www.zositech.com/products/16ch-1080p-tvi-cvi-ahd-analog-4-in-1-security-dvr-easy-remote-view',
+ # DLC-303 (2026-11-18): this record is the "No Hard Drive" variant, $99.99 with a $129.99 compare-at price; $349.99 was
+ # the 4TB option's compare-at. The listing's first variant is the 3TB option ($279.99).
+ "url": 'https://www.zositech.com/products/16ch-1080p-tvi-cvi-ahd-analog-4-in-1-security-dvr-easy-remote-view?variant=44903685587186',
  "price": 99.99,
- "list_price": 349.99,
+ "list_price": 129.99,
  "verified": '2026-11-14',
  "specs": [('Camera inputs', '16 BNC (coax)'), ('Camera formats', 'Analog (CVBS), AHD, HD-TVI, HD-CVI'), ('Camera resolution', 'Up to 1080p'), ('IP cameras', 'Not listed; coax cameras only'), ('Compression', 'H.265+'), ('Alerts', 'Motion detection with custom zones, app push and email'), ('Remote viewing', 'ZOSI Smart app, no subscription')],
  "warranty": '2 years from the original purchase date (ZOSI store policy)',
@@ -9568,7 +9597,9 @@ PRODUCTS = [
  "category": 'ev-charger',
  "name": 'EVDANCE Level 2 NEMA 14-30 24A NACS Portable EV Charger',
  "model": 'Level 2 NEMA 14-30 24A NACS',
- "url": 'https://www.evdances.com/products/evdance-level-2-nema-14-30-24a-tesla-portable-ev-charger',
+ # DLC-310 (2026-11-18): the "ETL Listed / Plug & Play" variant; the listing's first variant is the Wifi-Enabled one, $10 more,
+ # which is what the cart test had been adding.
+ "url": 'https://www.evdances.com/products/evdance-level-2-nema-14-30-24a-tesla-portable-ev-charger?variant=50913494663490',
  "price": 229.95,
  "verified": '2026-11-17',
  "specs": [('Plug', 'NEMA 14-30P (4-prong dryer outlet)'), ('Max current', '24 A, settable to 10 / 16 / 20 / 24 A'), ('Power', '5.76 kW at 240 V'), ('Car connector', 'NACS (Tesla)'), ('Cable', '25 ft'), ('Enclosure', 'IP66'), ('Display', '2.4 in, shows current, voltage, kWh and time'), ('Listing', 'ETL (maker listing title)')],
