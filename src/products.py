@@ -8134,6 +8134,23 @@ PRODUCTS = [
  "fit": 'Shoppers who plan to add a lot of solar later and want 3,600 W of AC output.',
  "caveats": ["Anker's own store says its F3000 + 400 W/200 W solar bundles ship from early December 2026 (read 2026-11-17).", "The 2,400 W solar total needs both inputs in use. The kit's single panel fills one.", 'At 91.5 lb, the station alone is heavy to move.']},
 
+{"slug": 'anker-solix-s5000-2x400w-solar-kit',
+ "brand": 'Anker SOLIX',
+ "program": 'rakuten:ankersolix',
+ "asin": None,
+ "category": 'solar-kit',
+ "name": 'Anker SOLIX S5000 + 2× 400 W Solar Panel Kit (5,024 Wh LFP, 4,500 W, 120/240 V, 800 W of panels)',
+ "model": 'SOLIX S5000 + 2× 400W Solar Panel',
+ "url": 'https://us.ankersolix.com/products/s5000-400w-solar-panel',
+ "price": 3599.99,
+ "verified": '2026-11-17',
+ "specs": [('Battery', "5,024 Wh LFP (StormWatts; Anker's page says 5kWh)"), ('AC output', '4,500 W rated continuous, 8,000 W peak, 120/240 V'), ('Solar panels in the bundle', "2 × 400 W; Anker's Black Friday offer adds a free 400 W panel"), ('Station weight', '97 lb'), ('Shipping', 'Orders placed on or after Nov 6 ship within 9–10 weeks; the 400 W panel ships before Dec 10')],
+ "warranty": '5 years',
+ "returns": '30-day money-back guarantee on ankersolix.com',
+ "summary": "Anker's 5 kWh station sold with two 400 W panels at one price. pv magazine measured it as the lowest idle draw of these kits (about 10 W). It is a pre-order of 9–10 weeks.",
+ "fit": 'Home backup that needs 240 V and can wait until about late January 2027 for delivery.',
+ "caveats": ['Orders placed on or after Nov 6 ship within 9–10 weeks (Anker, read 2026-11-17).', "The free 400 W panel is part of Anker's Black Friday Early Access offer (Nov 10–18)."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
