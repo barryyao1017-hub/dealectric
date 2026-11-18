@@ -1,0 +1,98 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got gives BLUETTI's own panel figures (SP200L: 24.6 V open-circuit voltage (Voc), 10.8 A short-circuit current (Isc)). Those figures show why the two panels in the Elite 200 V2 + 2× 200 W kit belong in series: about 49.2 V, under the station's 60 V ceiling. In parallel they would reach 21.6 A, above the station's 20 A solar input limit.",
+ "standout": 1,
+ "standout_why": "StormWatts (cited, read 2026-11-17) already says two SP200L panels on the Elite 200 V2 'fit in series within its 12–60 V, 20 A input'. That is its own analysis and gives no panel Voc or Isc. It also quotes the EcoFlow DELTA 3 Max's 60 V / 18 A rule and says the Jackery 2000 v2 + 500 W kit goes over the station's 400 W limit. So the series conclusion is already on a rival page, and only the maker's figures behind it are new. I could not compare against OutageReady ('How to Match Panels' in its title; TLS error) or the cited Popular Mechanics page (fetch blocked). Either may already cover this.",
+ "decides": "This confirms the pick rather than changing it. The BLUETTI Elite 200 V2 + 2× 200 W kit can use all 400 W of its panels if they are wired in series. Both kits ChatGPT showed fit the station's limits, so no kit under $1,500 drops out on compatibility. Shipping still decides the pick: the BLUETTI page says the Elite 200 V2 is a pre-order that ships from 11/26, so this kit can only be the option for a shopper who can wait. A kit that ships now, such as ALLPOWERS R2500 V2 + SP037 ($913.49 link price) or R3500 + SP037 ($1,318.24), stays the pick. Their panel-to-station fit is still unverified (see unsourced).",
+ "candidates": [
+  "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit",
+  "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit",
+  "BLUETTI Elite 200 V2 + 350 W Solar Panel Kit",
+  "ALLPOWERS R2500 V2 + SP037 400 W Solar Generator Kit",
+  "ALLPOWERS R3500 + SP037 400 W Solar Generator Kit",
+  "BLUETTI Pioneer Na + 2× 200 W Solar Panel Kit",
+  "EcoFlow DELTA 3 Max + 220 W Solar Panel",
+  "Jackery Solar Generator 2000 v2",
+  "Anker SOLIX C1000 Gen 2 + 100 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar (PV) input limits",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "From the page FAQ: 'PV input: Elite 200 V2: 12V-60V/20A, 1,000W max'. The page does not give the number of solar ports or the connector type."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "In the box (station)",
+   "value": "AC charging cable, documentation, the Elite 200 V2, grounding screw. No solar charging cable listed",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "This is the 'IN THE BOX' list for the station on the kit page. The page does not say whether the panel's box includes a cable from the panel's MC4 plugs to the station."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit",
+   "label": "Store price and shipping state",
+   "value": "$1,499.00 at the store, listed as available. The station is a pre-order that ships from 11/26; the 200 W panel ships from 11/18",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Price read with storecheck.py product on 2026-11-17. The dispatch dates are from the page text. The link price in the Kits table is $1,424.05 with the DEALECTRIC code."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "Panel electrical figures and connector",
+   "value": "Voc 24.6 V; Isc 10.8 A; standard MC4 connector",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI SP200L Solar Panel 200W | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page lists 'Open Circuit Voltage (OCV): 24.6V' and 'Short Circuit Current (Isc): 10.8A'. Single panel price: $399.00."
+  },
+  {
+   "product": "BLUETTI SP200L 200 W panel",
+   "label": "BLUETTI's stated compatibility",
+   "value": "Elite 200 V2 is on BLUETTI's 'Compatible BLUETTI Models' list. BLUETTI says 'Mixing different solar panels is not encouraged in general'",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI SP200L Solar Panel 200W | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "The page FAQ says third-party stations need MC4 connectors and matching voltage specs. It gives no series or parallel limit."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit",
+   "label": "Wiring two SP200L panels to the station (arithmetic)",
+   "value": "Series: 2 × 24.6 V = 49.2 V Voc, within the 60 V ceiling. Parallel: 2 × 10.8 A = 21.6 A Isc, above the 20 A input limit",
+   "source": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w",
+   "source_title": "BLUETTI SP200L Solar Panel 200W | BLUETTI US",
+   "read": "2026-11-17",
+   "note": "My arithmetic, using the panel figures from this page and the station's 12–60 V / 20 A limit from https://www.bluettipower.com/products/elite-200-v2-2-sp200l (read 2026-11-17). BLUETTI does not say whether the station limits the current or rejects a parallel pair. The series result is at standard test conditions; Voc rises in cold weather, and no maker cold-weather margin was sourced."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Rival-quoted solar rule (StormWatts, not the maker's page)",
+   "value": "StormWatts quotes the manual: 'keep total Voc within 60 V and total Isc within 18 A'. The same table also says 'Solar 11–60 V, 13 A, 500 W max' on one XT60i input",
+   "source": "https://stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts/",
+   "source_title": "Solar Generator Kits Compared at the Same Panel Watts: Jackery vs EcoFlow vs Anker vs BLUETTI | StormWatts",
+   "read": "2026-11-17",
+   "note": "The 13 A and 18 A figures on the rival page contradict each other. I could not check EcoFlow's own page (HTTP 429), so do not publish either figure until it is checked against EcoFlow's spec."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 2000 v2 per-port solar limit: a search snippet quoting Jackery's FAQ said one port takes 12 A / 200 W and two ports take 21 A / 400 W. The FAQ page (jackery.com/blogs/jackery-faqs/explorer-2000-v2-basic-information) would not render its specs for me, and the product page returned HTTP 429. If that limit holds, one big panel on a single port would be held to 200 W, but I left it out because I could not open the source.",
+  "EcoFlow DELTA 3 Max solar ports, voltage, current and Voc/Isc rule from EcoFlow's US product page or manual (HTTP 429 on the page and in storecheck)",
+  "Series/parallel instructions and the solar port connector type in BLUETTI's Elite 200 V2 manual. The PDF downloaded, but I could not extract its text here.",
+  "Whether the SP200L box includes a cable from its MC4 plugs to the station's input. The page shows an 'in the box' image but has no text list.",
+  "ALLPOWERS SP037 Voc/Isc against the R2500 V2 and R3500 solar input limits (the storecheck search on allpowers.com returned non-JSON)",
+  "OutageReady 'Best Portable Power Station With Solar Panel' (panel-matching guide): TLS error on fetch and curl not allowed, so I could not compare against it",
+  "Popular Mechanics best portable power stations (cited): WebFetch is blocked for that domain"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.5567073000000002
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the LiFePO4 stations in these kits stop taking solar charge at freezing (the ALLPOWERS R3500 manual says 'Charging Temperature: 0°C ~ 40°C (32°F ~ 104°F)'), while BLUETTI's sodium-ion Pioneer Na kits, which ship now, are rated by the maker to charge 'safely at −15°C (5°F)'.",
+ "standout": 2,
+ "standout_why": "I compared against StormWatts (cited in chat 1) and PowerSized's 'Best Solar Generators of 2026' (returned in both chats). StormWatts covers input voltage windows and series versus parallel wiring in depth. That includes the Elite 200 V2 + 2× SP200L, which has to be wired in series because parallel Isc of about 21.6 A is over the 20 A limit. It says nothing about the battery's charging temperature. PowerSized lists 32°F charging floors for the AC180, Apex 300 and Jackery Explorer 2000 v2, and names the Pioneer Na only as 'with a sodium-ion battery', with no cold-charging figure. It covers no ALLPOWERS kit. So the cold-charge cutoff is partly on a rival page in general, but the comparison against the Pioneer Na's 5°F charge rating is new. I could not open the Dealectric pages, theoutageready.com or solargenadvisor.com (TLS certificate error), so they are not checked for this point.",
+ "decides": "For most shoppers it confirms the pick and does not change it: the battery-size and price leaders under $1,500 (Elite 200 V2 + 2× 200 W, ALLPOWERS R3500 + SP037 400 W) win on Wh per dollar. It decides the pick for one segment: a shopper who plans to recharge from the panels during a winter outage or in a cold cabin. At or below 32°F, an LFP station refuses solar charge 'even in full sun' (PowerSized's wording for the AC180). The Pioneer Na + 200 W ($949.05 link price) and Pioneer Na + 2× 200 W ($1,423.10 link price) both ship now and are the only kits in range the maker rates to charge down to 5°F. The trade-off is 900 Wh against 2,073.6 Wh or 3,168 Wh.",
+ "candidates": [
+  "BLUETTI Pioneer Na + 200 W",
+  "BLUETTI Pioneer Na + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 200 W",
+  "ALLPOWERS R3500 + SP037 400 W",
+  "ALLPOWERS R2500 V2 + SP037 400 W",
+  "EcoFlow DELTA 3 Max + 2× 220 W",
+  "Jackery Explorer 2000 v2 + 2× 200 W"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Pioneer Na (all solar kits)",
+   "label": "Charging temperature (maker claim)",
+   "value": "Charges at −15°C (5°F); powers loads down to −25°C (−13°F); sodium-ion chemistry",
+   "source": "https://www.bluettipower.com/products/pioneer-na-2-200w",
+   "source_title": "Pioneer Na+2*200W · BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Maker's US kit listing, read with storecheck.py product. Exact wording: 'Cold-Proof Sodium Power: Keeps working in freezing temps, charging safely at −15°C (5°F) and powering down to −25°C (−13°F).' The same text appears on the Pioneer Na+200W and +350W listings. Store prices that day: +2×200W $1,498 (available), +200W $999 (available)."
+  },
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Charging temperature (manual)",
+   "value": "0°C to 40°C (32°F to 104°F); discharging −10°C to 40°C (14°F to 104°F); LiFePO4",
+   "source": "https://manuals.plus/m/38c5e7b282e34c0294818f8751dbc30f2a4925e2d44a0c8ec73a45c1976b607b",
+   "source_title": "ALLPOWERS R3500 Portable Power Station User Manual (V2.0) · manuals.plus",
+   "read": "2026-11-17",
+   "note": "This is the maker's manual, hosted on manuals.plus. The official ALLPOWERS PDF (cdn.shopify.com/.../R3500_B3000.pdf) downloaded but its text could not be extracted here. Same manual: 'Solar Input: (12 ~ 150)V 40A, 2000W Max'."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Temperature rating (manual)",
+   "value": "Operating −20°C to 40°C (−4°F to 104°F); the manual gives no separate charging range",
+   "source": "https://manuals.plus/asin/B0DRFZ8C31",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station manual · manuals.plus",
+   "read": "2026-11-17",
+   "note": "This is an operating range, not a charging range, so it must not be presented as cold-charging ability. StorageReview (Dylan Dougherty, 2025-04-25) gives the same operating range and storage of −10°C to 40°C."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input",
+   "value": "1,000 W max, 12–60 V, 20 A max",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review · StorageReview",
+   "read": "2026-11-17",
+   "note": "The maker's UK page FAQ (bluettipower.co.uk) gives the same figure. The US page redirect-looped. StormWatts (cited rival) already uses this figure to show that 2× SP200L must be wired in series."
+  },
+  {
+   "product": "general (BLUETTI AC180, Apex 300, Jackery Explorer 2000 v2)",
+   "label": "Charging temperature as stated by a rival page",
+   "value": "AC180 and Apex 300: 32°F to 104°F; Jackery Explorer 2000 v2: 32°F to 113°F",
+   "source": "https://powersized.com/best/solar-generator/",
+   "source_title": "Best Solar Generators of 2026: Kits by Battery Size · PowerSized",
+   "read": "2026-11-17",
+   "note": "Recorded to show what a rival already says, not as our sourcing. PowerSized says the AC180 'should not charge below freezing, even in full sun', and names the Pioneer Na only as sodium-ion, with no temperature."
+  }
+ ],
+ "unsourced": [
+  "Elite 200 V2 charging temperature range: the BLUETTI US product page redirect-looped, the text of the official manual PDF (s4.bluettipower.com) could not be extracted, the manuals.plus copy and StorageReview give only the −20–40°C operating range, and the UK page gives no temperature figures",
+  "EcoFlow DELTA 3 Max charging temperature: us.ecoflow.com returned HTTP 429",
+  "Jackery Explorer 2000 v2 charging temperature from the maker: jackery.com returned HTTP 429 (only PowerSized's figure is above)",
+  "ALLPOWERS R2500 V2 charging temperature: not looked up within the tool budget",
+  "Pioneer Na solar input voltage and current window: the BLUETTI US listing text read through storecheck gives only '1,900 W AC + solar', and its full spec table was not reachable"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.3437449000000004
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states the cycle-life endpoints side by side: Jackery rates the Explorer 2000 v2 at 4,000 cycles to at least 70% capacity, BLUETTI rates the Elite 200 V2 at 6,000+ cycles to 80%, and the ALLPOWERS R3500 manual gives no cycle rating at all. None of them states that Jackery's $1,239 'Solar Generator 2000 v2', which ChatGPT listed as a 400 W kit, is the 2 × 100 W Air bundle (200 W of panels); the 2 × 200 W bundle costs $1,649.",
+ "standout": 2,
+ "standout_why": "StormWatts (cited, 2026-11-08) has solar input limits (V/A/W) for every kit, and it lists the Jackery 2000 v2 + 2 × 200 W at $1,649 as a pre-order. It gives no cycle life, no surge figures, and no AC output for any kit. It also never says that Jackery's cheaper $1,239 variant carries only 200 W of panels, so it has part of the price finding. ChatGPT's own answer put '$1,239 … 400W solar' on the Jackery. I could not open the cited Popular Mechanics page (fetch blocked). Our own two dealectric.com pages failed to load (SSL error), so I did not check them for overlap.",
+ "decides": "This takes ChatGPT's 'best overall value' (Jackery 2000 v2 + 400 W at $1,239) out of contention. At $1,239 that kit has 200 W of panels (about 10.2 h of rated sun to refill 2,042 Wh), and the 400 W version is $1,649, over budget. On a common footing the BLUETTI Elite 200 V2 kits carry the stricter cycle rating (80% vs Jackery's ≥70%). The Elite 200 V2 + 2 × 200 W ($1,424.05 link) is a pre-order dispatching Nov 26, so for a ships-now pick under $1,500 the ALLPOWERS R3500 + SP037 400 W ($1,318.24 link, $0.416/Wh, about 7.9 h rated-sun refill, 3,200 W / 6,000 W peak) wins on Wh and output. Its footnote: the R3500 manual states no cycle-life figure, so it cannot be ranked on longevity.",
+ "candidates": [
+  "ALLPOWERS R3500 + SP037 400 W",
+  "ALLPOWERS R2500 V2 + SP037 400 W",
+  "BLUETTI Elite 200 V2 + 2× 200 W",
+  "BLUETTI Elite 200 V2 + 200 W",
+  "Jackery Solar Generator 2000 v2 (Explorer 2000 v2 + 2× 100 W Air)",
+  "EcoFlow DELTA 3 Max Solar Generator",
+  "Anker SOLIX C1000 Gen 2 + 100 W"
+ ],
+ "findings": [
+  {
+   "product": "Jackery Solar Generator 2000 v2",
+   "label": "What the $1,239 variant contains",
+   "value": "Explorer 2000 v2 + 100W air x2 (200 W of panels) at $1,239 (compare-at $1,379); the Explorer 2000 v2 + SolarSaga 200W x 2 (400 W) is $1,649",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2",
+   "read": "2026-11-17",
+   "note": "Variant titles and prices read from the Jackery US Shopify store with storecheck.py. The page notes '200w Panel: Pre-order, ships by Nov 28.' $1,239 / 2,042 Wh = $0.607/Wh; 2,042 Wh / 200 W = 10.2 h of full sun at rated panel output (arithmetic; real output is lower)."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Continuous / surge AC output",
+   "value": "2,200 W continuous, 4,400 W surge",
+   "source": "https://www.jackery.com/products/jackery-solar-generator-2000-v2",
+   "source_title": "Jackery Solar Generator 2000 v2",
+   "read": "2026-11-17",
+   "note": "Store text: '2200W continuous output (4400W surge)'."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Cycle life and endpoint",
+   "value": "4,000 cycles to at least 70% of original capacity",
+   "source": "https://www.t3.com/active/outdoor-tech/this-new-jackery-power-station-charges-in-under-two-hours-and-its-the-lightest-in-its-class",
+   "source_title": "T3: This new Jackery power station charges in under two hours – and it's the lightest in its class",
+   "read": "2026-11-17",
+   "note": "T3 wrote: 'Even after 4,000 full charge cycles, the battery retains at least 70% of its original capacity.' Jackery's own US spec page returned HTTP 429, so this is the named-reviewer source. The 70% endpoint is looser than the 80% BLUETTI and EcoFlow use, so the cycle counts are not directly comparable."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Cycle life and endpoint",
+   "value": "6,000+ cycles to 80% of original capacity",
+   "source": "https://aphnetworks.com/reviews/bluetti-elite-200-v2",
+   "source_title": "APH Networks: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-17",
+   "note": "From the manufacturer spec list APH Networks reproduces. The BLUETTI US kit page's Tech Specs section was empty on the read date."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Rated AC output vs 'lifting power' (no surge figure)",
+   "value": "2,600 W continuous; 3,900 W lifting power for pure resistive loads; no surge rating published",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-17",
+   "note": "Page text: '2600W continuous output' and 'supports pure resistive loads of up to 3,900W'. Lifting power is a reduced-voltage mode for heaters and kettles, not a motor-start surge, so it does not line up with Jackery's 4,400 W surge or ALLPOWERS's 6,000 W peak. APH Networks' spec list also has no surge line."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Solar input",
+   "value": "12–60 V, 20 A, 1,000 W max",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-17",
+   "note": "From the page FAQ. Also on the page: 'Pre-order: Ships from 11.26'; '200W Solar Panel ships from 11.18'. The store price of $1,499 matches the 'Kits we link' table (link price $1,424.05)."
+  },
+  {
+   "product": "ALLPOWERS R3500",
+   "label": "Rated AC output and peak; solar input; cycle rating",
+   "value": "3,200 W at 100–120 V (6,000 W peak); solar 12–150 V, 40 A, 2,000 W max; no cycle-life figure in the manual",
+   "source": "https://manuals.plus/m/38c5e7b282e34c0294818f8751dbc30f2a4925e2d44a0c8ec73a45c1976b607b",
+   "source_title": "ALLPOWERS R3500 Portable Power Station User Manual (manuals.plus)",
+   "read": "2026-11-17",
+   "note": "Manual spec table: '(100 ~ 120)V 3200W Max (6000W peak)'; '(12 ~ 150)V 40A, 2000W Max'; '3168Wh (48V 66AH)'. Kit at the link price of $1,318.24 (ships now, from the 'Kits we link' table): $1,318.24 / 3,168 Wh = $0.416/Wh; 3,168 Wh / 400 W = 7.9 h of full sun at rated panel output."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Continuous / surge / X-Boost; kit price on EcoFlow US",
+   "value": "2,400 W continuous, 4,800 W surge, X-Boost 'supports devices up to 3400W'; DELTA 3 Max Solar Generator listed at $1,229 (compare-at $1,998)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Max Solar Generator",
+   "read": "2026-11-17",
+   "note": "Read from EcoFlow's US Shopify search results (storecheck.py search). The kit's product page returned HTTP 429, so the panel wattage of the $1,229 default variant is unread. The listing gives no cycle count, only '10 years of reliable power'. X-Boost, like BLUETTI's lifting power, is a resistive-load mode, not a continuous rating."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2 + 200 W / + 2× 200 W",
+   "label": "Price per Wh and rated-sun refill (arithmetic)",
+   "value": "+200 W: $0.549/Wh, 10.4 h; +2×200 W: $0.687/Wh, 5.2 h",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l",
+   "source_title": "BLUETTI Elite 200 V2+2*200W Solar",
+   "read": "2026-11-17",
+   "note": "Link prices from the 'Kits we link' table: $1,139.05 / 2,073.6 Wh and $1,424.05 / 2,073.6 Wh; 2,073.6 Wh / 200 W and / 400 W. Both kits are pre-orders dispatching Nov 26, 2026."
+  }
+ ],
+ "unsourced": [
+  "Jackery's own US spec table wording for the Explorer 2000 v2 cycle life (jackery.com spec pages returned HTTP 429 three times; the figure comes from T3).",
+  "EcoFlow DELTA 3 Max cycle count and endpoint: the US store text gives only '10 years', and the product and spec pages returned HTTP 429.",
+  "Panel wattage and shipping state of the $1,229 EcoFlow DELTA 3 Max Solar Generator variant (page returned HTTP 429).",
+  "ALLPOWERS R3500 cycle rating from the maker's US page (iallpowers.com returned HTTP 429; the manual has none). Search snippets claim '3,500+' cycles, but I did not open a page that says it.",
+  "ALLPOWERS R2500 V2 and Anker SOLIX C1000 Gen 2 cycle endpoints and surge figures (not reached within the tool budget).",
+  "BLUETTI Elite 200 V2 surge rating: none found in BLUETTI's US page or the APH Networks spec list.",
+  "Contents of the cited Popular Mechanics page (fetch blocked) and of our own dealectric.com pages (SSL error), so I could not check them for overlap."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 1.5072872000000002
+ }
+}
