@@ -11,7 +11,7 @@ import kitpages_j1118  # noqa: F401,E402  (points kitpages at this set)
 import kitpages as K  # noqa: E402
 O, A = K.O, K.A
 HLOG = ROOT / "growth/focus/ab/harvest-jkits.log"
-Q = list(K._questions())
+Q = sys.argv[1:] or list(K._questions())   # folders to build; the harvest decides (skip questions an existing page of ours is already cited for)
 started, applied, futs = set(), set(), {}
 ex = ThreadPoolExecutor(max_workers=3)
 
