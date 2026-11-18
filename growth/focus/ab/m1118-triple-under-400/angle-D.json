@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the driver workaround needed on a base M1/M2/M3 MacBook comes at a cost: a USB display driver on macOS must be given Screen Recording permission, and that permission turns off HDCP-protected video playback for the whole system, including the built-in screen. Driver-free dual extenders such as the FOPO S1 avoid the driver but need one video connection per screen, so on those Macs with the lid open only one added screen lights.",
+ "standout": 2,
+ "standout_why": "Compared against the pages ChatGPT got: UPERFECT's blog (cited) says only that base M1/M2 MacBooks 'only support one external display' and that the BE14BF's single cable 'does require an additional driver download'. It says nothing on DP Alt Mode, MST, Screen Recording or protected video. Our own page (cited) covers MST, Apple's per-chip display limits, the Trio's software for base M1/M2/Neo and FOPO S788's UsbDisplay Screen Recording step, but it never says that this permission disables HDCP playback, and it doesn't cover the FOPO dual models' one-connection-per-screen rule. ChatGPT's own answer says only that base M1/M2 'often need DisplayLink or another workaround'. Mobile Pixels' Trio page returned HTTP 429 and the Best Buy INVZI listing timed out, so neither could be read.",
+ "decides": "This confirms the Trio 3 Pro as the pick under $400 and sets the condition on it. On a laptop with two video-capable USB-C ports (M1–M3 Pro/Max, any M4/M5, or a Windows laptop with two DP Alt Mode ports), it runs both screens on two cables with no driver, so nothing is lost. On a base M1/M2/M3 MacBook or the Neo, it reaches two screens only through Mobile Pixels' software. That likely means DRM-protected streaming goes black while the software is running (Plugable documents this for DisplayLink drivers; Mobile Pixels doesn't name its driver's maker). A driver-free FOPO dual model (S1, S7, S11) on those same Macs lights one added screen and offers no software option. The page should therefore say, for each row, how its video gets to the screens, and recommend driver-free FOPO dual models only for laptops with two video outputs.",
+ "candidates": [
+  "Mobile Pixels Trio 3 Pro",
+  "FOPO S1",
+  "FOPO S7",
+  "FOPO S9G",
+  "FOPO S11",
+  "FOPO S10",
+  "UPERFECT BE14BF",
+  "KEFEYA S2Pro",
+  "INVZI MagHub Dual 14"
+ ],
+ "findings": [
+  {
+   "product": "FOPO S1",
+   "label": "Video path for the two added screens",
+   "value": "One video connection per screen, no driver: 'Two displays. Two video connections. Each S1 screen needs its own supported video connection. Connect both displays, provide the required power and choose your layout—no driver installation required. Full-featured USB-C Connect one screen through a USB-C port supporti[ng…]'",
+   "source": "https://www.fopomonitor.com/products/fopo-s1-14-inch-dual-screen-laptop-extender",
+   "source_title": "FOPO S1 14-Inch Dual-Screen Laptop Extender | 1080P Portable Monitors",
+   "read": "2026-11-18",
+   "note": "This is FOPO's own product description, read through storecheck.py search on the FOPO Shopify store. The text was cut off after 'supporti'. The page itself returned HTTP 429 to WebFetch. Store price shown: $159.99."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air (M2, 2022) external displays",
+   "value": "One external display: 'One external display with up to 6K resolution at 60Hz'",
+   "source": "https://support.apple.com/en-us/111867",
+   "source_title": "MacBook Air (M2, 2022) - Tech Specs - Apple Support",
+   "read": "2026-11-18",
+   "note": "Apple's spec page. With a driver-free extender that needs one video connection per screen, only one added screen gets a signal on this Mac."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air (13-inch, M3, 2024) external displays",
+   "value": "One external display with the lid open; a second only with the lid closed: 'Close the MacBook Air lid to use a second external display with up to 5K resolution at 60Hz'",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-18",
+   "note": "A laptop screen extender is used with the lid open, so in practice the base M3 Air drives one added screen natively."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Video path",
+   "value": "Two USB-C cables, one per screen. The manual (as quoted by Macworld) says 'if your laptop has two DP enabled USB-C ports … driver installation is not necessary'. Plain M1/M2 Macs and the MacBook Neo 'will need to download and install free software (rather like DisplayLink)'.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review - Macworld (Simon Jary, Apr 2, 2026)",
+   "read": "2026-11-18",
+   "note": "Simon Jary writes that 'an M1/M2/M3 Pro/Max or any M4/M5 MacBook should be fine' without the software. He also notes that during the software install 'You'll need to tinker with your Mac's Systems Setting'."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Store price",
+   "value": "$367.99 (compare-at $599.99), in stock",
+   "source": "https://www.mobilepixels.us/products/trio",
+   "source_title": "TRIO 3 PRO | Mobile Pixels",
+   "read": "2026-11-18",
+   "note": "From storecheck.py search on mobilepixels.us. This matches the 'Screens we link' record. Write it as {price:mobile-pixels-trio-3-pro} on the page."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Mac driver page (2nd and 3rd Gen Trio)",
+   "value": "Separate downloads for macOS 14 and later, macOS 11–13, macOS 10.15 and macOS 10.9–10.14, with the instruction 'DO NOT plug the Mobile Pixels Inc Device into your mac before executing the driver installation.'",
+   "source": "https://www.mobilepixels.us/pages/2023-trio-series-mac-display-driver",
+   "source_title": "Download Drivers | Mobile Pixels (macOS installation guide for Mobile Pixels Trio Series 2nd Gen & 3rd Gen)",
+   "read": "2026-11-18",
+   "note": "The page doesn't name the driver's chip vendor (DisplayLink or another) and doesn't mention Screen Recording or protected video. The 1st Gen page (mobilepixels.us/pages/macdriverinstallation-trioseries) calls its download 'MP_Graphics_Driver', also with no vendor named."
+  },
+  {
+   "product": "general",
+   "label": "Cost of the driver path on macOS: protected video",
+   "value": "A USB display driver 'requires enabling the \"Screen Recording\" permissions in macOS, which disables HDCP video playback system-wide', because 'there is no differentiation within macOS'. Plugable also says that to watch HDCP-protected content, 'a DisplayLink-based docking station/video adapter cannot be used to connect any displays.'",
+   "source": "https://kb.plugable.com/en_US/why-doesnt-streaming-video-play-correctly-when-using-a-docking-station-with-my-mac",
+   "source_title": "Why Doesn't Streaming Video Play Correctly When Using a Docking Station With My Mac? - Plugable Knowledge Base (last updated July 29th, 2026)",
+   "read": "2026-11-18",
+   "note": "Plugable's statement is about DisplayLink drivers. Our records say the FOPO S788's UsbDisplay driver must also be allowed under Screen Recording, so the same mechanism applies to it. Mobile Pixels doesn't say whether the Trio 3 Pro's driver asks for this permission, so the page should not state it as fact for the Trio. Plugable's fix is a native USB-C Alt Mode or Thunderbolt video connection."
+  },
+  {
+   "product": "UPERFECT BE14BF",
+   "label": "Single-cable mode",
+   "value": "One USB-C cable can run both screens, but this 'does require an additional driver download to work properly'",
+   "source": "https://uperfect.com/blogs/portable-monitor/best-triple-screen-laptop-extenders",
+   "source_title": "8 Best Triple Screen Laptop Extenders in 2026 – UPERFECT",
+   "read": "2026-11-18",
+   "note": "This is the maker's own blog, which ChatGPT cited. The same blog says KEFEYA S2Pro screens 'require separate USB-C connections to a laptop' (a rival's claim, not KEFEYA's own wording)."
+  }
+ ],
+ "unsourced": [
+  "The connection wording for the FOPO S7, S9G and S11 (whether each needs one video connection per screen, as the S1 does): fopomonitor.com product pages returned HTTP 429 on every WebFetch and storecheck product attempt, and the storecheck search excerpt for those three showed only CSS.",
+  "Which company makes the Trio 3 Pro's Mac driver, and whether it needs Screen Recording permission (and so blocks HDCP): Mobile Pixels' 2nd/3rd Gen driver page and 1st Gen page don't say; Macworld says only 'rather like DisplayLink'; mobilepixels.us/products/trio returned HTTP 429.",
+  "The video path for the INVZI MagHub Dual 14/15.6 (driver-free single cable via MST, or two connections): the Best Buy listing timed out and a search found no INVZI maker page for the dual extender.",
+  "The KEFEYA S2Pro's video path in KEFEYA's own words: not opened (the only source is UPERFECT's rival blog)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2803247
+ }
+}

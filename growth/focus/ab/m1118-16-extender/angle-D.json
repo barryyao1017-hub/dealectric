@@ -1,0 +1,92 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that macOS does not support DisplayPort MST for extended displays. On a Mac, a dual extender that runs both screens from one USB-C cable either mirrors the same image on both or needs a DisplayLink-style driver. Two native extended screens need one video-capable USB-C port per screen, and the 16-inch MacBook Pro has enough ports and display capacity for that.",
+ "standout": 2,
+ "standout_why": "I opened The Office Journal's 16-inch page and WorkCocoon's 16-inch page (results 1 and 3, which appear to share the same text), plus both iTechGuides pages ChatGPT cited. All four say only that USB-C needs DisplayPort Alt Mode and that some USB-C ports carry no video. Neither iTechGuides page mentions MST or how many video-capable ports each screen needs, and neither gives MacBook display counts. The 2026 iTechGuides page explains DisplayLink against Alt Mode, and the 2025 one quotes seller copy about M1/M2/M3 needing an extra cable. ChatGPT's own answer said only that 'some MacBooks' can't drive two screens and that 'some extenders require DisplayLink drivers'. It then picked the Flexpire Tri-screen Pro for its 'single-cable USB-C setup' without saying that on a Mac one cable cannot run two extended screens without a driver.",
+ "decides": "This splits the dual and triple 16-inch extenders into two groups. The first group uses one cable per screen with no driver: FOPO S11, and Mobile Pixels Trio 3 Pro with its two cables. These run natively on a 16-inch MacBook Pro, because the M5 Pro drives up to three external displays and the M5 Max up to four, and on Windows laptops with two video-capable USB-C ports. The second group runs both or all screens from one cable: the Flexpire pitch, and the Trio on one cable. These need a driver on a Mac or they mirror. The FOPO S788 always needs its UsbDisplay driver. This supports the S11 as the driver-free dual pick for a 16-inch laptop with two video-capable USB-C ports. The Duex Float 2 Pro adds only one screen, so it needs just one video-capable port. Its video path is in our record (truncated in the input) and was not re-read here.",
+ "candidates": [
+  "FOPO S11",
+  "FOPO S9G",
+  "FOPO S788",
+  "Mobile Pixels Trio 3 Pro",
+  "Mobile Pixels Duex Float 2 Pro"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "macOS and DisplayPort MST for extended displays",
+   "value": "\"macOS still does not support MST for extended displays\"; with an MST dock \"both monitors will show the same image (mirroring)\", even on the M5 Max. To get two extended screens from one cable \"you must use a Thunderbolt or DisplayLink docking station\"",
+   "source": "https://plugable.com/blogs/news/understanding-multiple-displays-on-apple-silicon-macs",
+   "source_title": "Understanding Multiple Displays on Apple Silicon Macs (Plugable, 2026-03-06)",
+   "read": "2026-11-18",
+   "note": "Plugable is a dock maker, not Apple. I found no Apple page that states this."
+  },
+  {
+   "product": "general",
+   "label": "MST on macOS, second named source",
+   "value": "\"Apple still doesn't support Multi-Stream Transport (MST) on macOS\"; M5 Pro and M5 Max drive several displays from one port through DisplayPort tunnels over USB4/Thunderbolt, not through MST",
+   "source": "https://www.macworld.com/article/3088215/m5-pro-max-macbooks-finally-break-apples-multi-monitor-shackles.html",
+   "source_title": "M5 Pro/Max MacBooks finally break Apple's multi-monitor shackles (Macworld, Simon Jary, 2026-03-18)",
+   "read": "2026-11-18",
+   "note": "Tunnelling needs a Thunderbolt/USB4 display or dock at the other end. A plain USB-C Alt Mode extender is not one."
+  },
+  {
+   "product": "general",
+   "label": "16-inch MacBook Pro external display support (Apple)",
+   "value": "M5 Pro: up to 3 external displays; M5 Max: up to 4, over any combination of Thunderbolt and HDMI ports. The 16-inch model is offered only with M5 Pro or M5 Max and has three Thunderbolt 5 (USB-C) ports plus HDMI",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-18",
+   "note": "So the current 16-inch MacBook Pro has spare display capacity and ports for two extender screens on two cables. The base-chip one-display limit does not apply to it."
+  },
+  {
+   "product": "FOPO S11",
+   "label": "Video path",
+   "value": "One full-featured (video-capable) USB-C cable per screen, no driver. Or video-capable USB-C for one screen and HDMI-to-mini-HDMI plus USB power for the other. FOPO's FAQ: \"Can I connect both screens with one USB-C cable? No.\"",
+   "source": "https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender",
+   "source_title": "FOPO S11 Dual 16″ Laptop Screen Extender | 1920 × 1200 IPS, Plug & Play",
+   "read": "2026-11-18",
+   "note": "FOPO: \"Both laptop ports must support video output and provide sufficient power\"; \"No display driver installation required\" on compatible ports."
+  },
+  {
+   "product": "FOPO S11",
+   "label": "Mac chips (FOPO's list) and fit range",
+   "value": "Supported: M1 Pro/Max, M2 Pro/Max, M3 Pro/Max \"with suitable ports and display support\"; \"Base M1, M2 and M3 chips are not supported for this dual-extension setup.\" Fit: about 12–18.5-inch laptops (FOPO's range)",
+   "source": "https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender",
+   "source_title": "FOPO S11 Dual 16″ Laptop Screen Extender | 1920 × 1200 IPS, Plug & Play",
+   "read": "2026-11-18",
+   "note": "FOPO's list does not name M4 or M5 chips. For other Macs, FOPO asks buyers to send their model and chip before ordering."
+  },
+  {
+   "product": "FOPO S788",
+   "label": "Video path",
+   "value": "Needs the UsbDisplay driver (\"Install the supplied driver and restart your laptop\"); on macOS, UsbDisplay must be allowed under Screen Recording. USB-C or dual-head USB-A connection, external power. FOPO lists Macs from 2019 including M1, M2, M3. Fit: 12–18.5-inch laptops (FOPO's range)",
+   "source": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender",
+   "source_title": "FOPO S780 / S788 Triple Laptop Screen Extender | 14″ & 16″ 1920×1200 IPS",
+   "read": "2026-11-18",
+   "note": "Because it uses a driver, it does not depend on Alt Mode ports. The cost is a driver install and a macOS permission."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Video path (Macworld review, quoting the manual)",
+   "value": "One USB-C cable per screen. \"If your laptop has two DP enabled USB-C ports … driver installation is not necessary.\" Plain M1/M2 Macs and MacBook Neo need Mobile Pixels' free software, which works \"rather like DisplayLink\". Macworld: \"M1/M2/M3 Pro/Max or any M4/M5 MacBook should be fine\" without it. Fit: \"13-inch to 16-inch MacBooks\" (Macworld)",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-18",
+   "note": "Tested on a 14-inch MacBook Pro. The Mobile Pixels store page returned HTTP 429, so this is Macworld's account of the manual. Our record says the one-cable mode for both screens needs Mobile Pixels' driver."
+  }
+ ],
+ "unsourced": [
+  "FOPO S9G video path (one cable per screen or not, driver or not, Mac chip limits): the fopomonitor.com product page returned HTTP 429 on 2026-11-18",
+  "Xebec's own sentence that Apple laptops lack MST and so its Tri-Screen 3 needs a DisplayLink Mac adapter: thexebec.com and europe.thexebec.com both returned HTTP 429. I saw it only in a search snippet and did not use it",
+  "Mobile Pixels' own Trio 3 Pro page (single-cable driver name, Mac notes): mobilepixels.us returned HTTP 429 to both WebFetch and storecheck",
+  "Flexpire Tri-screen Pro 16 video path behind its single-cable claim (MST or driver): a search found no maker or retailer page for it",
+  "An Apple support page in Apple's own words saying macOS does not extend displays over MST: a search returned only vendor knowledge bases and Apple Community forum threads"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2659787999999996
+ }
+}
