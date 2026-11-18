@@ -5,7 +5,7 @@ id), the rendered store pages read that day in a background Agent Chrome tab (pr
 lists, spec tables), OSCAL's own panel pages (oscal.hk/pm400-se, /pm200-se) and the station facts we already carried.
 Cart tests: data/cart-tests-2026-11-18-newproducts.jsonl (tools/codecheck_browser.py on each exact variant).
 
-    python3.12 growth/focus/offers/newproducts_1118.py apply [--keep slug,slug,...]   # idempotent: products.py, coupons.json, focus.py
+    python3.12 growth/focus/offers/newproducts_1118.py apply [--keep slug,slug,...] [--buy-first slug,...]   # idempotent: products.py, coupons.json, focus.py
     python3.12 growth/focus/offers/newproducts_1118.py print [--keep ...]
 
 `apply` rewrites its own marked blocks, so it can be re-run after a rebase (take main's src files, then apply again).
@@ -450,7 +450,7 @@ def strip_block(s, b, e):
     return s[:i] + s[j:]
 
 
-def apply(keep=None):
+def apply(keep=None, buy_first=()):
     recs = records()
     if keep is not None:
         recs = [d for d in recs if d["slug"] in keep]
@@ -473,8 +473,11 @@ def apply(keep=None):
     s = strip_block(open(path).read(), F_BEGIN, F_END)
     i = s.index("BUY_FIRST = {")
     j = s.index("\n}\n", i) + 1
-    if slugs:
-        s = s[:j] + F_BEGIN + "".join(f'    "{x}",\n' for x in slugs) + F_END + s[j:]
+    # the opening comes from the best-offer check (src/bestoffer.json, build.buy_first); BUY_FIRST is only the fallback for a
+    # kept slug that check could not read (--buy-first)
+    first = [x for x in slugs if x in buy_first]
+    if first:
+        s = s[:j] + F_BEGIN + "".join(f'    "{x}",\n' for x in first) + F_END + s[j:]
     open(path, "w").write(s)
     # coupons.json: today's tests on the kept slugs replace any earlier test of ours on them; OSCAL's code lists its slugs
     path = ROOT / "src" / "coupons.json"
@@ -507,5 +510,13 @@ if __name__ == "__main__":
                 print(json.dumps(d, ensure_ascii=False, indent=1))
     elif cmd == "slugs":
         print(" ".join(d["slug"] for d in records() if keep is None or d["slug"] in keep))
+    elif cmd == "cartfile":   # the cart tests in the shape tools/bestoffer.py --cart reads: one row per slug, control run + best code run
+        tv = tests_by_variant()
+        with open(sys.argv[2], "w") as f:
+            for d in records():
+                runs = tv.get(d.get("cart_variant") or d["_variant"]) or {}
+                best = max((r for k, r in runs.items() if k != "control" and r["applicable"]), key=lambda r: r["code_amount"], default=None)
+                if (keep is None or d["slug"] in keep) and runs.get("control") and best:
+                    f.write(json.dumps({"slug": d["slug"], "price": d["price"], "code": best["code"], "runs": [runs["control"], best]}) + "\n")
     elif cmd == "apply":
-        apply(keep)
+        apply(keep, set(sys.argv[sys.argv.index("--buy-first") + 1].split(",")) if "--buy-first" in sys.argv else ())
