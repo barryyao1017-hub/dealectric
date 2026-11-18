@@ -1,0 +1,117 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that BLUETTI's own Elite 100 mini manual says a battery that has dropped to 0% should be recharged from AC, or from 'an input of over 100 W' if solar is used. The $531.05 Elite 100 mini + 100 W kit's panel is rated at exactly 100 W and makes less outdoors, so it cannot meet that line. The manual also lists solar input as '350 W Max., 12 V–60 V, 10 A Max.', a 2-minute surge of only 735–840 W, and a charging range of 32–104 °F, with error E086 'Charging temperature too low' below that.",
+ "standout": 2,
+ "standout_why": "I opened the two pages ChatGPT cited most. powersized.com/solar-generator-kits covers solar-input caps, staying inside the station's voltage window, Voc adding up in series, MC4-to-XT60 adapters and a 75% planning figure. It says plainly that it does not cover charging temperature or MPPT limits, and it does not list the Elite 100 mini. stormwatts.com/articles/solar-generator-kits-compared-same-panel-watts quotes voltage and current windows for larger stations and says cold raises panel Voc. It does not list the Elite 100 mini, the mini's 10 A or 700 W limits, the 0%-recovery rule, or that LFP stations stop charging below 32 °F. I did not open the cited bluettipower.com/pages/solar-generator page. The voltage-window idea itself is already on both rival pages, so that part is not new. The new parts are the mini-specific rules and the cold-charging cutoff.",
+ "decides": "The finding splits the two Elite 100 mini kits, our cheapest ~1 kWh kits under $700. The +200 W kit ($616.55 link, $649 store) gives the station twice the 100 W the manual asks for to recover from 0% by solar, and its 200 W stays under the 350 W / 10 A input limit. The +100 W kit ($531.05 link, $559 store) is a top-up kit: after a full drain in an outage, its own panel falls short of BLUETTI's 'over 100 W' rule, so the shopper needs wall power. One caveat: BLUETTI's kit page says the 200 W panel 'ships from 11.18', so the +200 W kit does not quite ship now. The mini's 700 W output and 735–840 W 2-minute surge (Power Lifting reaches 1,400 W for resistive loads only) make it a kit for small loads. A shopper planning on a fridge or 1,500 W+ appliances, as ChatGPT's answer framed it, belongs on a 1,800 W-class station. Under $700 those are the pre-order Elite 100 V2 or ALLPOWERS P1800 kits, or the rival EcoFlow DELTA 3 Classic. Every LFP kit here stops charging below 32 °F (EcoFlow and BLUETTI both state 0 °C). The shopper should keep the station indoors and run the cable out to the panel; that is a usage note and does not change the pick.",
+ "candidates": [
+  "BLUETTI Elite 100 mini + 100 W",
+  "BLUETTI Elite 100 mini + 200 W",
+  "BLUETTI Elite 100 V2 + 100 W",
+  "BLUETTI Elite 100 V2 + 200 W",
+  "ALLPOWERS P1800 + SF200",
+  "ALLPOWERS P1800 + SP037",
+  "ALLPOWERS S2000 Pro + SE100",
+  "ALLPOWERS S2000 Pro + SF200",
+  "ALLPOWERS S2000 + SF200",
+  "ALLPOWERS R2500 V2 + SE100",
+  "ALLPOWERS R1500 + SF100",
+  "EcoFlow DELTA 3 Classic + solar panel kit"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "Solar recharge from 0% state of charge",
+   "value": "Manual text: 'Recommended to charge via an AC source; if using solar energy, ensure an input of over 100 W.' It also says to charge within 48 hours and to keep the unit at 5–35 °C (41–95 °F) for 6 hours before charging",
+   "source": "https://manuals.plus/bluetti/elite-100-mini-portable-power-station-manual",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station User Manual - Manuals+",
+   "read": "2026-11-17",
+   "note": "Under Maintenance and Care: 'If SoC drops to 0% during storage or startup'. This is a manuals.plus copy of BLUETTI's manual (published 2026-07-26). BLUETTI's own manual PDF (images.thdstatic.com/catalog/pdfImages/92/9272a86e-564f-44d2-861d-539422069954.pdf, titled 'Elite 100 mini ... A0 26.06.04') opened, but its text could not be pulled out. The 100 W kit's panel is rated at exactly 100 W, so it cannot give 'over 100 W' even at rated output."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "Solar (DC) input limit",
+   "value": "350 W max, 12–60 V, 10 A max, XT60 port; manual says 'Do not use solar panels with an open circuit voltage higher than 60 V'",
+   "source": "https://manuals.plus/bluetti/elite-100-mini-portable-power-station-manual",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station User Manual - Manuals+",
+   "read": "2026-11-17",
+   "note": "Error E033 'PV overvoltage': keep the PV input within 12–60 V. BLUETTI's US product page says only 'up to 350W solar'; its Tech Specs tab was empty on 2026-11-17."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "AC output and surge",
+   "value": "700 W max, 120 V; surge 735–840 W for 2 min, 840–1,050 W for 2 s, 1,050 W or more for 0.5 s; Power Lifting up to 1,400 W for pure resistive loads ('its actual output power is still 700 W')",
+   "source": "https://manuals.plus/bluetti/elite-100-mini-portable-power-station-manual",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station User Manual - Manuals+",
+   "read": "2026-11-17",
+   "note": "BLUETTI's US page agrees: 'Total output not to exceed 700W.'"
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "Charging temperature",
+   "value": "0–40 °C (32–104 °F) to charge; −20–40 °C (−4–104 °F) to discharge; error E086 'Charging temperature too low'",
+   "source": "https://manuals.plus/bluetti/elite-100-mini-portable-power-station-manual",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station User Manual - Manuals+",
+   "read": "2026-11-17",
+   "note": "The manual says the battery is LiFePO4. Below 32 °F the station shows E086 and does not charge from solar or any other source."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini + 200 W",
+   "label": "Shipping state on maker kit page",
+   "value": "Page says '2–5 Business Days Delivery (Except for pre-sale products)', and the 200 W solar panel 'ships from 11.18'",
+   "source": "https://www.bluettipower.com/products/elite-100-mini-200w-1",
+   "source_title": "Elite 100 mini + 200W - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "storecheck showed $649.00, available, on 2026-11-17. Our 'Kits we link' table says 'ships now'. The panel's ship date is one day out (2026-11-18), so the shipping column should say so."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini + 100 W",
+   "label": "Store price and shipping",
+   "value": "$559.00 (compare-at $599.00); no pre-sale notice or ship date shown for this kit",
+   "source": "https://www.bluettipower.com/products/elite-100-mini-100w",
+   "source_title": "Elite 100 mini + 100W - BLUETTI US",
+   "read": "2026-11-17",
+   "note": "Matches the store price in our table. The page does not name the panel model or give its Voc/Vmp/Imp."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Solar input, X-Boost, charge temperature",
+   "value": "Maximum PV input 500 W; AC output 1,800 W; X-Boost 2,600 W; charge temperature 0–45 °C (32–113 °F); discharge −10–45 °C (14–113 °F); LFP, 1,024 Wh",
+   "source": "https://www.ecoflow.com/us/delta-3-classic-portable-power-station/specs",
+   "source_title": "EcoFlow DELTA 3 Classic (1024Wh) Portable Power Stations | EcoFlow US",
+   "read": "2026-11-17",
+   "note": "EcoFlow's US specs page gives no solar voltage or current range."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic Solar Generator",
+   "label": "Maker US store listing price",
+   "value": "$729.00, listed as available. The description mentions a bifacial panel with a 30–60° bracket and includes a solar-to-XT60 cable",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-classic-solar-generator",
+   "source_title": "EcoFlow DELTA 3 Classic Solar Generator",
+   "read": "2026-11-17",
+   "note": "This came from the storecheck search of us.ecoflow.com. A direct read of the page returned HTTP 429, so I could not identify the variants. This listing does not match the 2× 100 W rigid kit at $659 that ChatGPT cited from powersized.com."
+  },
+  {
+   "product": "ALLPOWERS S2000 Pro",
+   "label": "Battery pack and solar input (maker listing text)",
+   "value": "'1451.5Wh (43.2V⎓33.6Ah) Capacity'; '1000W Max Solar Input with XT60 Connector'; '2400W Pure Sine Wave Inverter (4000W peak)'",
+   "source": "https://www.iallpowers.com/products/s2000-pro-100w-solar-panel",
+   "source_title": "ALLPOWERS S2000 Pro + 100W Solar Panel | 2400W Solar Generator Kit",
+   "read": "2026-11-17",
+   "note": "From the storecheck search of iallpowers.com; a direct read of the page returned HTTP 429. ALLPOWERS's own SF200 kit listing says instead '2* solar panel 200W in parallel (400W max) ... 650W max', which conflicts with the 1000W figure. The storecheck search showed $624.00 for this listing, which differs from our table's $748.60 store price for the S2000 Pro + SE100 kit, probably a different panel variant. Per the rules, our table figures stand."
+  }
+ ],
+ "unsourced": [
+  "Elite 100 mini charging temperature and 0%-recovery text on a BLUETTI-hosted page: the US product page Tech Specs tab and FAQ answers were empty on 2026-11-17, and text from BLUETTI's own manual PDF on thdstatic could not be extracted. The figures are sourced from the manuals.plus copy of the manual.",
+  "The panel models included in the Elite 100 mini + 100 W and + 200 W kits, and their Voc/Vmp/Imp: neither kit page names them. BLUETTI's PV200 is listed elsewhere at Vmp 20.5 V / Imp 9.7 A, under the mini's 10 A limit, but I could not confirm it is the kit's panel.",
+  "ALLPOWERS S2000 Pro cell chemistry and charging temperature: the maker listing gives 43.2 V nominal but names no chemistry, and the product page returned HTTP 429.",
+  "Variant list and shipping state for EcoFlow's DELTA 3 Classic solar generator listing, and whether a 2× 100 W rigid kit is sold on us.ecoflow.com at $659: the maker store returned HTTP 429.",
+  "I did not open the cited bluettipower.com/pages/solar-generator page to check whether it mentions charging temperature or the 0% recovery rule."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.7399324999999997
+ }
+}
