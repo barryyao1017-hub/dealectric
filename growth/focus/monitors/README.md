@@ -73,3 +73,41 @@ products; our edge is the maker-store price through our link.
 - CJ advertiser search found no program for UPERFECT, KEFEYA, SideTrak, ARZOPA, Cevaton, Teamgee, KYY, InnoView, JSAUX,
   ViewSonic, Lepow, Kwumsy, Aura Displays or Plugable. Awin's directory was not searched: Awin was signed out in the
   Agent Chrome and its sign-in needs a visible tab. VEVOR (Awin, approved) sells no screen extender.
+
+## What was built (2026-11-18, all live, gate passed at ranks 1, 3 and 6)
+
+| Page | Pick (a product we link) | Angle |
+|---|---|---|
+| /best-laptop-screen-extender | Mobile Pixels Trio 3 Pro | which laptops run one, two or three added screens (video path against Apple's lid-open display count) |
+| /best-laptop-screen-extender-under-300 | Mobile Pixels Duex Max DS | how many screens of each extender light on the shopper's laptop |
+| /best-triple-laptop-screen-extender-under-400 | Mobile Pixels Trio 3 Pro | screens lit on a base M1/M2 MacBook Air, row by row |
+| /best-laptop-screen-extender-for-16-inch-laptop | FOPO S11 | one video-capable port per screen, or a driver |
+| /best-laptop-screen-extender-for-17-inch-laptop | FOPO S11 | side-screen picture height against a 17.3-inch panel, and the maker's fit range |
+| /best-laptop-screen-extender-without-drivers | FOPO S11 | driver-free video path per product |
+
+Every row of ours carries its buy link (`all_links`); FOPO rows show the code price beside the name (`buy_by_name`).
+New product records: FOPO S1, S7, S10 (code FOPO cart-tested on each, links pre-apply it) and Mobile Pixels Duex Max DS.
+The two Mobile Pixels product pages open with a where-to-buy line (`BUY_FIRST` in src/focus.py).
+
+Fixed on the way: the FOPO S788's buy link pointed at a cart variant FOPO had deleted (410); four older pages quoted
+Mobile Pixels and FOPO prices from 11-08..11-13 in their prose beside a table showing today's.
+
+## Lessons
+
+- FOPO's product pages carry a hidden "Sold out" badge in the markup, so a page fetch reads "Sold out" for items that are
+  in stock (two research agents reported the S10 and S11 sold out). The cart decides: `tools/codecheck_browser.py`.
+- A store can replace a product's variants without changing its URL; the record's `cart_variant` then answers 410 and the
+  buy link (a cart permalink) is dead while the page still reads fine. `curl -o /dev/null -w '%{http_code}'
+  https://<store>/cart/<variant>:1` with a browser user agent shows it.
+- Research agents do not always use the fit ranges in our own records: the 17-inch draft left out the S11 (12–18.5 in)
+  and S7 (12–17.3 in) and so picked the driver-based S788. Read every draft's "left out" lines against our records.
+- Before a page says the maker's store is cheaper than another seller, read that seller the same day: Amazon had the
+  Trio 3 Pro at $349.99 against the maker's $367.99, while it had the Duex Max DS and Duex Float 2 Pro $42–44 above.
+- Mobile Pixels' prices moved three times in ten days (Trio $509.99 → $433.49 → $367.99). Prose uses `{price:slug}` and
+  `{after:slug}` or a dated figure, never a bare dollar amount for our products.
+
+## Reading
+
+Due 2026-12-02 (14 days): clicks, landings and sales for 2026-11-19..12-02 with the queries above, against the baseline
+of 7 clicks, 10 landings and 1 sale in the 7 days 11-11..11-17 (so compare per week). Read the six new pages by ChatGPT
+rank and citation in plain chats (the harvest questions) and by landings and clicks in D1, not by `/go/` in plain chats.
