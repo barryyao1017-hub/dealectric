@@ -29,7 +29,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(ROOT / "tools"))
 import gaps  # noqa: E402
+from pricecheck import pick_variant  # noqa: E402  (one variant matcher for the daily stock read and this sweep, DLC-306)
 from products import PRODUCTS  # noqa: E402
 
 BY_SLUG = {p["slug"]: p for p in PRODUCTS}
@@ -40,33 +42,6 @@ MONEY = re.compile(r"\$\s?([\d,]+(?:\.\d\d)?)")
 
 def money(x: float) -> str:
     return f"${x:,.2f}".replace(".00", "")
-
-
-def _toks(t: str) -> set[str]:
-    return set(re.findall(r"[a-z0-9]+", str(t).lower()))
-
-
-def pick_variant(model: str, variants: list[dict], shown: float | None):
-    """The listing variant that is this model, as (variant, how) or (None, why). One variant: that one. Several: the
-    variants whose titles fit the model best (model words present, extra words such as "Plus" or a bundle's panel count
-    against); the one at the shown price among them if any (the price still holds), else the single best, else None."""
-    if not variants:
-        return None, "no variants read"
-    if len(variants) == 1:
-        return variants[0], "single variant"
-    mt = _toks(model)
-    def score(v):
-        vt = _toks(v.get("title"))
-        return len(mt & vt) - 0.5 * len(vt - mt)
-    best = max(score(v) for v in variants)
-    cands = [v for v in variants if score(v) == best]
-    if shown is not None:
-        same = [v for v in cands if abs(v["price"] - shown) < 0.01]
-        if same:
-            return same[0], "variant at the shown price"
-    if len(cands) == 1 and len(mt & _toks(cands[0].get("title"))) > 0:
-        return cands[0], "variant title matches the model"
-    return None, f"ambiguous variant ({len(variants)} on the listing, titles don't single out the model)"
 
 
 def prose(g: dict) -> str:
