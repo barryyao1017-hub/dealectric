@@ -760,6 +760,17 @@ def best_offer(p):
     return c, s, round(p["price"] - s, 2), (t["date"] if t else None)
 
 
+def passed_line(c, s, p):
+    """'the store accepted the code and took $X off this product at $P.' When the store's price moved after the last
+    passing test on this product (2026-11-21: BLUETTI raised the sold-out Apex 300 bundles, which the cart can no longer
+    test), the sentence quotes the test's own figures and says the saving shown is the terms worked out on today's price."""
+    t = last_test(c, p)
+    if t and t["product"] == p["slug"] and t.get("qty", 1) == 1 and abs(t["subtotal"] - p["price"]) >= 0.005:
+        return (f'the store accepted the code and took {money(t["discount"])} off this product at {money(t["subtotal"])}, its price that day; '
+                f'{money(s)} is the same terms worked out on the current {money(p["price"])}.')
+    return f'the store accepted the code and took {money(s)} off this product at {money(p["price"])}.'
+
+
 def borrowed_test(p, c):
     """The passing cart test behind c's date on p's page when it ran on another product, else None. Happens on a code's
     first day, before the daily sweep has tested it on p (DLC-151, 2026-11-03: DEALECTRIC passed on the Elite 30 V2 only,
@@ -1047,7 +1058,7 @@ def offer_block(p, net, prog, url):
                  + (f'<p><strong>Not yet cart-tested on this product:</strong> the code passed in {b}\'s cart {html.escape(elsewhere(p, borrowed_test(p, c)))}; '
                     f'{money(s)} is its stated terms worked out on this product\'s {money(p["price"])}, and the daily test will check it here. '
                     if borrowed_test(p, c) else
-                    f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> the store accepted the code and took {money(s)} off this product at {money(p["price"])}. ')
+                    f'<p><strong>Tested daily in {b}\'s cart; last passed {date}:</strong> {passed_line(c, s, p)} ')
                  + f'{"The buy link applies it for you" if applied_by_link(p, c) else "Enter the code at checkout"}; the store\'s checkout has the final word.</p>')
         if others:
             lines += "".join(code_line(oc, os_, p) for oc, os_ in others)
