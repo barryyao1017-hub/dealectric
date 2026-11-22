@@ -8808,6 +8808,38 @@ PRODUCTS = [
  "fit": 'Drivers who want parked recording at a low total, with the kit in the same box.',
  "caveats": ["DDPAI's listing text read on 2026-11-21 gives '2K' without pixel dimensions, a frame rate or a sensor name.", 'Code SAVEBIGBF (12%, ends 2026-11-30) was cart-tested on other DDPAI products on 2026-11-21, not on this variant.', "Warranty and returns terms were not read; fill these from DDPAI's policy page before publishing."]},
 
+{"slug": 'vantrue-e360',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue E360 360° Panoramic Dash Cam, two 210° fisheye lenses, stitched 5184 × 1944',
+ "model": 'E360',
+ "url": 'https://www.vantrue.com/products/e360',
+ "price": 139.99,
+ "verified": '2026-11-21',
+ "specs": [('Cameras', '2 fisheye lenses, 210° each, Sony STARVIS 2 (Vantrue; Notebookcheck)'), ('360° video', '5184 × 1944 stitched panorama (Notebookcheck spec table)'), ('Other modes', '1944p + 1944p at 30 fps; 1440p + 1440p at 60 fps (Notebookcheck)'), ('Night vision', 'Eight hidden infrared lights (Vantrue)'), ('Wi-Fi', '5 GHz (Vantrue)'), ('Parking', 'Buffered motion detection; 24/7 parked recording needs a hardwire kit sold separately (Vantrue; Notebookcheck)'), ('Measured power', '4.0 to 4.1 W in 5.2K panoramic mode, camera alone (DashCamTalk, EricSan)')],
+ "warranty": '12 months; 18 months if you register the camera with Vantrue',
+ "returns": '30 days from the Vantrue store',
+ "summary": 'Two 210° fisheye lenses on one windshield unit, stitched into a single 360° frame. It is the cheapest stitched 360° camera in this group.',
+ "fit": "Shoppers who want one panoramic file covering every direction and don't need a separate rear-window camera.",
+ "caveats": ['No rear-window camera; the E360 ACE adds one.', '5,184 px across 360° is about 14.4 px per degree, less detail ahead than a 3K front camera.', "Parked recording needs a hardwire kit (Vantrue's voltage-display kit was $29.99 on 2026-11-21).", "Notebookcheck's Stephen Pereyra reported frequent app crashes and tedious file management."]},
+
+{"slug": 'vantrue-e360-ace',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue E360 ACE 360° Panoramic Dash Cam with 2.7K Rear Camera',
+ "model": 'E360 ACE',
+ "url": 'https://www.vantrue.com/products/e360-ace',
+ "price": 209.99,
+ "verified": '2026-11-21',
+ "specs": [('Cameras', '2 fisheye lenses, 210° each, stitched to 360°, plus a 2.7K rear camera (Vantrue; Notebookcheck)'), ('360° video', '5184 × 1944 stitched panorama (Notebookcheck spec table)'), ('Three-camera recording', 'Two 2592 × 1944 fisheye views + rear at 30 fps; no 3-camera 60 fps mode (DashCamTalk: EricSan, TonyM)'), ('Measured power', '6.76 W driving, 4.68 W low-bitrate parking, three cameras with hardwire kit (DashCamTalk, EricSan)'), ('Storage use', 'About 1.05 GB per 3 minutes with three cameras, about 6 hours on 128 GB (EricSan; our arithmetic)'), ('Parking', 'Hardwire kit sold separately; collision standby about 0.1 W with recording 17 s after impact (DashCamTalk, TonyM)')],
+ "warranty": '12 months; 18 months if you register the camera with Vantrue',
+ "returns": '30 days from the Vantrue store',
+ "summary": "The E360's stitched 360° frame plus a separate 2.7K rear camera. It is the only camera in this group with independently measured power draw and file sizes.",
+ "fit": 'Shoppers who want one 360° file that includes the cabin, plus a view out the rear window, and who plan to wire it for parking.',
+ "caveats": ['Parked recording needs a hardwire kit, sold separately.', 'No 60 fps mode with all three cameras on (TonyM, DashCamTalk).', 'All measurements are from DashCamTalk forum reviewers, not a lab.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
