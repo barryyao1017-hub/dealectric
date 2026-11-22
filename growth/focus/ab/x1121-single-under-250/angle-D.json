@@ -1,0 +1,114 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Mobile Pixels puts the Duex Max DS's draw at 4.5 W, which is exactly the 0.9 A at 5 V a USB 3 Type-A port is guaranteed to supply, so its no-driver fallback (HDMI for video, USB-A for power) runs on a laptop with no video-capable USB-C port; nor that Microsoft requires DisplayPort Alt Mode on every USB-C port of a WHCP-compliant mobile PC under the Windows 11 24H2 requirements.",
+ "standout": 2,
+ "standout_why": "Compared against the three result pages I could open: legitproductreviews.com (cited), deskgearhq.com (cited) and our own dealectric.com/best-laptop-screen-extender-under-300 (cited). All three already say single-cable use needs USB-C with DisplayPort Alt Mode and that mini HDMI is the fallback. legitproductreviews also already says single-screen models avoid the base M1/M2 Mac one-display limit, that brightness is capped on laptop power, and quotes Macworld's 15 W figure for the Float 2 Pro. None gives a wattage for the Duex Max DS, none ties the fallback path to what a USB-A port supplies, and none cites Microsoft's rule; deskgearhq only says the screen draws from the battery 'unless the USB-C port supplies enough wattage', with no number. I could not read deskfinds.com (HTTP 403), itechguides.com, theofficejournal.com or deal.ai, so standout is 2 at most.",
+ "decides": "It confirms the Duex Max DS as the pick for a shopper who has not named a laptop: one cable on a USB-C port with DisplayPort Alt Mode, and otherwise HDMI plus a USB-A port, which at 4.5 W is powered within the port's guaranteed current with no driver on either path. It also splits our two under-$250 single-screen rows. The Duex Float 2 Pro wants a 15 W source for full brightness (Macworld, as quoted by legitproductreviews), which Microsoft's requirements promise only on USB 40Gbps ports, so the Float suits newer USB4/Thunderbolt laptops or use with a charger. Any laptop with neither a video-capable USB-C port nor HDMI is left out by this mechanism, because the Max DS installation guide shows no USB-A video path.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "Mobile Pixels Duex Float 2 Pro",
+  "Mobile Pixels Duex Plus DS",
+  "Mobile Pixels Nexus 14.1-inch",
+  "UPERFECT 14-inch 2K Swivel Extender",
+  "ASUS ZenScreen MB169CK"
+ ],
+ "findings": [
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Power draw (maker's figure)",
+   "value": "4.5 W",
+   "source": "https://www.mobilepixels.us/blogs/blog/portable-monitor-for-macbook-pro",
+   "source_title": "How to Choose the Best Portable Monitor for Your MacBook Pro | Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "Mobile Pixels blog post by Jime Chen, dated 2025-09-10: 'the Max DS's 4.5 W draw'; it 'can typically run directly from the MacBook without an external adapter'. This is the maker's blog, not its spec sheet; the manual PDFs could not be read as text."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Power available over one USB-C DisplayPort Alt Mode cable (maker's wording)",
+   "value": "up to 15 W",
+   "source": "https://www.mobilepixels.us/blogs/blog/portable-monitor-for-macbook-pro",
+   "source_title": "How to Choose the Best Portable Monitor for Your MacBook Pro | Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "The post says USB-C DisplayPort Alt Mode lets video, data and up to 15 W of power share one cable, and that 'Both Duex models include this feature' (the Max DS and the Float)."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Connection paths, in the maker's order",
+   "value": "3 paths: USB-C to C cable alone; USB-C plus HDMI; USB-C cable with USB-A adapter plus HDMI",
+   "source": "https://www.mobilepixels.us/pages/duex-max-ds-installation-page",
+   "source_title": "Duex Max DS Installation Guide | Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "Quotes: 'If your laptop has USB-C port, please directly connect the monitor by using the USB-C to C cable.' 'If your laptop does not work with USB-C to C cable, please also connect the HDMI cable to your laptop.' 'If it does not work with the first two methods, please connect USB- C to C cable with USB-A adapter and HDMI cable.' The page mentions no driver and shows no path that carries video over USB-A, so in the fallback HDMI carries video and USB only powers the screen."
+  },
+  {
+   "product": "general",
+   "label": "Guaranteed current from a USB 3 port (standard downstream port)",
+   "value": "0.9 A at 5 V (4.5 W)",
+   "source": "https://chromium.googlesource.com/chromiumos/platform/ec/+/76d3b5d97e7b6887d782d95719f292c4050e91ce/docs/usb_power.md",
+   "source_title": "USB Power Considerations (ChromiumOS EC documentation)",
+   "read": "2026-11-21",
+   "note": "Quote: 'For USB3, provides guaranteed current of 0.9A @ 5V.' Arithmetic: 0.9 A × 5 V = 4.5 W, equal to Mobile Pixels' 4.5 W figure for the Max DS, so there is no headroom at the guaranteed minimum. The same document gives 0.5 A at 5 V (2.5 W) for USB 2, under the Max DS's draw. This is the ChromiumOS project's document, not the USB-IF specification."
+  },
+  {
+   "product": "general",
+   "label": "Typical current sourced by a USB-C port (ChromeOS devices)",
+   "value": "1.5 A at 5 V (7.5 W) typical; up to 3 A at 5 V (15 W) on a single port in certain scenarios",
+   "source": "https://chromium.googlesource.com/chromiumos/platform/ec/+/76d3b5d97e7b6887d782d95719f292c4050e91ce/docs/usb_power.md",
+   "source_title": "USB Power Considerations (ChromiumOS EC documentation)",
+   "read": "2026-11-21",
+   "note": "Quotes: 'ChromeOS devices currently source power to external USB devices at 5V with a typical current of 1.5A for each Type-C port.' 'In certain scenarios, a single Type-C port can source up to 3A @ 5V.' Watt figures are my arithmetic. Applies to ChromeOS devices as that project describes them."
+  },
+  {
+   "product": "general",
+   "label": "Windows rule on video from USB-C ports",
+   "value": "DisplayPort Alt Mode required on all USB-C ports of WHCP-compliant mobile PCs (requirements released alongside Windows 11 version 24H2)",
+   "source": "https://techcommunity.microsoft.com/blog/microsoftusbblog/ending-usb-c-port-confusion/4410479",
+   "source_title": "Ending USB-C® Port Confusion (Microsoft USB Blog)",
+   "read": "2026-11-21",
+   "note": "By Ugan Sivagnanenthirarajah (Microsoft), published 2025-05-30, updated 2025-09-23. Quotes: 'DisplayPort Alt-Mode is required for all USB-C ports to support connecting monitors.' 'if the PC doesn't support DisplayPort Alternate Mode functionality, that monitor won't light up'. Microsoft adds that 'PC manufacturers are on track to achieve WHCP compliance across most systems in the coming years', so older or non-certified laptops can still have data-only USB-C ports."
+  },
+  {
+   "product": "general",
+   "label": "Minimum power from a USB 40Gbps port on a WHCP-certified PC",
+   "value": "at least 15 W (7.5 W on tablets)",
+   "source": "https://techcommunity.microsoft.com/blog/microsoftusbblog/ending-usb-c-port-confusion/4410479",
+   "source_title": "Ending USB-C® Port Confusion (Microsoft USB Blog)",
+   "read": "2026-11-21",
+   "note": "Quote: 'each USB 40Gbps port sources at least 15 W (7.5 W on tablets).' Also: 'Systems may limit individual port power below 15W' when total requested power exceeds the system's budget. The post's text gives no wattage for 5/10/20 Gbps USB-C ports; its table is an image I could not read."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Power needed for full brightness (Macworld, as quoted by a cited rival)",
+   "value": "15 W or stronger USB-C charger",
+   "source": "https://legitproductreviews.com/laptop-screen-extender-review/",
+   "source_title": "Laptop Screen Extender Review (2026): Is Mobile Pixels' TRIO 3 PRO Worth It? - Legit Product Reviews",
+   "read": "2026-11-21",
+   "note": "The rival page attributes to Macworld: 'it needs a 15W or stronger USB-C charger for full brightness and to stop flickering'. I did not open Macworld's review itself. This is already on a cited rival page, so it is context for the Max DS contrast, not a new fact."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival pages already state about the video path",
+   "value": "Alt Mode needed for single-cable use; mini HDMI fallback; single-screen models avoid the base M1/M2 Mac one-display limit; no wattage for the Duex Max DS",
+   "source": "https://legitproductreviews.com/laptop-screen-extender-review/",
+   "source_title": "Laptop Screen Extender Review (2026): Is Mobile Pixels' TRIO 3 PRO Worth It? - Legit Product Reviews",
+   "read": "2026-11-21",
+   "note": "Quotes: 'You need USB-C with video (DisplayPort Alt Mode) for single-cable use.' 'Single-screen models (Duex DS, Float 2 Pro) avoid the Mac display limit entirely.' 'Brightness is capped further on laptop power alone'. deskgearhq.com (https://deskgearhq.com/guides/best-laptop-screen-extenders-2026, read 2026-11-21) says 'Every configuration connects over a single USB-C cable using DisplayPort Alt Mode' and that the Duex 'draws from the laptop's battery unless the USB-C port supplies enough wattage', with no figure."
+  }
+ ],
+ "unsourced": [
+  "Duex Max DS user manual text (rated input in V/A, any brightness cap on laptop power, weight): both PDFs I opened (the cdn.shopify.com Duex Max DS manual and the manuals.plus copy) came back as unreadable binary, and local text extraction was not permitted.",
+  "Duex Max DS product page wording and today's price: mobilepixels.us/products/duex-ds-series and /products/duex-max returned HTTP 429 on every attempt (WebFetch and storecheck.py), so I did not re-read the price myself.",
+  "UPERFECT 14-inch 2K (2240×1400) swivel extender video path, driver status and power input: the Newegg listing returned HTTP 403 and I found no maker page for this exact model; only search snippets, which disagree on resolution.",
+  "Mobile Pixels Nexus 14.1-inch video path, in particular whether its USB-A connection carries video through a driver or only power: no maker page or manual opened.",
+  "Mobile Pixels Duex Plus DS and ASUS ZenScreen MB169CK connection and power figures: not researched within the call budget.",
+  "The USB-IF specification's own text for the 900 mA USB 3 limit and the 1.5 A / 3 A USB-C current levels: usb.org/usb-charger-pd carries only USB PD figures, so the ChromiumOS EC document stands in.",
+  "Apple's count of external displays for base M1, M2 and M3 MacBook Air: the Apple page I opened (support.apple.com/en-us/101571) covers MacBook Pro only and gives no counts.",
+  "Rival pages not read: deskfinds.com (HTTP 403), itechguides.com (both), theofficejournal.com (both), deal.ai, techradar.com, verdictpicks.com and dejaflow.com, so I cannot rule out that one of them states the 4.5 W figure or the Microsoft rule."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 2.5927638
+ }
+}
