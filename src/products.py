@@ -8497,6 +8497,38 @@ PRODUCTS = [
  "fit": "Home outage backup where the panels have to replace each day's use: on paper 1,200 W yields about 4,590 Wh on a 4.5-sun-hour day, more than a 3,284 Wh/day essentials load.",
  "caveats": ["Store price read 2026-11-18. In the cart that day code APBF12 made it $2,254.70; with no code the store's own 10% off orders of $2,500 or more made it $2,305.94.", "ALLPOWERS' page gives the SP039 panels an estimated dispatch from Nov 23, 2026 and ships panels and station separately.", "ALLPOWERS states over 3,500 charging cycles with no capacity end point, against 6,000 cycles to 80% for BLUETTI's Apex 300.", "The listing gives the SP039's voltage as 44 V and no open-circuit voltage; check the panel label before wiring two in series.", 'The 3,168 Wh battery holds under one day of a 3,284 Wh/day load without sun.']},
 
+{"slug": 'gamakay-ns68-wired',
+ "brand": 'Gamakay',
+ "program": 'awin:gamakay',
+ "category": 'keyboard',
+ "name": 'Gamakay x NaughShark NS68 Hall Effect Keyboard, 65%, wired, 8,000 Hz, 0.01 mm rapid trigger',
+ "model": 'NS68 (Wired / White / Side Printed keycaps)',
+ "url": 'https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard?variant=44961922842813',
+ "price": 36.79,
+ "verified": '2026-11-21',
+ "specs": [('Layout', '65%, 68 keys (GamePadSquire)'), ('Switches', 'Outemu Peach magnetic linear, 3.5 mm travel, hot-swappable (GamePadSquire)'), ('Connection', 'USB-C cable (1.5 m cable in the box)'), ('Polling rate', '8,000 Hz (maker rating)'), ('Rapid trigger', '0.01 mm, as Gamakay states it, 0 dead zone'), ('Gaming features', 'Snap Tap, DKS, MT, TGL'), ('Weight', '762 g (GamePadSquire)')],
+ "warranty": '1 year for keyboards (Gamakay policy, read 2026-11-21)',
+ "returns": '14 days from delivery, unused and in the original packaging; the buyer pays return shipping, and a 35% restocking fee applies in some cases, including opened packages (Gamakay policy, read 2026-11-21)',
+ "summary": 'A wired 65% Hall effect board with arrow keys. Gamakay states 8,000 Hz polling and a 0.01 mm rapid trigger figure, the same figures MCHOSE and Epomaker state for their under-$50 boards.',
+ "fit": 'Wired gaming on a small desk where arrow keys still matter, on a budget under $50.',
+ "caveats": ['No wireless on this variant; the Tri-mode variant is a separate option.', "The 0.01 mm and 0.125 ms figures are Gamakay's own; no named lab has published a latency test of this board.", "Sale price read 2026-11-21; Gamakay's Black Friday sale ends 2026-11-30.", 'A 35% restocking fee can apply to returns of opened packages.']},
+
+{"slug": 'gamakay-ns68-tri-mode',
+ "brand": 'Gamakay',
+ "program": 'awin:gamakay',
+ "category": 'keyboard',
+ "name": 'Gamakay x NaughShark NS68 Hall Effect Keyboard, 65%, Tri-mode (cable, 2.4 GHz, Bluetooth)',
+ "model": 'NS68 (Tri-mode / White / Shine through keycaps)',
+ "url": 'https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard?variant=44961922941117',
+ "price": 39.99,
+ "verified": '2026-11-21',
+ "specs": [('Layout', '65%, 68 keys (GamePadSquire)'), ('Switches', 'Outemu Peach magnetic linear, 3.5 mm travel, hot-swappable (GamePadSquire)'), ('Connection', 'USB-C cable, 2.4 GHz, Bluetooth (GamePadSquire lists the three modes)'), ('Polling rate', '8,000 Hz by cable, 1,000 Hz wireless (Crafting Worlds; GamePadSquire)'), ('Rapid trigger', '0.01 mm, as Gamakay states it, 0 dead zone'), ('Battery', '4,000 mAh, about 40 h at the dimmest backlight (GamePadSquire)'), ('Keycaps', 'Shine-through')],
+ "warranty": '1 year for keyboards, 3 months for batteries (Gamakay policy, read 2026-11-21)',
+ "returns": '14 days from delivery, unused and in the original packaging; the buyer pays return shipping, and a 35% restocking fee applies in some cases, including opened packages (Gamakay policy, read 2026-11-21)',
+ "summary": 'The NS68 with a battery and two wireless modes. Two reviewers put its wireless polling at 1,000 Hz, so the 8,000 Hz figure applies with the cable plugged in.',
+ "fit": 'A 65% Hall effect board under $50 for a desk without a cable, with the cable kept for competitive play.',
+ "caveats": ['Wireless polling is 1,000 Hz per Crafting Worlds and GamePadSquire; 8,000 Hz needs the cable.', "The battery carries a 3-month warranty, shorter than the keyboard's 1 year.", "Sale price read 2026-11-21; Gamakay's Black Friday sale ends 2026-11-30.", 'A 35% restocking fee can apply to returns of opened packages.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
