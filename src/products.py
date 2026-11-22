@@ -8545,6 +8545,22 @@ PRODUCTS = [
  "fit": 'A first Hall effect keyboard for play on a cable at the bottom of the price range.',
  "caveats": ['This record is the wired variant; the tri-mode variant costs more ($39.99 on 2026-11-21).', "Gamakay's sale price runs to 2026-11-30 and takes no code.", "Latency and rapid trigger figures are the maker's claims, not measurements."]},
 
+{"slug": 'gamakay-tk101',
+ "brand": 'Gamakay',
+ "program": 'awin:gamakay',
+ "category": 'keyboard',
+ "name": 'Gamakay TK101 98% Wireless Mechanical Keyboard with Number Pad, 101 keys, hot-swappable, gasket mount',
+ "model": 'TK101 (White & Gray / Saturn Switch)',
+ "url": 'https://gamakay.com/products/gamakay-tk101-98-wireless-custom-mechanical-keyboard-with-number-pad?variant=44696974786749',
+ "price": 47.99,
+ "verified": '2026-11-21',
+ "specs": [('Variant', 'White & Gray / Saturn Switch (variant 44696974786749), in stock 2026-11-21'), ('Layout', '98%, 101 keys with a number pad (Gamakay)'), ('Connection', '"Tri-mode connection" in Gamakay\'s spec list; its description names Bluetooth 5.1 and USB-C'), ('Switches', 'Gamakay Planet switches, hot-swappable (Gamakay)'), ('Mount and keycaps', 'Gasket mount, MDA keycaps (Gamakay)'), ('Systems and software', 'Mac and Windows; web driver for key customization (Gamakay)'), ('Other', 'RGB backlighting, double-section feet (Gamakay)'), ('In the box', "Keyboard, 1.5 m USB-C cable, dual-head keycap puller (Gamakay's listing)")],
+ "warranty": "1 year on the keyboard from the order date (battery 3 months), per Gamakay's policy",
+ "returns": '14 days from delivery; must be unused in its original packaging, with return authorization; buyer pays return shipping; opened working items may carry a 35% restocking fee',
+ "summary": "A 98% wireless mechanical keyboard that keeps the number pad: 101 keys, hot-swappable switches and a gasket mount, by Gamakay's listing.",
+ "fit": 'Spreadsheet, accounting and data-entry work where a number pad matters more than desk space.',
+ "caveats": ['Gamakay\'s spec list says "Tri-mode connection", but its description names only Bluetooth 5.1 and USB-C and the box list names no receiver; check for the 2.4 GHz receiver before relying on it for games.', "Gamakay's listing text read on 2026-11-21 gives no battery capacity and no polling rate.", "The price read on 2026-11-21 is Gamakay's Black Friday sale price, and the sale runs to 2026-11-30."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

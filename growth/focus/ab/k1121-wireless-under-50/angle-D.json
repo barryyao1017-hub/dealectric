@@ -1,0 +1,116 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that Bluetooth LE itself held a keyboard to one report every 7.5 ms (133 Hz) until Core 6.2, so only the 2.4 GHz dongle or the cable can deliver the 1,000 Hz reports gaming expects.",
+ "standout": 2,
+ "standout_why": "Compared against mkbguide.com and rottenwifi.com (both cited), plus official.deals/under-50, mechvibes.com and techgearden.com. mkbguide gives no wireless polling or latency figure at all. rottenwifi says only \"Wired models are generally the safer latency choice for competitive gaming\", with no number or reason. official.deals has no per-mode figures. mechvibes gives one maker figure (MonsGeek FUN60 Max, 8000 Hz on 2.4 GHz) and nothing for Bluetooth. techgearden has part of it for one board outside ChatGPT's picks: \"Kisnt lists latency of 2ms wired, 5ms on 2.4GHz and 11ms on Bluetooth\". None gives the Bluetooth SIG's 7.5 ms / 133 Hz floor or explains why the dongle is the mode that matters. It stops short of 3 because I could not open a maker's per-mode polling figure for any candidate (gamakay.com and atk.store returned HTTP 429 on every attempt).",
+ "decides": "It confirms the pick rather than changing it: for anyone who games, a board under $50 must include the 2.4 GHz dongle, and Bluetooth is the mode for typing and device switching. It rules out Bluetooth-only versions of the same model names. Redragon's own store still describes a K530 with \"Bluetooth 5.0\" and a \"Dual Mode Switch\" between wireless and wired, beside the tri-mode K530 Pro at $49.99, which is likely what ChatGPT's \"verify the exact revision\" on the RK61 is about. For our rows (Gamakay TK101 at $47.99, NS68 tri-mode at $39.99), the page should state Gamakay's polling rate per mode before using this, and for the Hall effect NS68 whether rapid trigger and 8K hold on 2.4 GHz. I could not read those figures today.",
+ "candidates": [
+  "ATK A87 Wireless",
+  "Rosewill Neon S75",
+  "Redragon K530 Pro",
+  "DAREU FLEX75",
+  "Royal Kludge RK61",
+  "Redragon Volcano K526 Pro",
+  "Gamakay TK101",
+  "Gamakay x NaughShark NS68 (tri-mode)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minimum Bluetooth LE connection interval before Core 6.2",
+   "value": "7.5 ms, in 1.25 ms steps",
+   "source": "https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/",
+   "source_title": "How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations (Bluetooth SIG blog, Avi Negrin, 01 May 2026)",
+   "read": "2026-11-21",
+   "note": "Bluetooth SIG's words: \"the minimum Bluetooth LE connection interval was 7.5 ms with a resolution of 1.25 ms.\" A keyboard on Bluetooth LE can hand the host a report at most once per connection interval."
+  },
+  {
+   "product": "general",
+   "label": "Highest report rate that interval allows",
+   "value": "133 Hz",
+   "source": "https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/",
+   "source_title": "How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations (Bluetooth SIG blog)",
+   "read": "2026-11-21",
+   "note": "Bluetooth SIG: \"a 133 Hz update rate, achievable with a 7.5 ms interval, may not be sufficient\" for latency-sensitive uses. Arithmetic: 1 / 0.0075 s = 133.3 reports per second. A 1,000 Hz dongle or cable reports every 1 ms, so the Bluetooth interval is 7.5 times longer."
+  },
+  {
+   "product": "general",
+   "label": "Report rate the Bluetooth SIG says gaming expects",
+   "value": "1 kHz or higher",
+   "source": "https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/",
+   "source_title": "How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations (Bluetooth SIG blog)",
+   "read": "2026-11-21",
+   "note": "Bluetooth SIG: \"For gaming, consumers expect HID devices such as gamepads and mice to support report rates of 1 kHz or higher.\" The article names gamepads and mice; applying it to keyboards is our reading."
+  },
+  {
+   "product": "general",
+   "label": "New minimum interval with Shorter Connection Intervals (Core 6.2)",
+   "value": "375 µs, up to 2,666 Hz reports",
+   "source": "https://www.bluetooth.com/blog/how-bluetooth-shorter-connection-intervals-will-impact-the-next-generation-of-wireless-innovations/",
+   "source_title": "How Bluetooth Shorter Connection Intervals will impact the next generation of wireless innovations (Bluetooth SIG blog)",
+   "read": "2026-11-21",
+   "note": "Bluetooth SIG: SCI \"reduces the minimum connection interval for Bluetooth LE by a factor of 20, from 7.5 ms to just 375 μs\" and enables \"report rates of up to 2666 Hz for wireless HID use cases\". This is a Core 6.2 feature. Redragon lists the K530 Pro's Bluetooth as 3.0/5.0, so that board stays on the 7.5 ms floor."
+  },
+  {
+   "product": "Redragon K530 Pro",
+   "label": "Connection modes and how they are switched",
+   "value": "USB-C wired, Bluetooth 3.0/5.0 and 2.4 GHz; side switch selects 2.4 GHz / BT1 / BT2",
+   "source": "https://redragonshop.com/products/draconic-k530-white",
+   "source_title": "DRACONIC K530 PRO WHITE (Brown Switches) - Redragon shop",
+   "read": "2026-11-21",
+   "note": "Read with storecheck.py search on redragonshop.com. Redragon's words: \"USB-C wired, BT 3.0/5.0 & 2.4Ghz wireless modes\" and \"Easy to toggle among 3 different wireless devices via side switch (2.4Ghz/BT1/BT2)\". Redragon gives no polling rate for any mode in this text; it says only \"no-latency connection\"."
+  },
+  {
+   "product": "Redragon K530 Pro",
+   "label": "Price at Redragon's US store, White with Brown switches",
+   "value": "$49.99 (list $59.99), in stock",
+   "source": "https://redragonshop.com/products/draconic-k530-white",
+   "source_title": "DRACONIC K530 PRO WHITE (Brown Switches) - Redragon shop",
+   "read": "2026-11-21",
+   "note": "Same read also showed White Quiet-Red at $49.99 (list $79.99), the Detachable Strap Version at $46.99, and black Red, Brown and Blue switch versions at $54.99, which are over the $50 line."
+  },
+  {
+   "product": "Redragon K530 Pro",
+   "label": "Hot-swap socket limit",
+   "value": "3-pin and 5-pin MX-style switches; the \"~\" key takes 3-pin only",
+   "source": "https://redragonshop.com/products/draconic-k530-white",
+   "source_title": "DRACONIC K530 PRO WHITE (Brown Switches) - Redragon shop",
+   "read": "2026-11-21",
+   "note": "Redragon's words: \"compatible with almost all the MX style 3pin (\"~\" key supports 3pin only) and 5pin mechanical switches\"."
+  },
+  {
+   "product": "Redragon K530 (Bluetooth-only version)",
+   "label": "Same model name without the 2.4 GHz dongle",
+   "value": "Bluetooth 5.0 plus USB-C wired only, 3,000 mAh",
+   "source": "https://redragonshop.com/products/redragon-k530-60-rgb-black-white-wireless-mechanical-keyboard-bundle",
+   "source_title": "K530 PRO 60% RGB Black & White Wireless Mechanical Keyboard Bundle (Brown Switches) - Redragon shop",
+   "read": "2026-11-21",
+   "note": "Redragon's bundle text: \"Bluetooth 5.0 connection and 3000mAh long-lasting battery capacity\" and \"Dual Mode Switch: Easily switch between wireless and wired modes ... The included USB-C cable gives you the option to go wired for competitive games.\" It mentions no 2.4 GHz. The listing is titled \"K530 PRO\" yet describes the dual-mode board, so the shopper should check for the 2.4 GHz position on the side switch. The bundle itself is $109.99 and outside the budget."
+  },
+  {
+   "product": "general",
+   "label": "What a rival result already says on per-mode latency",
+   "value": "Kisnt KN85: 2 ms wired, 5 ms on 2.4 GHz, 11 ms on Bluetooth (maker's figures as quoted by techgearden)",
+   "source": "https://techgearden.com/best-wireless-mechanical-keyboards/",
+   "source_title": "Best Wireless Mechanical Keyboards (2026): 6 Picks for Work - TechGearDen",
+   "read": "2026-11-21",
+   "note": "Result 9 in the first chat, not cited. It is the only result I opened with a per-mode figure for Bluetooth. The KN85 ($41.89 on that page) is not among ChatGPT's picks."
+  }
+ ],
+ "unsourced": [
+  "Gamakay TK101: polling rate per mode (wired, 2.4 GHz, Bluetooth), battery capacity and Bluetooth version in Gamakay's words. gamakay.com returned HTTP 429 to storecheck.py and WebFetch on five attempts; pcgamer.com's TK101 review body did not load.",
+  "Gamakay x NaughShark NS68 tri-mode: whether 8K polling and rapid trigger hold on 2.4 GHz and what Bluetooth drops to. Same HTTP 429 on gamakay.com.",
+  "ATK A87 Wireless: polling rate per mode, battery capacity and today's price. atk.store's product page returned HTTP 429, and its llms.txt entry gives only \"Connectivity: Wireless\" and \"Layout: TKL\". That file attaches a 12,000 mAh battery to the A98 Pro, not the A87, so ChatGPT's 12,000 mAh for the A87 is unverified.",
+  "Rosewill Neon S75: polling rate per mode and whether every variant includes the 2.4 GHz dongle. newegg.com returned HTTP 403. Search snippets, which I did not open, showed Best Buy titles reading \"Bluetooth/USB-C\" and a Newegg listing reading \"BT5.0, 2.4G, USB-C\".",
+  "Royal Kludge RK61: which revisions include the 2.4 GHz dongle and RK's polling rate per mode. rkgamingstore.com returned HTTP 429.",
+  "A named reviewer's measured Bluetooth versus 2.4 GHz latency for any candidate. The RTINGS RK61 review page loaded without its test results.",
+  "DAREU FLEX75 and Redragon Volcano K526 Pro: not researched, the tool budget ran out.",
+  "The normative Bluetooth Core Specification text for connInterval (Vol 6, Part B) and the HID over GATT profile's interval range. I opened only the Bluetooth SIG blog post, not the specification."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.5197187999999997
+ }
+}
