@@ -1,0 +1,120 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Fn key on a third-party mechanical board is not Apple's Fn/Globe key: QMK's own documentation says macOS only recognizes it when the keyboard's VID and PID match a real Apple keyboard.",
+ "standout": 2,
+ "standout_why": "Compared against mkbguide.com (low-profile), techwisereviews.com, mechkeyfoundry.com (Air75 V3 vs Flow 2 vs K3 Max) and enzosoler.com, all opened 2026-11-21. None mentions the Globe key or Apple Fn, and none names a browser for VIA, Keychron Launcher or NuPhyIO; they stop at 'VIA support', 'browser-based' or 'native Mac layout'. The two RTINGS pages, including the one ChatGPT cited, returned only navigation to my fetch, so I could not check their body text; that is why this is 2 and not 3.",
+ "decides": "It does not move the pick between the Lofree Flow 2 84 for Mac, Keychron K3 Max and NuPhy Air75 V3, because I found no source showing any of them sends Apple's Fn. It changes what the page should promise: macOS shortcuts built on Fn (Fn-E, Fn-Q, Fn-D, Fn-arrows) cannot be assumed on these boards, and Apple lists a non-Fn alternative for only some of them. The remapping point is narrower: Digital Trends describes VIA on the Flow 2 as a browser interface, while Logitech's Options+ is described by Logitech as available on macOS, which supports the MX Mechanical Mini for Mac in the 'least setup' segment only. The Safari half of the argument is not fully sourced (see unsourced).",
+ "candidates": [
+  "Lofree Flow 2 84 for Mac",
+  "Keychron K3 Max",
+  "NuPhy Air75 V3",
+  "Logitech MX Mechanical Mini for Mac",
+  "Lofree Flow Lite 2 84"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why a third-party board's Fn key is not Apple's Fn/Globe key",
+   "value": "QMK: \"Unlike most Fn keys, the one on Apple keyboards actually has its own keycode... sort of.\" \"It takes the place of the sixth keycode in a basic 6KRO HID report -- so an Apple keyboard is in fact only 5KRO.\" \"Even worse, it is not recognized unless the keyboard's VID and PID match that of a real Apple keyboard.\"",
+   "source": "https://docs.qmk.fm/faq_keymap",
+   "source_title": "QMK Firmware docs: Keymap FAQ",
+   "read": "2026-11-21",
+   "note": "Project's own words. It applies to the Keychron K3 Max only on the basis that its product name, as shown in ChatGPT's card, says QMK/VIA; Keychron's page returned HTTP 429 so I did not confirm it there."
+  },
+  {
+   "product": "general",
+   "label": "QMK's position on supporting Apple Fn",
+   "value": "\"It is technically possible to get QMK to send this key.\" \"However, doing so requires modification of the report format to add the state of the Fn key.\" \"The legal issues that official QMK support for this feature may create mean it is unlikely to happen.\"",
+   "source": "https://docs.qmk.fm/faq_keymap",
+   "source_title": "QMK Firmware docs: Keymap FAQ",
+   "read": "2026-11-21",
+   "note": "Explains why stock QMK boards handle Fn inside the keyboard as a layer key."
+  },
+  {
+   "product": "general",
+   "label": "macOS shortcuts that need Apple's Fn key",
+   "value": "Fn-Q Quick Note; Fn-A Dock; Fn-C Control Center; Fn-D dictation; Fn-N Notification Center; Fn-Shift-A Apps (macOS Tahoe 26 or later); Fn-Fn Character Viewer; Fn-Delete forward delete; Fn-Up/Down Page Up/Down; Fn-Left/Right Home/End. Non-Fn alternatives Apple gives: \"Control–Command–Space bar or Fn-E\" (Character Viewer), \"Command–Mission Control or Fn-H or Fn-F11\" (show desktop).",
+   "source": "https://support.apple.com/en-us/102650",
+   "source_title": "Mac keyboard shortcuts - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's page is dated September 14, 2026. A board whose Fn never reaches macOS can only reproduce Page Up/Down, Home/End and forward delete from its own firmware layer, if the maker mapped them."
+  },
+  {
+   "product": "general",
+   "label": "WebHID browser support",
+   "value": "\"Chrome: 89.\" \"Edge: 89.\" \"Firefox: not supported.\" \"Safari: not supported.\"",
+   "source": "https://developer.chrome.com/docs/capabilities/hid",
+   "source_title": "Connect to uncommon HID devices - Chrome for Developers",
+   "read": "2026-11-21",
+   "note": "Page shows only a publication date of September 15, 2020. Read through a summarizing fetch tool, so recheck the wording before quoting. I did not open a page stating that VIA, Keychron Launcher or NuPhyIO use WebHID (see unsourced)."
+  },
+  {
+   "product": "general",
+   "label": "WebHID status per MDN",
+   "value": "\"This feature is not Baseline because it does not work in some of the most widely-used browsers.\"",
+   "source": "https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API",
+   "source_title": "WebHID API - MDN Web Docs",
+   "read": "2026-11-21",
+   "note": "MDN also flags it as experimental. The per-browser table did not render in my fetch."
+  },
+  {
+   "product": "Lofree Flow 2",
+   "label": "VIA remapping and the Fn key, per Digital Trends (Paulo Vargas)",
+   "value": "\"The Flow 2 supports VIA, which lets you remap keys and configure different layers through a browser interface.\" Vargas reports VIA did not recognize the board until he got a JSON file from Lofree, and that the Fn key cannot be remapped in VIA.",
+   "source": "https://www.digitaltrends.com/computing/the-lofree-flow-2-review/",
+   "source_title": "The Lofree Flow 2 review - Digital Trends",
+   "read": "2026-11-21",
+   "note": "Published August 9, 2026. He mainly used the Mac version. Only the first sentence is a verbatim quote; the JSON and Fn points are the fetch tool's paraphrase of his review. He does not name the browser."
+  },
+  {
+   "product": "Lofree Flow 2 84",
+   "label": "Out-of-box behaviour on a Mac, per MacSources (Nicholas Calderone)",
+   "value": "\"What stood out most is that the keyboard was clearly designed with macOS in mind.\" \"Right out of the box, everything worked the way I expected.\"",
+   "source": "https://macsources.com/lofree-flow-2-84-keyboard-review/",
+   "source_title": "Lofree Flow 2 84 Keyboard Review - MacSources",
+   "read": "2026-11-21",
+   "note": "Published January 26, 2026. The review does not say whether it was the for-Mac variant, and does not mention the Fn or Globe key or how VIA was set up."
+  },
+  {
+   "product": "Logitech MX Mechanical Mini for Mac",
+   "label": "Remapping software, in Logitech's words",
+   "value": "\"Do more with your keyboards with Logi Options+. Available on Windows and macOS at logitech.com/optionsplus.\" Logitech's page also says Options+ can change Fn key functions.",
+   "source": "https://www.logitech.com/en-us/products/keyboards/mx-mechanical-mini-mac.html",
+   "source_title": "MX Mechanical Mini for Mac - Logitech",
+   "read": "2026-11-21",
+   "note": "The Options+ sentence is verbatim; the Fn-functions line is the fetch tool's short excerpt. The page does not mention a Globe key."
+  },
+  {
+   "product": "Logitech MX Mechanical Mini for Mac",
+   "label": "Logitech US store price",
+   "value": "$129.99 (list $159.99, \"$30.00 off\"), Space Gray, \"In stock. Ready to ship.\"",
+   "source": "https://www.logitech.com/en-us/products/keyboards/mx-mechanical-mini-mac.html",
+   "source_title": "MX Mechanical Mini for Mac - Logitech",
+   "read": "2026-11-21",
+   "note": "Shown as \"Special Pricing\". Same page: \"stays powered up to 15 days on a full charge – or up to 10 months with backlighting turned off\"; pairs \"via Bluetooth® Low Energy\"."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages say about remapping software",
+   "value": "mkbguide: Flow 2 has \"VIA support, which almost nothing else in this roundup offers\"; the Air75 V3 \"moved from the V2's QMK/VIA stack to NuPhyIO 2.0\". mechkeyfoundry: the K3 Max \"remaps through Keychron Launcher or VIA\". None names a browser or mentions the Globe key.",
+   "source": "https://mkbguide.com/blog/best-low-profile-mechanical-keyboards",
+   "source_title": "Best Low-Profile Mechanical Keyboards (2026) - MKB Guide",
+   "read": "2026-11-21",
+   "note": "The mechkeyfoundry quote is from https://mechkeyfoundry.com/nuphy-air75-v3-vs-lofree-flow-2-vs-keychron-k3-max/, read the same day. techwisereviews.com and enzosoler.com also lack both points."
+  }
+ ],
+ "unsourced": [
+  "Lofree's own wording on the Flow 2 84 for Mac's Fn key, function row, Mac/Windows mode switch and VIA configurator: lofree.co returned HTTP 429 on four attempts (two WebFetch, two storecheck.py). A search snippet mentioned a 'Lofree Flow 2 Mac VIA Configurator' download, which I did not open.",
+  "Whether the Lofree Flow 2 84 for Mac, Keychron K3 Max, NuPhy Air75 V3 or Logitech MX Mechanical Mini for Mac sends Apple's Fn/Globe usage to macOS: no maker page, manual or named reviewer I opened says either way.",
+  "A page stating that VIA's web app, Keychron Launcher and NuPhyIO 2.0 use WebHID and so need Chrome, Edge or Opera instead of Safari: Keychron's software article came back truncated, nuphy.com and pay.nuphy.com returned HTTP 429, and I did not open usevia.app. A search snippet attributed 'latest Chrome, Opera, or Edge' to Keychron's blog.",
+  "Keychron K3 Max and NuPhy Air75 V3 maker pages (Mac/Win switch wording, firmware, whether remapping needs a cable, today's price): both stores returned HTTP 429.",
+  "The body text of the two RTINGS pages (best low-profile, best for Mac): the fetch returned only navigation, so I could not check whether RTINGS covers the Globe key or browser requirements.",
+  "Whether the Flow 2 runs QMK firmware (as opposed to only speaking the VIA protocol), which decides whether the QMK Apple Fn statement applies to it directly."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.570783
+ }
+}
