@@ -1,0 +1,114 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got that I could read states that 8,000 Hz reporting only exists on a USB High-Speed link (125 µs microframes; Full-Speed frames are 1 ms, so 1,000 Hz), so the keyboard must enumerate as High-Speed on a port and controller that accept it, and a hub, dock or KVM in the path can undo it.",
+ "standout": 2,
+ "standout_why": "Compared against four results whose text I could read: gamepadsquire.com's budget guide (cited), setupinsider.com, mechanicalkeyboard.net and gamepadsquire's NS68 review. They state the 0.125 ms interval, that 8K is wired-only on some boards (\"Choose USB if you want the advertised 8,000 Hz mode\", \"the 8K figure is wired-only\") and that \"some systems also spend more CPU time handling input\". None mentions USB High-Speed versus Full-Speed, microframes, or hubs, docks and motherboard controllers. Limit on this score: three cited pages could not be read. keebforce.com failed with a certificate error, and pcgamer.com and rtings.com returned only navigation. keebforce is the page ChatGPT cited for the 0.125 ms sentence, so it may carry part of this.",
+ "decides": "It confirms a wired pick rather than changing the model: every candidate's 8K figure is a wired USB figure, and the condition applies to all of them equally. For Gamakay it favours the NS68 wired variant ($36.79 in the brief's 2026-11-21 table) over the tri-mode ($39.99), because GamePadSquire's NS68 review lists 8,000 Hz wired and 1,000 Hz wireless. Gamakay's own per-mode statement was not read, so this rests on the reviewer. The page should also tell the shopper to plug into a rear motherboard port, not a hub, dock or KVM, and to try another port or 1,000 Hz if the board is not detected at boot.",
+ "candidates": [
+  "Gamakay x NaughShark NS68 (wired)",
+  "Gamakay x NaughShark NS68 (tri-mode)",
+  "Gamakay x NaughShark NS75",
+  "Gamakay TK75HE V2",
+  "MCHOSE Ace 60 Pro",
+  "MonsGeek FUN60 Ultra",
+  "EPOMAKER HE68 Lite"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "USB bus interval by speed (why 8,000 Hz needs High-Speed)",
+   "value": "Full-Speed frame 1 ms (1,000 per second); High-Speed and SuperSpeed microframe 125 µs (8,000 per second)",
+   "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/usbcon/transfer-data-to-isochronous-endpoints",
+   "source_title": "How to Transfer Data to USB Isochronous Endpoints - Windows drivers | Microsoft Learn",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"For full speed, a bus interval is a frame. The length of a frame is 1 millisecond. For high speed and SuperSpeed, the bus interval is a microframe. The length of a microframe is 125 microseconds. Eight consecutive microframes constitute one high-speed or SuperSpeed frame.\" Arithmetic: 1 s / 0.000125 s = 8,000; 1 s / 0.001 s = 1,000. The page is about isochronous endpoints; the bus-interval definition is general, but this is Microsoft's restatement, not the USB 2.0 specification itself. Page dated 2024-01-17, updated 2025-03-25."
+  },
+  {
+   "product": "general",
+   "label": "Maker's statement that 8,000 Hz polling requires USB Hi-Speed",
+   "value": "USB Hi-Speed is required for 8000 polling; selecting 1000 polling switches the keyboard to USB Full-Speed",
+   "source": "https://help.wooting.io/article/325-keyboard-not-detected-on-startup-8000-polling",
+   "source_title": "Keyboard Not Detected on Startup – Requires Reconnection to work (8000 polling / USB Hi-Speed) | Wooting Help",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"When 1000 polling is selected, this changes the USB standard to USB Full-Speed.\" Wooting writes this about its own 80HE and 60HE V2, not the under-$100 boards; it is used here as a maker's wording of the general USB rule. Article last updated 2025-10-13."
+  },
+  {
+   "product": "general",
+   "label": "Failure mode at 8,000 Hz: motherboard USB controller compatibility",
+   "value": "Keyboard can fail to be detected at startup with 8000 polling enabled; fixes are 1,000 Hz or a different USB port on another controller",
+   "source": "https://help.wooting.io/article/325-keyboard-not-detected-on-startup-8000-polling",
+   "source_title": "Keyboard Not Detected on Startup – Requires Reconnection to work (8000 polling / USB Hi-Speed) | Wooting Help",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"Some motherboards' USB controllers may have compatibility issues with USB devices\" and \"As this problem can be caused by the motherboard USB controller, trying another port can sometimes resolve this problem.\" Stated for Wooting 80HE and 60HE V2 only."
+  },
+  {
+   "product": "general",
+   "label": "Hubs, docks and third-party controllers at polling rates above 1,000 Hz",
+   "value": "Corsair advises a port directly linked to the motherboard chipset; hubs, docks and 3rd-party chipsets may not be stable",
+   "source": "https://help.corsair.com/hc/en-us/articles/4405984374157-Higher-polling-rates-for-keyboards-and-mice",
+   "source_title": "Higher polling rates for keyboards and mice | Corsair Help",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"Intermediary USB devices such as hubs, docks, and 3rd party chipsets may not be able to provide enough stability.\" and \"You also want to plug your device into a USB port that is directly linked to the motherboard chipset for the best stability.\" Corsair's guidance for its own devices. Article updated 2025-09-04."
+  },
+  {
+   "product": "general",
+   "label": "CPU floor Corsair states for 8,000 Hz",
+   "value": "Intel Core i7 9th generation or AMD Ryzen 7 2nd generation minimum (or equivalent)",
+   "source": "https://help.corsair.com/hc/en-us/articles/4405984374157-Higher-polling-rates-for-keyboards-and-mice",
+   "source_title": "Higher polling rates for keyboards and mice | Corsair Help",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"You need a minimum of an Intel i7 9th generation processor or an AMD Ryzen 7 2nd generation processor\". Corsair's requirement for its own 8,000 Hz devices."
+  },
+  {
+   "product": "general",
+   "label": "Polling rate versus scan rate (what \"true 8K\" means)",
+   "value": "True 8K needs a fresh report ready every 0.125 ms inside the keyboard, not only an 8 kHz USB poll",
+   "source": "https://wooting.io/post/wooting-80he-the-true-polling-rate",
+   "source_title": "Wooting 80HE - The True Polling Rate",
+   "read": "2026-11-21",
+   "note": "Verbatim: true 8K polling is when \"the keyboard has a report ready every 0.125 ms at the exact same time as the USB is polling the keyboard\"; Wooting warns 8 kHz claims may cover only \"the USB side, but not within the keyboard itself.\" Post dated 2024-02-15. Wooting is a competitor of the budget boards and is describing its own product."
+  },
+  {
+   "product": "Gamakay x NaughShark NS68",
+   "label": "Polling rate by connection mode, and scan rate",
+   "value": "8,000 Hz wired / 1,000 Hz wireless; 32,000 Hz scan rate",
+   "source": "https://gamepadsquire.com/keyboards/gamakay-x-naughshark-ns68/",
+   "source_title": "Gamakay x NaughShark NS68 Review | GamePadSquire",
+   "read": "2026-11-21",
+   "note": "GamePadSquire Test Desk spec table: \"8,000Hz wired / 1,000Hz wireless, 32,000Hz scan\"; \"Wireless mode drops to 1,000 Hz\". It also writes \"polling tests with Keyboard Inspector confirm the wired connection runs at or very close to the advertised 8,000 Hz\". The page does not split 2.4 GHz from Bluetooth. Updated 2026-08-09. Reviewer figure, not Gamakay's: gamakay.com could not be read today."
+  },
+  {
+   "product": "AULA F75 HE",
+   "label": "Polling rate by connection mode (rival page's wording)",
+   "value": "8,000 Hz wired; 2.4 GHz tops out at 1,000 Hz",
+   "source": "https://gamepadsquire.com/guides/best-budget-hall-effect-keyboards-2026/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 in 2026 | GamePadSquire",
+   "read": "2026-11-21",
+   "note": "Verbatim: \"The 2.4GHz mode tops out at 1,000Hz\"; \"the 8K figure is wired-only\". This is a result ChatGPT cited; it shows rivals already cover wired-only for some boards but not the USB reason."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Polling rate by connection mode (rival page's wording)",
+   "value": "8,000 Hz wired and 2.4 GHz",
+   "source": "https://gamepadsquire.com/guides/best-budget-hall-effect-keyboards-2026/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 in 2026 | GamePadSquire",
+   "read": "2026-11-21",
+   "note": "Spec line \"8,000Hz (wired + 2.4GHz)\" and \"If 8K wireless matters to you, the MonsGeek FUN60 Ultra is the only sub-$100 board here that delivers it.\" GamePadSquire's statement about the TMR variant; MonsGeek's own page was not opened. ChatGPT's $59.99 card is the non-TMR FUN60 Ultra, a different variant."
+  }
+ ],
+ "unsourced": [
+  "Gamakay's own per-mode polling statement (wired, 2.4 GHz, Bluetooth) and scan rate for the NS68, NS75 and TK75HE V2: gamakay.com returned HTTP 429 on every attempt today, through both WebFetch and storecheck.py, so no Gamakay page or price was read in this run.",
+  "Whether each budget board actually enumerates as a USB High-Speed device, and which MCU or USB PHY it uses: no maker page, manual or teardown was opened for the MCHOSE Ace 60 Pro, MonsGeek FUN60 Ultra, EPOMAKER HE68 Lite or any Gamakay board.",
+  "MCHOSE Ace 60 Pro and EPOMAKER HE68 Lite maker pages (polling by mode, scan rate, today's price): mchose.store and epomaker.com both returned HTTP 429.",
+  "The USB 2.0 specification's own wording on High-Speed microframes and interrupt-endpoint bInterval: Microsoft's documentation is used as a restatement.",
+  "A named reviewer's statement that Full-Speed devices cannot exceed 1,000 Hz without modified drivers: TechPowerUp's Redragon K1NG 8K review returned HTTP 403, so the search snippet was not used.",
+  "Text of three cited rival pages: keebforce.com/best-hall-effect-keyboards (certificate error), pcgamer.com/best-gaming-keyboard and rtings.com/keyboard/reviews/best/keyboard (navigation only), plus PC Gamer's NS68 review (truncated). The standout score assumes they do not state the High-Speed requirement.",
+  "A measured latency for the NS68 with a named measurer: GamePadSquire writes that latency \"has been measured around 0.25 ms\" without saying who measured it or how, so the figure is left out."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.383720399999999
+ }
+}

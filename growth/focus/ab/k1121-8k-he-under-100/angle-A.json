@@ -1,0 +1,143 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the \"0.125 ms latency\" Gamakay prints for the NS68 and Epomaker prints for the HE68 Lite and HE80 is the 8,000 Hz report interval itself (1 s / 8,000), that MCHOSE's 0.1 ms (Ace 60 Pro) and Gamakay's 0.06 ms (TK75HE V2) are shorter than one 8K report, or that Epomaker quotes 128K scan \"per-key\" on one board and \"full board\" on another.",
+ "standout": 1,
+ "standout_why": "Compared against gamepadsquire, setupinsider, mechanicalkeyboard.net and hlplanet, which I read in full. The principle is already out there: mechanicalkeyboard.net says 8,000 Hz means one USB report every 0.125 ms, and ChatGPT's own answer repeats that (credited to keebforce). gamepadsquire already lists scan rates (HE68 Lite 128 kHz per-key, AULA 160 kHz single-key) and which boards are wired-only. What they lack is the per-model mapping: none says the makers' latency figure is that interval, none flags the two scan-rate bases, and none has a Gamakay row with numbers (hlplanet names NS68/NS75 without them). Three rival pages could not be checked: keebforce failed with a certificate error, and the pcgamer and rtings bodies came back as navigation only.",
+ "decides": "It confirms rather than changes the pick. On the makers' own numbers every sub-$100 candidate is level at 8,000 Hz wired, and the latency and scan-rate figures cannot rank them, so the choice falls to price, layout, rapid-trigger step and wireless. On maker-store prices read 2026-11-21 the Gamakay NS68 (65%, arrow keys, 0.01 mm) is $36.79, against $37.40 for the MCHOSE Ace 60 Pro (60%) and $42.49 for the Epomaker HE68 Lite (65%). The NS75 and TK75HE V2 state a finer 0.005 mm step in 75%. MonsGeek's FUN60 Ultra is the only one whose maker states 8,000 Hz on 2.4 GHz as well as wired, but its page showed a pre-order notice. I could not read Gamakay's per-mode polling (store rate-limited), so the wireless comparison for Gamakay is open.",
+ "candidates": [
+  "Gamakay x NaughShark NS68",
+  "Gamakay x NaughShark NS75",
+  "Gamakay TK75HE V2",
+  "MCHOSE Ace 60 Pro",
+  "Epomaker HE68 Lite",
+  "Epomaker HE80",
+  "MonsGeek FUN60 Ultra"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Report interval at 8,000 Hz polling",
+   "value": "0.125 ms",
+   "source": "https://mechanicalkeyboard.net/best-budget-hall-effect-keyboard/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 (2026)",
+   "read": "2026-11-21",
+   "note": "Arithmetic: 1 s / 8,000 = 0.125 ms. The page says 8,000 Hz means up to one USB report every 0.125 ms and that firmware, connection, computer and game add to key-press-to-screen time. Any maker latency figure at or below 0.125 ms on an 8K board is therefore not an end-to-end figure."
+  },
+  {
+   "product": "Gamakay x NaughShark NS68",
+   "label": "Maker latency claim, polling, rapid trigger step, price",
+   "value": "\"0.125ms Low Latency\"; 8K polling; 0.01 mm RT accuracy; 0 dead zone; $36.79 (compare-at $73.99), in stock",
+   "source": "https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard",
+   "source_title": "Gamakay x NaughShark NS68 Hall Effect Magnetic keyboard 8K Polling Rate 0.01mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Read as the store's own search-result summary of this product via storecheck.py; the product page itself returned HTTP 429 on four tries. The latency figure equals the 8K report interval. $36.79 is the lowest variant (wired, per the brief's table); the page says \"Available in Wired & Wireless Versions\". No scan rate in the text read."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Maker polling, scan rate, rapid trigger step, price",
+   "value": "8K polling (8,000 Hz); 16K scan rate; 0.005 mm actuation accuracy; tri-mode (wired / 2.4G / Bluetooth); $63.99 (compare-at $99.99), in stock",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "Read as the store's search-result summary via storecheck.py; product page returned HTTP 429. The 16K scan rate carries no per-key or full-board qualifier. The text does not say which connection modes run at 8K."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Maker latency claim, polling, rapid trigger step, price",
+   "value": "\"Ultra-low latency (0.06ms) meets 8 KHz polling\"; 0.005 mm RT accuracy (product title); $79.19 (compare-at $119.99), in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Read as the store's search-result summary via storecheck.py. 0.06 ms is under half of one 8K report interval (0.125 ms), so it cannot be a key-press-to-PC figure; the text does not say what it measures."
+  },
+  {
+   "product": "MCHOSE Ace 60 Pro",
+   "label": "Maker latency claim, polling, rapid trigger step, price",
+   "value": "\"0.1ms Ultra-Low Latency\"; 8,000 Hz polling; 0.01 mm rapid trigger; zero dead zone; 0.1–3.4 mm actuation; $37.40 (compare-at $69.00), in stock",
+   "source": "https://www.mchose.store/products/mchose-ace-60-hall-effect-magnetic-switch-gaming-keyboard",
+   "source_title": "MCHOSE Ace 60 Pro Hall Effect Magnetic Switch Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "Read as the store's search-result summary via storecheck.py; the product page returned HTTP 429, so $37.40 is the listing's base price and other variants may cost more (ChatGPT showed $41.65 at B&H and $58.65 at the official store). 0.1 ms is shorter than one 8K report interval. No scan rate in the text read."
+  },
+  {
+   "product": "MCHOSE Ace 68 V2",
+   "label": "Same maker, how it states the same specs on a pricier board",
+   "value": "8,000 Hz; scan rate 256K; latency 0.08 ms; precision 0.001 mm; wired; $69.00",
+   "source": "https://www.mchose.store/products/mchose-ace-68-v2-hall-effect-gaming-keyboard",
+   "source_title": "MCHOSE Ace 68 V2 Hall Effect Magnetic Switch Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "Store search-result summary via storecheck.py. Context row only: MCHOSE states a scan rate and 0.08 ms here but gives 0.1 ms and no scan rate in the Ace 60 Pro summary."
+  },
+  {
+   "product": "Epomaker HE68 Lite",
+   "label": "Maker latency wording, scan-rate basis, rapid trigger step, price",
+   "value": "8,000 Hz polling \"in 0.125 millisecond\"; \"128khz per-key scan rate\"; RT adjustable per 0.01 mm; 0 dead zone; $42.49 (compare-at $49.99), in stock",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-21",
+   "note": "Epomaker store search-result text via storecheck.py. The 0.125 ms is tied in the sentence to the 8 kHz polling rate, i.e. the report interval. Scan rate is stated per key. gamepadsquire (read 2026-11-21) lists this board as wired only."
+  },
+  {
+   "product": "Epomaker HE80",
+   "label": "Maker latency wording, scan rate, rapid trigger step, price",
+   "value": "8,000 Hz polling; 32,000 scan rate; latency \"a mere 0.125ms, 8x quicker than conventional 1k polling keyboard\"; RT adjustable per 0.02 mm; $59.49 (compare-at $69.99), in stock",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80",
+   "read": "2026-11-21",
+   "note": "Epomaker store search-result text via storecheck.py. Epomaker's own wording shows the figure is the polling interval: 1 ms at 1,000 Hz / 8 = 0.125 ms. The scan rate has no per-key or full-board qualifier. Its step is twice the NS68's and four times the NS75's as stated."
+  },
+  {
+   "product": "Epomaker HE75 V2",
+   "label": "Same maker, different scan-rate basis",
+   "value": "\"8K polling and 128Khz full board scan rate\"; actuation per 0.005 mm; $76.49 (compare-at $89.99)",
+   "source": "https://epomaker.com/products/epomaker-he75-v2",
+   "source_title": "EPOMAKER HE75 V2",
+   "read": "2026-11-21",
+   "note": "Epomaker store search-result text via storecheck.py. Same 128K number as the HE68 Lite, but stated for the full board where the HE68 Lite's is per key, so the two are not the same quantity. I found no source for converting one into the other."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra",
+   "label": "Maker polling by connection, rapid trigger step and its condition, price range, stock notice",
+   "value": "\"8000Hz polling rate in wired or 2.4G wireless modes\"; RT accuracy 0.01–2.00 mm; 0.01 mm guaranteed only with six listed switches incl. Akko Glare, others \"may perform at 0.1mm precision\"; actuation 0.1–3.40 mm; $59.99–$89.99; no scan rate or latency figure stated",
+   "source": "https://www.monsgeek.com/products/fun60-ultra",
+   "source_title": "MonsGeek FUN60 Ultra",
+   "read": "2026-11-21",
+   "note": "Page shows only a price range, not per-variant prices (HE vs TMR, wired vs tri-mode). It carried a pre-order acknowledgement line and showed \"Unavailable\" with a waitlist for the selection loaded; storecheck.py returned 404 on this URL, so per-variant stock and price are unread. No Bluetooth polling rate given."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra",
+   "label": "Rival page's claim on 8K wireless under $100",
+   "value": "\"the MonsGeek FUN60 Ultra is the only sub-$100 board here that delivers\" 8K wireless; lists the TMR version at about $90 ($80.99 card)",
+   "source": "https://gamepadsquire.com/guides/best-budget-hall-effect-keyboards-2026/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 in 2026",
+   "read": "2026-11-21",
+   "note": "Page dated 2026-08-09. It also states the AULA F75 HE's 2.4 GHz mode tops out at 1,000 Hz and lists scan rates (HE68 Lite 128 kHz per-key, Attack Shark R85 HE 256 kHz, AULA F75 HE 160 kHz single-key). No Gamakay board on the page."
+  },
+  {
+   "product": "general",
+   "label": "Rival page quoting a maker latency equal to the 8K interval",
+   "value": "DAREU EK60 HE: 8,000 Hz, latency 0.125 ms, 0.01 mm rapid trigger, about $35",
+   "source": "https://setupinsider.com/best-hall-effect-keyboard-under-100-in-2026/",
+   "source_title": "Best Hall Effect Keyboard Under $100 in 2026",
+   "read": "2026-11-21",
+   "note": "Page dated 2026-11-11. It repeats 0.125 ms as a latency without saying it is the polling interval; it never mentions scan rate or Gamakay."
+  }
+ ],
+ "unsourced": [
+  "Polling rate per connection mode (2.4 GHz and Bluetooth) for the Gamakay NS68 tri-mode, NS75 and TK75HE V2: gamakay.com product pages returned HTTP 429 on every try; only the store's search summaries were read, and they do not say.",
+  "Scan rate for the Gamakay NS68 and the MCHOSE Ace 60 Pro: not in the text read; MonsGeek's FUN60 Ultra page states none.",
+  "Measured latency from a named reviewer for any candidate: the RTINGS FUN60 Ultra review and the PC Gamer NS68 review loaded as navigation only, with no review body.",
+  "What keebforce.com states (cited by ChatGPT for the 0.125 ms point): the fetch failed with a certificate error. The pcgamer.com and rtings.com best-keyboard pages also returned no article body.",
+  "How a per-key scan rate converts to a full-board one (for example whether 128K per key on 68 keys is slower than 128K full board): searched, found no maker or reviewer source.",
+  "MCHOSE Ace 60 Pro per-variant prices and any stock or dispatch notice: product page returned HTTP 429.",
+  "MonsGeek FUN60 Ultra per-variant price and stock (HE vs TMR, wired vs tri-mode).",
+  "Redragon K673 HE and Yunzii RT75 Pro maker pages: not opened. hlplanet lists a Yunzii RT75 Pro at 1,000 Hz wired only, which conflicts with the 'Dual 8K Wireless' card ChatGPT showed; I did not resolve which variant each refers to.",
+  "Amazon prices: not checked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.7281751
+ }
+}

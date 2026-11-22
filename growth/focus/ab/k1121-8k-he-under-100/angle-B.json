@@ -1,0 +1,123 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what the scan-rate figures are worth in time: the lowest maker-stated scan rate among the candidates (Gamakay NS75, 16K) adds at most 0.055 ms over a 128K board (Epomaker HE68 Lite), 0.1875 ms against 0.1328 ms worst-case wait at 8,000 Hz, which is about 1.3% of one 240 Hz frame; and the '0.125 ms latency' several makers print is the 8,000 Hz report interval (1/8000 s) restated.",
+ "standout": 2,
+ "standout_why": "Compared against gamepadsquire.com (cited), setupinsider.com and mechanicalkeyboard.net, all read in full on 2026-11-21. gamepadsquire lists scan rates (128 kHz, 160 kHz, 256 kHz) but converts none to time. setupinsider and mechanicalkeyboard.net give only the 0.125 ms polling interval, and ChatGPT's own answer repeats that figure with a keebforce citation. None of the three adds scan interval to polling interval or compares the spread to a frame. Limits: keebforce.com (cited) failed on a certificate error, and pcgamer.com and the rtings.com best-of page (both cited) returned no body text or only model names, so their content is not ruled out. The polling-interval half of the finding is already on rival pages; the scan-interval half and the reading of maker latency claims are new.",
+ "decides": "It removes scan rate as a tiebreaker rather than naming a winner. Every 8K candidate has the same 0.125 ms report interval, and the stated scan rates (16K to 128K) differ by at most 0.055 ms, so the pick turns on price, layout and whether 8K survives wireless. On those terms, among boards read today the Gamakay NS68 wired ($36.79) and MCHOSE Ace 60 Pro ($37.40) are the low-price wired 8K picks at 65% and 60%, the Epomaker HE68 Lite is $42.49, and the Gamakay NS75's 16K scan rate does not disqualify it as the 75% tri-mode option. MonsGeek's own store showed the FUN60 Ultra as 'Unavailable' with a waitlist and pre-order notice on 2026-11-21, which weakens ChatGPT's number-two pick for a shopper buying from the maker.",
+ "candidates": [
+  "Gamakay x NaughShark NS68",
+  "Gamakay x NaughShark NS75",
+  "Gamakay TK75HE V2",
+  "MCHOSE Ace 60 Pro",
+  "MonsGeek FUN60 Ultra",
+  "Epomaker HE68 Lite",
+  "Epomaker HE80"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Report interval at 8,000 Hz against 1,000 Hz",
+   "value": "0.125 ms against 1 ms; worst-case saving 0.875 ms, mean saving 0.4375 ms",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80",
+   "read": "2026-11-21",
+   "note": "1/8000 s = 0.125 ms; 1/1000 s = 1 ms; 1 - 0.125 = 0.875 ms worst case; half of that is the mean. 0.875 ms is 21% of one 240 Hz frame (1000/240 = 4.167 ms). Epomaker's page states the same ratio: '0.125ms, 8x quicker than conventional 1k polling keyboard'. This is the cost when a board drops to 1,000 Hz on 2.4 GHz."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Worst-case wait before a report leaves the board (scan interval + report interval), from maker ratings",
+   "value": "0.1875 ms",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "Gamakay states '8K polling rate (8000Hz) and 16K scan rate' and '0.005mm actuation accuracy'. 1/16000 s = 0.0625 ms scan + 0.125 ms report = 0.1875 ms. Read through the storecheck tool's product text for gamakay.com; the full page returned HTTP 429. Store price $63.99, list $99.99, in stock."
+  },
+  {
+   "product": "Epomaker HE68 Lite",
+   "label": "Worst-case wait before a report leaves the board (scan interval + report interval), from maker ratings",
+   "value": "0.1328 ms",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-21",
+   "note": "Epomaker states '8,000 Hz Polling and 128,000 Scan Rate' and '128khz per-key scan rate'. 1/128000 s = 0.0078 ms + 0.125 ms = 0.1328 ms. Its line 'in 0.125 millisecond' equals 1/8000 s, the report interval. Rapid trigger adjustable per 0.01 mm."
+  },
+  {
+   "product": "Epomaker HE80",
+   "label": "Worst-case wait before a report leaves the board (scan interval + report interval), from maker ratings",
+   "value": "0.1563 ms",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80",
+   "read": "2026-11-21",
+   "note": "Epomaker states '8000 Polling & 32000 Scan Rate'. 1/32000 s = 0.03125 ms + 0.125 ms = 0.15625 ms. Rapid trigger adjustable per 0.02 mm. The stated 'mere 0.125ms' latency equals the 8K report interval."
+  },
+  {
+   "product": "general",
+   "label": "Spread between the lowest and highest maker-stated scan rates among the candidates (16K NS75, 128K HE68 Lite)",
+   "value": "0.055 ms, about 1.3% of one 240 Hz frame",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-21",
+   "note": "0.0625 ms - 0.0078 ms = 0.0547 ms; 0.0547 / 4.167 ms = 1.3%. That is under half of one 8K report interval (0.125 ms). The NS75 input is from https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger, read the same day. Maker ratings only, not measurements."
+  },
+  {
+   "product": "Gamakay x NaughShark NS68",
+   "label": "Maker's latency claim against the 8K report interval",
+   "value": "0.125 ms claimed = exactly one 8,000 Hz report interval",
+   "source": "https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard",
+   "source_title": "Gamakay x NaughShark NS68 Hall Effect Magnetic keyboard 8K Polling Rate 0.01mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Gamakay states '0.01mm RT Accuracy | 8K Polling Rate | 0.125ms Low Latency'. 1/8000 s = 0.125 ms, so the claim is arithmetically the report interval. Read through the storecheck tool's product text; the full page returned HTTP 429. First variant $36.79 and in stock, matching the Wired / White figure in the brief."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Maker's latency claim against the 8K report interval",
+   "value": "0.06 ms claimed, about half of one 0.125 ms report interval",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Gamakay states 'Ultra-low latency (0.06ms) meets 8 KHz polling'. 0.125 ms / 2 = 0.0625 ms is the mean wait for the next 8K report, so the claim is arithmetically that mean; it is not a measured key-to-PC figure. Store price $79.19, in stock."
+  },
+  {
+   "product": "MCHOSE Ace 60 Pro",
+   "label": "Maker's latency claim against the 8K report interval, and maker US store price",
+   "value": "0.1 ms claimed (80% of one 0.125 ms report interval); $37.40, list $69.00",
+   "source": "https://www.mchose.store/products/mchose-ace-60-hall-effect-magnetic-switch-gaming-keyboard",
+   "source_title": "MCHOSE Ace 60 Pro Hall Effect Magnetic Switch Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "MCHOSE states '0.01mm Precision Rapid Trigger, 0.1ms Ultra-Low Latency, 8000Hz Polling Rate, Adjustable 0.1–3.4mm Actuation'. 0.1 / 0.125 = 0.8. Price and in-stock status from the storecheck tool on mchose.store. ChatGPT showed $41.65 (B&H) and $58.65 ('Official store') for this board. The full page returned HTTP 429, so variants and shipping notices were not read."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra",
+   "label": "Modes that keep 8,000 Hz, and maker-store availability",
+   "value": "8,000 Hz wired and 2.4 GHz (maker); listing $59.99–$89.99, buy button 'Unavailable' with waitlist and pre-order notice",
+   "source": "https://monsgeek.com/sj4c",
+   "source_title": "FUN60 Ultra (MonsGeek)",
+   "read": "2026-11-21",
+   "note": "MonsGeek states 'With an 8000Hz polling rate in wired or 2.4Gwireless modes' and '0.01mm Rapid Trigger', with 0.1 mm precision possible on switches outside its six listed ones; 4,000 mAh battery on the tri-mode version only. Against a board at 1,000 Hz on 2.4 GHz this is worth up to 0.875 ms per report (1 - 0.125). The page gives no Bluetooth rate, no scan rate and no per-variant price. ChatGPT's $59.99 was Micro Center, not the maker store."
+  },
+  {
+   "product": "Epomaker HE68 Lite",
+   "label": "Maker US store price",
+   "value": "$42.49, list $49.99, in stock",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-21",
+   "note": "Storecheck tool on epomaker.com. Matches the $42.49 ChatGPT showed at Newegg. The HE80 read $59.49, list $69.99, in stock, on the same store and date (https://epomaker.com/products/epomaker-he80); ChatGPT showed $69.99 at Best Buy."
+  }
+ ],
+ "unsourced": [
+  "Scan rate for the MCHOSE Ace 60 Pro, Gamakay NS68, Gamakay TK75HE V2 and MonsGeek FUN60 Ultra: none of the maker text I could open states one (monsgeek.com/sj4c states none; a search snippet's 32K and Newegg's 8K for the FUN60 Ultra were not opened, so both are left out). No scan-plus-report figure is computed for these four.",
+  "A named reviewer's measured latency in ms: the RTINGS reviews of the MonsGeek FUN60 Ultra and MCHOSE Ace 60 Pro returned only navigation text, so no measured figure is quoted.",
+  "Polling rate over 2.4 GHz and Bluetooth for the Gamakay NS75, NS68 tri-mode and TK75HE V2, and whether rapid trigger survives wireless: the full gamakay.com pages returned HTTP 429 on four attempts; only the short product text from the storecheck tool was read.",
+  "The keebforce.com page ChatGPT cited (certificate error on both hostnames) and the body of the pcgamer.com guide (truncated to navigation): neither could be checked for scan-interval arithmetic.",
+  "Redragon K673 HE and Yunzii RT75 Pro maker pages and today's prices: not opened within the call budget, so neither is a candidate here.",
+  "Per-variant prices and any shipping notice on the MCHOSE Ace 60 Pro page: the full page returned HTTP 429, so only the first variant's price and stock status were read.",
+  "Amazon prices: not checked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 2.6894517
+ }
+}
