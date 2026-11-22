@@ -8679,6 +8679,23 @@ PRODUCTS = [
  "fit": "Drivers who want a front and rear set under $200 bought camera-first, choosing their own card and adding Vantrue's hardwire kit when they want parking mode.",
  "caveats": ['The rear camera is 1080p (2.07 MP).', "Parking mode needs a hardwire kit bought separately; Vantrue's 5-Level Adjustable kit does not list the S1 Pro, the Voltage Display kit does.", "Vantrue's listing names Sony STARVIS 2 in its headline without naming the sensor in each camera."]},
 
+{"slug": 'botslab-g980h-4k-2k-dual-dash-cam',
+ "brand": 'Botslab',
+ "program": 'awin:botslab',
+ "asin": None,
+ "category": 'dash-cam',
+ "name": 'Botslab G980H 4K Front + 2K Rear Dual Dash Cam, supercapacitor, GPS, 64 GB card included',
+ "model": 'G980H (2-channel, front + rear)',
+ "url": 'https://www.botslab.com/products/dash-cam-g980h',
+ "price": 133.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2: front + rear'), ('Resolution', "4K front + 2K rear (Botslab's spec page)"), ('Sensor', "Sony IMX415 (Botslab's spec page)"), ('Fields of view', '170° front, 150° rear'), ('Power', 'Supercapacitor'), ('GPS and Wi-Fi', 'Built-in GPS; 5 GHz / 2.4 GHz Wi-Fi'), ('Storage', '64 GB card included'), ('Parking mode', "Needs a hardwire kit, not included; Botslab's Type-C Hardwire Kit with Fuse Tap was $44.99 on 2026-11-21"), ('Operating temperature', '-20 to 70 °C')],
+ "warranty": '1-year limited warranty; 6 more months when registered within the first year (Botslab US policy)',
+ "returns": '30 days from receipt on the Botslab store; return label cost is deducted unless the item is defective',
+ "summary": "Two-camera (front + rear) dash cam with a 4K front camera, a 2K rear camera per Botslab's listing, a supercapacitor, GPS and a 64 GB card in the box. Botslab's store listed it at $133.99 (list $203.99), in stock, on 2026-11-21, before code AA18.",
+ "fit": 'Shoppers who want a front-and-rear set under $150 that records out of the box, with a memory card included.',
+ "caveats": ['Android Authority (Bogdan Petrovan, 2024-12-24) found the front camera records 4K at 25 fps by default, with 60 fps only at 1080p.', "The unit Android Authority reviewed in 2024 had a 1080p rear camera; Botslab's current listing says 2K rear.", 'The hardwire kit for parking mode is sold separately.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
