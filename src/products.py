@@ -8611,6 +8611,22 @@ PRODUCTS = [
  "fit": 'Drivers who want front, cabin and rear coverage and need the parking-mode hardwire kit and a memory card to fit in the same budget as the camera.',
  "caveats": ['Parking mode must be hardwired, and Vantrue sells the hardwire kit separately.', 'No memory card in the box.', 'The front camera is 1944p, not 4K.', "LTE needs Vantrue's separate 4G LTE module."]},
 
+{"slug": 'vantrue-ondash-n4',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue OnDash N4 3-Channel Dash Cam, 1440p front + 1080p cabin + 1080p rear',
+ "model": 'N4',
+ "url": 'https://www.vantrue.com/products/vantrue-n4',
+ "price": 99.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '3: front, cabin, rear'), ('All three recording', '1440P + 1080P + 1080P at 30 fps (Vantrue)'), ('Front camera alone', '4K (2160P at 25 fps), single-channel mode only (Vantrue)'), ('Image sensor', 'Sony STARVIS; F1.4 front lens, F1.8 rear lens (Vantrue)'), ('Cabin camera', '4 infrared LEDs (Vantrue)'), ('Parking modes', 'Motion detection, collision detection, low-bitrate recording at 720P 15 fps (Vantrue)'), ('Power backup', 'Supercapacitor (Vantrue)'), ('GPS', "Not in the box: Vantrue's USB-C suction-cup GPS mount, whose listing names the N4, is sold separately"), ('Storage', "microSD up to 256 GB (mybest's spec table)"), ('Store listing read', "vantrue.com 'OnDash N4', default variant 44453310464309, in stock on 2026-11-21")],
+ "warranty": '12 months; 18 months after registering the product on vantrue.com (Vantrue warranty page, read 2026-11-21)',
+ "returns": '30 days, unused and in original packaging; the buyer pays return shipping (Vantrue return policy, read 2026-11-21)',
+ "summary": "Vantrue's older three-camera dash cam. With front, cabin and rear recording together it records 1440P + 1080P + 1080P at 30 fps; its 4K figure applies to the front camera recording alone.",
+ "fit": 'The lowest-priced three-camera row on a tight budget, for drivers who can do without built-in GPS.',
+ "caveats": ['4K (2160P at 25 fps) is a front-only mode, not a three-channel mode.', 'GPS needs a separate mount.', "Card limit is 256 GB in mybest's spec table, against 1 TB on the N4S."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
