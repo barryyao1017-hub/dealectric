@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says that macOS will not extend the desktop across screens fed through one DisplayPort MST link (it mirrors them), or that the M3 Air's second native display only works with the lid closed, which hides a screen mounted on the lid. Put together, a 'driver-free' dual extender gives an M3 MacBook Air with its lid open one extended screen, and the second screen needs a USB-graphics driver (DisplayLink or the maker's own).",
+ "standout": 2,
+ "standout_why": "Checked against the two cited pages and the main uncited ones. Apple 117373 (cited) covers two displays with the lid closed and says the second display goes dark if you open the lid. It never mentions MST, extenders or drivers. DisplayLink's First Time Configuration page (cited) covers only the Screen Recording and Background Activity permissions. Apple's tech specs 118551 (uncited) give one external display at 6K60 with the lid open and say to close the lid for a second display at 5K60. Macworld's multi-monitor guide (uncited, updated 2026-11-19) covers DisplayLink and InstantView docks but says nothing about MST or attachable extenders. ChatGPT's own answer already said a dual extender needs DisplayLink, so that part is partly covered. The new parts are that MST screens mirror rather than extend on macOS, so 'driver-free' on a dual extender does not mean two extended screens on this Mac, and that Apple's two-display mode needs the lid shut, which a lid-mounted extender can't use.",
+ "decides": "On an M3 MacBook Air, a single added screen that runs over native USB-C DisplayPort Alt Mode with no driver is the only setup that works fully without extra software with the lid open. Among our rows that is the Mobile Pixels Duex Max DS (video path from our own record; I could not reopen the store page today). Any 'dual' or 'triple' extender (read here as two added screens) needs a display driver for the second screen. That means FOPO's UsbDisplay on the S788, or Mobile Pixels' driver for the Trio 3 Pro, plus macOS Screen Recording permission. FOPO's 'driver-free' duals (S1, S7, S10, S11) should be described as giving one extended screen on this Mac unless FOPO's own page says otherwise, and I could not read those pages today. Apple's lid-closed two-display mode does not save the plan, because it turns the built-in screen off and the extender is mounted on that lid.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "Mobile Pixels Trio 3 Pro",
+  "FOPO S788",
+  "FOPO S1",
+  "FOPO S7"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MacBook Air M3 external displays, lid open vs closed",
+   "value": "One external display up to 6K at 60 Hz alongside the built-in display; a second external display (up to 5K at 60 Hz) only with the lid closed",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's words: 'One external display with up to 6K resolution at 60Hz' and 'Close the MacBook Air lid to use a second external display with up to 5K resolution at 60Hz'. Ports: 'Two Thunderbolt / USB 4 ports with support for: DisplayPort'."
+  },
+  {
+   "product": "general",
+   "label": "What happens to the second native display if the lid is opened",
+   "value": "The second external display goes dark or disconnects; two-display mode needs macOS Sonoma 14.3 or later on the Air, plus an external keyboard and mouse or trackpad",
+   "source": "https://support.apple.com/en-us/117373",
+   "source_title": "Use dual monitors with your MacBook Air and MacBook Pro with M3 chip - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple: 'If you open the laptop lid when both displays are connected, the secondary external display will go dark or disconnect.' Also: if a display on a hub or dock can only mirror, 'connect your display to a port directly on your Mac.' A cited rival page; included as the basis for the lid-mounted point."
+  },
+  {
+   "product": "general",
+   "label": "DisplayPort MST on macOS",
+   "value": "Not supported for extended displays; screens connected over MST mirror instead of extending",
+   "source": "https://kb.plugable.com/en_US/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort - Plugable Knowledge Base",
+   "read": "2026-11-21",
+   "note": "Plugable, last updated 2025-03-26: 'MST is not supported on macOS for extended displays.' 'MST-connected displays are mirrored, not extended.' 'macOS users should explore DisplayLink-based alternatives for extended displays.' I could not find an Apple support page that says this in Apple's own words."
+  },
+  {
+   "product": "general",
+   "label": "Base M3 two displays with the lid closed, according to a dock maker",
+   "value": "Two external displays with the lid closed on macOS 14.6; first up to 6K at 60 Hz, second up to 5K at 60 Hz",
+   "source": "https://kb.plugable.com/docking-stations-and-video/understanding-external-display-support-on-apple-m1-m2-m3-and-m4-chips",
+   "source_title": "Understanding External Display Support on Apple M1, M2, M3, M4 and M5 Chips - Plugable Knowledge Base",
+   "read": "2026-11-21",
+   "note": "Last updated 2026-08-28. Points to 'USB DisplayLink technology-based docks and adapters' for devices with limited native support; describes the technology as one that 'combines software and hardware to send video signals over USB data connections'."
+  },
+  {
+   "product": "general",
+   "label": "DisplayLink Manager requirement on macOS",
+   "value": "DisplayLink Manager is required, needs Screen Recording permission and must be restarted after the permission is granted",
+   "source": "https://support.displaylink.com/knowledgebase/articles/2024872-displaylink-manager-first-time-configuration",
+   "source_title": "DisplayLink Manager First Time Configuration - DisplayLink Support",
+   "read": "2026-11-21",
+   "note": "'DisplayLink Manager is a required application for products based on DisplayLink technology.' 'macOS requires users to explicitly grant Screen Recording permission for DisplayLink Manager to function properly.' A cited rival page."
+  },
+  {
+   "product": "general",
+   "label": "DisplayLink limits on macOS",
+   "value": "At most 4 virtual displays of any technology; DisplayLink screens do not show the login screen when FileVault is on",
+   "source": "https://support.displaylink.com/knowledgebase/articles/1932214-displaylink-manager-app-for-macos-introduction-in",
+   "source_title": "DisplayLink Manager App for macOS Introduction, Installation & Scope - DisplayLink Support",
+   "read": "2026-11-21",
+   "note": "Section 7: 'macOS supports a maximum of 4 virtual displays whatever their technology.' 'DisplayLink Screens will not display the Login Screen when the Mac is started' (with FileVault enabled). In ChatGPT's results but not cited."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Video path on a Mac",
+   "value": "Two included USB-C cables, one per screen; no driver only if the laptop has two DP-enabled USB-C ports; Mobile Pixels' free driver otherwise",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review - Macworld (Simon Jary)",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-04-02. Quotes the manual: 'if your laptop has two DP enabled USB-C ports … driver installation is not necessary.' Jary says plain M1/M2 Macs and the MacBook Neo are 'limited to connecting just a single monitor' and need the software. He also suggests a standard M3 can run both screens without it, which contradicts Apple 118551 (one external display with the lid open). Go with Apple: the M3 Air's two ports carry DisplayPort, but the chip drives only one external display with the lid open, so the second Trio screen needs the driver."
+  }
+ ],
+ "unsourced": [
+  "FOPO S1, S7, S10 and S11 'driver-free' duals: whether both screens run over one USB-C cable (MST, so they would mirror on a Mac) or need two video-capable ports, and anything FOPO says about M1/M2/M3 MacBooks. fopomonitor.com returned HTTP 429 on every try on 2026-11-21 (WebFetch on www and bare domain, and storecheck.py). A search snippet said older FOPO listings exclude base M1/M2 MacBooks; not used because I couldn't open the page.",
+  "FOPO S788: that its UsbDisplay driver needs macOS Screen Recording permission, and its listed support for M1/M2/M3. Seen only in a search snippet; the product page returned HTTP 429 on 2026-11-21. The M1/M2/M3 line in our spec record is from an earlier read.",
+  "Mobile Pixels Duex Max DS and Trio 3 Pro store pages, for Mobile Pixels' own words on base M3 and today's price. mobilepixels.us returned HTTP 429 to WebFetch and storecheck.py on 2026-11-21. I found no Mobile Pixels support article on base M-chip Macs.",
+  "An Apple support page saying in Apple's own words that Macs don't extend over DisplayPort MST. A search turned up only vendor knowledge bases (Plugable, CalDigit, BenQ, Targus) and Apple Community or developer-forum threads."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.3384437999999999
+ }
+}

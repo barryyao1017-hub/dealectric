@@ -1,0 +1,91 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Mobile Pixels Trio 3 Pro, run from one cable on a base-M3 MacBook Air with the lid open, depends on Mobile Pixels' own macOS graphics driver (download files named 'Mobile_Pixels_Graphics_Driver' / 'MP_Graphics_Driver', with a separate build for macOS 14 and later) rather than DisplayLink, or that Macworld's 2026 Trio 3 Pro review wrongly groups the standard M3 with the Macs that need no software, when Apple's M3 Air spec allows only one external display with the lid open.",
+ "standout": 2,
+ "standout_why": "Compared against Apple 117373 (cited: covers the two-display limit with the lid closed only), DisplayLink's First Time Configuration page (cited: DisplayLink setup only), DeskExpander's MacBook Air M3 page (uncited top result: says one external display with the lid open, lists the Mobile Pixels Trio as not natively compatible and says to 'add DisplayLink for the second panel'), Plugable's KB (lid closed only; no lid-open count for the base M3), Apple tech specs 118551 (uncited) and the Macworld multi-monitor guide. The basic limit is already on the rival pages. None names the driver a specific two-screen extender uses on an M3 Air, and none flags the Macworld review that contradicts Apple's spec. ChatGPT told the shopper to look for DisplayLink. The Trio 3 Pro, one of the main products here, does not use DisplayLink according to its maker's driver page.",
+ "decides": "Confirms that for a base-M3 MacBook Air used with the lid open, a single-screen Alt Mode extender is the one that works with no driver: Mobile Pixels Duex Max DS, one USB-C cable with DisplayPort Alt Mode (our record), and Apple says the M3 Air's two Thunderbolt/USB 4 ports carry DisplayPort and drive one external display with the lid open. Any two-panel extender (Trio 3 Pro, FOPO S1/S7/S10/S11/S9G, the FOPO S788 triple) gets native video on only one added panel with the lid open. The rest need a maker's driver, which for the Trio 3 Pro is Mobile Pixels' own driver and for the S788 is FOPO's UsbDisplay. So the page should not repeat Macworld's claim that a standard M3 runs both Trio screens without software. It should also not call FOPO's dual models 'driver-free' on an M3 Air without saying that only one panel extends natively with the lid open.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "Mobile Pixels Trio 3 Pro",
+  "FOPO S7",
+  "FOPO S1",
+  "FOPO S788"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MacBook Air M3 external displays, lid open",
+   "value": "1 external display up to 6K at 60 Hz alongside the built-in display; a second external display (up to 5K at 60 Hz) only with the lid closed",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Display Support section quoted. Ports: 'Two Thunderbolt / USB 4 ports with support for: Charging, DisplayPort, Thunderbolt 3 (up to 40Gb/s), USB 4 (up to 40Gb/s)'."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air M3 two-display (lid closed) conditions and exclusions",
+   "value": "Two external displays only with the lid closed; needs macOS Sonoma 14.3 or later on MacBook Air, an external keyboard and mouse or trackpad, and the Mac on power; opening the lid makes the second display go dark or disconnect",
+   "source": "https://support.apple.com/en-us/117373",
+   "source_title": "Use dual monitors with your MacBook Air and MacBook Pro with M3 chip - Apple Support",
+   "read": "2026-11-21",
+   "note": "Page dated 2024-07-30. Apple's stated exclusion: a display on a hub or dock that can only mirror the built-in display should be connected directly to the Mac. This page is the one ChatGPT cited."
+  },
+  {
+   "product": "general",
+   "label": "Thunderbolt dock limit on the M3 Air",
+   "value": "A Thunderbolt dock or adapter cannot exceed the Mac's native extended-display count; extra screens need USB DisplayLink-based docks or adapters",
+   "source": "https://kb.plugable.com/understanding-external-display-support-on-apple-m1-m2-m3-and-m4-chips",
+   "source_title": "Understanding External Display Support on Apple M1, M2, M3, M4 and M5 Chips - Plugable Knowledge Base",
+   "read": "2026-11-21",
+   "note": "Last updated 2026-08-28. It does not give a lid-open count for the base M3, so Apple 118551 is the source for that."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Mac driver for the Trio Series 2nd and 3rd Gen",
+   "value": "Mobile Pixels hosts its own macOS driver (files 'Mobile_Pixels_Graphics_Driver' / 'MP_Graphics_Driver'), with separate builds for macOS 14 and later, 13/12/11, 10.15, and 10.14 to 10.9; the page warns not to plug the device in before installing the driver",
+   "source": "https://www.mobilepixels.us/pages/2023-trio-series-mac-display-driver",
+   "source_title": "macOS installation guide for Mobile Pixels Trio Series 2nd Gen & 3rd Gen - Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "The page does not name DisplayLink or InstantView and does not list chips (M1/M2/M3). The vendor is inferred only from the file names, so the page should say 'Mobile Pixels' own driver' and not name a chip vendor."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Video path without the driver",
+   "value": "Two USB-C cables, one per screen; the manual (as quoted by Macworld) says driver installation 'is not necessary' only with 'two DP enabled USB-C ports'",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review - Macworld (Simon Jary, 2026-04-02)",
+   "read": "2026-11-21",
+   "note": "Macworld's Simon Jary writes that 'A MacBook with anything as or more powerful than a standard M1/M2/M3 processor can set up the Trio's two screens without the software download'. On a base-M3 MacBook Air with the lid open, Apple's tech specs (118551) allow one external display, so two cables can give native video to only one Trio screen; the second screen needs Mobile Pixels' driver. Macworld also says plain M1/M2 and MacBook Neo users need 'free software (rather like DisplayLink)'. Macworld's statement and Apple's spec conflict; Apple's document governs."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Video path on a MacBook Air M3",
+   "value": "One USB-C cable from a port with DisplayPort Alt Mode, no driver; this uses the M3 Air's single lid-open external display",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "The Duex Max DS connection spec is from Dealectric's product record (Mobile Pixels' page). I could not re-open the Mobile Pixels store page today (HTTP 429). Apple's spec confirms the M3 Air ports carry DisplayPort and drive one external display with the lid open."
+  },
+  {
+   "product": "FOPO S788",
+   "label": "Video path and macOS support",
+   "value": "Needs FOPO's UsbDisplay display driver; FOPO lists macOS from 2019 including M1, M2 and M3; external PD power supply included",
+   "source": "https://www.fopomonitor.com/products/fopo-s788-16-triple-screen-extender",
+   "source_title": "FOPO S780 / S788 Triple Laptop Screen Extender - FOPO",
+   "read": "2026-11-17",
+   "note": "From Dealectric's existing record of FOPO's page (read 2026-11-17). Re-reading on 2026-11-21 returned HTTP 429."
+  }
+ ],
+ "unsourced": [
+  "What FOPO itself says the S1 and S7 'driver-free' dual extenders do on a base-M3 MacBook Air with the lid open (only one panel extends, a mirror, or a driver needed): fopomonitor.com product pages returned HTTP 429 three times on 2026-11-21 (WebFetch and storecheck), and searches found no FOPO FAQ, manual or driver page.",
+  "Mobile Pixels' own Trio 3 Pro and Duex DS product-page wording on M1/M2/M3 base Macs: mobilepixels.us product pages returned HTTP 429 on 2026-11-21 (storecheck and WebFetch). A search snippet suggested the Trio page says 'with the driver only one [cable] is required', but I could not open the page to confirm it.",
+  "Which chip vendor's technology the Mobile Pixels driver uses (DisplayLink, Silicon Motion InstantView or its own), and whether it blocks HDCP/DRM streaming video or needs macOS Screen Recording permission: the driver page and the Macworld review do not say.",
+  "Which side of the MacBook Air M3 its two Thunderbolt ports are on (this matters for running one cable to each Trio screen): not in the tech-spec text I read."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.4162987999999999
+ }
+}

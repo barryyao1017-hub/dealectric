@@ -1,0 +1,109 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got works out how many of an extender's added screens show their own content on a MacBook Air M3 with the lid open. Without a driver, it is 1 of 2 screens on a dual extender and 1 of 3 on a triple, so a driver-free dual extender gives one extended screen. None of those results gives this ratio for each product, and none ties it to the extra power drawn from the Air's 52.6 Wh battery, which averages about 3.5 W in Apple's own web-browsing test.",
+ "standout": 1,
+ "standout_why": "I compared against Apple 117373 (the cited page), Apple 118551 (tech specs), the cited DisplayLink first-time-setup page, Macworld 675869, Plugable's Apple-silicon limits page and DeskExpander's MacBook Air M3 page. Apple and Plugable already say one external display with the lid open and two with it closed. DeskExpander already says 'add DisplayLink for the second panel' and lists the Mobile Pixels Trio, Geminos and Trio Max as not natively compatible. So the screen-count rule is already on rival pages. They lack two things: the extended-screen ratio per screen we link (for example FOPO S1 and S7 dual screens and the S788 triple), and any power or battery figure. I could not source the power half, because every extender spec page was blocked or unreadable today. My best finding is therefore only partly new.",
+ "decides": "This confirms the pick and doesn't change it. On an M3 Air with the lid open, only a screen run through a display driver gives more than one extended added screen. A single-screen extender over USB-C Alt Mode (such as the Mobile Pixels Duex Max DS) is the plug-and-play fit and uses the one native slot fully. A driver-free dual extender (FOPO S1, S7, S10, S11) uses one of its two screens unless DisplayLink or the maker's driver runs the other. A two-cable Alt Mode triple such as the Trio 3 Pro hits the same one-screen limit, so it needs Mobile Pixels' driver. The S788 is listed by FOPO with the UsbDisplay driver required.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "FOPO S1",
+  "FOPO S7",
+  "Mobile Pixels Trio 3 Pro",
+  "FOPO S788"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MacBook Air M3 external displays, lid open / lid closed",
+   "value": "1 with the lid open (up to 6K 60 Hz); 2 with the lid closed (second display up to 5K 60 Hz)",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "From Apple's spec sheet. Apple 117373 adds that opening the lid with two displays connected makes the second one 'go dark or disconnect'."
+  },
+  {
+   "product": "general",
+   "label": "Requirements for two displays with the lid closed",
+   "value": "External keyboard and mouse or trackpad; macOS Sonoma 14.3 or later on MacBook Air; power through USB-C or MagSafe",
+   "source": "https://support.apple.com/en-us/117373",
+   "source_title": "Use dual monitors with your MacBook Air and MacBook Pro with M3 chip - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple also says that if a display on a hub or dock only mirrors, you should connect it to a port directly on the Mac."
+  },
+  {
+   "product": "general",
+   "label": "Video ports on the MacBook Air M3",
+   "value": "2 × Thunderbolt / USB 4 (charging, DisplayPort, 40 Gb/s) plus MagSafe 3",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "A screen that needs one USB-C cable per screen (for example Trio 3 Pro without its driver) takes both ports. The Air still charges through MagSafe."
+  },
+  {
+   "product": "general",
+   "label": "Extended added screens on an M3 Air with the lid open, without a driver",
+   "value": "1 of 1 for a single-screen extender; 1 of 2 for a dual (two added screens); 1 of 3 for a triple with three added screens",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Arithmetic: native extended screens = min(added screens, 1 lid-open external display), so dual = min(2,1) = 1 and triple = min(3,1) = 1. Screens beyond the first need DisplayLink or the maker's own driver (DeskExpander: 'add DisplayLink for the second panel'; Plugable: a DisplayLink dock such as the UD-6950PDH runs two with the lid open)."
+  },
+  {
+   "product": "general",
+   "label": "Two DisplayLink-driven screens with the lid open on a base M3 Air",
+   "value": "Supported via DisplayLink dock (Plugable UD-6950PDH named)",
+   "source": "https://www.macworld.com/article/675869",
+   "source_title": "How to connect multiple monitors to MacBooks (M1, M2, M3, M4 & M5): Step-by-step guide | Macworld",
+   "read": "2026-11-21",
+   "note": "Macworld: the UD-6950PDH lets 'plain M3 MacBooks remain open with the two additional displays attached'. DisplayLink Manager 1.8.1 and later adds lid-closed support."
+  },
+  {
+   "product": "general",
+   "label": "DisplayLink permission needed on macOS",
+   "value": "Screen Recording permission must be granted to DisplayLink Manager, then the app restarted",
+   "source": "https://support.displaylink.com/knowledgebase/articles/2024872-displaylink-manager-first-time-configuration",
+   "source_title": "DisplayLink Manager First Time Configuration – DisplayLink Support",
+   "read": "2026-11-21",
+   "note": "This is the cited rival page. It gives no display count for Apple silicon and no refresh-rate or HDCP limits."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air M3 average power draw in Apple's web-browsing test",
+   "value": "about 3.5 W",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "52.6 Wh battery ÷ 15 h wireless web browsing (Apple's claim) = 3.5 W. This is the baseline for working out battery hours with a USB-C-powered screen added: hours = 52.6 ÷ (3.5 + screen W). I could not source the screens' own wattage (see unsourced), so I give no per-product hours."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air M3 13-inch weight",
+   "value": "2.7 lb (1.24 kg)",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "This is the base for an extender-to-laptop weight ratio. I could not open any extender's own weight figure today."
+  },
+  {
+   "product": "Mobile Pixels Trio",
+   "label": "Native compatibility on MacBook Air M3 (DeskExpander)",
+   "value": "Not natively compatible: it needs 2 screens (Trio, Geminos, Geminos X and Trio Max listed). The Duex Plus, Duex Lite and Glance Pro OLED are listed as working with one screen",
+   "source": "https://deskexpander.com/en/compatibility/macbook-air-m3",
+   "source_title": "MacBook Air M3: external monitor guide | DeskExpander",
+   "read": "2026-11-21",
+   "note": "DeskExpander says it checked the page on 2026-11-04. This is a rival result (rank 7 in the second chat), so this part of the finding is already published."
+  }
+ ],
+ "unsourced": [
+  "Power draw in watts for the Mobile Pixels Duex Max DS, Trio 3 Pro and FOPO S1, S7 and S788, needed for battery hours on the M3 Air. FOPO and Mobile Pixels store pages returned HTTP 429 all session (WebFetch and storecheck). The Duex Max DS and Duex Max 2023 manual PDFs from Mobile Pixels' CDN opened, but their text was compressed and could not be read; local pdftotext needed approval I didn't have. B&H's Duex Max page returned 403. A search snippet gave 4.5 W typical for the Duex Max, but I could not open a page showing it, so I left it out.",
+  "Net weight of the FOPO S1, S7 and S788 and the Mobile Pixels Duex Max DS and Trio 3 Pro, for an extender-to-laptop weight ratio. The maker pages were rate-limited (429) and the manuals.plus page for the FOPO S7 returned 403.",
+  "Whether FOPO itself says its S1 and S7 dual screens (sold as driver-free) mirror or extend the second screen on a base M1, M2 or M3 Mac. FOPO's product pages were rate-limited all session.",
+  "Fit range for a 13.6-inch MacBook Air on the FOPO S1 and S7 (14-inch) from FOPO's own page. Only a Newegg snippet ('12-16\" Laptops') appeared, and I did not open it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.3772966999999998
+ }
+}
