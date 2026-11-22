@@ -8728,6 +8728,22 @@ PRODUCTS = [
  "fit": 'Drivers who want the S1 Pro Max front camera and accept a rear camera below 4K.',
  "caveats": ['The rear camera is 2.5K, so this kit records 4K on the front channel only.', 'Parking modes need a hardwire kit that is sold separately.']},
 
+{"slug": 'mobile-pixels-fold-15-6-portable-monitor',
+ "brand": 'Mobile Pixels',
+ "program": 'cj:mobilepixels',
+ "category": 'portable-monitor',
+ "name": 'Mobile Pixels Fold Portable Monitor, 15.6" 1080p, freestanding',
+ "model": 'Fold 15.6" (1080P)',
+ "url": 'https://www.mobilepixels.us/products/fold',
+ "price": 143.99,
+ "verified": '2026-11-21',
+ "specs": [('Screen', '15.6" 1920×1080, 300 nits (Mobile Pixels)'), ('Added screens', 'One'), ('Layout', 'Freestanding portable monitor (Mobile Pixels lists it under Stand-alone Screen); the magnetic cover folds into the kickstand; it does not attach to the laptop'), ('Connection', 'One USB-C cable for power and video on a laptop whose USB-C port has DisplayPort Alt Mode, no driver; HDMI for laptops without it (Mobile Pixels)'), ('Weight', '1.65 lb (Mobile Pixels)'), ('List price', '$359.99 (Mobile Pixels, read 2026-11-21)')],
+ "warranty": "2 years (Mobile Pixels' limited warranty, for purchases from March 2025); extended plans sold separately",
+ "returns": '30 days from delivery, original condition and packaging; a $15 return label is deducted from the refund (or ship it yourself); final-sale items excluded; free US shipping',
+ "summary": 'A freestanding 15.6-inch 1080p portable monitor that adds one screen over a single USB-C cable on a DisplayPort Alt Mode port, so it stays within the one-external-display limit of M1, M2 and lid-open M3 MacBook Airs.',
+ "fit": 'Laptops that drive one external display, and anyone who wants one larger screen beside the laptop instead of two smaller ones attached to it.',
+ "caveats": ['It stands beside the laptop on its own cover-stand; it does not attach to the lid.', "Single-cable use needs a USB-C port with DisplayPort Alt Mode (Mobile Pixels' footnote); other laptops use HDMI.", "Mobile Pixels' prices change with timed sales; the price here was read on 2026-11-21.", 'The 16-inch QHD variant on the same page is a different price ($167.99 on 2026-11-21) and Mobile Pixels rates it at 220 nits against 300 for this one.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
