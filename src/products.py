@@ -8529,6 +8529,22 @@ PRODUCTS = [
  "fit": 'A 65% Hall effect board under $50 for a desk without a cable, with the cable kept for competitive play.',
  "caveats": ['Wireless polling is 1,000 Hz per Crafting Worlds and GamePadSquire; 8,000 Hz needs the cable.', "The battery carries a 3-month warranty, shorter than the keyboard's 1 year.", "Sale price read 2026-11-21; Gamakay's Black Friday sale ends 2026-11-30.", 'A 35% restocking fee can apply to returns of opened packages.']},
 
+{"slug": 'gamakay-ns68',
+ "brand": 'Gamakay',
+ "program": 'awin:gamakay',
+ "category": 'keyboard',
+ "name": 'Gamakay x NaughShark NS68 Hall Effect Keyboard, 65%, wired version (tri-mode version also sold)',
+ "model": 'NS68, Wired / White / Side Printed keycaps (variant 44961922842813)',
+ "url": 'https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard',
+ "price": 36.79,
+ "verified": '2026-11-21',
+ "specs": [('Layout', "65% (HLPlanet's listing)"), ('Switches', "Outemu Peach magnetic (HLPlanet's listing)"), ('Connection', 'Wired on this variant; a tri-mode variant is sold on the same page'), ('Polling rate', '8,000 Hz (maker rating)'), ('Rapid trigger', "0.01 mm accuracy, 0 dead zone (maker's wording)"), ('Latency claim', '0.125 ms (maker), which equals 1 ÷ 8,000 Hz'), ('List price', '$53.99 for this variant (Gamakay, 2026-11-21)')],
+ "warranty": '1 year for keyboards, counted from the order date (Gamakay refund policy, read 2026-11-21)',
+ "returns": 'Return request within 14 days of receipt, item unused, buyer pays return shipping; the policy lists a 35% restocking fee in certain cases, including opened packages (Gamakay refund policy, read 2026-11-21)',
+ "summary": "The lowest-priced Gamakay magnetic board: a 65% with the maker's 8,000 Hz polling and 0.01 mm rapid trigger figures. No named reviewer's latency timing was read for it; Gamakay's 0.125 ms figure is the 8,000 Hz report interval restated.",
+ "fit": 'A first Hall effect keyboard for play on a cable at the bottom of the price range.',
+ "caveats": ['This record is the wired variant; the tri-mode variant costs more ($39.99 on 2026-11-21).', "Gamakay's sale price runs to 2026-11-30 and takes no code.", "Latency and rapid trigger figures are the maker's claims, not measurements."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

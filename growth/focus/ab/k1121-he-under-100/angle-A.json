@@ -1,0 +1,174 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got that I opened states that the makers' headline numbers are not the same measurement: Redragon, Royal Kludge, Epomaker and Gamakay's NS68 quote \"0.125 ms\", which is only 1 ÷ 8,000 Hz; Gamakay's NS75 and TK75HE V2 (0.06 ms) and MCHOSE (0.1 ms) quote figures shorter than that report gap; and the rapid trigger figure runs from Redragon's 0.1 mm setting step, with Redragon's own tolerance caveat, to 0.005 mm \"accuracy\" at ATK and Gamakay, while MonsGeek says 0.01 mm holds for only six switches.",
+ "standout": 2,
+ "standout_why": "I opened five of the results: mkbguide.com (cited), hlplanet.com (cited), mechanicalkeyboard.net best-budget (cited), gamepadsquire.com (cited) and setupinsider.com; the other results were not opened, so the claim covers only these five. MKB Guide gives polling rate by connection mode and nothing on rapid trigger step, scan rate or latency. HLPlanet gives prices and scattered polling figures, with no rapid trigger step or scan rate for any board under $100. mechanicalkeyboard.net already says 0.125 ms is a reporting interval and not end-to-end latency, so that part is not new. GamepadSquire lists advertised precision (0.01 / 0.005 mm) and scan rates (128 / 160 / 256 kHz) as spec-sheet values without saying they are on different bases. SetupInsider notes the K707 HE's 0.1 mm steps but not Redragon's tolerance footnote. None of the five has Redragon's tolerance footnote, MonsGeek's six-switch limit, the latency claims that sit below the 8,000 Hz report gap, or the 16K to 256K scan-rate spread side by side. I found no independent measurement, so the finding is a decoding of maker claims.",
+ "decides": "It mostly confirms ChatGPT's own caveat and does not crown a winner on speed: once the claims are put on one basis, every candidate reports to the PC at most every 0.125 ms on a cable, and the latency, scan-rate and \"accuracy\" figures cannot rank them. Three things do separate them. (1) Redragon K707 HE ($49.99) is the only one whose maker states a 0.1 mm step; the others state 0.01 mm or finer. (2) 8,000 Hz without a cable: Gamakay's NS75 blog says \"true wired 8000 Hz\" and gives no 2.4 GHz figure, so our NS75 row should claim 8K for wired only; MonsGeek states 8K on wired or 2.4G for the FUN60 Ultra, but monsgeek.com showed it unavailable with a waitlist on 2026-11-21; MKB Guide states 8K on USB and 2.4 GHz for the Epomaker HE65 V2 TMR ($59.99). (3) For a wired-only buyer, the $36.79 to $42.49 boards (Gamakay NS68, MCHOSE Ace 60 Pro, Epomaker HE68 Lite) carry the same paper claims as the $60 to $90 ones, so layout and wireless decide the spend. Our NS75 can honestly take the \"75% with knob and three connection modes\" segment, not \"fastest\".",
+ "candidates": [
+  "Gamakay x NaughShark NS75",
+  "Gamakay TK75HE V2",
+  "Gamakay TK75 TMR",
+  "Gamakay x NaughShark NS68",
+  "Epomaker HE65 V2 TMR",
+  "Epomaker HE68 Lite",
+  "ATK 68 RX",
+  "MCHOSE Ace 60 Pro",
+  "Redragon K707 HE",
+  "Royal Kludge C87",
+  "MonsGeek FUN60 Ultra"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What an 8,000 Hz polling rate equals in time",
+   "value": "0.125 ms between USB reports",
+   "source": "https://mechanicalkeyboard.net/best-budget-hall-effect-keyboard/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 (2026)",
+   "read": "2026-11-21",
+   "note": "Arithmetic: 1 s ÷ 8,000 = 0.125 ms. The page says this is a reporting interval, not end-to-end latency. Any maker \"latency\" of exactly 0.125 ms is the polling rate restated; any figure below it (0.06, 0.08, 0.1 ms) is shorter than the gap between reports."
+  },
+  {
+   "product": "Redragon K707 HE",
+   "label": "Rapid trigger / actuation step and range (maker)",
+   "value": "0.1 mm step, 0.1 to 3.9 mm; Redragon adds that \"the actual effect of the 0.1-0.2 mm actuation point may be affected by the normal tolerances of the components\"",
+   "source": "https://redragonshop.com/products/star-blade-k707-he",
+   "source_title": "STAR BLADE K707 HE Rapid Trigger Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "Read from the store's own product description via its search endpoint (storecheck search); product pages on these stores returned HTTP 429. This is the coarsest step among the candidates and the only maker tolerance caveat I found."
+  },
+  {
+   "product": "Redragon K707 HE",
+   "label": "Price, polling and latency claim (maker)",
+   "value": "$49.99; \"native 8,000Hz\" over a detachable USB-A to USB-C cable; \"0.125ms lowest latency\"",
+   "source": "https://redragonshop.com/products/star-blade-k707-he",
+   "source_title": "STAR BLADE K707 HE Rapid Trigger Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "Price is the search record's price, no list price shown, in stock. 0.125 ms = 1 ÷ 8,000 Hz. Wired only."
+  },
+  {
+   "product": "Royal Kludge C87",
+   "label": "Price, rapid trigger step, scan rate, polling, latency claim (maker)",
+   "value": "$73.99 (list $79.99); \"0.01mm RT step distance\"; actuation 0.01 to 3.5 mm; 8,000 Hz polling; \"64K Hz key scanning frequency\"; \"0.125ms response time\"",
+   "source": "https://rkgamingstore.com/products/c87-80-tkl-magnetic-hall-effect-keyboard",
+   "source_title": "C87 80% TKL Magnetic Hall Effect Keyboard",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; price is the record's first-listed price, in stock. 0.125 ms = 1 ÷ 8,000 Hz. It is the only candidate whose maker claims actuation from 0.01 mm; the others start at 0.1 mm."
+  },
+  {
+   "product": "Epomaker HE68 Lite",
+   "label": "Price, rapid trigger step, scan rate, polling (maker)",
+   "value": "$42.49 (list $49.99); \"per 0.01mm adjustable RT travel\", \"0 Dead Zone\"; 8,000 Hz \"in 0.125 millisecond\"; \"128khz per-key scan rate\"",
+   "source": "https://epomaker.com/products/epomaker-he68-lite",
+   "source_title": "EPOMAKER HE68 Lite",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. Epomaker states its scan rate per key. MKB Guide lists this board as 8,000 Hz USB, wired only (https://mkbguide.com/blog/best-gaming-keyboards-under-100, read 2026-11-21). ChatGPT showed $44.49 at Newegg."
+  },
+  {
+   "product": "Epomaker HE65 V2 TMR",
+   "label": "Price (maker) and polling by connection (MKB Guide)",
+   "value": "$59.99 (list $99.99); MKB Guide states 8,000 Hz over USB and 2.4 GHz, 125 Hz on Bluetooth",
+   "source": "https://epomaker.com/products/epomaker-he65-v2-tmr",
+   "source_title": "EPOMAKER HE65 V2 TMR",
+   "read": "2026-11-21",
+   "note": "Price via the store's search endpoint, in stock. The per-mode polling is from https://mkbguide.com/blog/best-gaming-keyboards-under-100 (read 2026-11-21); Epomaker's product page returned HTTP 429, so I did not read the per-mode figure in Epomaker's own words. Takes magnetic or 3/5-pin mechanical switches (Epomaker description)."
+  },
+  {
+   "product": "ATK 68 RX",
+   "label": "Price, rapid trigger figure and polling (maker)",
+   "value": "$59.98 (list $129.98); \"0.005mm RT accuracy\"; 8,000 Hz polling; 65% with detachable CNC aluminum wrist rest",
+   "source": "https://www.atk.store/products/atk-68-rx-esports-hall-effect-keyboard",
+   "source_title": "ATK 68 RX eSports Hall Effect Keyboard",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. ATK calls the figure \"accuracy\", not a setting step. Its sibling ATK 60 RX ($59.98, https://www.atk.store/products/atk-60-rx-esports-hall-effect-keyboard) is described with \"0.001mm RT precision, 256KHz per-key scanning\", so ATK also quotes scan rate per key."
+  },
+  {
+   "product": "MCHOSE Ace 60 Pro",
+   "label": "Price, rapid trigger figure, latency claim, actuation range (maker)",
+   "value": "$37.40 (list $69.00); \"0.01mm Rapid Trigger precision\"; \"0.1ms Ultra-Low Latency\"; 8,000 Hz; \"Zero Dead Zone\"; actuation 0.1 to 3.4 mm",
+   "source": "https://www.mchose.store/products/mchose-ace-60-hall-effect-magnetic-switch-gaming-keyboard",
+   "source_title": "MCHOSE Ace 60 Pro Hall Effect Magnetic Switch Gaming Keyboard",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint, which returns one price and no variant name; ChatGPT's card showed $58.65, so check which variant each price belongs to before quoting. The 0.1 ms claim is shorter than the 0.125 ms report gap at 8,000 Hz."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Price, rapid trigger figure, polling, scan rate (maker product description)",
+   "value": "$63.99 (list $99.99); \"0.005mm actuation accuracy with Rapid Trigger\"; \"8K polling rate (8000Hz) and 16K scan rate\"; wired / 2.4G / Bluetooth",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. Gamakay does not say whether 16K is per key or for the whole board. Next to ATK's 256 kHz per key, Epomaker's 128 kHz per key and Royal Kludge's 64 kHz, the stated scan rates span 16× (256 ÷ 16) on boards that all report at 8,000 Hz."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Which connection the 8,000 Hz applies to, latency claim, dead zone (maker blog)",
+   "value": "\"true wired 8000 Hz polling rate\"; \"ultra-low 0.06 ms latency\"; dead zone adjustable 0 to 1 mm",
+   "source": "https://gamakay.com/blogs/news/gamakay-x-naughshark-ns75-hall-effect-keyboard-buying-guide",
+   "source_title": "Gamakay x Naughshark NS75 Hall effect keyboard buying guide",
+   "read": "2026-11-21",
+   "note": "The blog gives no polling figure for 2.4 GHz or Bluetooth, so the page should state 8,000 Hz for the cable only. 0.06 ms is under half the 0.125 ms report gap, so it cannot be a keypress-to-PC time."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Price, rapid trigger figure, latency claim (maker)",
+   "value": "$79.19; product title states \"8K Polling Rate 0.005mm RT Accuracy\"; \"Ultra-low latency (0.06ms) meets 8 KHz polling\"",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. The search record showed a compare-at price of $119.99, while the brief's record carries list $109.99; this is probably a variant difference."
+  },
+  {
+   "product": "Gamakay x NaughShark NS68",
+   "label": "Price, rapid trigger figure, latency claim (maker)",
+   "value": "$36.79 wired; \"0.01mm RT Accuracy\", described in the text as \"0.01mm resolution accuracy\"; 8K polling; \"0.125ms Low Latency\"; \"0 Dead Zone\"; wired and wireless versions",
+   "source": "https://gamakay.com/products/gamakay-x-naughshark-ns68-8k-polling-rate-0-01mm-rt-accuracy-hall-effect-magnetic-keyboard",
+   "source_title": "Gamakay x NaughShark NS68 Hall Effect Magnetic keyboard 8K Polling Rate 0.01mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. Same maker, two bases: the NS68 quotes 0.125 ms (= 1 ÷ 8,000 Hz) while the NS75 and TK75HE V2 quote 0.06 ms. The brief lists the tri-mode variant at $39.99. Partner store, no record yet."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Price (maker)",
+   "value": "$89.99 (list $159.99)",
+   "source": "https://gamakay.com/products/gamakay-tk75-tmr-magnetic-keyboard-8k-polling-rate",
+   "source_title": "GamaKay TK75 TMR 75% Mechanical Keyboard – 8K Polling Rate, Magnetic Switch",
+   "read": "2026-11-21",
+   "note": "Via the store's search endpoint; in stock. The description text returned was stylesheet code, so I read no spec wording for this board."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra",
+   "label": "Availability, price range, polling by connection, rapid trigger figure and its condition (maker)",
+   "value": "$59.99 to $89.99 across variants, shown \"Unavailable\" with a waitlist and a pre-order tick-box; \"8000Hz polling rate in wired or 2.4Gwireless modes\"; \"RT Accuracy: 0.01-2.00mm\"; only six switches are listed for 0.01 mm, others may reach 0.1 mm; actuation 0.1 to 3.4 mm; 4,000 mAh on the tri-mode version only",
+   "source": "https://monsgeek.com/product/fun60-ultra",
+   "source_title": "FUN60 Ultra",
+   "read": "2026-11-21",
+   "note": "The page was read through a summarising fetch, so the six-switch limit is its paraphrase of the page, not a verbatim quote. Per-variant prices were not shown; ChatGPT's $59.99 card was at Micro Center, which I did not open. On MonsGeek's own page, 0.01 mm depends on the switch fitted. The page gives no Bluetooth polling figure."
+  },
+  {
+   "product": "general",
+   "label": "Scan-rate and precision figures other boards advertise (GamepadSquire's table)",
+   "value": "Epomaker HE68 Lite 128 kHz per-key; Attack Shark R85 HE 256 kHz, 0.005 mm, 0.08 ms; AULA F75 HE 160 kHz single-key, 8,000 Hz wired and 1,000 Hz on 2.4 GHz",
+   "source": "https://gamepadsquire.com/guides/best-budget-hall-effect-keyboards-2026/",
+   "source_title": "Best Budget Hall Effect Keyboards Under $100 in 2026",
+   "read": "2026-11-21",
+   "note": "These are advertised values as that page lists them; I did not read them on the Attack Shark or AULA maker pages. The page does not say the scan figures are on different bases."
+  }
+ ],
+ "unsourced": [
+  "Independent measured latency for any candidate: the RTINGS MonsGeek FUN60 Ultra review page returned only navigation, and I did not open Notebookcheck's FUN60 Ultra TMR review, which the search summary says measured 8,000 Hz in both wired and 2.4 GHz modes.",
+  "Gamakay's polling rate on 2.4 GHz and Bluetooth for the NS75, TK75HE V2 and NS68, and whether rapid trigger works wirelessly: the product pages returned HTTP 429 and the NS75 blog states only the wired figure.",
+  "Whether Gamakay's \"16K scan rate\" for the NS75 is per key or for the whole board; no maker page I read converts a per-key scan rate into a whole-board rate, so I did no division.",
+  "The smallest rapid trigger step each driver actually lets you set, as opposed to the advertised accuracy, for the ATK 68 RX, Gamakay NS75 and TK75HE V2 and MCHOSE Ace 60 Pro: no manual or driver page was read.",
+  "ATK 68 RX scan rate, latency claim and actuation range: the search record's text stops at \"0.005mm RT accuracy and 8000Hz polling\" and the product page returned HTTP 429.",
+  "Attack Shark X68 Pro HE and R85 HE prices and specs from attackshark.com: the store search returned HTTP 0 on two tries.",
+  "Variant-level prices for the MCHOSE Ace 60 Pro ($37.40 on the store search against $58.65 on ChatGPT's card) and for the MonsGeek FUN60 Ultra (wired HE against tri-mode TMR).",
+  "Amazon prices for any candidate: amzcheck was not run.",
+  "Gamakay TK75 TMR spec wording (polling by mode, rapid trigger figure) from Gamakay's own page."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 3.1431725000000004
+ }
+}
