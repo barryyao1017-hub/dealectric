@@ -50,8 +50,9 @@ PRICE_RULES = """## Prices on this page (Barry 2026-11-21)
   * Gamakay: Black Friday sale Nov 19-30, 2026. Its sale prices take no code (GK10, New and GK12 were each rejected in
     the cart on 2026-11-21), so the sale price is the price paid. Never mention a Gamakay code.
   * Lofree: its "Black Friday Month" sale takes 20% off keyboards in the cart with nothing to enter; the product page
-    still shows the higher price. Our records carry the cart price, with the page price as the list price. When a Lofree
-    board is in the table, say this once in the after-section with both figures and the date.
+    still shows the higher price. Our records carry the page price and the checkout total, and the renderer prints both.
+    The price paid (for a budget, and for any comparison) is the checkout total. When a Lofree board is in the table, say
+    this once in the after-section with both figures and the date.
   * Vantrue and Mobile Pixels: sale prices on the store, no code. Mobile Pixels' prices change with timed sales (the Trio
     3 Pro was $367.99 on 2026-11-18 and $407.99 on 2026-11-21).
   * DDPAI: Black Friday Mega Sale Nov 16-30; code SAVEBIGBF takes a further 12% off (cart-tested 2026-11-21) and ends
@@ -63,8 +64,8 @@ PRICE_RULES = """## Prices on this page (Barry 2026-11-21)
   arithmetic on our price that would go stale when a sale ends. A claim that depends on a sale names its end date.
 - A partner store's product with no record yet is listed below with the price paid today ("pay"). Add a product record
   for one only when it belongs in this page's table on the question's own terms. The record's price is that "pay" figure
-  (for Lofree the cart price, with the page price as list_price); give the store's exact product URL, the variant, the
-  price and the date read.
+  (for Lofree give the page price as the record's price: the checkout total is added to the record when the page is
+  applied); give the store's exact product URL, the variant, the price and the date read.
 - Rival rows: the maker's US store price read TODAY (these are Black Friday prices; do not reuse an older figure), else
   its amazon.com listing, each with the date read. Match the exact model and variant, and read the page for pre-order,
   dispatch-date and sold-out notices before quoting a price.
@@ -208,6 +209,10 @@ def table(cluster: str) -> str:
         price = float(p["price"])
         c, saving, after, tested = B.best_offer(p)
         link = f"${price:,.2f} through our link (no code applies today)"
+        d = B.deal(p) or {}
+        if d.get("auto_total") is not None and d["auto_total"] < price:   # the store's sale comes off at checkout by itself
+            link = (f"${d['auto_total']:,.2f} at checkout through our link: {p['brand']}'s {d['name']} sale takes it off in the cart "
+                    "with nothing to enter (cart read 2026-11-21); the product page shows the store price")
         if c:
             t = B.last_test(c, p)
             on_this = bool(t and t["product"] == p["slug"])
