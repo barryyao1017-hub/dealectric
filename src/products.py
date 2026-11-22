@@ -8595,6 +8595,22 @@ PRODUCTS = [
  "fit": 'A low-cost wireless low-profile board for typing with the backlight off or low.',
  "caveats": ['Notebookcheck measured 10% battery drain per hour on 2.4 GHz at maximum backlight, about one working day per charge.', 'Notebookcheck saw keycap shine after about 40 hours of use and a sticky Caps Lock on its unit.', 'The Flow Lite 2 84 replaces it with a 3,000 mAh battery (Lofree).']},
 
+{"slug": 'vantrue-nexus-4s',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue Nexus 4S (N4S) 3-Channel Dash Cam, 3× Sony STARVIS 2 IMX675, 1944p front, 1440p cabin and rear',
+ "model": 'Nexus 4S (N4S)',
+ "url": 'https://www.vantrue.com/products/n4s',
+ "price": 199.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '3: front, cabin, rear'), ('Front camera', '2592 × 1944 at 30 fps with all three cameras recording (manual: 1944P+1440P+1440P 30FPS), Sony STARVIS 2 IMX675, 158°'), ('Cabin camera', '1440p at 30 fps, Sony STARVIS 2 IMX675'), ('Rear camera', '1440p at 30 fps, Sony STARVIS 2 IMX675, IP67 (RC09 waterproof rear camera)'), ('HDR', 'On all three cameras (Vantrue: triple HDR)'), ('Storage', 'microSD 32 GB to 1 TB, U3 or higher; no card in the box'), ('Parking mode', 'Collision detection, motion detection, low bitrate and low frame rate modes; must be hardwired, kit sold separately'), ('Power and heat', 'Supercapacitor, 5 V 2.4 A, 7 W; working temperature -20 °C to 60 °C'), ('GPS and Wi-Fi', 'GPS through the supplied GPS mount; 5 GHz Wi-Fi')],
+ "warranty": "Up to 18 months (Vantrue's product page)",
+ "returns": "30-day returns (Vantrue's product page)",
+ "summary": 'A 3-channel dash cam with the same Sony STARVIS 2 IMX675 sensor on the front, cabin and rear cameras. With all three recording it runs 1944p front and 1440p cabin and rear at 30 fps, and it takes cards up to 1 TB.',
+ "fit": 'Drivers who want front, cabin and rear coverage and need the parking-mode hardwire kit and a memory card to fit in the same budget as the camera.',
+ "caveats": ['Parking mode must be hardwired, and Vantrue sells the hardwire kit separately.', 'No memory card in the box.', 'The front camera is 1944p, not 4K.', "LTE needs Vantrue's separate 4G LTE module."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

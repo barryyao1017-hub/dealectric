@@ -1,0 +1,148 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states how fast three simultaneous streams fill the card: at DashCamTalk's measured bitrates the Vantrue N4 Pro S writes about 25 GB an hour (about 10 hours on a 256 GB card before loop recording overwrites) and the N4S about 20 GB an hour (about 13 hours), and none quotes Vantrue's manual that parking modes stop when power is cut, or the $24.99-$34.99 kit prices.",
+ "standout": 2,
+ "standout_why": "Compared against Product Bible's best-3-channel page (cited) and Vortex Radar's best-dashcams page (cited, read through a text proxy because the direct fetch returned 403). Product Bible says only 'At least 256GB for daily driving, since three cameras fill a card faster than one or two' and that Vantrue takes cards up to 1TB; it gives no bitrate, no GB per hour, no hours per card, no hardwire kit price and no cutoff voltage. Vortex Radar gives general parking facts (traditional parking modes 'draw 300 to 600mA', most cams have 'a configurable voltage cutoff', A229 Plus 'Front cam quality drops w/ additional cameras', 512 GB card support) but no per-channel bitrate or card-hours for any 3-channel camera, and it mentions the N4 Pro S only in an image caption. ChatGPT's own answer already says parking mode needs a separately bought hardwire kit and a high-endurance card, so that part is not new; the hours-per-card arithmetic, the manuals' three-channel resolution tables, the kit prices and cutoff voltages are. The ezdashcam collection page (429) and the cited YouTube video were not read.",
+ "decides": "It confirms the Vantrue pair rather than overturning it. Both manuals list their top resolution with all three cameras recording (N4 Pro S 4K/1080P/1440P, N4S 1944P+1440P+1440P, all 30 fps), so neither drops quality in 3-channel mode. The N4S writes about 20% less data per hour (at DashCamTalk's 1440p front setting) and leaves room under $300 for a parking kit: $199.99 + $29.99 = $229.98. The N4 Pro S at $279.99 goes over $300 with any Vantrue kit: $304.98 with the $24.99 kit, $309.98 with the $29.99 Voltage Display kit whose listing names it (all prices read 2026-11-21 except the N4 Pro S, read 2026-11-14 per the brief). So N4 Pro S is the pick if $300 covers the camera alone, N4S if parking mode has to fit inside the budget. The VIOFO A229 Pro 3CH writes at least 36.9 GB an hour from front and rear alone and tops out at a 512 GB card against Vantrue's 1 TB.",
+ "candidates": [
+  "Vantrue N4 Pro S",
+  "Vantrue N4S",
+  "VIOFO A229 Pro 3CH",
+  "VIOFO A229 Plus 3CH"
+ ],
+ "findings": [
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Resolution options with front + cabin + rear recording together (maker's manual)",
+   "value": "Top setting 4K front / 1080P cabin / 1440P rear, all 30 fps; other three-channel options: 4K/1080P/1080P, 4K/720P/1080P, 1440P/1080P/1440P, 1440P/720P/1080P, 1080P/1080P/1080P, 1080P/720P/720P",
+   "source": "https://vantrue-app.vantruecam.com/files/manuals/n4pros/Vantrue%20N4%20Pro%20S%20User%20Manual%20English.pdf",
+   "source_title": "Vantrue N4 Pro S User Manual English (PDF)",
+   "read": "2026-11-21",
+   "note": "Maker's PDF, text extracted through the r.jina.ai reader because the raw PDF would not parse. Order is front/cabin/rear. The manual has no 60 fps option and no note that HDR is unavailable in 3-channel mode. The front camera keeps 4K with all three channels on."
+  },
+  {
+   "product": "Vantrue N4S",
+   "label": "Resolution options with front + cabin + rear recording together (maker's manual)",
+   "value": "Top setting 1944P front + 1440P cabin + 1440P rear, 30 fps; front-only maximum 2592x1944P 30FPS",
+   "source": "https://vantrue-app.vantruecam.com/files/manuals/n4s/Vantrue%20N4S%20User%20Manual%20English.pdf",
+   "source_title": "Vantrue N4S User Manual English (PDF)",
+   "read": "2026-11-21",
+   "note": "Maker's PDF, text extracted through the r.jina.ai reader. Other three-channel options: 1440P+1440P+1440P, 1440P+1080P+1440P, 1440P+1080P+1080P, 1080P+1080P+1080P, 1440P+720P+1080P, 1080P+720P+720P, all 30 fps. No resolution drop when the third camera is on."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Average bitrate per channel (DashCamTalk)",
+   "value": "Front 32 Mbps (2160p 30 fps), rear 14 Mbps (1440p 30 fps), cabin 9.8 Mbps (1080p 30 fps); sum 55.8 Mbps",
+   "source": "https://dashcamtalk.com/vantrue-n4-pro-s/",
+   "source_title": "Vantrue N4 Pro S (DashCamTalk review page)",
+   "read": "2026-11-21",
+   "note": "Page marked published December 21, 2025. Arithmetic: 55.8 Mbps / 8 x 3,600 s = 25,110 MB = about 25.1 GB per hour. Card holds 256 / 25.1 = about 10.2 h on 256 GB, 20.4 h on 512 GB, 39.8 h on 1 TB before loop recording overwrites. Decimal GB; audio, locked event files and formatting overhead ignored. The page also names the processor as Novatek NT98529."
+  },
+  {
+   "product": "Vantrue N4S",
+   "label": "Bitrate per channel (DashCamTalk)",
+   "value": "14.8 Mbps on each of the three cameras, listed at 2560 x 1440 30 fps; sum 44.4 Mbps",
+   "source": "https://dashcamtalk.com/vantrue-n4s/",
+   "source_title": "Vantrue N4S (DashCamTalk spec page)",
+   "read": "2026-11-21",
+   "note": "Arithmetic: 44.4 Mbps / 8 x 3,600 s = 19,980 MB = about 20.0 GB per hour; 256 / 19.98 = about 12.8 h on 256 GB, 25.6 h on 512 GB, 50 h on 1 TB. DashCamTalk lists the front at 1440p, not the manual's 1944P top setting, so the 1944P front would write more per hour than this. The page does not call the figure an average."
+  },
+  {
+   "product": "VIOFO A229 Pro 3CH",
+   "label": "Average bitrate, front and rear (DashCamTalk)",
+   "value": "Front 57 Mbps (2160p 30 fps) + rear 25 Mbps (1440p 30 fps) = 82 Mbps before the cabin camera",
+   "source": "https://dashcamtalk.com/viofo-a229-pro/",
+   "source_title": "VIOFO A229 Pro (DashCamTalk review page)",
+   "read": "2026-11-21",
+   "note": "Page marked published December 22, 2023. Arithmetic: 82 / 8 x 3,600 = 36,900 MB = 36.9 GB per hour from two channels alone; 256 GB lasts at most about 6.9 h and 512 GB about 13.9 h, less once the 1080p cabin stream is added. Cabin bitrate is not given on the page."
+  },
+  {
+   "product": "VIOFO A229 Pro 3CH",
+   "label": "Three-channel recording mode and card ceiling (maker's page)",
+   "value": "\"4K (3840×2160) @30fps+ 2K (2560×1440) @30fps+ 1080p (1920 × 1080) @30fps\"; \"Up to external 512GB microSD Card (Optional)\"; front Sony STARVIS 2 IMX678, rear STARVIS 2 IMX675, cabin STARVIS IMX307",
+   "source": "https://viofo.com/products/viofo-a229-pro-3ch-4k2k1080p-hdr-3-channels-car-dash-camera-with-sony-starvis-2-sensors",
+   "source_title": "VIOFO A229 Pro 3CH product page (viofo.com)",
+   "read": "2026-11-21",
+   "note": "Read through the r.jina.ai reader because viofo.com returned 429 to the direct fetch. The cabin sensor is first-generation STARVIS, not STARVIS 2. Supercapacitor; operating temperature -20°C to 65°C."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Card supported (maker's manual)",
+   "value": "\"32GB-1TB Micro SD Card, U3, Class 10 (not included in the package)\"",
+   "source": "https://vantrue-app.vantruecam.com/files/manuals/n4pros/Vantrue%20N4%20Pro%20S%20User%20Manual%20English.pdf",
+   "source_title": "Vantrue N4 Pro S User Manual English (PDF)",
+   "read": "2026-11-21",
+   "note": "The manual has no recording-time table by card size and tells owners to format the card at least once a month. The N4S manual gives the same 32GB-1TB range, U3 or higher, and says to format every two weeks."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Why parking mode needs a hardwire kit (maker's manual)",
+   "value": "Motion detection: \"The device must remain continuously powered; it will automatically stop working if the power is cut off.\" Power: \"Built-in super capacitor\", input DC 5V 3A, 7 W",
+   "source": "https://vantrue-app.vantruecam.com/files/manuals/n4pros/Vantrue%20N4%20Pro%20S%20User%20Manual%20English.pdf",
+   "source_title": "Vantrue N4 Pro S User Manual English (PDF)",
+   "read": "2026-11-21",
+   "note": "The manual also says to use \"the VANTRUE hardwire kit cable or other stable and continuous power supply\" and that ACC mode \"Requires proper wiring via an ACC hardwire kit cable\". A supercapacitor stores no recording time, so with the power cut the camera records nothing. Working temperature -20°C to 60°C. The manual states no low-voltage figure; that is in the kit listings."
+  },
+  {
+   "product": "Vantrue N4S",
+   "label": "Parking power requirement (maker's manual)",
+   "value": "\"The device requires a stable power supply. If the power is disconnected, the dash cam will automatically shut down.\"; \"We recommend using Vantrue ACC hardwire kit.\"",
+   "source": "https://vantrue-app.vantruecam.com/files/manuals/n4s/Vantrue%20N4S%20User%20Manual%20English.pdf",
+   "source_title": "Vantrue N4S User Manual English (PDF)",
+   "read": "2026-11-21",
+   "note": "Parking modes: collision detection, motion detection, low bitrate (1080P or 720P at 15 fps), low frame rate. Only one of time lapse and parking mode can be on. Built-in supercapacitor, DC 5V 2.4A, 7 W, working temperature -20°C to 60°C."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Collision-detection parking mode start delay (DashCamTalk)",
+   "value": "DashCamTalk calls it \"not useful as recording starts 10+ seconds after impact\"; buffered motion detection, low bitrate and low frame rate modes are supported \"with the purchase of an optional hardwiring kit\"",
+   "source": "https://dashcamtalk.com/vantrue-n4-pro-s/",
+   "source_title": "Vantrue N4 Pro S (DashCamTalk review page)",
+   "read": "2026-11-21",
+   "note": "Named-reviewer judgement. The Vantrue manual gives no latency figure: it says the camera \"automatically powers on to record\" a 30-second clip in power-saving mode."
+  },
+  {
+   "product": "Vantrue hardwire kits (for N4 Pro S / N4S)",
+   "label": "Price and battery cutoff voltage, vantrue.com",
+   "value": "Universal 11.5ft ACC Hardwire Kit $24.99 (list $29.99), cuts power at 11.6 V / 23.2 V; Voltage Display Hardwire Kit $29.99 (list $34.99), 3 levels 11.6 / 12 / 12.4 V, listing names N4S and N4 Pro S; 5-Level Adjustable Hardwire Kit $34.99 (list $39.99), 11.6 / 11.9 / 12.2 / 12.5 V plus timer of 1, 3, 6, 12, 24 hours or always, listing names N4S and N4 Pro S",
+   "source": "https://www.vantrue.com/products/voltage-display-hardwire-kit",
+   "source_title": "Vantrue store search for 'hardwire kit' (storecheck.py); other two listings at /products/universal-11-5ft-acc-hardwire-kit and /products/5-level-adjustable-hardwire-kit",
+   "read": "2026-11-21",
+   "note": "All three in stock, sold separately from the camera. The Universal kit's listing text says only that it works with Vantrue dash cams and does not name the N4 Pro S or N4S. Arithmetic on prices as read: N4 Pro S $279.99 (read 2026-11-14 per the brief) + $24.99 = $304.98, or + $29.99 = $309.98, both over $300; N4S $199.99 (read 2026-11-21) + $29.99 = $229.98. Vantrue also sells a bundle of N4S + hardwire kit + 256 GB card at $314.99 (list $494.97), https://www.vantrue.com/products/bundle-n4s-hardwire-kit-256gb-card."
+  },
+  {
+   "product": "VIOFO A229 Pro 3CH",
+   "label": "Parking mode requirement and kit price (maker's page)",
+   "value": "\"VIOFO hardwire kit is required for Parking Mode.\"; HK4 hardwire kit shown at $25.99, not included",
+   "source": "https://viofo.com/products/viofo-a229-pro-3ch-4k2k1080p-hdr-3-channels-car-dash-camera-with-sony-starvis-2-sensors",
+   "source_title": "VIOFO A229 Pro 3CH product page (viofo.com)",
+   "read": "2026-11-21",
+   "note": "Read through the r.jina.ai reader. The page also carries the footnote \"*Cut-off Voltage is only available with the HK6 hardwire kit.\" Parking modes listed: auto event detection, time-lapse, low bitrate."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals say about cards and parking power",
+   "value": "Product Bible: \"At least 256GB for daily driving, since three cameras fill a card faster than one or two\", with no hours or bitrate. Vortex Radar: traditional parking modes \"draw 300 to 600mA\"; A229 Plus \"Front cam quality drops w/ additional cameras\" and \"Supports up to 512 GB cards\"",
+   "source": "https://productbible.com/blog/best-3-channel-dash-cams",
+   "source_title": "Best 3-Channel Dash Cams With Interior Camera (2026) | Product Bible; Vortex Radar quotes from https://www.vortexradar.com/best-dashcams/",
+   "read": "2026-11-21",
+   "note": "Vortex Radar was read through the r.jina.ai reader (direct fetch 403). Neither page gives GB per hour, hours per card, a Vantrue kit price or a cutoff voltage for a 3-channel camera under $300."
+  }
+ ],
+ "unsourced": [
+  "VIOFO A229 Pro 3CH price today on viofo.com for the exact 3-channel variant: the proxied page showed 'Sale price $379.99' near the subtotal, which I could not tie to the 3CH variant alone, and viofo.com returned 429 to direct reads; ChatGPT's card showed $299.99.",
+  "VIOFO A229 Plus 3CH maker page (the URL I tried returned 404): per-channel resolution and frame rate with all three cameras recording, card ceiling and price.",
+  "Cabin-camera bitrate of the VIOFO A229 Pro 3CH (DashCamTalk gives front and rear only).",
+  "A maker-stated bitrate or hours-per-card table for the N4 Pro S or N4S: neither Vantrue manual has one, so the card-hours figures rest on DashCamTalk's bitrates and my arithmetic.",
+  "Vantrue N4 Pro S and N4S product pages on vantrue.com (429 on each direct read), so the N4 Pro S price was not re-read today; the $279.99 figure is the brief's 2026-11-14 read.",
+  "Parking-mode current draw of the N4 Pro S or N4S, to turn a cutoff voltage into hours of parked recording.",
+  "Rear camera cable length for either Vantrue (the manuals give only the 11.5 ft car charger cable).",
+  "ezdashcam.com under-$300 collection page (429 twice) and the cited YouTube buyer's guide were not read, so the standout score rests on Product Bible and Vortex Radar."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 2.7246961999999995
+ }
+}
