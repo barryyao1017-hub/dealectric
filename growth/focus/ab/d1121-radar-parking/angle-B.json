@@ -1,0 +1,127 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how many hours of parking cover each amp-hour of battery a shopper sets aside: about 22 h in Thinkware's radar mode (1000 mAh ÷ 45.2 mA) against about 3.6 h in 2-channel motion detection (1000 ÷ 274.5 mA). So radar watches a parked car about 6.1 times longer on the same battery.",
+ "standout": 1,
+ "standout_why": "I opened the cited rival pages: the Thinkware Help Center RADAR Parking Mode FAQ, the thinkwarestore.com U3000 PRO product page, the thinkware.com global U3000 PRO page and Digital Camera World's U3000 Pro review by Alistair Charlton (2026-01-29). None of them gives a mA or W figure or an hours figure for radar parking. The product pages say only '10% lower power consumption than the U3000', and DCW says only that it was 'surprisingly energy-efficient' and the car started normally. I also opened DashCamTalk's U3000 and U3000 Pro pages, which ChatGPT got but did not cite. They also give no figures. The raw inputs (45.2 mA, 99.6 h, 274.5 mA, 16.4 h) are on thinkware.com/global/parking-mode. That page was result 7 in the second chat and was not cited. So a rival result has the raw numbers, but none has the per-amp-hour figure, the 6x ratio or the U3000 Pro projection.",
+ "decides": "This confirms a Thinkware radar camera as the pick for radar parking, as the question asks. On Thinkware's own table, radar mode (45.2 mA) gives about 6 times the parking hours of motion detection on the same battery. The U3000 Pro's claimed 10% cut matters little: it is $70 more than the U3000 on thinkwarestore.com today ($549.99 vs $479.99), for about 4.5 mA less. The comparison against our DDPAI N5 Dual 2026 + Radar Accessory ($269.00 on store.ddpai.com, read 2026-11-21) cannot be made, because DDPAI's radar current draw was not sourced. A DDPAI place on this angle would need that figure, or it rests on price alone.",
+ "candidates": [
+  "Thinkware U3000 Pro",
+  "Thinkware U3000",
+  "Thinkware U1000 Plus (optional radar module)",
+  "DDPAI N5 Dual 2026 + Radar Accessory"
+ ],
+ "findings": [
+  {
+   "product": "general (Thinkware radar parking)",
+   "label": "Current draw, Energy Saving Mode 2.0 + Radar On (1CH and 2CH)",
+   "value": "45.2 mA; 99.6 h (4.1 days)",
+   "source": "https://thinkware.com/global/parking-mode",
+   "source_title": "Parking Mode - THINKWARE Global",
+   "read": "2026-11-21",
+   "note": "From Thinkware's RADAR Parking Mode Duration table. The table names no model. The page says the times are 'based on ideal conditions and actual times may differ'. Implied battery budget: 45.2 mA × 99.6 h = 4,502 mAh."
+  },
+  {
+   "product": "general (Thinkware motion detection)",
+   "label": "Current draw, Motion Detection parking mode",
+   "value": "1CH 208.8 mA (21.6 h); 2CH 274.5 mA (16.4 h)",
+   "source": "https://thinkware.com/global/parking-mode",
+   "source_title": "Parking Mode - THINKWARE Global",
+   "read": "2026-11-21",
+   "note": "Same table. Check: 274.5 mA × 16.4 h = 4,502 mAh, the same budget as the radar row, so the rows are comparable."
+  },
+  {
+   "product": "general (Thinkware radar vs motion, 2CH)",
+   "label": "Parking time per 1 Ah of battery allowance",
+   "value": "radar 22.1 h; 2CH motion detection 3.6 h; ratio 6.1x",
+   "source": "https://thinkware.com/global/parking-mode",
+   "source_title": "Parking Mode - THINKWARE Global",
+   "read": "2026-11-21",
+   "note": "1000 mAh ÷ 45.2 mA = 22.1 h; 1000 ÷ 274.5 = 3.64 h; 274.5 ÷ 45.2 = 6.07x (also 99.6 h ÷ 16.4 h = 6.07x)."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Radar power claim vs U3000",
+   "value": "10% lower power consumption than the U3000 (no absolute figure)",
+   "source": "https://thinkwarestore.com/product/u3000-pro-front-rear/",
+   "source_title": "U3000 PRO Front & Rear | 4K & 2K Dash Cam | THINKWARE",
+   "read": "2026-11-21",
+   "note": "Projection: if the 45.2 mA table row is the U3000, the Pro draws about 45.2 × 0.9 = 40.7 mA, giving 4,502 mAh ÷ 40.7 mA = 111 h on the same budget. Thinkware does not say which model the table measured, so this is a projection, not a spec."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Price, Front & Rear, maker's US store",
+   "value": "$549.99 (list $579.99)",
+   "source": "https://thinkwarestore.com/product/u3000-pro-front-rear/",
+   "source_title": "U3000 PRO Front & Rear | 4K & 2K Dash Cam | THINKWARE",
+   "read": "2026-11-21",
+   "note": "Add to cart is shown; the page gives no stock count. Hardwire kit or OBD-II cable is needed for radar parking (Thinkware Help Center)."
+  },
+  {
+   "product": "Thinkware U3000",
+   "label": "Price, Front & Rear, maker's US store",
+   "value": "$479.99 (list $549.99)",
+   "source": "https://thinkwarestore.com/product/u3000-front-rear/",
+   "source_title": "U3000 Front & Rear - THINKWARE US",
+   "read": "2026-11-21",
+   "note": "The visible page shows no sold-out notice. The page says it is not compatible with the LTE Module. Pro premium: $549.99 − $479.99 = $70 for the claimed 10% lower radar draw."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Per-channel resolution and sensors",
+   "value": "Front 3840×2160 @30 fps (or 2560×1440 @60 fps), Sony STARVIS 2 IMX678; rear 2560×1440 @30 fps, IMX675; 2-channel front + rear",
+   "source": "https://thinkwarestore.com/product/u3000-pro-front-rear/",
+   "source_title": "U3000 PRO Front & Rear | 4K & 2K Dash Cam | THINKWARE",
+   "read": "2026-11-21",
+   "note": "Recording time at 4K + 2K 30 fps: 512 GB = 1,016 min. microSD 64–512 GB, 64 GB included. Built-in supercapacitors. DC 12/24 V."
+  },
+  {
+   "product": "Thinkware U3000 Pro / U3000",
+   "label": "Radar detection range and clip length",
+   "value": "1–5 m in 5 steps (default 3 m, measured from the rear camera); 20 s clip per event; for movement under 20 km/h",
+   "source": "https://support.thinkware.com/hc/en-us/articles/21305282643859-RADAR-Parking-Mode",
+   "source_title": "RADAR Parking Mode – Thinkware Help Center",
+   "read": "2026-11-21",
+   "note": "Needs hardwiring or an OBD II cable. Connected features are off in this mode."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Named reviewer on radar parking power",
+   "value": "Digital Camera World (Alistair Charlton) found it 'surprisingly energy-efficient'; the car started normally after a night of rain-triggered clips; no current measured",
+   "source": "https://www.digitalcameraworld.com/cameras/dash-cams/thinkware-u3000-pro-dashcam-review",
+   "source_title": "Thinkware U3000 Pro review | Digital Camera World",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-01-29. It found default radar sensitivity too high until lowered."
+  },
+  {
+   "product": "general (Thinkware radar)",
+   "label": "Retailer duration claim",
+   "value": "BlackboxMyCar claims 2–3 days off the car battery and up to 7 days with a dash cam battery pack; it gives 6–8 h for standard parking mode",
+   "source": "https://blackboxmycar.com/pages/what-is-thinkware-radar",
+   "source_title": "What is Thinkware RADAR - BlackboxMyCar",
+   "read": "2026-11-21",
+   "note": "Retailer claim. It states no test method, battery size or temperature."
+  },
+  {
+   "product": "DDPAI N5 Dual 2026 + Radar Accessory",
+   "label": "Price, maker's US store (no Dealectric record yet)",
+   "value": "$269.00 (list $279.00), variant 'N5 Dual 2026 + Radar Accessory (Radar+ OBD & hardwire Kit)', in stock",
+   "source": "https://store.ddpai.com/products/n5-dual",
+   "source_title": "N5 Dual 2026 4K Dash Cam - DDPAI store",
+   "read": "2026-11-21",
+   "note": "Figure taken from the brief's partner-store read of 2026-11-21. My own re-reads of the page (storecheck and WebFetch) returned HTTP 429. Variant id 47948271911199."
+  }
+ ],
+ "unsourced": [
+  "DDPAI radar module current draw (mA/W): looked on ddpai.com/my/dash-cams/n5-dual-2026 and the N5 (2026) user manual page (both returned only navigation), store.ddpai.com/products/n5-dual (HTTP 429), and the JB Hi-Fi and dasher.sg radar module listings (HTTP 429). Search snippets claimed '87% less than time-lapse' and '15 days', but I did not open those pages, so they are not used.",
+  "Which Thinkware model the 45.2 mA / 274.5 mA table measured: thinkware.com/global/parking-mode does not say. I tried the U3000 and U3000 Pro English manuals hosted on DashCamTalk, but the PDFs came back as binary and could not be read here.",
+  "Absolute radar current for the U3000 Pro: Thinkware states only '10% lower than the U3000' on thinkwarestore.com and thinkware.com/global/product/u3000-pro.",
+  "Battery the Thinkware duration table assumes: the US parking-mode page cites a 7,500 mAh iVolt Xtra for its benefits chart, but the hours are in an image I could not read, and the global table states no battery.",
+  "Thinkware U1000 Plus radar module price and draw: not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.3354701999999998
+ }
+}

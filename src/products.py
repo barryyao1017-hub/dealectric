@@ -8873,6 +8873,23 @@ PRODUCTS = [
  "fit": "Laptops of about 12–18.5 inches, subject to physical fit (FOPO's range), with a free USB-C or USB-A port and permission to install FOPO's driver.",
  "caveats": ["A driver is required. FOPO's page lists no supported operating systems, so Mac owners should check Mac support with FOPO before buying.", 'It needs a separate PD power supply.', "FOPO's page gives no weight or brightness."]},
 
+{"slug": 'ddpai-n5-dual-2026-radar-kit',
+ "brand": 'DDPAI',
+ "program": 'awin:ddpai',
+ "asin": None,
+ "category": 'dash-cam',
+ "name": 'DDPAI N5 Dual 2026 4K Dash Cam + Radar Accessory (Radar + OBD & Hardwire Kit)',
+ "model": 'N5 Dual 2026 + Radar Accessory',
+ "url": 'https://store.ddpai.com/products/n5-dual?variant=47948271911199',
+ "price": 269.0,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2-channel, front + rear: 4K UHD front + 1080p rear'), ('Radar', 'DDPAI add-on radar module, in the box with this variant'), ('Parking power', 'OBD & hardwire kit in the box'), ('Storage', 'D²save dual memory storage'), ('Power backup', 'Supercapacitor'), ('4G option', 'Sold as a separate variant, the N5 4G Cloud Set (N5 Dual 2026 + 4G Box + Hardwire Kit)')],
+ "warranty": '1-year limited warranty on dash cams bought from the DDPAI store; accessories 3 months.',
+ "returns": 'Returns are set up by email with DDPAI (ecommerce@ddpai.com) before you ship anything. Ask for the return address first.',
+ "summary": "DDPAI's N5 Dual 2026 sold as one kit with its add-on radar module and the OBD & hardwire kit that radar parking needs. Variant 'N5 Dual 2026 + Radar Accessory (Radar+ OBD & hardwire Kit)', $269.00 (list $279.00), in stock on store.ddpai.com, read 2026-11-21.",
+ "fit": "Shoppers who want radar-wake parking for less money than Thinkware's built-in-radar cameras, and who can accept a 1080p rear camera.",
+ "caveats": ["The rear camera is 1080p. Thinkware's U3000 series records the rear at 2560×1440.", "One DashCamTalk owner (thatbwnguy, 2024-12-04) reported that with the OBD kit in a 2019 Mazda CX-9 the camera shut down about 15 minutes after parking. DDPAI's forum reply recommended wiring to the fuse box.", 'The radar is a separate module mounted next to the camera, not built into the camera body.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

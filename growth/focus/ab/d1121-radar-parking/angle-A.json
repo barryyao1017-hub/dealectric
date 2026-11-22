@@ -1,0 +1,94 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states how much current radar parking mode draws compared with ordinary motion-detection parking mode: the only bench figure found is 16 mA in Radar Mode against 260–270 mA in Motion Detection on the Thinkware U3000 at 13.8 V (SafeDriveSolutions on DashCamTalk). Thinkware publishes no current figure, and DDPAI gives only a percentage cut against time-lapse.",
+ "standout": 2,
+ "standout_why": "I read three of the cited pages: Thinkware's RADAR Parking Mode help article, Thinkware's US Parking Mode page and the U3000 PRO store page. None of them gives a current or wattage figure. They say only 'minimal power consumption' or '10% lower power consumption than the U3000', and the runtime chart on the Parking Mode page is an image with no numbers in its text. Digital Camera World's review (Alistair Charlton, 2026-01-29) says only 'I was impressed by how little power the U3000 Pro seemed to consume.' The Tom's Guide review came back truncated with no review text, so I could not check it. The 1–5 m range in five steps is already in the cited Thinkware FAQ and in ChatGPT's table, so it adds nothing. Two details on the cited FAQ that ChatGPT did not use: the range is measured from the rear camera, not the rear bumper, and only motion slower than 20 km/h triggers a recording.",
+ "decides": "It confirms rather than changes the pick. Built-in radar is what lets the Thinkware U3000 and U3000 Pro watch for days: about 1/16 of the current of motion-detection parking in one named bench test. Thinkware's 10% saving for the Pro has no stated base, so it cannot be turned into a runtime gap, and it does not justify the Pro's price over the U3000 on parking alone. For DDPAI, radar is an $80 add-on module for the N5 Pro / N5 Dual, not built in. DDPAI publishes no current figure and I could not open its spec page, so it can only be listed as a cheaper radar option with unverified draw. Owner reports on DashCamTalk describe false triggers and battery drain even at minimum sensitivity. On this evidence a DDPAI place in the top three is weak, and I could not source a DDPAI radar spec.",
+ "candidates": [
+  "Thinkware U3000 Pro",
+  "Thinkware U3000",
+  "Thinkware U1000 Plus + optional radar module",
+  "DDPAI N5 Pro + Radar Accessory",
+  "DDPAI N5 Dual 2026 + Radar Accessory"
+ ],
+ "findings": [
+  {
+   "product": "Thinkware U3000",
+   "label": "Measured parking-mode current, by mode",
+   "value": "Radar Mode 16 mA; Energy Saving 9 mA; Time Lapse 230–250 mA; Motion Detection 260–270 mA; Continuous Recording 395–400 mA (all at 13.8 V, front + rear)",
+   "source": "https://dashcamtalk.com/forum/threads/u3000-current-draw.49069",
+   "source_title": "U3000 Current Draw – DashCamTalk forum",
+   "read": "2026-11-21",
+   "note": "Posted by SafeDriveSolutions on 2023-06-07 ('Front and Rear Testing', 13.8 V). Another member, mindjezza, also reported 16 mA in Radar Mode (2023-06-08). 16 mA × 13.8 V ≈ 0.22 W. Radar Mode draws about 1/16 of Motion Detection (16 ÷ 265 ≈ 0.06). Conflicting report: HUMMER_EV saw 82 mA in Radar Mode in the iVolt Xtra app (2025-02-22), not on a bench meter. This was measured on the U3000, not the U3000 Pro."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Maker's power claim against the U3000",
+   "value": "10% lower power consumption than the U3000 (no base figure, no mode stated)",
+   "source": "https://thinkwarestore.com/product/u3000-pro-front-rear/",
+   "source_title": "U3000 PRO Front & Rear | 4K & 2K Dash Cam | THINKWARE",
+   "read": "2026-11-21",
+   "note": "The page does not say whether the 10% applies to driving, radar parking or every mode, so I did not apply it to the 16 mA figure."
+  },
+  {
+   "product": "Thinkware U3000 / U3000 Pro",
+   "label": "Radar range and how it is measured",
+   "value": "1 m / 2 m / 3 m (default) / 4 m / 5 m in five sensitivity steps, measured from the rear camera, not the vehicle's rear end; only motion slower than 20 km/h (12 mph) triggers",
+   "source": "https://support.thinkware.com/hc/en-us/articles/21305282643859-RADAR-Parking-Mode",
+   "source_title": "RADAR Parking Mode – Thinkware Help Center",
+   "read": "2026-11-21",
+   "note": "This is the cited FAQ. It also needs hardwiring or an OBD-II cable. Metallic tint films and other 24 GHz devices can cut range, and network features are off in this mode. It cites a 100° and 110° detection angle without saying which figure is front and which is rear."
+  },
+  {
+   "product": "Thinkware U3000 / U3000 Pro",
+   "label": "What a radar trigger saves",
+   "value": "One 20-second clip per event; the before/after split varies (Thinkware's examples: 7 s before + 13 s after, or 10 s + 10 s), and footage from when motion began may be dropped to keep the impact clip",
+   "source": "https://support.thinkware.com/hc/en-us/articles/21305282643859-RADAR-Parking-Mode",
+   "source_title": "RADAR Parking Mode – Thinkware Help Center",
+   "read": "2026-11-21",
+   "note": "Compare: Motion & Impact Detection mode saves 10 s before + 10 s after (U3000 PRO store page). Radar mode does not promise a fixed pre-event buffer."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "US store price, channels and resolution",
+   "value": "$549.99 (was $579.99), Front & Rear; front 3840×2160 at 30 fps or 2560×1440 at 60 fps, rear 2560×1440 at 30 fps; Sony STARVIS 2 IMX678 front, IMX675 rear; microSD 64–512 GB, 64 GB card included; OBD-II cable in the box, hardwiring cable sold separately",
+   "source": "https://thinkwarestore.com/product/u3000-pro-front-rear/",
+   "source_title": "U3000 PRO Front & Rear | 4K & 2K Dash Cam | THINKWARE",
+   "read": "2026-11-21",
+   "note": "2-channel: front + rear. No pre-order notice on the page. The LTE bundle is $689.99. The page lists the hardwiring cable bundle but shows no price for it."
+  },
+  {
+   "product": "DDPAI N5 Pro / N5 Dual",
+   "label": "Radar is a separate accessory",
+   "value": "Radar Accessory for N5 Pro / N5 Dual Dash Cam, $80.00 on store.ddpai.com, in stock",
+   "source": "https://store.ddpai.com/products/radar-accessory-for-n5-pro-n5-dual-dash-cam",
+   "source_title": "Radar Accessory for N5 Pro / N5 Dual Dash Cam – DDPAI US store",
+   "read": "2026-11-21",
+   "note": "Read through storecheck.py search of store.ddpai.com, which returns the store's own catalog data. The product page itself returned HTTP 429 three times, so I could not see the specs or the page text. The N5 Dual 2026 also has a $269.00 '+ Radar Accessory (Radar + OBD & hardwire Kit)' variant in the partner table."
+  },
+  {
+   "product": "DDPAI N5 Dual",
+   "label": "Owner report on radar false triggers",
+   "value": "At minimum sensitivity, the camera still went into protection mode before morning on a road with about ten cars per hour",
+   "source": "https://dashcamtalk.com/forum/threads/ddpai-n5-dual-radar-module-mounting-and-sensitivity-problems.51889/",
+   "source_title": "DDPAI N5 Dual – Radar Module Mounting and Sensitivity Problems – DashCamTalk",
+   "read": "2026-11-21",
+   "note": "Cristian97, 2024-11-21. Same thread: naeim (2024-11-17) reported low-voltage errors overnight, and Marius Gheorghe (2026-06-19) reported battery drain despite a 12.2 V cutoff. DDPAI_Official (2026-06-22) asked for app feedback logs. These are owner reports, not measurements."
+  }
+ ],
+ "unsourced": [
+  "DDPAI radar module detection range, angle and current draw. The US store product page, ddpai.com N5 Dual 2026 page, N5 2026 manual and ?p=17673 page either returned 429 or rendered only menus. JB Hi-Fi and partspro.ph listings returned 429. Search snippets cite '3 m forward / 4 m rear, 100°' and '87% less than time-lapse, up to 15 days (DDPAI Lab)', but I never opened a page that states them, so I left them out.",
+  "Whether a DDPAI radar trigger saves pre-event footage or starts recording only after the camera wakes, and the clip length. Not stated on any page I could open.",
+  "A Thinkware-published current or wattage for radar parking mode. Not on the RADAR Parking Mode FAQ, the US Parking Mode page or the U3000 PRO store page; the runtime chart is an image with no text figures.",
+  "A measured radar-mode current for the U3000 Pro itself. Only U3000 measurements were found.",
+  "Price of Thinkware's hardwiring cable or hardwire bundle for the U3000 Pro. Listed on the store page with no price shown.",
+  "Today's DDPAI N5 Pro price. The product page returned 429. The store search returned $259.00 (compare-at $379.00), which conflicts with our record's $179.00 (read 2026-11-17), so the record should be rechecked before rendering.",
+  "Tom's Guide U3000 Pro review (cited). The fetch was truncated before the review text, so I could not check it for power or range figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.2917011000000003
+ }
+}
