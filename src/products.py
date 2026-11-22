@@ -8662,6 +8662,23 @@ PRODUCTS = [
  "fit": 'The lowest-priced three-camera row on a tight budget, for drivers who can do without built-in GPS.',
  "caveats": ['4K (2160P at 25 fps) is a front-only mode, not a three-channel mode.', 'GPS needs a separate mount.', "Card limit is 256 GB in mybest's spec table, against 1 TB on the N4S."]},
 
+{"slug": 'vantrue-s1-pro-2ch',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "asin": None,
+ "category": 'dash-cam',
+ "name": 'Vantrue S1 Pro 2CH Front and Rear Dash Cam, 2.5K (1944p) front + 1080p rear',
+ "model": 'S1 Pro 2CH',
+ "url": 'https://www.vantrue.com/products/s1-pro-2ch',
+ "price": 135.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2: front + rear window'), ('Front camera', '2.5K (1944p), 158°, HDR'), ('Rear camera', '1080p, 165°'), ('Sensor', "Sony STARVIS 2 (Vantrue's listing headline)"), ('Power backup', 'Supercapacitor'), ('GPS and Wi-Fi', 'Built-in GPS; built-in Wi-Fi'), ('Storage', "microSD up to 512 GB (Vantrue's listing)"), ('Parking mode', "24-hour with collision detection, up to 15 s pre-event recording; Vantrue's Voltage Display Hardwire Kit (names the S1 Pro) is sold separately")],
+ "warranty": '12 months; 18 months if you register the camera with Vantrue',
+ "returns": '30 days from the Vantrue store',
+ "summary": 'A 2-channel front and rear dash cam: 2.5K (1944p) front and 1080p rear, with a supercapacitor, GPS and Wi-Fi, taking microSD cards up to 512 GB.',
+ "fit": "Drivers who want a front and rear set under $200 bought camera-first, choosing their own card and adding Vantrue's hardwire kit when they want parking mode.",
+ "caveats": ['The rear camera is 1080p (2.07 MP).', "Parking mode needs a hardwire kit bought separately; Vantrue's 5-Level Adjustable kit does not list the S1 Pro, the Voltage Display kit does.", "Vantrue's listing names Sony STARVIS 2 in its headline without naming the sensor in each camera."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
