@@ -1,0 +1,34 @@
+{
+ "angle": "B",
+ "gap": "Not established: I could not open any rival or maker page today, so I cannot say that no result ChatGPT got states the time between reports in each connection mode (1,000 ms ÷ polling rate) for each candidate.",
+ "standout": 1,
+ "standout_why": "This score is provisional, because no rival page was read. The Attack Shark X65 Pro HE and X68 Pro HE pages (attackshark.com), the AULA Hero75 HE page (aulatechstore.com) and the manuals.plus X68PRO HE manual all failed to open (HTTP 429, a connection error from the store tool, and an image-only PDF). The only rival content I can compare against is ChatGPT's own answer in the brief, which already says the X65 Pro HE and X68 Pro HE drop from 8,000 Hz wired to 1,000 Hz wireless. A report interval is one division away from that (1,000 ÷ 8,000 = 0.125 ms; 1,000 ÷ 1,000 = 1 ms), so rivals effectively hold part of this angle's best figure. I could not check whether any rival states battery hours in wireless mode or a measured wireless latency.",
+ "decides": "Nothing is decided on sourced evidence from this angle today. The derivation the page would want is the report interval per mode for each board. If the Dealectric record for the Gamakay TK75 TMR holds (8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth, credited to HLPlanet in the brief; not opened by me), its dongle interval is 0.125 ms. ChatGPT's answer puts the Attack Shark X68 Pro HE at 1,000 Hz wireless, which is 1 ms, so the TK75 TMR would send 8 reports for each one of the X68 Pro HE's. That would favour the TK75 TMR as the linked pick for rapid trigger on a dongle. Both inputs need to be re-read at the maker pages before the page uses them.",
+ "candidates": [
+  "Gamakay TK75 TMR",
+  "Gamakay TK75HE V2",
+  "Gamakay x NaughShark NS75",
+  "Gamakay x NaughShark NS68 (tri-mode)",
+  "Attack Shark X68 Pro HE",
+  "Attack Shark X65 Pro HE",
+  "AULA Hero75 HE",
+  "Lofree Hyzen (tri-mode)"
+ ],
+ "findings": [],
+ "unsourced": [
+  "No page opened successfully in 28 tool calls (3 over the 25 budget), so there are no findings; everything below is what I looked for and could not source.",
+  "Attack Shark X68 Pro HE and X65 Pro HE: polling rate per mode (wired / 2.4 GHz / Bluetooth), whether rapid trigger stays active on 2.4 GHz and Bluetooth, battery mAh and rated hours, and today's price. attackshark.com returned HTTP 429 to WebFetch on every attempt and 'HTTP 0' to storecheck.py; attackshark.ca failed with a self-signed certificate error.",
+  "Attack Shark X68PRO HE manual (manuals.plus/asin/B0DZSY3HW4.pdf): mode-by-mode report rate and battery figures. The PDF downloaded but has no readable text layer, and the pdftotext command needed an approval I did not have.",
+  "Gamakay TK75HE V2, TK75 TMR, NS75 and NS68: the maker's stated polling rate on 2.4 GHz and Bluetooth, rapid trigger in wireless modes, battery mAh and rated hours (needed for hours per charge on the dongle). gamakay.com returned HTTP 429 to both WebFetch and storecheck.py on every attempt across the session.",
+  "AULA Hero75 HE (aulatechstore.com): the same per-mode figures; HTTP 429.",
+  "Named-reviewer measurements for the Gamakay TK75HE V2 (wireless latency in ms, battery drain over a stated period). The TechRadar and PC Gamer reviews returned only navigation text at three offsets; AppleInsider and the inkl.com copy of the TechRadar review returned HTTP 403.",
+  "Search summaries only, not opened and not usable as values: one summary said the Attack Shark listing gives 8,000 Hz and 0.125 ms wired and a 5,000 mAh battery with no hour figure; another said AppleInsider repeats Gamakay's 0.06 ms claim for wired or 2.4 GHz on the TK75HE V2. Neither search found an independent wireless latency measurement for either board.",
+  "Lofree Hyzen tri-mode: per-mode polling rate and rapid trigger support in wireless; not attempted once the budget ran out."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.1460391999999997
+ }
+}

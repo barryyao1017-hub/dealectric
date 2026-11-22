@@ -1,0 +1,91 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states, in a maker's own words, that rapid trigger acts on the key's travel distance read at the switch rather than on a fixed point, which is why the connection changes only how often the result is reported; I could not open the rival pages to verify they lack it (see standout_why).",
+ "standout": 1,
+ "standout_why": "I could not open any rival page: attackshark.com (X65 Pro HE, X68 Pro HE) and aulatechstore.com returned HTTP 429 or were blocked, and the manuals.plus PDFs came back as unreadable binary. The only comparison is against ChatGPT's answer, which already says rapid trigger is 'a feature of the keyboard's firmware and Hall Effect sensors' and that the Attack Shark boards drop from 8,000 Hz wired to 1,000 Hz wireless. My sourced findings add only Gamakay's wording of the mechanism and the NS75's 16K scan rate. The per-mode polling figures for the Gamakay boards, which would have made this a 2 or 3, I could not source.",
+ "decides": "It confirms the 'yes': rapid trigger is computed in the keyboard from key travel, so it does not depend on the cable, and the link only sets the report rate (8,000 Hz is one report every 0.125 ms, 1,000 Hz is one every 1 ms; my arithmetic). It does not by itself separate the three Gamakay boards we link, because I could not read what Gamakay states for 2.4 GHz and Bluetooth on each. The brief's record for the TK75 TMR (8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth, credited to HLPlanet) is the only per-mode figure on hand, and I did not re-open it. Before picking the TK75HE V2, check that the variant we link is tri-mode: a search summary (not an opened page) described PC Gamer's review as calling that board wired-only.",
+ "candidates": [
+  "Gamakay TK75 TMR",
+  "Gamakay x NaughShark NS75",
+  "Gamakay TK75HE V2",
+  "Gamakay x NaughShark NS68 (Tri-mode)",
+  "Attack Shark X68 Pro HE",
+  "Attack Shark X65 Pro HE",
+  "Keychron K2 HE",
+  "AULA HERO75 HE"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "How rapid trigger works, in Gamakay's words",
+   "value": "\"Rapid Trigger: This feature allows keys to be activated or deactivated based on their travel distance rather than a fixed point\"",
+   "source": "https://gamakay.com/products/gamakay-hall-effect-magnetic-switch-v1",
+   "source_title": "Gamakay Hall Effect v1 Magnetic Switches",
+   "read": "2026-11-21",
+   "note": "Read through storecheck.py search on gamakay.com, which returns the opening of each product description; the full page returned HTTP 429. The statement names no connection mode."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Rapid trigger, polling, scan rate and connections as Gamakay states them",
+   "value": "\"0.005mm actuation accuracy with Rapid Trigger and Snap Tap\"; \"8K polling rate (8000Hz) and 16K scan rate\"; \"tri-mode connectivity (Wired/2.4G/Bluetooth)\"",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "Opening description via storecheck.py search; full page returned HTTP 429. The excerpt does not say which connection modes the 8,000 Hz figure applies to. Scan rate is how often the board reads the sensors; polling rate is how often it reports to the PC."
+  },
+  {
+   "product": "Gamakay x NaughShark NS75",
+   "label": "Store price",
+   "value": "$63.99, compare-at $99.99, in stock",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "storecheck.py search result; matches the brief's record. Variant not shown in the search result."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Latency, polling and rapid trigger as Gamakay states them",
+   "value": "\"Ultra-low latency (0.06ms) meets 8 KHz polling\"; \"Competitive Gaming Engine : Rapid Trigger, Snap Tap, DKS\"",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "Opening description via storecheck.py search; full page returned HTTP 429 three times. The excerpt names no connection mode for either figure and does not mention 2.4 GHz or Bluetooth."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Store price",
+   "value": "$79.19, compare-at $119.99, in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "storecheck.py search result. The $79.19 matches the brief's record; the compare-at of $119.99 differs from the record's $109.99 list, possibly a different variant. Variant not shown in the search result."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Store price",
+   "value": "$89.99, compare-at $159.99, in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75-tmr-magnetic-keyboard-8k-polling-rate",
+   "source_title": "GamaKay TK75 TMR 75% Mechanical Keyboard – 8K Polling Rate, Magnetic Switch",
+   "read": "2026-11-21",
+   "note": "storecheck.py search result; matches the brief's record. The description excerpt was page styling only, so no spec text was read."
+  }
+ ],
+ "unsourced": [
+  "Gamakay's own statement of polling rate on 2.4 GHz and on Bluetooth for the TK75HE V2, NS75, TK75 TMR and NS68: gamakay.com product pages returned HTTP 429 on every attempt (WebFetch and storecheck.py product); only the search excerpts were readable.",
+  "Whether the Gamakay TK75HE V2 we link is tri-mode or wired-only: a web-search summary said PC Gamer's review calls its connectivity purely wired and that the manual lists 8 kHz under the USB-C wired section with 0.06 ms for wired and 2.4G. Neither page could be opened (the PC Gamer fetch returned navigation only; manuals.plus returned 403 and an unreadable PDF), so these are leads to check, not facts.",
+  "Attack Shark X68 Pro HE and X65 Pro HE product pages (the cited rival pages) and today's prices: attackshark.com returned HTTP 429 to WebFetch and HTTP 0 to storecheck.py.",
+  "AULA HERO75 HE product page on aulatechstore.com: HTTP 429.",
+  "Attack Shark X68 Pro HE and Gamakay TK75HE V2 manuals on manuals.plus (per-mode polling, whether the web driver needs the USB cable, onboard storage of rapid trigger settings): the PDFs downloaded but the text was compressed, and the local extraction commands were not permitted.",
+  "Whether Gamakay's web driver can change rapid trigger settings over 2.4 GHz or only over the cable: no readable maker page or manual.",
+  "A named reviewer's measured latency by connection mode on a Hall effect board (looked for RTINGS on the Keychron K2 HE): the page returned navigation only.",
+  "Keychron's own per-mode polling statement for the K2 HE and today's price: keychron.com returned HTTP 429.",
+  "The Bluetooth specification's minimum connection interval, to explain the low Bluetooth report rate from the standard itself: not reached within the call budget.",
+  "An independent explainer of the Hall sensor mechanism (RTINGS 'What Is A Hall Effect Keyboard?', TechPowerUp's TK75HE review): RTINGS returned navigation only, TechPowerUp returned 403."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.4705852
+ }
+}
