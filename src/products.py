@@ -8890,6 +8890,22 @@ PRODUCTS = [
  "fit": "Shoppers who want radar-wake parking for less money than Thinkware's built-in-radar cameras, and who can accept a 1080p rear camera.",
  "caveats": ["The rear camera is 1080p. Thinkware's U3000 series records the rear at 2560×1440.", "One DashCamTalk owner (thatbwnguy, 2024-12-04) reported that with the OBD kit in a 2019 Mazda CX-9 the camera shut down about 15 minutes after parking. DDPAI's forum reply recommended wiring to the fuse box.", 'The radar is a separate module mounted next to the camera, not built into the camera body.']},
 
+{"slug": 'mobile-pixels-duex-plus-ds',
+ "brand": 'Mobile Pixels',
+ "program": 'cj:mobilepixels',
+ "category": 'portable-monitor',
+ "name": 'Mobile Pixels Duex Plus DS Attachable Laptop Monitor, 13.3"',
+ "model": 'Duex Plus DS',
+ "url": 'https://www.mobilepixels.us/products/duex-ds-series',
+ "price": 183.99,
+ "verified": '2026-11-21',
+ "specs": [('Screen', '13.3-inch (the smaller of the two Duex DS sizes; the Duex Max DS is 14.1-inch)'), ('Connection', "USB-C and Mini HDMI inputs, 'without the need for drivers or software' (Mobile Pixels)"), ('Layout', 'Magnetic, slides out from behind the laptop lid; landscape, portrait, kickstand and presentation modes; G-sensor auto-rotation (Mobile Pixels)'), ('Build', 'PC-ABS plastic and aluminum alloy (Mobile Pixels)')],
+ "warranty": "2 years (Mobile Pixels' limited warranty, for purchases from March 2025); extended plans sold separately",
+ "returns": '30 days from delivery, original condition and packaging; a $15 return label is deducted from the refund (or ship it yourself); final-sale items excluded; free US shipping',
+ "summary": 'A single 13.3-inch slide-out screen that runs without a driver. On a base M1, M2 or M3 MacBook Air with the lid open, that one screen is all the laptop can extend to.',
+ "fit": "Many 13- to 14-inch laptops (iTechGuides' guidance)",
+ "caveats": ["The store price is the Duex DS Series listing's from-price, read 2026-11-21. The Duex Max DS option was $215.99 the same day, so $183.99 is the 13.3-inch Duex Plus DS.", 'The only named brightness measurement is of the original Duex Plus, not the DS revision: 152 nits and 68% sRGB (Parkablogs, 2022).', "Mobile Pixels' prices change with timed sales."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
