@@ -8696,6 +8696,38 @@ PRODUCTS = [
  "fit": 'Shoppers who want a front-and-rear set under $150 that records out of the box, with a memory card included.',
  "caveats": ['Android Authority (Bogdan Petrovan, 2024-12-24) found the front camera records 4K at 25 fps by default, with 60 fps only at 1080p.', "The unit Android Authority reviewed in 2024 had a 1080p rear camera; Botslab's current listing says 2K rear.", 'The hardwire kit for parking mode is sold separately.']},
 
+{"slug": 'vantrue-s1-pro-max-4k-4k',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue S1 Pro Max 4K + 4K 2-Channel Dash Cam, Sony STARVIS 2 IMX678 front and rear',
+ "model": 'S1 Pro Max 4K + 4K',
+ "url": 'https://www.vantrue.com/products/s1-pro-max-4k-4k',
+ "price": 239.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2: front (road ahead) + rear (road behind)'), ('Front camera', '3840 × 2160 at 30 fps, Sony STARVIS 2 IMX678 (DashCamTalk)'), ('Rear camera', '3840 × 2160 at 30 fps, Sony STARVIS 2 IMX678, RC11 rear camera (DashCamTalk; EricSan)'), ('Measured with both recording', '30 fps on each camera, 23.8 Mb/s each; front 31.9 Mb/s after a late-2025 firmware (EricSan, DashCamTalk forum)'), ('Codec', 'H.265 (DashCamTalk)'), ('Storage', 'microSD, 32 GB to 1 TB (Vantrue)'), ('Backup power', 'Capacitor (DashCamTalk)'), ('GPS', 'Yes (DashCamTalk)'), ('Parking mode', 'Needs a hardwire kit, sold separately (DashCamTalk)'), ('Rear cable', '6 m / 20 ft front-to-rear (EricSan)'), ('Operating temperature', '-20 to 70 °C (DashCamTalk)'), ('Store listing', 'Variant 51200752189749, list price $399.99, in stock on 2026-11-21')],
+ "warranty": "12 months, plus 6 months free when the camera is registered on Vantrue's site (vantrue.com/pages/warranty, read 2026-11-21)",
+ "returns": "30 days from receipt; return shipping is at the buyer's expense (vantrue.com refund policy, read 2026-11-21)",
+ "summary": 'A 2-channel kit with an 8 MP Sony IMX678 at each end. EricSan measured 3840 × 2160 at 30 fps on both cameras together, 23.8 Mb/s each, on the DashCamTalk forum.',
+ "fit": 'Drivers who want 3840 × 2160 from the rear camera as well as the front, and will add their own microSD card.',
+ "caveats": ['The 4K rear stream carries about 24 Mb/s, close to what a 2K rear gets on the VIOFO A229 Pro (25 Mbps per DashCamTalk), so it has fewer bits per pixel.', "DashCamTalk's spec table lists no HDR on the rear camera; TonyM's July 2025 review says the rear supports HDR but not PlatePix.", 'Parking modes need a hardwire kit that is sold separately.', "EricSan measured 54 °C on the rear camera's back panel in a 22 °C room."]},
+
+{"slug": 'vantrue-s1-pro-max-4k-2-5k',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue S1 Pro Max 4K + 2.5K 2-Channel Dash Cam, Sony STARVIS 2 IMX678 front',
+ "model": 'S1 Pro Max 4K + 2.5K',
+ "url": 'https://www.vantrue.com/products/s1-pro-max-4k-2-5k',
+ "price": 199.99,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2: front (road ahead) + rear (road behind)'), ('Front camera', '3840 × 2160 at 30 fps, Sony STARVIS 2 IMX678 (DashCamTalk)'), ('Rear camera', "2.5K by Vantrue's variant name; the RC09 2.5K rear camera is the one named in the manual (EricSan)"), ('Measured, front alone', '30 fps, 23.8 Mb/s, 31.9 Mb/s after a late-2025 firmware (EricSan, DashCamTalk forum)'), ('Storage', 'microSD, 32 GB to 1 TB (Vantrue)'), ('Backup power', 'Capacitor (DashCamTalk)'), ('GPS', 'Yes (DashCamTalk)'), ('Parking mode', 'Needs a hardwire kit, sold separately (DashCamTalk)'), ('Store listing', 'Variant 51187905462581, list price $299.99, in stock on 2026-11-21')],
+ "warranty": "12 months, plus 6 months free when the camera is registered on Vantrue's site (vantrue.com/pages/warranty, read 2026-11-21)",
+ "returns": "30 days from receipt; return shipping is at the buyer's expense (vantrue.com refund policy, read 2026-11-21)",
+ "summary": "The same S1 Pro Max front camera as the 4K + 4K kit, sold with Vantrue's 2.5K rear camera at a lower price.",
+ "fit": 'Drivers who want the S1 Pro Max front camera and accept a rear camera below 4K.',
+ "caveats": ['The rear camera is 2.5K, so this kit records 4K on the front channel only.', 'Parking modes need a hardwire kit that is sold separately.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
