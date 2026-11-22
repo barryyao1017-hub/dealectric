@@ -1,0 +1,126 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states how much battery energy the parking mode that keeps pre-impact footage uses compared with impact-only standby. VIOFO rates the A329S's impact-only Low Power Impact mode at 0.24 W (5.8 Wh a day), but that mode only starts recording within 2 seconds after an impact. Vortex Radar measured buffered parking recording at 300–600 mA, which is 15–30 times VIOFO's 20 mA rating at 12 V. So a buffered setup has to be sized in hours, not days.",
+ "standout": 2,
+ "standout_why": "I compared against milewitness.com (cited) and productbible.com (rank 1), plus Vortex Radar's own DashCamTalk test thread. Milewitness gives the A329S impact-mode figure ('under 40 mA at 12.6V') and VIOFO's BP100 rating ('up to 32 hours at 3 W'), and its summary confirms it states 'no power draw in watts, Wh per day, parked runtime in hours for the camera itself'. Product Bible rates the modes only as 'Highest / Medium / Low' and gives no watts for any pick. Neither page sets buffered draw against impact-only draw, gives a per-day energy figure, or works out runtime from those figures. I could not open the cited vortexradar.com/best-dashcams page (HTTP 403) or Car and Driver (I ran out of tool calls), so I can't rule out that they cover it.",
+ "decides": "This confirms ChatGPT's framing and sharpens it. The impact-only low-power modes that stretch parking over days (the A329S's 0.24 W mode, the N4 Pro S 'Power Savings' mode) record after the hit: VIOFO says within 2 seconds, and one N4 Pro S owner reports 7–8 seconds. A driver who taps a bumper and leaves can be gone by then. For hit-and-runs the pick should be a camera running buffered or radar-triggered recording (Thinkware U3000 Pro radar: 7 s before and 13 s after; Vantrue N4 Pro S motion: 10 s before and 30 s after, per Milewitness). The shopper should budget a battery pack or a hardwire cutoff that allows about 13–25 hours of buffered recording per charge, not a week. I couldn't source the parking draw of our linked cameras (Vantrue N5S, N4 Pro S, DDPAI Z90 Pro, N5 Pro, Botslab G980H), so this angle alone doesn't move the pick toward or away from them.",
+ "candidates": [
+  "Thinkware U3000 Pro",
+  "VIOFO A329S 2CH",
+  "VIOFO A229 Pro",
+  "VIOFO A229 Plus",
+  "Vantrue Nexus 5S",
+  "Vantrue Nexus 4 Pro S",
+  "DDPAI Z90 Pro",
+  "DDPAI N5 Pro",
+  "Botslab G980H 4-Camera"
+ ],
+ "findings": [
+  {
+   "product": "VIOFO A329S",
+   "label": "Low Power Impact mode standby draw (maker figure)",
+   "value": "0.24 W (20 mA at 12 V)",
+   "source": "https://www.viofo.com/blogs/viofo-car-dash-camera-guide-faq-and-news/highlights-of-the-a329s-series-what-are-low-power-impact-mode-hybrid-parking-mode",
+   "source_title": "Highlights of the A329S Series: What Are Low Power Impact Mode & Hybrid Parking Mode? (VIOFO, 2025-12-24)",
+   "read": "2026-11-21",
+   "note": "VIOFO quotes it as 'minimum: 0.24W/20mA power consumption at 12V'. Needs the HK4 or HK6 hardwire kit; a voltage cutoff needs the HK6."
+  },
+  {
+   "product": "VIOFO A329S",
+   "label": "Energy per day in Low Power Impact mode (derived)",
+   "value": "5.8 Wh per 24 h",
+   "source": "https://www.viofo.com/blogs/viofo-car-dash-camera-guide-faq-and-news/highlights-of-the-a329s-series-what-are-low-power-impact-mode-hybrid-parking-mode",
+   "source_title": "Highlights of the A329S Series (VIOFO)",
+   "read": "2026-11-21",
+   "note": "0.24 W × 24 h = 5.76 Wh. Uses the maker's minimum standby figure; each impact clip adds energy on top."
+  },
+  {
+   "product": "VIOFO A329S",
+   "label": "Wake-to-record time in Low Power Impact mode",
+   "value": "within 2 s after the impact",
+   "source": "https://www.viofo.com/blogs/viofo-car-dash-camera-guide-faq-and-news/highlights-of-the-a329s-series-what-are-low-power-impact-mode-hybrid-parking-mode",
+   "source_title": "Highlights of the A329S Series (VIOFO)",
+   "read": "2026-11-21",
+   "note": "VIOFO describes recording starting after the impact is detected and does not say the clip includes footage from before it. Hybrid mode starts with normal parking recording, then drops to this mode at a set time or voltage."
+  },
+  {
+   "product": "general",
+   "label": "Buffered parking recording current, five cameras (Vortex Radar measurement)",
+   "value": "300–600 mA",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk thread by Vortex Radar, 2025-09-29)",
+   "read": "2026-11-21",
+   "note": "Vortex Radar logged average current on a Fluke 117 for the VIOFO A329S, Vueroid S1-4K Infinite, Thinkware U3000 (not the Pro), BlackVue Elite 8 and Vantrue N4 Pro S, and wrote that traditional parking recording is 'in the 300 - 600 mA range'. The thread doesn't state the voltage. Per-model values are in chart images I couldn't read."
+  },
+  {
+   "product": "general",
+   "label": "Buffered parking draw compared with A329S impact-only standby (derived)",
+   "value": "15× to 30× the current",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778",
+   "source_title": "Testing Low Power Parking Modes (Vortex Radar) + VIOFO A329S blog",
+   "read": "2026-11-21",
+   "note": "300 mA ÷ 20 mA = 15; 600 mA ÷ 20 mA = 30. This assumes Vortex Radar measured at the 12 V input, as VIOFO's 20 mA figure is; the thread doesn't state the voltage."
+  },
+  {
+   "product": "general",
+   "label": "Hours of buffered parking recording on a 96 Wh dash cam battery pack (derived)",
+   "value": "about 12.7–25.4 h",
+   "source": "https://milewitness.com/best-dash-cam-for-parking-mode/",
+   "source_title": "Best Dash Cam for Parking Mode: 5 Picks Compared (2026), Mile Witness",
+   "read": "2026-11-21",
+   "note": "96 Wh comes from Milewitness quoting VIOFO's BP100 rating, 'up to 32' h at 3 W: 3 W × 32 h = 96 Wh. Load: 0.3 A × 12.6 V = 3.78 W → 96 / 3.78 = 25.4 h; 0.6 A × 12.6 V = 7.56 W → 96 / 7.56 = 12.7 h. The 12.6 V figure is my assumption (Milewitness's resting voltage for a healthy battery). The 300–600 mA range is from Vortex Radar's thread. For comparison, Milewitness quotes VIOFO's table at 14 h 39 min for a three-channel A329S on the BP100."
+  },
+  {
+   "product": "VIOFO A329S",
+   "label": "Low-power parking runtime on a 96 Wh pack (Vortex Radar) and the average draw it implies (derived)",
+   "value": "over a week, so under 0.57 W on average",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778",
+   "source_title": "Testing Low Power Parking Modes (Vortex Radar)",
+   "read": "2026-11-21",
+   "note": "Vortex Radar: 'over a week of parking recording on a traditional 96 Wh battery pack'. 96 Wh ÷ 168 h = 0.57 W upper bound. This is the highest low-power draw of the five cameras he tested."
+  },
+  {
+   "product": "Vantrue Nexus 4 Pro S",
+   "label": "Low-power (collision) parking draw compared with the A329S (Vortex Radar)",
+   "value": "less than half the A329S's low-power draw",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778",
+   "source_title": "Testing Low Power Parking Modes (Vortex Radar)",
+   "read": "2026-11-21",
+   "note": "Vortex Radar's words. Applied to VIOFO's 20 mA rating, that is under 10 mA at 12 V (under 0.12 W, under 2.9 Wh a day): 20 ÷ 2 = 10 mA; 0.12 W × 24 h = 2.9 Wh. In the same thread an owner, jsmith, reports the Power Savings mode takes 'like 7-8 seconds' to wake."
+  },
+  {
+   "product": "Vantrue Nexus 4 Pro S",
+   "label": "Motion-detection parking clip, before and after the trigger",
+   "value": "10 s before, 30 s after",
+   "source": "https://milewitness.com/best-dash-cam-for-parking-mode/",
+   "source_title": "Best Dash Cam for Parking Mode: 5 Picks Compared (2026), Mile Witness",
+   "read": "2026-11-21",
+   "note": "Milewitness also gives a monitoring duration of 'No limit to 96 hours' and a kit cutoff of 11.6–12.5 V."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Radar parking clip, before and after the impact",
+   "value": "7 s before, 13 s after (20 s clip)",
+   "source": "https://milewitness.com/best-dash-cam-for-parking-mode/",
+   "source_title": "Best Dash Cam for Parking Mode: 5 Picks Compared (2026), Mile Witness",
+   "read": "2026-11-21",
+   "note": "Radar range 1–5 m (3–16 ft) for movement under 20 km/h (12 mph). Milewitness gives only '10% lower power consumption' than the U3000, with no absolute figure, so I couldn't compute a Wh figure."
+  }
+ ],
+ "unsourced": [
+  "Thinkware U3000 Pro parking-mode power in W or mA: thinkware.com/u3000pro redirects to thinkwarestore.com/us, which I didn't fetch; the dashcamtalk spec page has no figure; the English manual PDF came back as binary and my tools couldn't extract its text. I saw a 3.65 W rating only in a B&H search snippet and didn't use it.",
+  "Vantrue Nexus 5S parking-mode draw: vantrue.com returned HTTP 429 twice. The Notebookcheck review (Stephen Pereyra, published 2025-09-11) gives no draw figure. DashCamTalk's N5S power table exists only as an image.",
+  "DDPAI Z90 Pro and N5 Pro parking-mode draw and pre-record seconds: store.ddpai.com returned HTTP 429.",
+  "Botslab G980H 4-camera parking-mode draw and buffer: I didn't reach the maker page within the call budget.",
+  "VIOFO BP100 runtime table per model (A329S 2CH, A229 Pro, A229 Plus) and today's BP100 price: viofo.com product page returned HTTP 429 twice; VIOFO's BP100 blog post gives only 'up to 32 hours' and 'approximately 96 hours' with the EP100.",
+  "VIOFO A229 Pro and A229 Plus parking-mode draw: not reached within the call budget.",
+  "The voltage at which Vortex Radar measured 300–600 mA: not stated in the thread, so the watt and hour figures derived from it assume 12.6 V.",
+  "Today's (2026-11-21) prices for any rival or for our rows: none read in this angle."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.3960868000000002
+ }
+}

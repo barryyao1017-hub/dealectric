@@ -8906,6 +8906,23 @@ PRODUCTS = [
  "fit": "Many 13- to 14-inch laptops (iTechGuides' guidance)",
  "caveats": ["The store price is the Duex DS Series listing's from-price, read 2026-11-21. The Duex Max DS option was $215.99 the same day, so $183.99 is the 13.3-inch Duex Plus DS.", 'The only named brightness measurement is of the original Duex Plus, not the DS revision: 152 nits and 68% sRGB (Parkablogs, 2022).', "Mobile Pixels' prices change with timed sales."]},
 
+{"slug": 'thinkware-u3000-pro-2ch',
+ "brand": 'THINKWARE',
+ "program": 'amazon:us',
+ "asin": 'B0FP137YT4',
+ "category": 'dash-cam',
+ "name": 'THINKWARE U3000 PRO Dash Cam, 4K front + 2K rear, built-in Dual Radar parking mode',
+ "model": 'U3000 PRO (Front & Rear, 2-channel)',
+ "url": 'https://www.amazon.com/dp/B0FP137YT4',
+ "price": None,
+ "verified": '2026-11-21',
+ "specs": [('Channels', '2: front (road ahead) + rear (road behind)'), ('Front camera', '3840 × 2160 at 30 fps, or 2560 × 1440 at 60 fps'), ('Rear camera', '2560 × 1440 at 30 fps'), ('Parking modes', 'Dual Radar, Motion & Impact (20 s clip: 10 s before + 10 s after), Time-lapse at 2 fps, Energy Saving (impact only), Smart Parking'), ('Radar parking draw', '7 mA at about 12.5 V, 2-channel (SafeDriveSolutions measurement)'), ('Power for parking', "OBD-II power cable in Thinkware's US box list; hardwiring cable sold separately"), ('Heat', 'Supercapacitor with thermal sensors'), ('GPS', 'Built in'), ('Storage', "microSD up to 512 GB; 64 GB card in Thinkware's US box list")],
+ "warranty": "Thinkware's 3-year PRO Series warranty applies only when bought from an authorized dealer and professionally installed (The Dash Cam Store, 2026-08-03). Confirm the term with the Amazon seller.",
+ "returns": 'Set by the Amazon seller on the listing',
+ "summary": "A 2-channel dash cam with radar built in. In radar parking mode it saves a 20 s clip that includes footage from before the event, and it drew 7 mA in SafeDriveSolutions' 2-channel measurement.",
+ "fit": 'Cars left parked all day or overnight where the worry is a bumper hit at the front or rear.',
+ "caveats": ['It has no side cameras, so a door ding outside the front and rear views can be missed.', 'Smart Parking switches to impact-only recording when the cabin gets too hot. Thinkware states no before-impact footage for that mode.', "Thinkware's US box list has the OBD-II cable but no hardwiring cable.", 'Mile Witness gives the radar range as 3 to 16 ft, for movement under 12 mph.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

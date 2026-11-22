@@ -1,0 +1,125 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that named DashCamTalk testers measured a 5 to 13 second gap between an impact and the first recorded frame in Vantrue's low-power collision parking modes, with nothing captured during that gap. Vortex Radar measured 6.8 s on the N4 Pro S in Quick Start, jsmith about 8 s in Power Savings, and rcg530 11 s on the N5. On the Thinkware U3000 and U3000 Pro, radar parking drew 7 to 16 mA.",
+ "standout": 2,
+ "standout_why": "I compared against milewitness.com (cited; updated 2026-11-21), productbible.com (rank 1; 2026-11-19) and roadgearlab.com (rank 3/6; 2026-11-19). All three say they did not test the cameras and give maker figures only. Milewitness says outright that 'no pick gives a measured mA or W draw for radar mode'. Productbible says low-power impact modes give 'no pre-event footage', but it gives no delay in seconds. Roadgearlab's only delay figure is BlackVue's manual claim of 2 s, plus an unsourced line that non-buffered cameras start '1-2 seconds later'. None gives a measured wake time or a measured draw for any candidate. I could not open the other two cited pages: vortexradar.com/best-dashcams returned HTTP 403 and caranddriver.com was blocked, so I can't rule out that they mention this. Vortex Radar is the same person who ran the DashCamTalk wake-time test.",
+ "decides": "It confirms ChatGPT's first pick for cars parked many hours. The Thinkware U3000 Pro's radar mode drew 7 mA (U3000 Pro) to 16 mA (original U3000) in retailer bench tests. That is close to the 9 to 16 mA that impact-only low-power modes drew, and radar triggers on an approaching car, not after the hit. It changes how our Vantrue rows can be pitched. In their low-power collision modes, testers measured 5 to 13 s before the first frame and saw nothing captured in the gap, so a car that taps and drives off can be gone before recording starts. The Vantrue N5S and N4 Pro S fit this question only in buffered motion-detection mode: the maker claims 10 s before and 30 s after. rcg530 measured that mode on the older N5 at 9.89 W while waiting, about 785 mA at 12.6 V, which needs a hardwire kit with voltage cutoff or a battery pack and suits short parks. That leaves the N5S honestly winning the segment of side and cabin coverage for shorter stays. The VIOFO A329S sits in between: rcg530 reported its low-power impact response at under 2 s on test firmware, and Vortex Radar put its low-power draw as the highest of the group but still over a week on a 96 Wh pack.",
+ "candidates": [
+  "Thinkware U3000 Pro",
+  "VIOFO A329S",
+  "VIOFO A229 Pro",
+  "VIOFO A229 Plus",
+  "Vantrue Nexus 5S (N5S)",
+  "Vantrue Nexus 4 Pro S (N4 Pro S)",
+  "DDPAI Z90 Pro",
+  "Botslab G980H 4-camera"
+ ],
+ "findings": [
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Time from impact to first recorded frame, Quick Start low-power parking mode",
+   "value": "6.8 s",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778/page-2",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk), page 2, posts #35 and #39 by Vortex Radar",
+   "read": "2026-11-21",
+   "note": "Measured by Vortex Radar and posted Sep 30, 2025, after reinstalling and retesting the N4 Pro S. Post #39 says it is timed from the impact to the start of recording. In post #30 Vortex Radar wrote that most cameras in the test woke in 'on the order of 1-2 sec', with BlackVue fastest and Vueroid next, and called the Vantrue 'painfully and unusably slow'. The per-camera numbers are in a chart image I could not read."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Wake-up time, Power Savings and Quick modes; footage during the gap",
+   "value": "about 8 s (Power Savings); about 5-6 s (Quick Mode); nothing captured during the gap",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778/page-2",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk), page 2, post #29 by jsmith",
+   "read": "2026-11-21",
+   "note": "Owner test by DashCamTalk member jsmith, Sep 30, 2025: 'I tapped the camera and waved at camera in the \"gap\" and nothing got captured.' He said he couldn't recommend the mode because it might miss events."
+  },
+  {
+   "product": "Vantrue N4 Pro S",
+   "label": "Current draw, Collision Detection with Power Savings",
+   "value": "15 mA",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778/",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk), page 1, jsmith",
+   "read": "2026-11-21",
+   "note": "Owner reading by jsmith. The post gives no voltage or meter. On the same page, Vortex Radar (Fluke 117 in line) wrote that the N4 Pro S drew 'less than half' the VIOFO A329S's low-power draw. Vortex Radar's exact figures are in a chart image."
+  },
+  {
+   "product": "Vantrue N4 Pro (older 3-channel, not the S)",
+   "label": "Impact to first recorded frame, and draw, per low-power mode",
+   "value": "Power Saving: 13 s at 16 mA @ 12.6 V (0.20 W); Quick Start: just over 5 s at 124 mA @ 12.6 V (1.56 W)",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778/page-2",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk), page 2, post #40 by rcg530",
+   "read": "2026-11-21",
+   "note": "From rcg530's power spreadsheet for the 'older N4 Pro 3CH', posted Sep 30, 2025. This is an earlier model than the N4 Pro S we list. I include it to show the same pattern: the lower-draw mode wakes more slowly."
+  },
+  {
+   "product": "Vantrue N5 (predecessor of the N5S)",
+   "label": "Collision-detection parking: draw, delay to recording, pre-impact footage",
+   "value": "15 mA @ 12.6 V (0.19 W); 11 s from impact to recording; no footage before the impact",
+   "source": "https://dashcamtalk.com/forum/goto/post?id=594326",
+   "source_title": "Vantrue N5 - 4CH Dash Camera Test & Review - RCG (DashCamTalk)",
+   "read": "2026-11-21",
+   "note": "rcg530, 4-channel test from about May 2023: the 60 s clip covers '11 seconds to 71 seconds after the impact event'. This is the N5, not the N5S we link. I found no readable N5S figure."
+  },
+  {
+   "product": "Vantrue N5 (predecessor of the N5S)",
+   "label": "Buffered motion-detection parking draw",
+   "value": "9.89 W waiting; 10.27 W recording",
+   "source": "https://dashcamtalk.com/forum/goto/post?id=594326",
+   "source_title": "Vantrue N5 - 4CH Dash Camera Test & Review - RCG (DashCamTalk)",
+   "read": "2026-11-21",
+   "note": "Measured by rcg530, May 19, 2023. Our arithmetic: 9.89 W ÷ 12.6 V ≈ 785 mA. In the same thread, Vantrue's rep (Jeff_Vantrue) said the mode keeps 10 s before and 30 s after an event."
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "label": "Parking-mode current draw, 2-channel, about 12.5 V",
+   "value": "Radar 7 mA; energy saving 3 mA; time-lapse 245 mA; motion detection 270 mA",
+   "source": "https://safedrivesolutions.com/blogs/resources/thinkware-u3000-pro-vs-vueroid-s1-4k-comparison",
+   "source_title": "U3000 Pro vs Vueroid S1 4K — Practical 4K Dashcam Comparison for Buyers (SafeDriveSolutions)",
+   "read": "2026-11-21",
+   "note": "Article dated Nov 26, 2025, under 'Power draw while parked (real-world measurements)', front + rear. SafeDriveSolutions is a dash cam retailer and the page does not describe its equipment. Only the motion-detection line names the 'U3000 Pro'; I read the other lines as Pro figures from the article's context."
+  },
+  {
+   "product": "Thinkware U3000 (original)",
+   "label": "Parking-mode current draw, bench supply at 13.8 V, front + rear",
+   "value": "Radar 16 mA; energy saving 9 mA; motion detection 260-270 mA; time-lapse 230-250 mA; continuous 395-400 mA",
+   "source": "https://dashcamtalk.com/forum/threads/u3000-current-draw.49069/",
+   "source_title": "U3000 Current Draw (DashCamTalk)",
+   "read": "2026-11-21",
+   "note": "SafeDriveSolutions ('Ben'), Jun 7, 2023, on a production U3000. Snap-on EEDM525ECF meter and Pyramid PSV 150 supply regulated at 13.8 V. On Feb 22, 2025, owner HUMMER_EV read 82 mA in radar mode from the iVolt Extra app, so readings vary with the setup. Not the Pro."
+  },
+  {
+   "product": "VIOFO A329S",
+   "label": "Low Power Impact Detection response time after an impact",
+   "value": "under 2 s",
+   "source": "https://dashcamtalk.com/forum/threads/viofo-a329s-testing-review-rcg.53058/post-642956",
+   "source_title": "VIOFO A329S - Testing/Review - RCG (DashCamTalk)",
+   "read": "2026-11-21",
+   "note": "rcg530, Jun 6, 2025 (post #215), on test firmware v1.0_250510: it 'improved the LPID response times to under 2 seconds after an impact event'. That is a response time, not a stated first-frame measurement. His per-mode power figures (Fluke 117, HK4 kit fed 12.6 V, 3-channel) are in chart images I could not read."
+  },
+  {
+   "product": "VIOFO A329S",
+   "label": "Low-power parking draw relative to rivals, and runtime on a 96 Wh pack",
+   "value": "highest low-power draw of the 5 tested; over a week on a 96 Wh pack (implies at most about 0.57 W, about 45 mA at 12.6 V)",
+   "source": "https://dashcamtalk.com/forum/threads/testing-low-power-parking-modes.55778/",
+   "source_title": "Testing Low Power Parking Modes (DashCamTalk), page 1, Vortex Radar",
+   "read": "2026-11-21",
+   "note": "Vortex Radar, Sep 29, 2025, Fluke 117 in line, 3-channel A329S. The implied ceiling is our arithmetic: 96 Wh ÷ 168 h = 0.571 W, and 0.571 W ÷ 12.6 V ≈ 45 mA."
+  }
+ ],
+ "unsourced": [
+  "Vantrue N5S measured parking draw and wake-up time: EricSan's power table in DashCamTalk's 'Reviewing and Testing the Vantrue Nexus 5S' (Jun 27, 2026) is image-only. Notebookcheck's N5S review (Stephen Pereyra, updated 2026-10-05) gives no parking figures.",
+  "Thinkware U3000 Pro radar latency in seconds: no named test gives one. Thinkware's own example split of a 20 s radar clip is an illustration, not a measurement.",
+  "Per-camera wake times and mA for the A329S, U3000, Vueroid S1 and BlackVue Elite 8 from Vortex Radar's Sep 2025 test: chart images only. The text gives rankings, not numbers.",
+  "DDPAI Z90 Pro parking-mode draw or wake time: I searched DashCamTalk, Root Nation and TechRadar and found only a Z90 Master time-lapse range (200-450 mA) with no method.",
+  "Botslab G980H 4-camera parking draw or wake time by a named reviewer: searched, none found.",
+  "VIOFO A229 Pro / A229 Plus measured parking draw: not reached within the tool budget. Roadgearlab gives only VIOFO's claimed watts.",
+  "Night plate-read distance for any candidate from a named lab: not found within budget.",
+  "The cited vortexradar.com/best-dashcams page (HTTP 403) and caranddriver.com page (fetch blocked) could not be opened, so I could not check whether they state these figures."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.4162000000000001
+ }
+}
