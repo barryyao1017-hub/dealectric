@@ -1,0 +1,66 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Trio 3 Pro runs both added screens from a laptop's single USB-C port only after you install Mobile Pixels' free driver software, while a charger plugged into the Trio's own USB-C port passes up to 65 W back to the laptop, so a laptop with one USB-C port can charge and drive two added screens through that one port.",
+ "standout": 2,
+ "standout_why": "I compared four pages. itechguides.com (2025 picks, cited) repeats Mobile Pixels' listing of 'a single USB-C cable setup, two USB-C ports, 65W pass-through charging' and warns that 'one USB-C cable does not mean one cable will work with every laptop'. It does not say the single-cable setup needs a driver, and it does not link pass-through to laptops with only one USB-C port. It covers only part of this. theofficejournal.com (USB-C extenders, 2026-07-31) gives no cable count for any product, never mentions pass-through, DisplayLink or MacBook limits, and does not cover one-port laptops. Both of ChatGPT's answers stop at 'verify single-port operation with your specific laptop'. I could not open the cited mobilepixels.us/products/trio page: it returned HTTP 429 on every attempt on 2026-11-21.",
+ "decides": "For a laptop with one USB-C port, this confirms the Trio 3 Pro (ours) is the two-added-screen pick that keeps the laptop charging. It does this on one cable only with Mobile Pixels' driver installed, and the driver is also what lets a base M1 or M2 MacBook run both screens. Without the driver, Macworld and the maker's own listing say it needs a cable per screen, so a one-port laptop would not get two screens driver-free. For one added screen, the Duex Max DS (ours) stays the simpler no-driver pick on a DP Alt Mode port. I could not source today whether it passes power through to the laptop, so the page must not claim it does.",
+ "candidates": [
+  "Mobile Pixels Trio 3 Pro",
+  "Mobile Pixels Duex Max DS",
+  "Mobile Pixels Duex Float 2 Pro",
+  "FOPO S7 Dual 14-inch",
+  "FOPO S1 Dual 14-inch",
+  "Aura Displays Dual Boost 14-inch",
+  "UPERFECT 14-inch Dual Laptop Screen Extender"
+ ],
+ "findings": [
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Two screens over one USB-C cable: video path",
+   "value": "Driver required. 'you need to install the software so that your can run both screens from the single cable connection'. The screens ship with 'the included two USB-C cables'.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-21",
+   "note": "Quotes from Macworld's review, reviewed on a 14-inch MacBook Pro. Macworld calls the software 'free software (rather like DisplayLink)' and does not name it. This matches our existing record: one cable per screen driver-free on a laptop with two video-capable USB-C ports, one cable for both screens only with the driver. So a laptop with one USB-C port gets both screens only through the driver."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Base M1/M2 MacBook limit",
+   "value": "Plain M1 and M2 Macs (and the MacBook Neo) are 'limited to connecting just a single monitor' and must install the free software to run both Trio screens.",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-21",
+   "note": "Macworld also writes that 'A MacBook with anything as or more powerful than a standard M1/M2/M3 processor can set up the Trio's two screens' without the software. That sentence is ambiguous about the base M3, so the page should not use it to cover the base M3."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Pass-through charging to the laptop",
+   "value": "Up to 65 W: 'attach a power adapter to one of the Trio's USB-C ports. That will also passthrough up to 65W of power to your laptop.'",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-21",
+   "note": "Macworld does not say which of the Trio's ports takes the adapter. Without an adapter the Trio 'takes power from the MacBook', and Macworld says the screens 'can't draw enough power from the connected laptop to allow for maximum screen brightness'. A laptop that needs more than 65 W will charge slower or drain under load. That is my inference from the 65 W cap, not a Macworld measurement."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "Laptop fit (Macworld)",
+   "value": "'compatible with 13-inch to 16-inch MacBooks'",
+   "source": "https://www.macworld.com/article/3085818/mobile-pixels-trio-3-pro-review.html",
+   "source_title": "Mobile Pixels Trio 3 Pro review (Macworld, Simon Jary, 2026-04-02)",
+   "read": "2026-11-21",
+   "note": "This is Macworld's range. Our record holds Mobile Pixels' own range as 15–16-inch laptops, so the page should name whose range it quotes."
+  }
+ ],
+ "unsourced": [
+  "Duex Max DS: whether it passes charger power through to the laptop, so a one-port laptop can charge while the screen uses its only USB-C port, and the screen's port list. mobilepixels.us/products/duex-max-ds returned HTTP 429 on three tries and on storecheck.py. The maker's PDF manual (cdn.shopify.com/.../English_002-MP-Duex_Max_DS_23_Manual-v2_1_-OK.pdf) downloaded, but WebFetch could not read its text and running a local PDF text extractor needed permission. I also searched for a B&H spec page and found none.",
+  "FOPO S7 and FOPO S1: how many USB-C cables or ports both screens need, whether one video-capable USB-C port can run both screens driver-free, and whether either has pass-through charging. fopomonitor.com returned HTTP 429 on WebFetch (www and bare domain) and on storecheck.py.",
+  "Trio 3 Pro: the maker's own wording on the single-cable driver and 65 W pass-through, and the name of the driver. mobilepixels.us/products/trio returned HTTP 429 on every attempt, and manuals.plus (ASIN B0GC6BKVSZ) returned HTTP 403.",
+  "Today's (2026-11-21) prices and stock for the rival Aura Displays Dual Boost 14-inch and UPERFECT 14-inch dual. These were not opened because the tool-call budget ran out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.4328165999999998
+ }
+}
