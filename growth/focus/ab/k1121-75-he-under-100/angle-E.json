@@ -1,0 +1,165 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured latency figure for a wireless 75% magnetic board under $100: HLPlanet's OSLTT readings are 0.60 ms wired / 0.75 ms on 2.4 GHz for the Gamakay TK75 TMR and 0.65 ms wired / 1.01 ms on 2.4 GHz for the Yunzii RT75 Pro, and KitGuru's 240 fps test found the Epomaker HE75 V2 no faster at 8,000 Hz (15.96 ms) than at 1,000 Hz (14.46 ms).",
+ "standout": 2,
+ "standout_why": "Compared against Notebookcheck's HE75 Mag review (cited), keebspicks (cited), HLPlanet's Hall-effect guide, HLPlanet's HE75 Mag review and setupinsider's under-$100 page. Notebookcheck gives no latency in ms, only '1,000 Hz max tested via wireless' for the older HE75 Mag. keebspicks says it does not test and prints brand figures. HLPlanet's guide gives OSLTT figures mostly for boards over $100 and, among the candidates, only 'under 1ms' for the wired-only MCHOSE Jet 75; it has no figure for the Yunzii RT75 Pro, Gamakay NS75, Gamakay TK75HE V2 or Epomaker HE80. HLPlanet's HE75 Mag review and setupinsider derive latency from polling rate. The RT75 Pro and TK75 TMR figures sit on separate HLPlanet review pages and the HE75 V2 figures on KitGuru, none of which were in ChatGPT's results. The cited Tom's Guide and PC Gamer pages and the RTINGS 75% list came back truncated, so they were not compared. ChatGPT's own answers say the polling rates are 'not independently measured latency'.",
+ "decides": "It confirms rather than overturns. On the one named bench that measured both (HLPlanet, OSLTT), the Gamakay TK75 TMR (ours, under $100 through our link today) has the lower 2.4 GHz figure, 0.75 ms against 1.01 ms for the Yunzii RT75 Pro, and a near-equal wired figure, 0.60 against 0.65 ms. That gives the TK75 TMR an honest 'lowest measured wireless latency among the under-$100 boards with a named measurement' segment; it is a TMR-sensor magnetic board, which the page should say. ChatGPT's 'best overall' Epomaker HE75 V2 has no bench latency, only KitGuru's end-to-end camera test, where 8,000 Hz gave no gain and KitGuru's spec list says '1,000Hz recommended'. All gaps are under 1 ms, so the measurements support the pick but should not be sold as decisive. No named measurement was found for the Gamakay NS75, Gamakay TK75HE V2, AULA Hero 75 HE, AULA F75 HE or Epomaker HE80.",
+ "candidates": [
+  "Gamakay TK75 TMR",
+  "Gamakay TK75HE V2",
+  "Gamakay NS75",
+  "Yunzii RT75 Pro",
+  "Epomaker HE75 V2",
+  "Epomaker HE80",
+  "MCHOSE Jet 75",
+  "AULA Hero 75 HE",
+  "AULA F75 HE",
+  "Epomaker HE75 Mag"
+ ],
+ "findings": [
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Single-key latency, HLPlanet (Marcus Richardson), OSLTT",
+   "value": "0.60 ms wired, 0.75 ms on 2.4 GHz",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-05-18. OSLTT (Open Source Latency Testing Tool) times keycap contact to signal receipt by the computer. Number of runs is not stated. No Bluetooth figure. The review lists 8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth, and a price of $119.99 at the time. The page's own path is /gamakay-tk75-tmr-review/."
+  },
+  {
+   "product": "Yunzii RT75 Pro",
+   "label": "Single-key latency, HLPlanet (Marcus Richardson), OSLTT",
+   "value": "0.65 ms wired, 1.01 ms on 2.4 GHz",
+   "source": "https://www.hlplanet.com/?p=6800",
+   "source_title": "Yunzii RT75 PRO Review (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-01-02. Each figure is an average of 10 tests. No Bluetooth figure. The review states 8,000 Hz polling and a 128K scan rate without describing how they were checked. Yunzii's store page claims 0.1 ms wired / 1 ms wireless, so the wired measurement is 0.55 ms above the claim and the 2.4 GHz one matches it. The page's own path is /yunzii-rt75-pro-review/."
+  },
+  {
+   "product": "general",
+   "label": "TK75 TMR against RT75 Pro on the same reviewer's bench",
+   "value": "TK75 TMR is 0.05 ms lower wired and 0.26 ms lower on 2.4 GHz",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Arithmetic: 0.65 - 0.60 = 0.05 ms wired; 1.01 - 0.75 = 0.26 ms on 2.4 GHz. Both HLPlanet OSLTT; the RT75 Pro figures come from https://www.hlplanet.com/?p=6800. The reviews are four months apart, and the run count is given only for the RT75 Pro."
+  },
+  {
+   "product": "Epomaker HE75 V2",
+   "label": "End-to-end click latency, KitGuru (Carlos Ribeiro), 240 fps camera test",
+   "value": "14.46 ms wired and 16.54 ms wireless at 1,000 Hz; 15.96 ms at 8,000 Hz",
+   "source": "https://www.kitguru.net/peripherals/carlosribeiro/epomaker-he75-v2-review/",
+   "source_title": "Epomaker HE75 V2 review (KitGuru)",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-09-09. End-to-end figures include the PC and display, so they cannot be compared with OSLTT single-key figures. 8,000 Hz was 1.50 ms slower than 1,000 Hz wired (15.96 - 14.46). The review does not say whether the 8,000 Hz run was wired or wireless. Its spec list reads 'Up to 8,000Hz (1,000Hz recommended)' and gives connectivity as 2.4 GHz, Bluetooth and USB-C."
+  },
+  {
+   "product": "Epomaker HE75 V2",
+   "label": "Battery and charging, KitGuru",
+   "value": "8,000 mAh (2 x 4,000 mAh); 3 W charging, nearly 24 hours for a full charge; at least 1 week with all lighting on",
+   "source": "https://www.kitguru.net/peripherals/carlosribeiro/epomaker-he75-v2-review/",
+   "source_title": "Epomaker HE75 V2 review (KitGuru)",
+   "read": "2026-11-21",
+   "note": "The reviewer's observation; no test protocol is given."
+  },
+  {
+   "product": "MCHOSE Jet 75",
+   "label": "Latency as HLPlanet states it",
+   "value": "under 1 ms, wired only (no exact figure published)",
+   "source": "https://www.hlplanet.com/mchose-jet-75-review/",
+   "source_title": "Can a $59 Keyboard Beat Wooting 80HE? MCHOSE Jet 75 (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-09-24. The pros list reads '<1ms latency & 8KHz polling rate', with no method or run count. HLPlanet's guide (https://www.hlplanet.com/keyboards-hall-effect-switches/, a result ChatGPT got) repeats 'under 1ms' and says a latency in its tables means it was tested with OSLTT. The review says 'Wired-only, so no Bluetooth or 2.4GHz' and carries an editor's note that the price rose from $59 to $79."
+  },
+  {
+   "product": "Epomaker HE75 Mag",
+   "label": "Wireless polling rate as tested, Notebookcheck (Julian van der Merwe)",
+   "value": "8 kHz advertised wired and 2.4 GHz; 1,000 Hz maximum tested over wireless",
+   "source": "https://www.notebookcheck.net/Great-ideas-too-many-cut-corners-Epomaker-HE75-Mag-wireless-Hall-effect-gaming-keyboard-reviewed.992546.0.html",
+   "source_title": "Great ideas, too many cut corners: Epomaker HE75 Mag wireless Hall-effect gaming keyboard reviewed (Notebookcheck)",
+   "read": "2026-11-21",
+   "note": "A cited rival page. Published 2025-08-04, page shows an update of 2026-10-05. No latency in ms and no measured battery life. Reports 'frequent' repeated inputs on 2.4 GHz and Bluetooth without a count. This is the older HE75 Mag, not the HE75 V2 that ChatGPT picked."
+  },
+  {
+   "product": "Epomaker HE75 Mag",
+   "label": "HLPlanet's latency figures are derived, not measured",
+   "value": "1 ms for USB and 2.4 GHz, 8 ms for Bluetooth, calculated from 1,000 Hz and 125 Hz polling",
+   "source": "https://www.hlplanet.com/epomaker-he75-mag-wireless-keyboard-review/",
+   "source_title": "Epomaker HE75 Mag - $99 Wireless Magnetic Switch Keyboard Review (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "A result ChatGPT got. Dated 2026-06-15. The review says 'Its latency due to the polling rate in perfect conditions would be 1ms for wired and 2.4GHz, and 8ms for Bluetooth'. No OSLTT run."
+  },
+  {
+   "product": "general",
+   "label": "What HLPlanet's Hall-effect guide already states for the candidates",
+   "value": "Measured latency for the MCHOSE Jet 75 only ('under 1ms'); none for the Yunzii RT75 Pro, Gamakay NS75, Gamakay TK75HE V2, Epomaker HE80 or Epomaker HE75 V2 TMR",
+   "source": "https://www.hlplanet.com/keyboards-hall-effect-switches/",
+   "source_title": "Best Keyboards w/ Hall Effect magnetic switches [2026 GUIDE] (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Rank 2 in the first chat's results, dated 2026-10-26. Its measured figures are mostly for boards over $100 (Wooting 80HE 0.42 ms, Womier SK75 TMR 0.5 ms, Nuphy Air75 HE 'below 0.8ms'). Its table lists the Yunzii RT75 Pro at 1,000 Hz polling, which conflicts with HLPlanet's own review (8,000 Hz)."
+  },
+  {
+   "product": "general",
+   "label": "Wired latency of pricier boards on HLPlanet's list, for scale",
+   "value": "Wooting 80HE 0.42 ms ($199.99), Wooting 60HE v2 0.65 ms ($189), Nuphy Field75 HE v2 0.8 ms ($179.95), Nuphy Air75 HE 0.88 ms ($129.95)",
+   "source": "https://www.hlplanet.com/lowest-latency-keyboards/",
+   "source_title": "Lowest latency keyboards (HLPlanet)",
+   "read": "2026-11-21",
+   "note": "Dated 2026-06-08. The table credits 'OSLTT, rtings.com, eyejokerdb.com' as a group without saying which produced each row, so treat it as context, not a like-for-like bench. The page says 2.4 GHz 'will add usually 20-100% more latency'. None of this question's candidates has a row."
+  },
+  {
+   "product": "AULA F75 HE",
+   "label": "Polling by connection as keebspicks lists it (brand figure)",
+   "value": "8,000 Hz wired, 1,000 Hz on 2.4 GHz",
+   "source": "https://keebspicks.net/best-mechanical-keyboards-with-magnetic-switch/",
+   "source_title": "Best Magnetic Switch Keyboards: 13 Hall Effect Picks (keebspicks)",
+   "read": "2026-11-21",
+   "note": "A cited rival page. It says speed claims 'come from each brand' and that the author does not test keyboards; it carries no measured latency. Not checked against AULA's own page in this pass."
+  },
+  {
+   "product": "Yunzii RT75 Pro",
+   "label": "Yunzii US store price",
+   "value": "$79.99, list $94.99, in stock",
+   "source": "https://www.yunzii.com/products/yunzii-rt75-pro-dual-8k-rapid-trigger-wireless-gaming-magnetic-keyboard",
+   "source_title": "YUNZII RT75 PRO Dual-8K Rapid Trigger Wireless Gaming Magnetic Keyboard",
+   "read": "2026-11-21",
+   "note": "storecheck search of yunzii.com. The store text claims 8K polling wired and 2.4 GHz, '0.1ms wired/1ms wireless', and 81 keys."
+  },
+  {
+   "product": "Epomaker HE75 V2",
+   "label": "Epomaker US store price",
+   "value": "$76.49, list $89.99, in stock",
+   "source": "https://epomaker.com/products/epomaker-he75-v2",
+   "source_title": "EPOMAKER HE75 V2",
+   "read": "2026-11-21",
+   "note": "storecheck search of epomaker.com. The store text claims 8K polling, a 128 kHz scan rate and 0.005 mm rapid-trigger steps. The same search showed the HE75 V2 TMR at $109.65 (list $129.00), over the budget."
+  },
+  {
+   "product": "Epomaker HE80",
+   "label": "Epomaker US store price",
+   "value": "$59.49, list $69.99, in stock",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80",
+   "read": "2026-11-21",
+   "note": "storecheck search of epomaker.com. The store text claims 8,000 Hz polling, a 32,000 scan rate, 0.02 mm steps and 0.125 ms latency, 82 keys, wired."
+  }
+ ],
+ "unsourced": [
+  "An RTINGS measurement for any candidate: a search limited to rtings.com returned no review of the Epomaker HE75 V2 or HE75 Mag, AULA F75 HE or Hero 75 HE, Yunzii RT75 Pro, MCHOSE Jet 75 or any Gamakay board.",
+  "A named latency measurement for the Gamakay NS75 or Gamakay TK75HE V2: HLPlanet's guide lists both with no figure, and PC Gamer's TK75HE V2 review page came back truncated.",
+  "A named latency or polling measurement for the AULA Hero 75 HE, AULA F75 HE or Epomaker HE80: searches returned only maker and retailer figures.",
+  "An exact OSLTT figure and run count for the MCHOSE Jet 75: HLPlanet publishes only '<1ms'.",
+  "The MCHOSE Jet 75's price on MCHOSE's US store today: a storecheck search of mchose.store for 'Jet 75' returned no Jet 75 listing.",
+  "Whether KitGuru's 15.96 ms figure at 8,000 Hz was taken wired or wireless, and which HE75 V2 variant it tested.",
+  "What the cited Tom's Guide HE75 Mag review, the cited PC Gamer best-gaming-keyboard guide and RTINGS' best 75% list say: all three pages returned navigation only.",
+  "Periview's polling and scan-rate test of the Gamakay TK75HE V2: the page failed to load (certificate error).",
+  "HLPlanet's Bluetooth latency figure for the Epomaker HE75 V2 TMR (seen only in a search snippet, page not opened; that board is over $100 today in any case).",
+  "A measured Bluetooth latency for any candidate under $100."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 2.9367422
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that \"8K\" is a USB bus-speed property (a full-speed USB device is polled at most once per 1 ms frame, a high-speed one once per 125 µs microframe, eight per millisecond), so the 0.125 ms that makers print is the report interval and not key-to-PC latency, and the figure only carries to the 2.4 GHz dongle where the maker says so.",
+ "standout": 2,
+ "standout_why": "Compared against keebspicks.net (cited), Notebookcheck's HE75 Mag review (cited), hlplanet.com's Hall effect guide, setupinsider.com's two pages and dejaflow.com; Tom's Guide and both PC Gamer pages returned only navigation, so their bodies were not compared. Rivals have part of it: keebspicks gives a wired-versus-2.4 GHz split for the AULA F75 HE (8,000 Hz wired, 1,000 Hz on 2.4 GHz) and says latency claims come from brands; Notebookcheck notes \"1,000 Hz max tested via wireless\" on the HE75 Mag; hlplanet's guide says a dongle typically adds 20-100% latency. None gives the USB frame/microframe reason, none ties 0.125 ms to one microframe, and none sets a maker's own wired and wireless figures beside a measured pair for the under-$100 75% boards. hlplanet's guide lists the Yunzii RT75 Pro as \"1000Hz polling, wired only\", which contradicts Yunzii's own page. Not a 3, because the per-mode split is partly on a cited page and I could not open the AULA, MCHOSE or Gamakay product pages to complete the per-mode table.",
+ "decides": "It splits the question by how the board will be connected. On a cable, every candidate I read claims 8,000 Hz, so price and switch decide, and HLPlanet's measurements of two 8K boards (0.60 and 0.65 ms wired) show the 0.125 ms claim is not the latency. On the 2.4 GHz dongle, only boards whose 8K is stated or listed for 2.4 GHz qualify. Yunzii states it for the RT75 Pro ($79.99), with its own 0.1 ms wired / 1 ms wireless figures; HLPlanet lists it for our Gamakay TK75 TMR ($89.99) and measured 0.75 ms on 2.4 GHz against 1.01 ms for the RT75 Pro with the same tool. So the TK75 TMR honestly wins the \"fastest measured on the dongle under $100\" segment. Gamakay's own NS75 guide claims 8,000 Hz only for wired, so the NS75 ($63.99) should be presented as an 8K-on-cable board with wireless as a convenience. The Epomaker HE80 ($59.49) is described by Epomaker as wired.",
+ "candidates": [
+  "Epomaker HE75 V2",
+  "Epomaker HE80",
+  "Yunzii RT75 Pro",
+  "AULA Hero 75 HE",
+  "AULA F75 HE",
+  "MCHOSE Jet 75",
+  "Gamakay NS75",
+  "Gamakay TK75HE V2",
+  "Gamakay TK75 TMR"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "USB polling period by bus speed (why 8,000 Hz needs a high-speed USB link)",
+   "value": "Full speed: period counted in 1 ms frames, minimum 1 frame (1,000 Hz). High speed: period counted in microframes, 8 per 1 ms frame, minimum 1 microframe (125 µs, 8,000 Hz).",
+   "source": "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/usbspec/ns-usbspec-_usb_endpoint_descriptor",
+   "source_title": "_USB_ENDPOINT_DESCRIPTOR (usbspec.h) - Windows drivers | Microsoft Learn",
+   "read": "2026-11-21",
+   "note": "Microsoft's words: \"For devices and host controllers that can operate at high speed, the period is measured in units of microframes. There are eight microframes in each 1 millisecond frame.\" bInterval \"reflects the device's configuration in firmware. Drivers cannot change it.\" Arithmetic: 1 ms / 8 = 0.125 ms, so 1 / 0.125 ms = 8,000 reports per second. The page describes the USB specification's endpoint descriptor (section 9.6.6); it does not mention keyboards."
+  },
+  {
+   "product": "Yunzii RT75 Pro",
+   "label": "Maker's polling rate and response figures by connection",
+   "value": "8,000 Hz in both wired and 2.4 GHz modes; 0.1 ms wired / 1 ms wireless (maker figures); USB-C, 2.4 GHz and Bluetooth; 81 keys; web driver",
+   "source": "https://www.yunzii.com/products/yunzii-rt75-pro-dual-8k-rapid-trigger-wireless-gaming-magnetic-keyboard",
+   "source_title": "YUNZII RT75 PRO Dual-8K Rapid Trigger Wireless Gaming Magnetic Keyboard",
+   "read": "2026-11-21",
+   "note": "Yunzii's words: \"delivers an 8K polling rate in both wired and 2.4G modes, providing gaming keyboard-level responsiveness (0.1ms wired/1ms wireless)\". Yunzii's own wireless figure is ten times its wired one at the same stated polling rate. Read from the store's product data through storecheck search; the rendered page returned HTTP 429. No Bluetooth polling figure in the text read."
+  },
+  {
+   "product": "Yunzii RT75 Pro",
+   "label": "Price, maker's US store",
+   "value": "$79.99 (list $94.99), in stock",
+   "source": "https://www.yunzii.com/products/yunzii-rt75-pro-dual-8k-rapid-trigger-wireless-gaming-magnetic-keyboard",
+   "source_title": "YUNZII RT75 PRO Dual-8K Rapid Trigger Wireless Gaming Magnetic Keyboard",
+   "read": "2026-11-21",
+   "note": "First result of a storecheck search on yunzii.com; variant not itemised in that output. ChatGPT showed $69.99 for Black in one chat and $79.99 in the other."
+  },
+  {
+   "product": "Yunzii RT75 Pro",
+   "label": "Measured single-key latency (HLPlanet, Marcus Richardson, OSLTT)",
+   "value": "0.65 ms wired, 1.01 ms over 2.4 GHz (average of 10 tests)",
+   "source": "https://www.hlplanet.com/?p=6800",
+   "source_title": "Yunzii RT75 PRO Review",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-01-02. Marcus Richardson: \"Wired single key latency is 0.65 ms\", \"via 2.4G it's 1.01 ms\". Polling adjustable 125-8,000 Hz in the web app at qmk.top. He lists other KS-20 magnetic switches as compatible, selected in software. No Bluetooth figure. 0.65 ms is about five 125 µs microframes, which is why the 0.125 ms claim is an interval and not the latency."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Polling by connection and measured latency (HLPlanet, Marcus Richardson, OSLTT)",
+   "value": "8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth (as HLPlanet lists); measured 0.60 ms wired, 0.75 ms over 2.4 GHz",
+   "source": "https://www.hlplanet.com/gamakay-tk75-tmr-review/",
+   "source_title": "GamaKay TK75 TMR Review: Best Value TMR Keyboard of 2026?",
+   "read": "2026-11-21",
+   "note": "Review dated 2026-05-18; number of test runs not stated; no Bluetooth latency. Same reviewer and tool as the RT75 Pro figure, so the 2.4 GHz pair (0.75 ms against 1.01 ms) is comparable. He notes rapid trigger should be disabled on any key fitted with a mechanical switch. His review price was $119.99; today's price is the next finding."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Price, maker's US store",
+   "value": "$89.99 (list $159.99), in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75-tmr-magnetic-keyboard-8k-polling-rate",
+   "source_title": "GamaKay TK75 TMR 75% Mechanical Keyboard – 8K Polling Rate, Magnetic Switch",
+   "read": "2026-11-21",
+   "note": "storecheck search on gamakay.com; matches the brief's table."
+  },
+  {
+   "product": "Gamakay NS75",
+   "label": "Maker's polling claim names the cable only",
+   "value": "\"true wired 8000 Hz polling rate\"; 0.06 ms latency and 0.005 mm actuation accuracy (maker claims); dead zone adjustable 0-1 mm",
+   "source": "https://gamakay.com/blogs/news/gamakay-x-naughshark-ns75-hall-effect-keyboard-buying-guide",
+   "source_title": "Gamakay x Naughshark NS75 Hall effect keyboard buying guide",
+   "read": "2026-11-21",
+   "note": "Gamakay's words: \"The NS75 delivers a true wired 8000 Hz polling rate\". The guide gives no 2.4 GHz or Bluetooth polling figure. 0.06 ms is under one 0.125 ms USB microframe, so it cannot be the interval at which the PC receives reports; treat it as an internal scan figure. A customer comment on the page reports wired mode not being recognised (unverified)."
+  },
+  {
+   "product": "Gamakay NS75",
+   "label": "Price and maker's listing summary",
+   "value": "$63.99 (list $99.99), in stock; 8,000 Hz polling, 16K scan rate, wired / 2.4 GHz / Bluetooth",
+   "source": "https://gamakay.com/products/gamakay-naughshark-ns75-hall-effect-8k-rapid-trigger",
+   "source_title": "GamaKay x NaughShark NS75 Hall Effect Keyboard – 8K Polling Rate",
+   "read": "2026-11-21",
+   "note": "storecheck search on gamakay.com. The listing summary does not say which connection the 8K figure applies to. This URL differs from the one I first tried for the NS75."
+  },
+  {
+   "product": "Gamakay TK75HE V2",
+   "label": "Price and maker's listing summary",
+   "value": "$79.19 (compare-at $119.99 on the variant returned), in stock; 8 kHz polling, 0.06 ms latency (maker claim), Phoenix V3 and Mercury V3 switches",
+   "source": "https://gamakay.com/products/gamakay-tk75he-v2-8k-polling-rate-rt-accuracy-hall-effect-keyboard",
+   "source_title": "Gamakay TK75HE V2 Hall Effect keyboard 8K Polling Rate 0.005mm RT Accuracy",
+   "read": "2026-11-21",
+   "note": "storecheck search on gamakay.com. Compare-at here is $119.99, while the brief's table says list $109.99; probably a different variant, which this output did not itemise. No per-connection polling in the text read."
+  },
+  {
+   "product": "Epomaker HE75 V2",
+   "label": "Price and maker's polling, scan and rapid trigger figures",
+   "value": "$76.49 (list $89.99), in stock; 8K polling, 128 kHz full-board scan rate, actuation 0.1-3.3 mm in 0.005 mm steps, SOCD, DKS, Mod-Tap",
+   "source": "https://epomaker.com/products/epomaker-he75-v2",
+   "source_title": "EPOMAKER HE75 V2",
+   "read": "2026-11-21",
+   "note": "storecheck search on epomaker.com. The text read does not state the connection type; ChatGPT's two tables disagree (wired in one, wireless in the other). The separate HE75 V2 TMR is $109.65, over budget."
+  },
+  {
+   "product": "Epomaker HE80",
+   "label": "Price and maker's connection, polling and latency claim",
+   "value": "$59.49 (list $69.99), in stock; described as a wired keyboard, 82 keys, 8,000 Hz polling, 32,000 scan rate, 0.02 mm trigger step; maker says latency is \"a mere 0.125ms\"",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80",
+   "read": "2026-11-21",
+   "note": "storecheck search on epomaker.com. Epomaker's words: \"the HE80 wired keyboard\" and \"the latency is significantly reduced to a mere 0.125ms, 8x quicker than conventional 1k polling keyboard\". 0.125 ms is exactly one high-speed USB microframe (1 ms / 8), the report interval; HLPlanet measured 0.60-0.65 ms wired on two other 8K boards."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages state on wired versus wireless polling",
+   "value": "keebspicks: AULA F75 HE \"reaches 8000Hz wired but lists 1000Hz on 2.4GHz\". Notebookcheck (Epomaker HE75 Mag): \"8 kHz via wired and 2.4 GHz (1,000 Hz max tested via wireless)\". hlplanet guide: \"A 2.4 GHz dongle typically adds 20–100% latency and Bluetooth adds far more\", and it lists the Yunzii RT75 Pro as \"1000Hz polling, wired only\".",
+   "source": "https://keebspicks.net/best-mechanical-keyboards-with-magnetic-switch/",
+   "source_title": "Best Magnetic Switch Keyboards: 13 Hall Effect Picks",
+   "read": "2026-11-21",
+   "note": "Rival baseline, not maker-verified. The other two pages opened the same day: https://www.notebookcheck.net/Great-ideas-too-many-cut-corners-Epomaker-HE75-Mag-wireless-Hall-effect-gaming-keyboard-reviewed.992546.0.html and https://www.hlplanet.com/keyboards-hall-effect-switches/. I could not open AULA's F75 HE page, so the 1,000 Hz figure is keebspicks' reading of it. hlplanet's \"wired only\" line for the RT75 Pro contradicts Yunzii's page."
+  }
+ ],
+ "unsourced": [
+  "AULA Hero 75 HE and AULA F75 HE: polling rate per connection, battery and today's price. aulagaming.com returned HTTP 0 to storecheck and HTTP 429 to the page fetch; a search snippet saying the Hero 75 HE keeps 8,000 Hz on its receiver was not opened, so it is left out.",
+  "MCHOSE Jet 75: connection, polling, switch and today's price. A storecheck search of mchose.store for \"Jet 75\" returned other models only, and the product URL I tried returned HTTP 429.",
+  "Gamakay NS75 and TK75HE V2: the maker's 2.4 GHz and Bluetooth polling rates. Both product pages returned HTTP 429 on every attempt; only the store's short listing text and the NS75 buying guide were readable.",
+  "Whether rapid trigger, SOCD and per-key actuation stay active on 2.4 GHz and Bluetooth for any candidate. No maker page or reviewer I opened states it.",
+  "Bluetooth polling rate for the Yunzii RT75 Pro, Gamakay NS75, Gamakay TK75HE V2 and AULA boards. The Bluetooth LE connection-interval floor appeared only in search snippets (Nordic, TI, Bluetooth SIG overview); I did not open the specification.",
+  "Epomaker HE75 V2 connection type (wired only or tri-mode). It is not in the store text I could read, and the rendered page returned HTTP 429.",
+  "Tom's Guide (Epomaker HE75 Mag), PC Gamer (best gaming keyboards, Gamakay TK75HE V2) and TechRadar (TK75HE V2): the fetches returned navigation only, so nothing from these cited rivals was compared.",
+  "An independent latency measurement for the Gamakay NS75, Gamakay TK75HE V2, Epomaker HE75 V2, Epomaker HE80, AULA F75 HE or AULA Hero 75 HE. HLPlanet's site search showed no dedicated review of the NS75 or TK75HE V2, and the URL I guessed for a TK75HE V2 review returned 404.",
+  "Amazon prices: amzcheck.py was not run."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 44,
+  "cost_usd_list": 3.316700300000001
+ }
+}
