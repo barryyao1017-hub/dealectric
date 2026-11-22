@@ -1089,7 +1089,9 @@ def offer_block(p, net, prog, url):
                  f'<p><strong>Discount code:</strong> none; {SITE["brand"]} has no {b} code, and any Amazon coupon shows on the Amazon page itself.</p>')
     else:
         head = f'<h2 style="margin-top:0">{price} at {b}, no code needed</h2>'
-        lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.</p>'
+        lines = (f'<p><strong>Price:</strong> {price}{was} at {b}\'s official US store, verified {verified_on(p)}.'
+                 + (f' {b}\'s product page shows {money(p["cart_discount"]["page_price"])}; {html.escape(p["cart_discount"]["what"])} comes off in the cart '
+                    f'with nothing to enter (cart read {p["cart_discount"]["read"]}).' if p.get("cart_discount") else '') + '</p>'
                  + (f'<p><strong>Discount code:</strong> none listed; {SITE["brand"]} has no {b} code to offer.</p>'
                     if not live_codes(p["brand"]) and brand_test_date(p["brand"]) is None else
                     f'<p><strong>Discount code:</strong> none of the {b} codes we tested applies to this product'
@@ -1127,8 +1129,8 @@ def where_line(p):
     if co and len(name) > 45 and p["slug"] in BESTOFFER["products"]:   # DLC-322: a long name pushes the buy link out of the opening
         co = co.removesuffix(f", sold and shipped by {p['brand']}")
     if co:
-        return f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)}; {co}"
-    return (f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} on {store_host(p)} (checked {verified_on(p)}); "
+        return f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} {on_store(p)}; {co}"
+    return (f"Where to buy the {name}: {p['brand']}'s own store, {money(p['price'])} {on_store(p)} (checked {verified_on(p)}); "
             f"no Dealectric code takes anything off it today, so the link costs the same as the store")
 
 
@@ -1396,7 +1398,9 @@ def brand_codes_page(brand):
                 f"Our {b} prices below are the verified store prices.")
     else:
         lead = (f"No working {b} discount code as of {checked}. "
-                + (f"We tested {len(rejected)} codes listed on coupon sites and {b}'s cart rejected every one. " if rejected else "")
+                + ((f"We tested {len(rejected)} codes, {b}'s own affiliate codes among them, and {b}'s cart rejected every one at the prices it charged that day. "
+                    if any(c.get("publish") for c in rejected) else
+                    f"We tested {len(rejected)} codes listed on coupon sites and {b}'s cart rejected every one. ") if rejected else "")
                 + f"Our {b} prices below are the verified store prices.")
     rows = "".join(
         f'<tr><td><strong><code>{html.escape(c["code"])}</code></strong></td><td>{html.escape(c["terms"])}{f" Exclusive to {SITE['brand']}: {b} issued it to {SITE['brand']} only." if is_exclusive(c) else ""}</td>'
@@ -1734,6 +1738,17 @@ def store_host(p):
     return urlsplit(p["url"]).netloc.replace("www.", "")
 
 
+def on_store(p):
+    """'on lofree.co' after a price. A record with "cart_discount" carries the store's cart price, because the store takes
+    a sale discount off at checkout while its product page still shows the higher figure (Lofree's Black Friday Month,
+    2026-11-21: $159 on the page, $127.20 in the cart); every place that names the store beside the price then says so."""
+    cd = p.get("cart_discount")
+    if not cd:
+        return f"on {store_host(p)}"
+    return (f"at {store_host(p)}'s checkout ({money(cd['page_price'])} on the product page; {cd['what']} comes off in the cart "
+            f"with nothing to enter, cart read {cd['read']})")
+
+
 def link_offer(p):
     """The price as the price through our link (Barry, 2026-11-08: bind the discount to the link, whatever the code).
     Returns (short, long) plain-text phrases, or None for Amazon (no prices from us) or a product with no code.
@@ -1813,14 +1828,14 @@ def compare_row_v2(c, r):
         a = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">'
         co = checkable_offer(p) if c.get("buy_by_name") else None
         if co:   # bluetti-four run (DLC-281): the buy link beside the name, with the saving as checkable text
-            name += (f'<br><span class="small">{a}Buy from {html.escape(p["brand"])}</a>: {money(p["price"])} on {store_host(p)}, '
+            name += (f'<br><span class="small">{a}Buy from {html.escape(p["brand"])}</a>: {money(p["price"])} {on_store(p)}, '
                      f'{html.escape(co)}</span>')
         if is_amazon(p) and c.get("buy_by_name"):   # bluetti-four run: the Amazon link beside the name, with Amazon's dated price
             name += f'<br><span class="small">{a}Buy on Amazon</a>: {amz_price_text(p["asin"])}</span>'
         if is_amazon(p):
             price, buy = amz_price_text(p["asin"]), f'{a}Buy on Amazon</a>'
         else:
-            price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
+            price = money(p["price"]) + stock_note(p) + f' <span class="small">{on_store(p)}, {verified_on(p)}</span>'
             cd, sv, after, date = best_offer(p)
             lo = link_offer(p)
             bc = gap_compare(c, p) if c.get("buy_compare") and c.get("all_links") else None
@@ -1974,14 +1989,14 @@ def pick_line(c):
         elif bc:
             forms = [html.escape(bc), html.escape(gap_compare(c, p, short=True))]
         elif not lo:
-            forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
+            forms = [f'{money(p["price"])} {on_store(p)} (checked {verified_on(p)})', money(p["price"])]
         elif c.get("buy_by_name") and checkable_offer(p):   # bluetti-four run (DLC-281): code and saving as checkable text
-            forms = [f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p))}',
-                     f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p, short=True))}',
-                     f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}']
+            forms = [f'{money(p["price"])} {on_store(p)}; {html.escape(checkable_offer(p))}',
+                     f'{money(p["price"])} {on_store(p)}; {html.escape(checkable_offer(p, short=True))}',
+                     f'{money(p["price"])} {on_store(p)}, {html.escape(lo[0])}']
         else:
-            forms = [f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[1])}',
-                     f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}', html.escape(lo[0])]
+            forms = [f'{money(p["price"])} {on_store(p)}, {html.escape(lo[1])}',
+                     f'{money(p["price"])} {on_store(p)}, {html.escape(lo[0])}', html.escape(lo[0])]
         # the line must close the page's first 500-character chunk (fastloop.CHUNK), after the title and the H1
         room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
         for f in forms:
@@ -2036,7 +2051,7 @@ def _pilot_fill(text):
         p = BY_SLUG[m.group(1)]
         lo = link_offer(p)
         link = f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>'
-        return f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo and not is_amazon(p) else m.group(0)
+        return f"{money(p['price'])} {on_store(p)}, {html.escape(lo[0])}: {link}" if lo and not is_amazon(p) else m.group(0)
     return _re.sub(r"\{buy:([a-z0-9-]+)\}", one, text).replace(" after the code", " through the link")
 
 
@@ -2049,7 +2064,7 @@ def fill_v2(text):
         if is_amazon(p):
             return f"buy on Amazon: {link}"
         lo = link_offer(p)
-        ours = f"{money(p['price'])} on {store_host(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
+        ours = f"{money(p['price'])} {on_store(p)}, {html.escape(lo[0])}: {link}" if lo else f"{money(p['price'])}: {link}"
         al = amazon_lead(p)
         if al:   # DLC-320: Amazon first while it is the cheaper seller we can link
             return (f'{html.escape(amazon_lead_text(p))}: <a href="{al["url"]}" rel="sponsored nofollow noopener">{al["url"]}</a>; '
