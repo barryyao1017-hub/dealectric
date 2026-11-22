@@ -642,6 +642,38 @@ def preorder(p):
     return p.get("preorder") if in_stock(p) else None
 
 
+def deal(p):
+    """The record's live sale ("deal": {name, ends, regular | auto_total}, Barry 2026-11-21: say a Black Friday price
+    plainly), or None once its end date has passed. "regular": the store's own regular price while the sale price is
+    p["price"]; "auto_total": the store takes money off at checkout by itself during the sale (ALLPOWERS's 5%), so the
+    checkout total without our link is that figure."""
+    d = p.get("deal")
+    if not d or (d.get("ends") and d["ends"] < datetime.date.today().isoformat()):
+        return None
+    return d
+
+
+def deal_end(d):
+    e = datetime.date.fromisoformat(d["ends"])
+    return f"{e:%b} {e.day}"
+
+
+def deal_note(p, short=False):
+    """' Black Friday price, regular $899, through Nov 30' or ', ALLPOWERS's Black Friday sale takes 5% off at checkout by
+    itself ($606.10)': plain text to follow the store price, empty when the record has no live sale."""
+    d = deal(p)
+    if not d:
+        return ""
+    end = f", through {deal_end(d)}" if d.get("show_end", True) and d.get("ends") else ""
+    if d.get("regular"):
+        return f" {d['name']} price, regular {money(d['regular'])}{end}" if not short else f" {d['name']} price{end}"
+    if d.get("auto_total") is not None:
+        pct = round(100 * (1 - d["auto_total"] / p["price"]))
+        return (f", {p['brand']}'s {d['name']} sale takes {pct}% off at checkout by itself ({money(d['auto_total'])}){end}" if not short
+                else f", {pct}% off at checkout in {p['brand']}'s {d['name']} sale")
+    return f" {d['name']} price{end}"
+
+
 def stock_note(p):
     if preorder(p):
         return f" (pre-order, ships {p['preorder'].rsplit(',', 1)[0]})"
@@ -1149,8 +1181,9 @@ def deal_row(p, url):
     b, link = html.escape(p["brand"]), html.escape(url)
     c, _, after, date = best_offer(p)
     price = price_text(p, cap=False)
-    deal = (f' · code <code>{html.escape(c["code"])}</code>: {price} → {money(after)} · {b} cart test passed {date}' if c and date
-            else f' · {price} at {b}, price verified {verified_on(p)}')
+    dn = html.escape(deal_note(p))
+    deal = (f' · code <code>{html.escape(c["code"])}</code>: {price}{dn} → {money(after)} · {b} cart test passed {date}' if c and date
+            else f' · {price} at {b}{dn}, price verified {verified_on(p)}')
     alt = sold_out_alt(p)
     stock = "" if in_stock(p) else f" · sold out when we checked on {stock_date(p)}" + (
         f"; until it is back, this link opens the {html.escape(title_name(alt))} instead" if alt else "")
@@ -1820,7 +1853,9 @@ def compare_row_v2(c, r):
         if is_amazon(p):
             price, buy = amz_price_text(p["asin"]), f'{a}Buy on Amazon</a>'
         else:
-            price = money(p["price"]) + stock_note(p) + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>'
+            dn = deal_note(p)
+            price = (money(p["price"]) + stock_note(p) + (f'<br><span class="small">{html.escape(dn.lstrip(", "))}</span>' if dn else "")
+                     + f' <span class="small">on {store_host(p)}, {verified_on(p)}</span>')
             cd, sv, after, date = best_offer(p)
             lo = link_offer(p)
             bc = gap_compare(c, p) if c.get("buy_compare") and c.get("all_links") else None
@@ -1980,7 +2015,12 @@ def pick_line(c):
                      f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p, short=True))}',
                      f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}']
         else:
-            forms = [f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[1])}',
+            dl, ds = html.escape(deal_note(p)), html.escape(deal_note(p, short=True))
+            pre = html.escape(stock_note(p).replace(" (", "; ").rstrip(")")) if preorder(p) else ""
+            forms = [f'{money(p["price"])} on {store_host(p)}{dl}, {html.escape(lo[1])}{pre}',
+                     f'{money(p["price"])} on {store_host(p)}{ds}, {html.escape(lo[1])}{pre}',
+                     f'{money(p["price"])} on {store_host(p)}{ds}, {html.escape(lo[0])}{pre}',
+                     f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}{pre}',
                      f'{money(p["price"])} on {store_host(p)}, {html.escape(lo[0])}', html.escape(lo[0])]
         # the line must close the page's first 500-character chunk (fastloop.CHUNK), after the title and the H1
         room = 500 - len(f"{c['title']} · {SITE['brand']}") - len(c["h1"]) - len(f"Updated {c.get('updated') or c['published']}") - 4
