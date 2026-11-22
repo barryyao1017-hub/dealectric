@@ -8744,6 +8744,22 @@ PRODUCTS = [
  "fit": 'Laptops that drive one external display, and anyone who wants one larger screen beside the laptop instead of two smaller ones attached to it.',
  "caveats": ['It stands beside the laptop on its own cover-stand; it does not attach to the lid.', "Single-cable use needs a USB-C port with DisplayPort Alt Mode (Mobile Pixels' footnote); other laptops use HDMI.", "Mobile Pixels' prices change with timed sales; the price here was read on 2026-11-21.", 'The 16-inch QHD variant on the same page is a different price ($167.99 on 2026-11-21) and Mobile Pixels rates it at 220 nits against 300 for this one.']},
 
+{"slug": 'fopo-s999-18-5-inch-triple-laptop-screen-extender',
+ "brand": 'FOPO',
+ "program": 'awin:fopo',
+ "category": 'portable-monitor',
+ "name": 'FOPO S999 18.5-inch Triple Laptop Screen Extender, 3× 1920×1080 IPS',
+ "model": 'S999',
+ "url": 'https://www.fopomonitor.com/products/fopo-s999-18-5-inch-triple-laptop-screen-extender-1080p-ips',
+ "price": 1099.99,
+ "verified": '2026-11-21',
+ "specs": [('Extension displays', '18.5-inch × 3'), ('Resolution per display', '1920 × 1080, IPS'), ('Brightness', '250 cd/m²'), ('Contrast ratio', '1000:1'), ('Refresh rate', '60 Hz'), ('Response time', '25 ms'), ('Net weight', '4 kg'), ('Fits', "12–18.5-inch laptops (FOPO's range)"), ('Connection', 'USB-C, or the supplied USB-A data cable; display driver (UsbDisplay) required, not driver-free; macOS must allow UsbDisplay'), ('Power', 'Separate PD power supply included'), ('Variant', 'Default Title (variant id 62807223337330)'), ('Price read', '$1,099.99, list $1,999.99, in stock, fopomonitor.com, 2026-11-21')],
+ "warranty": '1-year warranty (FOPO store banner, read 2026-11-21)',
+ "returns": 'Return request within 30 days of receiving the order; FOPO pays return shipping for quality issues, the buyer pays for other reasons (FOPO refund policy, read 2026-11-21)',
+ "summary": "Three added 18.5-inch 1920×1080 IPS screens for a 12–18.5-inch laptop (FOPO's range), run through FOPO's UsbDisplay driver with a separate PD power supply in the box.",
+ "fit": "A desk setup on a laptop of up to 18.5 inches where you can install a display driver and want 18.5-inch panels from FOPO's store.",
+ "caveats": ['Not driver-free: the UsbDisplay driver must be installed, and macOS must be set to allow it (FOPO).', "119 ppi: an 18.5-inch 1920×1080 panel holds 10% fewer pixels than the 16-inch 1920×1200 panels on FOPO's S788.", '4 kg net (FOPO), and it needs its own power supply at the desk.', "On 2026-11-21 Aura's US store listed its three-screen 18.5-inch Full HD Triple Boost Pro Studio at $579.00, below this model's store price."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
