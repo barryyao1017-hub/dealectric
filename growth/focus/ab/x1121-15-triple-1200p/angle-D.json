@@ -1,0 +1,68 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 15-inch MacBook Air can run no more than two external displays over its own DisplayPort-over-USB-C (Apple: M4, 2025) and only one on the M2 (2023). So a 15-inch-class extender with three added 1920×1200 panels cannot light all three natively on that laptop. The third screen, and on an M2 every screen after the first, has to come through a USB display driver.",
+ "standout": 1,
+ "standout_why": "I compared against UPERFECT's '8 Best Triple Screen Laptop Extenders in 2026' (cited in the second chat), which says only that 'base MacBook M1 and M2 chip models only support one external display'. It does not mention DisplayPort Alt Mode, DisplayLink or the M4 two-display limit, and it does not tie the count of added screens to a driver. Our own cited 16-inch page states the driver-free rule (each screen needs its own video path) and the base M1/M2 limit, but only for 16-inch MacBook Pros. I could not open the Newegg Hyangin Z3 listing (HTTP 403) or FOPO's S788 page (the store returned HTTP 429 all session), so I could not check what they say. So rivals cover part of the mechanism (the base M1/M2 limit) but not the 15-inch MacBook Air numbers that apply here.",
+ "decides": "This confirms the split ChatGPT's second answer hinted at without a source. Three added screens on a 15-inch laptop means a driver-based extender. Two added screens can run driver-free only if the laptop has two video paths: a 15-inch MacBook Air M4 has two video-capable Thunderbolt 4 ports, while a 15-inch MacBook Air M2 drives one external display only. The question's 15-inch, 1920×1200 limit leaves FOPO S980 (15.3-inch, partner store, no record yet) and Hyangin Z3 (15.6-inch) as the only true 15-inch-class triples, and both have three added screens. I could not source the video path of either one today. None of the screens we link is a 15-inch 1920×1200 model: the S788, S11 and S9G are 16-inch and the S7 is 14-inch. Whether two of our rows fit the question therefore depends on reading '15 inch' as the laptop size (the S788 states a 12–18.5-inch fit range, FOPO's range). Otherwise the page should skip.",
+ "candidates": [
+  "FOPO S980 15.3\"",
+  "Hyangin Z3 15.6\"",
+  "NGTeco S8 Pro Max 15.3\"",
+  "FOPO S788 16\"",
+  "FOPO S11 16\"",
+  "FOPO S9G 16\"",
+  "INVZI MagHub Trio Go 16\"",
+  "APILDELLA 16\""
+ ],
+ "findings": [
+  {
+   "product": "general (Apple MacBook Air 15-inch, M4, 2025)",
+   "label": "External displays driven natively with the built-in display on",
+   "value": "Up to two external displays, up to 6K at 60 Hz; native DisplayPort 1.4 output over USB-C; two Thunderbolt 4 (USB-C) ports",
+   "source": "https://support.apple.com/en-us/122210",
+   "source_title": "MacBook Air (15-inch, M4, 2025) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's wording: 'Simultaneously supports full native resolution on the built-in display at 1 billion colors and: Up to two external displays with up to 6K resolution at 60Hz'. Three added screens is one more than this, so the third needs a USB display driver."
+  },
+  {
+   "product": "general (Apple MacBook Air 15-inch, M2, 2023)",
+   "label": "External displays driven natively with the built-in display on",
+   "value": "One external display, up to 6K at 60 Hz; native DisplayPort output over USB-C",
+   "source": "https://support.apple.com/en-us/111346",
+   "source_title": "MacBook Air (15-inch, M2, 2023) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's wording: 'Simultaneously supports full native resolution on the built-in display at 1 billion colors and: One external display with up to 6K resolution at 60Hz'. On this laptop, any second or third added screen runs only through a driver."
+  },
+  {
+   "product": "general (Intel Iris Xe graphics, common in 15-inch Windows laptops)",
+   "label": "Display capability Intel states",
+   "value": "Up to 8K HDR, with 4x4K HDR",
+   "source": "https://www.intel.com/content/www/us/en/support/articles/000058630/graphics.html",
+   "source_title": "Does Intel Iris Xe Graphics Support Four Displays? (Intel support article 000058630)",
+   "read": "2026-11-21",
+   "note": "The article's only answer to its own title question is '4x4K HDR'. It does not say whether the laptop's built-in panel counts as one of the four, or that laptop makers' port layouts can lower the count. Use only as Intel's ceiling, not as proof a given laptop can run three added screens natively."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage of the mechanism (for comparison)",
+   "value": "UPERFECT states 'base MacBook M1 and M2 chip models only support one external display' and that 'not all USB-C ports support video output'; it does not mention DisplayPort Alt Mode, DisplayLink or the M4 limit",
+   "source": "https://uperfect.com/blogs/portable-monitor/best-triple-screen-laptop-extenders",
+   "source_title": "8 Best Triple Screen Laptop Extenders in 2026 – UPERFECT",
+   "read": "2026-11-21",
+   "note": "Read to score how much the finding stands out; this is not a product fact."
+  }
+ ],
+ "unsourced": [
+  "FOPO S980 15.3-inch: video path (native USB-C/HDMI or UsbDisplay driver), supported Macs, power supply, fit range and today's price. fopomonitor.com returned HTTP 429 on four tries (WebFetch on www and bare domain, storecheck.py product twice), and FOPO's Alibaba listing (product-detail 1601671878101) returned an empty page.",
+  "Hyangin Z3 15.6-inch: video path and whether a DisplayLink or other USB-graphics driver is used. The Newegg listing ChatGPT cited returned HTTP 403, and searches found no Hyangin maker site or manual.",
+  "NGTeco S8 Pro Max 15.3-inch: what the 'H5-T' adapter for M1–M4 Macs is (it appears to be a USB display adapter) and whether it is in the box. The Newegg listing 3C6-02AV-022J9 returned HTTP 403, and searches found no NGTeco product page.",
+  "Whether Intel counts the built-in panel within Iris Xe's four displays. Intel article 000058630 does not say.",
+  "Apple's tech-spec page for the 15-inch MacBook Air M3 (2024) and its two-displays-with-lid-closed condition. I did not open it in this session's budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.3518675999999996
+ }
+}

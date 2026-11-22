@@ -8857,6 +8857,22 @@ PRODUCTS = [
  "fit": 'Laptops that drive one external display, including M1, M2 and M3 MacBook Airs, with a USB-C port that carries DisplayPort Alt Mode or an HDMI port.',
  "caveats": ['Freestanding: it does not attach to the laptop lid.', "Rated 220 cd/m² (Scan), dimmer than the FOPO S7's rated 250 cd/m².", "Target's spec table says 2560 × 1440, while its highlights and Scan's listing say 2560 × 1600.", "Scan (UK) lists the 16-inch QHD as end of life; Mobile Pixels' US store listed it in stock on 2026-11-21.", "Mobile Pixels' prices move with timed sales."]},
 
+{"slug": 'fopo-s980-15-3-inch-triple-laptop-screen-extender',
+ "brand": 'FOPO',
+ "program": 'awin:fopo',
+ "category": 'portable-monitor',
+ "name": 'FOPO S980 15.3-inch Triple Laptop Screen Extender, 3× 1920×1200 IPS',
+ "model": 'S980',
+ "url": 'https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender',
+ "price": 599.99,
+ "verified": '2026-11-21',
+ "specs": [('Displays', 'Three 15.3-inch IPS panels, 1920 × 1200 each, 16:10'), ('Refresh rate', '60 Hz'), ('Fits', "12–18.5-inch laptops, subject to physical fit (FOPO's range)"), ('Connection', "USB-C or USB-A data cable plus a separate PD power supply; FOPO's supplied display driver required"), ('Systems', "FOPO's page lists no operating systems and asks buyers to confirm OS support and permission to install the driver")],
+ "warranty": '1 year on hardware; registered members get a second year',
+ "returns": '30-day returns (FOPO)',
+ "summary": "FOPO's 15.3-inch triple extender puts three 1920×1200 16:10 IPS screens around a 12–18.5-inch laptop. It runs on FOPO's supplied display driver and needs a separate PD power supply.",
+ "fit": "Laptops of about 12–18.5 inches, subject to physical fit (FOPO's range), with a free USB-C or USB-A port and permission to install FOPO's driver.",
+ "caveats": ["A driver is required. FOPO's page lists no supported operating systems, so Mac owners should check Mac support with FOPO before buying.", 'It needs a separate PD power supply.', "FOPO's page gives no weight or brightness."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

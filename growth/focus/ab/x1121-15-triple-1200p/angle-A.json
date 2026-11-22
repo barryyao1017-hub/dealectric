@@ -1,0 +1,94 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that a one-cable, driver-free feed to two or three added screens depends on DisplayPort MST, and macOS mirrors MST displays instead of extending them, so on a Mac only an extender with a display driver (such as FOPO's UsbDisplay) or one with a video-capable cable per screen gives separate screens.",
+ "standout": 2,
+ "standout_why": "I opened the UPERFECT guide (cited in chat 2), which says base M1/M2 MacBooks 'only support one external display' and that its BE14BF needs a driver for one-cable use, but it never mentions MST or that one-cable driver-free screens mirror on a Mac. I also opened Dealectric's own 16-inch page (cited in chat 2): it covers driver vs native video, the UsbDisplay HDCP trade-off, cost per added screen and weight per added screen, but not MST mirroring. The Newegg Hyangin Z3 page (cited in both chats) returned 403, so I could not check it. ChatGPT's own answers only say 'one-cable setup with a required driver' and 'MacBook compatibility also varies by chip'.",
+ "decides": "This confirms the pick rather than changing it. A 'one cable' claim tells a Mac owner nothing until the maker names the video path. On a Mac, the FOPO S11 (native, one USB-C or HDMI cable per screen, no driver, fits 12–18.5-inch laptops per FOPO) extends both screens when the Mac can drive two external displays. The FOPO S788 (driver required) is the route for base-chip Macs, at the cost of the HDCP issue. The size label barely matters: 1920×1200 is 148 ppi at 15.3 inches, 145 at 15.6 and 141.5 at 16, about 4.6% apart. So a 15-inch shopper should not rule out the 16-inch FOPO rows for sharpness; whether they fit is a question of the maker's stated fit range.",
+ "candidates": [
+  "FOPO S11",
+  "FOPO S9G",
+  "FOPO S788",
+  "FOPO S980",
+  "Hyangin Z3",
+  "NGTeco 15.3-inch triple extender",
+  "INVZI MagHub Trio Go 16",
+  "APILDELLA 16-inch triple extender"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MST displays on macOS",
+   "value": "Mirrored, not extended",
+   "source": "https://kb.plugable.com/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort (Plugable)",
+   "read": "2026-11-21",
+   "note": "Quote: 'MST-connected displays are mirrored, not extended.' Plugable is a named dock maker. This is what makes 'one cable, no driver, Mac compatible' an incomplete claim for two or three added screens."
+  },
+  {
+   "product": "general",
+   "label": "MST displays on Windows / ChromeOS",
+   "value": "Extended desktop supported (DP 1.2 or higher over USB-C)",
+   "source": "https://kb.plugable.com/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort (Plugable)",
+   "read": "2026-11-21",
+   "note": "Quote: 'Fully support MST for extended desktop configurations.' So the same one-cable driver-free extender can extend on Windows and mirror on a Mac."
+  },
+  {
+   "product": "general",
+   "label": "External displays on base M1/M2 MacBooks",
+   "value": "1 external display",
+   "source": "https://uperfect.com/blogs/portable-monitor/best-triple-screen-laptop-extenders",
+   "source_title": "8 Best Triple Screen Laptop Extenders in 2026 – UPERFECT",
+   "read": "2026-11-21",
+   "note": "UPERFECT states base M1 and M2 models 'only support one external display'. The same page says its BE14BF one-cable USB-C mode 'does require an additional driver download'. It says nothing about MST or mirroring."
+  },
+  {
+   "product": "FOPO S11",
+   "label": "Video path and laptop fit",
+   "value": "Native USB-C or HDMI plus USB power, no driver; fits 12–18.5-inch laptops (FOPO's range); 2 × 16-inch 1920×1200",
+   "source": "https://dealectric.com/best-triple-screen-laptop-extender-16-inch-1920x1200",
+   "source_title": "Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "One video path per screen, so no MST is involved and a Mac that drives two external displays extends both. The 12–18.5-inch fit range covers a 15-inch laptop."
+  },
+  {
+   "product": "FOPO S788",
+   "label": "Video path",
+   "value": "UsbDisplay driver required; USB-C or dual-head USB-A to USB-C; external PD power; 3 × 16-inch 1920×1200 (laptop + 3 = 4 displays)",
+   "source": "https://dealectric.com/best-triple-screen-laptop-extender-16-inch-1920x1200",
+   "source_title": "Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "This is the one-cable route that does extend on a Mac. Our page records that allowing UsbDisplay under Screen Recording disables HDCP, so protected video may not play. FOPO's own physical fit range for it is 12–18.5 inches (our product record)."
+  },
+  {
+   "product": "general",
+   "label": "Pixel density of 1920×1200 by stated diagonal",
+   "value": "14 in: 161.7 ppi; 15.3 in: 148.0 ppi; 15.6 in: 145.1 ppi; 16 in: 141.5 ppi",
+   "source": "https://dealectric.com/best-triple-screen-laptop-extender-16-inch-1920x1200",
+   "source_title": "Best triple-screen laptop extender for a 16-inch laptop with 1920×1200 panels (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "Arithmetic: sqrt(1920² + 1200²) = 2,264.2 px diagonal, divided by each maker's stated diagonal. 15.3 in is the FOPO S980 listing, 15.6 in is the Hyangin Z3 listing title, 16 in is the FOPO S11/S9G/S788. Panel width at 16:10 is 0.848 × diagonal: 13.0 in at 15.3 in, 13.6 in at 16 in. The 15.3-inch and 16-inch panels differ by about 4.6% in linear size and sharpness."
+  },
+  {
+   "product": "FOPO S980",
+   "label": "Store price and stated panel",
+   "value": "$599.99 (list $999.99), 15.3-inch, 1920×1200 IPS, in stock",
+   "source": "https://www.fopomonitor.com/products/fopo-s980-triple-laptop-screen-extender",
+   "source_title": "FOPO® S980 15.3\" Triple Laptop Screen Extender | 1920×1200 IPS",
+   "read": "2026-11-21",
+   "note": "From the partner store read of 2026-11-21 given in the brief (variant 62712052810098). FOPO's store returned HTTP 429 to all five of my own attempts today, so the body specs were not read. The S980 is the only 15-inch-class 1920×1200 triple in FOPO's US store."
+  }
+ ],
+ "unsourced": [
+  "FOPO S980 video path (driver or native), screen count (two or three added), fit range and weight: fopomonitor.com returned HTTP 429 on the product page, its .json and storecheck five times on 2026-11-21. The Alibaba FOPO S980 listing came back empty. A search snippet suggests a 'Quad monitor' (three added) layout but I did not use it.",
+  "Hyangin Z3 video path ('one cable' by driver or MST), whether 1920×1200 applies to all three screens, weight and price: Newegg returned 403, Amazon B0H2B42TV4 returned 503 and amzcheck was blocked, and I found no Hyangin maker page.",
+  "NGTeco 15.3-inch triple: native resolution and what its 'H5-T adapter' does (MST or driver chip): its Newegg listings returned 403 and I found no maker page.",
+  "Whether any extender in the chats uses MST for its one-cable mode: no maker page I could open names the chip, so the MST finding stays general and is not attached to a product."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.4770395999999997
+ }
+}
