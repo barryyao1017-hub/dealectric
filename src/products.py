@@ -8840,6 +8840,23 @@ PRODUCTS = [
  "fit": 'Shoppers who want one 360° file that includes the cabin, plus a view out the rear window, and who plan to wire it for parking.',
  "caveats": ['Parked recording needs a hardwire kit, sold separately.', 'No 60 fps mode with all three cameras on (TonyM, DashCamTalk).', 'All measurements are from DashCamTalk forum reviewers, not a lab.']},
 
+{"slug": 'mobile-pixels-fold-16-qhd',
+ "brand": 'Mobile Pixels',
+ "program": 'cj:mobilepixels',
+ "asin": None,
+ "category": 'portable-monitor',
+ "name": 'Mobile Pixels Fold 16" QHD Portable Monitor, 2560×1600, magnetic cover stand',
+ "model": 'Fold 16" (QHD)',
+ "url": 'https://www.mobilepixels.us/products/fold?variant=42056968667202',
+ "price": 167.99,
+ "verified": '2026-11-21',
+ "specs": [('Screen', '16-inch IPS, 2560 × 1600 (16:10)'), ('Brightness', '220 cd/m² (Scan listing)'), ('Weight', '1.89 lb (Scan listing and Target highlights)'), ('Ports', '1× HDMI, 2× USB-C, 3.5 mm audio, Micro-USB (Scan listing)'), ('Connection', 'Video and power over one USB-C cable from a port with DisplayPort Alt Mode, or HDMI; no driver (Scan listing)'), ('Stand', 'Magnetic cover that doubles as a kickstand, two viewing angles'), ('Variant and price', '16" (QHD) variant, $167.99 on mobilepixels.us, list $359.99, in stock (read 2026-11-21)')],
+ "warranty": "2 years (Mobile Pixels' limited warranty, for purchases from March 2025); extended plans sold separately",
+ "returns": '30 days from delivery, original condition and packaging; a $15 return label is deducted from the refund (or ship it yourself); final-sale items excluded; free US shipping',
+ "summary": 'A freestanding 16-inch 2560×1600 portable monitor: 4.10 MP at 189 PPI from one USB-C cable. It is the sharpest single screen in our under-$200 table.',
+ "fit": 'Laptops that drive one external display, including M1, M2 and M3 MacBook Airs, with a USB-C port that carries DisplayPort Alt Mode or an HDMI port.',
+ "caveats": ['Freestanding: it does not attach to the laptop lid.', "Rated 220 cd/m² (Scan), dimmer than the FOPO S7's rated 250 cd/m².", "Target's spec table says 2560 × 1440, while its highlights and Scan's listing say 2560 × 1600.", "Scan (UK) lists the 16-inch QHD as end of life; Mobile Pixels' US store listed it in stock on 2026-11-21.", "Mobile Pixels' prices move with timed sales."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
