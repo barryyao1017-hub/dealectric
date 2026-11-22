@@ -2017,7 +2017,13 @@ def pick_line(c):
         elif bc:
             forms = [html.escape(bc), html.escape(gap_compare(c, p, short=True))]
         elif not lo:
-            forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
+            d0 = deal(p) or {}
+            if d0.get("auto_total") is not None and d0["auto_total"] < p["price"] - 0.005:   # the sale comes off in the cart: lead with what is paid
+                at = f'{money(d0["auto_total"])} at {html.escape(p["brand"])}\'s checkout'
+                forms = [f'{at} ({money(p["price"])} on {store_host(p)}; its {html.escape(d0["name"])} sale takes the rest off in the cart, checked {verified_on(p)})',
+                         f'{at} ({money(p["price"])} on {store_host(p)}, checked {verified_on(p)})', at]
+            else:
+                forms = [f'{money(p["price"])} on {store_host(p)} (checked {verified_on(p)})', money(p["price"])]
         elif c.get("buy_by_name") and checkable_offer(p):   # bluetti-four run (DLC-281): code and saving as checkable text
             forms = [f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p))}',
                      f'{money(p["price"])} on {store_host(p)}; {html.escape(checkable_offer(p, short=True))}',
