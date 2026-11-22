@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states Apple's own per-model count for a 13-inch MacBook Air: M1 and M2 drive one external display, M3 drives one with the lid open (a second only with the lid closed), and M4 and M5 drive two with the lid open, so a single-screen extender runs natively on all of them while a two-screen extender shows two extended pictures natively only on M4 and M5.",
+ "standout": 2,
+ "standout_why": "Compared against itechguides.com (cited), lbdsoftware.com (cited) and theofficejournal.com (top result, not cited). itechguides says only that MacBook compatibility \"cannot be reduced to 'yes' or 'no'\" and depends on the chip generation, with no count per model. lbdsoftware and theofficejournal do not mention a MacBook display limit at all. All three already cover the need for DisplayPort Alt Mode on the USB-C port, charge-only ports, DisplayLink drivers and hinge load, so those parts of the mechanism are not new. techpp.com (cited) returned HTTP 403 and was not read, so it may already carry the counts. ChatGPT's own answer gestures at \"different external-display limits\" without numbers, which is why this is 2 and not 3.",
+ "decides": "It confirms a single added screen as the pick for a 13-inch laptop. Apple lists one external display and native DisplayPort over USB-C for the M2 Air, and at least one for the M3, M4 and M5 Air, so a one-screen extender on USB-C needs no driver on those 13-inch MacBook Airs. Plugable gives the same one-display figure for M1. It also draws the line for the two-screen rows (FOPO S1, FOPO S7): on an M1, M2 or lid-open M3 Air the second added screen cannot be a native extended display, and Apple says daisy-chaining does not raise the maximum. Those rows should be labelled for M4 and M5 Airs or Windows laptops with two video-capable ports, or need a DisplayLink-type driver path. For the page's two required linked rows, the Duex Plus DS 13.3-inch is sold by our partner Mobile Pixels at $183.99 today but has no record yet. I could not source a maker-stated 13-inch fit range for it or for the FOPO S1 and S7 (store pages rate-limited); if neither FOPO row states 13 inches, the page falls short of two rows.",
+ "candidates": [
+  "Mobile Pixels Duex Plus DS 13.3-inch",
+  "Mobile Pixels Duex Max DS 14.1-inch",
+  "FOPO S1 Dual 14-inch",
+  "FOPO S7 Dual 14-inch"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "External displays, MacBook Air (M2, 2022), Apple's figure",
+   "value": "1 external display, up to 6K at 60 Hz, alongside the built-in display; \"Native DisplayPort output over USB-C\"",
+   "source": "https://support.apple.com/en-us/111867",
+   "source_title": "MacBook Air (M2, 2022) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's Display Support section. Two Thunderbolt / USB 4 ports, both listed with DisplayPort support, so either port can carry the one added screen without a driver."
+  },
+  {
+   "product": "general",
+   "label": "External displays, MacBook Air (13-inch, M3, 2024), Apple's figure",
+   "value": "1 external display up to 6K at 60 Hz with the lid open; a second, up to 5K at 60 Hz, only with the lid closed",
+   "source": "https://support.apple.com/en-us/118551",
+   "source_title": "MacBook Air (13-inch, M3, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-21",
+   "note": "Apple's words: \"Close the MacBook Air lid to use a second external display with up to 5K resolution at 60Hz\". An extender mounted behind the lid needs the lid open, so the usable count there is one."
+  },
+  {
+   "product": "general",
+   "label": "External displays, MacBook Air with M4 or M5, Apple's figure",
+   "value": "Up to 2 external displays in addition to the built-in display; closing the lid does not raise the count",
+   "source": "https://support.apple.com/en-us/122212",
+   "source_title": "How many displays can be connected to MacBook Air - Apple Support",
+   "read": "2026-11-21",
+   "note": "Page dated March 10, 2026. Two displays up to 6K at 60 Hz or 4K at 144 Hz. Apple adds that daisy-chaining can put two displays on one Thunderbolt port \"but does not increase the maximum\"."
+  },
+  {
+   "product": "general",
+   "label": "External displays, base M1 and M2 Macs, and how a driver screen gets past the limit (Plugable)",
+   "value": "M1/M2: 1 external display via Thunderbolt, up to 6K at 60 Hz. DisplayLink \"combines software and hardware to send video signals over USB data connections\", which allows displays beyond the native count",
+   "source": "https://kb.plugable.com/en_US/understanding-external-display-support-on-apple-m1-m2-m3-and-m4-chips",
+   "source_title": "Understanding External Display Support on Apple M1, M2, M3, M4 and M5 Chips - Plugable Knowledge Base",
+   "read": "2026-11-21",
+   "note": "Last updated August 28, 2026. Plugable sells DisplayLink docks, so this is a vendor's explanation. It also states that natively extended displays \"cannot exceed what is natively supported by the Thunderbolt ports\". This is my only opened source for the M1 figure; I did not open Apple's M1 spec page."
+  },
+  {
+   "product": "Mobile Pixels Duex Plus DS 13.3-inch",
+   "label": "Video path, maker's words",
+   "value": "USB-C and Mini HDMI inputs, \"without the need for drivers or software\"",
+   "source": "https://www.mobilepixels.us/products/duex-ds-series",
+   "source_title": "Duex DS Series - Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "Read through storecheck.py. The same listing covers the 13.3-inch Duex Plus DS and the 14.1-inch Duex Max DS. The store text does not name DisplayPort Alt Mode or a laptop fit range."
+  },
+  {
+   "product": "Mobile Pixels Duex Plus DS 13.3-inch",
+   "label": "Price, maker's US store",
+   "value": "$183.99 (list $259.99), in stock, variant id 42717917904962",
+   "source": "https://www.mobilepixels.us/products/duex-ds-series",
+   "source_title": "Duex DS Series - Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "Black Friday sale price, no code. No Dealectric record yet; it is a variant of the listing our Duex Max DS record points to. ChatGPT showed the same model at $195.49 (Best Buy) and $199.99 (B&H); I did not open those listings."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS 14.1-inch",
+   "label": "Price, maker's US store",
+   "value": "$215.99 (list $299.99), in stock, variant id 42717909876802",
+   "source": "https://www.mobilepixels.us/products/duex-ds-series",
+   "source_title": "Duex DS Series - Mobile Pixels",
+   "read": "2026-11-21",
+   "note": "Matches the figure in our table. itechguides places this model at \"roughly 14\" or larger\", which is the reviewer's range, not the maker's."
+  },
+  {
+   "product": "general",
+   "label": "USB-A path on Mobile Pixels Duex screens (maker's FAQ)",
+   "value": "On Windows over USB-A, Mobile Pixels supplies DisplayLink driver downloads; Chromebooks need no driver; Macs need macOS above 10.12",
+   "source": "https://www.mobilepixels.us/pages/faqs-duex",
+   "source_title": "Can Mobile Pixels DUEX Series work with MAC or PC? - Mobile Pixels FAQ",
+   "read": "2026-11-21",
+   "note": "The FAQ covers the Duex series as a whole and does not name the Duex Plus DS or Max DS, so it may describe older USB-A models. It does not mention DisplayPort Alt Mode or Apple silicon limits."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals already say on the mechanism",
+   "value": "itechguides: the USB-C port \"must support DisplayPort Alt Mode, Thunderbolt, or USB4 display output\" and \"Charging-only USB-C cannot drive a native USB-C monitor\"; no MacBook display count. lbdsoftware: a charging-only port \"will leave you with a black screen\"; panels rated around 10 to 15 W; no MacBook display count",
+   "source": "https://www.itechguides.com/15-best-laptop-screen-extenders-for-2026-boost-your-productivity/",
+   "source_title": "15 Best Laptop Screen Extenders for 2026: USB-C, Portable & Triple-Screen Picks",
+   "read": "2026-11-21",
+   "note": "lbdsoftware quotes are from https://www.lbdsoftware.com/best-laptop-screen-extenders/, read the same day. The itechguides read covered the first 100,000 of 103,904 characters."
+  }
+ ],
+ "unsourced": [
+  "Mobile Pixels' stated laptop fit range for the Duex Plus DS and Duex Max DS: the store listing gives none, the FAQ gives none, and the English manual PDFs on Mobile Pixels' CDN downloaded but could not be converted to text in this session.",
+  "The Duex Plus DS manual's sentence that a single USB-C to USB-C cable is enough on a port with DisplayPort Alt Mode, and the USB-C plus HDMI fallback: seen only in a search snippet, never on an opened page.",
+  "Duex Plus DS weight, dimensions and power draw from the maker (manual unreadable; manuals.plus and alza copies returned HTTP 403).",
+  "FOPO S1 and S7: maker's laptop fit range (whether it states 13 inches), cables needed per screen, and any MacBook M1/M2/M3 statement. fopomonitor.com returned HTTP 429 on every product read.",
+  "Whether macOS shows mirrored screens on a one-cable two-screen extender because it lacks DisplayPort MST: the Plugable article does not mention MST and I opened no Apple page that does.",
+  "DisplayLink limits on macOS (protected video, screen-recording permission): not covered on the Plugable page I opened.",
+  "Apple's own tech-spec page for the M1 MacBook Air and 13-inch MacBook Pro display count: not opened; the M1 figure rests on Plugable.",
+  "techpp.com's cited article: HTTP 403, so its content was not compared.",
+  "Best Buy, B&H, Walmart and Target prices ChatGPT showed for the Duex Plus DS, Trio 12.5-inch and SideTrak Swivel: listings not opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 35,
+  "cost_usd_list": 2.5089555
+ }
+}

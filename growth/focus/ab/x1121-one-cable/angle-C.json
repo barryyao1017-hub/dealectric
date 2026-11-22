@@ -1,0 +1,106 @@
+{
+ "angle": "C",
+ "status": "skip",
+ "skip_reason": "On the question's own terms (two or more added screens over ONE cable), no FOPO product we link makes the top three. FOPO's driver-free duals need one video link per screen: for the S11, our without-drivers page records from FOPO that 'one USB-C cable for both is not supported', and the S7 is recorded the same way. The S788 runs its three screens through FOPO's UsbDisplay driver and ships with an external PD power supply, so it is not one cable either. The KYY X90E (Windows), the Xebec Tri-Screen 3 (Windows natively, Mac with an adapter) and the Duex Max DS (one added screen) hold the top three. One caveat: I could not read the FOPO S10's connection text (fopomonitor.com returned HTTP 429 on every product read and fopodisplay.com returned 403). The S10 is the only FOPO dual that could still change this.",
+ "gap": "No result ChatGPT got states that, according to the maker or reviewer, no two-screen extender on a MacBook runs both added screens over one cable without an adapter or driver: Xebec's compatibility table says every Mac, whatever its port, needs the Tri-Screen 3 Mac Adapter (only Windows/Linux/ChromeOS ports with DisplayPort or Thunderbolt 3+ work with no adapter), and TechRadar found the one-cable KYY X90E works only on Windows. On a Mac, the one-cable, driver-free answer is a single added screen.",
+ "standout": 2,
+ "standout_why": "Compared against TechRadar's KYY X90E review (cited), the two Mobile Pixels product pages (cited), theofficejournal.com's USB-C extender guide and itechguides.com's 2025 guide. TechRadar says the X90E 'won't work with Apple MacBook systems' but says nothing about other two-screen units. theofficejournal never mentions Mac mirroring, MST or the base-M-chip limit. itechguides only warns that 'one USB-C cable does not mean one cable will work with every laptop'. Neither guide mentions FOPO. None of these pages gives Xebec's port-by-OS table or says that Macs need an adapter for any one-cable dual. ChatGPT's answer only said 'verify compatibility' for the Xebec. Our own pages (results 2 and 3) carry the Trio 3 Pro driver rule, the FOPO one-link-per-screen rule and ViewSonic's MST quote, but not the Xebec table or the KYY Windows-only finding.",
+ "decides": "It splits the pick by operating system. On a Windows laptop with DP Alt Mode or Thunderbolt, two added screens over one cable are possible with no driver: the KYY X90E per TechRadar, and the Xebec Tri-Screen 3 per Xebec's table. On a MacBook, one cable and no driver means one added screen (Mobile Pixels Duex Max DS). For two screens on a Mac you need Xebec's Mac Adapter, or the Trio 3 Pro with Mobile Pixels' driver and a power adapter, or two cables. FOPO's driver-free duals need one video link per screen, so they fail the 'one cable' condition for two screens. That is why I'm returning skip.",
+ "candidates": [
+  "KYY X90E",
+  "Xebec Tri-Screen 3",
+  "Mobile Pixels Duex Max DS",
+  "Mobile Pixels Trio 3 Pro",
+  "FOPO S11",
+  "FOPO S7",
+  "FOPO S10",
+  "FOPO S788"
+ ],
+ "findings": [
+  {
+   "product": "KYY X90E",
+   "label": "One-cable operation for both screens",
+   "value": "One USB-C cable carries video (DP Alt Mode) to both 15.6-inch screens plus power; a second USB-C input is for optional power from the included 15 W supply; no driver",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "I tested the KYY X90E laptop screen extender (TechRadar, Mark Pickavance, 2026-01-31)",
+   "read": "2026-11-21",
+   "note": "TechRadar: 'That one cable supports ALT-DP to send data to both screens, and also power.' Can mirror or extend."
+  },
+  {
+   "product": "KYY X90E",
+   "label": "Laptop requirement and exclusion",
+   "value": "Windows 7/8.1/10/11 only, on a USB-C port with DP Alt Mode or Thunderbolt 3/4; does not work with Apple MacBooks",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "I tested the KYY X90E laptop screen extender (TechRadar)",
+   "read": "2026-11-21",
+   "note": "TechRadar: 'exclusively for Windows PCs' and 'won't work with Apple MacBook systems'. The review does not mention MST."
+  },
+  {
+   "product": "Xebec Tri-Screen 3",
+   "label": "Port compatibility by OS (maker's table)",
+   "value": "Windows/Linux/ChromeOS with a DisplayPort or Thunderbolt 3+ USB-C port: compatible, no adapter. Windows/Linux/ChromeOS with a data-only USB-C port (USB 3.2 Gen 1): Mac Adapter required. Mac with any USB-C port, including Thunderbolt 3+: Mac Adapter required. Laptops with only USB-A ports: Mac Adapter plus a USB-A to USB-C converter",
+   "source": "https://help.thexebec.com/en-US/6498426-8317935baced40b98aa197506769f51a",
+   "source_title": "Which USB-C Ports Are Compatible with the Tri-Screen 3 and Dual-Screen 3? (Xebec Help)",
+   "read": "2026-11-21",
+   "note": "The table rows are quoted verbatim in my read. The article does not say whether the Mac Adapter uses DisplayLink, and gives no wattage figure."
+  },
+  {
+   "product": "FOPO S11",
+   "label": "Cables per screen",
+   "value": "One video link per screen: USB-C with DP Alt Mode, or USB-C to one screen and HDMI (with separate USB power) to the other; one USB-C cable for both screens is not supported; FOPO lists base M1, M2 and M3 Macs as not supported for the two-screen setup",
+   "source": "https://dealectric.com/best-laptop-screen-extender-without-drivers",
+   "source_title": "Best Laptop Screen Extender That Works Without Drivers (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "Taken from our own page, which cites https://www.fopomonitor.com/products/fopo-s11-dual-screen-extender. I could not reopen FOPO's page today (HTTP 429 three times), so re-verify it on FOPO's page before publishing."
+  },
+  {
+   "product": "FOPO S7",
+   "label": "Cables per screen",
+   "value": "Driver-free; each screen needs its own video connection (video-capable USB-C or Thunderbolt, or HDMI with USB power); on a base M1, M2 or M3 MacBook Air only one of the two screens lights",
+   "source": "https://dealectric.com/best-laptop-screen-extender",
+   "source_title": "Best Laptop Screen Extender: One, Two or Three Added Screens, and Which Laptops Run Them · Dealectric",
+   "read": "2026-11-21",
+   "note": "Our own page, citing FOPO's S7 page. FOPO's page returned 429 today."
+  },
+  {
+   "product": "Mobile Pixels Trio 3 Pro",
+   "label": "One cable for both screens",
+   "value": "Driver-free only with two cables into two DP-capable USB-C ports; one cable for both screens needs Mobile Pixels' display driver and a power adapter; on base M1/M2 Macs the second screen needs the software",
+   "source": "https://dealectric.com/best-laptop-screen-extender-without-drivers",
+   "source_title": "Best Laptop Screen Extender That Works Without Drivers (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "Our page cites the Mobile Pixels Trio FAQ (https://www.mobilepixels.us/pages/faqs-trio-series-2023) and Macworld. mobilepixels.us returned 429 today."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "One-cable path",
+   "value": "One USB-C cable on a port with DisplayPort Alt Mode, no driver; on laptops without it, mini HDMI for video plus USB-C for power; one added screen, so it fits within the one-external-display limit of base M1/M2 MacBooks",
+   "source": "https://dealectric.com/best-laptop-screen-extender-without-drivers",
+   "source_title": "Best Laptop Screen Extender That Works Without Drivers (2026) · Dealectric",
+   "read": "2026-11-21",
+   "note": "Our page cites https://www.mobilepixels.us/products/duex-ds-series. The maker's page returned 429 today."
+  },
+  {
+   "product": "general",
+   "label": "macOS and one-cable dual extend",
+   "value": "ViewSonic: 'Dual-screen Extend mode is unavailable on macOS and mobile devices due to MST limitations'; Apple: an M3 MacBook Air drives a second external display only with its lid closed",
+   "source": "https://dealectric.com/best-laptop-screen-extender",
+   "source_title": "Best Laptop Screen Extender: One, Two or Three Added Screens, and Which Laptops Run Them · Dealectric",
+   "read": "2026-11-21",
+   "note": "Quoted on our own page from ViewSonic's and Apple's pages; I did not reopen those originals."
+  }
+ ],
+ "unsourced": [
+  "FOPO S10's connection rules (one cable for both screens or one per screen, Mac limits): fopomonitor.com/products/fopo-s10-dual-screen-extender returned HTTP 429 to both WebFetch and storecheck all session, fopodisplay.com returned 403, and the only search results were third-party snippets.",
+  "Mobile Pixels Duex DS series page (cited by ChatGPT): mobilepixels.us returned 429 today, so today's Duex Max DS text and price were not re-read.",
+  "Whether Xebec's Tri-Screen 3 Mac Adapter uses DisplayLink, which Macs it excludes, and its price: thexebec.com product page returned 429.",
+  "Today's prices for the KYY X90E, Xebec Tri-Screen 3 and ASUS ZenScreen MB16ACV: not read (TechRadar's $239.99 Amazon figure is from January 2026 and is not usable as today's price).",
+  "Whether the KYY X90E's single-cable dual extend relies on MST: TechRadar does not say."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.4690786000000002
+ }
+}

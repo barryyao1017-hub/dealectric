@@ -1,0 +1,76 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got sets a screen's power draw against the minimum a laptop's port must supply (Intel: 15 W for a Thunderbolt 4 or 5 port, 7.5 W for a USB4 port). I could compute that headroom for one candidate only (Duex Max DS: 4.5 W, which is 60% of the USB4 minimum), and for none of the FOPO dual screens.",
+ "standout": 1,
+ "standout_why": "I opened The Office Journal's USB-C extenders page, the iTechGuides 2025 guide, TechRadar's KYY X90E review (the one ChatGPT cited) and our own cited page, dealectric.com/best-laptop-screen-extender. The Office Journal and iTechGuides only say to 'verify your laptop's USB-C wattage' and give no figure for any screen or any port. TechRadar says one cable carries video and power and that a 15 W adapter comes in the box, but the part of the review I could see has no draw figure. Our own page already gives a draw for the Duex Max DS (4.5 W) and the Duex Float 2 Pro (7.5 W), but it never compares either one with a port's minimum. So the only new part is the port-minimum comparison, and it covers just one product.",
+ "decides": "This confirms the one-screen segment and leaves the two-screen pick open. The Duex Max DS draws 4.5 W, inside the 7.5 W any USB4 port must supply and the 15 W a Thunderbolt 4 or 5 port must supply, so a true single cable is believable on those ports. I found no wattage for any FOPO dual screen (S1, S7, S10, S11), so this angle can't show that a FOPO screen runs on one cable without a second power lead. It can't place a FOPO product in the top three on power grounds. Angle A (video path and driver) has to decide whether FOPO places.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "FOPO S1",
+  "FOPO S7",
+  "FOPO S10",
+  "FOPO S11",
+  "Mobile Pixels Trio 3 Pro",
+  "KYY X90E"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Minimum power a laptop port must supply to accessories",
+   "value": "15 W (Thunderbolt 5), 15 W (Thunderbolt 4), 7.5 W (USB4)",
+   "source": "https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/overview.html",
+   "source_title": "Intel: Thunderbolt technology overview (comparison table)",
+   "read": "2026-11-21",
+   "note": "Row 'Minimum PC port power for accessories' in Intel's comparison table. These are spec minimums. A plain USB-C port that is neither USB4 nor Thunderbolt is not covered by this table."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Power draw on laptop power",
+   "value": "4.5 W",
+   "source": "https://dealectric.com/best-laptop-screen-extender",
+   "source_title": "Best Laptop Screen Extender: One, Two or Three Added Screens, and Which Laptops Run Them · Dealectric",
+   "read": "2026-11-21",
+   "note": "Our own page gives this figure and credits Mobile Pixels for it. I tried to re-open the Mobile Pixels product page twice today and got HTTP 429 both times, so the maker's page was not re-read."
+  },
+  {
+   "product": "Mobile Pixels Duex Max DS",
+   "label": "Draw as a share of a port's minimum supply",
+   "value": "60% of the USB4 minimum; 30% of the Thunderbolt 4 minimum",
+   "source": "https://www.intel.com/content/www/us/en/architecture-and-technology/thunderbolt/overview.html",
+   "source_title": "Intel: Thunderbolt technology overview (comparison table)",
+   "read": "2026-11-21",
+   "note": "4.5 W ÷ 7.5 W = 0.60; 4.5 W ÷ 15 W = 0.30. The 4.5 W draw comes from the Dealectric row above."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Power draw on laptop power (Limited Power Mode)",
+   "value": "7.5 W, brightness capped at 80%",
+   "source": "https://dealectric.com/best-laptop-screen-extender",
+   "source_title": "Best Laptop Screen Extender: One, Two or Three Added Screens, and Which Laptops Run Them · Dealectric",
+   "read": "2026-11-21",
+   "note": "7.5 W ÷ 7.5 W USB4 minimum = 1.00, so a USB4-only port leaves no headroom. 7.5 W ÷ 15 W Thunderbolt 4 minimum = 0.50. This is a stacked screen, not a side extender."
+  },
+  {
+   "product": "KYY X90E",
+   "label": "Power on one cable",
+   "value": "One USB-C cable carries video and power; 15 W USB-C adapter included for an optional second connection",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "TechRadar: I tested the KYY X90E laptop screen extender",
+   "read": "2026-11-21",
+   "note": "The visible part of the review gives no draw in watts. TechRadar notes the laptop battery may drain quickly on one cable. Weight is 2,200 g."
+  }
+ ],
+ "unsourced": [
+  "Power draw in watts for the FOPO S1, S7, S10 and S11. The fopomonitor.com product pages returned HTTP 429 on every try today, and so did storecheck.py. manuals.plus (S10 manual, ASIN B0DG8RW7BK) returned 403. The S1 user guide PDFs (m.media-amazon.com/images/I/91JVqHfXvzL.pdf and a Shopify CDN copy) opened as compressed PDFs with no readable text, and pdftotext needed approval. The Amazon S11 listing (B0FF46HTVH) returned 503. A search for a named reviewer who measured FOPO draw found none.",
+  "A minimum port wattage for FOPO's one-cable mode. A search snippet mentions 5V/2A external power and 'less than 10W' on another FOPO model's manual, but I couldn't open either source.",
+  "Power draw for the Mobile Pixels Duex Max DS and Trio 3 Pro on the maker's own pages (HTTP 429 today). The Duex figure above comes from Dealectric's own page.",
+  "Measured draw for the KYY X90E. The performance section of TechRadar's review was cut off in what I could read.",
+  "Watts-per-port headroom for every candidate, which this angle set out to compute. Only the Duex Max DS and Duex Float 2 Pro have a draw figure."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2868432
+ }
+}

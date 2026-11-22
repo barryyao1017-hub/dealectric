@@ -1,0 +1,87 @@
+{
+ "angle": "D",
+ "gap": "No rival page ChatGPT got explains why a driver-free dual-screen extender that runs both screens from one USB-C cable is a Windows-only setup: the single DisplayPort link carries both screens through Multi-Stream Transport (MST), and Plugable says that on macOS 'MST is not supported … for extended displays' and the screens 'are mirrored, not extended'.",
+ "standout": 1,
+ "standout_why": "Rival pages compared, all read 2026-11-21. The Office Journal (USB-C extenders) covers DP Alt Mode and the power budget of the laptop's port, but never mentions MST or how macOS handles two screens on one cable. itechguides warns that \"one USB-C cable\" does not mean one cable will work with every laptop and names DP Alt Mode, but has no MST or Mac mirroring. TechRadar, which ChatGPT cited, says the KYY X90E runs both screens from one USB-C cable with ALT-DP and no drivers, and that KYY made it 'exclusively for Windows PCs'. It never gives the reason. The reason is MST. Our own pages in the same results already hold most of this: dealectric.com/best-laptop-screen-extender-without-drivers quotes Plugable on macOS mirroring MST displays and says a dual extender running both panels from one cable does so through a display driver. dealectric.com/best-laptop-screen-extender mentions MST for the ViewSonic VG1457. So the finding is new against rivals but not against the full result set. What still needs writing is the plain rule for 'one cable': one added screen needs DP Alt Mode; two added screens with no driver need MST and Windows; two added screens on a Mac need a display driver.",
+ "decides": "It splits the answer by screen count and laptop. (1) One added screen: a DP Alt Mode port is enough. The Mobile Pixels Duex Max DS is the clean one-cable pick on Windows or Mac, and our record states its connection the same way. (2) Two added screens from one cable, no driver: only on Windows (or ChromeOS) through an extender with a built-in MST splitter. The KYY X90E is the example TechRadar tested, and per TechRadar KYY says it does not work on MacBooks. (3) Two added screens from one cable on a Mac: this needs a display driver, as with the Trio 3 Pro using Mobile Pixels' software and, per our existing page, a power adapter. Base M1, M2 and M3 MacBook Airs drive one external display with the lid open in any case. FOPO risk for this brand-launch page: our without-drivers page records FOPO saying one USB-C cable for both S11 screens is not supported, and that the S1 and S7 need one video connection per screen. The S788 triple runs all three screens through FOPO's UsbDisplay driver with an external PD power supply. If FOPO's pages, re-read when the store stops rate-limiting, confirm that no FOPO dual runs both screens from one cable, then no FOPO product fits 'works with one cable' on the question's own terms. That would mean status 'skip', unless a FOPO dual turns out to have an MST single-cable mode on Windows. I could not open FOPO's pages today to settle this.",
+ "candidates": [
+  "Mobile Pixels Duex Max DS",
+  "KYY X90E",
+  "Mobile Pixels Trio 3 Pro",
+  "Xebec Tri-Screen 3",
+  "FOPO S1",
+  "FOPO S7",
+  "FOPO S10",
+  "FOPO S11",
+  "FOPO S788"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What MST does",
+   "value": "MST (DisplayPort 1.2 and later) 'allows a single video output to transmit multiple independent video streams simultaneously'",
+   "source": "https://kb.plugable.com/en_US/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort (Plugable Knowledge Base, last updated 2025-03-26)",
+   "read": "2026-11-21",
+   "note": "This is how one USB-C DP Alt Mode cable can feed two separate extender screens with no driver."
+  },
+  {
+   "product": "general",
+   "label": "MST on Windows",
+   "value": "Windows 'fully support[s] MST for extended desktop configurations'; MST hubs work without extra software",
+   "source": "https://kb.plugable.com/en_US/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort (Plugable Knowledge Base)",
+   "read": "2026-11-21",
+   "note": "The article groups ChromeOS with Windows under DP 1.2 or later over USB-C."
+  },
+  {
+   "product": "general",
+   "label": "MST on macOS",
+   "value": "'MST is not supported on macOS for extended displays'; MST-connected displays 'are mirrored, not extended'",
+   "source": "https://kb.plugable.com/en_US/understanding-mst-multi-display-setups-with-windows-macos-and-displayport",
+   "source_title": "Understanding MST: Multi-Display Setups with Windows, macOS, and DisplayPort (Plugable Knowledge Base)",
+   "read": "2026-11-21",
+   "note": "Plugable sends Mac users who need an extended desktop to DisplayLink, which is a driver path. So on a Mac, two separate added screens from one cable means a driver."
+  },
+  {
+   "product": "KYY X90E",
+   "label": "One-cable connection (TechRadar)",
+   "value": "Both screens connect over a single USB-C cable that 'supports ALT-DP to send data to both screens, and also power'; plug and play, 'requiring no drivers'",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "I tested the KYY X90E laptop screen extender - a heavyweight dual-screen portable monitor with a lightweight price-tag (TechRadar)",
+   "read": "2026-11-21",
+   "note": "TechRadar also says it needs a laptop USB-C port with ALT-DP or Thunderbolt 3/4, and that the included 15 W PSU can power the monitors directly."
+  },
+  {
+   "product": "KYY X90E",
+   "label": "Mac support (TechRadar, quoting KYY)",
+   "value": "'designed exclusively for Windows PCs, and doesn't work with Apple MacBook hardware'",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "I tested the KYY X90E laptop screen extender (TechRadar)",
+   "read": "2026-11-21",
+   "note": "TechRadar gives no technical reason. Driver-free, one cable for two screens, and Windows-only together match the MST behavior Plugable documents. That link is our inference: KYY does not name the chip in what I read."
+  },
+  {
+   "product": "KYY X90E",
+   "label": "Price at review time (TechRadar)",
+   "value": "$239.99 on Amazon.com (list $299.99); $309.99 direct from KYY",
+   "source": "https://www.techradar.com/pro/kyy-x90e-portable-monitor-review",
+   "source_title": "I tested the KYY X90E laptop screen extender (TechRadar)",
+   "read": "2026-11-21",
+   "note": "These are TechRadar's review-time figures, not today's price. A rival row needs a fresh read of KYY's US store or amazon.com."
+  }
+ ],
+ "unsourced": [
+  "FOPO's own statement on whether any FOPO dual (S1, S7, S10, S11) runs both screens from one USB-C cable, and how it behaves on macOS. fopomonitor.com returned HTTP 429 on every try today (storecheck and WebFetch, S10 and S11 pages). fopodisplay.com S7 and S10 pages and the manuals.plus FOPO 14-inch manual returned HTTP 403.",
+  "Mobile Pixels' own wording on the Trio 3 Pro's one-cable mode (driver and power adapter) and the Duex DS one-cable and power requirement. mobilepixels.us returned HTTP 429 today.",
+  "Apple's per-model external display counts. support.apple.com/en-us/101571 gives no numbers and does not mention MST or DisplayLink.",
+  "A maker, standard or USB-IF figure for how much power a laptop's USB-C port supplies to a bus-powered dual extender. I looked for it and did not open a primary source.",
+  "Whether the KYY X90E uses an MST chip, in KYY's own words. I did not open KYY's product page or manual."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.3635038
+ }
+}

@@ -7893,7 +7893,7 @@ GAP_PAGES = [
 
 # ---------------- G400: best-15-inch-triple-laptop-screen-extender-1920x1200 (research method ab-2026-11, 2026-11-21) ----------------
 {"slug": 'best-15-inch-triple-laptop-screen-extender-1920x1200',
- "question": 'G400 (gap mining daily 2026-11-21, research method ab-2026-11: best 15 inch triple laptop screen extender with 1920x1200 screens)',
+ "question": 'G400 (brand page for FOPO, research method ab-2026-11: best 15 inch triple laptop screen extender with 1920x1200 screens)',
  "run": 'clusters-1121',
  "buy_by_name": True,
  "ptype": 'brand',
@@ -7937,7 +7937,7 @@ GAP_PAGES = [
 
 # ---------------- G402: best-3-channel-dash-cam (research method ab-2026-11, 2026-11-21) ----------------
 {"slug": 'best-3-channel-dash-cam',
- "question": 'G402 (gap mining daily 2026-11-21, research method ab-2026-11: best 3 channel dash cam)',
+ "question": 'G402 (brand page for Vantrue, research method ab-2026-11: best 3 channel dash cam)',
  "run": 'clusters-1121',
  "buy_by_name": True,
  "ptype": 'brand',
@@ -7960,7 +7960,7 @@ GAP_PAGES = [
 
 # ---------------- G403: best-dash-cam-4k-front-and-4k-rear (research method ab-2026-11, 2026-11-21) ----------------
 {"slug": 'best-dash-cam-4k-front-and-4k-rear',
- "question": 'G403 (gap mining daily 2026-11-21, research method ab-2026-11: best dash cam with 4K front and 4K rear cameras)',
+ "question": 'G403 (brand page for Vantrue, research method ab-2026-11: best dash cam with 4K front and 4K rear cameras)',
  "run": 'clusters-1121',
  "buy_by_name": True,
  "ptype": 'brand',
@@ -7982,7 +7982,7 @@ GAP_PAGES = [
 
 # ---------------- G404: best-dash-cam-with-radar-parking-mode (research method ab-2026-11, 2026-11-21) ----------------
 {"slug": 'best-dash-cam-with-radar-parking-mode',
- "question": 'G404 (gap mining daily 2026-11-21, research method ab-2026-11: best dash cam with radar parking mode)',
+ "question": 'G404 (brand page for DDPAI, research method ab-2026-11: best dash cam with radar parking mode)',
  "run": 'clusters-1121',
  "buy_by_name": True,
  "ptype": 'brand',
@@ -8004,7 +8004,7 @@ GAP_PAGES = [
 
 # ---------------- G405: best-dash-cam-with-side-cameras (research method ab-2026-11, 2026-11-21) ----------------
 {"slug": 'best-dash-cam-with-side-cameras',
- "question": 'G405 (gap mining daily 2026-11-21, research method ab-2026-11: best dash cam with side cameras)',
+ "question": 'G405 (brand page for Botslab, research method ab-2026-11: best dash cam with side cameras)',
  "run": 'clusters-1121',
  "buy_by_name": True,
  "ptype": 'brand',

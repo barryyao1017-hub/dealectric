@@ -4541,7 +4541,7 @@ PRODUCTS = [
  "fit": '15.6 to 17.3-inch Windows laptops with two video-capable USB-C ports, or one plus HDMI, for buyers who want no display driver.',
  "caveats": ["17.3 inches is the top of FOPO's range, and FOPO says the diagonal alone does not guarantee a physical fit: measure the lid first", 'Each screen needs its own video signal; one cable cannot run both', "FOPO's S9G has larger 16-inch 1920×1200 panels at the same store price on 2026-11-18, but FOPO states no laptop size range for it"]},
 
-{"slug": 'mobile-pixels-duex-max-ds', "in_stock": True, "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 299.99, 'show_end': False}, "brand": 'Mobile Pixels', "program": 'cj:mobilepixels', "category": 'portable-monitor',
+{"slug": 'mobile-pixels-duex-max-ds', "cart_variant": 42717909876802, "in_stock": True, "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 299.99, 'show_end': False}, "brand": 'Mobile Pixels', "program": 'cj:mobilepixels', "category": 'portable-monitor',
  "name": 'Mobile Pixels Duex Max DS Attachable Laptop Monitor, 14.1" 1080p', "model": 'Duex Max DS',
  "url": 'https://www.mobilepixels.us/products/duex-ds-series', "price": 215.99, "list_price": 299.99, "verified": '2026-11-21',
  "specs": [('Screen', '14.1" 1920×1080, 16:9, 300 nits, 60 Hz'),
@@ -8728,7 +8728,7 @@ PRODUCTS = [
  "fit": 'Drivers who want the S1 Pro Max front camera and accept a rear camera below 4K.',
  "caveats": ['The rear camera is 2.5K, so this kit records 4K on the front channel only.', 'Parking modes need a hardwire kit that is sold separately.']},
 
-{"slug": 'mobile-pixels-fold-15-6-portable-monitor',
+{"slug": 'mobile-pixels-fold-15-6-portable-monitor', "cart_variant": 42056968699970,
  "brand": 'Mobile Pixels',
  "program": 'cj:mobilepixels',
  "category": 'portable-monitor',
@@ -8808,7 +8808,7 @@ PRODUCTS = [
  "fit": 'Drivers who want parked recording at a low total, with the kit in the same box.',
  "caveats": ["DDPAI's listing text read on 2026-11-21 gives '2K' without pixel dimensions, a frame rate or a sensor name.", 'Code SAVEBIGBF (12%, ends 2026-11-30) was cart-tested on other DDPAI products on 2026-11-21, not on this variant.', "Warranty and returns terms were not read; fill these from DDPAI's policy page before publishing."]},
 
-{"slug": 'vantrue-e360',
+{"slug": 'vantrue-e360', "cart_variant": 50593064812853,
  "brand": 'Vantrue',
  "program": 'awin:vantrue',
  "category": 'dash-cam',
@@ -8890,7 +8890,7 @@ PRODUCTS = [
  "fit": "Shoppers who want radar-wake parking for less money than Thinkware's built-in-radar cameras, and who can accept a 1080p rear camera.",
  "caveats": ["The rear camera is 1080p. Thinkware's U3000 series records the rear at 2560×1440.", "One DashCamTalk owner (thatbwnguy, 2024-12-04) reported that with the OBD kit in a 2019 Mazda CX-9 the camera shut down about 15 minutes after parking. DDPAI's forum reply recommended wiring to the fuse box.", 'The radar is a separate module mounted next to the camera, not built into the camera body.']},
 
-{"slug": 'mobile-pixels-duex-plus-ds',
+{"slug": 'mobile-pixels-duex-plus-ds', "cart_variant": 42717917904962,
  "brand": 'Mobile Pixels',
  "program": 'cj:mobilepixels',
  "category": 'portable-monitor',
