@@ -1,0 +1,143 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that VIA writes the keymap, layers and macros into the keyboard's own non-volatile memory over a USB link (four layers by default), or that the Lofree Flow 2 only appears in VIA after you plug it in by cable and load Lofree's JSON definition through VIA's Design tab.",
+ "standout": 2,
+ "standout_why": "Compared against mechkeyfoundry.com (the cited best-of page and its three-way comparison) and mkbguide.com; rtings.com's best-of page returned only navigation, so its pick text was not compared. mechkeyfoundry has part of it: it says the K3 Max keymap 'is compiled onto the board and travels with it' and that the Flow 2 'supports VIA for remapping over 2.4 GHz, Bluetooth 5.3 or USB-C'. Neither page gives the setup path (cable, Design tab, JSON file), the layer count, or the VIA project's own wording on where the keymap is stored. mkbguide lists only 'VIA configuration' for the Flow 2 and 'NuPhyIO 2.0' for the Air75 V3. Caveat: lofree.co, keychron.com and nuphy.com all returned HTTP 429 today, so the Flow 2 specifics rest on VIA's docs plus one named third-party guide, not on Lofree's own page.",
+ "decides": "It confirms the Lofree Flow 2 84 as a linkable pick for programmers who want layers and remaps that work on any OS with no background app, because VIA stores them on the board. It adds a caveat the page must state: setup is not plug-and-detect (cable plus a manually loaded JSON), which the Keychron K3 Max avoids according to mechkeyfoundry (remaps through Keychron Launcher in a browser). It also separates firmware-stored boards (Flow 2, K3 Max, K1 Max) from host-app boards: mechkeyfoundry says the MX Mechanical Mini remaps through Logi Options+ on Windows and macOS only, and mkbguide says the Flow Lite84 uses Lofree Key Mapper for Windows and Mac, so a Linux programmer should not pick those for remapping. The NuPhy Air75 V3 moved from QMK/VIA to NuPhyIO 2.0 (mkbguide), so the 'QMK/VIA preferred' line in ChatGPT's own table no longer describes its top pick.",
+ "candidates": [
+  "Lofree Flow 2 84",
+  "Lofree Flow Lite 2 84",
+  "Lofree Flow84",
+  "Keychron K3 Max",
+  "Keychron K1 Max",
+  "NuPhy Air75 V3",
+  "Logitech MX Mechanical Mini"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Where VIA keeps a remap",
+   "value": "VIA 'stores dynamic keymaps, macros, layout options, and other supported settings in the keyboard's non-volatile memory'",
+   "source": "https://www.caniusevia.com/docs/configuring_qmk",
+   "source_title": "VIA docs: Configuring QMK",
+   "read": "2026-11-21",
+   "note": "VIA project's own documentation, quoted as the fetch tool returned it. Applies to any VIA-compatible board (Lofree Flow 2, Keychron K3 Max / K1 Max)."
+  },
+  {
+   "product": "general",
+   "label": "How VIA reaches the keyboard",
+   "value": "'VIA communicates with compatible firmware over USB'",
+   "source": "https://www.caniusevia.com/docs/configuring_qmk",
+   "source_title": "VIA docs: Configuring QMK",
+   "read": "2026-11-21",
+   "note": "The page does not say whether a 2.4 GHz dongle (which is also a USB device) counts; it does not mention Bluetooth."
+  },
+  {
+   "product": "general",
+   "label": "Layers VIA provides by default",
+   "value": "4 dynamic layers ('By default, VIA provides four dynamic layers'); the count is set by the firmware's dynamic_keymap.layer_count",
+   "source": "https://www.caniusevia.com/docs/configuring_qmk",
+   "source_title": "VIA docs: Configuring QMK",
+   "read": "2026-11-21",
+   "note": "Default for VIA firmware in general; a maker can build with a different count."
+  },
+  {
+   "product": "Lofree Flow 2",
+   "label": "Connection needed to configure in VIA",
+   "value": "Wired: 'Flow2 needs to be connected to the PC by wire' (Flow2をパソコンに有線でつなげておく必要があります)",
+   "source": "https://note.com/bamka/n/ndc825efa0f3c",
+   "source_title": "Lofree Flow2 の VIA 設定方法!キーマップの変更方法について (ばんか / bamka, note.com)",
+   "read": "2026-11-21",
+   "note": "Named third-party guide by bamka, published 2025-09-08; translation by the fetch tool. Not Lofree's own wording. It sits in tension with mechkeyfoundry's 'supports VIA for remapping over 2.4 GHz, Bluetooth 5.3 or USB-C', which may only mean remaps keep working in those modes."
+  },
+  {
+   "product": "Lofree Flow 2",
+   "label": "VIA setup steps",
+   "value": "Download Lofree's 'Flow2 VIA Json' file, turn on 'Show Design tab' in VIA's settings, open Design and click Load to load the JSON",
+   "source": "https://note.com/bamka/n/ndc825efa0f3c",
+   "source_title": "Lofree Flow2 の VIA 設定方法!キーマップの変更方法について (ばんか / bamka, note.com)",
+   "read": "2026-11-21",
+   "note": "bamka, 2025-09-08. The guide names the file FLOW2-100key-OE928-Json-20250905.json for the unit it covers; the 84-key file name was not on this page. The guide took the download link from Lofree's Kickstarter page."
+  },
+  {
+   "product": "Lofree Flow 2",
+   "label": "Firmware internals (reverse-engineering note)",
+   "value": "6-layer default keymap block in the firmware image; USB VID/PID 0x388D / 0x0001, same ID on the 2.4G dongle; firmware upgrade uses WB32 DFU through QMK Toolbox",
+   "source": "https://github.com/seobaeksol/lofree-flow-spacefn-layout/blob/main/docs/firmware/flow2_firmware_notes.md",
+   "source_title": "flow2_firmware_notes.md, seobaeksol/lofree-flow-spacefn-layout (GitHub)",
+   "read": "2026-11-21",
+   "note": "Third-party analysis by GitHub user seobaeksol, covering the OE928 (100-key) definition. Not a Lofree statement; use only as supporting colour, and do not print '6 layers' as a Lofree spec."
+  },
+  {
+   "product": "general",
+   "label": "WebHID availability (the browser API web configurators use)",
+   "value": "MDN: 'This feature is not Baseline because it does not work in some of the most widely-used browsers'; marked experimental",
+   "source": "https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API",
+   "source_title": "WebHID API - MDN Web Docs",
+   "read": "2026-11-21",
+   "note": "The compatibility table did not load, so the list of supporting browsers is not sourced from this page (see unsourced)."
+  },
+  {
+   "product": "Keychron K3 Max",
+   "label": "Rival page's statement on remapping",
+   "value": "'Keychron's K3 Max runs QMK and remaps through Keychron Launcher or VIA'; 'your keymap is compiled onto the board and travels with it'",
+   "source": "https://mechkeyfoundry.com/nuphy-air75-v3-vs-lofree-flow-2-vs-keychron-k3-max/",
+   "source_title": "NuPhy Air75 V3 vs Lofree Flow 2 vs Keychron K3 Max (mechkeyfoundry.com)",
+   "read": "2026-11-21",
+   "note": "Rival page dated 2026-10-17; this is the part of the mechanism rivals already have. The page lists the K3 Max at $109.99, against $87.49 on ChatGPT's card; neither was re-read at keychron.com today."
+  },
+  {
+   "product": "NuPhy Air75 V3",
+   "label": "Rival page's statement on remapping",
+   "value": "'The V3 moved from the V2's QMK/VIA stack to NuPhyIO 2.0'",
+   "source": "https://mkbguide.com/blog/best-low-profile-mechanical-keyboards",
+   "source_title": "Best Low-Profile Mechanical Keyboards (2026) | MKB Guide",
+   "read": "2026-11-21",
+   "note": "Rival page dated 2026-09-30. mechkeyfoundry's comparison agrees: 'uses NuPhy's own NuPhyIO configurator rather than QMK or VIA'. NuPhy's own page could not be opened today."
+  },
+  {
+   "product": "Logitech MX Mechanical Mini",
+   "label": "Rival page's statement on remapping",
+   "value": "'There is no QMK and no VIA here. You remap and update through Logi Options+ on Windows and macOS'",
+   "source": "https://mechkeyfoundry.com/best-low-profile-mechanical-keyboard-wireless/",
+   "source_title": "Best Low-Profile Mechanical Keyboard (Mac and PC) (mechkeyfoundry.com)",
+   "read": "2026-11-21",
+   "note": "Rival page dated 2026-10-16, cited by ChatGPT. Host-app remapping, in contrast with VIA's on-keyboard storage."
+  },
+  {
+   "product": "Lofree Flow Lite84",
+   "label": "Rival page's statement on remapping",
+   "value": "'Lofree Key Mapper for Windows and Mac'; 'Key Mapper is less capable than VIA'",
+   "source": "https://mkbguide.com/blog/best-low-profile-mechanical-keyboards",
+   "source_title": "Best Low-Profile Mechanical Keyboards (2026) | MKB Guide",
+   "read": "2026-11-21",
+   "note": "About the older Flow Lite84, not our Flow Lite 2 84 record; the Flow Lite 2's remapping software was not sourced (see unsourced)."
+  },
+  {
+   "product": "general",
+   "label": "Linux udev rules (QMK)",
+   "value": "'On Linux, you'll need proper privileges to communicate with the bootloader device'; QMK installs rules with util/install_udev.sh",
+   "source": "https://docs.qmk.fm/faq_build",
+   "source_title": "QMK Firmware docs: Frequently Asked Build Questions",
+   "read": "2026-11-21",
+   "note": "Covers flashing firmware only. It does not say a udev rule is needed for VIA or Launcher to see a keyboard, so do not use it for that claim."
+  }
+ ],
+ "unsourced": [
+  "Lofree's own wording on Flow 2 VIA support (JSON download link, connection mode needed, layer count, OS support): lofree.co product page, its .json endpoint, storecheck.py and lofree.co.jp all returned HTTP 429 on 2026-11-21.",
+  "Whether VIA can configure the Flow 2 through the 2.4 GHz dongle or over Bluetooth: seen only in a search summary of other Japanese guides (dongle yes, Bluetooth no), which I did not open.",
+  "Keychron's own statement that Launcher needs a USB cable and a WebHID browser (Chrome, Edge, Opera) for the K3 Max / K1 Max: keychron.com product page returned 429, the Launcher guide blog returned only navigation, and launcher.keychron.com returned only the word 'Launcher'.",
+  "NuPhy's own statement on how NuPhyIO 2.0 connects to the Air75 V3 (cable or dongle, browser, Linux): nuphy.com returned 429 and io.nuphy.com did not resolve.",
+  "Which browsers implement WebHID, from a page I opened: MDN's compatibility table did not load, and the VIA GitHub README and VIA specification page do not say.",
+  "A Linux udev/hidraw requirement for VIA or Launcher specifically: not on the VIA or QMK pages I opened.",
+  "Which remapping software the Lofree Flow Lite 2 84 and the original Flow84 use: not reached. ChatGPT's 'limited key-remapping' line for the Flow84 cites RTINGS, which I did not open.",
+  "Hot-swap socket compatibility in the makers' words (which low-profile switch families fit the Flow 2, K3 Max and Air75 V3): maker pages returned 429; only rival-page wording was seen.",
+  "Today's maker-store prices for the Keychron K3 Max, Keychron K1 Max, NuPhy Air75 V3 and Logitech MX Mechanical Mini: Shopify stores returned 429 to both WebFetch and storecheck.py; no rival price was read today."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 2.3024235
+ }
+}
