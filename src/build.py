@@ -708,8 +708,14 @@ def money(x):
     return f"${x:,.2f}" if x != int(x) else f"${int(x):,}"
 
 
+# Brands whose program terms forbid their name anywhere in our URLs get a path without it (TORRAS on CJ, read
+# 2026-11-25: "official, torras, torraslife" are prohibited website URL keywords).
+CODES_PATH_OVERRIDE = {"TORRAS": "ostand-case-and-coolify"}
+
+
 def codes_path(brand):
-    return f"/discount-codes/{brand.lower().replace(' ', '-')}-discount-codes/"
+    key = CODES_PATH_OVERRIDE.get(brand, brand.lower().replace(' ', '-'))
+    return f"/discount-codes/{key}-discount-codes/"
 
 
 def live_codes(brand):
