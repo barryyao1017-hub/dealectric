@@ -1,0 +1,218 @@
+<title>Dealectric Page Types Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~760px) with full-width tables that scroll on phones; findings first, evidence after. */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#18212f; --muted:#5b6676; --rule:#dde2e8;
+  --sun:#c46f00; --sunsoft:#f3dcb8; --slate:#7b8aa0; --good:#1f7a4d; --bad:#b3261e; --warn:#8a6100;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"Public Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11151c; --panel:#181e27; --ink:#e6eaf0; --muted:#9aa5b5; --rule:#2a3340;
+  --sun:#f0a33a; --sunsoft:#5a3d12; --slate:#6d7b90; --good:#5cc28e; --bad:#f08a80; --warn:#e0b85a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11151c; --panel:#181e27; --ink:#e6eaf0; --muted:#9aa5b5; --rule:#2a3340;
+  --sun:#f0a33a; --sunsoft:#5a3d12; --slate:#6d7b90; --good:#5cc28e; --bad:#f08a80; --warn:#e0b85a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body)}
+.wrap{max-width:820px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2rem;font-weight:600}
+h2{font-size:1.35rem;font-weight:600;padding-top:8px;border-top:1px solid var(--rule)}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0;max-width:68ch}
+section{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.05rem}
+.bottom{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--sun);padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.bottom ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+a{color:var(--sun)} a:focus-visible{outline:2px solid var(--sun);outline-offset:2px}
+.tbl{overflow-x:auto;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{font:500 11.5px var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font:500 11px var(--mono);padding:1px 7px;border-radius:9px;border:1px solid currentColor;white-space:nowrap}
+.ok{color:var(--good)} .no{color:var(--bad)} .mid{color:var(--warn)} .na{color:var(--muted)}
+.chart{background:var(--panel);border:1px solid var(--rule);padding:14px 12px 8px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.note{font-size:13px;color:var(--muted)}
+code{font:13px var(--mono)}
+ul.tight{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+</style>
+
+<div class="wrap">
+<header style="display:flex;flex-direction:column;gap:10px">
+  <div class="eyebrow">Dealectric · discoverability review · 26 Nov 2026</div>
+  <h1>Which page types ChatGPT sends shoppers to</h1>
+  <p class="lede">A review of every page hypothesis since 23 Oct, the 420 comparison pages they produced, and the pipelines that build them, scored against real ChatGPT shopper visits, clicks and sales in D1.</p>
+</header>
+
+<div class="bottom">
+  <strong>Bottom line: page count has stopped buying traffic. Since 14 Nov ChatGPT visits have held at about 25–30 a day while the site added 130 comparison pages. One page shape works (size or budget: "best X under $N", "best N Wh kit"), and it works outside solar too. The best pages of that shape, the solar kit comparisons, lost almost all their visits on 19 Nov. Sales did not drop with them, because most sales come from ChatGPT quoting our code, not from page visits.</strong>
+  <ol>
+    <li><b>Size/budget pages draw 6× more visits than "best X for Y" or question pages</b> (0.58 vs 0.10 per page in the last 8 days, pages at least a week old). It holds in solar and in non-solar clusters.</li>
+    <li><b>Five page families are near zero</b>: openness-first gap loop, gapmine demand×coverage, combo, open-query and catalog-gap pages. 266 pages, 30 visits in the last 8 days.</li>
+    <li><b>The three solar kit comparison pages went from 10+ visits a day to 1–3 on 19 Nov</b>, Diagnosed 26 Nov: ChatGPT kept ranking and citing them and kept writing our buy links into answers; shoppers stopped opening the pages, most likely because Black Friday changed what they asked. Separately, gpt-6-2 (since about 23 Nov) ranks them lower.</li>
+    <li><b>47 of 63 sales came with no click</b> (code typed at checkout, mostly BLUETTI <code>DEALECTRIC</code>). Visits are a weak proxy for money; "does the answer carry our code and price" is the better one.</li>
+    <li><b>Building is hand-driven.</b> Every batch since 13 Nov ran through a one-off wrapper in a Claude session. The only unattended discovery path (gapmine → gappage) is drafts-only and feeds the page shape that performs worst.</li>
+  </ol>
+</div>
+
+<section>
+  <h2>Traffic stopped growing with pages</h2>
+  <p>Human ChatGPT landings per day (distinct browser per day, <code>utm_source</code> from ChatGPT, <code>bot_like=0</code>), split into the solar kit comparison pages and everything else. The labels above the bars are the cumulative number of comparison pages live.</p>
+  <div class="chart">
+    <svg id="daily" viewBox="0 0 760 270" role="img" aria-label="Daily ChatGPT visits, 28 Oct to 26 Nov"></svg>
+    <div class="legend"><span><span class="sw" style="background:var(--sun)"></span>Solar kit comparison pages</span><span><span class="sw" style="background:var(--slate)"></span>All other pages</span><span>26 Nov is a partial day</span></div>
+  </div>
+  <p>Before 14 Nov each batch of pages lifted the total. After it, 130 more pages (combo, open-query, kit size/budget, clusters) left the total flat, while the kit comparisons fell from 11–14 a day to 0–5. The other pages grew enough to cover the loss, mostly through the new non-solar clusters and the Black Friday pages.</p>
+</section>
+
+<section>
+  <h2>Results by hypothesis</h2>
+  <p>Each family is the set of pages one hypothesis produced. "Last 8 days" counts 19–26 Nov for pages published by 18 Nov, so every page has had at least a week to be crawled.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Family (dates)</th><th>Hypothesis</th><th>Pages</th><th>Visits, all</th><th>Last 8 d / page</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Early gap pages (23 Oct–2 Nov)</td><td>Pages on queries whose results lack real data get cited. Includes the three kit pages picked on measured Bing demand.</td><td class="n">17</td><td class="n">97</td><td class="n">0.88</td><td><span class="pill ok">worked, 3 pages</span></td></tr>
+      <tr><td>Gap loop (3–4 Nov)</td><td>Openness first: many pages on open queries, fast.</td><td class="n">96</td><td class="n">76</td><td class="n">0.12</td><td><span class="pill no">no demand</span></td></tr>
+      <tr><td>Gapmine (5–9 Nov)</td><td>Demand × (1 − coverage) from autocomplete depth and a Claude coverage gate.</td><td class="n">80</td><td class="n">35</td><td class="n">0.11</td><td><span class="pill no">no demand</span></td></tr>
+      <tr><td>Daily abpage / onboarding (10 Nov on)</td><td>Research method on brand-led queries, value-steered from 13 Nov.</td><td class="n">71</td><td class="n">62</td><td class="n">0.45</td><td><span class="pill mid">mixed</span></td></tr>
+      <tr><td>Combo run (13 Nov)</td><td>Bundles and a strictly-lowest price give ChatGPT something its catalog cards can't.</td><td class="n">61</td><td class="n">15</td><td class="n">0.07</td><td><span class="pill no">failed</span></td></tr>
+      <tr><td>Catalog-gap BLUETTI (15 Nov)</td><td>Products ChatGPT names with no seller will take our link.</td><td class="n">11</td><td class="n">6</td><td class="n">0.27</td><td><span class="pill mid">reading open</span></td></tr>
+      <tr><td>Open-query pages (15–17 Nov)</td><td>Measured-result questions that stay open across chats.</td><td class="n">18</td><td class="n">2</td><td class="n">0.11</td><td><span class="pill no">failed</span></td></tr>
+      <tr><td>Kit size/budget (17–18 Nov)</td><td>Offer-first: more pages in the shape that draws visits.</td><td class="n">19</td><td class="n">17</td><td class="n">0.53</td><td><span class="pill mid">well below the originals</span></td></tr>
+      <tr><td>Non-solar clusters (18–21 Nov)</td><td>Extenders, keyboards, dash cams, each with a sale; page-type mix.</td><td class="n">47</td><td class="n">30</td><td class="n">1.17*</td><td><span class="pill ok">early promise</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">* Only the 6 extender pages from 18 Nov are old enough for the 8-day column. The 41 pages from 21 Nov drew 21 visits in 5 days. Families are assigned from each record's <code>run</code> field, else its publish date.</p>
+</section>
+
+<section>
+  <h2>Page shape beats topic</h2>
+  <p>Shapes come from the record's <code>ptype</code> where set, else from the slug (a heuristic: "under-$N", Wh, W or mAh in the slug counts as size/budget). Pages at least a week old, last 8 days.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Shape</th><th>Example</th><th>Pages</th><th>Last 8 d / page</th><th>Share with any visit</th><th>All-time / page</th></tr></thead>
+    <tbody>
+      <tr><td>Size / budget</td><td><a href="https://dealectric.com/best-solar-generator-kit-under-500">best solar generator kit under 500</a></td><td class="n">57</td><td class="n">0.58</td><td class="n">37%</td><td class="n">1.86</td></tr>
+      <tr><td>Best X (feature)</td><td><a href="https://dealectric.com/silent-hall-effect-keyboard">silent hall effect keyboard</a></td><td class="n">189</td><td class="n">0.25</td><td class="n">14%</td><td class="n">0.72</td></tr>
+      <tr><td>Best X for Y (situation)</td><td>power station for a pellet stove</td><td class="n">113</td><td class="n">0.10</td><td class="n">7%</td><td class="n">0.36</td></tr>
+      <tr><td>Question</td><td>can a 1000 Wh station run a heater</td><td class="n">20</td><td class="n">0.10</td><td class="n">5%</td><td class="n">0.35</td></tr>
+    </tbody>
+  </table></div>
+  <p>The 21 Nov cluster run tested the mix directly (5 days, small numbers): size pages 16 visits on 23 pages, brand-launch 4 on 8, best-for 1 on 7, question 0 on 3. Outside solar, size/budget pages draw 0.89 visits each all-time against 0.46 for best-for and 0.40 for questions.</p>
+  <p>By vertical, NAS (39 pages) drew 0 visits in the last 8 days and 5 ever; audio 8 ever on 21 pages. Monitors/extenders, keyboards and dash cams lead per page among older pages.</p>
+  <p>Other page kinds, all-time: Black Friday deal pages 45 visits on 13 pages (3.5 each), product pages 150 on 722 (0.21; solar kits and power stations take 84 of those), brand discount-code pages 18 on 157 (0.11).</p>
+</section>
+
+<section>
+  <h2>What the chat experiments established</h2>
+  <p>These came from app chats and the saved answer markup, not from D1. They explain citation and handover; they do not predict traffic.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Finding</th><th>Evidence</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>ChatGPT answers from OpenAI's stored copy, refreshed only when OAI-SearchBot re-fetches.</td><td>291 of 292 superseded-copy chats matched OAI-SearchBot's last fetch (28 Oct).</td><td><span class="pill ok">settled</span></td></tr>
+      <tr><td>Citations go to whoever holds one checkable fact (the six-angle research method).</td><td>A/B: cited-when-retrieved A 38→57%, B 36→41%; net +13 (SE 10), short of the +20 bar. Adopted site-wide anyway.</td><td><span class="pill mid">small, likely real</span></td></tr>
+      <tr><td>Product rows bound to OpenAI's catalog crowd out citations.</td><td>1,013 chats: all rows carded → 26% cited, none carded → 77%. Solar rows 43% carded, NAS 79%; NAS citations go to makers and docs.</td><td><span class="pill ok">strong</span></td></tr>
+      <tr><td>Open questions exist, but nobody asks them.</td><td>44 of 294 open in one chat, 12 in every chat; only "solar generators for home use" had real volume. 18 pages, 2 visits.</td><td><span class="pill no">dead end</span></td></tr>
+      <tr><td>Our buy link is handed over only when our price is lowest, our page is retrieved, and the opening carries price, code, test date and link.</td><td>Where-to-buy chats: 36 of 104 lowest-priced products handed over; 34 more cited with the store linked and our code quoted. Comparison chats: 0 of 313.</td><td><span class="pill ok">strong</span></td></tr>
+      <tr><td>Kits and bundles earn the handover.</td><td>Kit pages retrieved in 1 of 16 chats vs 6 of 16 for controls.</td><td><span class="pill na">on hold to 1 Dec</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>The where-to-buy result also explains the sales mix: when ChatGPT cites our page but links the store, it tells the shopper to type our code. That matches 38 BLUETTI sales with no click ID.</p>
+</section>
+
+<section>
+  <h2>The kit comparison drop on 19 Nov</h2>
+  <p>Daily ChatGPT visits, 15–26 Nov:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Page</th><th>15–18 Nov</th><th>19–26 Nov</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://dealectric.com/best-2000wh-solar-generator-kit-with-panels">best 2000wh solar generator kit with panels</a></td><td class="n">23</td><td class="n">3</td></tr>
+      <tr><td><a href="https://dealectric.com/solar-generator-with-panels-included">solar generator with panels included</a></td><td class="n">7</td><td class="n">1</td></tr>
+      <tr><td><a href="https://dealectric.com/best-solar-generator-kit-under-500">best solar generator kit under 500</a></td><td class="n">4</td><td class="n">2</td></tr>
+      <tr><td><a href="https://dealectric.com/black-friday-power-station-deals">black friday power station deals</a></td><td class="n">13</td><td class="n">11</td></tr>
+    </tbody>
+  </table></div>
+  <p>ChatGPT buy-link clicks did not fall with the visits: about 17 a day through 18 Nov and 20 a day since (ALLPOWERS and BLUETTI still 99 of 160). Sales ran 31 in 19–26 Nov. So ChatGPT kept writing our links and codes into answers while shoppers stopped opening the pages.</p>
+  <h3>Diagnosis (26 Nov)</h3>
+  <p><b>ChatGPT did not stop finding or citing these pages. Shoppers stopped opening them while still clicking the buy links in the answers.</b> Ruled out:</p>
+  <ul class="tight">
+    <li><b>Counting.</b> D1 logs untagged views too. On these pages they are a steady handful of monitoring bots on rotating networks, before and after the drop. No shoppers are hiding there.</li>
+    <li><b>Crawl.</b> OAI-SearchBot fetched each page about every 6 hours throughout, so ChatGPT's stored copy stayed current.</li>
+    <li><b>Our edits.</b> The 2000 Wh page's opening was the same up to the drop (same pick, price $853 → $913). Its big rewrite came on 21 Nov, two days after.</li>
+    <li><b>Retrieval.</b> Chats on 20–22 Nov (gpt-6) ranked the 2000 Wh page first and cited it in 6 of 6. Panels-included was top 3 in 6 of 6.</li>
+    <li><b>Our links in answers.</b> Buy-link clicks written into answers held at about 12–13 a day. ChatGPT's live fetches of our <code>/go/</code> links rose from 62–83 a day to 89–137 a day.</li>
+  </ul>
+  <p>Most likely, but not provable because shopper prompts can't be seen: in Black Friday week, people asked deal questions rather than "best 2000 Wh kit".</p>
+  <h3>A separate, newer change: gpt-6-2</h3>
+  <p>Since about 23 Nov the ChatGPT app answers with gpt-6-2. I re-asked the 21 kit questions from 17–18 Nov (29 chats). Our pages are still retrieved (26 of 29) and cited about as often (41% vs 45%), but they rank lower: top 3 in 5 of 29 chats, against 24 of 42 before. gpt-6-2 returns about 17 results instead of 12, and puts Black Friday lists from Popular Mechanics, PopSci, Bob Vila and TechRadar above us. One of those was in the top 5 in 18 of 29 chats. Our own pages also take 2–5 slots per chat in 17 of 29, competing with each other.</p>
+  <p>Whether rank recovers once the Black Friday lists age out is DLC-362, due 3 Dec. Readings that compare against gpt-6 baselines now mix two models.</p>
+</section>
+
+<section>
+  <h2>The pipelines</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Stage</th><th>Tools</th><th>Runs</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Find queries</td><td><code>gapmine.py</code> (autocomplete, Reddit, brand news, Claude coverage gate), <code>brandvalue.py</code></td><td>Sweep tail, drafts only</td><td>Last "gapmine: daily run" commit 6 Nov, ledger's last entry 14 Nov. Queue: 138 published, 32 committed, 1 ready. Selects mostly situation and feature queries.</td></tr>
+      <tr><td></td><td><code>openscan.py</code>, <code>panelprobe.py</code>, <code>visibility_scan.py</code> harvests</td><td>By hand</td><td>Bound by the ChatGPT Plus quota (about 100–300 chats per window, one chat at a time).</td></tr>
+      <tr><td></td><td><code>offers/offer_table.py</code> (D1 clicks and sales per offer)</td><td>By hand, once (17 Nov)</td><td>The only selector built from what sells.</td></tr>
+      <tr><td>Build</td><td><code>abpage.py</code>: harvest → six angle agents → compose → verify → apply</td><td>By hand</td><td>About 10 agent runs and 25–30 min per page; DLC-314 measured $57 at list price for four pages.</td></tr>
+      <tr><td></td><td>Per-run wrappers: <code>openpage.py</code>, <code>kitpages.py</code>, <code>clusterpages.py</code>, <code>monitorpages.py</code>, <code>combopage.py</code>, <code>kitpage.py</code></td><td>By hand</td><td>Six drivers around one method, each adding its run's rules and product table.</td></tr>
+      <tr><td></td><td><code>gappage.py</code> (unattended abpage variant)</td><td>Sweep tail</td><td><code>AUTOPUBLISH</code> is off, so it stores drafts only.</td></tr>
+      <tr><td>Gate</td><td><code>fastloop.py check</code>, <code>amazon_verify</code>, cart tests, <code>docsguard</code>, <code>repolock</code></td><td>Inside apply</td><td>Solid. Gates fact and link integrity, not demand.</td></tr>
+      <tr><td>Keep fresh</td><td><code>codesweep</code>, <code>amzprice</code> (daily); <code>pricecheck</code>, <code>rivalprice</code>, <code>freshapply</code>, fact checks (by hand)</td><td>Partly unattended</td><td>Cost grows with page count. Stale prose prices and ship dates are open (DLC-310, DLC-333: 174 passages).</td></tr>
+      <tr><td>Measure</td><td><code>storedcopy.py</code>, reading scripts, D1 <code>dash_hv</code>/<code>dash_hc</code></td><td>By hand</td><td>Readings overdue or due: DLC-297 (24 Nov), DLC-270 (27 Nov), DLC-223 (1 Dec), DLC-290 (2 Dec), DLC-348 (5 Dec), DLC-272 reading 3, DLC-286/287.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>What I would do next</h2>
+  <ul class="tight">
+    <li><b>Diagnose the kit drop before building more kit pages.</b> Run DLC-297's reading now, plus the stored-copy dates. If our edits caused it, it is the cheapest traffic to win back.</li>
+    <li><b>Build only size/budget pages, in brands with codes and sales.</b> Stop new situation, question, open-query and combo pages. Keep the old ones live, but take them out of the hand fact-checks to cut maintenance.</li>
+    <li><b>Score pages by the answer, not the visit.</b> Track whether where-to-buy answers carry our code, price and link per product. That is where sales come from.</li>
+    <li><b>Fold the six wrappers into one config-driven abpage run</b>, and point the unattended gapmine path at size/budget queries for brands with sales, or turn it off. As it stands it feeds the weakest shape, which works against North Star 2.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Method and limits</h2>
+  <ul class="tight note">
+    <li>D1 <code>dash_hv</code> / <code>dash_hc</code> / <code>sales</code>, read 26 Nov. A visit is one browser (user agent, country, ASN) per day. Totals: 538 ChatGPT visits, 63 sales rows since 29 Oct.</li>
+    <li>Counts are small. Most pages have 0–3 visits, so per-family rates move a lot on a handful of pages; the shape and vertical splits are directional.</li>
+    <li>Shape and vertical are inferred (slug patterns; the majority category of a page's product rows). Pages published 21 Nov or later are left out of the 8-day columns.</li>
+    <li>Chat findings come from earlier sessions' runs and notes (DLC-208, 250, 283, 320–322; the 14 Nov top/bottom analysis); I did not re-run them.</li>
+  </ul>
+</section>
+</div>
+
+<script>
+(function(){
+  const vis=[1,6,4,4,4,8,6,6,6,10,11,9,21,16,12,18,23,30,31,35,36,40,29,18,27,27,32,24,29,15];
+  const kit=[0,4,3,3,3,2,1,2,4,3,4,4,3,8,0,5,7,5,7,13,14,11,3,1,5,4,3,2,2,0];
+  const pages={0:0,5:19,6:91,7:115,8:129,9:171,11:191,13:238,14:258,16:296,17:327,20:362,21:379,24:420};
+  const svg=document.getElementById('daily'), NS='http://www.w3.org/2000/svg';
+  const W=760,H=270,L=34,R=8,T=34,B=28, n=vis.length, max=45;
+  const bw=(W-L-R)/n, y=v=>T+(H-T-B)*(1-v/max);
+  const el=(t,a,txt)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;svg.appendChild(e);return e};
+  [0,10,20,30,40].forEach(v=>{el('line',{x1:L,x2:W-R,y1:y(v),y2:y(v),stroke:'var(--rule)','stroke-width':1});el('text',{x:L-6,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'var(--muted)','font-family':'IBM Plex Mono,monospace'},v)});
+  vis.forEach((v,i)=>{const x=L+i*bw+2,w=bw-4,k=kit[i];
+    el('rect',{x,y:y(v),width:w,height:y(0)-y(v),fill:'var(--slate)'});
+    el('rect',{x,y:y(k),width:w,height:y(0)-y(k),fill:'var(--sun)'});
+    if(pages[i]!==undefined&&i>0) el('text',{x:x+w/2,y:16,'text-anchor':'middle','font-size':10,fill:'var(--muted)','font-family':'IBM Plex Mono,monospace'},pages[i]);
+  });
+  const lab=['28 Oct','4 Nov','11 Nov','18 Nov','25 Nov'];
+  [0,7,14,21,28].forEach((i,j)=>el('text',{x:L+i*bw+bw/2,y:H-8,'text-anchor':'middle','font-size':11,fill:'var(--muted)','font-family':'IBM Plex Mono,monospace'},lab[j]));
+  const xm=L+17*bw; el('line',{x1:xm,x2:xm,y1:T-6,y2:y(0),stroke:'var(--ink)','stroke-dasharray':'3 3','stroke-width':1});
+  el('text',{x:xm+4,y:T+4,'font-size':11,fill:'var(--ink)','font-family':'Public Sans,sans-serif'},'14 Nov: total stops rising');
+  const xk=L+22*bw; el('line',{x1:xk,x2:xk,y1:T+14,y2:y(0),stroke:'var(--sun)','stroke-dasharray':'3 3','stroke-width':1});
+  el('text',{x:xk+4,y:T+24,'font-size':11,fill:'var(--sun)','font-family':'Public Sans,sans-serif'},'19 Nov: kit pages drop');
+})();
+</script>

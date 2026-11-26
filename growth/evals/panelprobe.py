@@ -40,7 +40,7 @@ def main() -> int:
     ap.add_argument("--run-id", default="2026-11-15-panelprobe")
     ap.add_argument("--queries", required=True)
     ap.add_argument("--max-clicks", type=int, default=5)
-    ap.add_argument("--model", default="gpt-6")
+    ap.add_argument("--model", default="gpt-6-2")   # gpt-6.2 answers ChatGPT app chats since ~2026-11-23
     args = ap.parse_args()
     out = E.RUNS_DIR / args.run_id
     out.mkdir(parents=True, exist_ok=True)

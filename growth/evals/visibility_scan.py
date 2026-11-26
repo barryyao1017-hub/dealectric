@@ -18,7 +18,7 @@ results, the model that answered and the cart dates the answer quotes.
 
 Limit test (Barry, 2026-10-28): the run goes back to back and logs every throttle notice and every change of the
 answering model to runs/<run>/events.jsonl. A Free plan drops to a smaller model after a quota without any error, so a
-chat whose resolved_model_slug is not --model (gpt-6) counts as "downgraded": it is logged, the run sleeps
+chat whose resolved_model_slug is not --model (gpt-6-2 since 2026-11-26; gpt-6 before) counts as "downgraded": it is logged, the run sleeps
 --cooldown seconds and asks the same question again until the original model is back. The events file is the
 evidence for the scan's safe pace. Screenshots are kept only for T3 and up (about 200 KB each).
 """
@@ -280,7 +280,7 @@ def main() -> int:
     ap.add_argument("--retest", action="store_true", help="second run (n=2) of every T2+ question")
     ap.add_argument("--pace", type=float, default=10, help="seconds between chats; rises to BACKOFF_PACE for the rest of the run after any throttle or downgrade (Barry, 11-12)")
     ap.add_argument("--cooldown", type=float, default=1200, help="seconds to wait after a downgraded answer")
-    ap.add_argument("--model", default="gpt-6", help="the model every scored answer must come from (resolved_model_slug)")
+    ap.add_argument("--model", default="gpt-6-2", help="the model every scored answer must come from (resolved_model_slug)")
     ap.add_argument("--questions", help="question file (default growth/focus/questions.json), e.g. growth/focus/loop-questions.json")
     ap.add_argument("--n", type=int, default=1, help="runs per question")
     ap.add_argument("--stop-on-limit", action="store_true", help="exit 3 at the first downgraded answer")

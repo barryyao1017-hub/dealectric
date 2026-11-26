@@ -169,7 +169,7 @@ def main() -> int:
     ap.add_argument("--run-id", default="2026-11-14-openq")
     ap.add_argument("--pace", type=float, default=10)
     ap.add_argument("--idle", type=float, default=1800, help="seconds to wait for new queue lines before exiting")
-    ap.add_argument("--model", default="gpt-6")
+    ap.add_argument("--model", default="gpt-6-2")   # gpt-6.2 answers ChatGPT app chats since ~2026-11-23
     ap.add_argument("--queue", help="queue file (default growth/focus/open-queries/queue.jsonl)")
     args = ap.parse_args()
     if args.queue:
