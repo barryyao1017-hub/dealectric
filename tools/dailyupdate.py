@@ -76,6 +76,17 @@ def keychain(service: str) -> str:
     return r.stdout.strip() if r.returncode == 0 else ""
 
 
+def _tls():
+    """python.org's Python 3.12 ships without a CA bundle until 'Install Certificates.command'
+    runs (it hadn't on the new Mac, 11-26), so use certifi's when it is installed."""
+    import ssl
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
+
+
 def cj_sales(now: datetime) -> tuple[list[dict], str | None]:
     """CJ commissions posted in the last 30 days (the API's maximum window), newest last."""
     tok = keychain("cj-api-token")
@@ -89,7 +100,7 @@ def cj_sales(now: datetime) -> tuple[list[dict], str | None]:
     req = urllib.request.Request(CJ_API, data=json.dumps({"query": q}).encode(),
                                  headers={"authorization": "Bearer " + tok, "content-type": "application/json"})
     try:
-        with urllib.request.urlopen(req, timeout=60) as r:
+        with urllib.request.urlopen(req, timeout=60, context=_tls()) as r:
             body = json.load(r)
     except urllib.error.HTTPError as e:
         try:
