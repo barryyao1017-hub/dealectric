@@ -17,6 +17,13 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   # Every stop, early ones included, writes the end line with its exit code, so tools/dailyupdate.py reports a skipped
   # day as FAILED instead of "still running" (2026-10-31).
   end() { echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) codesweep end (exit $1)"; exit "$1"; }
+  # A paced sweep can outlast a day's gap (a hand run at 03:30 was still going at 06:37 on 11-26). The reset below
+  # would pull the clone out from under it, so a run that finds another sweep or its gap-mining tail still going
+  # stops here.
+  if pgrep -f "tools/codesweep.py|growth/evals/gapmine.py daily|tools/gappage.py next" >/dev/null; then
+    echo "another sweep is still running; skipping this run so the reset does not touch its clone"
+    end 4
+  fi
   if ! curl -s --max-time 5 http://localhost:9222/json/version >/dev/null; then
     echo "starting the agent's Chrome"
     uv --directory "$HOME/Desktop/agent-vault" run agent-vault browser || echo "agent-vault browser exited $? (under launchd, ~/Desktop may be off limits; start it by hand)"
