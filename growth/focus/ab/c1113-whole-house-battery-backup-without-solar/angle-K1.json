@@ -1,0 +1,128 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got says how fast a no-solar battery refills once the grid is down. An Anker SOLIX E10 with two batteries holds 12.288 kWh. That runs an average US home (29.6 kWh/day) for about 10 hours. Anker's 4,500 W Smart Generator 5500 refills it in about 2.7 hours. A 240 V portable generator charges it at only about 20 A (4,800 W) until the owner enters the generator's running wattage in the app; the 240 V input itself goes up to 7,680 W.",
+ "standout": 2,
+ "standout_why": "I read the cited West Electric comparison (westelectric.energy/batteries/compare-batteries). It gives only capacity (Powerwall 3 13.5 kWh, IQ 5P 5.0 kWh, aPower 2 15 kWh). It says that without solar a battery 'can only ride out a single outage cycle', and it mentions FranklinWH's 'native generator integration' with no charging rate. ChatGPT's own answer gives runtime (27 kWh / 20 kWh/day = 1.2 days) but no refill rate, no generator size and no input limit. I could not read three rivals: Tesla's How Powerwall Works page returned HTTP 403, and the FranklinWH user manual PDF came back as image-only. So I can't rule out that those two state a generator charging rate, which is why the score is 2, not 3. None of the pages I could read covers the refill numbers or the app setting that caps generator charging.",
+ "kit_items": [
+  "Battery + inverter: Anker SOLIX E10 Power Module + 2× B6000 (12.288 kWh, 7,680 W continuous, 120/240 V split phase). Two batteries cover about 10 h of an average US home (29.6 kWh/day). One module takes up to 5 batteries (30.72 kWh, about 25 h). Its 240 V AC input recharges at 7,680 W, so it refills from the grid in about 1.6 h.",
+  "Transfer switch / panel: Anker SOLIX Power Dock (200 A service entry, ≤20 ms switchover, 12-circuit load management). It is needed because the E10's 7,680 W continuous output (32 A at 240 V) is far below what a 200 A house can draw. The dock's circuit management keeps the load under that limit.",
+  "Refill source (the replacement for solar): Anker SOLIX Smart Generator 5500 (Tri-Fuel), 4,500 W DC into the E10 on gasoline or LPG and 4,000 W on natural gas. It refills 12.288 kWh in about 2.7 h. A 2.64 gal tank gives about 17 kWh, so an average 29.6 kWh/day home uses about 1.74 tanks (about 4.6 gal) a day.",
+  "Alternative refill: a 240 V portable generator you already own, connected to the E10's AC input. Set its running wattage under AC Input Settings → 240 V Portable Generator. Otherwise EV Outdoors saw charging held at about 20 A (4,800 W). A 120 V generator charges at only 1,800 W, and Anker says continuous charging above 12 A should stay under 3 hours, so plan on 1,440 W, which is about 8.5 h for 12.288 kWh."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX Automatic Backup Kit: E10 (Power Module + 2× B6000 Battery) + Power Dock | https://www.ankersolix.com/products/e10 | $7,799.00 | 2026-11-13",
+    "Anker SOLIX Smart Generator 5500 (Tri-Fuel), add-on | https://www.ankersolix.com/products/e10 | $1,600.00 (was $1,999.00) | 2026-11-13",
+    "Anker SOLIX B6000 Battery Module, optional 3rd–5th battery | https://www.ankersolix.com/products/e10 | $2,000.00 (was $2,499.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Anker's own bundle 'E10 + Power Dock + Smart Generator 5500 (Tri-Fuel)' is $7,399.00 at https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500 (read 2026-11-13). Its 'What's in the Box' list names a B6000, but the page offers the B6000 as a separate $2,000 'Select Battery Packs' add-on, so the $7,399 price may not include any battery. Check the cart before publishing. Other kits on the E10 page: 2× E10 (Power Module + 2× Battery) + Power Dock $13,798 (was $14,098); E10 (Power Module + Battery) + Power Dock $5,799."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX B6000",
+   "label": "Capacity per battery module",
+   "value": "6.144 kWh",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 product page (FAQ)",
+   "read": "2026-11-13",
+   "note": "2 modules = 12.288 kWh. Up to 5 per E10 = 30.72 kWh. Up to 90 kWh with three E10s and a Power Dock."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Continuous output",
+   "value": "7,680 W, 32 A at 120/240 V split phase; 10,000 W (41.6 A) Turbo for 90 min with 2 batteries",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 product page",
+   "read": "2026-11-13",
+   "note": "7,680 W / 240 V = 32 A. That is well under a 200 A service, so whole-home use depends on the Power Dock's 12-circuit load management."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC charging input",
+   "value": "1,800 W at 120 V/15 A; 7,680 W at 240 V/32 A; 9,600 W bypass at 240 V/40 A",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 product page",
+   "read": "2026-11-13",
+   "note": "Grid refill of 12.288 kWh at 240 V: 12.288 / 7.68 = 1.6 h, before conversion losses."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "120 V charging duration limit",
+   "value": "Up to 1,800 W; continuous charging above 12 A should stay under 3 hours",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "For a full refill at 120 V, plan on 12 A × 120 V = 1,440 W. 12.288 kWh / 1.44 kW = 8.5 h."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Measured 240 V generator input before the app setting is changed",
+   "value": "about 20 A (4,800 W)",
+   "source": "https://evoutdoors.org/blogs/ev-news/powering-your-house-with-an-ev-testing-the-anker-solix-e10-portable-whole-home-backup",
+   "source_title": "Power Your House With an EV: Testing the Anker SOLIX E10 (EV Outdoors, Ken Yannacci)",
+   "read": "2026-11-13",
+   "note": "Ken Yannacci saw the 240 V input held near 20 A until he raised the generator running wattage under AC Input Settings → 240 V Portable Generator. He recommends setting 80% of the generator's running watts, which is 5,760 W for a 7,200 W source. At 4,800 W: 12.288 / 4.8 = 2.6 h. His setup also had 2 battery modules (12 kWh)."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "DC output into the E10",
+   "value": "4,500 W on gasoline or LPG; 4,000 W on natural gas; 3,600 W AC rated",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Refill of 12.288 kWh: 12.288 / 4.5 = 2.7 h. Quiet mode charges at 2 kW (≤66 dB at 23 ft): 12.288 / 2 = 6.1 h. The E10 product page also lists 'DC Generator Input 4,500W'."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Energy per tank (Anker's figure)",
+   "value": "about 17 kWh from one 10 L (2.64 gal) tank of gasoline",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Average home: 29.56 kWh/day / 17 kWh per tank = 1.74 tanks, about 4.6 gal of gasoline a day. Anker also recommends a generator with THD below 10%."
+  },
+  {
+   "product": "Anker SOLIX Power Dock",
+   "label": "Service rating and switchover",
+   "value": "200 A service entry, 12-circuit load management, ≤20 ms switchover",
+   "source": "https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500",
+   "source_title": "Anker SOLIX E10 + Power Dock + Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "Maker's spec."
+  },
+  {
+   "product": "general",
+   "label": "Average US home electricity use",
+   "value": "10,791 kWh/year (about 899 kWh/month), 2022",
+   "source": "https://www.eia.gov/tools/faqs/faq.php?id=97&t=3",
+   "source_title": "EIA FAQ: How much electricity does an American home use?",
+   "read": "2026-11-13",
+   "note": "10,791 / 365 = 29.56 kWh/day = 1.23 kW average. 12.288 kWh / 1.23 kW = about 10 h. 24.576 kWh (4 batteries) = about 20 h. 30.72 kWh (5 batteries) = about 25 h."
+  },
+  {
+   "product": "general",
+   "label": "Rival coverage (West Electric comparison, cited by ChatGPT)",
+   "value": "Capacity only: Powerwall 3 13.5 kWh, IQ Battery 5P 5.0 kWh, aPower 2 15.0 kWh; no recharge or generator rate",
+   "source": "https://westelectric.energy/batteries/compare-batteries",
+   "source_title": "Tesla Powerwall vs Enphase IQ Battery vs FranklinWH – Connecticut Comparison | West Electric",
+   "read": "2026-11-13",
+   "note": "The page says that without solar a battery 'can only ride out a single outage cycle'. It gives no refill figures."
+  }
+ ],
+ "unsourced": [
+  "A named reviewer's measured E10 round-trip efficiency or standby draw. The ESS News review by Andrew Riha (ess-news.com) loaded only as site chrome and encoded text, the AppleInsider review returned 403, and my Bash download of the article was not approved.",
+  "The Smart Inlet Box's amp rating and inlet type (e.g. L14-30 or 50 A). It is not on the E10 page, Anker's support articles would not render, and manuals.plus returned 403.",
+  "Whether the Tesla 'How Powerwall Works' page (cited by ChatGPT) states a grid or generator charging rate. It returned 403.",
+  "FranklinWH aPower 2 grid or generator charging power. The cited FranklinWH user manual PDF is image-only and could not be read.",
+  "The exact contents of Anker's $7,399 'E10 + Power Dock + Smart Generator 5500' bundle. The page lists a B6000 in the box but sells it as a $2,000 add-on."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 23,
+  "cost_usd_list": 0.9572837000000003
+ }
+}

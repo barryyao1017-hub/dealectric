@@ -1,0 +1,138 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a 98 Wh-class VIOFO BP100 pack gave 15 h 26 min of A229 Pro 3CH low-bitrate parking and took about 63–70 min of hardwired driving to refill from empty, so each hour parked costs about 4–4.5 minutes of driving to put back and a 10-hour workday park needs about 40–45 minutes of driving, more than most commutes, before the pack is full again.",
+ "standout": 2,
+ "standout_why": "Dashlore (cited) gives no power draw, cutoff voltage, battery-pack Wh or runtime. It only says to set a cutoff high enough to start the car. Dash Cam Empire (both parking pages) names a hardwire kit or battery pack with no numbers at all. RoadGearLab (uncited, rank 6) already does part of this: car-battery arithmetic (60 Ah battery with a 12.2 V cutoff gives about 18 Ah usable, about 32 h for an A229 Pro 3CH), the HK4 cutoff voltages and the B-130X recharge times (50 min hardwired, 90 min from the socket). But none of these pages turns recharge time into how long you have to drive per hour parked, and none says whether a daily commute keeps the pack topped up. Technobezz (cited) returned 403 to both WebFetch and curl, so I could not compare against it. The YouTube video (cited) was not checked. Hence 2, not 3.",
+ "kit_items": [
+  "dash cam: VIOFO A229 Pro 2CH (4K front + 2K rear). rcg530 on DashCamTalk measured 4.98 W in low-bitrate parking, which is about 0.40 A at 12.6 V. A 12 h overnight park therefore uses 4.98 × 12 = 59.8 Wh, about 4.7 Ah from the car battery.",
+  "hardwire kit: VIOFO HK4 (Type-C, made for the A229 series). It has four selectable cutoffs: 11.8, 12.0, 12.2 and 12.4 V (RoadGearLab). Use 12.2 V or higher if the car sits for long periods. Amazon sells it bundled with the A229 Pro 2CH, so one ASIN covers both.",
+  "optional battery pack, for daily long parks or a weak or start-stop battery: VIOFO BP100. Vortex Radar measured 15 h 26 min of A229 Pro 3CH low-bitrate parking and a 63–70 min hardwired refill at about 113 W. Only buy it if daily driving is at least about 4.5 min per hour parked. Otherwise the pack never refills and you are back to relying on the car battery.",
+  "alternative camera for multi-day parking: Thinkware U3000. rcg530 measured 0.20 W in radar standby, against 4.98 W for the A229 Pro 2CH in low-bitrate mode. Over 48 h that is 9.6 Wh against 239 Wh."
+ ],
+ "carts": [
+  {
+   "store": "Amazon",
+   "items": [
+    "VIOFO A229 Pro 2CH + HK4 Hardwire Kit with 8 fuse taps (bundle) | https://www.amazon.com/dp/B0CMTHTKD6 | $299.02 | 2026-11-14",
+    "VIOFO A229 Pro 2CH, camera only, for comparison | https://www.amazon.com/dp/B0CKYFSKNN | $279.99 | 2026-11-14"
+   ],
+   "bundle_sku": "Amazon ASIN B0CMTHTKD6, 'Bundle: VIOFO A229 Pro 2CH + HK4 Hardwire Kit with 8pcs Fuse Tap', $299.02 on 2026-11-14 ($19.03 more than the camera alone)"
+  }
+ ],
+ "findings": [
+  {
+   "product": "VIOFO A229 Pro 2CH (front+rear)",
+   "label": "parking-mode power draw, low bitrate",
+   "value": "4.98 W (time-lapse 10 fps 4.50 W; waiting for event 4.84 W)",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "DashCamTalk: Dashcam with low power consumption in parking mode / timelapse (page 2), rcg530 post #22, 2024-03-05",
+   "read": "2026-11-14",
+   "note": "Measured by rcg530 on firmware v1.0_230901. 12 h overnight: 4.98 W × 12 h = 59.8 Wh. 59.8 / 12.6 V = 4.7 Ah."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH (front+rear)",
+   "label": "low-bitrate parking draw on later firmware, measured with a Fluke 117",
+   "value": "403–414 mA, 5.08–5.22 W (one 512 GB run started at 5.64 W)",
+   "source": "https://dashcamtalk.com/forum/goto/post?id=609560",
+   "source_title": "DashCamTalk: VIOFO A229 Pro – Testing / Review (rcg530 #445, Chuck McCoy #442), 2023-12-10",
+   "read": "2026-11-14",
+   "note": "Firmware front v1.1_231208, rear v1.0_231207. Chuck McCoy's figure: 12.60 V × 413 mA = 5.20 W. On this firmware a 12 h overnight is about 62 Wh."
+  },
+  {
+   "product": "VIOFO A229 Pro 1CH",
+   "label": "low-bitrate parking draw, GPS off",
+   "value": "3.39 W",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "DashCamTalk: Dashcam with low power consumption in parking mode / timelapse (page 2), rcg530",
+   "read": "2026-11-14",
+   "note": "Firmware v1.2_240227. Dropping the rear camera saves about 1.6 W, roughly 32% less draw."
+  },
+  {
+   "product": "VIOFO A229 Pro 3CH",
+   "label": "low-bitrate parking draw",
+   "value": "6.67 W",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "DashCamTalk: Dashcam with low power consumption in parking mode / timelapse (page 2), rcg530",
+   "read": "2026-11-14",
+   "note": "Firmware v1.0_230901. Adding the interior camera adds about 1.7 W over 2CH."
+  },
+  {
+   "product": "Thinkware U3000 2CH",
+   "label": "parking standby draw, radar and energy-saving modes",
+   "value": "0.20 W radar standby; 0.11 W energy saving; 3.33 W time-lapse; 3.73 W motion detection",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "DashCamTalk: Dashcam with low power consumption in parking mode / timelapse (page 2), rcg530",
+   "read": "2026-11-14",
+   "note": "Over 48 h: 0.20 W × 48 = 9.6 Wh, against 4.98 W × 48 = 239 Wh for the A229 Pro 2CH in low-bitrate mode. That is about 25 times less energy. rcg530 lists 2 s to start recording from radar standby."
+  },
+  {
+   "product": "VIOFO BP100",
+   "label": "measured parking runtime with A229 Pro 3CH, low bitrate, IR LED off",
+   "value": "15 h 26 min (BP100 alone); 30 h 55 min (BP100 + EP100)",
+   "source": "https://dashcamtalk.com/forum/threads/viofo-bp-100-ep-100-battery-testing.61204/",
+   "source_title": "DashCamTalk: VIOFO BP-100 / EP-100 battery testing, Vortex Radar, posts #1 (2026-05-01) and #4 (2026-05-04)",
+   "read": "2026-11-14",
+   "note": "The poster says VIOFO's own figure for this setup is 15 h 38 min. Each EP100 roughly doubles runtime (2.003×)."
+  },
+  {
+   "product": "VIOFO BP100",
+   "label": "measured hardwired recharge from empty",
+   "value": "about 63 min to 100% in the app, input steady at 112–115 W (VIOFO claims 70 min)",
+   "source": "https://dashcamtalk.com/forum/threads/viofo-bp-100-ep-100-battery-testing.61204/",
+   "source_title": "DashCamTalk: VIOFO BP-100 / EP-100 battery testing, Vortex Radar, post #1, 2026-05-01",
+   "read": "2026-11-14",
+   "note": "Drive-to-park ratio: 63–70 min of charging ÷ 15.43 h of 3CH parking = 4.1–4.5 min of driving per hour parked. A 10 h workday park needs 41–45 min of driving to refill. For 2CH, scaling by draw (4.98 / 6.67 = 0.75) gives about 3.1–3.4 min per hour parked. That is an estimate, because the two draw figures come from different firmware."
+  },
+  {
+   "product": "VIOFO HK4",
+   "label": "selectable low-voltage cutoffs",
+   "value": "11.8 / 12.0 / 12.2 / 12.4 V on 12 V cars; 23.6 / 24.0 / 24.4 / 24.8 V on 24 V vehicles",
+   "source": "https://roadgearlab.com/best-dash-cam-parking-mode/",
+   "source_title": "RoadGearLab: Best Dash Cam With Parking Mode 2026",
+   "read": "2026-11-14",
+   "note": "This is a rival page (rank 6), used because VIOFO's HK4 page returned HTTP 429. RoadGearLab's example: a 60 Ah flooded battery at about 80% charge with a 12.2 V cutoff leaves about 18 Ah usable. At 0.40 A (A229 Pro 2CH) that is 18 / 0.40 = 45 h before cutoff, a ceiling that cold weather and battery age shorten."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH + HK4 bundle",
+   "label": "price, Amazon US",
+   "value": "$299.02",
+   "source": "https://www.amazon.com/dp/B0CMTHTKD6",
+   "source_title": "Bundle: VIOFO A229 Pro 2CH + HK4 Hardwire Kit with 8pcs Fuse Tap (Amazon)",
+   "read": "2026-11-14",
+   "note": "Read with amzcheck.py. Not blocked."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH",
+   "label": "price, Amazon US, camera only",
+   "value": "$279.99",
+   "source": "https://www.amazon.com/dp/B0CKYFSKNN",
+   "source_title": "VIOFO A229 Pro 4K HDR Dash Cam Front and Rear, Dual STARVIS 2 Sensors (Amazon)",
+   "read": "2026-11-14",
+   "note": "Read with amzcheck.py. ChatGPT showed $329.99. Amazon is $50 lower today."
+  },
+  {
+   "product": "BlackboxMyCar PowerCell 8",
+   "label": "capacity and recharge time",
+   "value": "96 Wh LiFePO4; 50 min hardwired (9 A), 80 min from the socket in the table (about 100 min in the body text); $359.99 on the maker's site",
+   "source": "https://blackboxmycar.com/pages/blackvue-b-130x-vs-blackboxmycar-powercell-8-battery-pack",
+   "source_title": "BlackboxMyCar: The Battle of the Boosters – BlackVue B-130X vs PowerCell 8",
+   "read": "2026-11-14",
+   "note": "On Amazon (B0BRR3XDYH, $349.99, 2026-11-14) it ships with a spliced hardwiring kit for Thinkware, so it does not fit the VIOFO kit. 96 Wh / 4.98 W = 19.3 h theoretical for an A229 Pro 2CH, before conversion losses."
+  }
+ ],
+ "unsourced": [
+  "VIOFO BP100 US price and Amazon listing: amzcheck found no BP100 ASIN, and viofo.com and blackboxmycar.com returned HTTP 429 to both WebFetch and storecheck.py. The BP100 is not in the cart.",
+  "VIOFO BP100 rated Wh (search snippets said 12.8 V, 7,650 mAh, 98 Wh) and VIOFO's 32 h at 3 W claim: I could not open the maker page (HTTP 429), so only the measured DashCamTalk figures are used.",
+  "VIOFO's official HK4 spec page (cutoff voltages, standby current): viofo.com returned HTTP 429 and the manuals.plus mirror returned 403. The cutoff values come from RoadGearLab. I found no source for HK4 standby current.",
+  "A229 Pro 2CH recording time per card size (128/256/512 GB): VIOFO's support article (modified 2026-02-13) has the table only as images. I did not use an unofficial retailer estimate (cardashcam.co.za: 24–32 h on 512 GB) because I could not check it.",
+  "Amazon price for a VIOFO industrial 256 or 512 GB microSD card: the amzcheck search returned only camera ASINs.",
+  "Technobezz (the cited rival) parking-mode sizing content: the page returned HTTP 403 to WebFetch and curl needed approval, so I could not compare against it.",
+  "Thinkware U3000 or U3000 Pro US price: not checked within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.2114485000000002
+ }
+}

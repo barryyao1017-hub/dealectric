@@ -1,0 +1,146 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got states that a plug-in home battery like the BLUETTI Apex 300 only charges between 32°F and 104°F (0–40°C). A unit kept in a Texas garage in summer can therefore stop refilling from solar or the grid. The same pages also leave out the refill arithmetic: about 6.6 kWh of input (roughly 6.6 hours of full sun from 2×500 W of panels) to refill a 5.53 kWh Apex 300 + B300K, which delivers about 1.3 hours of a 2-ton central AC.",
+ "standout": 2,
+ "standout_why": "I read 4 of the 5 cited pages; the irs.gov page is not relevant to this angle. homebattery.guide gives kWh and kW only, with no temperature limits and no refill time. ocsolar.com gives LRA and round-trip efficiency but no charging temperature and no refill time. solarexaminer.com gives only operating ranges for Powerwall 3 (-4°F to 122°F) and aPower 2 (-4°F to 131°F), with no charging limits and no solar refill time. theenergycollective.com gives the 2-ton AC draw (about 3,800 W running, about 5,800 W to start) and an 11-hour Powerwall runtime, but no charging temperature, no solar refill time and no inlet amp limits. None of the four covers a plug-in kit's charging-temperature cutoff or its solar refill hours. ChatGPT's answer itself only said 'solar recharging or a generator can be more practical', with no numbers.",
+ "kit_items": [
+  "Battery and inverter: BLUETTI Apex 300 + B300K (5,529.6 Wh, 3,840 W continuous, 120/240 V). Its 3,840 W covers a 2-ton central AC's 3,800 W running draw (Energy Collective figure), and the NEMA 14-50R outlet gives 240 V from a single unit.",
+  "Home connection: the BLUETTI Home Backup Kit sold in the same bundle, which is the store's own route to essential circuits. I could not source its contents (see unsourced).",
+  "Solar: 2× BLUETTI 500 W panels, one per Apex 300 solar port. Each port takes 1,200 W at 12–60 VDC, so 1,000 W of nameplate solar feeds about 6.6 kWh into the kit in about 6.6 full-sun hours.",
+  "Placement, not a product: the unit must sit in conditioned space, because charging stops above 104°F (40°C)."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300 | $3,199.00 (compare-at $3,399.00) | 2026-11-14",
+    "BLUETTI 500W x 2 Solar Panel | https://www.bluettipower.com/products/bluetti-500w-solar-panel-500w-x-2 | $1,698.00 | 2026-11-14"
+   ],
+   "bundle_sku": "No single store bundle combines the Home Backup Kit with panels. The cart above totals $4,897.00. The store's closest bundle is 'Apex 300 + 2*B300K + 2*500W' at $5,499.00 (8,294.4 Wh, 1,000 W solar, no Home Backup Kit): https://www.bluettipower.com/products/apex-300-2-b300k-2-500w, read 2026-11-14"
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Charging temperature range",
+   "value": "32°F to 104°F (0°C to 40°C)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review (Kevin OBrien, Nov 2026)",
+   "read": "2026-11-14",
+   "note": "From StorageReview's spec table; discharging range is -4°F to 104°F. A Texas garage in summer can exceed 104°F, so the unit should be kept indoors or it may not recharge during a summer outage. BLUETTI's own product page does not show these ranges."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Continuous AC output / lifting power",
+   "value": "3,840 W continuous; 7,680 W 'Lifting Power'",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Versatile Power Station | 3,840W, 2,764.8Wh",
+   "read": "2026-11-14",
+   "note": "The maker's page does not define 'Lifting Power' as surge or motor-start. Against Energy Collective's 2-ton central AC (about 3,800 W running): 3,840 ≥ 3,800, so it fits with 40 W to spare."
+  },
+  {
+   "product": "general",
+   "label": "2-ton central AC draw",
+   "value": "about 3,800 W running, about 5,800 W to start",
+   "source": "https://theenergycollective.com/home-battery-backup/",
+   "source_title": "The best home battery backup systems in 2026, and what they cost - Energy Collective",
+   "read": "2026-11-14",
+   "note": "This is the load I used for the runtime arithmetic below."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Outlets",
+   "value": "4× NEMA 5-20R (20 A); 1× TT-30R (120 V/30 A); 1× NEMA 14-50R (120/240 V, 50 A); 1× P050A 50 A AC in/out port",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "There is no L14-30 outlet, so a home inlet or transfer switch on a 30 A L14-30 needs an adapter or cable that I did not source."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured usable AC energy",
+   "value": "2.39 kWh from 2,764.8 Wh (86%); 7.38 kWh from Apex 300 + 2× B300K (89%)",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "Apex 300 + 1× B300K = 5,529.6 Wh; at 86–89% that is about 4.76–4.92 kWh usable. At 3,800 W of AC: 4.76/3.8 ≈ 1.25 h to 4.92/3.8 ≈ 1.3 h. At 1,500 W (fridge 700 W + furnace blower 800 W, Energy Collective): about 3.2–3.3 h."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Measured recharge energy",
+   "value": "3.30 kWh to refill the single unit (2,764.8 Wh); about 72% round trip",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "Input-to-capacity ratio: 3.30/2.7648 ≈ 1.19. For 5,529.6 Wh: 5.53 × 1.19 ≈ 6.6 kWh of input needed."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Solar input",
+   "value": "2× 1,200 W, 12–60 VDC, 2× 20 A",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "With 2× 500 W panels, one per port, nameplate is 1,000 W. 6.6 kWh ÷ 1.0 kW ≈ 6.6 hours of full-nameplate sun to refill Apex 300 + B300K. Real output is lower; that is the best case. More than 2,400 W of solar needs the separately sold SolarX 4K ('Requires a SolarX 4K', BLUETTI product page)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "AC charging input",
+   "value": "Standard cord 120 V, 15 A, 1,800 W max; turbo 3,840 W max (80% in 45 min at 59–77°F) with the 50 A cable",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "On a 120 V/15 A wall outlet, 6.6 kWh ÷ 1.8 kW ≈ 3.7 h for Apex 300 + B300K."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Cycle life",
+   "value": "up to 6,000 cycles with 80% capacity retention",
+   "source": "https://www.bluettipower.com/products/apex-300-home-battery-backup",
+   "source_title": "BLUETTI Apex 300 Versatile Power Station",
+   "read": "2026-11-14",
+   "note": "Maker's claim."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit",
+   "label": "Price",
+   "value": "$3,199.00 (compare-at $3,399.00), 5,529.6 Wh, 3,840 W",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "read": "2026-11-14",
+   "note": "storecheck.py product; in stock."
+  },
+  {
+   "product": "BLUETTI 500W x 2 Solar Panel",
+   "label": "Price",
+   "value": "$1,698.00; single 500 W panel $849.00",
+   "source": "https://www.bluettipower.com/products/bluetti-500w-solar-panel-500w-x-2",
+   "source_title": "BLUETTI 500W x 2 Solar Panel",
+   "read": "2026-11-14",
+   "note": "storecheck.py search; in stock. The maker's page gives 25% efficient N-type cells and MC4 connectors."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Availability and key specs",
+   "value": "Sold out on ankersolix.com; 3,840 Wh, 6,000 W, L14-30R 120/240 V 25 A, AC charge 1,800 W, solar 3,200 W (2× 1,600 W, 11–165 V)",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Buy Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-14",
+   "note": "The page showed 'Sold Out' and 'Price Loading', so it can't be the kit's cart today."
+  }
+ ],
+ "unsourced": [
+  "What is in BLUETTI's 'Home Backup Kit' (transfer switch or panel model, circuit count, amp rating): the bundle page lists no contents, and the product page only mentions an AT1 panel.",
+  "Apex 300 charge and discharge temperature on a BLUETTI-hosted page or manual: the US manual PDFs on s4.bluettipower.com and ussolarsupplier.com were over WebFetch's 10 MB limit, my curl download was not approved, and manuals.plus returned 403. I used StorageReview's spec table instead.",
+  "BLUETTI 500 W panel Voc, Vmp and Imp: the US product page's Tech Specs section was empty. 49.1 V Voc appeared only in search results from the EU store, which I did not open, so I did not use it. It would mean the panels can't be wired in series into a 60 V port, so the kit uses one panel per port.",
+  "Texas peak-sun-hours, to turn the 6.6 h of full-nameplate sun into calendar days: I did not open an NREL source.",
+  "An Apex 300 motor-start (LRA) rating: BLUETTI gives only 'Lifting Power 7,680 W', and StorageReview lists no surge figure. So I can't confirm it starts a 2-ton AC's about 5,800 W inrush.",
+  "Anker SOLIX F3800 Plus price and charging temperature range: the store page showed 'Price Loading' and listed no temperature ranges."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1102256000000001
+ }
+}

@@ -1,0 +1,118 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that VIOFO's hardwire kits detect voltage with about 0.3 V of tolerance, so the HK4's lowest 11.8 V cutoff can let the car battery fall to about 11.5 V. That is below the 12.0–12.2 V floor Nexar gives for the AGM/EFB batteries in start-stop cars and the lithium 12 V batteries in EVs, so owners of those cars should set the HK4 slide switch to 12.4 V.",
+ "standout": 2,
+ "standout_why": "I compared Dashlore (cited) and Redline Car Garage (rank 1). Technobezz (cited) returned HTTP 403 and I could not read it. Dashlore says the HK4 or HK6 is needed and that a 12 V socket gives no parking coverage. It advises 'a higher cutoff in cold weather or for an older battery' but gives no voltages and says nothing about EVs, hybrids, start-stop or lithium batteries. Redline says the HK4 is not in the A229 Pro box and needs fuse taps that are also not in the box. It says the HK4 has 'four cutoff options' but gives no values, warns that the OBD port shuts off, and states that it does not cover EVs, hybrids, start-stop or lithium. Neither page gives the 0.3 V detection tolerance, the 11.8–12.4 V values, or a cutoff tied to battery type. The fuse-tap trap is partly covered by Redline. The finding is new and useful, but it changes a setting rather than which products go in the cart, so it scores 2, not 3.",
+ "kit_items": [
+  "dash cam: VIOFO A229 Pro 2CH (4K front + 2K rear). It uses a supercapacitor, and VIOFO's page says buffered Auto Event Detection works only 'with the HK4 hardwire kit (sold separately)'",
+  "hardwire kit: VIOFO HK4 Type-C. VIOFO lists it for the A229 Pro and says it does not fit Mini-USB models (A119 V3, A129). VIOFO also states 'Fuse Tap is not included', so buy the Amazon bundle that adds an 8-piece fuse-tap set (ATO, Mini, Micro2, Mini Low Profile) to cover whichever fuse type the car uses",
+  "memory card: a high-endurance microSD, for example Samsung PRO Endurance 256 GB. VIOFO support lists a card not on its recommended list as one cause of parking mode stopping unexpectedly"
+ ],
+ "carts": [
+  {
+   "store": "Amazon",
+   "items": [
+    "VIOFO A229 Pro 2CH + HK4 Hardwire Kit with 8pcs Fuse Tap (bundle, ASIN B0CMTHTKD6) | https://www.amazon.com/dp/B0CMTHTKD6 | $299.02 | 2026-11-14",
+    "Samsung PRO Endurance 256GB microSDXC (ASIN B09WB3D5GQ) | https://www.amazon.com/dp/B09WB3D5GQ | $149.78 | 2026-11-14"
+   ],
+   "bundle_sku": "B0CMTHTKD6, VIOFO's own Amazon bundle of the A229 Pro 2CH + HK4 + 8-piece fuse-tap set, $299.02 on 2026-11-14. The A229 Pro 2CH alone (B0CKYFSKNN) is $279.99"
+  }
+ ],
+ "findings": [
+  {
+   "product": "VIOFO HK4 / HK3 hardwire kits",
+   "label": "Cutoff settings and detection tolerance",
+   "value": "4 settings, 11.8 / 12.0 / 12.2 / 12.4 V (23.6–24.8 V on 24 V vehicles); about 0.3 V tolerance in voltage detection",
+   "source": "https://support.viofo.com/support/solutions/articles/19000112185-what-protection-voltage-should-i-choose-",
+   "source_title": "VIOFO Support Center: What protection voltage should I choose?",
+   "read": "2026-11-14",
+   "note": "Article modified 2023-05-17. Worst case at the lowest setting is 11.8 − 0.3 = 11.5 V. At 12.4 V it is 12.1 V. VIOFO calls 12.4 V the safest and says to use it with a parking timer of about 2 h if the battery drains."
+  },
+  {
+   "product": "general",
+   "label": "Recommended cutoff by 12 V battery type",
+   "value": "Flooded lead-acid 11.8 V; AGM 12.0 V; start-stop (EFB/AGM) 12.0–12.2 V; Tesla/EV lithium 12 V auxiliary 12.2 V",
+   "source": "https://www.getnexar.com/blogs/blog/how-to-set-up-dash-cam-parking-mode",
+   "source_title": "Nexar: How to set up dash cam parking mode",
+   "read": "2026-11-14",
+   "note": "Nexar Team, updated 2026-04-02. Nexar: 'AGM batteries don't tolerate deep discharge as well as flooded lead-acid', and lithium auxiliary batteries 'shouldn't be drawn below this level.' Combined with VIOFO's 0.3 V tolerance, only the HK4's 12.4 V setting keeps the worst case (12.1 V) at or above Nexar's floors for these battery types."
+  },
+  {
+   "product": "VIOFO HK4",
+   "label": "Fuse taps in the box",
+   "value": "Not included in the standalone kit",
+   "source": "https://www.viofo.com/products/viofo-6m-19-68fttype-c-hk4-hardwire-kit-for-a119-mini-2-a229-duo-a229-plus-a229-pro-t130-wm1-a329",
+   "source_title": "VIOFO 6M Type-C HK4 Hardwire Kit (viofo.com)",
+   "read": "2026-11-14",
+   "note": "Read with storecheck. Exact text: 'Fuse Tap is not included, check with your local car service shop or measure the size... consider this Full Set Fuse Tap with ATO, Mini, Micro2, Mini Low Profile.' The 4 m HK4 lists $17.99 on viofo.com. It 'isn't compatible with Mini Port A119V3/A129...'."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH",
+   "label": "Parking mode requirement",
+   "value": "Buffered Auto Event Detection (15 s before impact), Time-Lapse and Low Bit Rate need the HK4, which is sold separately",
+   "source": "https://www.viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors",
+   "source_title": "VIOFO A229 Pro 2CH (viofo.com)",
+   "read": "2026-11-14",
+   "note": "Read with storecheck. viofo.com price $349.99. VIOFO is not an approved program, so the cart goes to Amazon."
+  },
+  {
+   "product": "VIOFO HK6",
+   "label": "Hybrid Parking Mode support",
+   "value": "Hybrid Parking Mode (switches to low-power impact detection at a set voltage) needs the HK6; the HK4 'does not support voltage-based switching'",
+   "source": "https://www.viofo.com/products/viofo-type-c-hk6-acc-hardwire-kit-for-a329s-series-support-hybrid-parking-mode",
+   "source_title": "VIOFO Type-C HK6 ACC Hardwire Kit (viofo.com)",
+   "read": "2026-11-14",
+   "note": "Read from VIOFO's store search feed; the full product page returned HTTP 429. The listing describes the feature for the A329S, A329T and A329WW, but its title also names 'A229'. I could not confirm whether the A229 Pro gets Hybrid Parking with the HK6, so the kit uses the HK4."
+  },
+  {
+   "product": "general (EV / hybrid)",
+   "label": "Hardwired parking runtime on an EV's 12 V accessory battery",
+   "value": "About 4 h of parking recording on a Tesla Model X with the cutoff at 12.0 V; the Model 3 'will not work with the Power Magic Pro or the splicing method'",
+   "source": "https://www.blackboxmycar.com/pages/how-do-i-install-my-dash-cam-in-my-electric-hybrid-vehicle",
+   "source_title": "BlackboxMyCar: How do I install my dash cam in my electric/hybrid vehicle",
+   "read": "2026-11-14",
+   "note": "BlackboxMyCar says EVs 'have a very small 12V accessory battery' and 'strongly recommend[s]' an external dash cam battery pack (Cellink NEO, BlackVue B-124) for EVs and hybrids. Single installer report, page footer 2026."
+  },
+  {
+   "product": "VIOFO hardwire kits",
+   "label": "Wiring and setup faults that stop parking mode",
+   "value": "ACC (yellow) on a constant feed means the camera never enters parking mode; ACC on the wrong port means it shuts off at engine-off; a card not on VIOFO's list can stop parking recording",
+   "source": "https://support.viofo.com/support/solutions/articles/19000129082-why-isn-t-parking-mode-working-",
+   "source_title": "VIOFO Support Center: Why isn't parking mode working?",
+   "read": "2026-11-14",
+   "note": "Article dated 2026-05-21. Maker's troubleshooting list, not a count of user reports."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH + HK4 + 8pcs fuse tap bundle",
+   "label": "Amazon price",
+   "value": "$299.02 (A229 Pro 2CH alone: $279.99, B0CKYFSKNN)",
+   "source": "https://www.amazon.com/dp/B0CMTHTKD6",
+   "source_title": "Amazon: Bundle VIOFO A229 Pro 2CH + HK4 Hardwire Kit with 8pcs Fuse Tap",
+   "read": "2026-11-14",
+   "note": "Read with amzcheck.py. Bundle costs $19.03 more than the camera alone. 1,587 ratings, 80% five-star."
+  },
+  {
+   "product": "Samsung PRO Endurance 256GB microSDXC",
+   "label": "Amazon price",
+   "value": "$149.78",
+   "source": "https://www.amazon.com/dp/B09WB3D5GQ",
+   "source_title": "Amazon: Samsung PRO Endurance 256GB microSDXC Memory Card with Adapter",
+   "read": "2026-11-14",
+   "note": "Read with amzcheck.py. Not checked against VIOFO's recommended-card list."
+  }
+ ],
+ "unsourced": [
+  "Forum threads with dates and counts of owners whose start-stop/AGM or EV battery was drained by a hardwired VIOFO: the dashcamtalk search returned only generic drain threads, so I report no count",
+  "A Tesla or Toyota owner's-manual passage on hardwiring third-party devices to the 12 V/16 V low-voltage battery: the search found only Tesla's general 'non-approved accessories' liability text, which I did not open, so no warranty or hardwiring claim is made",
+  "Whether the HK6 enables Hybrid Parking on the A229 Pro: viofo.com returned HTTP 429 for the HK6 page and the hardwire-kit collection",
+  "VIOFO's recommended microSD list, to confirm the Samsung PRO Endurance is on it, and VIOFO's own industrial card on Amazon (that ASIN was blocked)",
+  "Technobezz's cited page returned HTTP 403, so I could not check whether it covers cutoff tolerance or battery-type settings",
+  "Which fuse types the Amazon bundle B0CMTHTKD6's 8-piece set contains: the title says '8pcs Fuse Tap'; resellers (Best Buy CA, Newegg) list 2 each of ATO, Mini, Micro2 and Mini Low Profile, but I did not open the Amazon page's detail text"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.2650772000000001
+ }
+}

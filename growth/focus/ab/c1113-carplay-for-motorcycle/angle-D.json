@@ -1,0 +1,83 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that wireless CarPlay makes the iPhone hold open a Wi-Fi Direct channel and encode the screen in real time. Chigee calls this mirroring 'the single largest variable affecting power consumption', so a wire-free screen like the Aoocci F5 solves the screen's power but not the phone's, because the bike gives the phone no charging source.",
+ "standout": 2,
+ "standout_why": "Of the results ChatGPT got, I opened motorcyclegpshub.com (best CarPlay/Android Auto list, dated 2026-11-11) and throttlebuff.com (7 best, dated 2026-11-04). motorcyclegpshub covers the 5 GHz Wi-Fi link, headset routing (paired to the phone vs. the screen's 'BT Trans' output) and the screen's 5 V/2.5 A USB supply. It says nothing about the phone's own battery drain. Throttlebuff only says the AIO-5 Lite 'Needs a power connection' and covers no battery-powered unit. ChatGPT's answer calls the F5 'self-powered' and doesn't say the phone still drains. I couldn't read the handlebarhq.com pages (TLS certificate error), so I can't rule them out.",
+ "decides": "This tempers the pick rather than flipping it. The Aoocci F5's no-wiring pitch only covers the screen. On a bike with no USB outlet, the iPhone runs wireless CarPlay on its own battery, so for anything past short rides the shopper also needs a power bank or a handlebar charger. If they will wire a USB port for the phone anyway, a wired unit (Aoocci C3 at $105, Carpuride W702) can use the same supply, and the F5's $84 premium over the C3 buys little. One caveat: the drain explanation comes from Chigee, a rival brand, in its own blog. It gives no per-hour drain figure, and its fix is to sell a charging hub.",
+ "candidates": [
+  "Aoocci F5 Wire-Free",
+  "Aoocci C3",
+  "Carpuride W702",
+  "Chigee AIO-5 Play",
+  "Chigee AIO-5 Lite"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why wireless CarPlay drains the phone (maker's words)",
+   "value": "Wireless mirroring requires the phone to 'open a Wi-Fi Direct channel' and sustain real-time encoding; Chigee calls it 'the single largest variable affecting power consumption'",
+   "source": "https://www.chigee.com/blogs/riding-life/chigee-phone-battery-draw-fast",
+   "source_title": "Phone Battery Draining Fast with CarPlay on Your Motorcycle? 3 Real Causes and Fixes (CHIGEE, 2026-06-17)",
+   "read": "2026-11-14",
+   "note": "Chigee is a rival screen maker. The page gives no %/hour or watt figure; the 'full charge to 40%' example is a rider's report, not a Chigee measurement."
+  },
+  {
+   "product": "general",
+   "label": "Bluetooth headset draw and Wi-Fi/Bluetooth interference (maker's words)",
+   "value": "Bluetooth module 10–30 mA continuously with a headset connected and music playing; Wi-Fi and Bluetooth 'interfere with each other, causing packet retransmissions that push power consumption up on both sides'",
+   "source": "https://www.chigee.com/blogs/riding-life/chigee-phone-battery-draw-fast",
+   "source_title": "Phone Battery Draining Fast with CarPlay on Your Motorcycle? 3 Real Causes and Fixes (CHIGEE, 2026-06-17)",
+   "read": "2026-11-14",
+   "note": "Chigee also says a phone in a jacket pocket can exceed 45 °C surface temperature while navigating, and battery capacity shrinks at high temperature."
+  },
+  {
+   "product": "general",
+   "label": "Chigee's fix for long rides",
+   "value": "External charging for the phone: a separate power outlet or a handlebar charging mount (Chigee TR100 Charging Hub)",
+   "source": "https://www.chigee.com/blogs/riding-life/chigee-phone-battery-draw-fast",
+   "source_title": "Phone Battery Draining Fast with CarPlay on Your Motorcycle? 3 Real Causes and Fixes (CHIGEE, 2026-06-17)",
+   "read": "2026-11-14",
+   "note": "Chigee also notes its own display runs on the motorcycle battery. That is the opposite design from the battery-powered Aoocci F5."
+  },
+  {
+   "product": "general",
+   "label": "Screen USB supply needed (rival page already has this)",
+   "value": "Steady 5 V at 2.5 A (12.5 W) or more; Carpuride manual minimum 4.5 V at 2.5 A under load",
+   "source": "https://www.motorcyclegpshub.com/best-motorcycle-carplay-android-auto/",
+   "source_title": "Best Motorcycle CarPlay & Android Auto Screens (2026), Motorcycle GPS Hub",
+   "read": "2026-11-14",
+   "note": "Included to show what the rivals already cover: power for the screen, not the phone."
+  },
+  {
+   "product": "Aoocci F5 Wire-Free",
+   "label": "Price, maker's US store",
+   "value": "$189.00 without TPMS (compare-at $219); $199.00 with TPMS (compare-at $229); both in stock",
+   "source": "https://aoocci.com/products/f5-wire-free-motorcycle-carplay",
+   "source_title": "F5 Wire-Free Motorcycle CarPlay Screen – Aoocci",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py product. ChatGPT's card showed $199.00, which matches the TPMS version; the version without TPMS is $10 less."
+  },
+  {
+   "product": "Aoocci C3",
+   "label": "Price, maker's US store",
+   "value": "$105.00 (compare-at $169), in stock",
+   "source": "https://aoocci.com/products/c3-motorcycle-wireless-carplay",
+   "source_title": "C3 5\" Motorcycle Wireless Touch Screen – Aoocci",
+   "read": "2026-11-14",
+   "note": "Read with storecheck.py search. Matches ChatGPT's $105 card."
+  }
+ ],
+ "unsourced": [
+  "Aoocci F5 battery capacity and runtime: a search summary gave 5000 mAh and about 10 h of active use, but I couldn't open a page that shows it. The aoocci.com product page returned HTTP 429 to WebFetch, and storecheck returned only CSS in the text field. The F5 manual PDF on Google Drive (linked from aoocci.com/pages/motorcycle-support) is over 10 MB, too big for WebFetch, and I didn't run the curl download. Amazon (B0HQDJ8LGJ, B0HQD9F19K) blocked amzcheck.",
+  "Whether the Aoocci F5 has a USB output to charge the phone while riding: none of the maker pages I could read say so.",
+  "A measured iPhone battery drain per hour on wireless CarPlay from a named reviewer: not found within the call budget.",
+  "How a helmet headset connects on the Chigee AIO-5 Lite, in the maker's words: chigee.com/products/aio5-lite returned HTTP 429.",
+  "Handlebar HQ list and reviews (results 1, 2, 9, 10): WebFetch failed with a self-signed certificate error, so I couldn't check whether they mention phone drain."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0443786
+ }
+}

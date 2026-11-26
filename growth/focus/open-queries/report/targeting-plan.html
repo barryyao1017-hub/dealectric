@@ -1,0 +1,105 @@
+<title>Content Targeting Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+:root{--bg:#fbfaf7;--fg:#1c1f24;--muted:#5d6570;--line:#e2ded5;--card:#ffffff;--accent:#0b6b4f;--accent-soft:#e3f1ec;--warn:#8a5a00;--warn-soft:#fbf1dc;--bar:#0b6b4f;--bar2:#b9c2bd}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#14171a;--fg:#e8eaec;--muted:#9aa3ad;--line:#2b3036;--card:#1b1f23;--accent:#5fd0a9;--accent-soft:#17302a;--warn:#e8b95a;--warn-soft:#33290f;--bar:#5fd0a9;--bar2:#3a4248;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14171a;--fg:#e8eaec;--muted:#9aa3ad;--line:#2b3036;--card:#1b1f23;--accent:#5fd0a9;--accent-soft:#17302a;--warn:#e8b95a;--warn-soft:#33290f;--bar:#5fd0a9;--bar2:#3a4248;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:760px;margin:0 auto}
+h1,h2{font-family:"Space Grotesk",Inter,system-ui,sans-serif;text-wrap:balance;line-height:1.2}
+h1{font-size:1.9rem;margin:0 0 8px}
+h2{font-size:1.25rem;margin:40px 0 10px}
+p{margin:0 0 12px}
+.sub{color:var(--muted);margin-bottom:24px}
+.lead{background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 16px;border-radius:6px;margin:0 0 8px}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);padding:12px 16px;border-radius:6px}
+a{color:var(--accent)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.93rem;margin:8px 0 14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bars{display:grid;gap:8px;margin:10px 0 16px}
+.bar{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr) 3.2rem;gap:10px;align-items:center;font-size:.92rem}
+.bar span:first-child{min-width:0}
+.track{background:var(--bar2);border-radius:4px;height:14px;overflow:hidden}
+.fill{background:var(--bar);height:100%}
+.bar b{text-align:right;font-variant-numeric:tabular-nums}
+ol,ul{padding-left:1.3rem;margin:0 0 12px}
+li{margin-bottom:6px}
+.small{color:var(--muted);font-size:.88rem}
+</style>
+<main>
+<h1>Content targeting plan</h1>
+<p class="sub">Dealectric · 17 Nov 2026 · proposal, nothing built yet</p>
+
+<p class="lead"><strong>Pick the offer first, then the page.</strong> Our own logs show where demand and openness already meet: station-plus-panel kits from brands whose code we carry. The question-first search could not find that spot, because long questions have no measurable demand and the short ones with demand are closed.</p>
+
+<h2>What our logs say (29 Oct to 17 Nov)</h2>
+<p>These are shoppers, after the bot and own-browser filters. We see which offer they ended at, not what they asked.</p>
+<div class="bars">
+<div class="bar"><span>Buy-link clicks from ChatGPT</span><div class="track"><div class="fill" style="width:100%"></div></div><b>401</b></div>
+<div class="bar"><span>…on a link ChatGPT wrote in its answer</span><div class="track"><div class="fill" style="width:77%"></div></div><b>310</b></div>
+<div class="bar"><span>…of those, on a kit</span><div class="track"><div class="fill" style="width:69%"></div></div><b>277</b></div>
+<div class="bar"><span>…of those, ALLPOWERS or BLUETTI</span><div class="track"><div class="fill" style="width:75%"></div></div><b>299</b></div>
+</div>
+<div class="scroll"><table>
+<tr><th>Signal</th><th>Count</th><th>Where it concentrates</th></tr>
+<tr><td>ChatGPT landings on our pages</td><td class="n">317 on 118 pages</td><td>Three kit comparison pages take 88: <a href="https://dealectric.com/solar-generator-with-panels-included">panels included</a> 33, <a href="https://dealectric.com/best-2000wh-solar-generator-kit-with-panels">2000 Wh kit</a> 28, <a href="https://dealectric.com/best-solar-generator-kit-under-500">kit under $500</a> 27. <a href="https://dealectric.com/black-friday-power-station-deals">Black Friday power station deals</a> took 11 in its first four days.</td></tr>
+<tr><td>Sales</td><td class="n">22</td><td>BLUETTI 14, ALLPOWERS 7, Mobile Pixels 1. Twelve of the BLUETTI sales carry no click: the shopper typed our code at checkout.</td></tr>
+<tr><td>Long-tail question pages</td><td class="n">0 to 4 each</td><td>Cited in our scans, almost never visited.</td></tr>
+</table></div>
+<p>Two things follow. First, in our own test chats ChatGPT wrote our buy link about once in 215; real shoppers clicked such a link 310 times in three weeks. Our single-question chats are not what shoppers do, so the logs are the better instrument. Second, more than half of all sales arrived through a code, with no link involved.</p>
+
+<h2>Why question-first could not work</h2>
+<ul>
+<li>Search platforms count short phrases. Those are the questions ChatGPT answers from its catalog and from makers.</li>
+<li>Long questions open more often, but no platform counts them, and the same question flips between chats.</li>
+<li>So each test bought one noisy reading on a question nobody could prove was asked. 700 chats gave 5 openings.</li>
+</ul>
+
+<h2>The reframe: openness belongs to the offer</h2>
+<p>ChatGPT passes our link along when we hold something its catalog and the maker's site do not:</p>
+<ul>
+<li><strong>A kit the catalog has no row for.</strong> Station-plus-panel sets were the rows that stayed free in every round.</li>
+<li><strong>A price below the store's own,</strong> through a code that was tested today.</li>
+<li><strong>A fact that expires,</strong> such as this week's deal. ChatGPT has to search for those.</li>
+</ul>
+<p>Demand then comes from the category's main question, which platforms can count. The shopper asks the broad question, ChatGPT names products, and in the follow-up (which one, where, how much) ours is the only offer with that bundle or that price.</p>
+
+<h2>How each source gets used</h2>
+<div class="scroll"><table>
+<tr><th>Source</th><th>Job</th><th>Cost</th></tr>
+<tr><td>Our logs</td><td>Rank every live offer by assistant fetches, landings, answer-link clicks and sales. This is the only data that measures demand and openness together, inside ChatGPT.</td><td>No chats</td></tr>
+<tr><td>Search and ads platforms</td><td>Size categories and buying phrases (brand + discount code, product + price, category + deals), not long questions.</td><td>About 300 lookups a day</td></tr>
+<tr><td>ChatGPT chats</td><td>Two narrow checks: does the catalog hold this offer (one where-to-buy chat), and does a broad question plus follow-ups end at our link.</td><td>About 100 chats a cycle, not 400</td></tr>
+</table></div>
+<p>Because a page is cheap and the logs read retrieval, visits and clicks, the live page is the real test. Gate lightly (the offer is free of the catalog, the category has demand), publish in batches of about 15, read the logs after a week, and drop what gets no fetches.</p>
+
+<h2>Beyond pages</h2>
+<ol>
+<li><strong>Codes as the handover.</strong> A code survives where a link is dropped, and it already carries most BLUETTI sales. Ask each partner for a code in our name. This needs your yes per email.</li>
+<li><strong>Kits as products.</strong> Brand-sold kits work today; cover every one our partners sell. Our own named bundles are the next step. You put that pilot on hold today until 1 Dec; this data argues for bringing it back sooner.</li>
+<li><strong>Deal and price-timing pages.</strong> The Black Friday page drew visits within days. We already record each cart price daily, so "is this the lowest price" is a question we can answer and the catalog cannot.</li>
+</ol>
+
+<h2>First cycle</h2>
+<ol>
+<li>Build the offer table from the logs: every live offer with its fetches, landings, clicks, sales, code size, price and kit flag.</li>
+<li>List the offers we don't cover yet: partner kits and code-carrying products with no page.</li>
+<li>Pull platform counts for the categories and buying phrases behind the top offers.</li>
+<li>Run one where-to-buy chat on the top 60 or so, build pages for the best 15, and read the logs a week later.</li>
+</ol>
+<p class="small">Steps 1 to 3 use no chat quota and send nothing outside.</p>
+
+<h2>Not verified</h2>
+<div class="note">
+<ul>
+<li>Where shoppers see the BLUETTI code. One web search found no coupon site listing it, which is weak evidence that it comes from ChatGPT or our pages.</li>
+<li>Platform counts for buying phrases. I expect them to be measurable; I have not pulled them.</li>
+<li>That a few heavy clickers don't account for much of the 310. The burst filter removes the obvious cases only.</li>
+<li>Whether kits win in other categories. All the evidence is solar.</li>
+</ul>
+</div>
+</main>

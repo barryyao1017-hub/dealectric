@@ -1,0 +1,137 @@
+{
+ "angle": "K1",
+ "gap": "No result ChatGPT got gives a generator charge rate. For a battery-plus-generator kit, the generator's charge rate sets refill time and fuel use. Anker's Smart Generator 5500 feeds the E10 at 4,500 W DC, so it refills a 2-battery E10 (12.288 kWh) in about 2.7 h, and Anker says one 10 L tank holds about 17 kWh, or about 1.4 refills. If you plug an existing 120 V portable generator into the E10, the E10 charges at 1,800 W or less, so the same refill takes about 7–8 h.",
+ "standout": 3,
+ "standout_why": "I compared against the four pages ChatGPT cited (FranklinWH's 'Can I use a generator' article, both URLs; the Generator Module page; the aPower 2 page) and one it got but didn't cite ('How does aPower charge batteries by generator?'). None gives a generator charge rate in kW, a refill time, start/stop charge levels or fuel per kWh. They say only 'match rated wattage to essential loads'. ChatGPT's table (10–26 kW generators) sizes the generator to the house load. On the E10, generator watts reach the battery through a charge port: 4.5 kW DC from Anker's generator, or 1.8 kW / 7.68 kW AC from a third-party 120 V / 240 V generator. That limit decides which generator goes in the cart. A shopper's existing 120 V portable generator would take about 3× longer to refill the batteries.",
+ "kit_items": [
+  "Battery + inverter: Anker SOLIX E10 Power Module + 2× B6000 (2 × 6.144 = 12.288 kWh). It runs 7,680 W continuous at 240 V, enough for the whole house through a 200 A Power Dock. Anker's 10 L ≈ 17 kWh claim means one tank is about 1.4 refills.",
+  "Automatic transfer: Anker SOLIX Power Dock (200 A service entry, switchover in 20 ms or less per Anker). Its generator circuits are rated 100 A max / 80 A continuous, so a later standby generator can be added.",
+  "Generator: Anker SOLIX Smart Generator 5500 (tri-fuel). It's the only generator here that uses the E10's 4,500 W DC generator input: 4,500 W on gasoline or LPG, 4,000 W on natural gas. It can start automatically at a battery level you set. A 120 V third-party generator would charge at 1.8 kW or less.",
+  "More storage (optional): Anker SOLIX B6000 Battery Module, +6.144 kWh, up to 5 per E10. With 3 batteries (18.432 kWh), a refill at 4.5 kW takes about 4.1 h, and one tank (≈17 kWh) no longer fills them."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com, rakuten:ankersolix)",
+   "items": [
+    "Anker SOLIX E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500 | https://www.ankersolix.com/products/e10-power-module-2-battery-power-dock-smart-generator-5500 | $9,399.00 | 2026-11-13",
+    "Optional: Anker SOLIX B6000 Battery Module add-on | https://www.ankersolix.com/products/e10 | $2,000.00 (also shows $2,499.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Anker's own bundle 'E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500' at $9,399.00 (2026-11-13). Bought separately: Automatic Backup Kit (E10 + 2× Battery + Power Dock) $7,799.00 + Smart Generator 5500 $1,999.00 standalone = $9,798.00, so the bundle is $399 less."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Battery capacity per B6000 module",
+   "value": "6.144 kWh (up to 5 modules per E10, 30 kWh max)",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Kit with 2 modules: 2 × 6.144 = 12.288 kWh nominal."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Continuous / turbo output",
+   "value": "7,680 W continuous (32 A at 240 V); 10,000 W turbo for 90 min with 2 batteries",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "If the house draws more than the generator's 4,500 W DC, the batteries still drain at (load − 4,500 W). Example: at a 6 kW load they drain at 1.5 kW net."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "DC generator input",
+   "value": "4,500 W",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Refill of 2 × B6000 from empty with no house load: 12.288 kWh ÷ 4.5 kW = 2.73 h. With 3 modules: 18.432 ÷ 4.5 = 4.1 h. The Solar Lab measured 87% efficiency, so expect somewhat longer in practice."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC charge input from grid or third-party generator",
+   "value": "1,800 W at 120 V / 15 A; 7,680 W at 240 V / 32 A",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker: 'continuous charging above 12 A should stay under 3 hours' at 120 V. 12.288 kWh at 120 V: 3 h × 1.8 kW = 5.4 kWh, then 6.888 kWh at 1.44 kW (12 A × 120 V) = 4.8 h, about 7.8 h total (6.8 h at a flat 1.8 kW). At 240 V: 12.288 ÷ 7.68 = 1.6 h."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC generator bypass / Power Dock generator circuit rating",
+   "value": "Up to 9,600 W bypass via E10 AC Generator Adapter; Power Dock generator circuits 100 A max / 80 A continuous",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker also says a third-party standby generator must be 240 V with two-wire or utility-sensing control, max surge 24 kW. While a standby generator runs, the battery does not power the home, so that generator must be sized to the household load."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC input limit as set in the app (measured)",
+   "value": "Input capped at 20 A / 4,800 W at 240 V until reconfigured; the limit is 80% of the 'Running Wattage' setting (7,200 W × 0.8 = 5,760 W)",
+   "source": "https://evoutdoors.org/blogs/ev-news/powering-your-house-with-an-ev-testing-the-anker-solix-e10-portable-whole-home-backup",
+   "source_title": "Powering your house with an EV: testing the Anker SOLIX E10 (EV Outdoors)",
+   "read": "2026-11-13",
+   "note": "Ken Yannacci (EV Outdoors, 2026-03-27) tested with a Silverado EV as the 240 V source. For a third-party 240 V generator, set Running Wattage to the generator's rating. Charge input will be 80% of that, so a 7.2 kW generator charges at 5.76 kW, not 7.68 kW."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Idle draw and efficiency (measured)",
+   "value": "About 40 W idle; 87% efficiency",
+   "source": "https://www.thesolarlab.com/review/anker-solix-e10",
+   "source_title": "Anker SOLIX E10 Review: Best Whole-Home Battery Backup? – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab's own measurement. 40 W × 24 h = 0.96 kWh/day of overhead, about 7.8% of 12.288 kWh. Usable energy is about 12.288 × 0.87 ≈ 10.7 kWh."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "DC output to E10 / AC output",
+   "value": "4,500 W DC (gasoline, LPG), 4,000 W DC (natural gas); 3,600 W AC continuous at 120 V; 5,500 W starting",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "On natural gas: 12.288 kWh ÷ 4.0 kW = 3.07 h refill. DC output requires the E10. The page lists auto-start by battery level."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Fuel tank and energy per tank",
+   "value": "10 L (2.64 gal) metal tank, about 17 kWh per tank (Anker claim); 224 cc engine; 69 dB(A) at 7 m in Eco mode; 110 lb",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500 – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "17 kWh ÷ 12.288 kWh = 1.38 full refills of the 2-battery kit per tank. 17 kWh ÷ 4.5 kW ≈ 3.8 h at full DC output per tank. That's 1.7 kWh per liter, Anker's figure, not independently measured."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Propane yield vs. a standby generator",
+   "value": "100 lb propane → 100 kWh with E10 vs. 20 kWh from a traditional 20 kW standby generator",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup – Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker's own test claim, described there as conditional. About 1 kWh per lb of propane with the E10, vs about 0.2 kWh per lb for a standby generator idling at light load."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Capacity / continuous output",
+   "value": "15 kWh; 10 kW continuous",
+   "source": "https://www.franklinwh.com/products/apower2-home-battery-backup/",
+   "source_title": "aPower 2: The New Standard of Home Battery Backup",
+   "read": "2026-11-13",
+   "note": "This is the rival pick. Neither its product page nor its generator pages give a generator charge rate, so its refill time can't be worked out."
+  }
+ ],
+ "unsourced": [
+  "Smart Generator 5500 runtime in hours or fuel use at a stated load: Anker's product page and generator blog give only 17 kWh per 10 L tank. No manual figure or reviewer measurement found.",
+  "The 2 kW output of the Smart Generator 5500's Quiet mode with the E10 appeared only in a search summary. The Anker product page I opened gives ≤66 dB but no wattage for Quiet mode, so I left it out.",
+  "Default auto-start / stop charge levels for the E10 + Smart Generator 5500: Anker's pages say the user sets them and give no default percentage. The E10 user guide (support.ankersolix.com) didn't load.",
+  "FranklinWH aPower 2 generator charge rate in kW: not on the aPower 2 page, the Generator Module page or the two support articles I opened.",
+  "Independent measurement of the E10 charging from the Smart Generator 5500: The Solar Lab lists only the rated 4,500 W, not a measured rate.",
+  "Store-tool prices: storecheck.py returned HTTP 404 for ankersolix.com (not a standard Shopify endpoint), so prices are from the product pages I opened on 2026-11-13. I didn't check Amazon prices because the kit is one Anker SOLIX cart."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 0.8607729
+ }
+}

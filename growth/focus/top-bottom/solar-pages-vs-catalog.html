@@ -1,0 +1,205 @@
+<title>Why Solar Pages Win</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column; evidence (tables, screenshot pairs) breaks wider than the prose. */
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --fg:#1b211d; --muted:#5d665f; --line:#dde2dc;
+  --web:#b86a00; --web-soft:#fbefd9;      /* a row with no catalog card: needs a web source */
+  --card:#3a5f8a; --card-soft:#e4ecf5;    /* a row filled from OpenAI's catalog */
+  --link:#1f6b4a;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141815; --surface:#1c211d; --fg:#e7ebe6; --muted:#9aa49c; --line:#2f3731;
+  --web:#f0b04a; --web-soft:#3a2d12; --card:#8fb4de; --card-soft:#1d2c3d; --link:#7fd0a8; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141815; --surface:#1c211d; --fg:#e7ebe6; --muted:#9aa49c; --line:#2f3731;
+  --web:#f0b04a; --web-soft:#3a2d12; --card:#8fb4de; --card-soft:#1d2c3d; --link:#7fd0a8; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+main{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+.prose{max-width:68ch}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 14px;text-wrap:balance}
+h2{font-family:var(--display);font-size:22px;line-height:1.2;margin:0 0 10px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:0 0 6px}
+p{margin:0 0 12px} p:last-child{margin-bottom:0}
+a{color:var(--link)}
+.meta{color:var(--muted);font-size:13px;margin-bottom:18px}
+.lede{font-size:18px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr.grp td{font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-top:18px;border-bottom:1px solid var(--fg)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 7px;border-radius:4px;white-space:nowrap}
+.tag.web{background:var(--web-soft);color:var(--web)} .tag.card{background:var(--card-soft);color:var(--card)}
+.bar{display:flex;align-items:center;gap:8px;min-width:150px}
+.bar i{display:block;height:10px;border-radius:2px;background:var(--web)} .bar.c i{background:var(--card)}
+.bar span{font-size:13px;white-space:nowrap}
+.small{font-size:13px;color:var(--muted)}
+.pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+figure{margin:0;min-width:0}
+figure img{display:block;width:100%;border:1px solid var(--line);border-radius:6px;background:#fff}
+figcaption{font-size:14px;margin-top:10px}
+figcaption b{display:block;margin-bottom:2px}
+.colhead{font-family:var(--display);font-size:15px;font-weight:600;padding-bottom:6px;border-bottom:2px solid var(--web)}
+.colhead.c{border-color:var(--card)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.two > div{min-width:0}
+ul{margin:0;padding-left:20px} li{margin-bottom:8px}
+@media (max-width:700px){ .pairs,.two{grid-template-columns:1fr} .colhead.c{margin-top:8px} }
+</style>
+
+<main>
+<header class="prose">
+  <h1>Why the solar pages win</h1>
+  <div class="meta">Dealectric · 14 Nov 2026 · 1,013 saved gpt-6 chats from 7–13 Nov, plus 14 fresh chats run today with screenshots</div>
+  <p class="lede"><b>It is not luck. When ChatGPT retrieves a solar or power-station page it cites us 75% of the time; for a NAS page, 21%.</b> Both figures come from 151 retrieved chats. The gap is in the competition, and it has two parts.</p>
+  <p><b>The catalog.</b> When OpenAI's shopping catalog has a card for the product, the card supplies the name, price and buy button, and the answer needs no web source for that row. Solar kits and bundles mostly have no card, so ChatGPT writes the row itself and cites the page it took the price from.</p>
+  <p><b>The web results.</b> For NAS questions the other results are the makers and the software projects' own docs (QNAP, Synology, UGREEN, Jellyfin, Frigate), and they take the citations. For solar questions no maker answers a cross-brand question, so the other results are small comparison sites, and we are the best-sourced of them.</p>
+</header>
+
+<section>
+  <h2 class="prose">The seven pages</h2>
+  <p class="prose">Nine pages tie at 100% cited, so the three winners are the two with a buy-link handover plus one more solar page, with a non-solar winner added as a control. The three losers are pages ChatGPT retrieved in every chat, usually at rank 1, and never cited. Picking losers that were always retrieved keeps retrieval out of the comparison.</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Page</th><th class="n">Cited / chats</th><th class="n">At rank 1</th><th>Product rows with a catalog card</th><th>Sources ChatGPT cited instead of or beside us</th></tr></thead>
+    <tbody>
+    <tr class="grp"><td colspan="5">Cited every time</td></tr>
+    <tr><td><a href="https://dealectric.com/1000wh-power-station-with-400w-solar-panel-bundle">1,000 Wh station with a 400 W panel</a></td><td class="n">8 / 8</td><td class="n">8 of 8</td><td><div class="bar c"><i style="width:67px"></i><span>10 of 15</span></div></td><td>PowerSized, StormWatts, Volt &amp; Valley (once each). 2 buy-link handovers.</td></tr>
+    <tr><td><a href="https://dealectric.com/best-2kwh-power-station-for-rv">Best 2 kWh station for an RV under $900</a></td><td class="n">8 / 8</td><td class="n">3 of 8</td><td><div class="bar c"><i style="width:31px"></i><span>9 of 29</span></div></td><td>PowerSized, BuyerSheet, The Gadgeteer, GearJunkie. 1 handover.</td></tr>
+    <tr><td><a href="https://dealectric.com/best-solar-generator-kit-under-500">Best solar generator kit under $500</a></td><td class="n">8 / 8</td><td class="n">7 of 8</td><td><div class="bar c"><i style="width:57px"></i><span>13 of 23</span></div></td><td>PowerSized, Solar Gen Advisor, Popular Mechanics</td></tr>
+    <tr><td><a href="https://dealectric.com/best-40gbps-nvme-enclosure-no-throttling">Best 40 Gbps NVMe enclosure, no throttling</a> <span class="small">(control, not solar)</span></td><td class="n">7 / 7</td><td class="n">7 of 7</td><td><div class="bar c"><i style="width:32px"></i><span>8 of 25</span></div></td><td>OWC, Tom's Hardware</td></tr>
+    <tr class="grp"><td colspan="5">Retrieved every time, never cited</td></tr>
+    <tr><td><a href="https://dealectric.com/best-nas-under-400-for-jellyfin">Best NAS under $400 for Jellyfin</a></td><td class="n">0 / 7</td><td class="n">6 of 7</td><td><div class="bar c"><i style="width:100px"></i><span>21 of 21</span></div></td><td>Jellyfin docs (5 chats), TerraMaster store, Starry Hope</td></tr>
+    <tr><td><a href="https://dealectric.com/best-65w-travel-charger-interchangeable-plugs">Best 65 W travel charger, US/UK/EU plugs</a></td><td class="n">0 / 7</td><td class="n">7 of 7</td><td><div class="bar c"><i style="width:86px"></i><span>19 of 22</span></div></td><td>UGREEN UK, Android Central, CNA</td></tr>
+    <tr><td><a href="https://dealectric.com/cheapest-10-inch-double-din-android-head-unit-wireless-carplay">Cheapest 10-inch double-DIN head unit</a></td><td class="n">0 / 7</td><td class="n">5 of 7</td><td><div class="bar c"><i style="width:89px"></i><span>8 of 9</span></div></td><td>Walmart listings (33 of the result slots were Walmart)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small prose" style="margin-top:10px">Saved chats 7–13 Nov, gpt-6 only. A product row counts as carded when the answer binds it to a catalog record, which fills the title, price and merchant; an un-carded row is one ChatGPT typed out itself.</p>
+</section>
+
+<section>
+  <h2 class="prose">What the answers look like</h2>
+  <p class="prose">Today's chats, same questions, signed-in Plus account, temporary chat. Look at the line under each product: a retailer button means the row came from the catalog; a source pill or a link to our page means ChatGPT had to find it on the web.</p>
+  <div class="pairs">
+    <div class="colhead">Cited: rows ChatGPT had to source from the web</div>
+    <div class="colhead c">Not cited: rows filled by the catalog</div>
+    <figure><img src="shots/kit.jpg" alt="ChatGPT answer for best solar generator kit under $500" loading="lazy">
+      <figcaption><b>Solar kit under $500.</b> The BLUETTI kit has no card, so its row reads "Source: Kit comparison and offer", a link to our page. The Anker and Jackery kits below it have cards and get "View at retailer". The price table above cites Dealectric. This is a citation and a link to the page, not a buy-link handover: the answer contains no <code>/go/</code> link.</figcaption></figure>
+    <figure><img src="shots/charger.jpg" alt="ChatGPT answer for best 65W travel charger" loading="lazy">
+      <figcaption><b>65 W travel charger.</b> The top pick is the product our page picks. It has a card: $44.98, "Shop at UGREEN". Our page offers it at $37.99 through our link and ranked first in the results, and was not used for the row. The 5 A cable tip matches our page and carries no citation.</figcaption></figure>
+    <figure><img src="shots/bundle.jpg" alt="ChatGPT answer for 1000 Wh power station with 400 W panel" loading="lazy">
+      <figcaption><b>1,000 Wh station with a 400 W panel.</b> Three bundles have cards. The BLUETTI AC180 bundle does not, so ChatGPT quotes the price from our page and links it as "View comparison and purchase options".</figcaption></figure>
+    <figure><img src="shots/jellyfin.jpg" alt="ChatGPT answer for best NAS under $400 for Jellyfin" loading="lazy">
+      <figcaption><b>NAS for Jellyfin.</b> All four rows are cards from the UGREEN store, Newegg and TerraMaster. The one cited claim goes to Jellyfin's own hardware guide. Today we appear behind it as the "+1" source, after this morning's rebuild, and still with no route to a buy link.</figcaption></figure>
+    <figure><img src="shots/nvme.jpg" alt="ChatGPT answer for best 40Gbps NVMe enclosure" loading="lazy">
+      <figcaption><b>NVMe enclosure (non-solar winner).</b> No cards in this answer, so no catalog buy link: the one link out is typed by ChatGPT and goes to a maker's page (Unitek). The question asks for a measured result, sustained writes without throttling, and each row leans on a test figure. Three of the four rows cite Dealectric. In a live click test, the product name opened ChatGPT's own product panel, which for an un-carded product showed a short description and no seller, price or buy link. In other chats on this question some rows were carded (8 of 25 in the saved chats) and those did carry the catalog's retailer link.</figcaption></figure>
+    <figure><img src="shots/headunit.jpg" alt="ChatGPT answer for cheapest double-DIN head unit" loading="lazy">
+      <figcaption><b>Cheapest head unit.</b> The answer is a price-sorted list of catalog listings from Walmart and Newegg. A "cheapest" question is one the catalog answers by itself, and no web page is cited.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2 class="prose">Is it luck?</h2>
+  <p class="prose">No. At the average rate for our other pages (42% cited when retrieved), one page being cited in 8 of 8 chats happens about once in a thousand. Seven solar pages did it. Of 18 solar pages with at least four retrieved chats, none was never cited; of 21 NAS pages, ten were never cited and none was always cited.</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Category</th><th class="n">Pages</th><th class="n">Retrieved</th><th>Cited when retrieved</th><th>Cited at rank 1</th><th>Product rows with a card</th></tr></thead>
+    <tbody>
+    <tr><td>Solar and power stations</td><td class="n">67</td><td class="n">61%</td><td><div class="bar"><i style="width:75px"></i><span>75% · 114 of 151</span></div></td><td class="n">88 of 97</td><td><div class="bar c"><i style="width:43px"></i><span>43%</span></div></td></tr>
+    <tr><td>Everything else</td><td class="n">197</td><td class="n">47%</td><td><div class="bar"><i style="width:42px"></i><span>42% · 112 of 268</span></div></td><td class="n">69 of 132</td><td><div class="bar c"><i style="width:60px"></i><span>60%</span></div></td></tr>
+    <tr><td>NAS</td><td class="n">41</td><td class="n">78%</td><td><div class="bar"><i style="width:21px"></i><span>21% · 31 of 151</span></div></td><td class="n">23 of 92</td><td><div class="bar c"><i style="width:79px"></i><span>79%</span></div></td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="margin-top:14px">NAS pages are retrieved more often than solar pages and rank first as often. They lose after retrieval. The card share lines up with the citation rate in reverse, and the same holds chat by chat:</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Product rows in the answer</th><th class="n">Chats</th><th>Cited us</th><th class="n">Solar</th><th class="n">NAS</th><th class="n">Other</th></tr></thead>
+    <tbody>
+    <tr><td><span class="tag card">every row carded</span></td><td class="n">186</td><td><div class="bar"><i style="width:26px"></i><span>26%</span></div></td><td class="n">10 of 29</td><td class="n">13 of 71</td><td class="n">25 of 86</td></tr>
+    <tr><td>some carded, some not</td><td class="n">205</td><td><div class="bar"><i style="width:49px"></i><span>49%</span></div></td><td class="n">38 of 44</td><td class="n">12 of 51</td><td class="n">51 of 110</td></tr>
+    <tr><td><span class="tag web">no row carded</span></td><td class="n">110</td><td><div class="bar"><i style="width:77px"></i><span>77%</span></div></td><td class="n">51 of 54</td><td class="n">4 of 9</td><td class="n">30 of 47</td></tr>
+    <tr><td>no product rows</td><td class="n">69</td><td><div class="bar"><i style="width:33px"></i><span>33%</span></div></td><td class="n">15 of 24</td><td class="n">2 of 20</td><td class="n">6 of 25</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="margin-top:14px">Cards explain a large part and leave a remainder: in mixed answers solar is cited 38 of 44 times and NAS 12 of 51. That remainder is the second part, the web results.</p>
+  <p class="prose"><b>What was luck</b> is how we got here. We built solar pages first because BLUETTI and ALLPOWERS approved us first, and nobody chose the category for its thin catalog coverage. The advantage itself is structural, and both conditions can be read from harvest chats before a page is built.</p>
+</section>
+
+<section>
+  <h2 class="prose">Who else is in the results</h2>
+  <div class="two">
+    <div>
+      <h3>Solar: other small comparison sites</h3>
+      <p class="small">Sources cited across 151 chats (419 citations)</p>
+      <div class="wrap"><table><tbody>
+        <tr><td>Dealectric</td><td><div class="bar"><i style="width:112px"></i><span>112</span></div></td></tr>
+        <tr><td>PowerSized</td><td><div class="bar"><i style="width:17px"></i><span>17</span></div></td></tr>
+        <tr><td>The Power Station Guide</td><td><div class="bar"><i style="width:13px"></i><span>13</span></div></td></tr>
+        <tr><td>Starlink</td><td><div class="bar"><i style="width:11px"></i><span>11</span></div></td></tr>
+        <tr><td>Solar Gen Advisor</td><td><div class="bar"><i style="width:9px"></i><span>9</span></div></td></tr>
+        <tr><td>EcoFlow, Anker, BLUETTI (makers)</td><td><div class="bar c"><i style="width:16px"></i><span>16 combined</span></div></td></tr>
+      </tbody></table></div>
+      <p class="small" style="margin-top:8px">No maker publishes which 1 kWh station is quietest, or what a rival's bundle costs. The pages that do are sites of our size, and ours names its source and date for each figure.</p>
+    </div>
+    <div>
+      <h3>NAS: the makers and the software's own docs</h3>
+      <p class="small">Sources cited across 151 chats (403 citations)</p>
+      <div class="wrap"><table><tbody>
+        <tr><td>QNAP</td><td><div class="bar c"><i style="width:65px"></i><span>65</span></div></td></tr>
+        <tr><td>Dealectric</td><td><div class="bar"><i style="width:51px"></i><span>51</span></div></td></tr>
+        <tr><td>UGREEN</td><td><div class="bar c"><i style="width:32px"></i><span>32</span></div></td></tr>
+        <tr><td>Synology</td><td><div class="bar c"><i style="width:25px"></i><span>25</span></div></td></tr>
+        <tr><td>Frigate docs</td><td><div class="bar c"><i style="width:18px"></i><span>18</span></div></td></tr>
+        <tr><td>Plex, Navidrome, Paperless, Jellyfin docs</td><td><div class="bar c"><i style="width:31px"></i><span>31 combined</span></div></td></tr>
+      </tbody></table></div>
+      <p class="small" style="margin-top:8px">A NAS question names the software, and the project that wrote the software is in the results. Makers and official docs took nearly half of all NAS citations (190 of 403); in solar, makers took 16 of 419.</p>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>Solar pages that lose</h2>
+  <p>The category label is not what wins. Solar pages lose when the question has an authority of its own:</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Page</th><th class="n">Cited / retrieved</th><th>Who was cited</th></tr></thead>
+    <tbody>
+    <tr><td><a href="https://dealectric.com/power-station-for-a-home-oxygen-concentrator-power-outage">Station for a home oxygen concentrator</a></td><td class="n">1 / 8</td><td>American Lung Association, Pulmonary Fibrosis Foundation</td></tr>
+    <tr><td><a href="https://dealectric.com/power-station-to-run-a-gas-furnace-in-an-outage">Station to run a gas furnace</a></td><td class="n">1 / 4</td><td>HVAC Laboratory, AP Electric</td></tr>
+    <tr><td><a href="https://dealectric.com/ups-for-a-bambu-lab-3d-printer-power-outage">UPS for a Bambu Lab printer</a></td><td class="n">1 / 5</td><td>Bambu Lab forum</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:12px">The solar pages cited every time all ask for a product comparison that no single maker can answer: which is quietest while charging, lightest, fastest to charge, sold with a panel, cheapest as a kit.</p>
+</section>
+
+<section class="prose">
+  <h2>Today's 14 chats</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Page</th><th>Chat 1</th><th>Chat 2</th><th>Link to us in the answer</th></tr></thead>
+    <tbody><!--FRESH--><tr><td><a href="https://dealectric.com/1000wh-power-station-with-400w-solar-panel-bundle">1,000 Wh station with a 400 W panel</a></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 3 of 4 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 0 of 4 rows carded</span></td><td>our page, as “View comparison and purchase options”; our page, as “Dealectric&#x27;s 1,000 Wh + 400 W bundle comparison”</td></tr>
+<tr><td><a href="https://dealectric.com/best-2kwh-power-station-for-rv">2 kWh station for an RV</a></td><td><span class="tag web">cited</span><br><span class="small">rank 9, 3 of 4 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 5, 5 of 6 rows carded</span></td><td>none</td></tr>
+<tr><td><a href="https://dealectric.com/best-solar-generator-kit-under-500">Solar kit under $500</a></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 2 of 3 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 0 of 1 rows carded</span></td><td>our page, as “Kit comparison and offer”</td></tr>
+<tr><td><a href="https://dealectric.com/best-40gbps-nvme-enclosure-no-throttling">40 Gbps NVMe enclosure</a></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 0 of 4 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 6, 2 of 6 rows carded</span></td><td>none</td></tr>
+<tr><td><a href="https://dealectric.com/best-nas-under-400-for-jellyfin">NAS for Jellyfin</a></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 4 of 4 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 4 of 4 rows carded</span></td><td>none</td></tr>
+<tr><td><a href="https://dealectric.com/best-65w-travel-charger-interchangeable-plugs">65 W travel charger</a></td><td>not cited<br><span class="small">rank 1, 4 of 4 rows carded</span></td><td><span class="tag web">cited</span><br><span class="small">rank 1, 3 of 3 rows carded</span></td><td>our page, as “Dealectric&#x27;s 2026 comparison”</td></tr>
+<tr><td><a href="https://dealectric.com/cheapest-10-inch-double-din-android-head-unit-wireless-carplay">Double-DIN head unit</a></td><td>not cited<br><span class="small">rank 7, 3 of 3 rows carded</span></td><td>not cited<br><span class="small">rank 4, 4 of 4 rows carded</span></td><td>none</td></tr></tbody>
+  </table></div>
+  <p class="small" style="margin-top:10px">Rank is our position in ChatGPT's search results; "carded" counts product rows bound to the catalog.</p>
+  <p style="margin-top:14px"><b>The four winners were cited in all 8 chats, with no buy-link handover.</b> In three of them ChatGPT linked our page as the place to compare or buy the product that had no card.</p>
+  <p><b>Two of the three losers were cited today, 3 of 6 chats against 0 of 21 before.</b> All three were rebuilt with the research method in this morning's push (12:58 UTC), and the Jellyfin answer repeats a fact that only the rebuilt page carries (the HuC firmware setting), so the new copy is probably what ChatGPT read. I could not confirm that from the crawl log, which ends on 13 Nov here. What did not change: all 22 product rows in those six chats were catalog cards. A better page can earn the source pill against cards. It did not earn the buy slot.</p>
+  <p>In one charger chat ChatGPT did mention our offer, then added: "Its pricing is affiliate-linked, so I'd compare the final checkout total against the manufacturer's direct listing." Where a card exists, our lower price is treated as a claim to check, and the card's price as the fact.</p>
+</section>
+
+<section class="prose">
+  <h2>What I would change</h2>
+  <ul>
+    <li><b>Gate new pages on two readings from the harvest chats we already save:</b> the share of product rows with a catalog card, and whether a maker or official doc sits in the results. Build where rows are mostly un-carded and no primary source answers the question.</li>
+    <li><b>Lean into what the catalog cannot card:</b> kits and bundles, brand-store-only products, and questions about a measured property across brands. The NVMe page shows this works outside solar.</li>
+    <li><b>Stop adding NAS pages.</b> 41 pages, retrieved in 78% of chats, cited in 21% of those, no handover. The answer is supplied by cards and makers whatever our copy says. Existing pages can stay; they cost nothing.</li>
+    <li><b>The nearest handover win is the un-carded row.</b> In three of today's chats ChatGPT used our page as the purchase link for the product with no card. It linked the page, not the buy link. This is a hypothesis from a handful of chats, and it is where I would test next.</li>
+    <li><b>Read the B replication with this split.</b> Today's rebuilt losers suggest the research method lifts citations even on carded questions. If reading 3 confirms it, citation rate and sales potential come apart on those pages, so score handover separately for carded and un-carded pages.</li>
+  </ul>
+  <p class="small" style="margin-top:14px">Limits: 7 to 8 saved chats per page; categories assigned by keywords in the page address; today's run is two chats per page, so it illustrates the pattern and does not measure it.</p>
+</section>
+</main>

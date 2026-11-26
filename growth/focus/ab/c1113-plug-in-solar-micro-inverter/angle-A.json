@@ -1,0 +1,118 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got puts the plug-in inverters on the same footing for a two-panel 120 V setup: one APsystems EZ1-LV gives 900 VA, which works out to 7.5 A, for $325, while two Hoymiles HiFlow 360 Pro LV units give 720 VA, or 6.0 A, for $320.84. That is 25% more AC ceiling for about the same money. And EcoFlow's '1,200 W' is a cap on the whole STREAM system's grid output, not a figure that adds up per unit.",
+ "standout": 2,
+ "standout_why": "I opened Solar Waypoint (cited), pluginsolarcheck.com/kits/certifications (cited) and the APsystems EZ1 product page (cited). Solar Waypoint lists VA ratings and prices in separate columns (Hoymiles $149/$169, EZ1-LV $325/$275) but never works out cost per VA, cost per panel, or amps at 120 V. It also never compares one dual-input EZ1-LV against two single-input Hoymiles units. It does say the EcoFlow STREAM is '800 W one unit; up to 1,200 W in supported combinations', so my EcoFlow finding only partly overlaps. Pluginsolarcheck gives the EZ1-LV as '900 W' and the EcoFlow STREAM Microinverter as '1,200 W' with no amps and no system-cap context. Neither page sets the CSA certificate's 'dedicated 10 A circuit' condition, which both report, against APsystems' own '1,800 W on a standard 15 A circuit' line. I did not open howtogosolar.org, plugshine.com, balconysolarkits.us, solar.com, promptquorum.com, balconysunlab.com or pluginsolarcalcs.com, so one of them might already have a per-VA comparison.",
+ "decides": "This backs ChatGPT's EZ1-LV pick, with a reason it didn't give. For two panels, the EZ1-LV costs about the same as two Hoymiles 360 Pro LV units but has 180 VA more ceiling, so two 400 W panels (800 W DC) don't clip on it. Two 400 W panels would clip at 360 VA each on the Hoymiles. The Hoymiles stays the pick only for a single-panel setup or a state with a low wattage tier (Solar Waypoint reports Maine at 420 W and Colorado/Maryland around 391 W). It also undercuts ChatGPT's 'EcoFlow up to 1,200W' card: on EcoFlow's own page, 1,200 W is the most the STREAM system can feed to the grid in any configuration, and the microinverter adds solar input to a STREAM Ultra. EcoFlow's page doesn't say the microinverter can feed a wall outlet on its own.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+  "EcoFlow STREAM Microinverter (with STREAM Ultra)",
+  "Northern Electric Power BDM-1200-LV (LIBERTY)"
+ ],
+ "findings": [
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Max continuous AC output",
+   "value": "900 VA (installer page says '900W maximum continuous output')",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-13",
+   "note": "Product page: 'Max output power reaching 900VA'. The installer page https://usa.apsystems.com/ez1-installers/ FAQ says 'rated for 900W maximum continuous output'."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "AC output current at 120 V (calculated)",
+   "value": "7.5 A",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-13",
+   "note": "900 VA ÷ 120 V = 7.5 A. A continuous load sized at 125% needs 9.4 A, which fits the 10 A dedicated breaker that Solar Waypoint and pluginsolarcheck report from CSA certificate 80310017."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "DC input per channel",
+   "value": "2 independent MPPT channels, modules 315 W to 660 W+ each; 18 A input current and 25 A short-circuit current per input; MPPT 27–45 V; max input 60 V",
+   "source": "https://usa.apsystems.com/ez1-installers/",
+   "source_title": "Turn Portable Solar Into New Business - APsystems USA",
+   "read": "2026-11-13",
+   "note": "The module range is from the FAQ text. The current and voltage figures are from the datasheet image caption on the same page."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price, maker US store",
+   "value": "$325.00 (SKU 140219)",
+   "source": "https://usa.apsystems.com/ez1-installers/",
+   "source_title": "Turn Portable Solar Into New Business - APsystems USA",
+   "read": "2026-11-13",
+   "note": "$325 ÷ 900 VA = $0.361 per VA. $325 ÷ 2 panels = $162.50 per panel. Solar Waypoint (2026-11-03) reported it sold out direct."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Maker's two-unit claim vs certificate condition",
+   "value": "Maker says two EZ1s give 'up to 1,800W of plug-in solar power on a standard 15A circuit'. The CSA certificate condition, as rivals report it, is a dedicated 10 A circuit.",
+   "source": "https://usa.apsystems.com/ez1-installers/",
+   "source_title": "Turn Portable Solar Into New Business - APsystems USA",
+   "read": "2026-11-13",
+   "note": "The 1,800 W line is in a YouTube video description on the APsystems page, not the datasheet. 2 × 7.5 A = 15 A, which is 100% of a 15 A breaker before any 125% continuous factor. I did not open the CSA certificate myself; the condition comes from solarwaypoint.com and pluginsolarcheck.com."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Output limit setting",
+   "value": "Max output adjustable in the AP EasyPower app (no range stated)",
+   "source": "https://usa.apsystems.com/ez1-installers/",
+   "source_title": "Turn Portable Solar Into New Business - APsystems USA",
+   "read": "2026-11-13",
+   "note": "The page says 'Adjustable output helps meet local system requirements'. Zero-export needs the optional APmeter ($90) per the product page."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+   "label": "Rated AC output and module range per model",
+   "value": "360 / 391 / 420 / 450 / 500 VA; commonly used modules 280–470+ / 300–510+ / 320–540+ / 360–600+ / 400–670+ W; 1 MPPT each; max input current 14/14/14/15/16 A; 120 V (90–150 V)",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV - Hoymiles US",
+   "read": "2026-11-13",
+   "note": "Hoymiles labels this 'rated output power', not 'max continuous'. At 120 V: 3.0 / 3.26 / 3.5 / 3.75 / 4.17 A (calculated). The page lists max input voltage as 64 V; the solar-electric.com listing says 60 V."
+  },
+  {
+   "product": "Hoymiles HiFlow 360 Pro LV (HMS-360-1WM-LV)",
+   "label": "Price and electrical detail, US retailer",
+   "value": "$160.42; rated output 360 VA, rated output current 3.0 A, power factor >0.99 default (adjustable 0.8 leading–0.8 lagging), efficiency 95.50%, night consumption <50 mW, UL 1741 / UL 3700 / IEEE 1547 (listed)",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV 1-in-1 series plug-in microinverter - Northern Arizona Wind & Sun",
+   "read": "2026-11-13",
+   "note": "$160.42 ÷ 360 VA = $0.446 per VA, 23% more than the EZ1-LV's $0.361. Two units for two panels: 720 VA for $320.84, against one EZ1-LV at 900 VA for $325.00. Because the default power factor is >0.99, VA and W are effectively equal for both makers."
+  },
+  {
+   "product": "EcoFlow STREAM Microinverter (with STREAM Ultra)",
+   "label": "What '1,200 W' means",
+   "value": "STREAM Ultra alone: max 800 W on-grid AC. Ultra + one STREAM Microinverter: max 1,200 W on-grid AC. 2 to 6 Ultra units: still max 1,200 W on-grid. The microinverter adds 'an additional 1,200W of solar input'.",
+   "source": "https://www.ecoflow.com/us/stream-ultra-home-solar-system",
+   "source_title": "EcoFlow STREAM Ultra Home Solar System - EcoFlow US",
+   "read": "2026-11-13",
+   "note": "1,200 W is a whole-system grid-output cap (10 A at 120 V, calculated), not a per-unit rating that stacks. The page lists UL1741 and IEEE1547 but not UL 3700, and doesn't say whether the microinverter feeds an outlet on its own."
+  },
+  {
+   "product": "Northern Electric Power BDM-1200-LV (LIBERTY)",
+   "label": "Published output rating",
+   "value": "Spec table is labelled BDM 800: rated AC output 800 W, rated output current 3.2 / 3.36 / 3.26 A, 2 inputs at 17 A each, MPPT 22–55 V, CEC weighted 95.50%, recommended max PV 1,200 W; UL 1741 and CSA C22.2 No. 107.1 listed, UL 3700 not mentioned",
+   "source": "https://northernep.com/products/microinverters/liberty-plug-in-inverter/",
+   "source_title": "BDM-1200-LV - NEP – Northern Electric Power",
+   "read": "2026-11-13",
+   "note": "The product is named 1200, but the table on the page is for the BDM 800, so its 1,200 W AC output is not shown there. The listed currents don't match 800 W at 120 V, so the table looks wrong. No price on the page."
+  }
+ ],
+ "unsourced": [
+  "EZ1-LV peak and CEC efficiency and night consumption: the datasheet PDFs (solar-electric.com, global.apsystems.com) and manual PDF would not parse as text, and the HTML pages I opened don't list them.",
+  "EcoFlow STREAM Microinverter's own US spec table and price ($369 appears only in a search snippet): us.ecoflow.com returned HTTP 429 to WebFetch and to storecheck.py.",
+  "EZ1-LV $269.99 at Missouri Wind and Solar (the price ChatGPT showed): storecheck.py returned HTTP 0 for mwands.com, and I did not open the page.",
+  "Hoymiles HiFlow 391/420/450/500 Pro LV prices: not opened. Solar Waypoint's $149 (360) and $169 (391) are its own figures from 2026-11-03.",
+  "The CSA certificates themselves (80310016 Hoymiles, 80310017 APsystems): not opened. The 10 A dedicated-circuit condition comes from solarwaypoint.com and pluginsolarcheck.com."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0774431999999998
+ }
+}

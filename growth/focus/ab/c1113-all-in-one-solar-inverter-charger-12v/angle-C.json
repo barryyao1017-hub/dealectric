@@ -1,0 +1,56 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that PowMr sells a 12V unit with 110V output and solar charging: its 1200W 110V 12V low-frequency inverter charger, which lists LiFePO4 (User Mode) support and RS232/RS485 BMS communication. This finding is weak: I could not open its full page to see what kind of solar controller it has or its PV input limits.",
+ "standout": 1,
+ "standout_why": "I could not open any of the rival pages. Every Renogy result (the REGO 12V 3000W page and its variants, and the 2000W/3000W HF page) returned HTTP 429 on two tries each, so I can't say what they leave out. ChatGPT's own answer already makes the main compatibility point: PowMr's 1.6 kW 12V unit puts out 230V, and Renogy REGO and LiTime have no MPPT. My sourced findings only add a little to that: a 110V 12V PowMr option and ACOPOWER's current price.",
+ "decides": "This partly confirms ChatGPT's pick. The ACOPOWER 3000W/12V All-in-One is listed on ACOPOWER's US store at $1,298 and in stock. I could not open its spec page or manual, so its PV voltage range, MPPT current and battery-communication limits are unverified. For a US 120V buyer, PowMr's 12V/110V option is a 1200W low-frequency unit, not a 3000W all-in-one. Its 110V all-in-one in the search results (4000W) runs on 24V, which supports ChatGPT's point that 12V/120V all-in-ones are rare.",
+ "candidates": [
+  "ACOPOWER 3000W/12V All-in-One Hybrid Solar Charger Inverter",
+  "ALLWEI 3000W 12V Hybrid Solar Inverter",
+  "PowMr 1200W 110V 12V Low Frequency Inverter Charger",
+  "PowMr POW-HVM2H-12V-N (220V)",
+  "Renogy REGO 12V 3000W Inverter Charger"
+ ],
+ "findings": [
+  {
+   "product": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "label": "US store price and availability",
+   "value": "$1,298.00, in stock",
+   "source": "https://www.acopower.com/products/acopower-3000w-30v-to-300v-all-in-one-pure-sine-wave-power-inverter",
+   "source_title": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Read from ACOPOWER's own Shopify catalog through storecheck.py search. The product page and storecheck 'product' call both returned HTTP 429 every time, so I have no specs from the page body."
+  },
+  {
+   "product": "PowMr 1200W 110V 12V Low Frequency Inverter Charger",
+   "label": "Battery and communication compatibility (maker's listing text)",
+   "value": "Supports lithium-ion, LiFePO4 (User Mode), AGM, Gel and flooded batteries. RS232 or RS485 external communication with BMS communication. Solar, AC and generator charging. Mains/generator bypass. $243 (compare-at $348)",
+   "source": "https://powmr.com/products/low-frequency-inverter-charger-1200w-110v-12v",
+   "source_title": "1200W 110V 12V Low Frequency Inverter Charger",
+   "read": "2026-11-13",
+   "note": "Text and price come from PowMr's Shopify catalog through storecheck.py search. The full product page returned 429/403, so I could not see whether the solar controller is MPPT or PWM, or the PV limits."
+  },
+  {
+   "product": "PowMr 4000W 110Vac 24Vdc All In One Inverter Charger",
+   "label": "Battery voltage of PowMr's 110V all-in-one",
+   "value": "24V battery, 100A MPPT, PV input 60–500Vdc, $330",
+   "source": "https://powmr.com/products/all-in-one-inverter-charger-4000w-110vac-24vdc",
+   "source_title": "4000W 110Vac 24Vdc All In One Inverter Charger with Built-in WiFi",
+   "read": "2026-11-13",
+   "note": "From PowMr's store catalog through storecheck.py search. This is the 110V all-in-one that appeared in my one store search; I did not check PowMr's full range. Its 24V battery means it does not suit a 12V bank."
+  }
+ ],
+ "unsourced": [
+  "ACOPOWER/ADCPOWER HYOne3000-12: PV input range (a search snippet said 30–300Vdc), maximum Voc, MPPT charge current (a snippet said 150A), lithium BMS communication, and whether it can run without a battery. The manual PDF on acopower.com is over 10 MB and WebFetch could not load it. The product page returned 429 repeatedly, and downloading it with Bash needed an approval I didn't have.",
+  "ALLWEI 3000W 12V hybrid: I found no maker page or manual in two searches, so I have no PV limits, battery-communication or 120V output details.",
+  "PowMr POW-HVM2H-12V-N: 220V-only output and PV Voc limit (a snippet said 400Vdc). The powmr.com product page returned 403 and manuals.plus returned 403.",
+  "Renogy REGO 12V 3000W: whether it has no MPPT, and which batteries and communication modules it works with. Renogy pages returned 429 on every attempt.",
+  "Sun Gold Power: whether it makes any 12V unit with built-in MPPT. Search results showed only 12V low-frequency inverter chargers without solar, and MPPT units at 24V/48V. I did not open a page to confirm."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0267726
+ }
+}

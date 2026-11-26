@@ -1,0 +1,121 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got says that the Anker SOLIX E10 whole-home kit's Power Dock is limited to 120/240 V split-phase service with a 200 A max main breaker (160 A continuous), that it takes only 240 V generators (standby, or portable through an inlet box) on branch circuits 1–2, and that Anker recommends a generator under 10% THD for stable E10 charging. Together these decide whether a house and its generator suit the kit.",
+ "standout": 2,
+ "standout_why": "I opened solutionenergy.com/batteries/without-solar (ChatGPT's top uncited result). It covers the E10 but says only that the Power Dock supports up to three E10s, that the Smart Inlet Box works with an existing transfer switch, and that one E10 takes 5 batteries (about 30 kWh). It gives no service-size limit for the Power Dock, no generator voltage or THD requirement, and in its own words 'does not state service amperage requirements for any product'. I also opened solarpanelx.com's guide, which has no service-amperage, generator-input or E10 details. I did not open the cited Tesla, FranklinWH and West Electric pages. Going by their titles and ChatGPT's answer, they cover Powerwall, aPower and Enphase, not the E10, so the E10-specific limits are new to them. ChatGPT's answer itself only says 'a compatible generator' without saying what makes one compatible. I scored 2 rather than 3 because the 200 A rating is on Anker's product page, which any shopper can see, and Anker gives THD < 10% as a recommendation, not a hard exclusion.",
+ "kit_items": [
+  "Battery + inverter: Anker SOLIX E10 Power Module (A17E1) + 2× B6000 battery modules (6.144 kWh each, 12.3 kWh). With 2 or more batteries the E10 reaches 10 kW for up to 90 min, versus 7.6 kW continuous with 1 battery (Anker FAQ). Charges from the grid at up to 7,680 W on 240 V, so it needs no solar.",
+  "Whole-home transfer: Anker SOLIX Power Dock (AX170), 200 A service entry with automatic switchover. The house must have 120/240 V split-phase service and a main breaker of 200 A or less (160 A continuous). One Power Dock takes up to three E10 power modules. The Smart Inlet Box (AS211) is the cheaper manual option, but it connects only one E10 and is not whole-home.",
+  "Optional extra battery: Anker B6000 battery module. One E10 takes up to 5 (about 30 kWh). Anker FAQ says the owner can add these without an electrician.",
+  "Optional long-outage recharge: Anker SOLIX Smart Generator 5500 (A7320J40), tri-fuel with auto start/stop. It charges the E10 over DC (4,500 W). A third-party AC generator can be used instead if it is 240 V (standby, or portable through an inlet box) on Power Dock branch circuits 1–2, ideally with THD under 10%. Don't run a third-party generator and third-party solar at the same time."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX E10 Automatic Backup Kit: E10 (Power Module + 2× Battery) + Power Dock | https://www.ankersolix.com/products/e10 | $7,799.00 | 2026-11-13",
+    "Anker SOLIX Smart Generator 5500 (add-on, optional) | https://www.ankersolix.com/products/e10 | $1,600.00 (compare-at $1,999) | 2026-11-13",
+    "Anker SOLIX B6000 Battery Module (add-on, optional) | https://www.ankersolix.com/products/e10 | $2,000.00 (compare-at $2,499) | 2026-11-13"
+   ],
+   "bundle_sku": "Automatic Backup Kit, E10 (Power Module + 2× Battery) + Power Dock, $7,799.00 (2026-11-13). Larger: 2× E10 (Power Module + 2× Battery) + Power Dock, $13,798.00 (compare-at $14,098). Note: the handle Dealectric already lists, /products/e10-2-power-module-4-battery-power-dock, loads the same E10 configurator page, which defaults to the $3,999 Starter Kit."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX Power Dock (AX170)",
+   "label": "Grid service type and main breaker limit",
+   "value": "120/240 VAC split phase, 60 Hz; grid current 200 A max, 160 A continuous; main breaker (whole-home backup) 200 A max",
+   "source": "https://www.manualslib.com/manual/4652411/Anker-Solix-Power-Dock.html",
+   "source_title": "Anker SOLIX Power Dock User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "ManualsLib hosts a copy of Anker's manual. Anker's own installer guide on support.ankersolix.com would not load (CSS error), and the Lowe's-hosted PDFs could not be decoded. The manual does not mention 120/208 V or three-phase service either way. Anker's product page separately lists 'Service Entry Capacity: 200A, Whole Home Backup'."
+  },
+  {
+   "product": "Anker SOLIX Power Dock (AX170)",
+   "label": "Supported generators and where they connect",
+   "value": "240 V AC standby generator, or 240 V AC portable generator through an inlet box, installed on branch circuits 1 and 2; GEN CTRL port (24–14 AWG) for start/stop, wired as two-wire control or utility sensing",
+   "source": "https://www.manualslib.com/manual/4652411/Anker-Solix-Power-Dock.html",
+   "source_title": "Anker SOLIX Power Dock User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The manual does not mention 120 V generators or give a generator wattage limit. Branch breakers above 100 A share a combined continuous limit of 160 A."
+  },
+  {
+   "product": "Anker SOLIX Power Dock (AX170)",
+   "label": "AC-coupled solar compatibility",
+   "value": "Power Dock connects only to a 240 V AC solar system; DC solar connects to the E10 instead",
+   "source": "https://www.manualslib.com/manual/4652411/Anker-Solix-Power-Dock.html",
+   "source_title": "Anker SOLIX Power Dock User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Applies if the shopper adds solar later."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Third-party generator THD recommendation",
+   "value": "THD < 10% recommended",
+   "source": "https://www.ankersolix.com/e10-off-the-grid",
+   "source_title": "Anker SOLIX E10 Off the Grid (Anker US page)",
+   "read": "2026-11-13",
+   "note": "Quote: 'To ensure stable charging of E10 from the generator, we recommend to use a generator with THD < 10%.' The same page says 'E10 works with existing 120V / 240V AC generators for up to 9.6kW bypass.' Read with the Power Dock manual, which lists only 240 V generators for the Power Dock's branch circuits."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Third-party solar and generator run together",
+   "value": "Not allowed: 'Do not run a third-party solar system and a third-party generator at the same time'; third-party solar must support frequency deviation compliance (CA21, IEEE 1547-2018+)",
+   "source": "https://www.manualslib.com/manual/4532387/Anker-Solix-E10.html",
+   "source_title": "Anker SOLIX E10 User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "This came from the visible text snippets on ManualsLib; the full PDF text was not readable there. The manual also says third-party AC generators should have THD below 10%."
+  },
+  {
+   "product": "Anker SOLIX Smart Inlet Box (AS211)",
+   "label": "E10 units per connection hub",
+   "value": "Smart Inlet Box connects 1 E10 unit; Power Dock connects up to 3 E10 power modules",
+   "source": "https://www.manualslib.com/manual/4532387/Anker-Solix-E10.html",
+   "source_title": "Anker SOLIX E10 User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Anker's product page FAQ 1 also says: 'Each Power Dock supports up to three E10 units.' The manual recommends a 50 A two-pole breaker between the E10 and the Power Dock."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Grid (AC) recharge rate",
+   "value": "7,680 W at 240 V / 32 A; 1,800 W at 120 V / 15 A; AC bypass 9,600 W at 240 V / 40 A",
+   "source": "https://www.ankersolix.com/products/e10-power-module-3-battery-power-dock",
+   "source_title": "E10 (Power Module + 3×Battery) + Power Dock, Anker SOLIX US store",
+   "read": "2026-11-13",
+   "note": "This is what makes grid-only (no solar) charging practical: at 240 V, 12.3 kWh (2× B6000) refills in about 1.6 h by arithmetic (12.288 kWh / 7.68 kW), ignoring charge losses and taper. The page also says the system does not feed power back to the grid."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Batteries per power module and output",
+   "value": "Up to 5 B6000 modules (6.144 kWh each); 1 module 7.6 kW continuous; 2+ modules 10 kW for up to 90 min",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 Whole-Home Backup (UL9540 & 9540A Certified)",
+   "read": "2026-11-13",
+   "note": "FAQ 3 and FAQ 6 on the product page. The Power Dock warranty is 10 years and the E10 warranty is 5 years."
+  },
+  {
+   "product": "Anker SOLIX E10 Automatic Backup Kit",
+   "label": "Price",
+   "value": "$7,799.00",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10 Whole-Home Backup (UL9540 & 9540A Certified)",
+   "read": "2026-11-13",
+   "note": "E10 (Power Module + 2× Battery) + Power Dock. Other options on the page: Starter Kit $3,999 (was $4,299); Manual Backup Kit with Smart Inlet Box $6,299; 2× E10 + Power Dock $13,798; add-ons B6000 $2,000, Smart Generator 5500 $1,600. The store's Shopify JSON returned HTTP 404 to storecheck.py, so these prices were read from the rendered page."
+  }
+ ],
+ "unsourced": [
+  "Anker's own official PDF of the Power Dock and E10 manuals: the support.ankersolix.com installer guide would not render, the Lowe's-hosted PDFs (pdf.lowes.com/.../96050929.pdf, .../87194988.pdf) were not readable through fetch, and running pdftotext on the saved copy needed shell approval I didn't get. The manual figures above come from ManualsLib copies.",
+  "Whether Anker explicitly excludes 120/208 V (wye) service or services over 200 A: the Power Dock manual and product page give only 120/240 V split phase and 200 A max, with no stated exclusion.",
+  "Generator wattage or current limits at the Power Dock generator input: not in the manual excerpts or on the product page.",
+  "Anker SOLIX E10 AC Generator Adapter price and specs on the Anker US store: it appeared only on a third-party retailer listing (shopsolarkits.com), which I did not open.",
+  "Smart Inlet Box current rating (30 A or 50 A): the product page and manual excerpts give none, though Anker's off-grid page mentions a NEMA 14-50 cable.",
+  "Grid AC input voltage and frequency window for the E10: not in the visible manual text.",
+  "The rival pages ChatGPT cited (Tesla 'How Powerwall Works' and 'Combining Systems', the FranklinWH manual, West Electric's comparison): I did not open these. The standout judgement rests on the two top uncited results I did read (solutionenergy.com, solarpanelx.com) and on ChatGPT's answer text."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 24,
+  "cost_usd_list": 1.0341552
+ }
+}

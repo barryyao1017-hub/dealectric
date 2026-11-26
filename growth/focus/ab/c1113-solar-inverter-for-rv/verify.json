@@ -1,0 +1,186 @@
+{
+ "draft": {
+  "status": "ok",
+  "angle": "B",
+  "why_angle": "Victron's cited sizing article adds only '10-15% extra' for inverter losses on AC loads. Neither it nor the cited Renogy installation guide gives any inverter's no-load draw or turns it into Wh/Ah per day or panel watts. This page converts the maker-rated idle draw of four inverters (plus one owner's bench measurement) into daily battery drain and solar needed, and that changes which inverter fits a solar RV.",
+  "slug": "solar-inverter-for-rv-idle-draw-compared",
+  "must": [
+   "Victron MultiPlus-II 12/3000 pure sine wave inverter charger",
+   "3 W in Search mode (72 Wh a day)"
+  ],
+  "products": [],
+  "page": {
+   "title": "Solar Inverter for RV: Idle Draw Compared in Wh per Day",
+   "h1": "Solar inverter for an RV: check idle draw before watts",
+   "desc": "RV inverters use battery power just by being switched on. We compare the rated no-load draw of Victron and Renogy pure sine wave inverters in Wh per day, with today's prices.",
+   "answer": "<p class=\"lead\"><strong>Short answer.</strong> When sizing a solar inverter for an RV, check idle draw as well as watts. The Victron MultiPlus-II 12/3000 pure sine wave inverter charger draws 3 W in Search mode (72 Wh a day). Renogy's 2000W UPS inverter is rated under 18 W, which is up to 432 Wh a day.</p>",
+   "columns": [
+    [
+     "cont",
+     "Continuous output (maker)"
+    ],
+    [
+     "idle",
+     "No-load draw"
+    ],
+    [
+     "day",
+     "Idle drain if left on 24 h"
+    ],
+    [
+     "eff",
+     "Max efficiency (maker)"
+    ],
+    [
+     "ac",
+     "Shore-power side"
+    ]
+   ],
+   "rows": [
+    {
+     "brand": "Victron Energy",
+     "model": "MultiPlus-II 12/3000/120-50 (120 V)",
+     "url": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+     "cells": {
+      "cont": "2,400 W at 25 °C (rated 3,000 VA); 2,200 W at 40 °C",
+      "idle": "13 W normal; 9 W AES; 3 W Search mode",
+      "day": "312 Wh normal; 72 Wh in Search mode",
+      "eff": "93%",
+      "ac": "120 A battery charger, 50 A transfer switch",
+      "price": "$999.62 (Northern Arizona Wind & Sun, 2026-11-13)"
+     }
+    },
+    {
+     "brand": "Victron Energy",
+     "model": "Phoenix 12/1200 120V VE.Direct (PIN122122500)",
+     "url": "https://www.solar-electric.com/victron-phoenix-12-1200-120v-nema-5-15r-inverter.html",
+     "cells": {
+      "cont": "1,200 VA at 25 °C",
+      "idle": "7 W rated; 10.0 W measured at 12 V (owner bench test of a 230 V EU unit, Victron Community)",
+      "day": "168 Wh rated; 240 Wh measured",
+      "eff": "91%",
+      "ac": "Inverter only, no charger or transfer switch listed",
+      "price": "$279.65 (Northern Arizona Wind & Sun, 2026-11-13)"
+     }
+    },
+    {
+     "brand": "Renogy",
+     "model": "1000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Bluetooth",
+     "url": "https://www.renogy.com/products/1000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth",
+     "cells": {
+      "cont": "1,000 W",
+      "idle": "Under 12 W",
+      "day": "Up to 288 Wh",
+      "eff": "Over 92%",
+      "ac": "UPS transfer switch, no battery charger listed",
+      "price": "$269.99 (Renogy, 2026-11-13)"
+     }
+    },
+    {
+     "brand": "Renogy",
+     "model": "2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Bluetooth",
+     "url": "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth",
+     "cells": {
+      "cont": "2,000 W",
+      "idle": "Under 18 W",
+      "day": "Up to 432 Wh",
+      "eff": "Over 92%",
+      "ac": "UPS transfer switch, no battery charger listed",
+      "price": "$364.99 (Renogy, 2026-11-13)"
+     }
+    }
+   ],
+   "after": "<h2>What the differences mean</h2><ul><li><strong>Renogy 2000W UPS, left on with nothing plugged in:</strong> 18 W × 24 h = up to 432 Wh a day, or 432 ÷ 12 V = 36 Ah from a 12 V bank.</li><li><strong>Renogy 1000W UPS:</strong> 12 W × 24 h = up to 288 Wh a day (24 Ah). That is 144 Wh a day less than the 2000W model.</li><li><strong>Victron Phoenix 12/1200:</strong> 7 W × 24 h = 168 Wh rated. One owner measured 10.0 W at 12 V on a bench supply (a 230 V EU unit), which gives 10.0 × 24 = 240 Wh.</li><li><strong>Victron MultiPlus-II 12/3000:</strong> 13 W × 24 h = 312 Wh in normal mode, but 3 W × 24 h = 72 Wh (6 Ah) in Search mode.</li><li><strong>What Search mode saves against the Renogy 2000W UPS:</strong> 432 − 72 = 360 Wh a day. At 5 peak sun hours that is 360 ÷ 5 = 72 W of solar panel that only covers the inverter's idle draw.</li><li><strong>Against a real budget:</strong> Victron's own RV example uses 720 Wh a day. 432 ÷ 720 = 60% of that budget spent on idle draw alone.</li><li><strong>The '3000' in the MultiPlus-II name is VA:</strong> 2,400 W ÷ 3,000 VA = 80% at 25 °C, falling to 2,200 W at 40 °C. Plan a hot inverter bay around 2,200 W.</li><li><strong>Battery current at full load:</strong> 2,000 W ÷ 0.92 ÷ 12 V ≈ 181 A DC for the Renogy 2000W UPS. Cable and fuse sizing follow from this figure.</li></ul><table><thead><tr><th>Your RV setup</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>Boondocking on solar, inverter on all day, shore power at campgrounds</td><td>Victron MultiPlus-II 12/3000</td><td>3 W Search mode, 120 A charger, 50 A transfer switch</td></tr><tr><td>Laptop, TV, CPAP-size loads only</td><td>Victron Phoenix 12/1200 or Renogy 1000W UPS</td><td>Lowest idle of the inverter-only units (7 W rated / under 12 W)</td></tr><tr><td>Coffee maker or small microwave, inverter switched off afterwards</td><td>Renogy 2000W UPS</td><td>2,000 W rated for the price; idle draw only matters while it stays on</td></tr><tr><td>Renogy system feeding the RV's own panel with shore charging</td><td>Renogy REGO 12V 3000W inverter charger, $989.99 (Renogy, 2026-11-13)</td><td>Built-in charger and an integrated transfer relay with neutral-ground bonding</td></tr></tbody></table><h2>Why idle draw matters more on solar</h2><p>An inverter uses power whenever it is switched on, whether or not anything is plugged in. On shore power that cost doesn't matter. On a roof array it comes straight out of the day's harvest. The no-load figures above are the makers' ratings, except one: Victron Community member staldor bench-tested a 230 V EU Phoenix 12/1200 (rated 7 W) and measured 7.4 W at 10 V, 10.0 W at 12 V and 12.9 W at 14 V. In that test, idle draw rose with battery voltage, and a charged lithium bank sits well above 12 V. Treat any rated figure as a floor.</p><p>The MultiPlus-II's 3 W applies only in Search mode. Left in normal mode it draws 13 W, which is 312 Wh a day, close to the Renogy 2000W UPS. A shopper who won't use Search mode gets most of the same benefit by switching any inverter off when no AC load is running.</p><p>The Renogy REGO 12V 3000W adds what the UPS models lack for a whole-coach install: it charges 12 V GEL, AGM, SLA, flooded, calcium and lithium batteries from shore power. Renogy also says its integrated transfer relay 'with neutral ground bonding' switches between shore power and inverter. That matters when the inverter feeds the RV's outlets rather than only its own sockets. Renogy rates it at 3,000 W continuous with peak power up to 9,000 W.</p><h2>Not recommended</h2><p>Leaving the Renogy 2000W UPS inverter on around the clock on solar alone. At its under-18 W rating that can use up to 432 Wh a day, a third of a 12 V 100 Ah LiFePO4 battery (12.8 V × 100 Ah = 1,280 Wh), before any appliance runs. Under heavy load, Aaron Schubert of 4WDing Australia reported a 'warm, smoky electronics' smell from a Renogy 2000W UPS-type inverter after about 10 minutes at 1,200 W from an induction cooktop. His unit was a regional model he did not number, so it may differ from the US unit. Use this model for short appliance runs and switch it off afterwards.</p>",
+   "sources": [
+    [
+     "Victron MultiPlus-II 12/3000/120-50: 3,000 VA / 2,400 W at 25 °C, 2,200 W at 40 °C, 1,700 W at 65 °C; 5,500 W peak; 93% max efficiency; zero-load 13 W / AES 9 W / Search 3 W; 120 A charger; 50 A transfer switch (read 2026-11-13)",
+     "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html"
+    ],
+    [
+     "Victron MultiPlus-II 12/3000/120-50 120V (PMP122305122) price $999.62 at Northern Arizona Wind & Sun (read 2026-11-13)",
+     "https://www.solar-electric.com/victron-energy-multiplus-ii-inverter-charger-12-3000-120-50-120v-ul458.html"
+    ],
+    [
+     "Victron Phoenix 12/1200 (PIN122122500): 1,200 VA at 25 °C, 2,200 W peak, 7 W zero-load, 91% max efficiency, $279.65 at Northern Arizona Wind & Sun (read 2026-11-13)",
+     "https://www.solar-electric.com/victron-phoenix-12-1200-120v-nema-5-15r-inverter.html"
+    ],
+    [
+     "Phoenix 1200/12 (EU, 230 V) no-load draw measured by owner staldor on a lab power supply: 7.4 W at 10 V, 10.0 W at 12 V, 12.9 W at 14 V (read 2026-11-13)",
+     "https://community.victronenergy.com/t/phoenix-1200-12-zero-load-power-much-higher-than-specified-measured-10-w-vs-7-w/47181"
+    ],
+    [
+     "Renogy 2000W 12V UPS inverter: over 92% efficiency, power consumption under 18 W, $364.99 (read 2026-11-13)",
+     "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth"
+    ],
+    [
+     "Renogy 1000W 12V UPS inverter: over 92% efficiency, power consumption under 12 W, $269.99 (read 2026-11-13)",
+     "https://www.renogy.com/products/1000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth"
+    ],
+    [
+     "Renogy REGO 12V 3000W: 3,000 W continuous, up to 9,000 W peak, integrated transfer relay with neutral ground bonding, shore charging of 12 V battery types, $989.99 (read 2026-11-13)",
+     "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display"
+    ],
+    [
+     "Victron RV sizing example: 720 Wh/day at 5 peak sun hours; adds 10-15% for inverter losses, with no idle-draw figure (read 2026-11-13)",
+     "https://www.victronenergy.com/knowledge-articles/2026/5/4/how-to-size-rv-solar-system"
+    ],
+    [
+     "4WDing Australia (Aaron Schubert): Renogy 2000W UPS-type inverter smelled of 'warm, smoky electronics' after about 10 min at 1,200 W (read 2026-11-13)",
+     "https://www.4wdingaustralia.com/camping/renogy-inverter-review/"
+    ]
+   ]
+  },
+  "unsourced": [
+   "Sun Gold Power 12V 3000W low-frequency inverter charger (LFP3K12V120VSG) idle draw. A dealer listing (solaris-shop.com) gives 'Idle Consumption: 55W' and 'Power Saver Mode Idle Consumption: 20W', but sungoldpower.com returned HTTP 429 to storecheck product and WebFetch four times. The datasheet PDF on the dealer's site was compressed, and local PDF text extraction needed approval. It is left out of the page, which also leaves us without one of our own products in the table. Sun Gold Power's 48 V units on the site don't fit a 12 V RV.",
+   "No-load and power-saving draw of the Renogy REGO 12V 3000W and the Renogy 2000W/3000W standard inverters. renogy.com product pages returned HTTP 429, and the store search text carried no idle figure. So the REGO appears only in the use table and the angle section, not as a row.",
+   "Price of the Renogy 3000W 12V standard inverter variant. Store search returned only the lowest variant price.",
+   "Victron MultiPlus-II Search mode wake threshold. Not on the technical-specifications page."
+  ]
+ },
+ "checked": 58,
+ "changed": [
+  {
+   "where": "rows[Phoenix 12/1200].cells.idle",
+   "was": "7 W rated; 10.0 W measured at 12 V (owner bench test, Victron Community)",
+   "now": "7 W rated; 10.0 W measured at 12 V (owner bench test of a 230 V EU unit, Victron Community)",
+   "why": "The Victron Community thread (read 2026-11-13) says staldor tested a new Phoenix 1200/12 (EU) on a lab power supply, not the 120 V PIN122122500 in this row. The figure stands, but the unit is now named."
+  },
+  {
+   "where": "after, Phoenix bullet",
+   "was": "One owner measured 10.0 W at 12 V on a bench supply, which gives",
+   "now": "One owner measured 10.0 W at 12 V on a bench supply (a 230 V EU unit), which gives",
+   "why": "Same thread: the tested unit was the EU 230 V version."
+  },
+  {
+   "where": "after, 'Why idle draw matters' paragraph",
+   "was": "staldor bench-tested a Phoenix 12/1200 (rated 7 W)",
+   "now": "staldor bench-tested a 230 V EU Phoenix 12/1200 (rated 7 W)",
+   "why": "Same thread: the tested unit was the EU 230 V version."
+  },
+  {
+   "where": "sources[3]",
+   "was": "Phoenix 12/1200 no-load draw measured by owner staldor: 7.4 W at 10 V, 10.0 W at 12 V, 12.9 W at 14 V (read 2026-11-13 by angle agent)",
+   "now": "Phoenix 1200/12 (EU, 230 V) no-load draw measured by owner staldor on a lab power supply: 7.4 W at 10 V, 10.0 W at 12 V, 12.9 W at 14 V (read 2026-11-13)",
+   "why": "Re-read today. All three figures match. Added the unit's region and the test method."
+  },
+  {
+   "where": "sources[8]",
+   "was": "(read 2026-11-13 by angle agent)",
+   "now": "(read 2026-11-13)",
+   "why": "Re-read today. Author Aaron Schubert, 'warm, smoky electronics', about 10 minutes, 1200W induction cooktop, and no exact model number all match."
+  },
+  {
+   "where": "unsourced[3]",
+   "was": "Duration of Victron MultiPlus-II Search mode wake threshold and peak power. Not on the technical-specifications page.",
+   "now": "Victron MultiPlus-II Search mode wake threshold. Not on the technical-specifications page.",
+   "why": "The technical-specifications page does list peak power (5500W for the 12/3000/120-50), and the draft's own source entry already cites it."
+  }
+ ],
+ "removed": [],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 17,
+  "cost_usd_list": 0.47255630000000004
+ }
+}

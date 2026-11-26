@@ -1,0 +1,87 @@
+<title>Freshness Sweep Results</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; count table up top, then the review lists Barry acts on */
+:root{--bg:#f7f8f6;--fg:#1d2420;--muted:#5d6a63;--line:#d9dfdb;--accent:#1f7a55;--warn:#a4620b;--bad:#b23b2e;--chip:#e8efe9;
+--sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:860px;margin:0 auto;display:grid;gap:28px}
+h1{font-size:1.7rem;line-height:1.2;margin:0;text-wrap:balance} h2{font-size:1.15rem;margin:0 0 8px;text-wrap:balance}
+p,ul{margin:0 0 10px} ul{padding-left:20px} li{margin-bottom:5px}
+.sub{color:var(--muted);font-size:.9rem} .answer{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:1.05rem}
+.scroll{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:6px 10px 6px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+td.n{font-family:var(--mono);white-space:nowrap} a{color:var(--accent)} code{font-family:var(--mono);font-size:.85em}
+</style>
+<main>
+<header><h1>Freshness sweep: results</h1>
+<p class="sub">Dealectric · reads taken 2026-11-17 · live on dealectric.com since 2026-11-17 (79be3581, a8369af1)</p></header>
+
+<p class="answer"><strong>Live. 331 of our prices and 263 rival price cells were confirmed against the maker on 2026-11-17 and show that date. 3 prices changed (Autel EVO II 640T V3 bundles −$400 each; Birdfy Feeder Wood $119.99 → $99.99), and 3 products are marked sold out. 81 changes are held (DLC-303); 227 rows could not be read and keep their old date.</strong> The rewrite of the 207 comparison pages landed first, and their rival rows were read after it. The Black Friday session separately updated 119 prices and the codes today.</p>
+
+<section><h2>What was read</h2><div class="scroll"><table>
+<tr><th>Check</th><th>Read</th><th>Result</th></tr>
+<tr><td>Our brand-store prices</td><td class=n>358 of 397</td><td>329 match the record (date moves to 11-17); 2 changed and pass every gate (Autel EVO II 640T V3 bundles, −$400 each); 11 held; 16 unreadable</td></tr>
+<tr><td>Amazon prices</td><td class=n>203 of 212</td><td>44 changed, mostly Black Friday drops; shown with today's date under the existing daily rule; 4 with no price today now say "price on the Amazon page"</td></tr>
+<tr><td>Rival rows on the 128 pages outside the rewrite</td><td class=n>94 of 147</td><td>73 confirmed (date moves to 11-17); 21 held; 53 unreadable (no machine-readable price, or bot-blocked) keep their old date</td></tr>
+<tr><td>Rival rows on the 207 rewritten pages (read after the rewrite landed)</td><td class=n>241 of 397</td><td>189 confirmed (date moves to 11-17); 1 changed (Birdfy Feeder Wood $119.99 → $99.99); 49 held (23 ambiguous variant, 12 old price in prose, 10 sold out, plus big moves, list-price cells and cells the rewrite session read today); 158 unreadable keep their old date. Full list: <code>growth/codes/2026-11-17-fresh.json</code></td></tr>
+<tr><td>Stock</td><td class=n>339</td><td>3 newly sold out (Eonon UA13 Plus, Eonon UA12S Plus, Leica Monovid 8x25); "back in stock" reads dropped where the version couldn't be pinned down</td></tr>
+<tr><td><code>/go/</code> redirects</td><td class=n>534</td><td>All correct. 104 Amazon records use direct links by design; 6 Anker SOLIX links carry the sub-ID in Rakuten's <code>u1</code>, which the checker misreads</td></tr>
+<tr><td>Product pages live</td><td class=n>~380</td><td>3 moved (BLUETTI AC200L, AV Access iDock C20 redirect to the same product; Eonon UA12S Plus redirects to a different model). Stores rate-limited most of the separate link check, so liveness comes from the price read</td></tr>
+<tr><td>Codes</td><td class=n>162 of 222</td><td>Done by the Black Friday session (live as 7eb4d9a3). Unanswered: AOHi, part of BLUETTI, Soundcore AFSC20, CarpuTech, Fugoo, EVDANCE, Hcalory</td></tr>
+</table></div></section>
+
+<section><h2>Held: our products</h2>
+<p>Each keeps its current price and its old date until you decide. "Ambiguous variant" means the store listing has several versions and none clearly matches our record.</p>
+<div class="scroll"><table><tr><th>Product</th><th>Ours</th><th>Read</th><th>Why held</th></tr>
+
+<tr><td><a href="https://dealectric.com/blackview-active-10-pro">Blackview Active 10 Pro 5G Rugged Tablet, 10.95-inch, 12 GB + 256 GB, </a></td><td class=n>$479.99</td><td class=n>$375</td><td>ambiguous variant (4 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/blackview-active-8-pro">Blackview Active 8 Pro Rugged Tablet, 10.36-inch, 8 GB + 256 GB, 22,00</a></td><td class=n>$369.99</td><td class=n>$289</td><td>ambiguous variant (2 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/syncwire-nylon-braided-aux-cable-3-3ft">Syncwire 3.5mm Nylon Braided Aux Cable, 3.3 ft, Black</a></td><td class=n>$10.99</td><td class=n>$11.59</td><td>price moved and the listing&#x27;s variants were not re-read</td></tr>
+<tr><td><a href="https://dealectric.com/tessan-65w-gan-universal-travel-adapter-wta09">TESSAN 65W GaN Universal Travel Adapter, 2 AC + 3× USB-C + 2× USB-A (W</a></td><td class=n>$27.99</td><td class=n>$59.99</td><td>the record was already updated today by another read (it says 27.99); not overwritten</td></tr>
+<tr><td><a href="https://dealectric.com/gardepro-link-1-0-hub-r3-2-0-pro">GardePro Link 1.0 Long-Range WiFi Trail Camera System (Hub + R3 2.0 Pr</a></td><td class=n>$229.68</td><td class=n>$162.99</td><td>the record was already updated today by another read (it says 229.68); not overwritten</td></tr>
+<tr><td><a href="https://dealectric.com/gardepro-e9-3-0-pro-home-wifi">GardePro E9 3.0 Pro Home WiFi Trail Camera, 4K, joins 2.4 GHz home Wi-</a></td><td class=n>$119.99</td><td class=n>$219.99</td><td>ambiguous variant (18 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/alorair-sentinel-hd55p">AlorAir Sentinel HD55P Crawl Space Dehumidifier with Pump, 55 pints/da</a></td><td class=n>$742</td><td class=n>$729.11</td><td>the record was already updated today by another read (it says 742.0); not overwritten</td></tr>
+<tr><td><a href="https://dealectric.com/alorair-sentinel-hd35p-wifi">AlorAir Sentinel HD35P WiFi Crawl Space Dehumidifier with Pump, 35 pin</a></td><td class=n>$558.85</td><td class=n>$548.66</td><td>the record was already updated today by another read (it says 558.85); not overwritten</td></tr>
+<tr><td><a href="https://dealectric.com/alorair-galaxy-85p">AlorAir Galaxy 85P Crawl Space Dehumidifier with Pump, 85 pints/day (A</a></td><td class=n>$915</td><td class=n>$899.11</td><td>the record was already updated today by another read (it says 915.0); not overwritten</td></tr>
+<tr><td><a href="https://dealectric.com/zosi-zr16fk-16-channel-1080p-dvr">ZOSI 16-Channel 1080p HD 4-in-1 DVR (ZR16FK), optional 2TB/3TB/4TB har</a></td><td class=n>$99.99</td><td class=n>$279.99</td><td>ambiguous variant (4 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/allpowers-r3500-sp037-solar-kit">ALLPOWERS R3500 + SP037 400 W Solar Generator Kit (3,168 Wh, 3,200 W)</a></td><td class=n>$1,498</td><td class=n>$1,803.10</td><td>old price quoted in the prose of power-station-and-solar-panel-for-an-off-grid-cabin-weekend</td></tr>
+</table></div></section>
+
+<section><h2>Held: rival rows on question pages</h2>
+<div class="scroll"><table><tr><th>Page</th><th>Row</th><th>Shown</th><th>Read</th><th>Why held</th></tr>
+
+<tr><td><a href="https://dealectric.com/solar-generator-with-panels-included">solar-generator-with-panels-included</a></td><td>Solar Generator 2000 v2 (Explorer 2000 v2 + 2 × SolarSaga 20</td><td class=n>$1,239</td><td class=n>$1,649</td><td>moved +33%</td></tr>
+<tr><td><a href="https://dealectric.com/best-solar-generator-kit-under-500">best-solar-generator-kit-under-500</a></td><td>Solar Generator 300 v2 (Explorer 300 v2 + 40 W panel)</td><td class=n>$299</td><td class=n>$419</td><td>sold out on the maker&#x27;s store at the new price</td></tr>
+<tr><td><a href="https://dealectric.com/best-triple-screen-laptop-extender-for-macbook-air">best-triple-screen-laptop-extender-for-macbook-air</a></td><td>Tri-Screen 3 + Tri-Screen 3 Mac Adapter</td><td class=n>$758</td><td class=n>$699</td><td>ambiguous variant (2 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/best-portable-monitor-above-laptop-screen">best-portable-monitor-above-laptop-screen</a></td><td>Duex DS Series (Duex Plus DS 13.3-inch / Duex Max DS 14.1-in</td><td class=n>$229.99</td><td class=n>$175.99</td><td>ambiguous variant (2 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/usb-c-charger-two-laptops-100w">usb-c-charger-two-laptops-100w</a></td><td>200W USB-C 6-Port PD GaN Charger, ST-C200GM-US</td><td class=n>$114.99</td><td class=n>$149.99</td><td>sold out on the maker&#x27;s store at the new price</td></tr>
+<tr><td><a href="https://dealectric.com/best-48v-lithium-golf-cart-battery-kit-with-charger-club-car">best-48v-lithium-golf-cart-battery-kit-with-charger-club-car</a></td><td>48V 100Ah Bluetooth Golf Cart Battery (2C) + LiTime 58.4V 18</td><td class=n>$1,253.98</td><td class=n>$1,296.06</td><td>other $ cells in the row are worked out from the price</td></tr>
+<tr><td><a href="https://dealectric.com/best-swimming-headphones-with-mp3-storage-under-100">best-swimming-headphones-with-mp3-storage-under-100</a></td><td>STREAM 3 PRO + SURGE BC headphones</td><td class=n>$129</td><td class=n>$99.99</td><td>sold out on the maker&#x27;s store at the new price</td></tr>
+<tr><td><a href="https://dealectric.com/power-station-as-a-ups-for-a-nas-usb-shutdown">power-station-as-a-ups-for-a-nas-usb-shutdown</a></td><td>DELTA 3 Ultra</td><td class=n>$1,299</td><td class=n>$1,599</td><td>ambiguous variant (28 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/best-solar-generator-kit-under-1000-for-home-backup">best-solar-generator-kit-under-1000-for-home-backup</a></td><td>DELTA 3 Classic Solar Generator (160 W)</td><td class=n>$669</td><td class=n>$829</td><td>ambiguous variant (3 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/solar-generator-kit-for-an-apartment-balcony">solar-generator-kit-for-an-apartment-balcony</a></td><td>DELTA 3 Classic Solar Generator (220 W bifacial panel)</td><td class=n>$669</td><td class=n>$829</td><td>ambiguous variant (3 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/solar-generator-kit-for-an-apartment-balcony">solar-generator-kit-for-an-apartment-balcony</a></td><td>C300 (station only; panel sold separately)</td><td class=n>$429.99</td><td class=n>$499.99</td><td>old price quoted in the page&#x27;s prose</td></tr>
+<tr><td><a href="https://dealectric.com/best-solar-generator-kit-for-hurricane-season">best-solar-generator-kit-for-hurricane-season</a></td><td>DELTA 2 Max Solar Generator</td><td class=n>$1,249</td><td class=n>$1,459</td><td>ambiguous variant (4 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/best-solar-and-wind-generator">best-solar-and-wind-generator</a></td><td>MyGrid 10K Gen 2</td><td class=n>$5,599.99</td><td class=n>$9,499.99</td><td>moved +70%</td></tr>
+<tr><td><a href="https://dealectric.com/best-2000wh-power-station">best-2000wh-power-station</a></td><td>DELTA 3 Max</td><td class=n>$879</td><td class=n>$1,149</td><td>ambiguous variant (35 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/best-portable-projector-with-screen">best-portable-projector-with-screen</a></td><td>T2 Plus GTV</td><td class=n>$359</td><td class=n>$399</td><td>ambiguous variant (6 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/best-4patriots-solar-generator-alternative">best-4patriots-solar-generator-alternative</a></td><td>Patriot Power Generator 2200X + 200 W panel</td><td class=n>$3,199</td><td class=n>$3,499</td><td>old price quoted in the page&#x27;s prose</td></tr>
+<tr><td><a href="https://dealectric.com/power-station-for-cpap">power-station-for-cpap</a></td><td>DELTA Pro Ultra (inverter + 1 battery)</td><td class=n>$3,799</td><td class=n>$4,199</td><td>sold out on the maker&#x27;s store at the new price</td></tr>
+<tr><td><a href="https://dealectric.com/which-jackery-power-station-to-buy">which-jackery-power-station-to-buy</a></td><td>HomePower 1000 Plus v2</td><td class=n>$669</td><td class=n>$779</td><td>ambiguous variant (9 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/which-ecoflow-power-station-to-buy">which-ecoflow-power-station-to-buy</a></td><td>DELTA 3 Max</td><td class=n>$879</td><td class=n>$1,149</td><td>ambiguous variant (35 on the listing, titles don&#x27;t single out the model)</td></tr>
+<tr><td><a href="https://dealectric.com/which-ecoflow-power-station-to-buy">which-ecoflow-power-station-to-buy</a></td><td>DELTA Pro Ultra</td><td class=n>$3,799</td><td class=n>$4,199</td><td>sold out on the maker&#x27;s store at the new price</td></tr>
+<tr><td><a href="https://dealectric.com/solar-generator-with-panels-included-fastest-recharge">solar-generator-with-panels-included-fastest-recharge</a></td><td>DELTA 3 Plus + 400 W Portable Solar Panel</td><td class=n>$699</td><td class=n>$719</td><td>ambiguous variant (22 on the listing, titles don&#x27;t single out the model)</td></tr>
+</table></div></section>
+
+<section><h2>Known gaps</h2><ul>
+<li><strong>The 207 pages being rewritten</strong> get their rival rows read after the rewrite lands. Our own products on those pages are covered now.</li>
+<li><strong>Dates written into prose</strong>, such as "maker-store prices checked on 2026-11-13", stay as written. The table and footer carry the read dates.</li>
+<li><strong>Stock reads still use the first available version</strong> for listings that name none. I corrected only the products whose stock flipped today.</li>
+<li><strong>The old Mac's daily sweep isn't running</strong> (DLC-188, waiting on your go). Without it, these dates start ageing tomorrow.</li>
+</ul></section>
+</main>

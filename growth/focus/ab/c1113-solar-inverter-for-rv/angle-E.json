@@ -1,0 +1,73 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states what an RV inverter really draws with nothing plugged in. One named owner, staldor, measured 10.0 W at 12 V with no load on a Victron Phoenix 12/1200 rated at 7 W, which is about 240 Wh a day. Renogy rates the 2000W UPS inverter that ChatGPT recommended at under 18 W idle, which works out to as much as 432 Wh a day, about a third of a 12V 100Ah LiFePO4 battery (1,280 Wh).",
+ "standout": 2,
+ "standout_why": "I compared against the cited Victron article 'How to Size a Solar System for Your RV' (2026-05-04). Its only inverter figure is a planning allowance of 'about 10-15% extra' for AC loads, with no idle draw, efficiency or measured data. I could not compare the cited Renogy 'RV Inverter Installation Guide' properly because WebFetch returned only its navigation (6,855 characters) and the article body did not load. I could not open rvtime.com at all because of an SSL certificate error. ChatGPT's answer gives sizes and prices only. It shows no idle-draw figure and no measured result for any of the three Renogy cards.",
+ "decides": "It doesn't change the size recommendation, but it does change which inverter to buy for boondocking. Idle draw adds up every hour the inverter is left on. At the 18 W rating, the Renogy 2000W UPS unit could use about 34% of a 100Ah lithium battery a day doing nothing. That points toward a model with an ECO/search mode, or a smaller inverter for overnight loads. In 4WDing Australia's long-term test, Aaron Schubert reported that the Renogy 2000W UPS unit smelled of 'warm, smoky electronics' after about 10 minutes at 1,200 W. That is only 60% of its rating, so it argues against relying on the 2000W model for a 1,000–1,300 W microwave or induction cooktop. It favors the 3000W size ChatGPT suggested for larger appliances.",
+ "candidates": [
+  "Renogy 2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Bluetooth (PUH)",
+  "Renogy 3000W 12V Pure Sine Wave Inverter",
+  "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+  "Victron Phoenix 12/1200 (reference)"
+ ],
+ "findings": [
+  {
+   "product": "Victron Phoenix 12/1200",
+   "label": "Measured no-load power draw at different battery voltages",
+   "value": "7.4 W at 10 V; 8.5 W at 11 V; 10.0 W at 12 V; 11.3 W at 13 V; 12.9 W at 14 V",
+   "source": "https://community.victronenergy.com/t/phoenix-1200-12-zero-load-power-much-higher-than-specified-measured-10-w-vs-7-w/47181",
+   "source_title": "Phoenix 1200/12 – Zero-load power much higher than specified (measured 10 W vs. 7 W) – Victron Community",
+   "read": "2026-11-13",
+   "note": "Measured by owner 'staldor' (Ståle), posted 2025-10-16, with no load, fan off, at about 20 °C. He set the voltage and read current and power from a lab power supply, then double-checked with a multimeter. The 7 W spec is quoted in the thread title, not from a datasheet I opened. The calibration question in the thread was never answered. He did not test ECO mode. Arithmetic: 10.0 W × 24 h = 240 Wh/day."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter with UPS (2000W and 3000W UPS units)",
+   "label": "Sustained-load behaviour in long-term field use",
+   "value": "The 2000W unit smelled of 'warm, smoky electronics' at 1,200 W after about 10 minutes. A follow-up run of 1,200 W for 11 minutes, then 600 W for 10 minutes, still smelled 'like warm electronics, but not too bad'.",
+   "source": "https://www.4wdingaustralia.com/camping/renogy-inverter-review/",
+   "source_title": "Renogy Inverter Review; how do they perform? – 4WDing Australia",
+   "read": "2026-11-13",
+   "note": "Aaron Schubert, 4WDing Australia. Published 2022-12-24, updated 2024-04-08. This was real-world use in a ute canopy (2000W) and a camper (3000W UPS model), not a lab test. He measured no temperature, idle draw or efficiency. The 1,200 W load was an induction cooktop, which is 60% of the 2000W rating. The article says these are the UPS-function inverters, not the inverter-chargers. It does not give a regional model number, so it may not be the exact US PUH unit."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth",
+   "label": "Owner reading from the Bluetooth app with no AC devices on",
+   "value": "16.9 W (0.14 A)",
+   "source": "https://community.lanceowners.org/topic/renovy-2000w-inverter-w-bluetooth-and-auto-transfer",
+   "source_title": "UPDATE: Renogy 2000W Inverter W/ Bluetooth and Auto Transfer – Lance Owners community",
+   "read": "2026-11-13",
+   "note": "Posted by 'MarkandCynthia' on 2025-06-04, after removing the RV converter's two fuses (before that the app read 536 W because the converter was charging the batteries). The reading appears to come from the inverter's Bluetooth display. 16.9 W ÷ 0.14 A ≈ 120 V, so it looks like an AC-side figure, not a DC battery-side idle measurement. Treat it as an indication only. In the same thread, Renogy phone support told him the no-load draw was '<1 amp +/- 0.2 amps'."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth",
+   "label": "Maker's idle-consumption and efficiency rating, and today's price",
+   "value": "Power consumption under 18 W; efficiency over 92%; $364.99",
+   "source": "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth",
+   "source_title": "2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth – Renogy US",
+   "read": "2026-11-13",
+   "note": "Read from the renogy.com store data with storecheck.py search. The price matches ChatGPT's card. Arithmetic: 18 W × 24 h = 432 Wh/day, which is 34% of a 12.8 V × 100 Ah = 1,280 Wh LiFePO4 battery. The 1000W sibling with the same UPS design is rated under 12 W on renogy.com."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+   "label": "Today's price on renogy.com",
+   "value": "$989.99 (compare-at $1,139.99)",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display – Renogy US",
+   "read": "2026-11-13",
+   "note": "From storecheck.py search of renogy.com. ChatGPT's card showed $949.00. The store page lists a 3,000 W continuous / 9,000 W peak rating."
+  }
+ ],
+ "unsourced": [
+  "A lab or named-reviewer measurement of DC idle draw or the efficiency curve for any Renogy model (PUH 2000W, P2 3000W, REGO 3000W). Searches found only maker claims and unnamed affiliate roundups.",
+  "Renogy REGO 3000W no-load ratings for normal and power-saving modes, and the Renogy 3000W P2 inverter's idle rating and 3000W price. Renogy product pages returned HTTP 429 to both WebFetch and storecheck.py product. The search listing gave only a $149.99 starting price, which belongs to the smallest variant.",
+  "Victron Phoenix Smart 12/2000 and 12/3000 zero-load and ECO-mode figures. The datasheet PDF downloaded, but text extraction needed a command that wasn't approved.",
+  "rvtime.com 'RV Inverter Guide' (result 8) could not be opened (SSL certificate error). The cited Renogy installation guide body did not render, so I could not fully confirm that neither page has idle-draw figures.",
+  "The diysolarforum post claiming a Renogy 2000W used over 500 Wh/day versus about 60 Wh/day for a 1000W Victron returned HTTP 403, so I could not see the poster's name, date or method."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0125622999999997
+ }
+}

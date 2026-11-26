@@ -1,0 +1,93 @@
+<title>Site Freshness Estimate</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, tables in scroll boxes, a status chip per page type */
+:root{
+  --bg:#f7f8f6; --fg:#1d2420; --muted:#5d6a63; --line:#d9dfdb; --accent:#1f7a55; --warn:#a4620b; --bad:#b23b2e; --chip:#e8efe9;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:760px;margin:0 auto;display:grid;gap:28px}
+h1{font-size:1.7rem;line-height:1.2;margin:0;text-wrap:balance}
+h2{font-size:1.15rem;margin:0 0 8px;text-wrap:balance}
+p,ul{margin:0 0 10px} ul{padding-left:20px}
+.sub{color:var(--muted);font-size:.9rem}
+.answer{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:1.05rem}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+td.n{font-family:var(--mono);white-space:nowrap}
+.chip{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:10px;background:var(--chip);white-space:nowrap}
+.ok{color:var(--accent)} .part{color:var(--warn)} .no{color:var(--bad)}
+code{font-family:var(--mono);font-size:.85em}
+</style>
+<main>
+<header>
+<h1>Site freshness: effort estimate</h1>
+<p class="sub">Dealectric · 2026-11-17 · counts read from <code>src/</code> at HEAD today</p>
+</header>
+
+<section>
+<p class="answer"><strong>About 10–14 working days of session time to build, then roughly 1 hour a week of Barry's review.</strong> The first 3–4 days (stamps plus automatic price updates for our own products) cover about 640 of the 1,002 pages and can land before Black Friday on 11-27. The other 7–10 days go to the 335 question pages, where most figures are hand-written into prose and nothing re-checks them.</p>
+</section>
+
+<section>
+<h2>What goes stale, by page type</h2>
+<div class="scroll"><table>
+<tr><th>Pages</th><th>Count</th><th>Time-sensitive facts</th><th>Re-checked today?</th></tr>
+<tr><td>Brand code pages</td><td class="n">137</td><td>Codes</td><td><span class="chip ok">Daily</span> cart sweep</td></tr>
+<tr><td>Product pages, Amazon</td><td class="n">101</td><td>Price, stock</td><td><span class="chip ok">Daily</span> <code>amzprice.py</code></td></tr>
+<tr><td>Product pages, brand stores</td><td class="n">397</td><td>Price, stock, specs</td><td><span class="chip part">Stock daily, price by hand</span> verified dates 11-02 to 11-15</td></tr>
+<tr><td>Question (gap) pages</td><td class="n">335</td><td>~1,800 rival rows, ~5,600 hand-written $ figures, 4,483 source links, model launches, rules</td><td><span class="chip no">Never</span> rival figures read once on <code>checked</code></td></tr>
+<tr><td>Hubs, comparisons, other</td><td class="n">~32</td><td>Roll-ups of the above</td><td>Follow their inputs</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Time-sensitive facts beyond price and codes</h2>
+<div class="scroll"><table>
+<tr><th>Fact</th><th>Where, how much</th><th>How fast it goes stale</th><th>Check</th></tr>
+<tr><td>Year in titles</td><td class="n">278 of 335</td><td>All at once on 2027-01-01</td><td>One-off retitle; needs a decision</td></tr>
+<tr><td>Sale windows</td><td>Black Friday phases for 66 brands, read 11-10; was-prices</td><td>Days, through 12-02</td><td>Daily during the sale</td></tr>
+<tr><td>Lineup: newer model, phase-out, discontinued</td><td>Product records; "best/quietest" verdicts on question pages</td><td>Weeks to months; overturns the answer</td><td>Judgment pass (step 4)</td></tr>
+<tr><td>Third-party evidence: ratings, review counts, measured tests</td><td>~580 rating and ~1,500 "measured" mentions</td><td>Counts monthly; new tests now and then</td><td>Judgment pass (step 4)</td></tr>
+<tr><td>Warranty, returns, shipping</td><td>Product records; ~590 warranty mentions</td><td>Rarely; holiday return windows change</td><td>Quarterly read of the official page</td></tr>
+<tr><td>Rules</td><td>Airline power-bank page (FAA, ICAO, airline policies)</td><td>Months, without warning</td><td>Monthly source check</td></tr>
+<tr><td>Links and programs</td><td>4,483 source links; affiliate programs can close</td><td>Ongoing</td><td><code>linkcheck.py</code> exists; run it daily</td></tr>
+</table></div>
+<p>These add about 2–3 days (year rollover, policy reads, daily link check), so the total becomes <strong>12–17 working days</strong>. Most of what's left lands in the step 4 judgment pass.</p>
+</section>
+
+<section>
+<h2>Work, in the order I'd do it</h2>
+<div class="scroll"><table>
+<tr><th>Step</th><th>Effort</th><th>Running cost</th></tr>
+<tr><td><strong>1. Honest stamps.</strong> Each page says what was checked and when, per fact type ("Prices and stock checked 11-18 · codes tested 11-18 · analysis reviewed 11-10"). <code>dateModified</code>, sitemap <code>lastmod</code> and IndexNow follow the real check dates, not the build date.</td><td class="n">~1 day</td><td>None</td></tr>
+<tr><td><strong>2. Our prices update themselves.</strong> <code>pricecheck.py</code> already reads Shopify prices but never writes them. Let the daily sweep apply changes and bump <code>verified</code>, holding any move over ~25% or a sold-out for review. Non-Shopify stores go through r.jina.ai or the Agent browser.</td><td class="n">2–3 days</td><td>Curl only; +10–20 min on the old Mac's sweep</td></tr>
+<tr><td><strong>3. Question pages, mechanical.</strong> Move rival prices out of prose into a rival-price table (the ~1,800 rows) that the build fills in, then re-read it weekly. The one-time migration is an LLM pass per page, gated by <code>pagediff.py</code> so only numbers change.</td><td class="n">4–6 days</td><td>Fetches only</td></tr>
+<tr><td><strong>4. Question pages, judgment.</strong> A monthly agent pass per page (about 80 a week): does the answer still hold, is there a newer model, has a rival been discontinued, has a rule changed? If nothing changed, it bumps "analysis reviewed". If something did, it queues an edit for review.</td><td class="n">3–4 days</td><td>Roughly 50M tokens a month (a guess, not measured). Competes with page building for the <code>claude -p</code> weekly limit.</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Where I disagree</h2>
+<ul>
+<li><strong>Nothing we've measured shows a fresh date gets us retrieved.</strong> What we do know is that ChatGPT answers from OpenAI's stored copy, and that copy changes only when OAI-SearchBot fetches the page again. A new date does nothing until that fetch happens, and we don't control when it does. Before building steps 3–4, I'd test the stamp on half of the question pages with the citation A/B setup from DLC-208.</li>
+<li><strong>Accuracy is the stronger reason right now.</strong> All 335 question pages are less than three weeks old, so they already look fresh. Black Friday prices will move in 10 days, and the thousands of hand-written rival prices will be wrong all week. Steps 1–2 fix our own prices in time. Steps 3–4 do not.</li>
+<li><strong>The stamp has to name what was checked.</strong> A page-wide "fact-checked today" after a price-only check claims more than we did. That is the same rule the codes copy already follows ("tested daily, last passed").</li>
+</ul>
+</section>
+
+<section>
+<h2>What I could not verify</h2>
+<ul>
+<li>How much prices drift: there is no saved run of the weekly price check in the repo, so I don't know how many of the 397 brand-store prices are wrong today.</li>
+<li>The token cost in step 4: it is based on the size of the research passes, not on a trial run.</li>
+<li>How many product records are on non-Shopify stores: I didn't count them, and they make step 2 longer.</li>
+</ul>
+</section>
+</main>

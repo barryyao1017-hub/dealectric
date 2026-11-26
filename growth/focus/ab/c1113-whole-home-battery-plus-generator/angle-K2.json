@@ -1,0 +1,127 @@
+{
+ "angle": "K2",
+ "gap": "No result ChatGPT got states that, in Anker's E10 + Power Dock system, a third-party portable generator can't use the E10 AC Generator Adapter (Anker: 'Currently not compatible with Power Dock'). Battery-level auto-start then needs either Anker's Smart Generator 5500 on its own power-and-communication DC cable (up to 4,500 W) or a 240 V standby generator with Two Wire or Utility Sensing control, a 24 kW surge limit and the May 2026 firmware.",
+ "standout": 3,
+ "standout_why": "I compared against the three cited FranklinWH pages: the support article 'Can I use a generator with my FranklinWH system?', the Generator Module accessory page and the aPower 2 page. The support article only says portable or standby generators connect through the aGate generator module or aHub, and to match the generator's watts to the essential loads. It gives no kW limit, no start-wire type, no voltage and no firmware. The Generator Module page says it works with 'a range of both standby and portable generators' and gives no limits. None of them covers an Anker or any other kit sold as one cart, and none names an adapter that a given hub can't use. This finding decides which generator path belongs in the set.",
+ "kit_items": [
+  "Battery + inverter: Anker SOLIX E10 Power Module with B6000 battery modules (6.144 kWh each). It is the only battery that takes the Smart Generator 5500's DC cable, which carries power and communication.",
+  "Transfer hub: Anker SOLIX Power Dock (≤20 ms switchover). Choose it over the Smart Inlet Box for standby-generator auto start, which Anker says is 'exclusively available for the E10 + Power Dock setup'. It must be installed by an electrician.",
+  "Generator: Anker SOLIX Smart Generator 5500 (Tri-Fuel: gasoline, LPG, natural gas). It joins the E10 through DC coupling with 'Auto Start by SOC'. Anker says it is not compatible with Anker SOLIX X1, and quiet mode works only when paired with the E10.",
+  "Leave out: E10 AC Generator Adapter. Anker says it is 'Currently not compatible with Power Dock' and works only with E10 Standalone or Smart Inlet Box setups.",
+  "Alternative to the Smart Generator 5500 (not in this cart): your own 240 V standby generator wired to the Power Dock. It must support Two Wire or Utility Sensing control, stay at or under 24 kW surge, and needs the May 2026 E10 + Power Dock firmware."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX E10 (Power Module + 2× B6000 Battery) + Power Dock + Smart Generator 5500 | https://www.ankersolix.com/products/e10-power-module-2-battery-power-dock-smart-generator-5500 | $9,399.00 | 2026-11-13"
+   ],
+   "bundle_sku": "Anker's own bundle 'E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500' at $9,399.00 (read 2026-11-13). A smaller bundle, E10 + Power Dock + Smart Generator 5500 with the B6000 sold as an option, was $7,399.00 at https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500 (read 2026-11-13). storecheck.py returned HTTP 404 for this store, so both prices come from the opened product pages."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10 AC Generator Adapter",
+   "label": "Hub compatibility",
+   "value": "Compatible with E10 Standalone and Smart Inlet Box setups; not compatible with Power Dock",
+   "source": "https://www.ankersolix.com/products/e10-ac-generator-adapter-add-on",
+   "source_title": "Anker SOLIX E10 AC Generator Adapter (add-on)",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'Currently not compatible with Power Dock.' The page sends Power Dock owners to the Power Dock manual."
+  },
+  {
+   "product": "Anker SOLIX E10 AC Generator Adapter",
+   "label": "Bypass rating",
+   "value": "9,600 W at 240 V, 40 A max",
+   "source": "https://www.ankersolix.com/products/e10-ac-generator-adapter-add-on",
+   "source_title": "Anker SOLIX E10 AC Generator Adapter (add-on)",
+   "read": "2026-11-13",
+   "note": "Maker's product page. The page lists the cable as both 500 mm and 50 cm, which are the same length."
+  },
+  {
+   "product": "Anker SOLIX E10 + Power Dock",
+   "label": "Standby generator requirement",
+   "value": "240 V standby generator supporting Two Wire or Utility Sensing control; max surge 24 kW; enabled by May 2026 firmware; E10 + Power Dock only",
+   "source": "https://www.ankersolix.com/blogs/home-energy-storage-system/e10-standby-generator-integration-setup-and-features-guide",
+   "source_title": "E10 Standby Generator Integration: Setup and Features Guide (Anker, 2026-05-19)",
+   "read": "2026-11-13",
+   "note": "Verbatim: 'This feature is exclusively available for the E10 + Power Dock setup' and 'must support Two Wire or Utility Sensing control modes.' The generator starts at a user-set battery level and stops when the battery is full. The article gives no default threshold."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Link to E10",
+   "value": "Dedicated cable carrying power and communication (DC coupling); up to 4,500 W DC; Auto Start by SOC",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "Per the FAQ, DC output requires pairing with the E10. The starting-watt table reads 4,500 W gasoline, 4,500 W LPG and 4,000 W natural gas. The spec-table labels look misaligned, so I did not use them as the DC rating."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Exclusions",
+   "value": "Not compatible with Anker SOLIX X1; one fuel at a time; outdoor use only; quiet mode only when paired with E10",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "The FAQ also says AC coupling works with 'F3000, with more models planned'. The F3800 Plus is not named."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "AC output",
+   "value": "3,600 W at 120 V, 60 Hz; outlets NEMA 5-20R ×1, TT-30R ×1",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "The AC output is 120 V only. The page lists no 240 V outlet."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Price alone",
+   "value": "$1,999.00",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "Maker's US store."
+  },
+  {
+   "product": "Anker SOLIX E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500",
+   "label": "Output and capacity",
+   "value": "10 kW continuous with 2+ batteries (7.6 kW with one); 2 × 6.144 kWh = 12.29 kWh; expandable 6–90 kWh; one Power Dock takes up to 3 E10 units",
+   "source": "https://www.ankersolix.com/products/e10-power-module-2-battery-power-dock-smart-generator-5500",
+   "source_title": "E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "Capacity is 2 × 6.144 kWh from the page's FAQ. The page also says neither the Power Dock nor the E10 can export to the grid."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC charge limit from a generator",
+   "value": "Up to 1,800 W on 120 V; up to 7,680 W on 240 V",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic generator integration for a home battery (Anker, 2026-08-27, updated 2026-10-30)",
+   "read": "2026-11-13",
+   "note": "The same article says 'most portable models lack SOC-based or app-controlled auto-start', and that full DC plus communication automation is strongest with the Smart Generator 5500."
+  },
+  {
+   "product": "FranklinWH (cited rival)",
+   "label": "Generator connection stated",
+   "value": "Generator connects to the aGate generator module option or the aHub dock; portable or standby",
+   "source": "https://www.franklinwh.com/support/articles/detail/can-i-use-a-generator-with-my-franklinwh-system",
+   "source_title": "Can I use a generator with my FranklinWH system?",
+   "read": "2026-11-13",
+   "note": "Baseline for the comparison. No kW limit, start-wire type, voltage or firmware is given."
+  }
+ ],
+ "unsourced": [
+  "The maximum standby-generator power on Anker's support article 'What types of generators does Power Dock support?' (service.ankersolix.com). The search snippet said 19.2 kW on Power Dock circuits 1 and 2 from 2026-04-30, but the page returned HTTP 404 to my fetch, so I left the figure out. I used the 24 kW surge from Anker's blog instead.",
+  "Whether a Smart Generator 5500 and a third-party standby generator can both be connected to one E10 + Power Dock. I checked the Smart Generator 5500 page and both Anker blog articles, and none says.",
+  "Whether the Smart Generator 5500 DC cable comes in the box with Anker's bundle, and how long it is. Anker's pages don't say. A retailer listing mentions a 3 m DC charging cable, but I didn't open it.",
+  "A store price for the E10 AC Generator Adapter on ankersolix.com. The page showed 'Price Loading'.",
+  "An independent reviewer's measurement of the E10 charging from the Smart Generator 5500. I didn't search for one within the tool budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 20,
+  "cost_usd_list": 0.8489755000000001
+ }
+}

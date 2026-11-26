@@ -1,0 +1,204 @@
+<title>Open Cluster Pipeline</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column; tables and the loop diagram may run wider. Same tokens as the top/bottom analysis. */
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --fg:#1b211d; --muted:#5d665f; --line:#dde2dc;
+  --web:#b86a00; --web-soft:#fbefd9; --card:#3a5f8a; --card-soft:#e4ecf5; --link:#1f6b4a;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141815; --surface:#1c211d; --fg:#e7ebe6; --muted:#9aa49c; --line:#2f3731;
+  --web:#f0b04a; --web-soft:#3a2d12; --card:#8fb4de; --card-soft:#1d2c3d; --link:#7fd0a8; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#141815; --surface:#1c211d; --fg:#e7ebe6; --muted:#9aa49c; --line:#2f3731;
+  --web:#f0b04a; --web-soft:#3a2d12; --card:#8fb4de; --card-soft:#1d2c3d; --link:#7fd0a8; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 72px}
+main{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.prose{max-width:68ch}
+h1{font-family:var(--display);font-size:clamp(28px,5vw,38px);line-height:1.1;margin:0 0 14px;text-wrap:balance}
+h2{font-family:var(--display);font-size:22px;line-height:1.2;margin:0 0 10px;text-wrap:balance}
+h3{font-size:15px;font-weight:600;margin:18px 0 6px}
+p{margin:0 0 12px} p:last-child{margin-bottom:0}
+a{color:var(--link)}
+.meta{color:var(--muted);font-size:13px;margin-bottom:18px}
+.lede{font-size:18px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;white-space:nowrap}
+.small{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:1px 7px;border-radius:4px;white-space:nowrap}
+.tag.new{background:var(--web-soft);color:var(--web)} .tag.have{background:var(--card-soft);color:var(--card)}
+ul,ol{margin:0 0 12px;padding-left:20px} li{margin-bottom:8px}
+.loop{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:s}
+.loop div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px;min-width:0;font-size:14px}
+.loop b{display:block;font-family:var(--display);font-size:15px;margin-bottom:4px}
+.loop b::before{counter-increment:s;content:counter(s) ". ";color:var(--web)}
+.back{font-size:13px;color:var(--muted);margin-top:8px}
+.disagree{border-left:3px solid var(--web);padding-left:14px}
+@media (max-width:760px){ .loop{grid-template-columns:1fr} }
+</style>
+
+<main>
+<header class="prose">
+  <h1>Open cluster pipeline</h1>
+  <div class="meta">Proposal for Barry · 14 Nov 2026 · nothing here is built yet · follows from <a href="https://claude.ai/artifact/QndjvyQdqDUXDb2KvuUYTV">Why Solar Pages Win</a></div>
+  <p class="lede"><b>Proposal: turn the daily gap pipeline into a loop that collects real buying questions of every shape, asks each one in ChatGPT, keeps the ones whose answers have few catalog cards and no maker source, and then builds pages and named bundles until the whole cluster around that question is ours.</b></p>
+  <p>Most of the parts exist. Three are new: a wider question collector, a gate read from ChatGPT's own answer, and a cluster map that says when a cluster is fully occupied. I agree with the direction and disagree on three points, set out next.</p>
+</header>
+
+<section class="prose">
+  <h2>Where I disagree</h2>
+  <div class="disagree">
+  <p><b>1. A named bundle cannot earn a real product card through our page.</b> Cards come only from OpenAI's catalog, which is filled by merchant feeds, and a card links to the feed's merchant. What a named bundle can win is the row ChatGPT writes itself when the catalog has nothing: that is the row that cited us and linked our page today. So the target is "a product the catalog does not have", and the bundle must be one the brand does not sell as a single listing. Jackery's and Anker's own solar kits already have cards; BLUETTI and ALLPOWERS combinations mostly do not.</p>
+  <p>There is one route to a real card: our own feed. OpenAI's documentation says a business starts in its Business Hub, must pass identity verification, and names the "seller supplying this offer" for each product. It does not say whether a business that is not the seller may submit. That is unverified, and I would not list us as the seller of something BLUETTI sells. It is worth one enquiry under Agentify LLC, which needs your yes because it is an application.</p>
+  <p><b>2. "Forever running" should mean a queue worked every day inside a budget.</b> The scarce input is ChatGPT chats: one account, one chat at a time, about a minute each, shared with the A/B readings. I would cap the pipeline at about 150 chats a day to start, and run it inside the existing daily job, since the charter says no new scheduled tasks.</p>
+  <p><b>3. Prove it on one cluster before automating.</b> More pages raise citations. They have not raised sales: since 8 Nov ChatGPT has handed over our buy link 0 times in 313 chats where our page was retrieved. A pipeline that scales citations without handover does not serve the first North Star. One week on the solar-kit cluster, with a bar set in advance, tells us whether to scale it.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="prose">The loop</h2>
+  <div class="loop">
+    <div><b>Collect</b>Real buying questions in every shape, from sources we already hold.</div>
+    <div><b>Ask</b>Each question twice in ChatGPT, plain, the way a shopper types it.</div>
+    <div><b>Gate</b>Keep it when product rows are mostly un-carded, no maker or official source is cited, and we can supply a product worth selling.</div>
+    <div><b>Build</b>A researched page, a section on an existing page, or a named bundle with one cart link.</div>
+    <div><b>Read back</b>Ask again after OpenAI re-fetches. Record retrieved, cited, handed over. Add the follow-ups the answers offer to the queue.</div>
+  </div>
+  <p class="back">Step 5 feeds step 1: every answer ChatGPT gives ends with the next questions it expects, and those go back into the queue under the same cluster.</p>
+</section>
+
+<section>
+  <h2 class="prose">What exists and what is new</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Step</th><th>Today</th><th>Change</th></tr></thead>
+    <tbody>
+    <tr><td>Collect</td><td><span class="tag have">exists</span> <code>gapmine.py</code>: autocomplete for brand category nouns, Reddit titles, brand news. Produces "best X", "X for Y", "X under $Z".</td><td><span class="tag new">new</span> Question shapes and three more sources (below). Same rule as now: nothing starts from a question we made up.</td></tr>
+    <tr><td>Ask</td><td><span class="tag have">exists</span> <code>visibility_scan.py</code> harvest chats, 2 per query, already saved with markup and results.</td><td>Run for candidates before a page exists, not only for pages we have.</td></tr>
+    <tr><td>Gate</td><td><span class="tag have">exists</span> Claude search coverage &lt; 0.3, then value order (<code>brandvalue.py</code>). <code>cardprobe.py</code> reads cards for kits only.</td><td><span class="tag new">new</span> Card share and maker share read from the two chats, for every candidate. Replaces the Claude coverage reading as the deciding gate.</td></tr>
+    <tr><td>Build</td><td><span class="tag have">exists</span> <code>abpage.py</code> (six research angles), <code>kitpage.py</code>, <code>combopage.py</code>, with cart tests and price checks.</td><td>Bundles get a product name and a stable record (below). No change to research.</td></tr>
+    <tr><td>Read back</td><td><span class="tag have">exists</span> readings after re-fetch, by hand per experiment.</td><td><span class="tag new">new</span> A standing per-cluster map, refreshed by the loop, with a stop rule.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="prose">
+  <h2>1. Wider questions</h2>
+  <p>No source gives shoppers' real ChatGPT prompts; I checked that on 13 Nov. The next best sources are the ones where a person about to buy writes in their own words, and the ones where ChatGPT itself says what it expects to be asked next.</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Source</th><th>What it gives</th><th>Status</th></tr></thead>
+    <tbody>
+    <tr><td>ChatGPT's own refine forms</td><td>320 of our 482 most recent saved answers end with "one question that could change my recommendation" and its options: budget, where it will be used, which device, how long backup should last. These are the second turns ChatGPT steers shoppers toward.</td><td>Already saved, never mined</td></tr>
+    <tr><td>Reddit buying threads</td><td>Pre-purchase questions in full sentences. The daily Reddit task already scrapes and scores them.</td><td>Saved daily, used only for reply drafts</td></tr>
+    <tr><td>Autocomplete with question stems</td><td>"can a … run", "how many panels for", "what size … for", "do I need … for", "is … worth it", "… vs … for". Keeps the demand check we use now.</td><td>New templates in an existing tool</td></tr>
+    <tr><td>Product questions on Amazon and brand forums</td><td>Compatibility and "will this work with" questions per product.</td><td>New; Amazon blocks some reads from this laptop</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Shapes to try, and what we already know about each</h3>
+  <div class="wrap"><table>
+    <thead><tr><th>Shape</th><th>Example</th><th>Known so far</th></tr></thead>
+    <tbody>
+    <tr><td>Property across brands</td><td>Which 1 kWh station is quietest while charging?</td><td>Our best shape: cited 8 of 8. No maker answers it.</td></tr>
+    <tr><td>What do I need</td><td>What do I need to keep a fridge running in an outage?</td><td>How-to wording drew no shopping cards in the 13 Nov probe. Retrieval was the weak point (kit pages 1 of 16).</td></tr>
+    <tr><td>Will X work with Y</td><td>Can a 1,000 Wh station run a microwave?</td><td>Mixed: 2 of 4. Often answered from arithmetic without a source.</td></tr>
+    <tr><td>Sizing</td><td>How many panels to recharge a 2 kWh station in a day?</td><td>Untested as a page target.</td></tr>
+    <tr><td>Situation with an authority</td><td>Backup power for a home oxygen concentrator</td><td>Loses: 1 of 8. The lung association is cited. The gate should drop these.</td></tr>
+    <tr><td>Named-product follow-up</td><td>Does the AC180 bundle include the solar cable?</td><td>ChatGPT searches again 79% of the time, with the model name plus "official specifications", and the maker's page wins: we were cited 0 of 19 (DLC-217).</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:12px">The last row matters for the bundle idea. A follow-up search uses the product's name and goes to whoever defines the product. For a bundle only we define, that is us.</p>
+</section>
+
+<section class="prose">
+  <h2>2. The gate, read from ChatGPT's own answer</h2>
+  <p>Two plain chats per candidate question. From each saved answer the gate reads:</p>
+  <ul>
+    <li><b>Did it search and recommend products?</b> No search or no product rows: drop.</li>
+    <li><b>Card share:</b> product rows tied to a catalog record, out of all product rows.</li>
+    <li><b>Maker share:</b> citations that go to a maker, official documentation or a public body, out of all citations.</li>
+    <li><b>Can we supply it?</b> An approved program, a product over $150, and a cart-tested code or a bundle we can assemble in one cart.</li>
+  </ul>
+  <p>I backtested the two readings on the saved chats, 76 pages with at least four retrieved chats:</p>
+  <div class="wrap"><table>
+    <thead><tr><th>Page's readings</th><th class="n">Pages</th><th class="n">Cited when retrieved</th></tr></thead>
+    <tbody>
+    <tr><td>Under half the rows carded, and makers under 30% of citations</td><td class="n">16</td><td class="n">69% (77 of 112)</td></tr>
+    <tr><td>One of the two fails</td><td class="n">35</td><td class="n">45% (98 of 219)</td></tr>
+    <tr><td>Both fail</td><td class="n">25</td><td class="n">27% (44 of 163)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small" style="margin-top:8px">This is a rough fit, not a validated gate: the readings come from the same chats as the outcome, the thresholds were picked after seeing the data, and makers were matched by a name list. Card share alone separates 68% from 33%. The first job in the pilot is to check the gate on questions it has not seen.</p>
+</section>
+
+<section class="prose">
+  <h2>3. Occupying a cluster</h2>
+  <p>A cluster is one buying situation, for example "a 1 kWh station sold with panels". Its map has three layers:</p>
+  <ol>
+    <li><b>Entry questions</b>, in each shape that passes the gate.</li>
+    <li><b>Refine branches</b>: the options ChatGPT offers at the end of its answers to those questions.</li>
+    <li><b>Follow-ups</b> about the product we want picked.</li>
+  </ol>
+  <p>A question counts as held when our page is retrieved and cited in at least 3 of 4 chats. A cluster is occupied when 80% of its mapped questions are held, and the loop then moves its budget to the next cluster and re-reads this one weekly.</p>
+  <p>Not every question gets its own page. Several pages for one search compete for one result slot and look like doorway pages. The rule I propose: a new page only when ChatGPT's search words differ from every page we have in the cluster; otherwise a section on the existing page.</p>
+  <p>Follow-ups about a maker's product are mostly not winnable, as the table above shows. I would spend follow-up effort in two places only: follow-ups about our named bundles, and follow-ups where ChatGPT's answer is wrong or vague (about 6 of 19 in the earlier probe).</p>
+</section>
+
+<section class="prose">
+  <h2>4. Named bundles</h2>
+  <p>What is measured: ChatGPT almost never writes a link for a product that has a card (1 in 106 rows), and does write one for a product without a card (6 of 10 kit rows on 13 Nov). Today, for the BLUETTI bundle with no card, it linked our page as the purchase link. So an un-carded bundle is the one slot where our link can appear.</p>
+  <p>What I propose for each bundle:</p>
+  <ul>
+    <li><b>A product name of its own</b>, built from the brand and the job, for example "BLUETTI Elite 200 V2 fridge backup kit". The page says plainly who sells and ships it (the brand) and that Dealectric assembled the set. No name that implies we sell it.</li>
+    <li><b>One stable record</b>: name, contents with quantities, total price, price of the parts bought separately, date tested, one link that opens the filled cart. We have 48 kit records already. Each sits on a situation page, without a consistent product name or a product page of its own.</li>
+    <li><b>A page per bundle</b> that reads like a product page, so a follow-up search on the name finds it, plus rows in the cluster's comparison pages.</li>
+    <li><b>The buy link next to the name and price</b>, with the saving stated as checkable text. This folds in the handover test from DLC-281.</li>
+    <li><b>Only bundles the brand does not list as one product.</b> Where the brand sells the same set as one listing, the catalog can card it and the row is lost.</li>
+  </ul>
+  <p>What I do not know: whether ChatGPT will use our name for the bundle or describe it in its own words. Today it wrote "BLUETTI AC180 + 2 × 200 W Solar Panels", close to our wording. The pilot measures this directly.</p>
+</section>
+
+<section class="prose">
+  <h2>5. Running it every day</h2>
+  <div class="wrap"><table>
+    <thead><tr><th>Resource</th><th>Proposed daily budget</th><th>Why</th></tr></thead>
+    <tbody>
+    <tr><td>ChatGPT chats</td><td>About 150: 100 to ask new questions (50 candidates), 50 to read back</td><td>One account, one chat at a time, about a minute each. The largest run so far was 164 chats in a session. A sustained daily limit has not been measured; the scan already stops when the account is moved to the smaller model.</td></tr>
+    <tr><td>Research</td><td>Up to 5 pages or bundles</td><td>Six research agents a page on plan usage; the current daily cap is 3.</td></tr>
+    <tr><td>Cart tests and price checks</td><td>As needed per page</td><td>Stores rate-limit; Google Shopping blocks after about 40 products.</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:12px"><b>Where it runs.</b> Inside the old Mac's morning job, after the code sweep, where the gap discovery already runs. No new scheduled task. It takes the repo lock like every page tool.</p>
+  <p><b>Publishing unattended.</b> Every gate that exists today stays: approved program, cart test on the exact item, same-item check on every matched listing, no price beside an Amazon link, build check. The 13 Nov run showed what skipping the same-item check costs: wrong products on 5 live pages. The daily job already has a drafts-only switch. I would keep drafts held for the first week and turn on unattended publishing once a week of drafts passes review without a correction.</p>
+  <p><b>What you would see.</b> One block in the daily update: questions asked, passed, pages and bundles built, and the cluster map with held and open questions.</p>
+</section>
+
+<section class="prose">
+  <h2>Sequence</h2>
+  <ol>
+    <li><b>No new chats, about a day.</b> Mine the 320 refine forms and the saved Reddit threads into the first question pool. Mark which existing clusters pass the gate on saved chats.</li>
+    <li><b>One-cluster pilot, one week: solar kits and station-plus-panel bundles.</b> Every sale so far came from this category. Map the cluster, fill the gaps, name three to five bundles. Bars set now:
+      <ul style="margin-top:8px">
+        <li>80% of mapped questions held.</li>
+        <li>The gate's pass and fail calls predict citation on new questions: passes cited at least 20 points more often than fails.</li>
+        <li>At least 3 buy-link handovers in 100 retrieved chats on bundle questions. The rate is 0 in 313 now, and was 1 in 215 before.</li>
+      </ul></li>
+    <li><b>Automate</b> the loop in the daily job if the pilot clears the bars. If citations rise and handover does not, stop and work on handover before scaling.</li>
+  </ol>
+</section>
+
+<section class="prose">
+  <h2>Decisions I need from you</h2>
+  <ol>
+    <li><b>Pilot on one cluster first, or build the automated loop now?</b> I recommend the pilot. This is the only decision that blocks a start.</li>
+    <li>Bundle naming: brand plus job, sold by the brand, assembled by Dealectric. Acceptable?</li>
+    <li>May I prepare an enquiry to OpenAI's Business Hub about a product feed under Agentify LLC, for your approval before anything is sent?</li>
+    <li>The budgets above: 150 chats and up to 5 builds a day.</li>
+  </ol>
+  <p class="small">Sources for the feed point: OpenAI's commerce documentation at <a href="https://developers.openai.com/commerce/llms-full.txt">developers.openai.com/commerce</a>, read 14 Nov. Third-party guides disagree on eligibility, so I have relied only on OpenAI's own text.</p>
+</section>
+</main>

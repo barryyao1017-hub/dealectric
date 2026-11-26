@@ -1,0 +1,81 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a split-phase inverter can have a per-leg (L1-N / L2-N) limit at half its rating. EG4's 6000XP manual lists 3,000 W max continuous line wattage against 6,000 W nominal, and a named reviewer writes that the unit cannot shift load between legs, so 4,000 W of 120 V appliances on one leg overloads it even though the house total is under 6 kW.",
+ "standout": 2,
+ "standout_why": "Rival pages read: ecosolarkits.com split-phase explainer (cited) says only that 'some limit how much one leg can carry on its own. Check the manual for a per-leg figure' and gives no figure for any model. Its tip is to keep the legs within roughly 20-30% of each other. ecosolarkits.com EG4 vs Sol-Ark (cited) has total, surge and pass-through figures but nothing on legs or imbalance. liveoffthegrid.com/specs/inverters (cited) only labels units '120/240 split-phase'. eg4electronics.com FlexBOSS21 page (cited) gives 12000VA and 50A nominal but no per-leg or imbalance spec. sol-ark.com 15K page gives 15 kW grid, 13 kW backup, 24 kW surge and 200 A pass-through, with no per-leg figure. None of them puts a per-leg number on a named model.",
+ "decides": "This mostly affects ChatGPT's budget pick, the EG4 6000XP ('6 kW continuous, 120/240V'). In practice that rating means 3 kW per 120 V leg, and the legs don't balance each other. A shopper with mostly 120 V loads (fridge, sump pump, microwave, space heater) has to split them evenly across L1 and L2 or buy a larger or second unit. That confirms the 6000XP only for 240 V-heavy or carefully balanced off-grid panels. For the FlexBOSS21 and Sol-Ark 15K I could not open a maker per-leg figure, so the page should tell shoppers to check that line in the manual before moving 120 V circuits into a backup subpanel.",
+ "candidates": [
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "EG4 18kPV",
+  "EG4 6000XP"
+ ],
+ "findings": [
+  {
+   "product": "EG4 6000XP",
+   "label": "Max continuous line (per-leg) wattage vs nominal output",
+   "value": "3,000 W per line; 6,000 W nominal; 120/240 VAC output",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5#manual",
+   "source_title": "EG4 6000XP User Manual v1.2 (©2024 EG4 Electronics), p.5 Technical Specifications, ManualsLib copy",
+   "read": "2026-11-13",
+   "note": "Text extracted from the AC output block lists the labels 'MAX CONT. LINE WATTAGE' and then 'NOMINAL POWER OUTPUT', followed in the same order by the values '3000W' and '6000W'. The extraction did not keep labels and values side by side, so I matched them by order. The SolarTech review below gives the same 3,000 W figure. EG4's own PDF (eg4electronics.com/wp-content/uploads/2024/04/EG4-6000XP-Manual.pdf) would not render as text."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Load balancing between legs",
+   "value": "None: 3,000 W max per 120 V leg, and each leg runs on its own",
+   "source": "https://solartechonline.com/blog/eg4-6000xp-complete-guide/",
+   "source_title": "EG4 6000XP Complete Guide: Specs, Installation, and Real-World Performance (2025), Jonathan Richter, SolarTech, 2025-08-11",
+   "read": "2026-11-13",
+   "note": "Richter writes: 'Per-leg limitation: 3000W maximum per 120V leg', 'the 6000XP cannot automatically balance loads between legs', and 'If you have 4000W of appliances on one 120V leg, the inverter will overload even though the total system load is well under 6000W.' The article's citations don't cover this claim, so the manual line above is the primary source."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "AC bypass (grid | generator)",
+   "value": "50 A | 50 A",
+   "source": "https://www.manualslib.com/manual/3348271/Eg4-6000xp.html?page=5#manual",
+   "source_title": "EG4 6000XP User Manual v1.2, p.5, ManualsLib copy",
+   "read": "2026-11-13",
+   "note": "'AC BYPASS (GRID | GENERATOR)' is followed directly by '50A | 50A'."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Continuous AC output (maker page)",
+   "value": "12,000 VA continuous; 50 A nominal; 16 kW @ 240 V with PV, 12 kW to loads/battery without PV; 90 A grid feed-through",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-flexboss-21/",
+   "source_title": "EG4® FlexBOSS21 - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "Quoted from the page: 'Continuous Output Power – 12000VA', 'Nominal Current – 50A', 'can feed-through 90 Amps of utility power from the grid at 120/240 VAC'. The page has no per-leg or imbalance line."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "AC output (maker page)",
+   "value": "15 kW grid output; 13 kW backup; 24 kW surge; 200 A grid pass-through; 120/240 V or 120/208 V",
+   "source": "https://sol-ark.com/residential-energy-solutions/whole-home-15k-2p-hybrid-inverter/",
+   "source_title": "Whole Home 15K-2P Hybrid Inverter, Sol-Ark",
+   "read": "2026-11-13",
+   "note": "The page has no per-leg, L-N or unbalanced-load rating. It also labels the model as both '15K-2P-N' and '15K-2P-LV'."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rival explainer says about per-leg limits",
+   "value": "Says 'some limit how much one leg can carry on its own' but gives no per-leg figure for any model",
+   "source": "https://ecosolarkits.com/blogs/guides/split-phase-inverter-explained",
+   "source_title": "Split-Phase Inverters Explained: 120/240V Guide (2026), Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "Rule of thumb on the page: keep the legs within roughly 20-30% of each other. Its worked example has L1 at 3,500 W and L2 at 2,850 W, with about 5.4 A on the neutral."
+  }
+ ],
+ "unsourced": [
+  "EG4 FlexBOSS21 per-leg continuous output. Search snippets show '50A | 6kW' per leg from an install-manual copy hosted on Supabase, but EG4's spec sheet and manual PDFs (eg4electronics.com, ressupply.com) would not render as text and the manuals.plus copy returned 403. I left the figure out.",
+  "Sol-Ark 15K-2P per-leg (L-N) continuous rating or unbalanced-load capability. The sol-ark.com product page has none. The Rev3 and Rev5 datasheets and the Rev10 manual URLs from search either returned 404 or I didn't open them, and solartown's datasheet copy returned 403.",
+  "EG4 18kPV per-leg or unbalanced-load rating. I didn't reach a maker page or manual within the tool budget.",
+  "EG4 6000XP per-leg figure from EG4's own PDF. The PDF did not render as text, so the 3,000 W figure comes from the ManualsLib copy of manual v1.2 and the SolarTech review."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.0408556
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured idle draw: The Solar Lab measured the Sol-Ark 15K at 97 W in standby, 7 W over its own 90 W rating, against about 65 W for the EG4 FlexBOSS21 and 60–70 W for the EG4 18kPV. That 32 W gap between ChatGPT's 'premium' pick and its 'value' pick adds up to about 280 kWh a year on a system that is always on.",
+ "standout": 2,
+ "standout_why": "I compared against the cited liveoffthegrid.com/specs/inverters page, ecosolarkits.com/blogs/guides/eg4-vs-sol-ark and ecosolarkits.com/blogs/guides/split-phase-inverter-explained. Liveoffthegrid lists only datasheet idle figures (18kPV 70 W, Sol-Ark 15K-2P 90 W, 6000XP 50 W, XW Pro 8 W), says it transcribed them from maker datasheets, and has no FlexBOSS21 row. Neither Eco Solar Kits page gives any idle, efficiency or noise measurement. Their only performance numbers are spec-sheet surge ratings. So the rivals have the rated half of the comparison but no reviewer's measurement, and nothing showing the Sol-Ark idling above its rating.",
+ "decides": "This backs ChatGPT's split of FlexBOSS21 as best value and Sol-Ark 15K as premium, and puts a running cost on the premium pick. In The Solar Lab's tests the Sol-Ark 15K idled about 32 W higher than the FlexBOSS21, which is about 280 kWh a year. The Sol-Ark also passed a hard surge test: it started a 10,000 W surge compressor while already at its full 15 kW load. A shopper whose loads are mostly small, or who runs off-grid, should lean EG4. A shopper with big motor loads gets measured surge proof only for the Sol-Ark.",
+ "candidates": [
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "EG4 18kPV",
+  "EG4 6000XP",
+  "Schneider Conext XW Pro 6848 NA"
+ ],
+ "findings": [
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle draw in standby (measured)",
+   "value": "97 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K hybrid inverter review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab staff tested the unit themselves and say they used it for nearly a month. They wrote it 'seemed to have an idle draw of 97W when it was in standby'. The page names no instrument or method, no author, and has no date except a © 2026 footer. Sol-Ark's datasheet rating is 'Idle Consumption – No Load 90W', so the measurement is 7 W over the rating."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Surge under full load (tested)",
+   "value": "Started a 10,000 W surge compressor while already at its 15 kW rated load, twice",
+   "source": "https://www.thesolarlab.com/review/sol-ark-15k-hybrid-inverter-review",
+   "source_title": "Sol-Ark 15K hybrid inverter review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "A pass/fail result from The Solar Lab. They also report it 'ran flawlessly at its full 15kW output'. They give no dB figure, only a subjective note of high-frequency whine under heavy load."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle draw (measured)",
+   "value": "about 65 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS21: Which Hybrid Solar Inverter is Best for Your Home? – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The page says 'consumed about 65 watts during our idle consumption tests', with no stated conditions or equipment. In the same test the Sol-Ark 18K idled at about 108 W. 65 W is the top of EG4's rated '<65W' idle (spec as quoted on bigbattery.com/products/eg4-flexboss21-12kw-21kpv-hybrid-inverter/, read 2026-11-13). The arithmetic against the Sol-Ark 15K: 97 − 65 = 32 W × 8,760 h ≈ 280 kWh/yr. The two numbers come from separate Solar Lab reviews, so conditions may differ."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle draw on battery (measured)",
+   "value": "about 60–70 W (about 1.2 A from the battery)",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The unit 'usually runs somewhere in the region of 1.2 amps while it is on the battery'. They also measured battery charging reaching 11,400 W against the 12,000 W rating, and say it started a 15 kW heater load on battery alone. No method was published. The page cites EG4's surge rating inconsistently (15 kW vs 15.5 kW for 5 min)."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw (measured)",
+   "value": "0.9–1.2 A from the battery (about 46–61 W at 51.2 V nominal)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review – The Solar Lab",
+   "read": "2026-11-13",
+   "note": "The Solar Lab reported current only and said it matched EG4's 50 W idle rating. The wattage is my conversion, assuming a 51.2 V nominal LFP battery, because they did not state the battery voltage. In the same tests they measured surge at 7.3–7.5 kW for 3–5 s, and the unit held a 6.25 kW overload before it tripped."
+  }
+ ],
+ "unsourced": [
+  "CEC-listed weighted efficiency for FlexBOSS21, Sol-Ark 15K-2P and 18kPV: the solarequipment.energy.ca.gov search pages I opened returned unrelated ABB rows, and the Excel download could not be fetched.",
+  "Idle and efficiency figures from EG4's FlexBOSS21 spec PDF and manual (eg4electronics.com) and from Sol-Ark's 15K-2P datasheet PDF: the PDFs came back as compressed streams the fetch tool could not read. The FlexBOSS21 '<65W' rating is quoted from the bigbattery.com retailer page. The Sol-Ark 90 W rating is taken from the datasheet as transcribed on the cited liveoffthegrid.com page.",
+  "Independent measurements of any kind (idle, efficiency, noise) for the Schneider Conext XW Pro 6848 NA: none found. Search showed only datasheet figures and an unresolved forum anecdote.",
+  "Measured noise in dB for any candidate: The Solar Lab gives only subjective fan and whine notes.",
+  "A named Will Prowse measurement for the FlexBOSS21: none turned up in search.",
+  "Author names and publish dates for The Solar Lab reviews: none of the pages shows a byline or a date beyond the © 2026 footer."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 0.9741262999999999
+ }
+}

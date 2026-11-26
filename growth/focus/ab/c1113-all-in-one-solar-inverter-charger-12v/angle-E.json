@@ -1,0 +1,60 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a measured idle (no-load) draw for any 12V inverter: DD Solar measured a 12V 2000W pure-sine component inverter at 11.6 W idle (about 280 Wh a day) and 85.5–87.3% efficient, and a Victron owner bench-measured the Phoenix 12/1200 at 10.0 W at 12 V against Victron's 7 W spec. No named reviewer has published a measurement for ACOPOWER, ALLWEI or PowMr's 12V all-in-ones.",
+ "standout": 1,
+ "standout_why": "ChatGPT's 12 results are all renogy.com pages: three kit pages, the REGO 12V 3000W inverter charger, the 2000W/3000W HF inverter charger, the split-phase blog and the RV Solution page. None is marked as cited. I could not open the two Renogy inverter pages (renogy.com returned HTTP 429 to both WebFetch and storecheck), so I judged them only by their titles and by ChatGPT's answer. Neither those titles nor the answer give any idle-draw or efficiency figure, measured or spec, for any unit. The answer recommends ACOPOWER, ALLWEI and PowMr with prices only. The measured figures I found are new, but they come from 12V component inverters, not from the three all-in-ones ChatGPT recommended. So they help with a framing question (all-in-one vs separate MPPT plus inverter), not with ranking the candidates. That is why the score is 1 rather than 2.",
+ "decides": "This doesn't pick between ACOPOWER, ALLWEI and PowMr, because none has a named measurement. It does give the page a sourced baseline: a 12V component inverter measured at 10–11.6 W idle, which is 240–280 Wh a day from a 12V battery. The page can tell shoppers to check a 12V all-in-one's listed no-load draw against that figure before choosing an all-in-one over a separate MPPT plus inverter. That matters most in vans and RVs with a single 100Ah (1.28 kWh) battery. Any all-in-one idle figures have to be labelled as maker specs.",
+ "candidates": [
+  "ACOPOWER HYOne3000-12 3000W/12V All-in-One",
+  "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+  "PowMr 1.6kW 12V Hybrid Solar Inverter Charger (230V)",
+  "Renogy REGO 12V 3000W Inverter Charger (no MPPT)",
+  "Victron Phoenix 12/1200 (component inverter, reference)",
+  "Datouboss/MFUZOP SAK 2000W 12V (component inverter, reference)"
+ ],
+ "findings": [
+  {
+   "product": "Datouboss SAK 2000W 12V pure sine inverter (sold as MFUZOP; PCB S-PSW-12V-110V-2000W)",
+   "label": "Measured idle (no-load) draw",
+   "value": "11.6 W (about 280 Wh per 24 h)",
+   "source": "https://solarpoweredge.com/2026/02/19/budget-friendly-12v-2000w-sine-inverter-full-test-analysis-teardown-insights/",
+   "source_title": "Budget Friendly! 12V 2000W Sine Inverter: Full Test, Analysis, Teardown Insights (solarpoweredge.com)",
+   "read": "2026-11-13",
+   "note": "Measured by Dave (DD Solar, blog user ddsolar2020). Published 2026-02-19, with long-term updates to 2026-04-15. Inverter powered on with no load. This is a component inverter with no built-in MPPT; the test rig charged its batteries through a separate 60 A MakeSkyBlue MPPT. 11.6 W × 24 h = 278 Wh."
+  },
+  {
+   "product": "Datouboss SAK 2000W 12V pure sine inverter",
+   "label": "Measured DC-to-AC efficiency",
+   "value": "85.5% at 168.8 W out (about 8% load); 87.3% at 1,028 W out (about 51% load)",
+   "source": "https://solarpoweredge.com/2026/02/19/budget-friendly-12v-2000w-sine-inverter-full-test-analysis-teardown-insights/",
+   "source_title": "Budget Friendly! 12V 2000W Sine Inverter: Full Test, Analysis, Teardown Insights (solarpoweredge.com)",
+   "read": "2026-11-13",
+   "note": "Measured by DD Solar, 2026-02-19. 168.8 W AC out from 197.36 W DC in = 85.5%. 1,028 W AC out from 1,177.4 W DC in = 87.3%. DC input current was 91.2 A at about 1 kW. AC output was about 111 V."
+  },
+  {
+   "product": "Victron Phoenix 12/1200 (EU)",
+   "label": "Bench-measured zero-load power vs datasheet",
+   "value": "10.0 W at 12 V input and 12.9 W at 14 V, against a 7 W datasheet figure",
+   "source": "https://community.victronenergy.com/t/phoenix-1200-12-zero-load-power-much-higher-than-specified-measured-10-w-vs-7-w/47181",
+   "source_title": "Phoenix 1200/12 – Zero-load power much higher than specified (measured 10 W vs. 7 W), Victron Community",
+   "read": "2026-11-13",
+   "note": "Measured by forum user Ståle (staldor), post dated 2025-10-16. New unit, no load, fan off, about 20 °C. Input set and measured with a lab power supply and checked with a multimeter; instrument models and calibration not given. Full series: 10 V 7.4 W, 11 V 8.5 W, 12 V 10.0 W, 13 V 11.3 W, 14 V 12.9 W. Idle draw rises with battery voltage, so a charged LiFePO4 at about 13.3 V idles above the datasheet figure."
+  }
+ ],
+ "unsourced": [
+  "Any named reviewer's or lab's measured idle draw, inverter efficiency or MPPT efficiency for the ACOPOWER HYOne3000-12 (3000W/12V all-in-one). Searched the maker, Wellbots, YouTube, DIY Solar Forum, Will Prowse and Hobotech; found only listings. The maker's manual PDF was over 10 MB and would not load in WebFetch, and downloading it with curl needed approval I didn't have. So I couldn't confirm the spec-sheet idle figure or settle whether MPPT charging is 30 A (the product-page label) or 150 A (the manual, per a search snippet).",
+  "ACOPOWER and Wellbots prices and specs: both pages returned HTTP 429. The $1,298 figure comes only from ChatGPT's card and a search snippet, so I don't report it.",
+  "Any test or review of the ALLWEI 3000W 12V hybrid. Searches found no ALLWEI-specific page from any reviewer.",
+  "Any measurement of a PowMr 12V all-in-one. DIY Solar Forum snippets mention a 48V 3500W PowMr at 55 W idle and 24V units at 30–38 W, but the forum returned HTTP 403, so I couldn't open or verify the posts, and none of them covers a 12V unit.",
+  "A DIY Solar Forum snippet says a 12V all-in-one measured 18.5 W on a shunt. The page was blocked (403), so I don't know the model or poster and haven't used the figure.",
+  "Renogy REGO 12V 3000W and Renogy 2000W/3000W HF inverter charger pages (ChatGPT results 4 and 9): HTTP 429 on WebFetch and storecheck, so I have no Renogy specs or prices and no confirmation that they lack MPPT.",
+  "The Wind and Sun page for a 3000W 12V low-frequency solar inverter charger (snippet: 55 W idle, 21.7 W in power-saver mode, a maker spec) returned HTTP 429, so I didn't use it.",
+  "Amazon listing B0GXKRF591 (12V 3000W all-in-one, 150 A MPPT): not checked, because I ran out of tool-call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9363066999999998
+ }
+}

@@ -1,0 +1,98 @@
+<title>Freshness Sweep Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; numbered steps because the order is the plan; risk table with a severity chip */
+:root{
+  --bg:#f7f8f6; --fg:#1d2420; --muted:#5d6a63; --line:#d9dfdb; --accent:#1f7a55; --warn:#a4620b; --bad:#b23b2e; --chip:#e8efe9;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141916;--fg:#e4ebe6;--muted:#9aa8a0;--line:#2c3530;--accent:#5cc396;--warn:#e0a24a;--bad:#ec7a6c;--chip:#1f2823;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+main{max-width:780px;margin:0 auto;display:grid;gap:28px}
+h1{font-size:1.7rem;line-height:1.2;margin:0;text-wrap:balance}
+h2{font-size:1.15rem;margin:0 0 8px;text-wrap:balance}
+p,ul,ol{margin:0 0 10px} ul,ol{padding-left:22px} li{margin-bottom:6px}
+.sub{color:var(--muted);font-size:.9rem}
+.answer{border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-size:1.05rem}
+.alert{border-left:3px solid var(--bad);padding:4px 0 4px 14px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+.chip{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:10px;background:var(--chip);white-space:nowrap;font-weight:600}
+.hi{color:var(--bad)} .md{color:var(--warn)} .lo{color:var(--accent)}
+code{font-family:var(--mono);font-size:.85em}
+</style>
+<main>
+<header>
+<h1>Freshness sweep: plan and failure modes</h1>
+<p class="sub">Dealectric · 2026-11-17 · for Barry's go-ahead before anything runs</p>
+</header>
+
+<section>
+<p class="answer"><strong>One full check of every price, stock state, link and code on the site, then a rebuild where each page shows the date its prices and stock were actually read.</strong> About 1–2 days of session time to build and about 3 hours to run. It occupies the Agent Chrome for about 2 of those hours. The biggest risks are showing a wrong price with a fresh date, and question pages whose text quotes a price the table has since changed.</p>
+</section>
+
+<section>
+<p class="alert"><strong>Found while planning: the daily sweep on the old Mac has stopped publishing.</strong> <code>coupons.json</code> was last checked 2026-11-10. The last "daily cart check" commit is from 11-06, and <code>src/stock.json</code> (the daily stock read) does not exist. Code lines on the site still say "tested daily" next to dates a week old. I can't reach the old Mac's log from here, so the cause is unknown. Until it's fixed, whatever this plan builds will run once and then go stale.</p>
+</section>
+
+<section>
+<h2>What gets checked</h2>
+<div class="scroll"><table>
+<tr><th>Item</th><th>Count</th><th>How</th></tr>
+<tr><td>Our brand-store products: price, stock</td><td>397</td><td><code>pricecheck.py</code> (Shopify product JSON); the page's schema.org Offer for other stores</td></tr>
+<tr><td>Amazon listings: price, stock (ours and rival rows)</td><td>191 ASINs</td><td><code>amzprice.py</code> in the Agent Chrome</td></tr>
+<tr><td>Rival rows on question pages: price, stock</td><td>784 rows, 332 sites</td><td>New reader: Shopify JSON where it exists, else schema.org Offer, else page text read by a model with a same-item check</td></tr>
+<tr><td>Links: product URL lands on the product, <code>/go/</code> redirects right</td><td>498 + 784 + 4,483 sources</td><td><code>linkcheck.py</code> for products; status-only check for rival and source links</td></tr>
+<tr><td>Codes: still accepted in the cart</td><td>every published code</td><td><code>codesweep.py --no-push</code> (cart tests in the Agent Chrome)</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Steps</h2>
+<ol>
+<li><strong>Read everything, change nothing.</strong> Run the five checks above into one dated report.</li>
+<li><strong>Sort the results.</strong> A price that moved 25% or less on the same variant is applied. A bigger move, a different variant, a bundle-or-base mismatch or an unreadable page is held for review and keeps its old date. A sold-out product turns on its <code>sold_out_alt</code>. A broken link is held, never quietly re-pointed.</li>
+<li><strong>Record read dates apart from content.</strong> A new <code>src/price_reads.json</code> stores the price, stock and time per product or row. The build shows a read's date when that read is newer than the record. <code>products.py</code> changes only where a price really changed.</li>
+<li><strong>Stamp what was read.</strong>
+  <ul>
+  <li>Product pages: the price line's date becomes the read date ("$499 at BLUETTI's US store, checked 11-18").</li>
+  <li>Question pages: under "Updated …", add "Prices and stock in the table checked 11-18". That date is the <em>oldest</em> read among the table's priced rows. A row that couldn't be read shows its own older date.</li>
+  <li>Code pages already carry "last passed &lt;date&gt;".</li>
+  <li>JSON-LD <code>dateModified</code> moves only when content changed. Sitemap <code>lastmod</code> follows the page bytes, so a new stamp counts.</li>
+  </ul></li>
+<li><strong>Flag answers the new prices contradict.</strong> On the 63 question pages whose short answer quotes a dollar figure, and on any "cheapest" or "under $X" page whose ranking flips, I hold the change and list it for review. I don't rewrite the answer automatically.</li>
+<li><strong>Build, check, ship.</strong> Build in a temp worktree under the repo lock and check the diff with <code>pagediff.py</code>, so only dates, prices and stock change. Then commit, push, deploy the Worker if the link map changed, push changed URLs to IndexNow, and read a sample of live pages back through r.jina.ai.</li>
+<li><strong>Report.</strong> A results artifact (what changed, what's held, what couldn't be read), plus To-Dos rows for the held items and the old-Mac fix.</li>
+</ol>
+</section>
+
+<section>
+<h2>How this could go wrong</h2>
+<div class="scroll"><table>
+<tr><th>Risk</th><th>What would happen</th><th>Guard</th></tr>
+<tr><td><span class="chip hi">High</span> Wrong price read</td><td>The record names a bundle and the store's first variant is the base unit; a sale price is taken for the list price; Amazon's buy box shows a third-party or used seller. The page then shows a wrong price with today's date, which is worse than an old right one.</td><td>Same-variant rule, 25% hold, model same-item check on rival rows (the 11-14 audit found 4 wrong seller cards this way), and a spot check of 20 applied changes before shipping.</td></tr>
+<tr><td><span class="chip hi">High</span> Text contradicts the table</td><td>The table says $449, while the short answer and prose still say $499. ~5,600 dollar figures sit in prose, not in tokens.</td><td>The stamp covers the table only. The 63 pages with a price in the answer, and any flipped verdict, are held for review.</td></tr>
+<tr><td><span class="chip hi">High</span> Contaminating the citation A/B reading</td><td>DLC-272's 65 pages were pushed 11-14 and reading 3 is in progress. Changing them on one side only breaks the comparison.</td><td>Apply the stamp to both arms the same day, and add a note in <code>push.json</code>. Alternative: skip those 65 pages until reading 3 is done.</td></tr>
+<tr><td><span class="chip md">Medium</span> Stamp claims more than was checked</td><td>A page says "checked today" while three of its rows weren't readable.</td><td>Page date = oldest read. A row that wasn't read keeps its own date. A row is never bumped without a read.</td></tr>
+<tr><td><span class="chip md">Medium</span> Blocks and rate limits</td><td>Stores answer 429 or a bot challenge. The corporate proxy blocks dealectric.com, so <code>/go/</code> checks fail from the work laptop. Google Shopping shows a CAPTCHA after ~40 products.</td><td>Unanswered never counts as broken or sold out. <code>/go/</code> is checked against the link map plus a sample over r.jina.ai. No Google Shopping in this run.</td></tr>
+<tr><td><span class="chip md">Medium</span> Black Friday noise</td><td>Prices swing day to day and codes stop stacking with sales. The two-strike rule could retire a code that comes back after the sale.</td><td>Show the date on every price. Expect many changes in the hold list. Retirements are listed in the report so they can be undone.</td></tr>
+<tr><td><span class="chip md">Medium</span> Collisions</td><td>Other sessions share this checkout and the Agent Chrome (Reddit drafts 08:43, ChatGPT evals).</td><td>Temp worktree and repo lock. Cart tests run in background tabs. I won't run during the 08:43 task.</td></tr>
+<tr><td><span class="chip lo">Low</span> Deploy</td><td>The GitHub Pages deploy times out and the old build stays live.</td><td>Check the Actions run for the commit and re-push if needed.</td></tr>
+<tr><td><span class="chip lo">Low</span> D1 rows</td><td>About 500 <code>/go/</code> checks write click rows.</td><td>They're stored as bot_like=1, so shopper counts don't include them. This is well within the free tier.</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>Calls I made (tell me to change any)</h2>
+<ul>
+<li>Price moves of 25% or less are applied without review; larger ones are held.</li>
+<li>The A/B pages get the stamp on both arms rather than being skipped.</li>
+<li>Answers aren't rewritten in this run, only flagged.</li>
+<li>This is a one-time run from the work laptop. Making it daily depends on fixing the old Mac's sweep first.</li>
+</ul>
+</section>
+</main>

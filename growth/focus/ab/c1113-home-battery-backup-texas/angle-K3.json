@@ -1,0 +1,111 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that BLUETTI's '12kW bypass powers HVACs' claim for the Apex 300 home kit only holds while grid power is feeding the unit; in an outage a single Apex 300 can supply only its inverter's 3,840 W, which is 16 A at 240 V, so a Texas central AC on the kit's sub panel would run on the battery alone during a blackout at well under a third of that bypass figure.",
+ "standout": 2,
+ "standout_why": "I compared homebattery.guide (cited) and theenergycollective.com (cited). Neither mentions the BLUETTI Apex or Anker SOLIX F3800 Plus, transfer-switch or inlet kits, neutral bonding, or the difference between grid-bypass watts and battery watts. theenergycollective does cover part of the AC problem: it says a 2-ton AC needs about 5,800 W to start and that EcoFlow's 4,000 W kit 'can't run a central AC alongside much else'. So the general warning that a power station is too small for central AC is already out there. What no rival says is that the maker's own '12kW … HVACs' figure depends on the grid being up, or that the kit is sold in Single and Parallel versions that you must match to how many units you own. I scored it 2 rather than 3 because the AC-sizing idea is partly covered.",
+ "kit_items": [
+  "power station: BLUETTI Apex 300 (3,840 W continuous, 120/240 V from one unit). StorageReview says a single unit produces 240 V because it has two inverters, so you do not need a second unit to get 240 V.",
+  "expansion battery: BLUETTI B300K, which brings the system to 5,529.6 Wh. A single Apex 300 delivered 2.39 kWh in StorageReview's test, which is not enough for a Texas outage of a day or more.",
+  "home tie-in: BLUETTI Apex 300 Home Integration Kit, 'Single Apex 300' variant. This is the sub panel with a 50 A inlet and the cable that connects the station to the house. Buy the Parallel variant only if you own two Apex 300s.",
+  "optional DC/USB: BLUETTI Hub D1 ($299). StorageReview says the Apex 300 has no USB-C, USB-A, car-socket or Anderson outputs without it."
+ ],
+ "carts": [
+  {
+   "store": "BLUETTI US (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300 | $3,199.00 (compare-at $3,399.00) | 2026-11-14",
+    "BLUETTI Hub D1 Power Hub for Apex 300 (optional, for USB/DC) | https://www.bluettipower.com/products/hub-d1-parallel-box | $299.00 | 2026-11-14"
+   ],
+   "bundle_sku": "Apex 300 + B300K + Home Backup Kit (Single Apex 300), $3,199.00, read 2026-11-14. Bought separately: Apex 300 + B300K is $2,599.00 and the Home Integration Kit (Single) is $699.00, which comes to $3,298.00."
+  }
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "label": "HVAC claim on the maker's page",
+   "value": "'12kW bypass powers HVACs, EVs, and more'; product card says 3,840W",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit (Single Apex 300) – BLUETTI",
+   "read": "2026-11-14",
+   "note": "Bypass means grid power passing straight through the unit, so it disappears in an outage. With the grid down the limit is the inverter: 3,840 W / 240 V = 16 A at 240 V. The page does not mention soft starters or neutral bonding."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Inverter output, and where the 12 kW figure comes from",
+   "value": "3,840 W max total, 120V/240V; 14-50R rated 120/240V 50A; BLUETTI's 'up to 12kW' bypass via the 50A port was not tested",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, Kevin OBrien: BLUETTI Apex 300 review (dated 2026-11-09)",
+   "read": "2026-11-14",
+   "note": "StorageReview says the 12 kW bypass is BLUETTI's own claim for EV charging and HVAC, and it has no measured data for central AC or well pumps."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Standard AC charging inlet",
+   "value": "120 V, 15 A, with a 1,800 W limit in bypass; 50 A in/out only through the P050A port and BLUETTI's 14-50P cable",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, Kevin OBrien: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "Fast recharging from a 240 V generator needs a 50 A cord into the P050A port. The standard inlet caps charging at 1,800 W."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Usable energy measured by StorageReview",
+   "value": "2.39 kWh of 2,764.8 Wh (86%) on its own; 7.38 kWh with two B300K",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, Kevin OBrien: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "Recharging took 3.30 kWh for the single unit and 10.01 kWh with two packs. At a 3 kW AC load, 2.39 kWh lasts about 48 minutes (my arithmetic)."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Adapter that is easy to miss",
+   "value": "Hub D1 ($299) required for USB-C, USB-A, cigarette-lighter, DC5521 and Anderson outputs",
+   "source": "https://www.storagereview.com/review/bluetti-apex-300-review-3840w-240v-grid-input-limit-ups",
+   "source_title": "StorageReview, Kevin OBrien: BLUETTI Apex 300 review",
+   "read": "2026-11-14",
+   "note": "BLUETTI's store lists the Hub D1 Power Hub for Apex 300 at $299.00 (storecheck, 2026-11-14)."
+  },
+  {
+   "product": "BLUETTI Apex 300 Home Integration Kit",
+   "label": "Variant trap",
+   "value": "Two variants: 'Single Apex 300' $699.00 and 'Parallel' $799.00",
+   "source": "https://www.bluettipower.com/products/apex-300-home-integration-kit",
+   "source_title": "Apex 300 Home Integration Kit – BLUETTI",
+   "read": "2026-11-14",
+   "note": "Read through storecheck. The kit is listed as compatible with the Apex 300 only. Match the variant to how many Apex 300s you own."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus + Home Backup Kit",
+   "label": "240 V output blocked while charging from 120 V",
+   "value": "'The 240V output cannot be used while the device is charging via 120V AC.'",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus Home Backup Kit – Anker SOLIX",
+   "read": "2026-11-14",
+   "note": "Most portable inverter generators charge over 120 V. Using one in an outage switches off the 240 V circuits (central AC, well pump) on the transfer switch. The same page says the generator adapter only supports a single F3800 Plus unit, and the F3800 Plus + Home Backup Kit showed as Sold Out."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V port rating",
+   "value": "NEMA L14-30R: 120V/240V, 25 A max, 6,000 W max",
+   "source": "https://www.ankersolix.com/products/f3800-plus-home-backup-kit",
+   "source_title": "Anker SOLIX F3800 Plus Home Backup Kit – Anker SOLIX",
+   "read": "2026-11-14",
+   "note": "The page says it 'powers fridges to central AC' but does not mention soft starters."
+  }
+ ],
+ "unsourced": [
+  "What the official Apex 300 US manual says about neutral-ground bonding, transfer-switch use and the 240 V per-outlet limit (for example, TT-30 at 16 A in 240 V mode). The BLUETTI PDF and the ussolarsupplier.com copy were both too large for the fetch tool, and downloading them locally was not approved. The 16 A TT-30 figure appeared only in a search snippet, so I left it out of the findings.",
+  "Whether BLUETTI requires a licensed electrician to install the Home Integration Kit. Neither the store page nor StorageReview says.",
+  "An itemized list of what is in BLUETTI's Home Integration Kit (sub panel with SS2-50 inlet, 14-50 to SS2-50R cable). This appeared only in a search snippet.",
+  "Anker's neutral (N) and ground (PE) warning for the inlet box or transfer switch. This appeared only in a search snippet; I did not open the Anker FAQ page.",
+  "Prices for Anker SOLIX F3800 Plus kits today. The page showed no price and the bundle was Sold Out, and storecheck returned HTTP 404 for ankersolix.com.",
+  "A dated forum thread with a count of people reporting central AC failing to start on an Apex 300. The only thread I found ('Two AC300s in Split Phase not able to run my central air') is about the older AC300, and I did not open it.",
+  "Amazon prices. I did not run amzcheck."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1688893
+ }
+}

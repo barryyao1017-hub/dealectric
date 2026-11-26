@@ -1,0 +1,118 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a plug-in inverter's current never passes through the branch breaker. UL's wording is that 'the combined current from the utility and PIPV source can exceed conductor ratings without tripping the circuit breaker.' APsystems' own consumer page still says two EZ1s give 'up to 1,800W of plug-in solar power on a standard 15A circuit'. That is about 15 A the breaker cannot see, while the EZ1-LV's UL 3700 certificate conditions allow only a dedicated 10 A circuit.",
+ "standout": 2,
+ "standout_why": "I compared five pages. solarunitedneighbors.org (cited) says only in general terms that generation 'can mask or hide the overloaded wiring', with no figures or products. pluginsolarcheck.com/kits/certifications (cited) and solarwaypoint.com (cited) report the EZ1-LV certificate condition ('dedicated 10 A circuit, or a listed bidirectional Class A GFCI on a non-dedicated circuit'), but they don't explain why it exists or put a number on the unseen current. None of them notes that APsystems' own consumer page advertises 1,800 W on a standard 15 A circuit, which goes against that condition. balconysolarkits.us (cited) doesn't cover circuit behaviour at all. SUN gives 160 ms as a deadline to stop exporting during an outage, but no page names a product that meets a plug de-energising time, which Hoymiles states for its plug.",
+ "decides": "ChatGPT's 'best overall', the APsystems EZ1-LV (900 VA, about 7.5 A at 120 V), works only if the shopper has or adds a dedicated 10 A circuit, or a bidirectional GFCI on a shared circuit. Pairing two on one ordinary 15 A circuit, as APsystems' video copy suggests, means about 15 A the breaker cannot see, up to roughly 30 A worst case on 15 A wiring. A shopper with only shared outlets should start with a smaller Hoymiles HiFlow Pro LV (360–500 VA, about 3.0–4.17 A), which adds far less current the breaker can't see. Hoymiles also states its plug drops below 15 Vac within 0.16 s of being unplugged. The EZ1-LV is still the pick for a two-panel system on a dedicated circuit.",
+ "candidates": [
+  "APsystems EZ1-LV",
+  "Hoymiles HiFlow Pro LV (HMS-360/391/420/450/500-1WM-LV)",
+  "EcoFlow STREAM Microinverter"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why a plug-in inverter can overload a branch circuit (UL's wording)",
+   "value": "\"the combined current from the utility and PIPV source can exceed conductor ratings without tripping the circuit breaker\"",
+   "source": "https://www.ul.com/insights/safety-considerations-plug-photovoltaic-pipv-systems",
+   "source_title": "Safety Considerations for Plug-In Photovoltaic (PIPV) Systems | UL Solutions",
+   "read": "2026-11-13",
+   "note": "The breaker measures only current coming from the panel. Inverter current enters at the outlet and goes to loads on the same circuit without passing through the breaker. The page shows no byline or date, only © 2026 UL LLC."
+  },
+  {
+   "product": "general",
+   "label": "Fixes UL lists for the backfeed and live-plug hazards",
+   "value": "\"Dedicated circuits with unique receptacles to prevent overloads\"; \"Bidirectional GFCI devices to maintain shock protection under backfeed conditions\"; \"Integrated overcurrent protection at the point of connection\"; hazard: \"Accessible plug blades can become energized when exposed to sunlight\"",
+   "source": "https://www.ul.com/insights/safety-considerations-plug-photovoltaic-pipv-systems",
+   "source_title": "Safety Considerations for Plug-In Photovoltaic (PIPV) Systems | UL Solutions",
+   "read": "2026-11-13",
+   "note": "Quoted from the page."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Maker's claim for two units on one ordinary circuit",
+   "value": "\"Two EZ1 units can even be paired together for up to 1,800W of plug-in solar power on a standard 15A circuit.\"",
+   "source": "https://usa.apsystems.com/ez1-consumers/",
+   "source_title": "EZ1 – Consumers - APsystems USA",
+   "read": "2026-11-13",
+   "note": "From the description of the training video 'EZ1 Makes Balcony Solar Easy: 4-Panel Plug-In Installation Training' on APsystems' own page. Body text on the same page says it 'plugs directly into a standard wall outlet'. Arithmetic: 1,800 W / 120 V = 15 A of backfeed. Using UL's explanation, the worst case on a 15 A circuit is a segment of wire carrying 15 A from the panel plus 15 A from the inverters, about 30 A, before the breaker trips."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "AC output",
+   "value": "900 VA (about 7.5 A at 120 V)",
+   "source": "https://usa.apsystems.com/plug-into-a-new-solar-market-with-the-apsystems-ez1/",
+   "source_title": "Plug Into a New Solar Market with the APsystems EZ1 - APsystems USA",
+   "read": "2026-11-13",
+   "note": "The article (dated 2026-10-07) says: 'Designed for 120V plug-in applications where permitted, the EZ1 is a 900VA dual-module microinverter.' The 7.5 A is 900 VA / 120 V. I could not read the maker's datasheet figure for rated current."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Circuit condition in its UL 3700 certificate (as reported)",
+   "value": "\"a dedicated 10 A circuit, or a listed bidirectional Class A GFCI on a non-dedicated circuit\"; \"a proprietary locking plug and a matching permanently installed receptacle\"",
+   "source": "https://pluginsolarcheck.com/kits/certifications",
+   "source_title": "Which plug-in solar kits are UL 3700 certified? | pluginsolarcheck.com",
+   "read": "2026-11-13",
+   "note": "This is pluginsolarcheck's quote of the CSA certificate. I opened the certificate PDF (solar-electric.com/lib/wind-sun/North_America_UL3700_certificate_EZ1-LV_QW-ED-07-305.pdf) but could not extract its text. solarwaypoint.com reports the same condition under CSA Certificate 80310017."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Outage behaviour",
+   "value": "Shuts down during a grid outage and \"Restarts only after grid power has been stable for five minutes\"",
+   "source": "https://usa.apsystems.com/ez1-consumers/",
+   "source_title": "EZ1 – Consumers - APsystems USA",
+   "read": "2026-11-13",
+   "note": "Page also says 'CSA certified to UL 3700 and meets UL 1741 SB requirements.' It gives no time for how fast the plug prongs lose power after unplugging."
+  },
+  {
+   "product": "APsystems EZ1-LV",
+   "label": "Price",
+   "value": "$325.00 (APsystems USA store); $287.00 (solar-electric.com)",
+   "source": "https://usa.apsystems.com/product/ez1-microinverter/",
+   "source_title": "EZ1 Plug-in Microinverter (DIY) - APsystems USA",
+   "read": "2026-11-13",
+   "note": "SKU 140219. I read the $287.00 at https://www.solar-electric.com/apsystems-ez1-lv-na-140219-balcony-solar-microinverter.html the same day. solarwaypoint.com reported the APsystems store as sold out on 2026-11-03, and I did not check stock."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "How fast the plug loses voltage after unplugging",
+   "value": "residual voltage below 15 Vac / 30 Vdc within 0.16 s of disconnection",
+   "source": "https://www.hoymiles.com/us/hiflowpro.html",
+   "source_title": "HiFlow Pro | Hoymiles",
+   "read": "2026-11-13",
+   "note": "Maker's wording: 'The microinverter AC plug features intelligent rapid voltage reduction, reducing residual voltage to below 15Vac/30Vdc within 0.16 seconds after disconnection.' The same page says up to 4 units per system and 1,200 W total output."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV",
+   "label": "Rated AC output per model",
+   "value": "360 / 391 / 420 / 450 / 500 VA at 120 V nominal (90–150 V), about 3.0 / 3.26 / 3.5 / 3.75 / 4.17 A",
+   "source": "https://www.hoymiles.com/us/products/hiflow-pro-lv-series.html",
+   "source_title": "HiFlow (360-500) Pro LV_All Products_NA-Hoymiles",
+   "read": "2026-11-13",
+   "note": "VA is from the maker's spec table and current is VA / 120 V. solar-electric.com lists 3.0 A rated output current for the HMS-360-1WM-LV, which matches. Compared with the EZ1-LV's 7.5 A, one unit adds about 40–56% as much current the breaker cannot see."
+  },
+  {
+   "product": "Hoymiles HiFlow Pro LV (HMS-360-1WM-LV)",
+   "label": "Price",
+   "value": "$160.42",
+   "source": "https://www.solar-electric.com/hoymiles-hms-360-1wm-lv-hiflow-pro-microinverter.html",
+   "source_title": "Hoymiles HMS-360-1WM-LV HiFlow Pro LV 1-in-1 series plug-in microinverter | Northern Arizona Wind & Sun",
+   "read": "2026-11-13",
+   "note": "This is a retailer price, since Hoymiles has no US store. The page lists a Type B plug on a 14 AWG cable and compliance 'UL 1741, UL 3700, IEEE 1547'."
+  }
+ ],
+ "unsourced": [
+  "The text of the EZ1-LV CSA UL 3700 certificate itself. The PDF opened, but I could not extract text from it, so the 10 A dedicated-circuit condition is cited through pluginsolarcheck.com.",
+  "EZ1-LV rated AC output current and plug type from the APsystems datasheet and manual. Both PDFs were image or compressed streams, and manuals.plus returned 403.",
+  "How fast the EZ1-LV plug prongs lose voltage after unplugging. Neither APsystems page I read gives it.",
+  "Circuit requirements in the Hoymiles HiFlow Pro LV NA manual REV1.1 (dedicated receptacle, breaker size, GFCI). The PDF could not be extracted.",
+  "Clause text of UL 3700 Edition 2 and the circuit tiers proposed in NFPA 70 TIAs 1951–1953. The standard is paywalled, and the TIA PDFs could not be extracted.",
+  "Circuit requirements and plug behaviour for the EcoFlow STREAM Microinverter. I ran out of tool budget before researching it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2366479
+ }
+}

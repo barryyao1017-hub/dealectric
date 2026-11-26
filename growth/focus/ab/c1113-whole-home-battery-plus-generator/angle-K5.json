@@ -1,0 +1,168 @@
+{
+ "angle": "K5",
+ "gap": "No result ChatGPT got states that a whole-home battery charges far more slowly from a 120 V generator than from a 240 V one: Anker says the E10 takes 1,800 W from a 120 V generator but 7,680 W at 240 V. The 120 V figure is roughly 3.4 h to refill one 6.144 kWh B6000 module, and Anker says charging above 12 A on 120 V should stay under 3 hours. Anker's own Smart Generator 5500 has only 120 V AC outlets, so its 4,500 W DC cable is the only way it refills the E10 quickly.",
+ "standout": 2,
+ "standout_why": "I read the three FranklinWH pages ChatGPT cited. The generator FAQ gives no kW limit, charge rate or start wiring. The Generator Module page lists no specs. The aPower 2 page says only that it stores energy 'from ... generator'. None says how fast a generator recharges the battery or that the generator's voltage limits it. One FranklinWH result that was not cited (knowledge-center article) says portable generators must 'meet the 240 V, 60 Hz requirements' and recommends two-wire dry contact. That is part of the voltage point, but it gives no charge rate and says nothing about 120 V. This is new and useful. It decides which generator to buy, but it does not change which battery set to pick, so I scored it 2 and not 3.",
+ "kit_items": [
+  "Battery + whole-home gateway: Anker SOLIX E10 (7,680 W continuous, 6.144 kWh B6000 modules) with Power Dock. The Power Dock is rated for 200 A service entry, switches over in ≤20 ms and has generator pass-through. It is the only set I found in an approved store that sells the battery, the gateway and the generator together on one page.",
+  "Generator: Anker SOLIX Smart Generator 5500 (Tri-Fuel). It connects to the E10 with one DC cable (power plus communication) and charges at up to 4,500 W. When paired with an E10, it auto-starts at a battery charge level you set in the app. Its own AC side is 120 V only (5-20R + TT-30R), so a generic AC hookup would hit the 1,800 W limit.",
+  "If you use a third-party standby generator instead: Anker says it 'needs to be a 240V model that supports Two Wire or Utility Sensing control'. A 120 V portable generator charges the battery at only 1,800 W and usually cannot auto-start.",
+  "Cheaper alternative set: BLUETTI Apex 300 + B300K + Home Backup Kit. BLUETTI's comparison page lists '120V/240V Generator Charging 3,840W Max.' I found no generator auto-start (dry contact) feature for it, so the generator would be started by hand.",
+  "Amazon alternative: EcoFlow DELTA Pro Ultra 6 kWh + Smart Home Panel 2. No generator is included, and I did not source its generator-charging rate.",
+  "ChatGPT's pick (FranklinWH aPower 2 + Generator Module) is sold through installers. No approved store sells it, so it cannot be a one-cart kit."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX E10 + Power Dock + Smart Generator 5500 (Tri-Fuel) | https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500 | $7,399.00 | 2026-11-13",
+    "Anker SOLIX E10 + Smart Inlet Box + Smart Generator 5500 (Tri-Fuel) | https://www.ankersolix.com/products/e10-smart-inlet-box-smart-generator-5500 | $5,899.00 (compare-at $6,199.00) | 2026-11-13",
+    "Add-on B6000 Battery Module (offered on the bundle page) | https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500 | $2,000.00 (shown next to $2,499.00) | 2026-11-13",
+    "Anker SOLIX Smart Generator 5500 (standalone) | https://www.ankersolix.com/products/smart-generator-5500 | $1,999.00 | 2026-11-13"
+   ],
+   "bundle_sku": "E10 + Power Dock + Smart Generator 5500 (Tri-Fuel), $7,399.00. The box list includes a B6000 battery, but the battery is also offered as an add-on, so whether the price includes one is unclear."
+  },
+  {
+   "store": "BLUETTI (bluettipower.com)",
+   "items": [
+    "BLUETTI Apex 300 + B300K + Home Backup Kit (Single Apex 300) | https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300 | $3,199.00 (compare-at $3,399.00) | 2026-11-13",
+    "BLUETTI Apex 300 + B500K + Home Backup Kit | https://www.bluettipower.com/products/b500k2-apex-300-home-integration-kit | $3,799.00 (compare-at $4,099.00) | 2026-11-13"
+   ],
+   "bundle_sku": "Apex 300 + B300K + Home Backup Kit, $3,199.00. No generator is included."
+  },
+  {
+   "store": "Amazon",
+   "items": [
+    "EcoFlow Delta Pro Ultra 6kWh plus Smart Home Panel 2 (ASIN B0HLQXNCKL) | https://www.amazon.com/dp/B0HLQXNCKL | $7,899.00 | 2026-11-13",
+    "EF ECOFLOW Smart Home Panel 2 (ASIN B0D14H686R) | https://www.amazon.com/dp/B0D14H686R | $1,599.00 | 2026-11-13"
+   ],
+   "bundle_sku": "EcoFlow Delta Pro Ultra 6kWh plus Smart Home Panel 2, $7,899.00. No generator is included."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC recharge rate from a generator, 120 V vs 240 V",
+   "value": "1,800 W at 120 V; 7,680 W at 240 V",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "How Automatic Generator Integration Works with a Home Battery Backup System (Anker SOLIX blog, 27 Aug 2026)",
+   "read": "2026-11-13",
+   "note": "The blog says: 'On 120V, E10 charges at up to 1,800 W, and continuous charging above 12 A should stay under 3 hours.' The product page agrees: AC input recharging 1,800W 120V/15A or 7,680W 240V/32A. Arithmetic: one 6.144 kWh B6000 from empty takes 6.144/1.8 ≈ 3.4 h at 120 V, 6.144/7.68 ≈ 0.8 h at 240 V, and 6.144/4.5 ≈ 1.4 h on the 4.5 kW DC cable (losses ignored)."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Third-party standby generator requirement",
+   "value": "240 V model with Two Wire or Utility Sensing control",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "How Automatic Generator Integration Works with a Home Battery Backup System",
+   "read": "2026-11-13",
+   "note": "The same page says third-party generators 'typically connect via AC' and 'most portable models lack SOC-based or app-controlled auto-start.'"
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "DC charge into E10 by mode",
+   "value": "4,500 W Turbo / 4,000 W Eco / 2,000 W Quiet (Quiet: ≤66 dB at 23 ft)",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "DC output works only when paired with an E10. Auto start by battery charge level requires a connected Anker SOLIX product. Eco mode is 69 dB(A) at 7 m."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "AC output and outlets",
+   "value": "3,600 W rated, 120 V only; one NEMA 5-20R + one TT-30R",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "Starting power is 4,500 W on gasoline or LPG and 4,000 W on natural gas. The spec table seems to swap the AC and DC labels, so I used the highlights section. Because the AC side is 120 V only, hooking it up to the E10 by AC would hit the 1,800 W limit."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Energy per tank",
+   "value": "about 17 kWh from 10 L (2.64 gal) of gasoline",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "Anker's own claim. It runs on one fuel at a time (gasoline, LPG or natural gas), weighs 110 lb and has a 3-year warranty."
+  },
+  {
+   "product": "Anker SOLIX E10 + Power Dock + Smart Generator 5500",
+   "label": "Bundle price",
+   "value": "$7,399.00",
+   "source": "https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500",
+   "source_title": "E10 + Power Dock + Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "Specs on the same page: 7,680 W continuous; 10,000 W Turbo for 90 min with two batteries; 200 A service entry; 12-circuit load management; ≤20 ms switchover; 6–90 kWh; B6000 = 6.144 kWh. The page lists two conflicting surge figures."
+  },
+  {
+   "product": "Anker SOLIX E10 + Smart Inlet Box + Smart Generator 5500",
+   "label": "Bundle price",
+   "value": "$5,899.00 (compare-at $6,199.00)",
+   "source": "https://www.ankersolix.com/products/e10-smart-inlet-box-smart-generator-5500",
+   "source_title": "Anker SOLIX E10 + Smart Inlet Box + Smart Generator 5500 (Tri-Fuel)",
+   "read": "2026-11-13",
+   "note": "The Smart Inlet Box page describes this as the manual-backup option ('Works With Existing Transfer Switch & Inlet Box'). The Power Dock is the automatic whole-home gateway."
+  },
+  {
+   "product": "BLUETTI Apex 300",
+   "label": "Generator charging",
+   "value": "3,840 W max at 120 V/240V (product page also says 'up to 11.5kW input at 120V/240V')",
+   "source": "https://bluettipower.com/pages/apex-300-tob",
+   "source_title": "Apex 300 Versatile Power Station (BLUETTI)",
+   "read": "2026-11-13",
+   "note": "BLUETTI's two pages give conflicting figures. The 11.5 kW figure comes from https://www.bluettipower.com/products/apex-300-home-battery-backup and probably includes bypass. BLUETTI lists 2,764.8 Wh and 3,840 W continuous per unit."
+  },
+  {
+   "product": "BLUETTI Apex 300 + B300K + Home Backup Kit",
+   "label": "Price",
+   "value": "$3,199.00 (compare-at $3,399.00), 5,529.6 Wh",
+   "source": "https://www.bluettipower.com/products/apex-300-b300k-home-backup-kit-single-apex-300",
+   "source_title": "Apex 300 + B300K + Home Backup Kit (Single Apex 300)",
+   "read": "2026-11-13",
+   "note": "Price read through the Shopify storecheck tool and on the product page. The Black Friday Early Access promotion runs Nov 5–18."
+  },
+  {
+   "product": "EcoFlow Delta Pro Ultra 6kWh + Smart Home Panel 2",
+   "label": "Amazon price",
+   "value": "$7,899.00",
+   "source": "https://www.amazon.com/dp/B0HLQXNCKL",
+   "source_title": "EcoFlow Delta Pro Ultra 6kWh plus Smart Home Panel 2",
+   "read": "2026-11-13",
+   "note": "Read with amzcheck.py asin; it has 379 ratings. Smart Home Panel 2 alone (B0D14H686R) is $1,599.00."
+  },
+  {
+   "product": "FranklinWH aPower 2",
+   "label": "Capacity / output / scaling",
+   "value": "15 kWh; 10 kW continuous; up to 15 aPower per aGate (225 kWh)",
+   "source": "https://www.franklinwh.com/products/apower2-home-battery-backup/",
+   "source_title": "aPower 2: The New Standard of Home Battery Backup",
+   "read": "2026-11-13",
+   "note": "No price is shown. The site sends buyers through homeowner and installer paths, and no approved store sells it."
+  },
+  {
+   "product": "FranklinWH (generator integration)",
+   "label": "Portable generator voltage requirement",
+   "value": "240 V, 60 Hz",
+   "source": "https://www.franklinwh.com/knowledge-center/how-franklinwhs-generator-integration-solution-reinvents-home-power-backup",
+   "source_title": "How FranklinWH's Generator Integration Solution Reinvents Home Power Backup",
+   "read": "2026-11-13",
+   "note": "This was in ChatGPT's results but not cited. It recommends two-wire dry contact and suggests generator sizes (12 kW for one aPower, 23 kW for two), but gives no charge rate. The cited FAQ (https://www.franklinwh.com/support/articles/detail/can-i-use-a-generator-with-my-franklinwh-system) gives no kW, charge rate or start wiring."
+  }
+ ],
+ "unsourced": [
+  "FranklinWH aPower 2 and Generator Module prices: the maker's pages show none, and no approved store sells them.",
+  "FranklinWH aPower 2 charge rate from a generator: not on the cited pages, the knowledge-center article or the aPower 2 page. I did not open the installation guide PDF.",
+  "Whether the $7,399 and $5,899 Anker bundles include a B6000 battery: 'What's in the Box' lists one, but the same page offers the B6000 as a $2,000 add-on.",
+  "Whether the E10 switches over automatically with the Smart Inlet Box (rather than the Power Dock): the page does not confirm it.",
+  "Contents of BLUETTI's 'Home Backup Kit' (transfer switch or inlet): the product page lists only the Apex 300 box contents.",
+  "BLUETTI Apex 300 generator auto-start (dry contact or two-wire): not found on BLUETTI's product page or comparison page.",
+  "EcoFlow DELTA Pro Ultra generator-charging rate and auto-start: I did not open EcoFlow's US pages.",
+  "Independent measured tests of E10 generator charging: ESS News (Andrew Riha, 2026-05-21) reviewed the E10, but the generator section could not be read through the fetch tool."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.1464108
+ }
+}

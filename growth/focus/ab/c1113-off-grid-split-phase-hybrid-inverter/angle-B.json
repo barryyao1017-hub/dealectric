@@ -1,0 +1,129 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what each inverter burns just by staying on. Over 24 hours that comes to about 1.56 kWh/day (569 kWh/yr) for the EG4 FlexBOSS21, 2.16 kWh/day (788 kWh/yr) for the Sol-Ark 15K-2P, 1.44–1.68 kWh/day for the EG4 18kPV, 1.2 kWh/day for the EG4 6000XP and 2.59 kWh/day for the Sol-Ark 18K. Off-grid, the Sol-Ark 15K uses about 219 kWh more per year than the FlexBOSS21 just sitting idle.",
+ "standout": 2,
+ "standout_why": "I checked three cited pages. ecosolarkits.com/blogs/guides/eg4-vs-sol-ark works out $/kW of battery-only output and battery amps at full load. ecosolarkits.com/blogs/guides/split-phase-inverter-explained works out $/kW of continuous output and battery current. liveoffthegrid.com/specs/inverters has $/W and charger amps. None of them gives an idle or no-load draw, or turns it into kWh per day or per year. So the $/kW angle is already covered and the energy lost to idle draw is not.",
+ "decides": "It backs EG4 FlexBOSS21 and EG4 18kPV over Sol-Ark 15K for off-grid or battery-heavy buyers. They are cheaper per kW, and they also draw about 20–30 W less at idle, which saves roughly 0.5–0.7 kWh every day from the battery bank. For a grid-tied owner it doesn't change the pick, because the grid covers that small loss. EG4 6000XP has the lowest idle draw (about 1.2 kWh/day) for small off-grid builds.",
+ "candidates": [
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "EG4 18kPV",
+  "EG4 6000XP",
+  "Sol-Ark 18K"
+ ],
+ "findings": [
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle draw, measured",
+   "value": "65 W",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS21: Which Hybrid Solar Inverter is Best for Your Home? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'consumed about 65 watts during our idle consumption tests'. No author or date is given on the page."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Idle energy per day / per year",
+   "value": "1.56 kWh/day; 569 kWh/yr",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS21 (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "65 W × 24 h = 1,560 Wh/day; 65 W × 8,760 h = 569 kWh/yr"
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle consumption, no load (datasheet figure as reproduced by the retailer)",
+   "value": "90 W",
+   "source": "https://www.batteriesinaflash.com/solar/sol-ark-sa-15k-2p-n-15-0kw-battery-based-inverter",
+   "source_title": "Sol-Ark 15K-2P Limitless Pre-wired Hybrid Inverter System SA-15K-2P-N (Batteries in a Flash)",
+   "read": "2026-11-13",
+   "note": "The page says 'Idle Consumption Typical—No Load: 90W'. This is a retailer's spec table, not Sol-Ark's own page. The Sol-Ark page returned 404 and the datasheet PDF wasn't readable as text."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Idle energy per day / per year",
+   "value": "2.16 kWh/day; 788 kWh/yr",
+   "source": "https://www.batteriesinaflash.com/solar/sol-ark-sa-15k-2p-n-15-0kw-battery-based-inverter",
+   "source_title": "Sol-Ark SA-15K-2P-N (Batteries in a Flash)",
+   "read": "2026-11-13",
+   "note": "90 W × 24 h = 2,160 Wh/day; 90 W × 8,760 h = 788 kWh/yr"
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Continuous AC power from batteries; continuous battery charging",
+   "value": "12,000 W; 275 A",
+   "source": "https://www.batteriesinaflash.com/solar/sol-ark-sa-15k-2p-n-15-0kw-battery-based-inverter",
+   "source_title": "Sol-Ark SA-15K-2P-N (Batteries in a Flash)",
+   "read": "2026-11-13",
+   "note": "Retailer spec table"
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Price (Batteries in a Flash)",
+   "value": "$6,900 (regular $7,899)",
+   "source": "https://www.batteriesinaflash.com/solar/sol-ark-sa-15k-2p-n-15-0kw-battery-based-inverter",
+   "source_title": "Sol-Ark SA-15K-2P-N (Batteries in a Flash)",
+   "read": "2026-11-13",
+   "note": "Pre-wired system SKU SA-15K-2P-N. This is a retailer price, because Sol-Ark doesn't sell direct."
+  },
+  {
+   "product": "Sol-Ark 15K-2P vs EG4 FlexBOSS21",
+   "label": "Extra idle energy per year",
+   "value": "219 kWh/yr",
+   "source": "https://www.batteriesinaflash.com/solar/sol-ark-sa-15k-2p-n-15-0kw-battery-based-inverter",
+   "source_title": "Sol-Ark SA-15K-2P-N (Batteries in a Flash) + The Solar Lab FlexBOSS21 test",
+   "read": "2026-11-13",
+   "note": "(90 W − 65 W) × 8,760 h = 219 kWh/yr. One figure is a datasheet value and the other is a measurement."
+  },
+  {
+   "product": "EG4 18kPV",
+   "label": "Idle draw, measured; idle energy per day",
+   "value": "60–70 W; 1.44–1.68 kWh/day (526–613 kWh/yr)",
+   "source": "https://www.thesolarlab.com/review/eg4-18kpv-inverter-review",
+   "source_title": "EG4 18kPV Inverter Review: Is it Still Worth it in 2026? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'the 18kPV uses about 60 to 70 watts'. 60–70 W × 24 h = 1,440–1,680 Wh/day; × 8,760 h = 526–613 kWh/yr"
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Idle draw (spec, which the reviewer's amp reading supports); idle energy per day",
+   "value": "50 W; 1.2 kWh/day (438 kWh/yr)",
+   "source": "https://www.thesolarlab.com/review/eg4-6000xp-off-grid-inverter-review",
+   "source_title": "EG4 6000XP Off-Grid Inverter Review (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab quotes the 50 W idle spec and measured 0.9–1.2 A, 'right in line with the 50 watt idle'. 50 W × 24 h = 1,200 Wh/day; × 8,760 h = 438 kWh/yr"
+  },
+  {
+   "product": "Sol-Ark 18K",
+   "label": "Idle draw, measured; idle energy per day",
+   "value": "108 W; 2.59 kWh/day (946 kWh/yr)",
+   "source": "https://www.thesolarlab.com/review/sol-ark-18k-vs-eg4-flexboss21",
+   "source_title": "Sol-Ark 18K vs EG4 FlexBOSS21 (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab: 'the Sol-Ark 18K idled at roughly 108 watts'. 108 W × 24 h = 2,592 Wh/day; × 8,760 h = 946 kWh/yr"
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals already compute",
+   "value": "$/kW of battery-only output: FlexBOSS21 about $300, 6000XP about $250, Sol-Ark 15K about $470–480. Battery current at full load: about 247 A for 12 kW on 51.2 V.",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "Shows the $/kW angle is already taken, so the idle-energy figure is the new derived number"
+  }
+ ],
+ "unsourced": [
+  "EG4's own idle figure for the FlexBOSS21: the eg4electronics.com product page doesn't list it, and the FlexBOSS21 spec-sheet PDF and the Signature Solar manual PDF didn't come through as readable text",
+  "Sol-Ark's own 15K-2P idle figure: sol-ark.com/limitless-15k-lv returned 404, and the Rev5 datasheet PDF (practicalpreppers.com copy) wasn't readable as text",
+  "EG4's own spec-sheet idle figures for the 18kPV and 6000XP: I used the reviewer figures and didn't open the PDFs",
+  "Sun Gold Power SPH6548P no-load draw: the solaris-shop.com listing doesn't state it, and I didn't open the manual on device.report",
+  "Schneider Conext XW Pro idle draw and price: not researched within the call budget",
+  "EG4 prices from the maker's store: the Signature Solar product URLs I tried returned 404, so FlexBOSS21, 18kPV and 6000XP have no price from me"
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.0347639000000002
+ }
+}

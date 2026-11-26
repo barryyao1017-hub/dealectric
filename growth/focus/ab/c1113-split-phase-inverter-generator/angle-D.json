@@ -1,0 +1,66 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that, on a 120/240 V split-phase inverter generator such as the Honda EU7000iS, each 120 V leg is a separate power circuit. When the unit is set to 120 V/240 V, that leg can carry only half the rated current (22.9 A, about 2,750 W, of 5,500 W). Feeding a house panel therefore needs the 120 V loads balanced across both legs. Full 120 V power (45.8 A) is only available in the '120 V ONLY' position, and that position disables the 240 V receptacle.",
+ "standout": 2,
+ "standout_why": "I opened three pages. lightsonlabs.com (cited) says the EU7000iS is 'the only inverter here with 240 V' and has a 30 A 125/250 V locking outlet. It does not mention per-leg limits, load balancing or the voltage selector. The consumerreports.org inverter-generator page (cited) as served only lists categories and has no 240 V or split-phase content. homewelder.com (ranked 1) gives whole-unit 240 V running amps (iGen12000DFc 37.5 A, Champion 201175 29.2 A, DuroMax XP11000iH 37.5 A) and explicitly does not break them down by leg. ChatGPT's own answer only warned that 'a 50A receptacle doesn't mean the generator can continuously supply 50A at 240V.' None of these pages says that 120 V capacity is cut in half per leg when the 240 V output is active.",
+ "decides": "This confirms the pick rather than changing it. A split-phase unit is needed for a 120/240 V panel or a 240 V well pump, but the shopper has to size each 120 V leg, not just the total watts. On the EU7000iS, a fridge, a sump pump and a space heater on the same leg can trip that leg at about 2,750 W while the unit as a whole is under its 5,500 W rating. A generator whose rating gives about 2,750 W or more per leg covers a typical leg of essential circuits. A 5,100 W unit such as the WEN DF680iX would have roughly 2,550 W per leg if it splits the same way. That figure is my inference, not sourced. This page should tell shoppers to divide 120 V loads across both legs, and to treat the 120 V-only mode as something that cannot be used while the 240 V receptacle is in use.",
+ "candidates": [
+  "Honda EU7000iS",
+  "Westinghouse ecoGen10000",
+  "Champion 201417",
+  "WEN TF1050iX",
+  "WEN DF680iX",
+  "Westinghouse iGen12000DFc"
+ ],
+ "findings": [
+  {
+   "product": "Honda EU7000iS",
+   "label": "Per-leg (per power-producing circuit) current limit in 120 V/240 V mode",
+   "value": "22.9 A per receptacle set (≈2,748 W at 120 V)",
+   "source": "https://www.manualslib.com/manual/858023/Honda-Eu7000is.html?page=40",
+   "source_title": "Honda EU7000iS Owner's Manual, AC operation, printed p. 38 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Manual text: 'each set of receptacles is powered by only one power producing circuit that can produce a maximum of 22.9 amps' and 'you must balance the load', dividing it between the two sets of receptacles. 22.9 A × 120 V = 2,748 W, which is half of the 45.8 A / 5,500 W rated total. This is a ManualsLib copy of Honda's manual. Honda's own site returned 403."
+  },
+  {
+   "product": "Honda EU7000iS",
+   "label": "Total 120 V current in 120 V ONLY mode",
+   "value": "45.8 A total; loads need not be spread across receptacles",
+   "source": "https://www.manualslib.com/manual/858023/Honda-Eu7000is.html?page=40",
+   "source_title": "Honda EU7000iS Owner's Manual, AC operation, printed p. 38 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Manual text: in the 120 V ONLY position 'you do not need to spread the load over the receptacles' as long as 'the total load does not exceed 45.8 amps'. 45.8 A × 120 V ≈ 5,500 W rated."
+  },
+  {
+   "product": "Honda EU7000iS",
+   "label": "What the 120 V ONLY position does to the 240 V outlet",
+   "value": "120/240 V receptacle must not be used; most power goes to the 30 A 120 V locking receptacle",
+   "source": "https://www.manualslib.com/manual/858023/Honda-Eu7000is.html?page=16",
+   "source_title": "Honda EU7000iS Owner's Manual, Controls & Features, printed p. 14 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Manual text: '120 V ONLY: ONLY the 120 V receptacles can be used. Do not use the 120 V/240 V receptacle in this position.' and 'The most power will be available at the 30 A 120 V locking plug receptacle.' So a panel feed that needs both 120 V and 240 V must use the 120 V/240 V position, with the 22.9 A per-leg limit."
+  },
+  {
+   "product": "Honda EU7000iS",
+   "label": "Parallel operation voltage setting",
+   "value": "Both generators' selector switches set to 120 V/240 V",
+   "source": "https://www.manualslib.com/manual/858023/Honda-Eu7000is.html?page=41",
+   "source_title": "Honda EU7000iS Owner's Manual, AC parallel operation, printed p. 39 (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "Manual text: 'Set the voltage selector switch of both generators to 120 V/240 V.' Context for owners planning to pair two units."
+  }
+ ],
+ "unsourced": [
+  "Per-leg 120 V limit, load-balancing rule and any 120 V-only/full-power switch for the Westinghouse ecoGen10000. westinghouse.com returned HTTP 429 to both WebFetch and storecheck.py, the notice-facile manual copy returned 403, and search did not surface the manual's 'Power Output and Demand' section.",
+  "Per-leg 120 V limit and balancing rule for the Champion 201417. Search did not return the 201417 owner's manual. The related Champion 201175 manual was too large for WebFetch, and a download via curl needed approval that was not given.",
+  "Per-leg 120 V limit and selector behaviour for the WEN TF1050iX and WEN DF680iX. The manuals.plus copy returned 403 and no wenproducts.com manual turned up in search.",
+  "Whether each candidate's neutral is bonded to the frame or floating, which matters for transfer-switch and interlock wiring. I found no maker statement for any candidate within the budget.",
+  "Honda's own EU7000iS spec page (powerequipment.honda.com) for the 45.8 A / 22.9 A rated figures and price. The page returned HTTP 403, so the figures above come from the ManualsLib copy of the manual only."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 0.9446637000000002
+ }
+}

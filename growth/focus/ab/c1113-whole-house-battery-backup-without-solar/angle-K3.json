@@ -1,0 +1,109 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that the Anker SOLIX E10 manual accepts third-party AC generators only if their total harmonic distortion is under 10%. That rules out picking any cheap generator as the multi-day recharge source for a no-solar battery. Champion's own page puts its inverter generators at 3% THD or less. Anker's DC-coupled Smart Generator 5500 avoids the limit, because it charges the E10 over a dedicated power-and-data cable.",
+ "standout": 2,
+ "standout_why": "Of the cited rivals, West Electric (westelectric.energy/batteries/compare-batteries) only says FranklinWH has 'native generator integration' and that without solar 'the battery can only ride out a single outage cycle'. It does not cover generator power quality, interlocks or breakers. ChatGPT's own answer says only 'a compatible generator'. The rival Tesla support pages (how-powerwall-works and combining-systems) returned HTTP 403, and I did not open the FranklinWH manual, so I could not check those for a THD figure. They are about different hardware, and none of the Anker E10 limits appear in the results ChatGPT got. Anker's own Power Dock page says the opposite of its manual ('Works with any 240V generator—even standby models'), so a shopper reading only the store page would miss the trap. I scored 2 rather than 3 for two reasons: the THD rule comes from a ManualsLib copy of the manual, not from Anker's own PDF, and I could not open two of the rival pages.",
+ "kit_items": [
+  "Battery and inverter: Anker SOLIX E10 (Power Module + 2× B6000 Battery). It puts out 120/240 V split phase at 7,680 W continuous. It recharges from the grid at 7,680 W on 240 V / 32 A but only 1,800 W on 120 V / 15 A, and with no solar the grid is its only everyday charger.",
+  "Whole-home switch: Anker SOLIX Power Dock. It is a 200 A automatic transfer switch (≤20 ms switchover) with 12 smart branch circuits that can shed loads. The Smart Inlet Box cannot shed loads. It also needs an interlock matched to the panel plus 40 A and 50 A two-pole breakers, and its manual switchover suits a 'whole house' buyer poorly.",
+  "Multi-day outage recharge: Anker SOLIX Smart Generator 5500 (gasoline, propane or natural gas). It DC-couples to the E10 through a dedicated power-and-data cable, so the manual's THD-under-10% rule for third-party AC generators does not apply. It can also be started on a schedule or automatically through the Anker app."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (https://www.ankersolix.com/)",
+   "items": [
+    "Anker SOLIX E10 (Power Module + 2× Battery) + Power Dock, Automatic Backup Kit | https://www.ankersolix.com/products/e10 | $7,799.00 | 2026-11-13",
+    "Anker SOLIX Smart Generator 5500 | https://www.ankersolix.com/products/smart-generator-5500 | $1,999.00 (the E10 page lists this add-on at $1,600.00 / $1,999.00) | 2026-11-13"
+   ],
+   "bundle_sku": "E10 (Power Module + 2× Battery) + Power Dock 'Automatic Backup Kit' at $7,799.00. Bought alone, the Power Dock is $1,999.00. The Smart Generator page lists E10 bundles 'starting at $5,599.00', but I did not open them to see what they include."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Third-party AC generator power-quality limit",
+   "value": "THD under 10%",
+   "source": "https://www.manualslib.com/manual/4532387/Anker-Solix-E10.html",
+   "source_title": "Anker SOLIX E10 User's Manual (ManualsLib copy, 35 pages)",
+   "read": "2026-11-13",
+   "note": "p.12: 'use third-party AC generators with Total Harmonic Distortion (THD) less than 10%.' ManualsLib shows no manual version or date."
+  },
+  {
+   "product": "Anker SOLIX Power Dock",
+   "label": "Store-page generator claim (conflicts with the E10 manual)",
+   "value": "'Works with any 240V generator—even standby models'",
+   "source": "https://www.ankersolix.com/products/power-dock",
+   "source_title": "Anker SOLIX Power Dock",
+   "read": "2026-11-13",
+   "note": "The store page gives no THD limit. Price $1,999.00. Ratings: 200 A max / 160 A continuous grid connection; generator circuits 1–2 are 100 A max / 80 A continuous. 'Only one Anker SOLIX Power Dock is supported per home.' It supports only the E10. It 'must be installed by certified installers or electricians'."
+  },
+  {
+   "product": "general (inverter generators)",
+   "label": "Inverter-generator THD per Champion",
+   "value": "3% THD or less",
+   "source": "https://www.championpowerequipment.com/?p=207571",
+   "source_title": "What is an Inverter Generator? (Champion Power Equipment, dated 2025-10-14)",
+   "read": "2026-11-13",
+   "note": "Champion publishes this figure for inverter models only. The page gives no number for conventional open-frame generators."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC (grid) recharge input",
+   "value": "7,680 W at 240 V / 32 A; 1,800 W at 120 V / 15 A",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10",
+   "read": "2026-11-13",
+   "note": "Anker footnote: '<3 hours when the current exceeds 12A'. My arithmetic: 2× B6000 = 12.288 kWh, so at 1,800 W a full recharge takes at least 6.8 h, and at 7,680 W about 1.6 h (losses ignored)."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Continuous and turbo output",
+   "value": "7,680 W (32 A) continuous; 10,000 W for 90 min with 2+ batteries; 120/240 V split phase",
+   "source": "https://www.ankersolix.com/products/e10",
+   "source_title": "Anker SOLIX E10",
+   "read": "2026-11-13",
+   "note": "Kit prices read today: E10 (Power Module + 2× Battery) + Power Dock $7,799.00; E10 (Power Module + 2× Battery) + Smart Inlet Box $6,299.00 / $6,599.00. The page gives two different surge figures (22.8–66 kW and 37–66 kW)."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "How it connects to the E10, and its output",
+   "value": "DC-coupled through a dedicated power-and-data cable; up to 4,500 W DC / 3,600 W AC; gasoline, propane or natural gas",
+   "source": "https://www.ankersolix.com/products/smart-generator-5500",
+   "source_title": "Anker SOLIX Smart Generator 5500",
+   "read": "2026-11-13",
+   "note": "$1,999.00 on its own page. Offers scheduled or app-controlled automatic start when paired with an E10. The page does not list THD or the box contents."
+  },
+  {
+   "product": "Anker SOLIX Smart Inlet Box",
+   "label": "Breakers the installer must supply",
+   "value": "40 A breaker on the grid port, 50 A breaker on the off-grid port; port limits 32 A grid side and 40 A backup side",
+   "source": "https://www.ankersolix.com/products/smart-inlet-box",
+   "source_title": "Anker SOLIX Smart Inlet Box",
+   "read": "2026-11-13",
+   "note": "$399.00. Its FAQ gives the breaker sizes, and breakers are not listed as included. My arithmetic: 40 A × 240 V = 9.6 kW maximum through the backup port. The Anker comparison page (ankersolix.com/e10-power-dock-smart-inlet-box, read 2026-11-13) shows 'Manual Backup', smart-load control 'No' and a maximum of 1 E10."
+  },
+  {
+   "product": "Anker SOLIX E10 + Smart Inlet Box",
+   "label": "An interlock on the main breaker is part of the install",
+   "value": "Manual: 'Switch the interlock to lock the main circuit breaker.'",
+   "source": "https://www.manualslib.com/manual/4532387/Anker-Solix-E10.html",
+   "source_title": "Anker SOLIX E10 User's Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "p.16. p.13 warns: 'never turn on the main circuit breaker and backup load breaker simultaneously.' p.27: in manual backup mode the system 'charges the battery at full speed from solar and grid power.' The Smart Inlet Box store page does not mention an interlock."
+  }
+ ],
+ "unsourced": [
+  "Whether the panel-specific interlock kit for the Smart Inlet Box is sold separately. Search snippets of Anker's E10 Pre-Installation Checklist and installer-workflow articles on service.ankersolix.com say to buy one matched to the panel in advance. Both URLs returned 404 to my fetch, so I left the claim out.",
+  "A maker-published THD figure for a conventional (non-inverter) portable generator. Champion publishes only its inverter figure (3% or less). The 15–25% figures I found came from forum posts and secondary blogs.",
+  "The FranklinWH and Tesla generator or grid-charging limits. I did not open the FranklinWH manual, and the Tesla support pages returned HTTP 403, so I could not compare those rivals for this trap.",
+  "Forum reports, with counts, of E10 owners whose generator was rejected for high THD. DIY Solar Forum's 'Anker Solix E10 as Backup for home' thread returned 403.",
+  "The text of the E10 manual on Lowe's (pdf.lowes.com 96050929.pdf) and Anker's S3 PDF 000031233. Both came back as binary I could not extract here, because the PDF-to-text command was not approved.",
+  "Amazon prices. I did not check them: every item in the kit is in the Anker SOLIX store, and Bash (which the storecheck/amzcheck tools need) was not approved."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1695437
+ }
+}

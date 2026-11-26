@@ -1,0 +1,74 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that an inverter wired into an RV's AC panel must switch its neutral-to-ground bond: the bond is closed while inverting and opened before shore power passes through. That switching is what the transfer relay in an inverter/charger does (Renogy's REGO 'integrated transfer relay with neutral ground bonding'; Victron's ground relay H, which 'automatically connects the Neutral output to the chassis if no external AC supply is available' and opens 'before the input safety relay closes').",
+ "standout": 2,
+ "standout_why": "I opened both pages ChatGPT cited. Victron's 'How to Size a Solar System for Your RV' (2026-05-04) covers Wh-to-Ah sizing and says only that you need 'correctly sized solar cables, cable lugs, DC fuses'. It says nothing about neutral-ground bonding, a ground relay, a transfer switch or GFCI. The text I could read from Renogy's 'RV Inverter Installation Guide' was only 6,855 characters, mostly site navigation, and also says nothing about bonding or transfer behaviour. rvtime.com would not load (SSL certificate error), and the Victron RV brochure PDF came back as unreadable compressed streams, so I couldn't check those two. Nothing I could read explains why a whole-coach install needs bond switching. ChatGPT's answer only lists 'Transfer switch' as a feature on card 1.",
+ "decides": "It splits ChatGPT's three cards by what the shopper plans to do. If the inverter will feed the RV's existing outlets and panel alongside shore power, the shopper needs a unit whose transfer relay switches the N-G bond. The Renogy REGO 3000W inverter/charger states this on its product page, which supports card 3 (now $989.99 on renogy.com, not the $949 ChatGPT showed). If the shopper only plugs loads into the inverter's own outlets, bond switching doesn't come into play, and the cheaper standalone units (card 1 or 2) work. I couldn't confirm whether the standalone 3000W (P2) has a fixed internal bond, so the page shouldn't say it does.",
+ "candidates": [
+  "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display",
+  "Renogy 2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth",
+  "Renogy 3000W 12V Pure Sine Wave Inverter (P2)",
+  "Victron MultiPlus-II 2x120V"
+ ],
+ "findings": [
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display",
+   "label": "Neutral-ground bonding on shore/inverter transfer (maker's words)",
+   "value": "\"The integrated transfer relay with neutral ground bonding allows switching from shore power mode to inverter and vise versa ensures your RV doesn't lose power unexpectedly.\"",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display | Renogy US",
+   "read": "2026-11-13",
+   "note": "Product description text from Renogy's US Shopify store, read with storecheck.py search. Quoted verbatim, including Renogy's typo 'vise versa'."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display",
+   "label": "Price, Renogy US store",
+   "value": "$989.99 (compare-at $1,139.99), in stock",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display | Renogy US",
+   "read": "2026-11-13",
+   "note": "storecheck.py search of renogy.com. ChatGPT's card showed $949.00."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+   "label": "Transfer time",
+   "value": "10 ms",
+   "source": "https://www.manualslib.com/manual/3182492/Renogy-Rego.html",
+   "source_title": "Renogy REGO User Manual (12V 3000W Inverter Charger, Version A0) | ManualsLib",
+   "read": "2026-11-13",
+   "note": "Spec table, manual page 95: 'Transfer Time 10 ms'. This is a ManualsLib mirror of Renogy's manual because the Renogy-hosted PDF links returned 404. The bonding-relay chapter wasn't in the excerpt I could read."
+  },
+  {
+   "product": "Victron MultiPlus-II 2x120V",
+   "label": "Ground relay behaviour (maker's words)",
+   "value": "Ground relay H \"automatically connects the Neutral output to the chassis if no external AC supply is available\"; \"If an external AC supply is provided, the ground relay H will open before the input safety relay closes\", which \"ensures the correct operation of an earth leakage circuit breaker connected to the output.\"",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_2x120V/en/installation.html",
+   "source_title": "MultiPlus-II 2x120V manual – Installation | Victron Energy",
+   "read": "2026-11-13",
+   "note": "For mobile installs the same page says 'interrupting the shore connection will simultaneously disconnect the grounding connection', so the casing must be connected to the vehicle chassis."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth",
+   "label": "Price, Renogy US store",
+   "value": "$364.99, in stock",
+   "source": "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth",
+   "source_title": "2000W 12V Pure Sine Wave Inverter with UPS Transfer Switch and Built-in Bluetooth | Renogy US",
+   "read": "2026-11-13",
+   "note": "storecheck.py search. Matches ChatGPT card 1. The store description says only 'UPS switches between AC and DC power' and doesn't say how the unit handles the neutral-ground bond."
+  }
+ ],
+ "unsourced": [
+  "Whether the standalone Renogy 3000W 12V P2 inverter (ChatGPT card 2) has a fixed internal neutral-ground bond. Search snippets of the P2 manual say it does, but every copy I tried failed: solartown.com returned 403, ca.renogy.com returned 404, and the renogy.com CDN PDF was over 10 MB.",
+  "Price of the 3000W variant of Renogy's 3000W/2000W/1000W/700W 12V P2 inverter. The store search showed only the lowest variant at $149.99, and the product page returned HTTP 429 twice.",
+  "Wording of the REGO's N-G bonding relay chapter (default state and how to enable or disable it). The RIV1230RCH-SPS manual on ca.renogy.com returned 404, and the ManualsLib excerpt didn't include that chapter.",
+  "Renogy PCL-series 2000/3000W manual (hosted by Forest River) text on 'automatic neutral-to-ground bond switching'. The PDF downloaded, but the text wasn't extractable without a PDF tool that needed approval.",
+  "NEC Article 551 / NFPA 1192 wording on keeping neutral isolated from ground in RV panels. These are paywalled standards and I didn't try to open them.",
+  "Whether rvtime.com's RV inverter guide covers bonding. It failed with an SSL certificate error. I also couldn't read the Victron RV brochure PDF (compressed streams only)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 1.0173659
+ }
+}

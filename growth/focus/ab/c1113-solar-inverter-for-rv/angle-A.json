@@ -1,0 +1,128 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got says that a '3000' inverter is not a 3,000 W continuous load rating across brands. Victron rates its MultiPlus-II 12/3000/120-50 at 3,000 VA, which is 2,400 W at 25 °C, 2,200 W at 40 °C and 1,700 W at 65 °C, with a 5,500 W peak. On the Renogy store text I read, Renogy rates its 12V 3000W inverter at '3000W continuous / 6000W peak' and the REGO 12V 3000W at 'peak power up to 9000W', with no temperature or surge duration given.",
+ "standout": 2,
+ "standout_why": "I compared against the cited Victron knowledge article 'How to Size a Solar System for Your RV'. Its only inverter figure is an allowance of 'about 10-15% extra' for inverter losses. It has no VA vs W, no temperature derating, no surge duration and no idle draw. I tried to open the cited Renogy 'RV Inverter Installation Guide' but got only site navigation (6,858 characters, no article body). I tried to open rvtime.com but it failed on an SSL certificate error. ChatGPT's own answer sizes by headline watts ('3,000W … larger microwave, multiple appliances, some air conditioners') and treats the Renogy $414.99 3000W and $949 REGO cards as like-for-like 3,000 W units.",
+ "decides": "It changes the sizing advice more than the brand pick. A 3,000-class inverter in a hot RV bay should be planned at about 2,200 W continuous, using Victron's 40 °C figure, because Renogy publishes no temperature basis. Someone running an RV air conditioner or a microwave plus a coffee maker on a 'starter 2,000W' unit is likely under-sized. The surge figures also don't compare: Renogy's 6,000 W and 9,000 W 'peak' carry no duration on the store text, while Victron's 5,500 W peak sits beside a continuous rating that drops with temperature. Idle draw matters for solar-only RV use. Victron states 13 W at zero load, 9 W in AES mode and 3 W in Search mode. That is about 312 Wh/day at 13 W versus 72 Wh/day at 3 W, roughly a third of a 100 W panel's daily yield. I could not source the Renogy equivalents, so the idle comparison is one-sided.",
+ "candidates": [
+  "Renogy 3000W 12V Pure Sine Wave Inverter",
+  "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+  "Renogy 3000W/2000W/1000W 12V Pure Sine Wave Inverter with UPS Transfer Switch",
+  "Victron MultiPlus-II 12/3000/120-50"
+ ],
+ "findings": [
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Continuous output at 25 °C",
+   "value": "3,000 VA / 2,400 W",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": "The '3000' in the model name is VA. Real power is 80% of that at 25 °C."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Continuous output at 40 °C",
+   "value": "2,200 W",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": "2,200 / 3,000 = 73% of the headline number. 40 °C is a plausible inverter-bay temperature in summer."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Continuous output at 65 °C",
+   "value": "1,700 W",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": "Maker-stated derating curve point."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Peak power",
+   "value": "5,500 W",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": "Duration not stated on this page."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Zero-load power (normal / AES / Search)",
+   "value": "13 W / 9 W / 3 W",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": "Over 24 h: 312 Wh normal vs 72 Wh in Search mode. My arithmetic."
+  },
+  {
+   "product": "Victron MultiPlus-II 12/3000/120-50",
+   "label": "Max efficiency / max charge current",
+   "value": "93% / 120 A",
+   "source": "https://www.victronenergy.com/media/pg/MultiPlus-II_120V/en/technical-specifications-mp-ii-120v.html",
+   "source_title": "MultiPlus-II 120V – 7. Technical specifications",
+   "read": "2026-11-13",
+   "note": ""
+  },
+  {
+   "product": "Renogy 3000W 12V Pure Sine Wave Inverter",
+   "label": "Rated output as stated by maker",
+   "value": "3,000 W continuous / 6,000 W peak",
+   "source": "https://www.renogy.com/products/3000w-12v-pure-sine-wave-inverter",
+   "source_title": "3000W/2000W/1000W/700W 12V Pure Sine Wave Inverter | Renogy US",
+   "read": "2026-11-13",
+   "note": "Text read through storecheck.py search of renogy.com: 'Experience the true potential of 3000W continuous output and a staggering 6000W peak power'. No temperature basis or surge duration in that text. The listed price of $149.99 belongs to an unspecified variant, likely the 700W, so I did not use it as the 3000W price. A product lookup returned HTTP 429."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+   "label": "Rated output as stated by maker",
+   "value": "3,000 W continuous / up to 9,000 W peak",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display | Renogy US",
+   "read": "2026-11-13",
+   "note": "Text read through storecheck.py search of renogy.com: '3000W continuous pure sine wave AC output and peak power up to 9000W'. No duration or temperature attached."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger",
+   "label": "Price, Renogy US store",
+   "value": "$989.99 (compare-at $1,139.99)",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display | Renogy US",
+   "read": "2026-11-13",
+   "note": "From the storecheck.py search result. ChatGPT's card showed $949.00. I could not confirm the variant with a product lookup (HTTP 429)."
+  },
+  {
+   "product": "Renogy 2000W 12V Pure Sine Wave Inverter",
+   "label": "Rated output / efficiency as stated by maker",
+   "value": "2,000 W continuous / 4,000 W peak, efficiency 'exceeding 90%'",
+   "source": "https://www.renogy.com/products/2000w-12v-pure-sine-wave-inverter",
+   "source_title": "2000W 12V Pure Sine Wave Inverter | Renogy US",
+   "read": "2026-11-13",
+   "note": "Text read through storecheck.py search. Store price shown $285.99 (compare-at $649.99), variant not confirmed."
+  },
+  {
+   "product": "general",
+   "label": "Inverter loss allowance in the cited rival",
+   "value": "10–15% extra for AC appliances",
+   "source": "https://www.victronenergy.com/knowledge-articles/2026/5/4/how-to-size-rv-solar-system",
+   "source_title": "How to Size a Solar System for Your RV | Victron Energy",
+   "read": "2026-11-13",
+   "note": "This is the only inverter figure in the cited article. It has no derating, VA/W, surge or idle figures."
+  }
+ ],
+ "unsourced": [
+  "Renogy REGO 12V 3000W (RIV1230RCL-1SS / HF RIV1230RCH-SPS) surge durations, temperature derating and no-load consumption. A search snippet claimed '<30 W normal / <15 W power-saving' and tiered surge of '9000 VA 100 ms, 4500 VA 5 s, 3600 W 10 s'. The product pages returned HTTP 429, the ca.renogy.com manual PDFs returned 404, and the manualslib quick guide has no spec table, so I left these out.",
+  "Renogy 3000W 12V standalone inverter no-load current and surge duration. The Forest River-hosted PCL-series manual PDF downloaded but was not readable as text, and converting it locally needed approval.",
+  "Renogy UPS Transfer Switch inverter (2000W, the $364.99 card) specs and today's 2000W variant price. The store returned 429 and the search text was empty.",
+  "Victron MultiPlus-II 12/3000/120-50 US price. No maker US store. Not looked up within budget.",
+  "Victron peak-power duration and transfer time. Not on the technical-specifications page, and the datasheet PDF could not be read as text.",
+  "rvtime.com 'RV Inverter Guide' (result 8) contents. The fetch failed on an SSL certificate error, so I could not check whether it covers derating."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 0.9316138000000002
+ }
+}

@@ -1,0 +1,99 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a 3000 W inverter on a 12 V battery draws at least 234 A (3000 W ÷ 12.8 V), while the usual 12 V 100 Ah LiFePO4 has a 100 A BMS and is rated for 1,280 W of output, so a 12 V 3000 W all-in-one on one such battery will be shut off by the battery's BMS long before it reaches its rated output. The maker's own 12 V 3000 W kit ships with two batteries and a 300 A DC breaker for this reason.",
+ "standout": 2,
+ "standout_why": "I tried to open the Renogy pages ChatGPT got: the REGO 12V 3000W pages (results 4/5/7) and the 2000W HF page (result 9). renogy.com returned HTTP 429 on every try, so I could not check their text. I compared against what I could read: ChatGPT's answer and the result titles. The answer only says a 24 V or 48 V system 'reduces DC current' above about 2,000 W. It gives no amp figure, says nothing about the battery's BMS current limit, and does not say how many 12 V batteries a 3000 W unit needs. Results 1–3 and 12 are Renogy kit and RV pages, and their titles cover battery kWh, not the discharge current a 12 V inverter needs. I could not open them to confirm the body text.",
+ "decides": "This doesn't change which inverter is the pick (ACOPOWER 3000W/12V is still the true all-in-one at $1,298). It decides whether the shopper's plan works. A 12 V 3000 W all-in-one needs a battery bank that can supply about 234 A or more: two or more 100 A-BMS 100 Ah batteries in parallel, or batteries with a higher-rated BMS, plus heavy cable and a roughly 300 A breaker. Sun Gold Power's own SGK-PRO3 kit is built exactly that way. On one Redodo 12V 100Ah (100 A BMS, 1,280 W), the shopper effectively has a 1,200–1,300 W inverter. If they need sustained loads near 3000 W, a 24 V unit halves the current.",
+ "candidates": [
+  "ACOPOWER 3000W/12V All-in-One Hybrid Solar Charger Inverter",
+  "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+  "PowMr 1.6kW/2kW 12V All-in-One Inverter Charger (230 V output)"
+ ],
+ "findings": [
+  {
+   "product": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "label": "Price on maker's US store",
+   "value": "$1,298.00",
+   "source": "https://www.acopower.com/products/acopower-3000w-30v-to-300v-all-in-one-pure-sine-wave-power-inverter",
+   "source_title": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Matches the $1,298 card ChatGPT showed. The page offers 30A, 40A, 60A, 80A, 100A and 150A options. The page does not say which current each option sets, and the full spec table did not load in the captured text."
+  },
+  {
+   "product": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "label": "Size and weight",
+   "value": "18.2 × 10.6 × 4.2 in, 16.5 lb (7.5 kg)",
+   "source": "https://www.acopower.com/products/acopower-3000w-30v-to-300v-all-in-one-pure-sine-wave-power-inverter",
+   "source_title": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Maker product page."
+  },
+  {
+   "product": "general",
+   "label": "Battery-side DC current of a 3000 W inverter on a 12 V LiFePO4 bank",
+   "value": "≥234 A",
+   "source": "https://www.acopower.com/products/acopower-3000w-30v-to-300v-all-in-one-pure-sine-wave-power-inverter",
+   "source_title": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Arithmetic: 3000 W rated output (maker title) ÷ 12.8 V nominal LiFePO4 = 234 A. This is a lower bound: inverter losses and a sagging battery voltage push the real current higher. No maker gave a 'max DC input current' figure on a page I could open."
+  },
+  {
+   "product": "Redodo 12V 100Ah Self-Heating LiFePO4",
+   "label": "BMS current limit",
+   "value": "100 A BMS",
+   "source": "https://www.redodopower.com/products/self-heating-redodo-12v-100ah-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Self-Heating Lithium Battery | For RV, Boats, and Solar Home Systems",
+   "read": "2026-11-13",
+   "note": "Maker text: 'smart 100A BMS ... safeguards against ... over-current'. Price $251.99 (compare-at $1,839.99) on redodopower.com. 100 A × 12.8 V = 1,280 W, about 43% of a 3000 W inverter's draw. Dealectric lists this battery (redodo-12v-100ah-self-heating-lifepo4)."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 31 Bluetooth LiFePO4",
+   "label": "Rated output power",
+   "value": "1,280 W (under 1C discharge)",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-smart-bluetooth-lithium-battery",
+   "source_title": "Redodo 12V 100Ah Group 31 Bluetooth Lithium Battery | Real-Time Battery Monitoring | For RV, Marine, Solar",
+   "read": "2026-11-13",
+   "note": "Maker text: '1280W Large Output Power & 1280Wh High Energy ... (Under 1C discharging)'. Price $259.99. One of these batteries supports about 43% of a 3000 W 12 V inverter's rated output."
+  },
+  {
+   "product": "Redodo 12V 100Ah Group 24 Deep Cycle LiFePO4",
+   "label": "Maker's high-power warning",
+   "value": "'NOT suitable ... for high-power applications such as water pumps, electric jacks...'",
+   "source": "https://www.redodopower.com/products/redodo-12v-100ah-group-24-deep-cycle-battery",
+   "source_title": "Redodo 12V 100Ah Group 24 Deep Cycle LiFePO4 Lithium Battery | For Home, RV, Marine",
+   "read": "2026-11-13",
+   "note": "Maker's own application note. Price $249.99."
+  },
+  {
+   "product": "Sun Gold Power SGK-PRO3 Off Grid Solar Kit (3000W 12VDC 120V)",
+   "label": "How the maker wires a 3000 W 12 V inverter",
+   "value": "2 × 100 Ah or 2 × 200 Ah LiFePO4, 300 A DC breaker, 2/0 AWG breaker-to-inverter cable",
+   "source": "https://sungoldpower.com/products/off-grid-solar-kit-3000w-inverter-12vdc-120v-output-lifepo4-battery-600-watt-solar-back-up-sgk-pro3",
+   "source_title": "Off Grid Solar Kit 3000W Inverter 12VDC 120V Output LifePO4 Battery 600 watt Solar Back Up SGK-PRO3",
+   "read": "2026-11-13",
+   "note": "Maker's kit list, read from the store's product data. Price $2,111 (compare-at $4,063), in stock. The kit uses a separate 60 A MPPT, so it is not an all-in-one, but it shows the maker's own sizing for 3000 W at 12 V: never one battery. Sun Gold Power is a Dealectric program."
+  },
+  {
+   "product": "Sun Gold Power 3000W 24V Solar Inverter Charger",
+   "label": "24 V all-in-one alternative (same maker)",
+   "value": "$401; 80A MPPT version max PV input 4000 W, 60A MPPT version 1600 W; 40 A AC charging",
+   "source": "https://sungoldpower.com/products/3000w-24v-solar-inverter-charger",
+   "source_title": "3000W 24V Solar Inverter Charger",
+   "read": "2026-11-13",
+   "note": "From the maker's store data. At 24 V the battery current for 3000 W is half (about 117 A at 25.6 V). Sun Gold Power's store search turned up no 12 V all-in-one with built-in MPPT."
+  }
+ ],
+ "unsourced": [
+  "I looked for the ACOPOWER 3000W/12V maximum battery DC input current, recommended battery cable gauge and breaker, PV Voc limit, MPPT charge current per option, and idle draw. The product page's spec tab did not appear in the captured text. The HYOne3000-12 manual PDF on acopower.com is over 10 MB and the fetcher would not load it. Later retries returned HTTP 429.",
+  "ALLWEI 3000W 12V: I could not find a maker US product page or manual for PV input range, battery current or price, and Amazon listing B0GXKRF591 was blocked to amzcheck.",
+  "PowMr 1.6kW/2kW 12V: eu.powmr.com returned 403, so I have no opened source for its MPPT current, PV range or battery current. PowMr's US store search showed no 12 V all-in-one with 120 V output.",
+  "Renogy REGO 12V 3000W and the 2000W HF inverter charger (the pages ChatGPT got): renogy.com returned HTTP 429 to both WebFetch and storecheck, so I could not check their DC input current or cable specs, or whether they already state the amp figure.",
+  "Amazon prices for the ACOPOWER and ALLWEI 12V all-in-ones (B0GD6MY8JZ, B0GXKRF591): amzcheck was blocked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 1.2551497000000003
+ }
+}

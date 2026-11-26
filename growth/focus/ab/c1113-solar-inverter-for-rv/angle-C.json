@@ -1,0 +1,100 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that Renogy sells two different 12V 3000W REGO inverter chargers with different shore-power limits: the HF split-phase model RIV1230RCH-SPS takes single-phase 120V (90–140V AC) or split-phase 120/240V (180–280V AC) input with a 50A maximum bypass at 120V AC, while a REGO 3000W quick manual says the AC source must be 30A or less or the inverter will not work and limits the AC load center to 30A.",
+ "standout": 2,
+ "standout_why": "I read the cited Victron article 'How to Size a Solar System for Your RV' (2026-05-04). It names SmartSolar/BlueSolar MPPT, Cerbo GX, the VE.Direct Bluetooth dongle, Lynx Distributor, MPPT WireBox and SmartSolar Control, and its compatibility notes are about which charge controllers have Bluetooth and which work with the SmartSolar Control display. It says nothing about shore-power amperage, split phase or transfer-switch ratings, and it names no inverter model. I could not read the other cited page, Renogy's 'RV Inverter Installation Guide': WebFetch returned only the site menu, and later requests to renogy.com returned HTTP 429. So I can't rule out that it mentions 30A/50A shore power. None of the result titles suggest it.",
+ "decides": "The answer's top integrated pick, 'Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger', is the RIV1230RCL-1SS, listed today at $989.99 rather than the $949.00 ChatGPT showed. Its product page mentions an 'integrated transfer relay' but gives no amp rating. The relay's limit decides the pick for RVs on 50A (120/240V split-phase) shore power: Renogy's own HF manual gives the RIV1230RCH-SPS a 50A bypass and an accepted split-phase input range, which makes it the REGO to check for a 50A coach. A 30A coach is covered by either. The 'AC source ≤30A' manual I found does not name its model, so the RCL's own limit still needs confirming from its manual before the page states it.",
+ "candidates": [
+  "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger (RIV1230RCL-1SS)",
+  "Renogy REGO 3000W 12V Pure Sine Wave HF Inverter Charger, Split Phase Design (RIV1230RCH-SPS)",
+  "Renogy 3000W 12V Pure Sine Wave Inverter",
+  "Renogy 3000W/2000W/1000W 12V Pure Sine Wave Inverter with UPS Transfer Switch",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V"
+ ],
+ "findings": [
+  {
+   "product": "Renogy REGO 3000W 12V HF Inverter Charger (RIV1230RCH-SPS)",
+   "label": "AC input voltage range accepted (single vs split phase)",
+   "value": "Single phase: 90V to 140V AC; split phase: 180V to 280V AC",
+   "source": "https://www.manualslib.com/manual/3305583/Renogy-Rego.html?page=54",
+   "source_title": "Renogy REGO HF Inverter Charger 3000W RIV1230RCH-SPS Version A0 User Manual (ManualsLib copy), PDF page 54 / printed p.50",
+   "read": "2026-11-13",
+   "note": "This is ManualsLib's copy of Renogy's own manual; the copies on ca.renogy.com returned 404. The manual's title page identifies the model as RIV1230RCH-SPS."
+  },
+  {
+   "product": "Renogy REGO 3000W 12V HF Inverter Charger (RIV1230RCH-SPS)",
+   "label": "Transfer switch bypass rating",
+   "value": "50 A maximum bypass at 120V AC",
+   "source": "https://www.manualslib.com/manual/3305583/Renogy-Rego.html?page=54",
+   "source_title": "Renogy REGO HF Inverter Charger 3000W RIV1230RCH-SPS User Manual (ManualsLib copy), Transfer Switch Specifications",
+   "read": "2026-11-13",
+   "note": "Quoted from the manual: '50A Maximum Bypass @120V AC'."
+  },
+  {
+   "product": "Renogy REGO 3000W 12V HF Inverter Charger (RIV1230RCH-SPS)",
+   "label": "Battery voltage window and battery types supported",
+   "value": "9–17 V DC (full load 11–15.8 V DC); SLD, AGM, GEL, FLD, LI and USER",
+   "source": "https://www.manualslib.com/manual/3305583/Renogy-Rego.html?page=54",
+   "source_title": "Renogy REGO HF Inverter Charger 3000W RIV1230RCH-SPS User Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "This model works with 12V banks only. The same page lists the charge current as 150 A @25°C, adjustable 5–150 A, but the scraped table separated labels from values, so the 150 A charge figure is not fully confirmed."
+  },
+  {
+   "product": "Renogy REGO 3000W 12V HF Inverter Charger (RIV1230RCH-SPS)",
+   "label": "Monitoring and accessory pairings",
+   "value": "DC Home app over Bluetooth; Renogy ONE Core or ONE M1 for long-range monitoring (sold separately); RMS-P2 wired remote (included); RV-C network supported",
+   "source": "https://www.manualslib.com/manual/3305583/Renogy-Rego.html",
+   "source_title": "Renogy REGO HF Inverter Charger 3000W RIV1230RCH-SPS User Manual (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The parts list calls for 400 A ANL fuses, 4/0 AWG battery cable and a 6 AWG grounding cable. Page 8 restriction: 'The BTS port can only be used with lead-acid batteries.'"
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Inverter Charger (quick manual, model not printed on the page I read)",
+   "label": "Shore power / generator source limit and AC output limit",
+   "value": "AC source current must be 30 A or less or the inverter will not work; AC load center 30 A max; 30 A output circuit breaker; AC input cable at least 10 AWG; 400 A battery fuse",
+   "source": "https://www.manualslib.com/manual/3677274/Renogy-Rego.html",
+   "source_title": "Renogy REGO Quick Manual, 'REGO Inverter Charger 3000W Version A0' (ManualsLib copy)",
+   "read": "2026-11-13",
+   "note": "The source line is in Chinese: '请确保AC电源电流≤30A，否则逆变器无法工作' (make sure the AC supply current is 30 A or less, otherwise the inverter cannot work). The page does not print a model number, so I have not tied it to RIV1230RCL-1SS. It also says the inverter supports 12V batteries only, and not to use the temperature sensor on an LFP battery that has a BMS."
+  },
+  {
+   "product": "Renogy REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display",
+   "label": "Price on Renogy US store",
+   "value": "$989.99 (compare-at $1,139.99), in stock",
+   "source": "https://www.renogy.com/products/rego-12v-3000w-pure-sine-wave-inverter-charger-w-lcd-display",
+   "source_title": "REGO 12V 3000W Pure Sine Wave Inverter Charger w/ LCD Display – Renogy US",
+   "read": "2026-11-13",
+   "note": "Read with storecheck.py (Shopify JSON). ChatGPT showed $949.00. The product text says 'integrated transfer relay with neutral ground bonding', battery types 'GEL, AGM, SLA, FLD, CAL, and Lithium', and monitoring through the Renogy DC Home app. It gives no relay amp rating."
+  },
+  {
+   "product": "Renogy 3000W/2000W/1000W 12V Pure Sine Wave Inverter with UPS Transfer Switch",
+   "label": "Price on Renogy US store (lowest variant)",
+   "value": "from $269.99 (compare-at $461.99), in stock",
+   "source": "https://www.renogy.com/products/puh-12v-3000w-pure-sine-wave-inverter-with-ups-transfer-switch-and-built-in-bluetooth",
+   "source_title": "3000W/2000W/1000W 12V Pure Sine Wave Inverter with UPS Transfer Switch – Renogy US",
+   "read": "2026-11-13",
+   "note": "storecheck search returned the lowest variant price only. I did not get the 2000W variant price ChatGPT showed ($364.99) or its transfer-switch amp rating."
+  },
+  {
+   "product": "Renogy 3000W 12V Pure Sine Wave Inverter",
+   "label": "Price on Renogy US store (lowest variant) and peak rating",
+   "value": "from $149.99 (lowest of the 700W–3000W variants); 3000W continuous, 6000W peak",
+   "source": "https://www.renogy.com/products/3000w-12v-pure-sine-wave-inverter",
+   "source_title": "3000W/2000W/1000W/700W 12V Pure Sine Wave Inverter – Renogy US",
+   "read": "2026-11-13",
+   "note": "storecheck search returned the lowest variant price only. I did not get the 3000W variant price ChatGPT showed ($414.99). This model has no charger and no transfer switch, so it does not connect to shore power."
+  }
+ ],
+ "unsourced": [
+  "AC input / transfer relay amp rating of the REGO RIV1230RCL-1SS (the model on ChatGPT's $949 card). I tried Renogy's US product page (HTTP 429), the user manual on ca.renogy.com (404 at two URLs), the quick guide PDF on renogy.com (downloaded, but WebFetch could not read the compressed text and the local text-extraction commands needed approval) and manuals.plus (403). A search snippet said the quick guide gives 'Shore Power or Generator (120V Single Phase, 40A Max.)' and 'AC Output (30A Max.)', but I could not open it to confirm.",
+  "Price of the Renogy REGO 3000W 12V HF Inverter Charger split-phase model. Its renogy.com product page returned HTTP 429 three times, and storecheck search did not return it.",
+  "Victron MultiPlus-II 12/3000/120-50 2x120V transfer switch rating and the serial-batch exception (HQ2107 rated 35A, HQ2114 and later 50A). I downloaded Victron's datasheet PDF from victronenergy.com but could not read its text, so these figures come from search snippets only and are left out.",
+  "Renogy RV Inverter Installation Guide (a cited rival). The page body did not render, so I could not check whether it already gives 30A/50A shore-power limits."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 1.0462173
+ }
+}

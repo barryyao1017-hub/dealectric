@@ -1,0 +1,829 @@
+[
+ {
+  "q": "Can I use solar panels I already have with a new portable power station, or do I have to buy the same brand's panels?",
+  "use_case": "own panels + new station",
+  "evidence": [
+   "https://diysolarforum.com/threads/connecting-a-pv-panel-to-a-portable-power-station.80111/",
+   "https://diysolarforum.com/threads/panel-compatibility-check.88313/",
+   "https://diysolarforum.com/threads/capability-my-battery-power-station-and-my-solar-panels.33171/",
+   "https://diysolarforum.com/threads/using-solar-panels-to-load-power-station.85405/",
+   "https://community.bluettipower.com/t/compatible-solar-panels-for-ac-200l/27825",
+   "https://batteryskills.com/are-jackery-power-stations-compatible-with-non-jackery-solar-panels/"
+  ],
+  "times_seen": 6,
+  "why_open": "Makers only list their own panels; no catalog card pairs brand A panels with brand B station.",
+  "answer_needs": "Station picked by its solar input window (max Voc with cold margin, max amps, max watts) for common 100-200 W 12 V panels; name the station + the one MC4-to-input adapter cable; say when 2 panels go in series vs parallel."
+ },
+ {
+  "q": "I have a Jackery power station, can I charge it with cheaper solar panels from another brand and what cable do I need?",
+  "use_case": "Jackery + third-party panels",
+  "evidence": [
+   "https://batteryskills.com/are-jackery-power-stations-compatible-with-non-jackery-solar-panels/",
+   "https://hagensieker.com/?p=2094",
+   "https://www.overlandbound.com/forums/goto/post?id=559237",
+   "https://backuppowerhub.com/jackery-solar-panel-compatibility-guide/"
+  ],
+  "times_seen": 4,
+  "why_open": "Jackery documents only SolarSaga panels; the adapter differs by model generation (DC7909 vs DC8020) and wrong adapters are sold widely.",
+  "answer_needs": "Per Jackery generation: input voltage/amp limit, the right MC4-to-DC8020 or MC4-to-8mm cable, a rigid or folding 100-200 W panel that fits, polarity warning; one-cart panel + cable combo."
+ },
+ {
+  "q": "Can I use my old Jackery solar panels with a new EcoFlow or Bluetti power station?",
+  "use_case": "cross-brand panels reuse",
+  "evidence": [
+   "https://community.bluettipower.com/t/connecting-4-100w-solar-saga-to-bluetti-200l/32034",
+   "https://batteryskills.com/are-jackery-and-bluetti-solar-panels-interchangeable/",
+   "https://batteryskills.com/are-jackery-and-ecoflow-solar-panels-cross-compatible/"
+  ],
+  "times_seen": 3,
+  "why_open": "Cross-brand fact neither maker publishes; guides found contradict each other.",
+  "answer_needs": "SolarSaga output specs vs each station's input window; the DC8020-to-MC4 / MC4-to-XT60 adapter chain; how many SolarSaga panels in series or parallel each station accepts."
+ },
+ {
+  "q": "Can I hook the big solar panels made for house roofs to a portable power station, and which power stations can handle them?",
+  "use_case": "residential panels + station",
+  "evidence": [
+   "https://diysolarforum.com/threads/is-this-panel-compatible-with-bluetti-ac300.42599/post-538260",
+   "https://community.bluettipower.com/t/ac300-rigid-solar-panels-and-limitations/4671",
+   "https://community.bluettipower.com/t/reduced-input-130w-from-400w-panel-elite-200-v2/36459",
+   "https://diysolarforum.com/threads/will-the-aptos-bifacial-panels-work-with-my-new-anker-767-solix-f2000.93930/",
+   "https://diysolarforum.com/threads/anker-solix-f-3800-diy-solar-array.78560/"
+  ],
+  "times_seen": 5,
+  "why_open": "Residential 400 W panels (Voc 37-50 V) exceed or sit awkwardly in many stations' 60 V input; makers do not publish a which-station-takes-rooftop-panels table.",
+  "answer_needs": "Table of stations by solar input ceiling (60 V vs 150 V class), how many 400 W residential panels each takes in series/parallel, cold-weather Voc margin, MC4 cable; recommend a 150 V-input station + 2-3 panels kit."
+ },
+ {
+  "q": "My power station charges fine with two solar panels but stops when I add a third, how many panels can I safely connect?",
+  "use_case": "panel count limit",
+  "evidence": [
+   "https://diysolarforum.com/threads/portable-power-station-charges-with-2-solar-panels-but-not-with-3-within-voltage-limit.112933/",
+   "https://community.bluettipower.com/t/over-voltage-solar-array/7985",
+   "https://community.bluettipower.com/t/ac200max-connecting-more-then-900-watt-at-the-solar-input/5886",
+   "https://community.bluettipower.com/t/does-the-ac200max-have-voc-overvoltage-protection-for-the-solar-input/36139"
+  ],
+  "times_seen": 4,
+  "why_open": "Depends on the exact panel + station pair; makers give limits in volts and amps, not in 'number of panels'.",
+  "answer_needs": "Per popular station: max panels of the common sizes (100/200/400 W) in series and in parallel, with the over-voltage shutoff explained; series-parallel (2s2p) with a Y-branch cable where it helps."
+ },
+ {
+  "q": "Will I damage my power station if I plug in more solar panel watts than it says it can take?",
+  "use_case": "over-paneling",
+  "evidence": [
+   "https://community.bluettipower.com/t/ac200max-connecting-more-then-900-watt-at-the-solar-input/5886",
+   "https://community.bluettipower.com/t/ac200-max-not-taking-full-available-solar/20845",
+   "https://batteryskills.com/what-happens-if-you-use-a-too-powerful-solar-panel-on-a-bluetti/",
+   "https://diysolarforum.com/threads/adding-additional-solar-panel-question.73435/"
+  ],
+  "times_seen": 4,
+  "why_open": "Makers state a watt cap but not that extra watts are simply clipped while extra volts destroy the input.",
+  "answer_needs": "Explain watts clip safely, volts do not; recommend over-paneling by 20-30% for cloudy days with a panel set that stays under the voltage ceiling; specific station + panel count."
+ },
+ {
+  "q": "Can I mix a 100 watt and a 200 watt solar panel together on the same power station?",
+  "use_case": "mixing panel sizes",
+  "evidence": [
+   "https://diysolarforum.com/threads/solar-panels-renogy-100w-200w.46793/",
+   "https://forum.solar-electric.com/discussion/comment/386314",
+   "https://www.bougerv.com/blogs/article/can-i-mix-100-watt-and-200-watt-solar-panels",
+   "https://explorist.life/using-mismatched-solar-panel-sizes/",
+   "https://community.bluettipower.com/t/solar-confusion/37114"
+  ],
+  "times_seen": 5,
+  "why_open": "Depends on both panels' voltage and the station's input; panel makers answer for charge controllers, not for power stations.",
+  "answer_needs": "When a mismatched pair works (similar voltage -> parallel with a Y cable) and what output to expect; when to add a matching panel instead; the parallel adapter + station input cable."
+ },
+ {
+  "q": "Is it better to buy two 100 watt folding solar panels or one 200 watt panel for a power station?",
+  "use_case": "panel size choice",
+  "evidence": [
+   "https://www.jackery.com/blogs/jackery-faqs/there-are-options-with-2-100w-panels-or-1-200w-panel-which-one-should-i-choose",
+   "https://community.bluettipower.com/t/200-w-vs-100-w-solar-panel-size-comparison-and-general-pros-and-cons/17776",
+   "https://diysolarforum.com/threads/renogy-200-or-400-watt-panels-to-portable-power-bank.99710/"
+  ],
+  "times_seen": 3,
+  "why_open": "Jackery answers for its own line only; the cross-brand answer depends on station input voltage and whether a parallel cable is included.",
+  "answer_needs": "Weight, price per watt, shade tolerance, and whether 2 x 100 W needs an extra combiner cable on the given station; recommend one option per station size."
+ },
+ {
+  "q": "Why is my power station only getting a third of the watts my solar panel is rated for, and would different panels fix it?",
+  "use_case": "low solar input",
+  "evidence": [
+   "https://community.bluettipower.com/t/poor-solar-input-with-ac200p-and-third-party-foldable-solar-panels/3346",
+   "https://community.bluettipower.com/t/reduced-input-130w-from-400w-panel-elite-200-v2/36459",
+   "https://community.bluettipower.com/t/ac200-max-not-taking-full-available-solar/20845",
+   "https://diysolarforum.com/threads/anker-powerhouse-767-solar-input-challenge.55938/page-2"
+  ],
+  "times_seen": 4,
+  "why_open": "Cause is a panel/station mismatch (amp cap at low voltage, e.g. 10 A below 32 V) that makers bury in spec sheets.",
+  "answer_needs": "Explain the amp cap at low panel voltage; recommend the panel voltage class or series pairing that unlocks full input on each station; specific replacement panel set + cable."
+ },
+ {
+  "q": "What solar panels should I buy for my Anker power station if I don't want to pay for Anker's own panels?",
+  "use_case": "Anker + third-party panels",
+  "evidence": [
+   "https://diysolarforum.com/threads/complete-newbie-adding-solar-panels-to-my-anker-solix-f3800.82788/",
+   "https://diysolarforum.com/threads/need-confirmation-on-solar-panels-with-battery-anker-f2000-767.92157/",
+   "https://diysolarforum.com/threads/trying-to-connect-anker-c1000-and-2-renology-rsp200dc.108467/",
+   "https://diysolarforum.com/threads/panel-help-please.107884/"
+  ],
+  "times_seen": 4,
+  "why_open": "Anker recommends only its PS-series panels; the 60 V cap and the 32 V step in charging current make most third-party pairings non-obvious.",
+  "answer_needs": "Per Anker model: panel voltage that gets the higher current tier without passing 60 V, how many of a named 100/200 W panel, series vs parallel, MC4-to-XT60 cable."
+ },
+ {
+  "q": "What panels work best with a Bluetti power station besides Bluetti's own, and how many can I connect?",
+  "use_case": "Bluetti + third-party panels",
+  "evidence": [
+   "https://community.bluettipower.com/t/ac200max-solar-panel-shopping/23134",
+   "https://community.bluettipower.com/t/compatible-solar-panels-for-ac-200l/27825",
+   "https://diysolarforum.com/threads/ac-180-and-ac-180p-panel-configuration.93672/"
+  ],
+  "times_seen": 3,
+  "why_open": "Bluetti lists input ranges, not third-party panel sets; owners ask model by model.",
+  "answer_needs": "Per Bluetti model: input window, a named rigid or folding panel set (count, series/parallel) that fills it, MC4 cable included or not."
+ },
+ {
+  "q": "Do I need a separate solar charge controller between my solar panels and a portable power station?",
+  "use_case": "charge controller confusion",
+  "evidence": [
+   "https://diysolarforum.com/threads/using-a-charge-controller-with-an-all-in-one-power-station.73966/",
+   "https://diysolarforum.com/threads/anker-solix-f3800-solar-charging-with-victron-scc.94985/",
+   "https://hagensieker.com/?p=2094"
+  ],
+  "times_seen": 3,
+  "why_open": "Panel kits ship with a controller and station manuals do not say to leave it out; no product card covers the combination.",
+  "answer_needs": "No: the station has its own controller; buy bare panels (not a kit with controller) + adapter cable; the one exception (feeding the car/DC port from a controller) and why it is slow."
+ },
+ {
+  "q": "Can I mount regular rigid solar panels on my shed roof and run them to a portable power station inside?",
+  "use_case": "shed roof panels + station",
+  "evidence": [
+   "https://diysolarforum.com/threads/a-small-solar-power-system-for-a-small-shed.31349/",
+   "https://diysolarforum.com/threads/comparing-portable-systems.70997/",
+   "https://diysolarforum.com/threads/a-panel-power-station-semi-portable-rv-solar-system-thoughts.36109/",
+   "https://www.small-cabin.com/forum/3_11595_0.html"
+  ],
+  "times_seen": 4,
+  "why_open": "Station makers sell folding panels; rigid-panel + station + roof mount + cable is a combination nobody sells as one card.",
+  "answer_needs": "Station + 2 x 100-200 W rigid panels + mounting brackets + 20-30 ft 10 AWG MC4 extension + station adapter cable; series wiring for the long run if under the voltage ceiling."
+ },
+ {
+  "q": "Does a solar generator bundle come with every cable I need to connect the panels, or do I have to buy adapters?",
+  "use_case": "what's in the box",
+  "evidence": [
+   "https://diysolarforum.com/threads/which-cables-do-i-need-for-solar-panels.82306/",
+   "https://diysolarforum.com/threads/what-wires-do-i-need-to-connect-my-solar-panel-to-my-power-generator.19562/",
+   "https://diysolarforum.com/threads/panels-for-%E2%80%9Csolar-generator%E2%80%9D.121783/",
+   "https://diysolarforum.com/threads/cable-gauge-question-ecoflow-renogy.17754/"
+  ],
+  "times_seen": 4,
+  "why_open": "Box contents vary by bundle and retailer; makers do not publish a cross-bundle 'ready to plug in' list.",
+  "answer_needs": "Bundle-by-bundle list of what ships (station solar cable, parallel/series adapter, extension) and the one or two extras to add; point to bundles that fill one cart with everything."
+ },
+ {
+  "q": "What cable do I need to connect a solar panel from one brand to a power station from another brand?",
+  "use_case": "adapter cable",
+  "evidence": [
+   "https://diysolarforum.com/threads/what-wires-do-i-need-to-connect-my-solar-panel-to-my-power-generator.19562/",
+   "https://diysolarforum.com/threads/which-cables-do-i-need-for-solar-panels.82306/",
+   "https://community.bluettipower.com/t/connecting-4-100w-solar-saga-to-bluetti-200l/32034",
+   "https://hagensieker.com/?p=2094"
+  ],
+  "times_seen": 4,
+  "why_open": "Connector differs by station family (XT60, DC8020, DC7909, Anderson, 5.5 mm barrel, MC4) and no maker documents the other brands' plugs.",
+  "answer_needs": "Connector lookup by station brand/generation and panel brand, the exact adapter (e.g. MC4-to-XT60i, MC4-to-DC8020), wire gauge, polarity check."
+ },
+ {
+  "q": "How long can the cord between my solar panels and my power station be before I lose too much power?",
+  "use_case": "extension cable length",
+  "evidence": [
+   "https://diysolarforum.com/threads/is-30ft-extension-cable-too-long-for-a-portable-kit.24844/",
+   "https://diysolarforum.com/threads/solar-panel-cable-extensions.126997/",
+   "https://diysolarforum.com/threads/long-solar-mc4-cable-run-and-solar-panels.37117/",
+   "https://diysolarforum.com/threads/cable-length-and-size.39894/",
+   "https://www.irv2.com/threads/extension-cable-for-portable-panels.2065489/",
+   "https://expeditionportal.com/forum/threads/solar-power-wire-gauge-and-length-questions.173365/"
+  ],
+  "times_seen": 6,
+  "why_open": "Depends on panel voltage, amps and wire gauge; station makers sell one short extension and give no table.",
+  "answer_needs": "Loss table for 20/30/50/100 ft at 10 AWG vs 12 AWG for one panel and for two in series; recommend a 10 AWG MC4 extension pair + wiring panels in series for long runs."
+ },
+ {
+  "q": "How many solar panels do I need to fully recharge a large home backup power station in one sunny day?",
+  "use_case": "recharge in a day",
+  "evidence": [
+   "https://diysolarforum.com/threads/what-panels-to-buy.91159/",
+   "https://diysolarforum.com/threads/renogy-200-or-400-watt-panels-to-portable-power-bank.99710/",
+   "https://diysolarforum.com/threads/needing-to-know-how-many-batteries-and-solar-panels-are-needed.25572/"
+  ],
+  "times_seen": 3,
+  "why_open": "Makers quote best-case hours with their max panel set; real answer depends on sun hours and the station's input cap.",
+  "answer_needs": "Battery Wh / (sun hours x 0.75-0.8) = panel watts, capped by station input; worked sets for 1, 2 and 3.6 kWh stations (e.g. 2 kWh -> 3-4 x 200 W) with wiring and cable."
+ },
+ {
+  "q": "How many solar panels do I need to keep a power station charged in winter when it's cloudy most days?",
+  "use_case": "winter / cloudy sizing",
+  "evidence": [
+   "https://diysolarforum.com/threads/after-two-cloudy-days-sizing-for-battery-recovery-not-just-daily-consumption.130996/",
+   "https://diysolarforum.com/threads/making-power-on-a-cloudy-day.74365/",
+   "https://diysolarforum.com/threads/production-on-overcast-days.35765/",
+   "https://diysolarforum.com/threads/how-to-calculate-oversizing-array-for-clouds-and-to-minimize-battery-needs.25836/"
+  ],
+  "times_seen": 4,
+  "why_open": "Makers publish summer best-case charge times only.",
+  "answer_needs": "Winter sun hours (1.5-3) and 10-25% output on overcast days; over-panel to the station's voltage limit; station with high input cap + 2x the summer panel count; when a gas generator top-up beats more panels."
+ },
+ {
+  "q": "How much solar do I need with a power station to keep a refrigerator and a chest freezer running through a week-long outage?",
+  "use_case": "fridge + freezer outage kit",
+  "evidence": [
+   "https://diysolarforum.com/threads/solar-for-two-refrigerators-and-a-freezer-chest.37165/",
+   "https://diysolarforum.com/threads/powering-a-small-chest-freezer-in-my-garage.93972/",
+   "https://diysolarforum.com/threads/need-electricity-asap.104665/"
+  ],
+  "times_seen": 3,
+  "why_open": "Catalog cards list stations, not a station + panel set sized for a 2-3 kWh/day load.",
+  "answer_needs": "Daily kWh of fridge (1-1.5) + freezer (1-1.4); 2 kWh+ station + 600-800 W of panels + extension cable; one-cart bundle that meets it."
+ },
+ {
+  "q": "What size power station and how many solar panels do I need to run a small window air conditioner during the day after a hurricane?",
+  "use_case": "window AC after storm",
+  "evidence": [
+   "https://diysolarforum.com/threads/minimal-requirements-for-window-a-c-unit-post-hurricane.85844/",
+   "https://diysolarforum.com/threads/1st-time-planning-to-power-window-ac-unit-midea-8k-btu-u-shaped-ac.87664/",
+   "https://diysolarforum.com/threads/solar-power-system-for-portable-air-conditioner.86645/",
+   "https://diysolarforum.com/threads/solar-powering-air-conditioner.8161/",
+   "https://diysolarforum.com/threads/minimum-battery-or-other-options-to-run-standalone-ac-during-solar-hours.10490/"
+  ],
+  "times_seen": 5,
+  "why_open": "No maker sizes a kit to an AC's draw; needs station surge + input cap + panel count together.",
+  "answer_needs": "Inverter-type 5-8k BTU AC draws 300-700 W; 2 kWh station with 1000 W+ solar input + 800-1000 W panels; hours of runtime after dark; bundle link."
+ },
+ {
+  "q": "Can a power station with solar panels run a mini split air conditioner all day in a cabin or shed?",
+  "use_case": "mini split off-grid",
+  "evidence": [
+   "https://diysolarforum.com/threads/mini-split-system.115250/",
+   "https://diysolarforum.com/threads/minimum-battery-or-other-options-to-run-standalone-ac-during-solar-hours.10490/"
+  ],
+  "times_seen": 2,
+  "why_open": "Mini split makers and station makers each stop at their own product; 120 V vs 240 V mini split choice decides the station.",
+  "answer_needs": "120 V 9-12k BTU inverter mini split (~500 W) + 2-3 kWh station + 1200-1500 W panels; which stations take that much solar; 240 V units need a dual-unit or 240 V station."
+ },
+ {
+  "q": "Is it cheaper to buy a solar generator bundle or buy the power station and solar panels separately?",
+  "use_case": "bundle vs separate",
+  "evidence": [
+   "https://diysolarforum.com/threads/panels-for-%E2%80%9Csolar-generator%E2%80%9D.121783/",
+   "https://diysolarforum.com/threads/portable-folding-solar-panel-makers.48344/",
+   "https://diysolarforum.com/threads/comparing-portable-systems.70997/",
+   "https://permies.com/t/223702/Thinking-buying-solar-generator"
+  ],
+  "times_seen": 4,
+  "why_open": "Makers price only their own bundles; a same-day bundle vs station + third-party panels + cable comparison is a cross-brand fact.",
+  "answer_needs": "Same-day price of bundle vs station alone + equivalent third-party panels + adapter; note bundle discount codes; say which bundles beat separate buying and which do not."
+ },
+ {
+  "q": "Are the folding solar panels sold with power stations worth the price, or should I buy cheaper regular panels?",
+  "use_case": "folding vs rigid panels",
+  "evidence": [
+   "https://diysolarforum.com/threads/portable-folding-solar-panel-makers.48344/",
+   "https://diysolarforum.com/threads/panels-for-%E2%80%9Csolar-generator%E2%80%9D.121783/",
+   "https://diysolarforum.com/threads/renogy-200-or-400-watt-panels-to-portable-power-bank.99710/",
+   "https://diysolarforum.com/threads/comparing-portable-systems.70997/"
+  ],
+  "times_seen": 4,
+  "why_open": "Station makers will not say their folding panels cost 3-5x per watt of rigid panels.",
+  "answer_needs": "Price per watt folding vs rigid, weight/portability, durability; folding for camping, rigid for home/shed; rigid panel pair + adapter cable for each station family."
+ },
+ {
+  "q": "Should I buy a solar generator or build my own setup with a separate battery and inverter for an off-grid cabin?",
+  "use_case": "all-in-one vs DIY",
+  "evidence": [
+   "https://diysolarforum.com/threads/best-choices-for-off-grid-cabins.78439/",
+   "https://diysolarforum.com/threads/bluetti-vs-growatt-am-i-just-setting-myself-up-for-pain.80501/",
+   "https://diysolarforum.com/threads/new-portable-modular-systems-inergy-flex-bluetti-ecoflow-titan-what-to-choose.25432/",
+   "https://www.promasterforum.com/threads/power-stations-vs-system-built-with-discrete-components.108786/",
+   "https://www.small-cabin.com/forum/3_11595_0.html",
+   "https://permies.com/t/223702/Thinking-buying-solar-generator"
+  ],
+  "times_seen": 6,
+  "why_open": "Neither side publishes a neutral cost and effort comparison at a given size.",
+  "answer_needs": "Cost per kWh and per watt at 1, 2 and 5 kWh; idle draw, repairability, warranty; all-in-one + rigid panels kit for weekend cabins, component system for full-time."
+ },
+ {
+  "q": "Is the extra battery for my power station worth it, or should I just buy a second power station?",
+  "use_case": "expansion vs second unit",
+  "evidence": [
+   "https://www.thesolarlab.com/how-tos/expansion-battery-vs-second-power-station",
+   "https://community.bluettipower.com/t/looking-for-info-on-how-expansion-battery-works/19671",
+   "https://community.bluettipower.com/t/suggestion-for-expanding-non-expandable-power-stations/40801"
+  ],
+  "times_seen": 3,
+  "why_open": "Makers push their own expansion pack; the price gap to a second full unit (extra inverter, extra solar input) changes weekly with sales.",
+  "answer_needs": "Price per Wh of expansion pack vs second unit today; second unit doubles solar input and outlets, expansion keeps one system; pick per use (outage vs two locations) with links."
+ },
+ {
+  "q": "Can I add an extra battery from another brand to my power station instead of the expensive official one?",
+  "use_case": "third-party expansion battery",
+  "evidence": [
+   "https://diysolarforum.com/threads/trying-to-expand-power-station-capacity-with-external-battery.75384/",
+   "https://diysolarforum.com/threads/adding-batteries-to-bluetti.59929/",
+   "https://diysolarforum.com/threads/safety-check-using-generic-batteries-with-jackery-5000-power-station.122881/",
+   "https://diysolarforum.com/threads/adding-3rd-party-battery-to-delta-pro.113835/",
+   "https://diysolarforum.com/threads/how-to-connect-a-third-party-battery-to-my-solix-f3800.87663/",
+   "https://diysolarforum.com/threads/theoldjarhead-power-station-external-battery-hack-thread.105966/",
+   "https://diysolarforum.com/threads/finally-hack-to-use-3rd-party-battery-with-some-ecoflow-power-stations-not-solar-port-a-recent-video.117834/"
+  ],
+  "times_seen": 7,
+  "why_open": "Makers only support their own packs; which stations accept a generic battery (through the solar input or an expansion port) is undocumented.",
+  "answer_needs": "Stations that officially accept generic batteries (e.g. Pecron, some Bluetti via DC input) vs hacks; a 12/24/48 V LiFePO4 battery + DC charging cable through the solar port, with the charge-rate limit and warranty note."
+ },
+ {
+  "q": "Can I connect a newer expansion battery to an older power station of the same brand, or do they have to match?",
+  "use_case": "mixing generations",
+  "evidence": [
+   "https://community.bluettipower.com/t/looking-for-info-on-how-expansion-battery-works/19671",
+   "https://diysolarforum.com/threads/pecron-f3000lfp-expansion.112519/",
+   "https://diysolarforum.com/threads/mix-old-with-new-lifepo4.6708/"
+  ],
+  "times_seen": 3,
+  "why_open": "Compatibility matrices across generations are scattered or missing on maker sites.",
+  "answer_needs": "Brand-by-brand matrix of station generation x expansion pack (works / needs adapter cable / no); the cable to buy; when selling the old unit is the better move."
+ },
+ {
+  "q": "My power station can't take an expansion battery, is there any way to add more capacity or do I need a bigger one?",
+  "use_case": "non-expandable station",
+  "evidence": [
+   "https://community.bluettipower.com/t/suggestion-for-expanding-non-expandable-power-stations/40801",
+   "https://diysolarforum.com/threads/trying-to-expand-power-station-capacity-with-external-battery.75384/",
+   "https://diysolarforum.com/threads/can-i-use-solar-input-cables-to-charge-power-station-from-batteries.116045/"
+  ],
+  "times_seen": 3,
+  "why_open": "Makers answer 'buy the bigger model'; the workaround (external battery into the solar input) is cross-brand.",
+  "answer_needs": "External LiFePO4 battery feeding the solar/DC input with the right cable and its recharge-rate limit, vs a second small station, vs trading up; cost of each."
+ },
+ {
+  "q": "How can I charge a power station faster while driving than the slow cigarette lighter plug?",
+  "use_case": "charging while driving",
+  "evidence": [
+   "https://cleantechnica.com/2025/05/09/the-real-impact-of-power-station-alternator-chargers/",
+   "https://www.forestriverforums.com/threads/charging-large-portable-power-stations-from-dynamax-freightliner-best-practices-pitfalls.1451774/",
+   "https://forum.expeditionportal.com/threads/dc-dc-charger-as-an-alternative-to-generator.246276/page-5",
+   "https://www.bluettipower.com/blogs/knowledge/cigarette-lighter-vs-alternator-charger"
+  ],
+  "times_seen": 4,
+  "why_open": "Each maker sells its own alternator charger and does not say whether it works with other brands' stations.",
+  "answer_needs": "Cross-brand table: which alternator chargers (EcoFlow, Bluetti, Jackery, Pecron) work with which stations through the solar input, watts delivered, wire kit and fuse; station + charger pair in one cart."
+ },
+ {
+  "q": "Is the charger that wires to my car battery worth it for a power station, or should I just buy more solar panels?",
+  "use_case": "alternator charger vs panels",
+  "evidence": [
+   "https://cleantechnica.com/2025/05/09/the-real-impact-of-power-station-alternator-chargers/",
+   "https://forum.expeditionportal.com/threads/dc-dc-charger-as-an-alternative-to-generator.246276/page-5"
+  ],
+  "times_seen": 2,
+  "why_open": "Trade-off depends on hours driven vs hours parked in sun; no maker compares its charger against its panels.",
+  "answer_needs": "Wh gained per hour driving (400-800 W) vs per day from 200-400 W panels; road-trip profile -> charger, base-camp profile -> panels; cost of each kit."
+ },
+ {
+  "q": "What do I need to run a 12 volt fridge in my truck from a power station and keep it charged with a solar panel while camping?",
+  "use_case": "truck fridge kit",
+  "evidence": [
+   "https://forum.expeditionportal.com/threads/simplest-truck-bed-fridge-setup.241561/",
+   "https://forum.expeditionportal.com/threads/powering-12v-fridge.245080/",
+   "https://forum.expeditionportal.com/threads/fridge-portablepowerstation-solar-help-please.229432/",
+   "https://forum.expeditionportal.com/threads/power-pack-to-run-arb-fridge-while-camping-questions.222094/",
+   "https://www.tacomaworld.com/threads/fridge-setup-w-power-station-mounting-recharging-etc.771551/",
+   "https://forum.ih8mud.com/threads/what-are-the-basics-needed-to-power-a-12v-fridge-with-solar.1319895/",
+   "https://overlandbound.com/forums/threads/12-volt-fridge-battery-issues.25502/"
+  ],
+  "times_seen": 7,
+  "why_open": "Fridge, station and panel come from three makers; nobody sells or documents the sized combination.",
+  "answer_needs": "Fridge uses 300-600 Wh/day; 500-1000 Wh LiFePO4 station with a regulated 12 V outlet + 100-200 W panel + car charging cable; keep the station in the cab; one-cart kit."
+ },
+ {
+  "q": "Will charging a big power station from my truck while driving hurt the alternator or drain the starter battery?",
+  "use_case": "alternator load",
+  "evidence": [
+   "https://www.forestriverforums.com/threads/charging-large-portable-power-stations-from-dynamax-freightliner-best-practices-pitfalls.1451774/",
+   "https://forum.expeditionportal.com/threads/dc-dc-charger-as-an-alternative-to-generator.246276/page-5",
+   "https://forum.expeditionportal.com/threads/good-solar-gen-power-stations-for-dc-and-light-ac-truck-campers.242227/page-3"
+  ],
+  "times_seen": 3,
+  "why_open": "Vehicle makers and station makers each stay silent on the other's limits.",
+  "answer_needs": "Alternator headroom rule (keep added load under ~50% of rating), ignition-sensing chargers that stop when the engine is off, wire gauge/fuse; charger wattage to pick by alternator size."
+ },
+ {
+  "q": "What size gas generator do I need to recharge a power station during a long outage?",
+  "use_case": "generator + station",
+  "evidence": [
+   "https://diysolarforum.com/threads/best-gas-generator-for-a-backup-battery-charging.30494/",
+   "https://diysolarforum.com/threads/generator-size-to-charge-batteries.86084/",
+   "https://diysolarforum.com/threads/charging-with-suitcase-generator.75028/",
+   "https://diysolarforum.com/threads/small-twist-to-power-station-supplementing.117340/"
+  ],
+  "times_seen": 4,
+  "why_open": "Station makers sell their own smart generators; generator makers do not list station charge rates.",
+  "answer_needs": "Station AC charge watts (often adjustable 200-1800 W) x 1.25 = generator running watts; a 2000 W inverter generator covers most 1-2 kWh stations; run 1-2 h per day; fuel per recharge."
+ },
+ {
+  "q": "Is it safe to recharge an expensive power station from a cheap gas generator, or will the rough power damage it?",
+  "use_case": "generator power quality",
+  "evidence": [
+   "https://diysolarforum.com/threads/clean-vs-dirty-power-to-recharge-a-new-expensive-solar-generator.25385/",
+   "https://diysolarforum.com/threads/best-gas-generator-for-a-backup-battery-charging.30494/"
+  ],
+  "times_seen": 2,
+  "why_open": "Station manuals rarely state tolerance for non-inverter generator output.",
+  "answer_needs": "Inverter generators are safe; open-frame units often get rejected or need the charge rate turned down; which stations let you lower AC charge watts; recommended small inverter generator pairing."
+ },
+ {
+  "q": "Is it better to pair a small gas generator with a power station, or just buy more solar panels for outages?",
+  "use_case": "generator vs panels for outage",
+  "evidence": [
+   "https://diysolarforum.com/threads/small-twist-to-power-station-supplementing.117340/",
+   "https://diysolarforum.com/threads/best-gas-generator-for-a-backup-battery-charging.30494/",
+   "https://forum.expeditionportal.com/threads/dc-dc-charger-as-an-alternative-to-generator.246276/page-5"
+  ],
+  "times_seen": 3,
+  "why_open": "Cross-category trade-off; no maker sells both sides honestly.",
+  "answer_needs": "Cost per kWh/day delivered in winter storm vs summer outage; hybrid: station + 400 W panels + 2 kW inverter generator for cloudy days; quiet-hours benefit of the battery."
+ },
+ {
+  "q": "Can I leave my refrigerator plugged into a power station all the time so it switches over automatically when the power goes out?",
+  "use_case": "always-on fridge backup",
+  "evidence": [
+   "https://community.bluettipower.com/t/can-bluetti-power-stations-be-used-as-a-backup-for-power-outages/27287",
+   "https://diysolarforum.com/threads/jackery-1000-as-a-ups.21173/",
+   "https://diysolarforum.com/threads/do-any-solar-generators-power-station-allow-charge-and-use-at-the-same-time.96031/",
+   "https://diysolarforum.com/threads/small-solar-power-station-with-automatic-transfer.81895/"
+  ],
+  "times_seen": 4,
+  "why_open": "Whether a model has true automatic switchover (and how fast) is buried or absent in listings; older and budget units lack it.",
+  "answer_needs": "List of stations with bypass + auto switchover under 20 ms and a charge cap setting; size for fridge surge; note which popular models should not be left this way."
+ },
+ {
+  "q": "Does leaving a power station plugged into the wall all the time while running things through it wear out the battery?",
+  "use_case": "battery wear when always plugged in",
+  "evidence": [
+   "https://diysolarforum.com/threads/simultaneous-charge-discharge-pass-through-on-all-in-one-systems-and-impact-on-battery-longevity-considering-bluetti-ac200-and-ecoflow-delta.9141/",
+   "https://diysolarforum.com/threads/do-any-solar-generators-power-station-allow-charge-and-use-at-the-same-time.96031/",
+   "https://community.bluettipower.com/t/pass-through-and-battery-health-of-ac200-max/21404"
+  ],
+  "times_seen": 3,
+  "why_open": "Makers give cycle counts, not guidance on standby wear; behaviour differs by model (bypass vs through-battery).",
+  "answer_needs": "Which models bypass the battery on wall power; set charge limit to 80-90%; LiFePO4 units tolerate standby far better than older NMC; models to pick for permanent standby."
+ },
+ {
+  "q": "Can a power station work as a battery backup for my sump pump and still recharge from solar panels?",
+  "use_case": "sump pump backup",
+  "evidence": [
+   "https://community.bluettipower.com/t/can-bluetti-power-stations-be-used-as-a-backup-for-power-outages/27287",
+   "https://diysolarforum.com/threads/small-solar-power-station-with-automatic-transfer.81895/"
+  ],
+  "times_seen": 2,
+  "why_open": "Sump pump makers sell 12 V backup pumps; station makers do not size for pump start surge or duty cycle.",
+  "answer_needs": "Pump running/starting watts (1/3-1/2 HP: 800-1000 W run, 2-3x start); 1-2 kWh station with auto switchover + 200-400 W panels; hours of pumping per charge."
+ },
+ {
+  "q": "Can I use a power station and charge it from solar panels at the same time?",
+  "use_case": "charge and use together",
+  "evidence": [
+   "https://diysolarforum.com/threads/do-any-solar-generators-power-station-allow-charge-and-use-at-the-same-time.96031/",
+   "https://diysolarforum.com/threads/simultaneous-charge-discharge-pass-through-on-all-in-one-systems-and-impact-on-battery-longevity-considering-bluetti-ac200-and-ecoflow-delta.9141/",
+   "https://community.bluettipower.com/t/does-elite-100-v2-have-full-pass-through-for-both-ac-and-dc-outputs/40041"
+  ],
+  "times_seen": 3,
+  "why_open": "Asked repeatedly because listings do not state it plainly per model.",
+  "answer_needs": "Yes on nearly all current LiFePO4 units; exceptions; size panels to exceed the daytime load so the battery still fills; example kit."
+ },
+ {
+  "q": "Can a portable power station run my 240 volt well pump during an outage, and do I need one unit or two?",
+  "use_case": "well pump backup",
+  "evidence": [
+   "https://diysolarforum.com/threads/what-solar-inverters-will-start-a-240v-1hp-deep-well-submersible-pump.74458/",
+   "https://diysolarforum.com/threads/well-pumps-and-a-c-units-concerns.28580/",
+   "https://diysolarforum.com/threads/planning-new-off-grid-backup-power-for-house-and-water-well.8032/",
+   "https://diysolarforum.com/threads/looking-for-a-240v-home-backup-setup.124126/",
+   "https://diysolarforum.com/threads/solar-powered-well-pump.36330/"
+  ],
+  "times_seen": 5,
+  "why_open": "Pump start surge vs station surge is a cross-maker fact; stations list running watts, pump makers list horsepower.",
+  "answer_needs": "By pump HP (1/2, 3/4, 1, 1.5): start surge, the single 240 V stations that start it vs paired-unit kits with the linking hub, soft-start option, inlet/transfer hardware."
+ },
+ {
+  "q": "Which power stations can run a 240 volt appliance like a dryer or well pump from a single unit without buying two?",
+  "use_case": "single-unit 240 V",
+  "evidence": [
+   "https://diysolarforum.com/threads/existing-portable-power-stations-with-simultaneous-120vac-input-and-240vac-output.69600/",
+   "https://diysolarforum.com/threads/looking-for-a-240v-home-backup-setup.124126/",
+   "https://diysolarforum.com/threads/new-pecron-e5000.111823/",
+   "https://diysolarforum.com/threads/is-a-240v-generator-hookup-solution-viable-using-two-anker-powerstation-767s.61699/"
+  ],
+  "times_seen": 4,
+  "why_open": "Catalog cards do not flag 120/240 V output; some units lose 240 V while charging from a 120 V outlet.",
+  "answer_needs": "List of single units with native 120/240 V output, their surge, whether 240 V works while charging, outlet type (L14-30 / 14-50); vs two-unit kits and their price."
+ },
+ {
+  "q": "Can I plug a portable power station into my house to power a few circuits, and what do I need installed?",
+  "use_case": "connect to home panel",
+  "evidence": [
+   "https://diysolarforum.com/threads/hooking-a-solar-generator-to-a-sub-panel.34204/",
+   "https://diysolarforum.com/threads/grounding-and-bonding-solar-for-portable-battery-backup.113671/",
+   "https://diysolarforum.com/threads/looking-for-a-240v-home-backup-setup.124126/",
+   "https://www.garagejournal.com/forum/threads/looking-for-a-basic-line-or-generator-transfer-switch.538641/#post-10881455"
+  ],
+  "times_seen": 4,
+  "why_open": "Makers push their own smart panels; the generic inlet box + interlock or manual transfer switch route with a station is a cross-brand combination.",
+  "answer_needs": "Station with a 30 A outlet + inlet box + interlock kit or 6-10 circuit manual transfer switch + the right cord (TT-30 or L14-30); 120 V-only units need a bridged-leg adapter and no 240 V loads; electrician cost range."
+ },
+ {
+  "q": "Do I need a transfer switch to use a solar generator with my house, or can I just run extension cords?",
+  "use_case": "transfer switch vs cords",
+  "evidence": [
+   "https://www.garagejournal.com/forum/threads/looking-for-a-basic-line-or-generator-transfer-switch.538641/#post-10881455",
+   "https://diysolarforum.com/threads/hooking-a-solar-generator-to-a-sub-panel.34204/",
+   "https://community.bluettipower.com/t/can-bluetti-power-stations-be-used-as-a-backup-for-power-outages/27287"
+  ],
+  "times_seen": 3,
+  "why_open": "No maker says when cords are enough; depends on hard-wired loads (furnace, well, lights).",
+  "answer_needs": "Cords are fine for fridge, freezer, modem; hard-wired furnace/well needs a transfer switch or inlet; kit list for each path with heavy-gauge cords and a single-circuit transfer switch for the furnace."
+ },
+ {
+  "q": "Why won't my gas furnace run off my power station during an outage, and what do I need to make it work?",
+  "use_case": "furnace on power station",
+  "evidence": [
+   "https://community.bluettipower.com/t/200p-will-not-run-my-gas-furnace/2144",
+   "https://community.bluettipower.com/t/switching-neutrals/4192/17",
+   "https://www.thecooldown.com/green-tech/ecoflow-delta-3-plus-furnace-workaround-safety/",
+   "https://diysolarforum.com/threads/can-bluetti-ac200-ground-be-bonded.18509/"
+  ],
+  "times_seen": 4,
+  "why_open": "Caused by the station's floating neutral, which neither furnace makers nor station makers document; the fix is a small third-party part.",
+  "answer_needs": "Explain flame sensor needs neutral bonded to ground; neutral-ground bonding plug when running standalone, single-circuit furnace transfer switch for hard-wired units; stations with built-in bonding; safety note on not bonding while wall-connected."
+ },
+ {
+  "q": "I already have a generator plug on my house, can I plug a power station into it instead of a gas generator?",
+  "use_case": "use existing generator inlet",
+  "evidence": [
+   "https://diysolarforum.com/threads/is-a-240v-generator-hookup-solution-viable-using-two-anker-powerstation-767s.61699/",
+   "https://diysolarforum.com/threads/grounding-and-bonding-solar-for-portable-battery-backup.113671/",
+   "https://www.garagejournal.com/forum/threads/looking-for-a-basic-line-or-generator-transfer-switch.538641/#post-10881455"
+  ],
+  "times_seen": 3,
+  "why_open": "Inlet makers assume gas generators; station makers assume their own smart panel.",
+  "answer_needs": "Match inlet (L14-30 / L5-30 / 14-50) to station outlet; 120/240 V stations plug straight in, 120 V units need an adapter and leave 240 V breakers off; station + cord pairs."
+ },
+ {
+  "q": "I have solar panels on my roof that shut off in an outage, can I use them to charge a power station when the grid is down?",
+  "use_case": "grid-tied rooftop + station",
+  "evidence": [
+   "https://www.quora.com/Can-I-temporarily-unhook-a-few-rooftop-solar-panels-from-my-PV-system-to-charge-my-Ecoflow-Delta-Max-during-a-power-outage-I-have-the-panels-I-just-wondered-if-I-could-use-them-to-charge-my-portable-battery-in-a",
+   "https://diysolarforum.com/threads/can-i-leverage-pv-panels-from-grid-tie-system-during-an-outage.109847/",
+   "https://diysolarforum.com/threads/cheapest-and-easiest-way-to-keep-panels-working-during-a-power-outage.72663/",
+   "https://diysolarforum.com/threads/intriguing-question-what-happens-when-you-hook-an-on-grid-solar-inverter-to-a-portable-power-station-in-an-off-grid-situation.44102/",
+   "https://diysolarforum.com/threads/battery-to-turn-on-panels-during-outage.30877/"
+  ],
+  "times_seen": 5,
+  "why_open": "Rooftop installers sell whole-home batteries; station makers do not address existing grid-tied arrays.",
+  "answer_needs": "Grid-tied inverters stay off without the grid; options: a few separate ground panels for the station, a station that can form a small grid for some inverters (rare), or inverter with backup outlet; cheapest reliable kit = station + 2-4 dedicated panels."
+ },
+ {
+  "q": "I rent an apartment with a balcony, what solar panel and power station setup can I use without installing anything?",
+  "use_case": "balcony / renter kit",
+  "evidence": [
+   "https://www.energysage.com/news/plug-in-balcony-solar-panels/",
+   "https://www.energymatters.com.au/renewable-news/portable-power-station-renters-australia/",
+   "https://www.brightsaver.org/post/solar-for-renters-and-apartments",
+   "https://bgr.com/2240035/renters-home-solar-power-without-installation/"
+  ],
+  "times_seen": 4,
+  "why_open": "US plug-in balcony rules are unsettled; the no-permission route is a station + railing or folding panel, which no maker sells as a renter kit.",
+  "answer_needs": "500-1000 Wh station + 100-200 W folding or railing-hung panel + flat window pass-through cable; what it can run (laptop, router, lights, small fridge for hours); expectations by balcony direction."
+ },
+ {
+  "q": "What solar generator kit do I need to run lights and charge tool batteries in a shed with no power?",
+  "use_case": "shed kit",
+  "evidence": [
+   "https://diysolarforum.com/threads/a-small-solar-power-system-for-a-small-shed.31349/",
+   "https://diysolarforum.com/threads/comparing-portable-systems.70997/"
+  ],
+  "times_seen": 2,
+  "why_open": "Head-term cards list stations; the sized station + panel + mounting + cable set for a shed is a combination.",
+  "answer_needs": "300-700 Wh LiFePO4 station + 100-200 W rigid panel on the roof + extension + adapter; LED shop lights and tool chargers draw; cold-weather charging note."
+ },
+ {
+  "q": "What size power station and solar panel do I need for a chicken coop with an automatic door, a light and a heated waterer?",
+  "use_case": "chicken coop kit",
+  "evidence": [
+   "https://www.backyardchickens.com/threads/solar-system-for-a-new-chicken-coop.1575033/",
+   "https://www.backyardchickens.com/threads/solar-power-to-run-heated-water-drinkers-electric-perimeter-wire-and-coop-door.1604917/",
+   "https://www.backyardchickens.com/threads/100-watt-solar-set-up-for-coop.1190661/",
+   "https://www.homesteadingtoday.com/threads/chicken-coop-solar-panel.566769/",
+   "https://diysolarforum.com/threads/would-someone-sort-me-a-simple-parts-list-to-run-my-chicken-coop.117883/",
+   "https://diysolarforum.com/threads/solar-setup-for-chicken-coop.7309/"
+  ],
+  "times_seen": 6,
+  "why_open": "Coop gear makers and station makers do not size each other's loads; the heated waterer dominates and surprises people.",
+  "answer_needs": "Door + light need under 100 Wh/day (small station + 100 W panel); a 60-150 W heated waterer needs 1.5-3.5 kWh/day in winter (1-2 kWh station + 400-800 W panels) or a different waterer; two kit tiers."
+ },
+ {
+  "q": "Can a small solar generator run a fan in my chicken coop or greenhouse all summer without me recharging it?",
+  "use_case": "coop / greenhouse fan",
+  "evidence": [
+   "https://diysolarforum.com/threads/questions-about-a-building-a-small-system-to-run-a-fan-in-my-chicken-coop.102298/",
+   "https://www.backyardchickens.com/threads/show-your-coop-solar-setup.1694277/"
+  ],
+  "times_seen": 2,
+  "why_open": "No card pairs a fan's daily draw with a station + panel that stays net positive.",
+  "answer_needs": "Fan watts x hours vs panel output; 300-500 Wh station + 100 W panel for a 20-40 W fan; use the DC/USB outlet to avoid inverter idle loss; leave-on standby behaviour of the station."
+ },
+ {
+  "q": "Can a solar panel and power station run a small pond pump all day, and what size do I need?",
+  "use_case": "pond pump",
+  "evidence": [
+   "https://diysolarforum.com/threads/help-using-harborfreight-100w-system-to-power-chicken-coop-and-pond.11738/"
+  ],
+  "times_seen": 1,
+  "why_open": "Pond pump makers sell tiny direct-solar pumps; a 24 h pump on a station is a sizing question nobody publishes.",
+  "answer_needs": "50 W pump x 24 h = 1.2 kWh/day -> 1 kWh+ station + 400 W panels, or daytime-only running with 200 W; timer use; weather protection for the station."
+ },
+ {
+  "q": "My driveway gate is far from the house with no power, what solar panel and battery do I need for the gate opener to work in winter?",
+  "use_case": "gate opener solar",
+  "evidence": [
+   "https://forum.chronofhorse.com/t/anything-new-with-electric-solar-gate-openers/793829",
+   "https://forum.chronofhorse.com/t/solar-gate-opener/448790",
+   "https://forum.chronofhorse.com/t/automatic-solar-opener-for-field-gate/793456",
+   "https://forum.chronofhorse.com/t/best-affordable-solar-gate-opener/813313",
+   "https://www.tractorbynet.com/forums/threads/automatic-gate-opener-suggestions.403008/",
+   "https://diysolarforum.com/threads/gate-opener.21462/",
+   "https://diysolarforum.com/threads/off-grid-sliding-gate-opener.32530/",
+   "https://diysolarforum.com/threads/solar-powered-swing-gate-opener.91866/"
+  ],
+  "times_seen": 8,
+  "why_open": "Gate opener makers bundle a 10-30 W panel that fails in shade or January; correct panel + battery upsizing is undocumented.",
+  "answer_needs": "Opener standby draw + cycles/day; upsize to 50-100 W panel + larger 12/24 V battery with controller, or a small station where the opener takes AC; shade and winter-sun placement."
+ },
+ {
+  "q": "What size solar generator do I need for a weekend off-grid cabin with lights, a small fridge and phone charging?",
+  "use_case": "weekend cabin kit",
+  "evidence": [
+   "https://www.small-cabin.com/forum/3_11595_0.html",
+   "https://permies.com/t/223702/Thinking-buying-solar-generator",
+   "https://diysolarforum.com/threads/best-choices-for-off-grid-cabins.78439/",
+   "https://diysolarforum.com/threads/anyone-have-first-hand-knowledge-about-the-3-solar-generators-that-have-made-my-list.63536/"
+  ],
+  "times_seen": 4,
+  "why_open": "Sized combination for a load profile, not a product card; idle draw matters and is unpublished.",
+  "answer_needs": "1-1.5 kWh/day -> 1-2 kWh LiFePO4 station + 400 W panels (rigid on roof or folding) + cable; bring it home charged option; idle-draw comparison."
+ },
+ {
+  "q": "Can I leave a power station and solar panels at my cabin all winter, or will the cold ruin the battery?",
+  "use_case": "cold storage",
+  "evidence": [
+   "https://permies.com/mobile/t/272431/LiFePO-temperatures-specifically-COLD-FREEZING",
+   "https://backuppowerhub.com/power-station-freezing-temperatures-charging-storage/",
+   "https://communityarchive.victronenergy.com/questions/65650/choose-between-lifepo4-or-li-ion-in-a-cold-region.html"
+  ],
+  "times_seen": 3,
+  "why_open": "Each manual gives its own temperature lines; no cross-brand list of which units block or self-heat for cold charging.",
+  "answer_needs": "Storage is fine to about -4 F at 50-60% charge; charging blocked below 32 F on most; models with self-heating or low-temp charge protection; unplug panels or use an insulated box."
+ },
+ {
+  "q": "Can I charge a power station from solar panels in an unheated garage or shed when it's below freezing?",
+  "use_case": "cold charging",
+  "evidence": [
+   "https://backuppowerhub.com/power-station-freezing-temperatures-charging-storage/",
+   "https://output-report.pages.dev/48-power-station-cold-weather-guide",
+   "https://udpwr.com/blogs/portable-power-station-knowledge/how-cold-is-too-cold-for-a-solar-generator",
+   "https://permies.com/mobile/t/272431/LiFePO-temperatures-specifically-COLD-FREEZING"
+  ],
+  "times_seen": 4,
+  "why_open": "Cross-brand fact: which stations have battery self-heating; makers mention it only for their own models.",
+  "answer_needs": "Short list of stations with built-in battery heating for sub-freezing charging vs those that just refuse; insulated box with the station's own heat; panel set for low winter sun."
+ },
+ {
+  "q": "Can I plug my camper's 30 amp cord straight into a portable power station, and what size do I need?",
+  "use_case": "RV 30 amp + station",
+  "evidence": [
+   "https://www.forestriverforums.com/threads/using-a-portable-power-station-with-a-30-amp-rv-outlet.2192187/",
+   "https://www.forestriverforums.com/threads/portable-power-stations.381046/",
+   "https://www.jaycoowners.com/threads/portable-power-station.730982/",
+   "https://www.irv2.com/threads/portable-power-stations.2040976/page-4",
+   "https://www.irv2.com/forums/f54/inside-30a-outlet-636758.html"
+  ],
+  "times_seen": 5,
+  "why_open": "RV makers do not cover stations; station cards do not flag which have a built-in RV outlet or enough output for the air conditioner.",
+  "answer_needs": "Stations with a TT-30 outlet vs a 15-to-30 A adapter; turn the converter off to avoid charging the RV battery from the station; AC needs 2 kWh+/3000 W and gives 2-4 h; station + adapter + panels kit."
+ },
+ {
+  "q": "Can I use a portable power station to recharge my RV's batteries when I'm camping without hookups?",
+  "use_case": "station charging RV battery",
+  "evidence": [
+   "https://www.airforums.com/threads/how-to-use-portable-power-station-to-charge-batteries.1424568/",
+   "https://www.forestriverforums.com/threads/using-a-portable-power-station-with-a-30-amp-rv-outlet.2192187/"
+  ],
+  "times_seen": 2,
+  "why_open": "Cross-system question outside both makers' manuals.",
+  "answer_needs": "Works through the shore cord and converter but wastes 20-30%; better to run loads directly from the station; when a folding panel on the RV battery is the cheaper fix."
+ },
+ {
+  "q": "My RV sits in a storage lot with no power, what solar setup keeps the battery from dying?",
+  "use_case": "RV storage lot",
+  "evidence": [
+   "https://www.irv2.com/threads/portable-solar-trickle-charger.2024064/",
+   "https://www.keystoneforums.com/threads/24-7-shore-power.622014/#post-6860268"
+  ],
+  "times_seen": 2,
+  "why_open": "RV makers say 'disconnect the battery'; sized maintainer panel + controller is a combination.",
+  "answer_needs": "20-50 W panel + small controller to the battery (or the RV's solar port), battery disconnect for parasitic loads; theft-resistant mounting; when a 100 W suitcase kit is needed."
+ },
+ {
+  "q": "My RV already has solar panels on the roof, can I use them to charge a portable power station too?",
+  "use_case": "RV roof solar + station",
+  "evidence": [
+   "https://www.irv2.com/threads/charging-a-portable-power-station-from-1000w-rv-solar.2179536/",
+   "https://diysolarforum.com/threads/van-solar-panels-charging-both-portable-power-station-generator-and-leisure-battery.20278/"
+  ],
+  "times_seen": 2,
+  "why_open": "Requires splitting or switching an array between two chargers; neither RV nor station makers document it.",
+  "answer_needs": "Charge the station from the RV's 12 V system through a DC-DC cable into the solar/car port, or a switch that sends the array to the station; do not parallel two charge controllers on one array without checking voltage."
+ },
+ {
+  "q": "Can a portable power station replace a built-in battery system in a camper van, with solar panels on the roof?",
+  "use_case": "van build with station",
+  "evidence": [
+   "https://www.promasterforum.com/threads/power-stations-vs-system-built-with-discrete-components.108786/",
+   "https://www.fordtransitusaforum.com/threads/portable-power-station-as-an-alternate-power-source.100447/",
+   "https://www.fordtransitusaforum.com/threads/how-to-connect-a-portable-power-station.91258/",
+   "https://www.fordtransitusaforum.com/threads/real-world-use-of-portable-power-stations-what-do-you-use.94003/",
+   "https://diysolarforum.com/threads/a-panel-power-station-semi-portable-rv-solar-system-thoughts.36109/"
+  ],
+  "times_seen": 5,
+  "why_open": "A full kit (station + roof panels + roof cable entry + driving charger + 12 V distribution) crosses four makers.",
+  "answer_needs": "1-2 kWh station with strong regulated 12 V output + 200-400 W rigid roof panels + cable gland + alternator charger + 12 V fuse block; limits vs a component system."
+ },
+ {
+  "q": "Is a used or refurbished power station worth buying, and how do I tell how much battery life is left?",
+  "use_case": "used / refurbished",
+  "evidence": [
+   "https://oupes.com/a/blog/post/should-i-buy-a-refurbished-portable-power-supply",
+   "https://www.jackery.com/blogs/buying-advice/can-you-replace-a-jackery-battery",
+   "https://testbeforeyoubuy.pages.dev/guides/power/portable-power-station-testing-guide-2026"
+  ],
+  "times_seen": 3,
+  "why_open": "Makers promote their own refurb stores; no cross-brand view of refurb price, warranty length and battery type.",
+  "answer_needs": "Maker-refurbished with warranty over marketplace used; prefer the long-life battery type; simple capacity test (run a known load, read Wh); refurb vs new sale price today."
+ },
+ {
+  "q": "Should I avoid older power stations with the regular lithium battery and only buy the newer long-life kind?",
+  "use_case": "battery type when buying older models",
+  "evidence": [
+   "https://forum.expeditionportal.com/goto/post?id=2990063",
+   "https://communityarchive.victronenergy.com/questions/65650/choose-between-lifepo4-or-li-ion-in-a-cold-region.html",
+   "https://www.small-cabin.com/forum/3_11595_0.html"
+  ],
+  "times_seen": 3,
+  "why_open": "Discounted older models rarely state chemistry in the title; makers still sell both.",
+  "answer_needs": "LiFePO4 (3000+ cycles) vs NMC (500-1000) by model name/generation; NMC only makes sense for light, occasional carry use at a steep discount; which clearance models are which."
+ },
+ {
+  "q": "Can the battery in a power station be replaced when it wears out, or do I have to buy a whole new one?",
+  "use_case": "battery replacement",
+  "evidence": [
+   "https://www.jackery.com/blogs/buying-advice/can-you-replace-a-jackery-battery",
+   "https://oupes.com/a/blog/post/how-long-do-portable-power-station-batteries-last"
+  ],
+  "times_seen": 2,
+  "why_open": "Affects which one to buy; replaceability and warranty length differ by brand and are not on product cards.",
+  "answer_needs": "Most are sealed; modular units with swappable battery packs; warranty years by brand; expected years at daily vs occasional use; pick modular or long-warranty models."
+ },
+ {
+  "q": "Does a portable solar generator qualify for the federal solar tax credit if I use it for home backup?",
+  "use_case": "tax credit",
+  "evidence": [
+   "https://ttlc.intuit.com/community/tax-credits-deductions/discussion/2024-energy-tax-credit-portable-solar-equiptment/00/3627933",
+   "https://oupes.com/blogs/blogs/oupes-do-solar-generators-qualify-for-a-tax-credit",
+   "https://batteryskills.com/do-portable-power-stations-qualify-for-tax-credit-2/",
+   "https://oukitelpower.com/blogs/blog/do-portable-solar-panels-qualify-for-tax-credit",
+   "https://backuppowerhub.com/?p=4048"
+  ],
+  "times_seen": 5,
+  "why_open": "Vendor pages contradict each other and many still advertise 30%; the residential credit (25D) ended for spending after 2025-12-31 (verify on irs.gov before publishing).",
+  "answer_needs": "Plain status: no federal 25D credit for 2026 purchases; 2025 and earlier purchases needed 3 kWh+ battery used at a residence (Form 5695); state/utility rebates that still exist; do not present as tax advice."
+ },
+ {
+  "q": "Does adding an extra battery to my power station make it big enough to count for the solar tax credit?",
+  "use_case": "tax credit 3 kWh threshold",
+  "evidence": [
+   "https://ttlc.intuit.com/community/tax-credits-deductions/discussion/2024-energy-tax-credit-portable-solar-equiptment/00/3627933"
+  ],
+  "times_seen": 1,
+  "why_open": "Asked on a tax forum with no authoritative reply; depends on the 3 kWh rule and purchase year.",
+  "answer_needs": "For 2025-and-earlier purchases: station + expansion bought together totalling 3 kWh+ was the common reading; for 2026 the credit is gone (verify); which station + expansion combos reach 3 kWh."
+ }
+]

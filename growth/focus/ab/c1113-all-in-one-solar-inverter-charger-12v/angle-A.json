@@ -1,0 +1,101 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the ALLWEI 3000W 12V hybrid's '3000W max PV charging power' cannot reach a 12V battery at full rate: 3000 W at 12.8 V works out to about 234 A of charge current. That is more than the 150 A BMS on a typical 12V 100Ah LiFePO4 battery and more than the 100 A charge / 200 A discharge limits of ACOPOWER's own 12V 200Ah battery. Its 3,600 W surge is also only 1.2× its rated output, while ALLWEI's own plain 3000W inverter is rated at 6,000 W peak.",
+ "standout": 2,
+ "standout_why": "I did not open the 12 results ChatGPT got (all renogy.com, none cited). I judged them from their titles and URLs. Most are Renogy solar kits, plus the REGO 3000W inverter charger, a high-frequency inverter charger and a split-phase explainer. None is about the ALLWEI or ACOPOWER all-in-ones ChatGPT recommended, so none could compare these units' PV-charging watts with 12V battery charge-current limits. ChatGPT's own answer lists '3000W output, 12V battery support' and says 'check charging limits' without giving any figures.",
+ "decides": "This confirms that a 12V all-in-one can't use 3000 W of solar or deliver 3000 W continuously from a single 100–200 Ah battery. For ALLWEI ($599) and ACOPOWER ($1,298), the real limits are the battery's BMS current and the low hybrid surge, not the headline 3000 W. Shoppers who need near-3 kW should take ChatGPT's own advice and move to 24V or 48V. For a 12V unit, the price gap favours ALLWEI only if the loads have modest motor-start surge.",
+ "candidates": [
+  "ACOPOWER 3000W/12V All-in-One Hybrid Solar Charger Inverter",
+  "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+  "PowMr 1.6kW/3kW 12V hybrid (230V output)",
+  "MPP Solar PIP-1012LV-MK"
+ ],
+ "findings": [
+  {
+   "product": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "label": "Price (maker US store)",
+   "value": "$599.00 (compare-at $900.00), in stock",
+   "source": "https://www.allweipower.com/products/3000w-hybrid-solar-inverter-12v-to-120v",
+   "source_title": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search of allweipower.com (Shopify product data). The product page itself returned HTTP 429."
+  },
+  {
+   "product": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "label": "Continuous vs surge output",
+   "value": "3,000 W continuous; 3,600 W peak surge for up to 5 s (1.2× rated); 120V pure sine",
+   "source": "https://www.allweipower.com/products/3000w-hybrid-solar-inverter-12v-to-120v",
+   "source_title": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "read": "2026-11-13",
+   "note": "Maker's wording: 'peak surge rating of 3600W for up to 5 seconds'. Surge ratio = 3600/3000 = 1.2."
+  },
+  {
+   "product": "ALLWEI 3000 Watt Pure Sine Wave Inverter (no MPPT, no charger)",
+   "label": "Surge on the same brand's plain inverter, for normalisation",
+   "value": "3,000 W continuous; 6,000 W peak surge (2×); $199.00 (compare-at $339.00); ETL to UL458",
+   "source": "https://www.allweipower.com/products/allwei-3000-watt-pure-sine-wave-inverter-12v-dc-to-120v-ac-converter",
+   "source_title": "ALLWEI 3000 Watt Pure Sine Wave Inverter - 12V DC to 120V AC Converter",
+   "read": "2026-11-13",
+   "note": "Same store, same day. No surge duration is given, so the 6,000 W and 3,600 W/5 s figures may be measured over different windows. The footnote should say so."
+  },
+  {
+   "product": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "label": "PV input limits",
+   "value": "30–300 V DC PV input; 20 A max PV input current; 3,000 W max PV charging power",
+   "source": "https://www.allweipower.com/products/3000w-hybrid-solar-inverter-12v-to-120v",
+   "source_title": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "read": "2026-11-13",
+   "note": "Arithmetic: reaching 3,000 W at 20 A needs a string operating at ≥150 V (3000/20), so the array must be wired in series. On the battery side, 3,000 W into a 12.8 V nominal LiFePO4 is about 234 A of charge current (3000/12.8, ignoring conversion loss)."
+  },
+  {
+   "product": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "label": "Price (maker US store)",
+   "value": "$1,298.00, available",
+   "source": "https://www.acopower.com/products/acopower-3000w-30v-to-300v-all-in-one-pure-sine-wave-power-inverter",
+   "source_title": "ACOPOWER 3000W/12V All-in-One Pure Sine Wave Hybrid Solar Charger Inverter",
+   "read": "2026-11-13",
+   "note": "Read through storecheck.py search of acopower.com. The product page and manual PDF returned HTTP 429 or were too large, so I could not read its specs. Its URL slug says '30V to 300V', the same PV window as ALLWEI's, but I have not verified that they share a platform."
+  },
+  {
+   "product": "ACOPOWER 12V 100Ah / 200Ah LiFePO4 (kit batteries)",
+   "label": "Battery current limits that cap a 12V 3000W all-in-one",
+   "value": "100Ah: 50 A max continuous charge, 100 A max continuous discharge. 200Ah: 100 A max continuous charge, 200 A max continuous discharge",
+   "source": "https://www.acopower.com/products/acopower-200ah-rv-solar-system",
+   "source_title": "ACOPOWER Lithium Battery Mono Solar Power Complete System with Battery and Inverter for RV Boat 12V Off Grid Kit",
+   "read": "2026-11-13",
+   "note": "Arithmetic: a 3,000 W AC load draws at least 3000/12.8 = 234 A DC before inverter losses, which exceeds the 200Ah battery's 200 A discharge limit. A 3,000 W solar charge (about 234 A) is more than twice its 100 A charge limit."
+  },
+  {
+   "product": "Vatrer 12V 100Ah Group 24 (already listed on Dealectric)",
+   "label": "BMS limit vs 12V 3000W all-in-one",
+   "value": "150 A BMS",
+   "source": "https://www.allweipower.com/products/3000w-hybrid-solar-inverter-12v-to-120v",
+   "source_title": "ALLWEI 3000W 12V Hybrid Solar Inverter with MPPT",
+   "read": "2026-11-13",
+   "note": "The 150 A figure comes from Dealectric's own catalogue name for the Vatrer battery; I did not open a Vatrer page. The source URL is the ALLWEI page for the 234 A demand side. Comparison: 234 A needed vs 150 A allowed, so one battery supports about 150 × 12.8 = 1,920 W."
+  },
+  {
+   "product": "PowMr (US store)",
+   "label": "12V all-in-one with 110/120V output",
+   "value": "None returned. A search of the 110Vac/12Vdc all-in-one range listed only 24V and 48V models at 110/120V",
+   "source": "https://powmr.com/products/all-in-one-inverter-charger-4000w-110vac-24vdc",
+   "source_title": "4000W 110Vac 24Vdc All In One Inverter Charger with Built-in WiFi",
+   "read": "2026-11-13",
+   "note": "storecheck.py search of powmr.com for '110Vac 12Vdc all in one' returned 10 products, none of them 12V. This supports ChatGPT's own caveat that PowMr's 12V pick is 230V-only."
+  }
+ ],
+ "unsourced": [
+  "ACOPOWER 3000W/12V all-in-one surge rating, max solar charge current, max total charge current, no-load draw and certifications. acopower.com and buildthepower.com returned HTTP 429, and the ADCPOWER HYOne3000-12 manual PDF was over 10 MB and could not be downloaded.",
+  "ALLWEI 3000W 12V hybrid max battery charge current in amps (an Amazon title says '150A adjustable MPPT & AC charger'). Amazon B0GXKRF591 was walled, and the full maker page returned 429.",
+  "ALLWEI hybrid efficiency, idle consumption, transfer time and UL listing. The full product page could not be opened.",
+  "MPP Solar PIP-1012LV-MK model-specific solar charge current (series datasheet rows are shared across models). I did not open an mppsolar.com page within budget.",
+  "PowMr 12V 1.6 kW unit's solar-only vs AC+solar charge current split. I only saw search snippets (40 A solar / 80 A combined for the 1 kW model) and did not open the manual.",
+  "Renogy REGO 12V 3000W lack of MPPT (ChatGPT's claim). I did not open the Renogy page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.1044788
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "angle": "K3",
+ "gap": "No result ChatGPT got states that a generator only does its job in a whole-home battery kit if its voltage and start wiring match the battery's hub. On the Anker SOLIX E10, a 120 V portable generator recharges at no more than 1,800 W (versus 7,680 W at 240 V). The Power Dock takes only 240 V generators. Anker's own AC Generator Adapter is listed as 240 V, 40 A and 'Currently not compatible with Power Dock'. Automatic start needs a 240 V generator with Two Wire or Utility Sensing control. Anker's Smart Generator 5500 avoids all of this through a dedicated 4,500 W DC cable, but The Solar Lab found it 'can only charge one stack at a time'.",
+ "standout": 3,
+ "standout_why": "I compared against the four pages ChatGPT cited. The FranklinWH FAQ 'Can I use a generator with my FranklinWH system?' (both URLs) says portable and standby generators work, and its only quality advice reads 'low-quality inverter generators are recommended', which looks like a typo. The FranklinWH Generator Module page says it works with 'a range of both standby and portable generators' and gives no voltage, start-wire, kW or THD limits. The aPower 2 page only lists 'generator' as a charging source. None of them says that 120 V versus 240 V changes the recharge rate four-fold, that auto-start needs a 2-wire or utility-sensing generator, or that the adapter for third-party generators doesn't fit one of the two hubs. ChatGPT's answer itself says the capability 'should be confirmed before choosing equipment' but never says what to check. This finding decides the set: Power Dock plus Smart Generator 5500 (DC, auto-start), or Smart Inlet Box plus the AC Generator Adapter plus a 240 V generator. A 120 V portable generator is the wrong buy in either case.",
+ "kit_items": [
+  "Battery and inverter: Anker SOLIX E10 (Power Module + B6000 battery). It is sold on ankersolix.com (rakuten:ankersolix), so the whole kit fills one cart. It charges at 7,680 W on 240 V but only 1,800 W on 120 V.",
+  "Transfer hub: Anker SOLIX Power Dock (200 A, 120/240 V split phase). Generator circuits 1–2 are rated 100 A max / 80 A continuous. Anker requires an installer trained on the Power Dock.",
+  "Generator: Anker SOLIX Smart Generator 5500 (tri-fuel). It connects through a dedicated 4,500 W DC cable that carries both power and control, so the system can start it automatically by battery level. That avoids the 240 V / two-wire / THD requirements a third-party AC generator would have to meet.",
+  "Don't add: the E10 AC Generator Adapter to a Power Dock kit. Anker lists it as 'Currently not compatible with Power Dock'. It only belongs in an E10 Standalone or Smart Inlet Box kit, with a 240 V generator."
+ ],
+ "carts": [
+  {
+   "store": "Anker SOLIX (ankersolix.com)",
+   "items": [
+    "Anker SOLIX E10 + Power Dock + Smart Generator 5500 (Tri-Fuel) | https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500 | $7,399.00 (no regular price shown; extra B6000 battery $2,000 sale / $2,499 regular) | 2026-11-13"
+   ],
+   "bundle_sku": "Anker's own bundle 'E10 + Power Dock + Smart Generator 5500', $7,399.00 on 2026-11-13. The two-battery version, 'E10 (Power Module + 2× Battery) + Power Dock + Smart Generator 5500', was $9,399.00 the same day at https://www.ankersolix.com/products/e10-power-module-2-battery-power-dock-smart-generator-5500. Both pages' 'What's in the Box' lists one B6000 battery and a Smart Inlet Box, which don't match the bundle titles; check the cart before linking."
+  }
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX E10",
+   "label": "AC recharge power by generator voltage",
+   "value": "1,800 W at 120 V / 15 A; 7,680 W at 240 V / 32 A",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Anker blog, published 2026-08-27, updated 2026-10-30. The same figures are in the spec table at https://www.ankersolix.com/products/e10-power-dock-smart-generator-5500. 7,680 / 1,800 = 4.3× slower recharge from a 120 V generator."
+  },
+  {
+   "product": "Anker SOLIX E10 + Power Dock",
+   "label": "Generator requirement for automatic start",
+   "value": "240 V generator with Two Wire or Utility Sensing control",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Quoted: 'The generator needs to be a 240V model that supports Two Wire or Utility Sensing control.' The same article says most portable models lack SOC-based or app-controlled auto-start."
+  },
+  {
+   "product": "Anker SOLIX E10 (third-party generators)",
+   "label": "Generator power quality needed",
+   "value": "THD below 10 %",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "Quoted: 'For stable charging, choose a generator with THD below 10%.'"
+  },
+  {
+   "product": "Anker SOLIX E10 AC Generator Adapter",
+   "label": "Compatibility and rating",
+   "value": "Works with E10 Standalone and Smart Inlet Box; 'Currently not compatible with Power Dock'; up to 9,600 W at 240 V (40 A max)",
+   "source": "https://www.ankersolix.com/products/e10-ac-generator-adapter",
+   "source_title": "Anker SOLIX E10 AC Generator Adapter - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "The add-on page says the same: https://www.ankersolix.com/products/e10-ac-generator-adapter-add-on. Neither page mentions 120 V operation. Power Dock owners are sent to the Power Dock manual for generator setup."
+  },
+  {
+   "product": "Anker SOLIX Power Dock",
+   "label": "Generator connection",
+   "value": "Any 240 V generator, including standby, up to 24 kW pass-through; circuits 1–2 rated Load or Generator, 100 A max / 80 A continuous",
+   "source": "https://www.ankersolix.com/products/power-dock",
+   "source_title": "Anker SOLIX Power Dock",
+   "read": "2026-11-13",
+   "note": "The 24 kW claim has an asterisk, but no footnote text appears on the page. Standalone Power Dock listed at $1,999.00. FAQ: it must be installed by certified installers or electricians who have completed Anker's Power Dock product training."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500",
+   "label": "Charge path into E10",
+   "value": "4,500 W DC over a dedicated cable carrying power and communication (4,500 W on gasoline or LPG, 4,000 W on natural gas); 3,600 W AC",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/automatic-generator-integration-home-battery",
+   "source_title": "Automatic Generator Integration for Home Battery Backup - Anker SOLIX US",
+   "read": "2026-11-13",
+   "note": "E10 continuous output is 7,680 W (same page). If the house draws more than about 4.5 kW for a sustained period, the battery keeps draining even with the generator running."
+  },
+  {
+   "product": "Anker SOLIX Smart Generator 5500 with E10",
+   "label": "Stacks charged per generator",
+   "value": "One stack at a time",
+   "source": "https://www.thesolarlab.com/review/anker-solix-e10-full-system",
+   "source_title": "Anker SOLIX E10 Full System Review: True Home Backup? (The Solar Lab)",
+   "read": "2026-11-13",
+   "note": "The Solar Lab (no author or date shown; ©2026) says the generator 'can only charge one stack at a time'. Because solar and generator inputs connect to the inverters rather than the Power Dock, 'charging isn't evenly distributed across battery stacks'. This matters for Dealectric's listed 2× Power Module E10 kit. The review also says that without a Power Dock or Smart Inlet Box 'you're limited to basic 120V charging', which it calls 'extremely slow and not very practical'."
+  },
+  {
+   "product": "Anker SOLIX E10",
+   "label": "Max charge rates per reviewer",
+   "value": "1,800 W at 120 V, 9,600 W at 240 V, 4,500 W from Smart Generator",
+   "source": "https://www.xda-developers.com/anker-solix-e10-whole-house-ups-review/",
+   "source_title": "A whole-house UPS beats buying UPS for every device, and the math is obvious (XDA, Joe Rice-Jones, 2026-06-22)",
+   "read": "2026-11-13",
+   "note": "Joe Rice-Jones of XDA tested a system with the Power Dock and Smart Generator, installed by Anker. He reports the generator 'will be automatically started by the system when needed' and supplies 'DC direct to the batteries'. He reported no generator faults, but had no solar connected."
+  },
+  {
+   "product": "FranklinWH aPower 2 / aGate (ChatGPT's pick)",
+   "label": "What the maker's generator FAQ actually specifies",
+   "value": "Portable or standby; connect via aGate generator option or aHub; no voltage, start-wire, kW or THD limits given",
+   "source": "https://www.franklinwh.com/support/articles/detail/can-i-use-a-generator-with-my-franklinwh-system",
+   "source_title": "Can I use a generator with my FranklinWH system? (FranklinWH)",
+   "read": "2026-11-13",
+   "note": "This is the rival baseline. The page's power-quality line reads 'low-quality inverter generators are recommended', apparently a typo. FranklinWH isn't sold through any approved program, so it can't be the kit."
+  }
+ ],
+ "unsourced": [
+  "Neutral-to-ground bonding rules (bonded or floating-neutral generator) for the E10, Power Dock and Smart Inlet Box. Not on the Anker product pages, the generator blog or the adapter pages. The Power Dock (AX170) installer guide wasn't reachable, and the Anker support article 'How do I connect the E10 to different generators?' returned a Salesforce 'CSS Error' page with no content.",
+  "Price of the E10 AC Generator Adapter on ankersolix.com: the page showed 'Price Loading'. storecheck.py returned HTTP 404 because the store isn't Shopify-readable. A $69 retailer figure appeared only in a search summary and wasn't opened.",
+  "A forum thread with a count of owners hitting the 120 V / Power Dock / adapter mismatch on the E10. My search found no Reddit or Anker Community thread on it, only general generator-GFCI threads about other brands.",
+  "An Anker document confirming The Solar Lab's 'one stack at a time' limit for the Smart Generator 5500. Anker's Smart Generator 5500 integration guide doesn't cover how many E10 Power Modules one generator can charge.",
+  "Amazon prices: not checked, because the kit is single-store on ankersolix.com."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.0335807999999997
+ }
+}

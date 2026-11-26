@@ -1,0 +1,108 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states the EG4 FlexBOSS21's surge rating beyond half a second (18,000 W for 1 s, 15,000 W for 6 min, 13,200 W for 12 min), so its '24 kW' surge cannot be set beside the Sol-Ark 15K's 24,000 VA held for 10 s.",
+ "standout": 2,
+ "standout_why": "I read three of the cited pages: liveoffthegrid.com/specs/inverters, ecosolarkits.com eg4-vs-sol-ark and ecosolarkits.com split-phase-inverter-explained. The cited Sol-Ark one-pager returned 404. liveoffthegrid lists one surge figure per model with no time window and no FlexBOSS21 row. The eg4-vs-sol-ark page warns that surge windows differ (0.5 s, 10 s, 10 min) but gives the FlexBOSS21 surge as 'see spec sheet'. The explainer gives 24 kW (0.5 s) for the FlexBOSS21 and 16,000 VA (10 s) for the Sol-Ark 12K, with no 15K row. None of them gives the FlexBOSS21's 1 s, 6 min or 12 min ratings, so none puts the two inverters on the same time window. I did not open the uncited gearranking, solargearscout, solarpanelx, portlandia or apesolar pages, so one of them may hold the curve.",
+ "decides": "This confirms the order ChatGPT gave and puts a number on the Sol-Ark 15K's premium. Both inverters are 12 kW on battery alone. Read over the same window, though, the Sol-Ark holds 24,000 VA for 10 s while the FlexBOSS21 drops to 18,000 W by 1 s. A shopper starting large motors (well pump, central AC) off-grid should lean Sol-Ark 15K. For a grid-tied home with ordinary loads the FlexBOSS21 stays the value pick: 12 kW on battery, 16 kW with PV, at $3,599.99 against $5,650. Over about 10 minutes the FlexBOSS21 (15 kW at 6 min, 13.2 kW at 12 min) and the EG4 18kPV (13.5 kW for 10 min without PV) come out close.",
+ "candidates": [
+  "EG4 FlexBOSS21",
+  "Sol-Ark 15K-2P",
+  "EG4 18kPV-12LV",
+  "EG4 6000XP"
+ ],
+ "findings": [
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Continuous AC output, battery only vs with PV",
+   "value": "12,000 W (12,000 VA) without PV; 16,000 W at 240 V or 13,800 W at 208 V with PV",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-flexboss-21/",
+   "source_title": "EG4® FlexBOSS21 - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "Maker's US product page. It says 12 kW 'to loads/battery without PV' and 16 kW 'to grid or load with PV/battery'. Max continuous AC current is listed as 50 A. The page gives no surge or per-leg figure."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Grid bypass (pass-through) current",
+   "value": "90 A at 120/240 VAC",
+   "source": "https://eg4electronics.com/categories/inverters/eg4-flexboss-21/",
+   "source_title": "EG4® FlexBOSS21 - EG4 Electronics",
+   "read": "2026-11-13",
+   "note": "The page says it can 'feed-through 90 Amps of utility power from the grid'. This is grid current passed through to loads, not inverter output. Read as power, 90 A × 240 V = 21.6 kW of grid power, not backup power."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Surge curve (peak power vs duration)",
+   "value": "24,000 W for 0.5 s; 18,000 W for 1 s; 15,000 W for 6 min; 13,200 W for 12 min",
+   "source": "https://bigbattery.com/products/eg4-flexboss21-12kw-21kpv-hybrid-inverter/",
+   "source_title": "EG4 FlexBOSS21 12kW 21kPV Hybrid Inverter - BigBattery",
+   "read": "2026-11-13",
+   "note": "Retailer spec table under 'Inverter Specifications', linked to an EG4 spec sheet PDF that I could not read as text. Neither the EG4 product page nor the EG4 spec sheet PDF (eg4electronics.com/wp-content/uploads/2024/10/EG4-FlexBoss21-Spec-Sheet.pdf) gave readable text, so this is a retailer copy of the maker figure, not checked against the maker. The same table lists 'Max. Output Current: 66.7A' (16 kW ÷ 240 V) and 'Max. AC Current: 50A @ 240V'. My inference: by linear interpolation between the 6 min and 12 min points the rating is about 14.1 kW at 10 min."
+  },
+  {
+   "product": "EG4 FlexBOSS21",
+   "label": "Price (inverter only)",
+   "value": "$3,599.99 (was $4,199.99)",
+   "source": "https://bigbattery.com/products/eg4-flexboss21-12kw-21kpv-hybrid-inverter/",
+   "source_title": "EG4 FlexBOSS21 12kW 21kPV Hybrid Inverter - BigBattery",
+   "read": "2026-11-13",
+   "note": "Price read on the retailer page on the read date. Signature Solar showed the same $3,599.99 sale price on its 18kPV page."
+  },
+  {
+   "product": "Sol-Ark 15K-2P",
+   "label": "Continuous output (battery only vs with PV) and surge",
+   "value": "12 kW battery-only; 15 kW with solar; 24 kVA for 10 s; price $5,650",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "A cited rival page, dated 2026-10-24, used here because the Sol-Ark one-pager (404), the sol-ark.com 15K brochure PDF (404) and the guessed product page (404) would not load. Units differ: Sol-Ark rates surge in VA and EG4 in W, and W ≤ VA, so treat the comparison as approximate. Same-window comparison: at 1 s or longer, FlexBOSS21 18,000 W vs Sol-Ark ≥24,000 VA held for 10 s; at 0.5 s both read 24 k."
+  },
+  {
+   "product": "EG4 18kPV-12LV",
+   "label": "Continuous output and extended-duration rating",
+   "value": "12 kW continuous; 13.5 kW for 10 min without PV; 14.7 kW for 10 min with PV",
+   "source": "https://ecosolarkits.com/blogs/guides/eg4-vs-sol-ark",
+   "source_title": "EG4 vs Sol-Ark 2026: Hybrid Inverters Compared | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "The 12 kW continuous figure is also on EG4's own page (https://eg4electronics.com/categories/inverters/eg4-18kpv-12lv-all-in-one-hybrid-inverter/, which says 'AC Output: 12kW continuous' and gives no surge). The 10-min figures come only from the rival page. Liveoffthegrid lists a 15,500 W surge with no duration, which probably matches the 10-min-with-PV class rather than a motor-start peak."
+  },
+  {
+   "product": "EG4 18kPV-12LV",
+   "label": "Price and max charge current",
+   "value": "$3,999.99 (was $4,898.00); 250 A max charging current",
+   "source": "https://signaturesolar.com/eg4-18kpv-hybrid-inverter-eg4-18kpv-12lv-48v-split-phase-120-240vac-ul1741-cec/",
+   "source_title": "EG4 18kPV Hybrid Inverter | Signature Solar",
+   "read": "2026-11-13",
+   "note": "Signature Solar is EG4's house distributor. The page lists 'Recommended PV Input: 21,000W' while its banner says 18 kW PV, so the PV figure on this page is inconsistent."
+  },
+  {
+   "product": "EG4 6000XP",
+   "label": "Surge vs duration",
+   "value": "12,000 W for 3.5 s; 11,000 W for 5 s; 6,000 W continuous",
+   "source": "https://ecosolarkits.com/blogs/guides/split-phase-inverter-explained",
+   "source_title": "Split-Phase Inverters Explained: 120/240V Guide (2026) | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "A cited rival page. Listed only to place the budget pick on the same time axis as the others."
+  },
+  {
+   "product": "general",
+   "label": "What the cited rivals do and don't normalise",
+   "value": "They split battery-only from with-PV output and warn that surge windows differ, but give no common-window surge figure and no per-leg (L1/L2) limit for any model",
+   "source": "https://ecosolarkits.com/blogs/guides/split-phase-inverter-explained",
+   "source_title": "Split-Phase Inverters Explained: 120/240V Guide (2026) | Eco Solar Kits",
+   "read": "2026-11-13",
+   "note": "The page states that none of the seven product pages it used gives a per-leg load limit. Liveoffthegrid (https://liveoffthegrid.com/specs/inverters, read 2026-11-13) lists one continuous W figure without saying whether it includes PV."
+  }
+ ],
+ "unsourced": [
+  "Per-leg (L1-N / L2-N, 120 V) continuous limit for the FlexBOSS21, EG4 18kPV and Sol-Ark 15K. EG4's product pages don't list it, the maker spec-sheet and manual PDFs came back as compressed binary that WebFetch could not read (and local PDF text extraction was not permitted), and the Sol-Ark brochure URL returned 404. A search snippet said '8000W per 120V' for the 18kPV, but I could not open a page showing it, so I left it out.",
+  "FlexBOSS21 surge curve from an EG4-hosted page. The product page omits it and the EG4 spec sheet PDF was unreadable, so the only opened source is a retailer (BigBattery).",
+  "Sol-Ark 15K surge and battery-only figures from a Sol-Ark-hosted page. The cited one-pager, the 15K brochure PDF and the sol-ark.com/15k-2p/ URL all returned 404. Retailer pages (kratopower, offgridsource) returned 429. A '13,000 W battery-only for 30 min' rating appeared only in a search snippet.",
+  "Battery discharge current limits for the FlexBOSS21 and 18kPV. The pages I opened give only charge current (18kPV 250 A) or power (FlexBOSS21 12,000 W charge/discharge)."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.0773739999999998
+ }
+}
