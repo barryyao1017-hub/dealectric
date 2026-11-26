@@ -28,14 +28,21 @@ Read this before judging project status from the repo alone. Much of the operati
 - **Our own eval traffic is logged**: every chat or probe that makes an assistant touch dealectric.com appends a line to `growth/evals/footprint.jsonl` (`evallib.footprint`; new probes must too, see `growth/evals/README.md` "Footprint log"). A project hook (`.claude/settings.json` → `tools/footprint_hook.py`) also logs a session's own WebFetch/curl/browser touches of dealectric.com and the assistant chats it opens. `python3.12 tools/fetchwho.py` splits Cloudflare's verified AI Assistant fetches and D1 `/go/` rows into ours / outside / ambiguous / outside-likely.
 - **How ChatGPT reads us** (stored copy, search query, text budget, catalog cards, the fast loop) is the project skill `chatgpt-discoverability` in `.claude/skills/`; load it before touching page copy or designing an eval.
 
-## Browsers (Barry, 2026-10-31; names 2026-11-02)
-Three browsers, one name each. Use these names in chat, notes and briefs; never a bare "Chrome" or "the browser".
-- **Pane**: the built-in browser pane in the Claude app (`mcp__Claude_Browser__*`). Default for browsing that needs no sign-in.
-- **Agent**: the CDP Chrome on `localhost:9222`, profile `~/.config/agent-vault/browser-profile` (agent-vault fills logins only here). Driven by the scripts below or raw CDP, or through Claude in Chrome as deviceId `6c7cff28-cfe2-4a7f-afe2-c450b8449f67` (Barry named it "Agent Chrome on Work Laptop").
-- **Personal**: Barry's own Chrome (default user-data dir, profiles Default / Profile 1 / Profile 2). Claude in Chrome deviceId `6eecd521-80ee-4d0f-92a8-6107d3c49bf7` ("Work Chrome"). Used only when Barry says "Personal" for that step.
-- A bare "Chrome" means Agent. `list_connected_browsers` shows every connection as "Browser N" whatever name it was given, so pick by deviceId with `select_browser`. Any other deviceId is unidentified: don't use it. To check which Chrome a connection is, open a tab through it and look for that tab's URL in `curl localhost:9222/json/list`.
-- The Agent Chrome is the only agent Chrome. Every script (`ui.py`, `ctxprobe.py`, `fastloop.py`, `codesweep.py`, `dailyupdate.py`, `reddit_daily.py`) and every manual step uses it. Don't use or start a second CDP Chrome (the old port 9223 / `chrome-profile-2`). Run ChatGPT chats one at a time and switch accounts inside 9222's profile when a quota runs out.
-- Barry's personal Chrome stays untouched unless he says otherwise for that step. Browsing that needs no sign-in goes in the built-in browser pane.
+## Browsers (Barry, 2026-10-31; names 2026-11-02; four Chromes 2026-11-26)
+Use these names in chat, notes and briefs; never a bare "Chrome" or "the browser". Besides the **Pane** (the built-in browser pane in the Claude app, `mcp__Claude_Browser__*`, default for browsing that needs no sign-in), there are four Chromes on two machines. Sessions run on **this Mac** (the M5 MacBook Pro, `~/Desktop/dealectric`); the **work laptop** is a separate machine whose Chromes Claude in Chrome reaches remotely.
+
+| Name | Machine | What it is | Claude in Chrome deviceId | Use |
+|---|---|---|---|---|
+| **Agent** | this Mac | Chrome Beta, CDP on `localhost:9222`, profile `~/.config/agent-vault/chrome-profile` | `924431a0-e514-4911-b407-e824505ee0d9` (verified 11-26) | Default for all agent work |
+| **Personal** | this Mac | Barry's own Chrome (stable) | `fa0b40c2-a6a6-439c-8da9-12edc33cdc71` (by elimination, not tab-checked) | Only when Barry says "Personal" for that step |
+| **Work Agent** | work laptop | that laptop's CDP Chrome | `6c7cff28-cfe2-4a7f-afe2-c450b8449f67` ("Agent Chrome on Work Laptop") | Only when Barry says "Work Agent" for that step |
+| **Work Personal** | work laptop | Barry's own Chrome there | `6eecd521-80ee-4d0f-92a8-6107d3c49bf7` ("Work Chrome") | Only when Barry says "Work Personal" for that step |
+
+- A bare "Chrome" means Agent. Personal, Work Agent and Work Personal stay untouched (no tabs, clicks, reads or screenshots) unless Barry names that browser for that step; a one-time OK doesn't carry over.
+- `list_connected_browsers` shows every connection as "Browser N", so pick by deviceId with `select_browser`. Any deviceId not in the table (e.g. `2803bad0…`, probably the retired old Mac) is unidentified: don't use it.
+- To confirm a connection is Agent, open a tab through it and look for its URL in `curl localhost:9222/json/list`, or read the Claude extension's `chrome.storage.local` in the 9222 service worker, which holds this Mac's deviceId. Never tab-check a connection that may be a Personal browser.
+- agent-vault fills logins only in Agent (this Mac's 9222). Work Agent cannot use the vault from here, and it sits on the corporate network, which some stores refuse.
+- Agent is the only agent Chrome on this Mac. Every script (`ui.py`, `ctxprobe.py`, `fastloop.py`, `codesweep.py`, `dailyupdate.py`, `reddit_daily.py`) and every manual step uses it. Don't use or start a second CDP Chrome (the old port 9223 / `chrome-profile-2`). Run ChatGPT chats one at a time and switch accounts inside 9222's profile when a quota runs out.
 
 ## Logins
 - **Google account barrryyao@gmail.com: sign in without asking** (Barry, 2026-11-01). When a site in the Agent Chrome needs a login that "Continue with Google" or Google's account chooser offers as barrryyao@gmail.com, pick it and continue; if Google itself asks for a password, use agent-vault's google.com login. Never type credentials. This covers ChatGPT (the vault has no chatgpt.com login; the account is Plus since 11-01).
