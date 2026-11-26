@@ -98,7 +98,10 @@ def main(logs):
     logged = {}
     for (brand, code, slug, qty), r in latest.items():
         logged.setdefault((brand, code), []).append(
-            {"date": r["checked_at"][:10], "product": slug, "qty": qty, "subtotal": r["subtotal"], "discount": r["code_amount"] if r["applicable"] else 0})
+            {"date": r["checked_at"][:10], "product": slug, "qty": qty, "subtotal": r["subtotal"], "discount": r["code_amount"] if r["applicable"] else 0,
+             # the cart's own total with the code in: where the store's automatic discount stacks with the code
+             # (WECREAT's $100 off $999+ with flex150, 2026-11-26) it is below subtotal minus the code amount
+             **({"paid_total": r["total"]} if r["applicable"] and r["code_amount"] > 0 and r.get("total") is not None else {})})
     for key, tests in logged.items():
         c = by_key.get(key)
         if not c:

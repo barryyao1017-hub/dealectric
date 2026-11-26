@@ -795,7 +795,13 @@ def best_offer(p):
         return None, 0, p["price"], None
     c, s = cs[0]
     t = last_test(c, p)
-    return c, s, round(p["price"] - s, 2), (t["date"] if t else None)
+    after = round(p["price"] - s, 2)
+    # The cart's own total with the code, when it was read on this product at today's price and is lower: the store's
+    # automatic discount stacked with the code (WECREAT's $100 off $999+ with flex150, 2026-11-26, DLC-359).
+    if (t and t["product"] == p["slug"] and t.get("qty", 1) == 1 and t.get("paid_total") is not None
+            and abs(t["subtotal"] - p["price"]) < 0.005 and t["paid_total"] < after - 0.005):
+        after = t["paid_total"]   # the saving stays the code's own amount; the rest is the store's automatic discount
+    return c, s, after, (t["date"] if t else None)
 
 
 def passed_line(c, s, p):
