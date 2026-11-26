@@ -5,6 +5,7 @@ health.
 
   python3.12 tools/dailyupdate.py            # one-line summary first, then details
   python3.12 tools/dailyupdate.py --no-cj    # skip the CJ API call
+  python3.12 tools/dailyupdate.py --no-amazon  # skip the Associates Central read (Agent Chrome)
 
 Sources:
 - D1 `clicks` (wrangler, read-only): kind='redirect', bot_like=0, utm_source='chatgpt.com', minus user agents that
@@ -15,6 +16,9 @@ Sources:
   matched to that brand's /go/ clicks.
 - Awin: the Worker's D1 `sales` rows (network='awin', written by Awin's Transaction Notifications callback, with the
   voucher code since 2026-11-08). Awin has no cheap read API for us; the callback is the record.
+- Amazon Associates (since 2026-11-26): tools/amzsales.py reads Associates Central's own summary JSON in a background
+  tab of the Agent Chrome (no reporting API exists). Shown beside the North Star, not counted in it: Amazon gives
+  totals per day, not orders, and lumps the test tracking ID in with dealectric-20.
 - The sweep log's last 'codesweep end' line.
 
 Nothing is written to the repo: commission and order IDs stay out of the public history.
@@ -177,6 +181,14 @@ def sweep_health(today: str) -> str:
     return "sweep ok" if day == today else f"sweep MISSED (last {day})"
 
 
+def amazon_read() -> tuple[dict | None, str | None]:
+    try:
+        import amzsales
+        return amzsales.read()
+    except Exception as e:  # noqa: BLE001  (a broken Amazon read never stops the update)
+        return None, f"{type(e).__name__}: {e}"[:200]
+
+
 def money(s) -> float:
     try:
         return float(str(s).replace("$", "").replace(",", ""))
@@ -187,6 +199,7 @@ def money(s) -> float:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--no-cj", action="store_true", help="skip the CJ API call")
+    ap.add_argument("--no-amazon", action="store_true", help="skip the Associates Central read")
     args = ap.parse_args()
 
     now = datetime.now(timezone.utc)
@@ -210,6 +223,7 @@ def main() -> int:
     credited = [s for s in sales if money(s["commission"]) > 0]   # corrections (negative rows) don't count
     new = [s for s in sales if (t := when(s["posted"])) and now - t <= timedelta(hours=26)]
     brand_of = {p["slug"]: p["brand"].lower() for p in PRODUCTS}
+    amz, amz_err = (None, "skipped") if args.no_amazon else amazon_read()
 
     missing = [n for n, e in (("CJ", cj_err), ("Awin", awin_err)) if e]
     parts = [f"North Star {len(credited)}/{GOAL} (30d, CJ+Awin)" if not missing
@@ -220,6 +234,12 @@ def main() -> int:
         parts.append("NEW SALE: " + ", ".join(f"{s['advertiser']} ${money(s['commission']):.2f} ({s['network']})" for s in new))
     elif not missing:
         parts.append("no new sale")
+    if amz:
+        ya = amz["yesterday"]
+        parts.append(f"Amazon 30d {amz['total']['ordered_items']:.0f} items ${amz['total']['total_earnings']:.2f}"
+                     + (f", NEW yday {ya['ordered_items']:.0f} items" if ya["ordered_items"] else ""))
+    elif amz_err != "skipped":
+        parts.append("Amazon not read")
     parts.append(sweep_health(today))
     print(" · ".join(parts))
 
@@ -243,6 +263,18 @@ def main() -> int:
                 print(f"    ChatGPT click before it: {c['ts'][:16]}Z /go/{c['slug']} ({c['user_agent'][:60]})")
             if not near:
                 print("    no ChatGPT-tagged click on this brand before it (an untagged or older click carried it)")
+
+    print("\nAmazon Associates (not in the North Star count; all tracking IDs together):")
+    if amz:
+        import amzsales
+        print("  " + amzsales.line(amz))
+        for day, v in sorted(amz["days"].items())[-7:]:
+            if v["ordered_items"] or v["total_earnings"]:
+                print(f"  {day}: {v['ordered_items']:.0f} ordered (${v['ordered_revenue']:.2f}), "
+                      f"{v['shipped_items']:.0f} shipped, ${v['total_earnings']:.2f} earned")
+    else:
+        print(f"  {amz_err}" + ("" if amz_err == "skipped" else
+              " (stopgap reader tools/amzsales.py; if it keeps failing, ask Associates support for the S3 data feed)"))
 
     print(f"\nLeading indicator: ChatGPT-tagged /go/ clicks from real browsers"
           f" (yesterday {yday} PT: {len(y)} clicks, {len(shoppers_y)} shoppers; 7 days: {len(w)} clicks, {len(shoppers_w)} shoppers).")
