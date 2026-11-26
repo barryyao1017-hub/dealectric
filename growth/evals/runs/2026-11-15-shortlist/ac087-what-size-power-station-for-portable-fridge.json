@@ -1,0 +1,160 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=what%20size%20power%20station%20for%20portable%20fridge",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?temporary-chat=true",
+  "title": "what size power station for portable fridge",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?temporary-chat=true#_r_6c_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "For a typical 12V portable compressor fridge (30–60 liters), I recommend a 500–1,000Wh portable power station, depending on how long you want to run it without recharging.\n\nRecommended power station size\n\nAssuming your fridge averages 15–25 watts over a full day, including compressor cycling:\n\nPower station capacity\n\n\t\n\nEstimated fridge runtime\n\n\n\n\n256Wh\n\n\t\n\n9–15 hours\n\n\n\n\n300Wh\n\n\t\n\n11–18 hours\n\n\n\n\n500Wh\n\n\t\n\n18–30 hours\n\n\n\n\n768Wh\n\n\t\n\n28–46 hours\n\n\n\n\n1,000Wh\n\n\t\n\n36–60 hours\n\n\n\n\n2,000Wh\n\n\t\n\n3–5 days\n\nThese estimates assume approximately 90% usable battery energy through a DC connection. Actual runtime depends heavily on ambient temperature, insulation, thermostat setting, and fridge efficiency.\n\nMy recommendation\n\nDay trips: 300Wh\n\nOvernight camping: 500Wh\n\nWeekend camping (2 days): 1,000Wh\n\n3–5 days off-grid: 2,000Wh or a smaller station with solar charging\n\nUse the power station's 12V DC output rather than its AC outlet when possible. This avoids inverter losses and can significantly improve runtime.\n\nCalculate your exact requirement\n\nFridge average power consumption\n\n5W\n\n20W\n\n60W\n\nDesired runtime\n\n12 hours\n24 hours\n48 hours\n72 hours\n\nEstimated minimum battery capacity\n\n1,100 Wh\nAssumes DC operation and 90% usable capacity. Add a reserve for hot weather and unexpected power consumption.\n\nTwo questions to size it more accurately:\n\nWhat portable fridge do you have (brand/model or capacity in liters)?\n\nHow long do you want it to run without recharging — 12 hours, 24 hours, 2 days, or longer?\n\nWith those details, I can recommend a more precise battery capacity and power station size.",
+  "markup": [
+   "For a typical **12V portable compressor fridge (30–60 liters)**, I recommend a **500–1,000Wh portable power station**, depending on how long you want to run it without recharging.\n\n## Recommended power station size\n\nAssuming your fridge averages 15–25 watts over a full day, including compressor cycling:\n\n| Power station capacity | Estimated fridge runtime |\n|---|---|\n| 256Wh | 9–15 hours |\n| 300Wh | 11–18 hours |\n| 500Wh | 18–30 hours |\n| 768Wh | 28–46 hours |\n| 1,000Wh | 36–60 hours |\n| 2,000Wh | 3–5 days |\n\nThese estimates assume approximately 90% usable battery energy through a DC connection. Actual runtime depends heavily on ambient temperature, insulation, thermostat setting, and fridge efficiency.\n\n## My recommendation\n\n- **Day trips:** 300Wh\n- **Overnight camping:** 500Wh\n- **Weekend camping (2 days):** 1,000Wh\n- **3–5 days off-grid:** 2,000Wh or a smaller station with solar charging\n\nUse the power station's **12V DC output** rather than its AC outlet when possible. This avoids inverter losses and can significantly improve runtime.\n\n## Calculate your exact requirement\n\n{@body const [watts,setWatts] = DIL.useState(20)}\n{@body const [hours,setHours] = DIL.useState(\"48\")}\n{@body const required = Math.ceil(watts*Number(hours)/0.9/50)*50}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Fridge average power consumption</text>\n  <row align=\"center\" justify=\"between\">\n    <text color=\"secondary\" size=\"xs\">5W</text>\n    <title size=\"lg\" color=\"default\" tabularNums>{watts}W</title>\n    <text color=\"secondary\" size=\"xs\">60W</text>\n  </row>\n  <slider min={5} max={60} step={5} value={watts} onChange={setWatts}/>\n  <text weight=\"medium\">Desired runtime</text>\n  <radio-group direction=\"col\" value={hours} onChange={setHours}>\n    <radio value=\"12\">12 hours</radio>\n    <radio value=\"24\">24 hours</radio>\n    <radio value=\"48\">48 hours</radio>\n    <radio value=\"72\">72 hours</radio>\n  </radio-group>\n  <divider color=\"subtle\"/>\n  <text color=\"secondary\" weight=\"medium\" size=\"sm\">Estimated minimum battery capacity</text>\n  <title size=\"2xl\" color=\"default\" tabularNums>{required.toLocaleString()} Wh</title>\n  <caption>Assumes DC operation and 90% usable capacity. Add a reserve for hot weather and unexpected power consumption.</caption>\n</box>\n\n**Two questions to size it more accurately:**\n\n1. What portable fridge do you have (brand/model or capacity in liters)?\n2. How long do you want it to run without recharging — 12 hours, 24 hours, 2 days, or longer?\n\nWith those details, I can recommend a more precise battery capacity and power station size."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6af9a198-408c-83e8-939c-a087e87c2ecc",
+  "search_results": []
+ },
+ "text": "For a typical 12V portable compressor fridge (30–60 liters), I recommend a 500–1,000Wh portable power station, depending on how long you want to run it without recharging.\n\nRecommended power station size\n\nAssuming your fridge averages 15–25 watts over a full day, including compressor cycling:\n\nPower station capacity\n\n\t\n\nEstimated fridge runtime\n\n\n\n\n256Wh\n\n\t\n\n9–15 hours\n\n\n\n\n300Wh\n\n\t\n\n11–18 hours\n\n\n\n\n500Wh\n\n\t\n\n18–30 hours\n\n\n\n\n768Wh\n\n\t\n\n28–46 hours\n\n\n\n\n1,000Wh\n\n\t\n\n36–60 hours\n\n\n\n\n2,000Wh\n\n\t\n\n3–5 days\n\nThese estimates assume approximately 90% usable battery energy through a DC connection. Actual runtime depends heavily on ambient temperature, insulation, thermostat setting, and fridge efficiency.\n\nMy recommendation\n\nDay trips: 300Wh\n\nOvernight camping: 500Wh\n\nWeekend camping (2 days): 1,000Wh\n\n3–5 days off-grid: 2,000Wh or a smaller station with solar charging\n\nUse the power station's 12V DC output rather than its AC outlet when possible. This avoids inverter losses and can significantly improve runtime.\n\nCalculate your exact requirement\n\nFridge average power consumption\n\n5W\n\n20W\n\n60W\n\nDesired runtime\n\n12 hours\n24 hours\n48 hours\n72 hours\n\nEstimated minimum battery capacity\n\n1,100 Wh\nAssumes DC operation and 90% usable capacity. Add a reserve for hot weather and unexpected power consumption.\n\nTwo questions to size it more accurately:\n\nWhat portable fridge do you have (brand/model or capacity in liters)?\n\nHow long do you want it to run without recharging — 12 hours, 24 hours, 2 days, or longer?\n\nWith those details, I can recommend a more precise battery capacity and power station size.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac087-what-size-power-station-for-portable-fridge.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 2.5,
+   "submit": "click"
+  },
+  {
+   "t": 4.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ac95db632-943e-4918-8aa",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ac95db632-943e-4918-8aa",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.7,
+   "typed": 1
+  },
+  {
+   "t": 8.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ac95db632-943e-4918-8aa",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 10.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ac95db632-943e-4918-8aa",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 12.8,
+   "url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 14.8,
+   "url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?t",
+   "answer_len": 1606,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 16.8,
+   "url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?t",
+   "answer_len": 1606,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 18.8,
+   "url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?t",
+   "answer_len": 1606,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6af9a198-408c-83e8-939c-a087e87c2ecc?t",
+   "answer_len": 1606,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station for po"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.4
+}

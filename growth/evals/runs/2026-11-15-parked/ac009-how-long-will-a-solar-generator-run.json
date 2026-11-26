@@ -1,0 +1,152 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=how%20long%20will%20a%20solar%20generator%20run",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?temporary-chat=true",
+  "title": "how long will a solar generator run",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?temporary-chat=true#_r_6o_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "A solar generator can run anywhere from a few hours to several days, depending on its battery capacity, how much electricity your devices use, and whether solar panels are recharging it.\n\nUnlike a gas generator, a solar generator stores electricity in a battery and can be recharged by sunlight.\n\nEstimated runtime by battery size\n\nAssuming the battery starts fully charged, with no solar recharging:\n\nBattery capacity\n\n\t\n\n100W device\n\n\t\n\n500W device\n\n\t\n\n1,000W device\n\n\n\n\n500Wh\n\n\t\n\n4.3 hours\n\n\t\n\n0.85 hours\n\n\t\n\n0.43 hours\n\n\n\n\n1,000Wh\n\n\t\n\n8.5 hours\n\n\t\n\n1.7 hours\n\n\t\n\n0.85 hours\n\n\n\n\n2,000Wh\n\n\t\n\n17 hours\n\n\t\n\n3.4 hours\n\n\t\n\n1.7 hours\n\n\n\n\n5,000Wh\n\n\t\n\n42.5 hours\n\n\t\n\n8.5 hours\n\n\t\n\n4.25 hours\n\nThese estimates assume 85% usable energy after conversion losses.\n\nWhat if you have solar panels?\n\nWith sufficient solar panels and sunlight, a solar generator can potentially run indefinitely, provided that daily solar energy production meets or exceeds your daily electricity consumption.\n\nFor example, a 2,000Wh solar generator with 400W of solar panels might generate roughly 1,200–1,600Wh per sunny day, depending on conditions.\n\nCalculate your runtime\n\nSolar generator runtime calculator\n\nBattery capacity\n500Wh\n1,000Wh\n2,000Wh\n5,000Wh\nPower consumption\n50W — small fan / electronics\n100W — TV / small appliance\n500W — multiple appliances\n1,000W — high-power appliance\n\nEstimated runtime without sunlight\n\n17.0 hours\nAssumes constant power consumption and 85% usable battery energy.\n\nWhat are you planning to power with the solar generator? For example, a refrigerator, air conditioner, entire house, or camping equipment?\n\nI can estimate how long it would run and what size solar generator you'd need.",
+  "markup": [
+   "A **solar generator can run anywhere from a few hours to several days**, depending on its battery capacity, how much electricity your devices use, and whether solar panels are recharging it.\n\nUnlike a gas generator, a solar generator stores electricity in a battery and can be recharged by sunlight.\n\n## Estimated runtime by battery size\n\nAssuming the battery starts fully charged, with no solar recharging:\n\n| Battery capacity | 100W device | 500W device | 1,000W device |\n|---|---|---|---|\n| 500Wh | 4.3 hours | 0.85 hours | 0.43 hours |\n| 1,000Wh | 8.5 hours | 1.7 hours | 0.85 hours |\n| 2,000Wh | 17 hours | 3.4 hours | 1.7 hours |\n| 5,000Wh | 42.5 hours | 8.5 hours | 4.25 hours |\n\nThese estimates assume 85% usable energy after conversion losses.\n\n## What if you have solar panels?\n\nWith sufficient solar panels and sunlight, a solar generator can potentially run **indefinitely**, provided that daily solar energy production meets or exceeds your daily electricity consumption.\n\nFor example, a 2,000Wh solar generator with 400W of solar panels might generate roughly 1,200–1,600Wh per sunny day, depending on conditions.\n\n## Calculate your runtime\n\n{@body const [battery,setBattery] = DIL.useState(\"2000\")}\n{@body const [watts,setWatts] = DIL.useState(\"100\")}\n{@body const runtime = Number(battery)*0.85/Number(watts)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Solar generator runtime calculator</text>\n  <box gap={1}>\n    <label>Battery capacity</label>\n    <radio-group direction=\"col\" value={battery} onChange={setBattery}>\n      <radio value=\"500\">500Wh</radio>\n      <radio value=\"1000\">1,000Wh</radio>\n      <radio value=\"2000\">2,000Wh</radio>\n      <radio value=\"5000\">5,000Wh</radio>\n    </radio-group>\n  </box>\n  <box gap={1}>\n    <label>Power consumption</label>\n    <radio-group direction=\"col\" value={watts} onChange={setWatts}>\n      <radio value=\"50\">50W — small fan / electronics</radio>\n      <radio value=\"100\">100W — TV / small appliance</radio>\n      <radio value=\"500\">500W — multiple appliances</radio>\n      <radio value=\"1000\">1,000W — high-power appliance</radio>\n    </radio-group>\n  </box>\n  <box background=\"surface-secondary\" padding={3} radius=\"lg\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated runtime without sunlight</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{runtime >= 24 ? `${(runtime/24).toFixed(1)} days` : `${runtime.toFixed(1)} hours`}</title>\n    <caption>Assumes constant power consumption and 85% usable battery energy.</caption>\n  </box>\n</box>\n\n**What are you planning to power with the solar generator?** For example, a refrigerator, air conditioner, entire house, or camping equipment?\n\nI can estimate how long it would run and what size solar generator you'd need."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc149e-e5f0-83e8-ab67-09202f82a357",
+  "search_results": []
+ },
+ "text": "A solar generator can run anywhere from a few hours to several days, depending on its battery capacity, how much electricity your devices use, and whether solar panels are recharging it.\n\nUnlike a gas generator, a solar generator stores electricity in a battery and can be recharged by sunlight.\n\nEstimated runtime by battery size\n\nAssuming the battery starts fully charged, with no solar recharging:\n\nBattery capacity\n\n\t\n\n100W device\n\n\t\n\n500W device\n\n\t\n\n1,000W device\n\n\n\n\n500Wh\n\n\t\n\n4.3 hours\n\n\t\n\n0.85 hours\n\n\t\n\n0.43 hours\n\n\n\n\n1,000Wh\n\n\t\n\n8.5 hours\n\n\t\n\n1.7 hours\n\n\t\n\n0.85 hours\n\n\n\n\n2,000Wh\n\n\t\n\n17 hours\n\n\t\n\n3.4 hours\n\n\t\n\n1.7 hours\n\n\n\n\n5,000Wh\n\n\t\n\n42.5 hours\n\n\t\n\n8.5 hours\n\n\t\n\n4.25 hours\n\nThese estimates assume 85% usable energy after conversion losses.\n\nWhat if you have solar panels?\n\nWith sufficient solar panels and sunlight, a solar generator can potentially run indefinitely, provided that daily solar energy production meets or exceeds your daily electricity consumption.\n\nFor example, a 2,000Wh solar generator with 400W of solar panels might generate roughly 1,200–1,600Wh per sunny day, depending on conditions.\n\nCalculate your runtime\n\nSolar generator runtime calculator\n\nBattery capacity\n500Wh\n1,000Wh\n2,000Wh\n5,000Wh\nPower consumption\n50W — small fan / electronics\n100W — TV / small appliance\n500W — multiple appliances\n1,000W — high-power appliance\n\nEstimated runtime without sunlight\n\n17.0 hours\nAssumes constant power consumption and 85% usable battery energy.\n\nWhat are you planning to power with the solar generator? For example, a refrigerator, air conditioner, entire house, or camping equipment?\n\nI can estimate how long it would run and what size solar generator you'd need.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac009-how-long-will-a-solar-generator-run.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A3e7c6ada-4e18-4824-ac8",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A3e7c6ada-4e18-4824-ac8",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A3e7c6ada-4e18-4824-ac8",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A3e7c6ada-4e18-4824-ac8",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?t",
+   "answer_len": 1696,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?t",
+   "answer_len": 1696,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 16.6,
+   "url": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?t",
+   "answer_len": 1696,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a solar generato"
+  },
+  {
+   "t": 18.6,
+   "url": "https://chatgpt.com/c/6afc149e-e5f0-83e8-ab67-09202f82a357?t",
+   "answer_len": 1696,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a solar generato"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 29.2
+}

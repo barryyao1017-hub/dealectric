@@ -1,0 +1,160 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=How%20big%20a%20battery%20do%20I%20need%20to%20keep%20an%20aquarium%20heater%20and%20filter%20running%20through%20a%2024-hour%20power%20outage%3F",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?temporary-chat=true",
+  "title": "How big a battery do I need to keep an aquarium heater and filter running through a 24-hour power outage?",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?temporary-chat=true#_r_6d_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "For a 24-hour power outage, you'll likely need a battery with 1,000–3,000 Wh (1–3 kWh) of usable capacity to keep an aquarium heater and filter running. The exact size depends heavily on your heater's wattage, how often it turns on, and your room temperature.\n\nBattery size estimates\n\nAssuming a filter runs continuously, the heater runs 30% of the time, and you allow 15% for inverter losses:\n\nHeater\n\n\t\n\nFilter\n\n\t\n\nBattery needed for 24 hours\n\n\n\n\n50 W\n\n\t\n\n5 W\n\n\t\n\n~565 Wh\n\n\n\n\n100 W\n\n\t\n\n10 W\n\n\t\n\n~1,130 Wh\n\n\n\n\n150 W\n\n\t\n\n15 W\n\n\t\n\n~1,695 Wh\n\n\n\n\n200 W\n\n\t\n\n20 W\n\n\t\n\n~2,260 Wh\n\n\n\n\n300 W\n\n\t\n\n25 W\n\n\t\n\n~3,250 Wh\n\nThese are estimates, not worst-case requirements. If your heater runs continuously in a cold room, you'll need considerably more capacity.\n\nCalculate your battery requirement\n\nAquarium backup battery calculator\n\nHeater wattage\nFilter wattage\nHeater operating time\n\n30%\n\nOutage duration\n\n24 hours\n\nESTIMATED BATTERY CAPACITY\n\n1700 Wh\n\nIncludes estimated 15% conversion losses. For additional reserve, consider approximately 2100 Wh of rated battery capacity.\n\nImportant considerations\n\nHeater duty cycle is the biggest variable. A 150 W heater running 30% of the time uses 1,080 Wh over 24 hours, but running constantly uses 3,600 Wh.\n\nUse a pure sine wave inverter if your filter has an AC motor. Check that the power station supports the heater and filter's combined running wattage and motor startup surge.\n\nPrioritize filtration and oxygenation. A small battery-powered air pump can keep fish oxygenated for much longer than a heater can run from the same battery.\n\nReduce heat loss. Insulating the sides and back of the aquarium during an outage can significantly reduce heater energy consumption. Keep ventilation and electrical equipment unobstructed.\n\nI can size it more accurately\n\nTell me these three things:\n\nAquarium size: How many gallons?\n\nHeater: How many watts (e.g., 100 W, 200 W)?\n\nTemperature: What temperature do you keep the tank at, and how cold might the room get during an outage?\n\nWith those details, I can estimate the battery capacity you need for 24 hours and whether a 1 kWh, 2 kWh, or larger power station makes sense.",
+  "markup": [
+   "For a 24-hour power outage, you'll likely need a battery with **1,000–3,000 Wh (1–3 kWh) of usable capacity** to keep an aquarium heater and filter running. The exact size depends heavily on your heater's wattage, how often it turns on, and your room temperature.\n\n## Battery size estimates\n\nAssuming a filter runs continuously, the heater runs 30% of the time, and you allow 15% for inverter losses:\n\n| Heater | Filter | Battery needed for 24 hours |\n|---|---|---|\n| 50 W | 5 W | ~565 Wh |\n| 100 W | 10 W | ~1,130 Wh |\n| 150 W | 15 W | ~1,695 Wh |\n| 200 W | 20 W | ~2,260 Wh |\n| 300 W | 25 W | ~3,250 Wh |\n\nThese are estimates, not worst-case requirements. If your heater runs continuously in a cold room, you'll need considerably more capacity.\n\n## Calculate your battery requirement\n\n{@body const [heater,setHeater] = DIL.useState(150)}\n{@body const [filter,setFilter] = DIL.useState(15)}\n{@body const [duty,setDuty] = DIL.useState(30)}\n{@body const [hours,setHours] = DIL.useState(24)}\n{@body const energy = (heater*duty/100+filter)*hours/0.85}\n<box border radius=\"2xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Aquarium backup battery calculator</text>\n  <row align=\"center\" justify=\"between\">\n    <label>Heater wattage</label>\n    <box width=\"120px\">\n      <input inputType=\"number\" value={String(heater)} onChange={v=>setHeater(Math.max(0,Number(v)||0))}/>\n    </box>\n  </row>\n  <row align=\"center\" justify=\"between\">\n    <label>Filter wattage</label>\n    <box width=\"120px\">\n      <input inputType=\"number\" value={String(filter)} onChange={v=>setFilter(Math.max(0,Number(v)||0))}/>\n    </box>\n  </row>\n  <row align=\"center\" justify=\"between\">\n    <label>Heater operating time</label>\n    **{duty}%**\n  </row>\n  <slider min={0} max={100} step={5} value={duty} onChange={setDuty} marks={[{value:0,label:\"0%\"},{value:50,label:\"50%\"},{value:100,label:\"100%\"}]}/>\n  <row align=\"center\" justify=\"between\">\n    <label>Outage duration</label>\n    **{hours} hours**\n  </row>\n  <slider min={6} max={48} step={6} value={hours} onChange={setHours}/>\n  <divider color=\"subtle\"/>\n  <text color=\"secondary\" weight=\"medium\" size=\"xs\">ESTIMATED BATTERY CAPACITY</text>\n  <title size=\"2xl\" color=\"default\" tabularNums>{Math.ceil(energy/50)*50} Wh</title>\n  <text color=\"secondary\" size=\"sm\">Includes estimated 15% conversion losses. For additional reserve, consider approximately {Math.ceil(energy*1.2/100)*100} Wh of rated battery capacity.</text>\n</box>\n\n## Important considerations\n\n- **Heater duty cycle is the biggest variable.** A 150 W heater running 30% of the time uses 1,080 Wh over 24 hours, but running constantly uses 3,600 Wh.\n- **Use a pure sine wave inverter** if your filter has an AC motor. Check that the power station supports the heater and filter's combined running wattage and motor startup surge.\n- **Prioritize filtration and oxygenation.** A small battery-powered air pump can keep fish oxygenated for much longer than a heater can run from the same battery.\n- **Reduce heat loss.** Insulating the sides and back of the aquarium during an outage can significantly reduce heater energy consumption. Keep ventilation and electrical equipment unobstructed.\n\n## I can size it more accurately\n\nTell me these three things:\n\n1. **Aquarium size:** How many gallons?\n2. **Heater:** How many watts (e.g., 100 W, 200 W)?\n3. **Temperature:** What temperature do you keep the tank at, and how cold might the room get during an outage?\n\nWith those details, I can estimate the battery capacity you need for 24 hours and whether a 1 kWh, 2 kWh, or larger power station makes sense."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc15b4-bad0-83e8-9ebb-c16311837472",
+  "search_results": []
+ },
+ "text": "For a 24-hour power outage, you'll likely need a battery with 1,000–3,000 Wh (1–3 kWh) of usable capacity to keep an aquarium heater and filter running. The exact size depends heavily on your heater's wattage, how often it turns on, and your room temperature.\n\nBattery size estimates\n\nAssuming a filter runs continuously, the heater runs 30% of the time, and you allow 15% for inverter losses:\n\nHeater\n\n\t\n\nFilter\n\n\t\n\nBattery needed for 24 hours\n\n\n\n\n50 W\n\n\t\n\n5 W\n\n\t\n\n~565 Wh\n\n\n\n\n100 W\n\n\t\n\n10 W\n\n\t\n\n~1,130 Wh\n\n\n\n\n150 W\n\n\t\n\n15 W\n\n\t\n\n~1,695 Wh\n\n\n\n\n200 W\n\n\t\n\n20 W\n\n\t\n\n~2,260 Wh\n\n\n\n\n300 W\n\n\t\n\n25 W\n\n\t\n\n~3,250 Wh\n\nThese are estimates, not worst-case requirements. If your heater runs continuously in a cold room, you'll need considerably more capacity.\n\nCalculate your battery requirement\n\nAquarium backup battery calculator\n\nHeater wattage\nFilter wattage\nHeater operating time\n\n30%\n\nOutage duration\n\n24 hours\n\nESTIMATED BATTERY CAPACITY\n\n1700 Wh\n\nIncludes estimated 15% conversion losses. For additional reserve, consider approximately 2100 Wh of rated battery capacity.\n\nImportant considerations\n\nHeater duty cycle is the biggest variable. A 150 W heater running 30% of the time uses 1,080 Wh over 24 hours, but running constantly uses 3,600 Wh.\n\nUse a pure sine wave inverter if your filter has an AC motor. Check that the power station supports the heater and filter's combined running wattage and motor startup surge.\n\nPrioritize filtration and oxygenation. A small battery-powered air pump can keep fish oxygenated for much longer than a heater can run from the same battery.\n\nReduce heat loss. Insulating the sides and back of the aquarium during an outage can significantly reduce heater energy consumption. Keep ventilation and electrical equipment unobstructed.\n\nI can size it more accurately\n\nTell me these three things:\n\nAquarium size: How many gallons?\n\nHeater: How many watts (e.g., 100 W, 200 W)?\n\nTemperature: What temperature do you keep the tank at, and how cold might the room get during an outage?\n\nWith those details, I can estimate the battery capacity you need for 24 hours and whether a 1 kWh, 2 kWh, or larger power station makes sense.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "fh022-how-big-a-battery-do-i-need-to-keep-an-aquariu.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Abba8feec-c6cf-484f-852",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Abba8feec-c6cf-484f-852",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Abba8feec-c6cf-484f-852",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Abba8feec-c6cf-484f-852",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?t",
+   "answer_len": 2154,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 16.6,
+   "url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?t",
+   "answer_len": 2154,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?t",
+   "answer_len": 2154,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6afc15b4-bad0-83e8-9ebb-c16311837472?t",
+   "answer_len": 2154,
+   "streaming": false,
+   "send": true,
+   "composer": "How big a battery do I need to"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.2
+}

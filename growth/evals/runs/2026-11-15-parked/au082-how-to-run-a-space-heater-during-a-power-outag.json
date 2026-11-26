@@ -1,0 +1,176 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=how%20to%20run%20a%20space%20heater%20during%20a%20power%20outage",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?temporary-chat=true",
+  "title": "how to run a space heater during a power outage",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?temporary-chat=true#_r_72_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "You can run an electric space heater during a power outage, but you'll need an alternative electricity source. The main challenge is that space heaters consume a lot of power, typically 750–1,500 watts.\n\nYour best options\n\nPower source\n\n\t\n\nCan run a 1,500W heater?\n\n\t\n\nPracticality\n\n\n\n\nPortable power station (battery)\n\n\t\n\nYes, if rated for 1,500W+ continuous output\n\n\t\n\nSafe indoors, but short runtime\n\n\n\n\nGasoline inverter generator\n\n\t\n\nYes, with sufficient capacity\n\n\t\n\nGood for extended outages; outdoors only\n\n\n\n\nHome backup battery (e.g., Tesla Powerwall)\n\n\t\n\nYes\n\n\t\n\nConvenient but uses substantial battery capacity\n\n\n\n\nCar + inverter\n\n\t\n\nSometimes, with specialized equipment\n\n\t\n\nGenerally impractical for a 1,500W heater\n\n\n\n\nUPS for computers\n\n\t\n\nUsually no\n\n\t\n\nInsufficient capacity\n\nHow long can a battery run a space heater?\n\nAssuming 85% usable energy after inverter losses:\n\nBattery capacity\n\n500 Wh\n\n2,000 Wh\n\n5,000 Wh\n\nHeater power\n\n500W — low-power heater\n750W — medium setting\n1,500W — full power\n\nEstimated continuous runtime\n\n1.1 hours\n\n(68 minutes)\n\nIllustrative estimate assuming constant heater draw. Actual runtime varies with battery condition, temperature, and inverter efficiency.\nWhat I recommend\n\nFor short outages: A portable power station with at least 2,000W continuous AC output can power a typical 1,500W heater, but a 2kWh battery will last only about an hour.\n\nFor long outages: A properly sized inverter generator is more practical for continuous electric heating. It must operate outdoors, at least 20 feet from doors, windows, and vents, with exhaust directed away from the house. Never run it in a garage, even with the door open.\n\nFor maximum efficiency: Instead of powering an electric space heater, consider battery-powered heated blankets or clothing. These consume dramatically less electricity. Never use an outdoor propane heater, camping stove, charcoal grill, or generator indoors because of carbon monoxide poisoning risks.\n\nAlso, plug a space heater directly into a properly rated power source, not a household extension cord or power strip.\n\nOne question\n\nAre you trying to:\n\nHeat one room for a few hours\n\nKeep a room warm overnight\n\nHeat a room for several days without electricity\n\nUse equipment I already own\n\nYour answer will determine whether a battery, generator, or alternative heating solution makes the most sense.",
+  "markup": [
+   "You can run an electric space heater during a power outage, but you'll need an alternative electricity source. **The main challenge is that space heaters consume a lot of power**, typically 750–1,500 watts.\n\n## Your best options\n\n| Power source | Can run a 1,500W heater? | Practicality |\n|---|---|---|\n| Portable power station (battery) | Yes, if rated for 1,500W+ continuous output | Safe indoors, but short runtime |\n| Gasoline inverter generator | Yes, with sufficient capacity | Good for extended outages; outdoors only |\n| Home backup battery (e.g., Tesla Powerwall) | Yes | Convenient but uses substantial battery capacity |\n| Car + inverter | Sometimes, with specialized equipment | Generally impractical for a 1,500W heater |\n| UPS for computers | Usually no | Insufficient capacity |\n\n## How long can a battery run a space heater?\n\nAssuming 85% usable energy after inverter losses:\n\n{@body const [capacity,setCapacity] = DIL.useState(2000)}\n{@body const [wattage,setWattage] = DIL.useState(\"1500\")}\n{@body const hours = capacity*0.85/Number(wattage)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Battery capacity</text>\n  <row align=\"center\" justify=\"between\">\n    <text color=\"secondary\" size=\"sm\">500 Wh</text>\n    <title size=\"lg\" color=\"default\" tabularNums>{capacity.toLocaleString()} Wh</title>\n    <text color=\"secondary\" size=\"sm\">5,000 Wh</text>\n  </row>\n  <slider min={500} max={5000} step={500} value={capacity} onChange={setCapacity}/>\n  <text weight=\"medium\">Heater power</text>\n  <radio-group direction=\"col\" value={wattage} onChange={setWattage}>\n    <radio value=\"500\">500W — low-power heater</radio>\n    <radio value=\"750\">750W — medium setting</radio>\n    <radio value=\"1500\">1,500W — full power</radio>\n  </radio-group>\n  <divider color=\"subtle\"/>\n  <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated continuous runtime</text>\n  <row align=\"baseline\" gap={2}>\n    <title size=\"2xl\" color=\"default\" tabularNums>{hours.toFixed(1)} hours</title>\n    <text color=\"secondary\" size=\"sm\">({Math.round(hours*60)} minutes)</text>\n  </row>\n  <box background=\"surface-tertiary\" height=\"10px\" radius=\"full\" clip>\n    <box background=\"rgba(37,99,235,0.85)\" width={`${Math.min(hours/8*100,100)}%`} height=\"100%\" radius=\"full\"/>\n  </box>\n  <caption>Illustrative estimate assuming constant heater draw. Actual runtime varies with battery condition, temperature, and inverter efficiency.</caption>\n</box>\n\n## What I recommend\n\n**For short outages:** A portable power station with at least 2,000W continuous AC output can power a typical 1,500W heater, but a 2kWh battery will last only about an hour.\n\n**For long outages:** A properly sized inverter generator is more practical for continuous electric heating. It must operate outdoors, at least 20 feet from doors, windows, and vents, with exhaust directed away from the house. Never run it in a garage, even with the door open.\n\n**For maximum efficiency:** Instead of powering an electric space heater, consider battery-powered heated blankets or clothing. These consume dramatically less electricity. Never use an outdoor propane heater, camping stove, charcoal grill, or generator indoors because of carbon monoxide poisoning risks.\n\nAlso, plug a space heater directly into a properly rated power source, not a household extension cord or power strip.\n\n## One question\n\nAre you trying to:\n\n{@body const opts = [\"Heat one room for a few hours\",\"Keep a room warm overnight\",\"Heat a room for several days without electricity\",\"Use equipment I already own\"]}\n<box gap={2}>\n  {#each opts as opt}\n    <pressable key={opt} border radius=\"lg\" padding={3} direction=\"row\" align=\"center\" justify=\"between\" onClick={()=>GenUI.issueNewTurn(opt)}>\n      <text>{opt}</text>\n      <icon name=\"chevron-right\" color=\"secondary\"/>\n    </pressable>\n  {/each}\n</box>\n\nYour answer will determine whether a battery, generator, or alternative heating solution makes the most sense."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afa0eea-ab34-83e8-94d1-deab67f56846",
+  "search_results": []
+ },
+ "text": "You can run an electric space heater during a power outage, but you'll need an alternative electricity source. The main challenge is that space heaters consume a lot of power, typically 750–1,500 watts.\n\nYour best options\n\nPower source\n\n\t\n\nCan run a 1,500W heater?\n\n\t\n\nPracticality\n\n\n\n\nPortable power station (battery)\n\n\t\n\nYes, if rated for 1,500W+ continuous output\n\n\t\n\nSafe indoors, but short runtime\n\n\n\n\nGasoline inverter generator\n\n\t\n\nYes, with sufficient capacity\n\n\t\n\nGood for extended outages; outdoors only\n\n\n\n\nHome backup battery (e.g., Tesla Powerwall)\n\n\t\n\nYes\n\n\t\n\nConvenient but uses substantial battery capacity\n\n\n\n\nCar + inverter\n\n\t\n\nSometimes, with specialized equipment\n\n\t\n\nGenerally impractical for a 1,500W heater\n\n\n\n\nUPS for computers\n\n\t\n\nUsually no\n\n\t\n\nInsufficient capacity\n\nHow long can a battery run a space heater?\n\nAssuming 85% usable energy after inverter losses:\n\nBattery capacity\n\n500 Wh\n\n2,000 Wh\n\n5,000 Wh\n\nHeater power\n\n500W — low-power heater\n750W — medium setting\n1,500W — full power\n\nEstimated continuous runtime\n\n1.1 hours\n\n(68 minutes)\n\nIllustrative estimate assuming constant heater draw. Actual runtime varies with battery condition, temperature, and inverter efficiency.\nWhat I recommend\n\nFor short outages: A portable power station with at least 2,000W continuous AC output can power a typical 1,500W heater, but a 2kWh battery will last only about an hour.\n\nFor long outages: A properly sized inverter generator is more practical for continuous electric heating. It must operate outdoors, at least 20 feet from doors, windows, and vents, with exhaust directed away from the house. Never run it in a garage, even with the door open.\n\nFor maximum efficiency: Instead of powering an electric space heater, consider battery-powered heated blankets or clothing. These consume dramatically less electricity. Never use an outdoor propane heater, camping stove, charcoal grill, or generator indoors because of carbon monoxide poisoning risks.\n\nAlso, plug a space heater directly into a properly rated power source, not a household extension cord or power strip.\n\nOne question\n\nAre you trying to:\n\nHeat one room for a few hours\n\nKeep a room warm overnight\n\nHeat a room for several days without electricity\n\nUse equipment I already own\n\nYour answer will determine whether a battery, generator, or alternative heating solution makes the most sense.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "au082-how-to-run-a-space-heater-during-a-power-outag.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 16.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A54081553-f290-40d0-9e0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?t",
+   "answer_len": 2376,
+   "streaming": false,
+   "send": true,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?t",
+   "answer_len": 2376,
+   "streaming": false,
+   "send": true,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 22.7,
+   "url": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?t",
+   "answer_len": 2376,
+   "streaming": false,
+   "send": true,
+   "composer": "how to run a space heater duri"
+  },
+  {
+   "t": 24.8,
+   "url": "https://chatgpt.com/c/6afa0eea-ab34-83e8-94d1-deab67f56846?t",
+   "answer_len": 2376,
+   "streaming": false,
+   "send": true,
+   "composer": "how to run a space heater duri"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 35.3
+}

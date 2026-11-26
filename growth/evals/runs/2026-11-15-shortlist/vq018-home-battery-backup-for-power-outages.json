@@ -1,0 +1,316 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=home%20battery%20backup%20for%20power%20outages",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?temporary-chat=true",
+  "title": "home battery backup for power outages",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?temporary-chat=true#_r_6b_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "For home battery backup during power outages, there are three main options, depending on whether you want to keep a few essential devices running or power your entire house.\n\n1. Choose the type of backup system\nShop\n\nPortable battery power station\n\nBest for essential devices\n\nTypically $500–$4,000+\n\nPlug in a refrigerator, router, lights, or medical equipment. No permanent installation required for ordinary plug-in use.\n\nShop\n\nWhole-home battery backup\n\nTypically $10,000–$20,000+ installed for a single battery system.\n\nAutomatically powers selected circuits or potentially the entire house during an outage. Requires professional installation.\n\nShop\n\nExpandable battery system\n\nTypically $2,000–$10,000+, depending on capacity and installation.\n\nStart with essential appliances, then add batteries. Some systems support a transfer switch or home electrical panel integration.\n\n2. How much battery capacity do you need?\n\nBattery capacity is measured in kilowatt-hours (kWh). The larger the capacity, the longer your devices can run.\n\nHere is an interactive estimate for an outage:\n\nBattery capacity\n\n4 kWh\n\nAverage electricity consumption\n\n150 W — Fridge, Wi-Fi, a few lights\n400 W — Multiple essential appliances\n1,000 W — Larger household loads\n2,500 W — High household consumption\n\nEstimated backup runtime\n\n8.5 hours\nAssumes 85% usable energy after losses, constant average load, and no recharging. Actual results vary.\n3. Battery systems worth considering\n\nEcoFlow - DELTA 3 Ultra (3072 Wh Capacity) Portable Power St…\n\n3.07 kWh / 3,600 W output\n\n$1,299.00\n\nGood for essential appliances without permanent installation.\n\nEcoFlow DELTA Pro 3 Portable Power Station\n\n4.1 kWh / 4,000 W output\n\n$3,399.00\n\nSupports 120/240 V output and expandable storage.\n\nAnker SOLIX F3800 Plus + Smart Home Power Kit\n\n3.84 kWh / 6,000 W output\n\n$4,799.99\n\nHome-panel integration option; professional installation costs extra.\n\nFor outages lasting several days, consider a solar-rechargeable system. A battery alone eventually runs out, regardless of its size. \niTechGuides\n+1\n\n4. What are you trying to power?\nWhat needs backup power?\nRefrigerator, Wi-Fi, lights, and essentials\nMost of the house\nEntire house, including air conditioning\nHow long should it last?\n8 hours\n24 hours\n3 days\n5+ days\nDo you already have rooftop solar panels?\nYes\nNo\nFind the right battery size and system",
+  "markup": [
+   "For **home battery backup during power outages**, there are three main options, depending on whether you want to keep a few essential devices running or power your entire house.\n\n## 1. Choose the type of backup system\n\n<box gap={3}>\n  <row align=start gap={3}>\n    <AsyncImage query=\"EcoFlow DELTA Pro 3 portable power station home backup battery\" aspectRatio=\"1:1\" maxWidth=\"144px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Portable battery power station**\n\n      <badge color=\"success\">Best for essential devices</badge>\n\n      Typically $500–$4,000+\n\n      Plug in a refrigerator, router, lights, or medical equipment. No permanent installation required for ordinary plug-in use.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=start gap={3}>\n    <AsyncImage query=\"Tesla Powerwall 3 installed residential garage home battery\" aspectRatio=\"1:1\" maxWidth=\"144px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Whole-home battery backup**\n\n      Typically $10,000–$20,000+ installed for a single battery system.\n\n      Automatically powers selected circuits or potentially the entire house during an outage. Requires professional installation.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=start gap={3}>\n    <AsyncImage query=\"Bluetti AC200L home portable battery backup power station\" aspectRatio=\"1:1\" maxWidth=\"144px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Expandable battery system**\n\n      Typically $2,000–$10,000+, depending on capacity and installation.\n\n      Start with essential appliances, then add batteries. Some systems support a transfer switch or home electrical panel integration.\n    </box>\n  </row>\n</box>\n\n## 2. How much battery capacity do you need?\n\nBattery capacity is measured in kilowatt-hours (kWh). The larger the capacity, the longer your devices can run.\n\nHere is an interactive estimate for an outage:\n\n{@body const [capacity,setCapacity] = DIL.useState(4)}\n{@body const [load,setLoad] = DIL.useState(\"400\")}\n{@body const runtime = capacity*0.85/(Number(load)/1000)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <box gap={1}>\n    <row align=\"center\" justify=\"between\">\n      **Battery capacity**\n      <text weight=\"medium\" tabularNums>{capacity} kWh</text>\n    </row>\n    <slider min={1} max={30} step={1} value={capacity} onChange={setCapacity}/>\n  </box>\n  <box gap={1}>\n    **Average electricity consumption**\n    <radio-group direction=\"col\" value={load} onChange={setLoad}>\n      <radio value=\"150\">150 W — Fridge, Wi-Fi, a few lights</radio>\n      <radio value=\"400\">400 W — Multiple essential appliances</radio>\n      <radio value=\"1000\">1,000 W — Larger household loads</radio>\n      <radio value=\"2500\">2,500 W — High household consumption</radio>\n    </radio-group>\n  </box>\n  <box background=\"surface-secondary\" padding={3} radius=\"lg\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated backup runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{runtime>=24 ? `${(runtime/24).toFixed(1)} days` : `${runtime.toFixed(1)} hours`}</title>\n    <caption>Assumes 85% usable energy after losses, constant average load, and no recharging. Actual results vary.</caption>\n  </box>\n</box>\n\n## 3. Battery systems worth considering\n\n<box gap={3}>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product35\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product35\" value={turn113971product35.title}/>**\n\n      3.07 kWh / 3,600 W output\n\n      <text weight=\"medium\">{turn113971product35.displayed_price}</text>\n\n      Good for essential appliances without permanent installation.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product34\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product34\" value={turn113971product34.title}/>**\n\n      4.1 kWh / 4,000 W output\n\n      <text weight=\"medium\">{turn113971product34.displayed_price}</text>\n\n      Supports 120/240 V output and expandable storage.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product2\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product2\" value={turn113971product2.title}/>**\n\n      3.84 kWh / 6,000 W output\n\n      <text weight=\"medium\">{turn113971product2.displayed_price}</text>\n\n      Home-panel integration option; professional installation costs extra.\n    </box>\n  </row>\n</box>\n\nFor outages lasting several days, consider a solar-rechargeable system. A battery alone eventually runs out, regardless of its size. <Cite refs={[\"turn113971search1\",\"turn113971search4\"]}/>\n\n## 4. What are you trying to power?\n\n{@body const [scope,setScope] = DIL.useState(\"essentials\")}\n{@body const [duration,setDuration] = DIL.useState(\"24 hours\")}\n{@body const [solar,setSolar] = DIL.useState(\"No\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(`Recommend a home battery backup system for power outages. I want to power: ${scope}. Desired duration: ${duration}. Existing rooftop solar: ${solar}. Include sizing, equipment and estimated cost.`)}>\n    <box gap={1}>\n      <label>What needs backup power?</label>\n      <radio-group direction=\"col\" value={scope} onChange={setScope}>\n        <radio value=\"essentials\">Refrigerator, Wi-Fi, lights, and essentials</radio>\n        <radio value=\"most of the house\">Most of the house</radio>\n        <radio value=\"entire house including air conditioning\">Entire house, including air conditioning</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>How long should it last?</label>\n      <radio-group direction=\"col\" value={duration} onChange={setDuration}>\n        <radio value=\"8 hours\">8 hours</radio>\n        <radio value=\"24 hours\">24 hours</radio>\n        <radio value=\"3 days\">3 days</radio>\n        <radio value=\"5 or more days\">5+ days</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>Do you already have rooftop solar panels?</label>\n      <radio-group value={solar} onChange={setSolar}>\n        <radio value=\"Yes\">Yes</radio>\n        <radio value=\"No\">No</radio>\n      </radio-group>\n    </box>\n    <button block submit>Find the right battery size and system <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>",
+   "{@body const [capacity,setCapacity] = DIL.useState(4)}\n{@body const [load,setLoad] = DIL.useState(\"400\")}\n{@body const runtime = capacity*0.85/(Number(load)/1000)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <box gap={1}>\n    <row align=\"center\" justify=\"between\">\n      **Battery capacity**\n      <text weight=\"medium\" tabularNums>{capacity} kWh</text>\n    </row>\n    <slider min={1} max={30} step={1} value={capacity} onChange={setCapacity}/>\n  </box>\n  <box gap={1}>\n    **Average electricity consumption**\n    <radio-group direction=\"col\" value={load} onChange={setLoad}>\n      <radio value=\"150\">150 W — Fridge, Wi-Fi, a few lights</radio>\n      <radio value=\"400\">400 W — Multiple essential appliances</radio>\n      <radio value=\"1000\">1,000 W — Larger household loads</radio>\n      <radio value=\"2500\">2,500 W — High household consumption</radio>\n    </radio-group>\n  </box>\n  <box background=\"surface-secondary\" padding={3} radius=\"lg\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated backup runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{runtime>=24 ? `${(runtime/24).toFixed(1)} days` : `${runtime.toFixed(1)} hours`}</title>\n    <caption>Assumes 85% usable energy after losses, constant average load, and no recharging. Actual results vary.</caption>\n  </box>\n</box>\n\n## 3. Battery systems worth considering\n\n<box gap={3}>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product35\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product35\" value={turn113971product35.title}/>**\n\n      3.07 kWh / 3,600 W output\n\n      <text weight=\"medium\">{turn113971product35.displayed_price}</text>\n\n      Good for essential appliances without permanent installation.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product34\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product34\" value={turn113971product34.title}/>**\n\n      4.1 kWh / 4,000 W output\n\n      <text weight=\"medium\">{turn113971product34.displayed_price}</text>\n\n      Supports 120/240 V output and expandable storage.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=\"start\" gap={3}>\n    <AsyncImage ref=\"turn113971product2\" aspectRatio=\"1:1\" maxWidth=\"112px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" ref=\"turn113971product2\" value={turn113971product2.title}/>**\n\n      3.84 kWh / 6,000 W output\n\n      <text weight=\"medium\">{turn113971product2.displayed_price}</text>\n\n      Home-panel integration option; professional installation costs extra.\n    </box>\n  </row>\n</box>\n\nFor outages lasting several days, consider a solar-rechargeable system. A battery alone eventually runs out, regardless of its size. <Cite refs={[\"turn113971search1\",\"turn113971search4\"]}/>\n\n## 4. What are you trying to power?\n\n{@body const [scope,setScope] = DIL.useState(\"essentials\")}\n{@body const [duration,setDuration] = DIL.useState(\"24 hours\")}\n{@body const [solar,setSolar] = DIL.useState(\"No\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(`Recommend a home battery backup system for power outages. I want to power: ${scope}. Desired duration: ${duration}. Existing rooftop solar: ${solar}. Include sizing, equipment and estimated cost.`)}>\n    <box gap={1}>\n      <label>What needs backup power?</label>\n      <radio-group direction=\"col\" value={scope} onChange={setScope}>\n        <radio value=\"essentials\">Refrigerator, Wi-Fi, lights, and essentials</radio>\n        <radio value=\"most of the house\">Most of the house</radio>\n        <radio value=\"entire house including air conditioning\">Entire house, including air conditioning</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>How long should it last?</label>\n      <radio-group direction=\"col\" value={duration} onChange={setDuration}>\n        <radio value=\"8 hours\">8 hours</radio>\n        <radio value=\"24 hours\">24 hours</radio>\n        <radio value=\"3 days\">3 days</radio>\n        <radio value=\"5 or more days\">5+ days</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>Do you already have rooftop solar panels?</label>\n      <radio-group value={solar} onChange={setSolar}>\n        <radio value=\"Yes\">Yes</radio>\n        <radio value=\"No\">No</radio>\n      </radio-group>\n    </box>\n    <button block submit>Find the right battery size and system <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>"
+  ],
+  "markup_urls": [],
+  "conversation_id": "6af99bc1-ed0c-83e8-9e5d-68bd64b273f5",
+  "search_results": [
+   {
+    "domain": "prepforoutage.com",
+    "title": "Whole-Home Battery vs Portable Power Station",
+    "url": "https://www.prepforoutage.com/whole-home-battery-vs-portable-power-station",
+    "pub_date": 1793577600.0,
+    "snippet": null
+   },
+   {
+    "domain": "apnews.com",
+    "title": "Battery bank or generator? How to choose the best backup power for your home during an outage",
+    "url": "https://apnews.com/article/36257eecaf3e3eaffacc2f600bf8d5b0",
+    "pub_date": 1784034060.0,
+    "snippet": "Choosing backup power depends on outage length, household needs and budget. Portable battery banks, usually under $100, are convenient for phones, computers and lights but cannot run major appliances. Fuel-powered portable generators can operate refrigerators, fans and some air conditioners for roughly 6–12 hours or longer, but must be used outdoors to prevent carbon-monoxide poisoning; fuel costs, maintenance and limited tank capacity are concerns during prolonged outages. Whole-house generators, typically costing $5,000–$20,000 or more, automatically switch on when grid power fails and may s"
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station vs Home Battery for Outages: Which Should You Choose?",
+    "url": "https://www.itechguides.com/portable-power-station-vs-home-battery-backup-which-is-right-for-an-outage/",
+    "pub_date": 1792108800.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station vs Whole-Home Battery: Cost, kWh and Installation",
+    "url": "https://www.itechguides.com/portable-power-station-vs-whole-home-battery-backup-costs-capacity-and-installation/",
+    "pub_date": 1792108800.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station vs. Home Battery: How to Choose",
+    "url": "https://www.itechguides.com/portable-power-station-vs-home-battery-backup-which-fits-your-needs/",
+    "pub_date": 1791072000.0,
+    "snippet": null
+   },
+   {
+    "domain": "testedwatts.com",
+    "title": "Home Battery Backup vs Portable Power Station (2026) - Tested Watts",
+    "url": "https://testedwatts.com/2026/09/24/home-battery-backup-vs-portable-power-station/",
+    "pub_date": 1790208000.0,
+    "snippet": null
+   },
+   {
+    "domain": "homebatteryreport.com",
+    "title": "Portable power station vs home battery: which backup fits | The Home Battery Report",
+    "url": "https://homebatteryreport.com/guides/portable-power-station-vs-home-battery",
+    "pub_date": 1785369600.0,
+    "snippet": null
+   },
+   {
+    "domain": "solarunitedneighbors.org",
+    "title": "BatteryStorageGuide_ENG_AUG2025",
+    "url": "https://solarunitedneighbors.org/wp-content/uploads/2025/08/BatteryStorageGuide_ENG_AUG2025.pdf",
+    "pub_date": 1756231745.0,
+    "snippet": null
+   },
+   {
+    "domain": "solarunitedneighbors.org",
+    "title": "2024_Battery Guide English",
+    "url": "https://solarunitedneighbors.org/wp-content/uploads/2024/06/Battery-Storage-Guide-English.pdf",
+    "pub_date": 1718299452.0,
+    "snippet": null
+   },
+   {
+    "domain": "pluggedsun.com",
+    "title": "Home Battery Backup: What It Powers in an Outage and What It Costs",
+    "url": "https://pluggedsun.com/batteries/home-batteries/home-battery-backup/",
+    "pub_date": 1794182400.0,
+    "snippet": null
+   },
+   {
+    "domain": "backuppowerfinder.com",
+    "title": "Portable Backup vs Whole-Home Battery | Backup Power Finder",
+    "url": "https://backuppowerfinder.com/guides/portable-vs-whole-home",
+    "pub_date": 1785801600.0,
+    "snippet": null
+   },
+   {
+    "domain": "voltedge4u.com",
+    "title": "Portable Power Station vs Home Battery (2026) | VoltEdge",
+    "url": "https://voltedge4u.com/portable-vs-home-battery",
+    "pub_date": 1787529600.0,
+    "snippet": null
+   },
+   {
+    "domain": "sparkpowered.com",
+    "title": "Home Battery Backup: Whole-Home vs Portable, Real Costs (2026) | Spark Powered",
+    "url": "https://sparkpowered.com/home-battery-backup",
+    "pub_date": null,
+    "snippet": "*Prices on the makers' US sites when we checked on November 6, 2026; prices change often.  “A home battery is pointless without solar.”  A battery keeps your fridge, Wi-Fi and lights on in an outage..."
+   },
+   {
+    "domain": "geekchamp.com",
+    "title": "Portable Power Station vs Home Battery: Best Outage Backup for Your Home",
+    "url": "https://geekchamp.com/portable-power-station-vs-home-battery-backup-which-is-right-for-an-outage/",
+    "pub_date": 1792108800.0,
+    "snippet": "PORTABLE POWER STATION VS. HOME BATTERY BACKUP: WHICH IS RIGHT FOR AN OUTAGE?  by GeekChamp Team 16 Oct 2026 12 min read  [Button: ×]Recommended: PC Feels Slow? A Free Scan Shows What's Dragging Wind..."
+   },
+   {
+    "domain": "wattsimple.com",
+    "title": "Whole-Home Battery Backup | WattSimple",
+    "url": "https://www.wattsimple.com/guides/generators-backup/whole-home-battery-backup",
+    "pub_date": null,
+    "snippet": "WHOLE-HOME BATTERY BACKUP  Written by WattSimple · Updated 2026-08-16 · 6 min read  Quick answer  A whole-home battery transfers in milliseconds, runs silently and needs no attention, but is limited..."
+   }
+  ]
+ },
+ "text": "For home battery backup during power outages, there are three main options, depending on whether you want to keep a few essential devices running or power your entire house.\n\n1. Choose the type of backup system\nShop\n\nPortable battery power station\n\nBest for essential devices\n\nTypically $500–$4,000+\n\nPlug in a refrigerator, router, lights, or medical equipment. No permanent installation required for ordinary plug-in use.\n\nShop\n\nWhole-home battery backup\n\nTypically $10,000–$20,000+ installed for a single battery system.\n\nAutomatically powers selected circuits or potentially the entire house during an outage. Requires professional installation.\n\nShop\n\nExpandable battery system\n\nTypically $2,000–$10,000+, depending on capacity and installation.\n\nStart with essential appliances, then add batteries. Some systems support a transfer switch or home electrical panel integration.\n\n2. How much battery capacity do you need?\n\nBattery capacity is measured in kilowatt-hours (kWh). The larger the capacity, the longer your devices can run.\n\nHere is an interactive estimate for an outage:\n\nBattery capacity\n\n4 kWh\n\nAverage electricity consumption\n\n150 W — Fridge, Wi-Fi, a few lights\n400 W — Multiple essential appliances\n1,000 W — Larger household loads\n2,500 W — High household consumption\n\nEstimated backup runtime\n\n8.5 hours\nAssumes 85% usable energy after losses, constant average load, and no recharging. Actual results vary.\n3. Battery systems worth considering\n\nEcoFlow - DELTA 3 Ultra (3072 Wh Capacity) Portable Power St…\n\n3.07 kWh / 3,600 W output\n\n$1,299.00\n\nGood for essential appliances without permanent installation.\n\nEcoFlow DELTA Pro 3 Portable Power Station\n\n4.1 kWh / 4,000 W output\n\n$3,399.00\n\nSupports 120/240 V output and expandable storage.\n\nAnker SOLIX F3800 Plus + Smart Home Power Kit\n\n3.84 kWh / 6,000 W output\n\n$4,799.99\n\nHome-panel integration option; professional installation costs extra.\n\nFor outages lasting several days, consider a solar-rechargeable system. A battery alone eventually runs out, regardless of its size. \niTechGuides\n+1\n\n4. What are you trying to power?\nWhat needs backup power?\nRefrigerator, Wi-Fi, lights, and essentials\nMost of the house\nEntire house, including air conditioning\nHow long should it last?\n8 hours\n24 hours\n3 days\n5+ days\nDo you already have rooftop solar panels?\nYes\nNo\nFind the right battery size and system",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [
+  "home battery backup outage portable power station vs whole home battery capacity installation safety 2026"
+ ],
+ "cite_pills": [
+  {
+   "url": "https://www.itechguides.com/portable-power-station-vs-home-battery-backup-which-is-right-for-an-outage/",
+   "label": "iTechGuides",
+   "title": "Portable Power Station vs Home Battery for Outages: Which Should You Choose?"
+  },
+  {
+   "url": "https://homebatteryreport.com/guides/portable-power-station-vs-home-battery",
+   "label": "The Home Battery Report",
+   "title": "Portable power station vs home battery: which backup fits"
+  }
+ ],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "vq018-home-battery-backup-for-power-outages.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.7,
+   "typed": 1
+  },
+  {
+   "t": 8.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 10.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 12.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A913b8b24-aa41-471b-ae6",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 19.2,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 19.4,
+   "submit": "enter"
+  },
+  {
+   "t": 21.4,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 23.5,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 2374,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 25.5,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 2374,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 27.5,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 2374,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  },
+  {
+   "t": 29.5,
+   "url": "https://chatgpt.com/c/6af99bc1-ed0c-83e8-9e5d-68bd64b273f5?t",
+   "answer_len": 2374,
+   "streaming": false,
+   "send": true,
+   "composer": "home battery backup for power "
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 1 search query(ies) and 15 search result(s) from the SSE stream"
+ ],
+ "latency_s": 40.3
+}

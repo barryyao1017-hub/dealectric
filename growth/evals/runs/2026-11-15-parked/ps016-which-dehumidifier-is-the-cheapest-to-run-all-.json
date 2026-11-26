@@ -1,0 +1,271 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=which%20dehumidifier%20is%20the%20cheapest%20to%20run%20all%20year",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?temporary-chat=true",
+  "title": "which dehumidifier is the cheapest to run all year",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?temporary-chat=true#_r_6i_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "The cheapest dehumidifier to run year-round is usually an ENERGY STAR Most Efficient compressor-based model, rather than a mini dehumidifier or a thermoelectric (Peltier) model.\n\nBut the best choice depends on how much moisture you need to remove.\n\nFor a bedroom or living room: An efficient 20–35 pint/day compressor dehumidifier is often the most economical.\n\nFor a damp basement or large space: An efficient 50-pint/day model can be cheaper overall because it removes more water per kWh.\n\nFor cold spaces (below about 60°F): A desiccant model may work better, but typically costs more in electricity.\n\nThe important metric is Integrated Energy Factor (IEF), measured in liters of water removed per kWh. Higher is better.\n\nSpecific models worth considering\n\nAccording to ENERGY STAR's published efficiency data, these are among the most efficient portable models in the roughly 45–50 pint/day class. \nENERGY STAR Certified Dehumidifiers\n+1\n\nModel\n\n\t\n\nEfficiency (IEF)\n\n\t\n\nRated annual electricity\n\n\t\n\nCost at $0.30/kWh\n\n\n\n\nVellgoo Taurus Pro 45-pint\n\n\t\n\n2.24\n\n\t\n\n444 kWh\n\n\t\n\n$133\n\n\n\n\nAeocky Leo Pro 45-pint\n\n\t\n\n2.21\n\n\t\n\n438 kWh\n\n\t\n\n$131\n\n\n\n\nAeocky Rhea Pro 44-pint\n\n\t\n\n2.21\n\n\t\n\n432 kWh\n\n\t\n\n$130\n\nThese are standardized annual estimates, not continuous 24/7 operation. Actual cost depends on humidity, runtime, temperature and your electricity rate.\n\nFor comparison, a dehumidifier drawing 300 watts continuously costs $788 per year at $0.30/kWh.\n\nOne question to narrow it down\n\nWhere will you use the dehumidifier?\n\nBedroom or small room\nLarge room or basement\nWhole house\n\nHow will you run it?\n\nAll year, automatically maintaining humidity\n24 hours a day, continuously\nCompare cheapest-running models\n\nThat distinction matters: the model with the lowest electricity consumption isn't necessarily the cheapest one that can adequately control your humidity.",
+  "markup": [
+   "The **cheapest dehumidifier to run year-round is usually an ENERGY STAR Most Efficient compressor-based model**, rather than a mini dehumidifier or a thermoelectric (Peltier) model.\n\nBut the best choice depends on how much moisture you need to remove.\n\n- **For a bedroom or living room:** An efficient 20–35 pint/day compressor dehumidifier is often the most economical.\n- **For a damp basement or large space:** An efficient 50-pint/day model can be cheaper overall because it removes more water per kWh.\n- **For cold spaces (below about 60°F):** A desiccant model may work better, but typically costs more in electricity.\n\nThe important metric is **Integrated Energy Factor (IEF)**, measured in liters of water removed per kWh. Higher is better.\n\n## Specific models worth considering\n\nAccording to ENERGY STAR's published efficiency data, these are among the most efficient portable models in the roughly 45–50 pint/day class. <Cite refs={[\"turn953452search1\",\"turn953452search7\"]}/>\n\n| Model | Efficiency (IEF) | Rated annual electricity | Cost at $0.30/kWh |\n|---|---:|---:|---:|\n| **Vellgoo Taurus Pro 45-pint** | 2.24 | 444 kWh | $133 |\n| Aeocky Leo Pro 45-pint | 2.21 | 438 kWh | $131 |\n| Aeocky Rhea Pro 44-pint | 2.21 | 432 kWh | $130 |\n\nThese are standardized annual estimates, not continuous 24/7 operation. Actual cost depends on humidity, runtime, temperature and your electricity rate.\n\nFor comparison, a dehumidifier drawing 300 watts continuously costs **$788 per year** at $0.30/kWh.\n\n## One question to narrow it down\n\n{@body const [usage,setUsage] = DIL.useState(\"room\")}\n{@body const [hours,setHours] = DIL.useState(\"automatic\")}\n<box gap={3}>\n  <text weight=\"medium\">Where will you use the dehumidifier?</text>\n  <radio-group direction=\"col\" value={usage} onChange={setUsage}>\n    <radio value=\"room\">Bedroom or small room</radio>\n    <radio value=\"large\">Large room or basement</radio>\n    <radio value=\"whole\">Whole house</radio>\n  </radio-group>\n  <text weight=\"medium\">How will you run it?</text>\n  <radio-group direction=\"col\" value={hours} onChange={setHours}>\n    <radio value=\"automatic\">All year, automatically maintaining humidity</radio>\n    <radio value=\"continuous\">24 hours a day, continuously</radio>\n  </radio-group>\n  <button block onClick={()=>GenUI.issueNewTurn(\"Find the cheapest dehumidifier to operate for \"+(usage===\"room\"?\"a bedroom or small room\":usage===\"large\"?\"a large room or basement\":\"a whole house\")+\", running \"+(hours===\"automatic\"?\"year-round with automatic humidity control\":\"continuously 24 hours per day\")+\". Compare specific models and annual electricity costs.\")}>Compare cheapest-running models</button>\n</box>\n\nThat distinction matters: the model with the lowest electricity consumption isn't necessarily the cheapest one that can adequately control your humidity.",
+   "## Specific models worth considering\n\nAccording to ENERGY STAR's published efficiency data, these are among the most efficient portable models in the roughly 45–50 pint/day class. <Cite refs={[\"turn953452search1\",\"turn953452search7\"]}/>\n\n| Model | Efficiency (IEF) | Rated annual electricity | Cost at $0.30/kWh |\n|---|---:|---:|---:|\n| **Vellgoo Taurus Pro 45-pint** | 2.24 | 444 kWh | $133 |\n| Aeocky Leo Pro 45-pint | 2.21 | 438 kWh | $131 |\n| Aeocky Rhea Pro 44-pint | 2.21 | 432 kWh | $130 |\n\nThese are standardized annual estimates, not continuous 24/7 operation. Actual cost depends on humidity, runtime, temperature and your electricity rate.\n\nFor comparison, a dehumidifier drawing 300 watts continuously costs **$788 per year** at $0.30/kWh.\n\n## One question to narrow it down\n\n{@body const [usage,setUsage] = DIL.useState(\"room\")}\n{@body const [hours,setHours] = DIL.useState(\"automatic\")}\n<box gap={3}>\n  <text weight=\"medium\">Where will you use the dehumidifier?</text>\n  <radio-group direction=\"col\" value={usage} onChange={setUsage}>\n    <radio value=\"room\">Bedroom or small room</radio>\n    <radio value=\"large\">Large room or basement</radio>\n    <radio value=\"whole\">Whole house</radio>\n  </radio-group>\n  <text weight=\"medium\">How will you run it?</text>\n  <radio-group direction=\"col\" value={hours} onChange={setHours}>\n    <radio value=\"automatic\">All year, automatically maintaining humidity</radio>\n    <radio value=\"continuous\">24 hours a day, continuously</radio>\n  </radio-group>\n  <button block onClick={()=>GenUI.issueNewTurn(\"Find the cheapest dehumidifier to operate for \"+(usage===\"room\"?\"a bedroom or small room\":usage===\"large\"?\"a large room or basement\":\"a whole house\")+\", running \"+(hours===\"automatic\"?\"year-round with automatic humidity control\":\"continuously 24 hours per day\")+\". Compare specific models and annual electricity costs.\")}>Compare cheapest-running models</button>\n</box>\n\nThat distinction matters: the model with the lowest electricity consumption isn't necessarily the cheapest one that can adequately control your humidity."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6af9f73b-b50c-83e8-a86b-2ad4bc6da422",
+  "search_results": [
+   {
+    "domain": "energystar.gov",
+    "title": "Dehumidifiers Key Efficiency Criteria | ENERGY STAR",
+    "url": "https://www.energystar.gov/products/dehumidifiers/key_efficiency_criteria",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Product Finder — ENERGY STAR Certified Dehumidifiers",
+    "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?is_most_efficient_filter=Most+Efficient",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Dehumidifiers | ENERGY STAR",
+    "url": "https://www.energystar.gov/products/dehumidifiers",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Dehumidifiers Results | EPA ENERGY STAR",
+    "url": "https://www.energystar.gov/productfinder/product/certified-dehumidifiers/results?page_number=0",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Product Finder — ENERGY STAR Certified Dehumidifiers",
+    "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?is_most_efficient_filter=Most+Efficient&page_number=0",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Product Finder — ENERGY STAR Certified Dehumidifiers",
+    "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?brand_name_isopen=0&currentZipCode=1+01&dehumidifier_water_removal_capacity_per_appendix_x1_pints_day_filter=&formId=076049-187-44-834-387619942&high_price=&is_most_efficient_filter=0&is_most_efficient_filter=Most+Efficient&lastpage=0&low_price=&markets_filter=Canada&page_number=0&product_types=Select+a+Product+Category&search_text=&sort_by=dehumidifier_efficiency_integrated_energy_factor_l_kwh_&sort_direction=desc&zip_code_filter=",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Product Finder — ENERGY STAR Certified Dehumidifiers",
+    "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?is_most_efficient_filter=Most+Efficient&markets_filter=Canada&search_text=",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "wattcost.app",
+    "title": "How Much Does a Dehumidifier Cost to Run? ~$61/yr (2026) · WattCost",
+    "url": "https://www.wattcost.app/dehumidifiers",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "top100sales.com",
+    "title": "ENERGY STAR Most Efficient Dehumidifiers — Top 100 Sales",
+    "url": "https://www.top100sales.com/lists/dehumidifiers-energy-star/most-efficient/",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "specstream.ai",
+    "title": "ENERGY STAR certified dehumidifiers: 576 models, 139 brands",
+    "url": "https://specstream.ai/data/energy-star/category/dehumidifiers",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "wattwiselabs.com",
+    "title": "Dehumidifier Running Costs: Cheapest Models to Run (2026) | WattWise Labs",
+    "url": "https://www.wattwiselabs.com/dehumidifiers/",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "energystar.gov",
+    "title": "Product Finder — ENERGY STAR Certified Dehumidifiers",
+    "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?brand_name_isopen=0&currentZipCode=05401&dehumidifier_water_removal_capacity_per_appendix_x1_pints_day_filter=&formId=f4dc25b5-52cd-492c-ab73-5a05ad118f1a&is_most_efficient_filter=0&is_most_efficient_filter=Most+Efficient&lastpage=0&markets_filter=United+States&page_number=0&product_types=Select+a+Product+Category&scrollTo=700&search_text=&sort_by=dehumidifier_efficiency_integrated_energy_factor_l_kwh_&sort_direction=desc&zip_code_filter=",
+    "pub_date": null,
+    "snippet": "ENERGY STAR Certified  Dehumidifiers  Visit the  Dehumidifiers page for usage tips and buying guidelines.  135 Records Found  Filter Your Results  Search text [Input: filter by keyword]  Dehumidifier..."
+   }
+  ]
+ },
+ "text": "The cheapest dehumidifier to run year-round is usually an ENERGY STAR Most Efficient compressor-based model, rather than a mini dehumidifier or a thermoelectric (Peltier) model.\n\nBut the best choice depends on how much moisture you need to remove.\n\nFor a bedroom or living room: An efficient 20–35 pint/day compressor dehumidifier is often the most economical.\n\nFor a damp basement or large space: An efficient 50-pint/day model can be cheaper overall because it removes more water per kWh.\n\nFor cold spaces (below about 60°F): A desiccant model may work better, but typically costs more in electricity.\n\nThe important metric is Integrated Energy Factor (IEF), measured in liters of water removed per kWh. Higher is better.\n\nSpecific models worth considering\n\nAccording to ENERGY STAR's published efficiency data, these are among the most efficient portable models in the roughly 45–50 pint/day class. \nENERGY STAR Certified Dehumidifiers\n+1\n\nModel\n\n\t\n\nEfficiency (IEF)\n\n\t\n\nRated annual electricity\n\n\t\n\nCost at $0.30/kWh\n\n\n\n\nVellgoo Taurus Pro 45-pint\n\n\t\n\n2.24\n\n\t\n\n444 kWh\n\n\t\n\n$133\n\n\n\n\nAeocky Leo Pro 45-pint\n\n\t\n\n2.21\n\n\t\n\n438 kWh\n\n\t\n\n$131\n\n\n\n\nAeocky Rhea Pro 44-pint\n\n\t\n\n2.21\n\n\t\n\n432 kWh\n\n\t\n\n$130\n\nThese are standardized annual estimates, not continuous 24/7 operation. Actual cost depends on humidity, runtime, temperature and your electricity rate.\n\nFor comparison, a dehumidifier drawing 300 watts continuously costs $788 per year at $0.30/kWh.\n\nOne question to narrow it down\n\nWhere will you use the dehumidifier?\n\nBedroom or small room\nLarge room or basement\nWhole house\n\nHow will you run it?\n\nAll year, automatically maintaining humidity\n24 hours a day, continuously\nCompare cheapest-running models\n\nThat distinction matters: the model with the lowest electricity consumption isn't necessarily the cheapest one that can adequately control your humidity.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [
+  "ENERGY STAR most efficient dehumidifiers 2026 integrated energy factor list compressor annual energy use"
+ ],
+ "cite_pills": [
+  {
+   "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?is_most_efficient_filter=Most+Efficient",
+   "label": "ENERGY STAR Certified Dehumidifiers",
+   "title": "Product Finder"
+  },
+  {
+   "url": "https://www.energystar.gov/most-efficient/me-certified-dehumidifiers/results?brand_name_isopen=0&currentZipCode=1+01&dehumidifier_water_removal_capacity_per_appendix_x1_pints_day_filter=&formId=076049-187-44-834-387619942&high_price=&is_most_efficient_filter=0&is_most_efficient_filter=Most+Efficient&lastpage=0&low_price=&markets_filter=Canada&page_number=0&product_types=Select+a+Product+Category&search_text=&sort_by=dehumidifier_efficiency_integrated_energy_factor_l_kwh_&sort_direction=desc&zip_code_filter=",
+   "label": "ENERGY STAR Certified Dehumidifiers",
+   "title": "Product Finder"
+  }
+ ],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ps016-which-dehumidifier-is-the-cheapest-to-run-all-.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Acede78f2-4c4b-4e19-bc5",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Acede78f2-4c4b-4e19-bc5",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Acede78f2-4c4b-4e19-bc5",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Acede78f2-4c4b-4e19-bc5",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Acede78f2-4c4b-4e19-bc5",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 14.7,
+   "submit": "enter"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?t",
+   "answer_len": 1859,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?t",
+   "answer_len": 1859,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?t",
+   "answer_len": 1859,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  },
+  {
+   "t": 22.7,
+   "url": "https://chatgpt.com/c/6af9f73b-b50c-83e8-a86b-2ad4bc6da422?t",
+   "answer_len": 1859,
+   "streaming": false,
+   "send": true,
+   "composer": "which dehumidifier is the chea"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 1 search query(ies) and 12 search result(s) from the SSE stream"
+ ],
+ "latency_s": 33.3
+}

@@ -1,0 +1,273 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=Can%20a%20power%20station%20run%20a%20hair%20dryer%20at%20a%20campsite%2C%20and%20how%20many%20uses%20do%20I%20get%20before%20it%27s%20empty%3F",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?temporary-chat=true",
+  "title": "Can a power station run a hair dryer at a campsite, and how many uses do I get before it's empty?",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?temporary-chat=true#_r_70_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "Yes, a portable power station can run a hair dryer at a campsite, but you need one with a powerful enough AC inverter. Hair dryers use a lot of electricity, so the number of uses depends on the power station's battery capacity, the dryer's wattage, and how long you run it.\n\n1. How powerful does the power station need to be?\n\nHair dryer type\n\n\t\n\nTypical power draw\n\n\t\n\nRecommended AC output\n\n\n\n\nCompact travel dryer (low)\n\n\t\n\n500–800W\n\n\t\n\n1,000W+\n\n\n\n\nStandard hair dryer\n\n\t\n\n1,200–1,500W\n\n\t\n\n1,800W+\n\n\n\n\nHigh-power salon dryer\n\n\t\n\n1,800–2,000W\n\n\t\n\n2,200W+\n\nThe power station's continuous AC output must meet or exceed the hair dryer's actual wattage. Battery capacity alone doesn't tell you whether it can run the dryer.\n\n2. How many times can you dry your hair?\n\nAssuming a 1,500W hair dryer, 5 minutes per use, and 85% usable battery energy after inverter losses:\n\nPower station capacity\n\n\t\n\nTotal runtime\n\n\t\n\n5-minute uses\n\n\n\n\n300Wh\n\n\t\n\n10 minutes\n\n\t\n\n2\n\n\n\n\n500Wh\n\n\t\n\n17 minutes\n\n\t\n\n3\n\n\n\n\n1,000Wh\n\n\t\n\n34 minutes\n\n\t\n\n6\n\n\n\n\n1,500Wh\n\n\t\n\n51 minutes\n\n\t\n\n10\n\n\n\n\n2,000Wh\n\n\t\n\n68 minutes\n\n\t\n\n13\n\nThese are theoretical estimates assuming the station supports 1,500W continuous output. Actual results vary with temperature, battery condition, and dryer settings.\n\n3. Calculate your own hair-drying sessions\nPower station capacity\n\n1,024 Wh\n\nHair dryer wattage\n\n1,500 W\n\nMinutes per use\n\n5 min\n\nComplete uses per charge\n\n6\n\nTotal drying time\n\n35 min\nAssumes 85% usable AC energy, a fully charged battery, and a power station capable of sustaining the selected wattage.\n4. What I'd recommend for camping\n\nFor a regular 1,500W hair dryer, a 1,000–1,500Wh power station with at least 1,800W continuous AC output is a practical starting point. If you're camping for multiple days without recharging, consider 2,000Wh or more.\n\nA lower-wattage travel dryer can substantially extend runtime. Keep the power station dry and ventilated, and avoid operating the dryer near water.\n\nDo you already own a power station, or are you thinking of buying one? If you tell me the model (for example, EcoFlow, Jackery, or Anker), I can estimate how many drying sessions you'll get from that specific unit.\n\nYou said:\nCan a power station run a hair dryer at a campsite, and how many uses do I get before it's empty?\nThinking\nThinking",
+  "markup": [
+   "**Yes, a portable power station can run a hair dryer at a campsite**, provided its continuous AC output is high enough. The main limitation is that hair dryers consume a lot of power, typically 1,200–1,800 watts.\n\n## How many uses per charge?\n\nAssuming a 1,500W hair dryer running for 5 minutes per use, with 85% battery-to-AC efficiency:\n\n| Battery capacity | Total runtime | 5-minute uses |\n|---|---:|---:|\n| 500Wh | 17 min | 3 |\n| 1,000Wh | 34 min | 6 |\n| 1,500Wh | 51 min | 10 |\n| 2,000Wh | 68 min | 13 |\n| 3,000Wh | 102 min | 20 |\n\nThese estimates assume the power station can actually deliver 1,500W continuously.\n\n## Calculate your own runtime\n\n{@body const [wh,setWh] = DIL.useState(1000)}\n{@body const [w,setW] = DIL.useState(1500)}\n{@body const [min,setMin] = DIL.useState(5)}\n{@body const runtime = wh*0.85/w*60}\n<box border radius=\"2xl\" padding={3} gap={3}>\n  <row align=\"center\" justify=\"between\">\n    <text weight=\"medium\" size=\"sm\">Power station capacity</text>\n    **{wh.toLocaleString()} Wh**\n  </row>\n  <slider min={250} max={3000} step={250} value={wh} onChange={setWh}/>\n  <row align=\"center\" justify=\"between\">\n    <text weight=\"medium\" size=\"sm\">Hair dryer wattage</text>\n    **{w.toLocaleString()} W**\n  </row>\n  <slider min={500} max={2000} step={100} value={w} onChange={setW}/>\n  <row align=\"center\" justify=\"between\">\n    <text weight=\"medium\" size=\"sm\">Minutes per use</text>\n    **{min} min**\n  </row>\n  <slider min={1} max={20} step={1} value={min} onChange={setMin}/>\n  <divider color=\"subtle\"/>\n  <grid columns={2} gap={2}>\n    <grid-item>\n      <box background=\"surface-secondary\" radius=\"lg\" padding={3} gap={1}>\n        <text color=\"secondary\" size=\"xs\">Complete uses</text>\n        <title size=\"2xl\" color=\"default\" tabularNums>{Math.floor(runtime/min)}</title>\n      </box>\n    </grid-item>\n    <grid-item>\n      <box background=\"surface-secondary\" radius=\"lg\" padding={3} gap={1}>\n        <text color=\"secondary\" size=\"xs\">Total runtime</text>\n        <title size=\"2xl\" color=\"default\" tabularNums>{Math.round(runtime)} min</title>\n      </box>\n    </grid-item>\n  </grid>\n  <caption>Estimated results assuming 85% usable energy. Actual performance varies.</caption>\n</box>\n\n## What size power station should you get?\n\n- **500Wh:** Only suitable if its inverter supports your dryer; limited drying time.\n- **1,000Wh:** Good for occasional hair drying on a weekend camping trip.\n- **2,000Wh:** Better for multiple people or several days without recharging.\n\nFor a standard 1,500W hair dryer, I recommend a power station with **at least 1,800W continuous AC output**. A low-wattage travel dryer can significantly increase the number of uses.\n\nOne important distinction: a 2,000Wh battery with only a 1,000W inverter generally cannot operate a 1,500W hair dryer at full power.\n\n**Which power station are you considering, and what wattage is your hair dryer?** I can calculate a more accurate number of uses for your setup."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc1847-f910-83e8-b768-cccc47a5859f",
+  "search_results": [
+   {
+    "domain": "homepowerfacts.com",
+    "title": "Can a portable power station run a hair dryer? Runtime by model",
+    "url": "https://homepowerfacts.com/can-it-run/hair-dryer/",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "holdbackup.com",
+    "title": "Can a Power Station Run a Hair Dryer? | HoldBackup",
+    "url": "https://holdbackup.com/guides/power-station-for-hair-dryer",
+    "pub_date": 1793491200.0,
+    "snippet": null
+   },
+   {
+    "domain": "portableenergylab.com",
+    "title": "Can a Portable Power Station Run a Hair Dryer?",
+    "url": "https://portableenergylab.com/can-portable-power-station-run-hair-dryer/",
+    "pub_date": 1790812800.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station Runtime Calculator: Wh, Watts and Surge Explained",
+    "url": "https://www.itechguides.com/how-to-calculate-what-a-portable-power-station-can-run-and-for-how-long/",
+    "pub_date": 1792195200.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station Runtime: Estimate Hours for Your Appliances",
+    "url": "https://www.itechguides.com/how-to-estimate-how-long-a-portable-power-station-will-run-your-appliances/",
+    "pub_date": 1791072000.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station Runtime: Calculate Hours from Wh and Watts",
+    "url": "https://www.itechguides.com/portable-power-station-capacity-explained-how-to-estimate-runtime-for-your-devices/",
+    "pub_date": 1792195200.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station Runtime: Calculate Hours From Wh and W",
+    "url": "https://www.itechguides.com/portable-power-station-capacity-explained-how-long-will-it-run-your-devices/",
+    "pub_date": 1792108800.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Portable Power Station Runtime: Calculate Hours",
+    "url": "https://www.itechguides.com/how-to-estimate-portable-power-station-runtime-for-your-appliances/",
+    "pub_date": 1792108800.0,
+    "snippet": null
+   },
+   {
+    "domain": "itechguides.com",
+    "title": "Power Station Runtime: Calculate Hours for Your Appliances",
+    "url": "https://www.itechguides.com/how-to-calculate-how-long-a-power-station-will-run-your-appliances/",
+    "pub_date": 1791849600.0,
+    "snippet": null
+   },
+   {
+    "domain": "mymestic.co.uk",
+    "title": "Power Station for a Hair Dryer at a Campsite | My Mestic",
+    "url": "https://mymestic.co.uk/blogs/mestic-power-stations/power-station-for-running-a-hair-dryer-at-a-campsite",
+    "pub_date": 1773964800.0,
+    "snippet": null
+   },
+   {
+    "domain": "manuals.plus",
+    "title": "OMMO OM-2400 Portable Power Station User Manual",
+    "url": "https://manuals.plus/m/082dca82a974b87871b85b26775aa3b5ebdf6c217f5ffa53f2cc012b441c1bec_optim.pdf",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "pdf.lowes.com",
+    "title": "AC60P\nPortable Power Station\nUser Manual\nPlease Re",
+    "url": "https://pdf.lowes.com/productdocuments/9d3f9cb8-2a4f-479a-98bd-13a77f7127fe/63957093.pdf",
+    "pub_date": 1761974303.0,
+    "snippet": null
+   },
+   {
+    "domain": "stationhours.com",
+    "title": "How to Calculate Power Station Runtime (With Worked Examples) | StationHours",
+    "url": "https://stationhours.com/guides/how-to-calculate-runtime/",
+    "pub_date": 1794528000.0,
+    "snippet": null
+   },
+   {
+    "domain": "udpwr.com",
+    "title": "How Many Watts Does a Hair Dryer Use? Wattage & Cost Guide – UDPOWER",
+    "url": "https://udpwr.com/blogs/portable-power-station-knowledge/how-many-watts-does-a-hairdryer-use",
+    "pub_date": 1776988800.0,
+    "snippet": null
+   }
+  ]
+ },
+ "text": "Yes, a portable power station can run a hair dryer at a campsite, but you need one with a powerful enough AC inverter. Hair dryers use a lot of electricity, so the number of uses depends on the power station's battery capacity, the dryer's wattage, and how long you run it.\n\n1. How powerful does the power station need to be?\n\nHair dryer type\n\n\t\n\nTypical power draw\n\n\t\n\nRecommended AC output\n\n\n\n\nCompact travel dryer (low)\n\n\t\n\n500–800W\n\n\t\n\n1,000W+\n\n\n\n\nStandard hair dryer\n\n\t\n\n1,200–1,500W\n\n\t\n\n1,800W+\n\n\n\n\nHigh-power salon dryer\n\n\t\n\n1,800–2,000W\n\n\t\n\n2,200W+\n\nThe power station's continuous AC output must meet or exceed the hair dryer's actual wattage. Battery capacity alone doesn't tell you whether it can run the dryer.\n\n2. How many times can you dry your hair?\n\nAssuming a 1,500W hair dryer, 5 minutes per use, and 85% usable battery energy after inverter losses:\n\nPower station capacity\n\n\t\n\nTotal runtime\n\n\t\n\n5-minute uses\n\n\n\n\n300Wh\n\n\t\n\n10 minutes\n\n\t\n\n2\n\n\n\n\n500Wh\n\n\t\n\n17 minutes\n\n\t\n\n3\n\n\n\n\n1,000Wh\n\n\t\n\n34 minutes\n\n\t\n\n6\n\n\n\n\n1,500Wh\n\n\t\n\n51 minutes\n\n\t\n\n10\n\n\n\n\n2,000Wh\n\n\t\n\n68 minutes\n\n\t\n\n13\n\nThese are theoretical estimates assuming the station supports 1,500W continuous output. Actual results vary with temperature, battery condition, and dryer settings.\n\n3. Calculate your own hair-drying sessions\nPower station capacity\n\n1,024 Wh\n\nHair dryer wattage\n\n1,500 W\n\nMinutes per use\n\n5 min\n\nComplete uses per charge\n\n6\n\nTotal drying time\n\n35 min\nAssumes 85% usable AC energy, a fully charged battery, and a power station capable of sustaining the selected wattage.\n4. What I'd recommend for camping\n\nFor a regular 1,500W hair dryer, a 1,000–1,500Wh power station with at least 1,800W continuous AC output is a practical starting point. If you're camping for multiple days without recharging, consider 2,000Wh or more.\n\nA lower-wattage travel dryer can substantially extend runtime. Keep the power station dry and ventilated, and avoid operating the dryer near water.\n\nDo you already own a power station, or are you thinking of buying one? If you tell me the model (for example, EcoFlow, Jackery, or Anker), I can estimate how many drying sessions you'll get from that specific unit.\n\nYou said:\nCan a power station run a hair dryer at a campsite, and how many uses do I get before it's empty?\nThinking\nThinking",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [
+  "portable power station hair dryer continuous output watt hours inverter efficiency runtime calculation"
+ ],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "fm045-can-a-power-station-run-a-hair-dryer-at-a-camp.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "Can a power station run a hair"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A297d516c-d0ca-4ea3-8dd",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A297d516c-d0ca-4ea3-8dd",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "typed": 1
+  },
+  {
+   "t": 8.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A297d516c-d0ca-4ea3-8dd",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "Can a power station run a hair"
+  },
+  {
+   "t": 10.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A297d516c-d0ca-4ea3-8dd",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "Can a power station run a hair"
+  },
+  {
+   "t": 12.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A297d516c-d0ca-4ea3-8dd",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "Can a power station run a hair"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "Can a power station run a hair"
+  },
+  {
+   "t": 14.7,
+   "submit": "enter"
+  },
+  {
+   "t": 16.8,
+   "url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?t",
+   "answer_len": 2305,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 18.9,
+   "url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?t",
+   "answer_len": 2305,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 20.9,
+   "url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?t",
+   "answer_len": 2305,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 22.9,
+   "url": "https://chatgpt.com/c/6afc1847-f910-83e8-b768-cccc47a5859f?t",
+   "answer_len": 2305,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 1 search query(ies) and 14 search result(s) from the SSE stream"
+ ],
+ "latency_s": 33.6
+}

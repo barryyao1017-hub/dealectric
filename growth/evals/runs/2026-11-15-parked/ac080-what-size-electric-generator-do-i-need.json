@@ -1,0 +1,172 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=what%20size%20electric%20generator%20do%20i%20need",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?temporary-chat=true",
+  "title": "what size electric generator do i need",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?temporary-chat=true#_r_6t_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "The size of electric generator you need depends on what you want to power simultaneously and whether you're using it for home backup, an RV, or something else.\n\nGenerator sizes are measured in watts (W) or kilowatts (kW). 1 kW = 1,000 watts.\n\nTypical generator sizes\n\nGenerator size\n\n\t\n\nWhat it can power\n\n\n\n\n1–2 kW\n\n\t\n\nPhones, laptops, lights, small electronics\n\n\n\n\n3–5 kW\n\n\t\n\nRefrigerator, lights, Wi-Fi, TV, small appliances\n\n\n\n\n5–8 kW\n\n\t\n\nEssential home circuits, some larger appliances\n\n\n\n\n8–12 kW\n\n\t\n\nMost home essentials, potentially a small AC\n\n\n\n\n12–20 kW\n\n\t\n\nMany household appliances and central AC\n\n\n\n\n20–26+ kW\n\n\t\n\nWhole-house backup for many homes\n\nThese are approximate ranges. Electric heating, air conditioning, water heaters, and EV charging can significantly increase the required capacity.\n\nCalculate your generator size\n\nSelect the appliances you want to run at the same time:\n\nRefrigerator\n\n700 W\n\nFreezer\n\n500 W\n\nLights\n\n200 W\n\nWi-Fi and electronics\n\n200 W\n\nMicrowave\n\n1,200 W\n\nSump pump\n\n1,000 W\n\nWindow AC\n\n1,200 W\n\nCentral AC (approx. 3 ton)\n\n3,500 W\n\nElectric water heater\n\n4,500 W\n\nElectric stove/oven\n\n3,000 W\n\nRunning load\n\n1,100 W\n\nEstimated peak load\n\n2,400 W\n\nSuggested generator running capacity\n\n3.0 kW\nPreliminary estimate with 20% headroom and one major startup surge. Actual motor startup requirements and generator surge ratings vary.\n\nOne question: Are you sizing a generator for your entire house, just essential appliances during a power outage, or something else?\n\nIf it's for your house, I can help you calculate a more accurate size based on your AC, heating, and major appliances. Also, never run a fuel-powered generator indoors or connect it to house wiring without an approved transfer switch or interlock.",
+  "markup": [
+   "The size of electric generator you need depends on **what you want to power simultaneously** and whether you're using it for home backup, an RV, or something else.\n\nGenerator sizes are measured in **watts (W)** or **kilowatts (kW)**. 1 kW = 1,000 watts.\n\n## Typical generator sizes\n\n| Generator size | What it can power |\n|---|---|\n| 1–2 kW | Phones, laptops, lights, small electronics |\n| 3–5 kW | Refrigerator, lights, Wi-Fi, TV, small appliances |\n| 5–8 kW | Essential home circuits, some larger appliances |\n| 8–12 kW | Most home essentials, potentially a small AC |\n| 12–20 kW | Many household appliances and central AC |\n| 20–26+ kW | Whole-house backup for many homes |\n\nThese are approximate ranges. Electric heating, air conditioning, water heaters, and EV charging can significantly increase the required capacity.\n\n## Calculate your generator size\n\n{@body const appliances = [{name:\"Refrigerator\",w:700,s:2000},{name:\"Freezer\",w:500,s:1500},{name:\"Lights\",w:200,s:200},{name:\"Wi-Fi and electronics\",w:200,s:200},{name:\"Microwave\",w:1200,s:1200},{name:\"Sump pump\",w:1000,s:2500},{name:\"Window AC\",w:1200,s:3000},{name:\"Central AC (approx. 3 ton)\",w:3500,s:9000},{name:\"Electric water heater\",w:4500,s:4500},{name:\"Electric stove/oven\",w:3000,s:3000}]}\n{@body const [selected,setSelected] = DIL.useState([0,2,3])}\n{@body const running=selected.reduce((sum,i)=>sum+appliances[i].w,0)}\n{@body const peak=selected.length?running+Math.max(...selected.map(i=>appliances[i].s-appliances[i].w)):0}\n{@body const recommended=Math.ceil(peak*1.2/500)*500}\n<box border radius=\"2xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Select the appliances you want to run at the same time:</text>\n  <box gap={2}>\n    {#each appliances as a,i}\n      <row key={a.name} align=\"center\" justify=\"between\">\n        <checkbox checked={selected.includes(i)} onChange={v=>setSelected(old=>v?[...old,i]:old.filter(x=>x!==i))} lineThrough={false}>{a.name}</checkbox>\n        <text color=\"secondary\" size=\"xs\" tabularNums>{a.w.toLocaleString()} W</text>\n      </row>\n    {/each}\n  </box>\n  <divider color=\"subtle\"/>\n  <grid columns={2} gap={2}>\n    <grid-item>\n      <text color=\"secondary\" size=\"xs\">Running load</text>\n      <title size=\"lg\" tabularNums>{running.toLocaleString()} W</title>\n    </grid-item>\n    <grid-item>\n      <text color=\"secondary\" size=\"xs\">Estimated peak load</text>\n      <title size=\"lg\" tabularNums>{peak.toLocaleString()} W</title>\n    </grid-item>\n  </grid>\n  <box background=\"surface-secondary\" radius=\"lg\" padding={3} gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Suggested generator running capacity</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{selected.length?(recommended/1000).toFixed(1)+\" kW\":\"—\"}</title>\n    <caption>Preliminary estimate with 20% headroom and one major startup surge. Actual motor startup requirements and generator surge ratings vary.</caption>\n  </box>\n</box>\n\n**One question:** Are you sizing a generator for your **entire house**, just **essential appliances during a power outage**, or something else?\n\nIf it's for your house, I can help you calculate a more accurate size based on your AC, heating, and major appliances. Also, never run a fuel-powered generator indoors or connect it to house wiring without an approved transfer switch or interlock."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afa165f-1b9c-83e8-8c97-c718d1fb2757",
+  "search_results": []
+ },
+ "text": "The size of electric generator you need depends on what you want to power simultaneously and whether you're using it for home backup, an RV, or something else.\n\nGenerator sizes are measured in watts (W) or kilowatts (kW). 1 kW = 1,000 watts.\n\nTypical generator sizes\n\nGenerator size\n\n\t\n\nWhat it can power\n\n\n\n\n1–2 kW\n\n\t\n\nPhones, laptops, lights, small electronics\n\n\n\n\n3–5 kW\n\n\t\n\nRefrigerator, lights, Wi-Fi, TV, small appliances\n\n\n\n\n5–8 kW\n\n\t\n\nEssential home circuits, some larger appliances\n\n\n\n\n8–12 kW\n\n\t\n\nMost home essentials, potentially a small AC\n\n\n\n\n12–20 kW\n\n\t\n\nMany household appliances and central AC\n\n\n\n\n20–26+ kW\n\n\t\n\nWhole-house backup for many homes\n\nThese are approximate ranges. Electric heating, air conditioning, water heaters, and EV charging can significantly increase the required capacity.\n\nCalculate your generator size\n\nSelect the appliances you want to run at the same time:\n\nRefrigerator\n\n700 W\n\nFreezer\n\n500 W\n\nLights\n\n200 W\n\nWi-Fi and electronics\n\n200 W\n\nMicrowave\n\n1,200 W\n\nSump pump\n\n1,000 W\n\nWindow AC\n\n1,200 W\n\nCentral AC (approx. 3 ton)\n\n3,500 W\n\nElectric water heater\n\n4,500 W\n\nElectric stove/oven\n\n3,000 W\n\nRunning load\n\n1,100 W\n\nEstimated peak load\n\n2,400 W\n\nSuggested generator running capacity\n\n3.0 kW\nPreliminary estimate with 20% headroom and one major startup surge. Actual motor startup requirements and generator surge ratings vary.\n\nOne question: Are you sizing a generator for your entire house, just essential appliances during a power outage, or something else?\n\nIf it's for your house, I can help you calculate a more accurate size based on your AC, heating, and major appliances. Also, never run a fuel-powered generator indoors or connect it to house wiring without an approved transfer switch or interlock.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac080-what-size-electric-generator-do-i-need.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afce51cdc-97fc-4bbe-bb0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afce51cdc-97fc-4bbe-bb0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afce51cdc-97fc-4bbe-bb0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afce51cdc-97fc-4bbe-bb0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afce51cdc-97fc-4bbe-bb0",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 14.7,
+   "submit": "enter"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?t",
+   "answer_len": 1755,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?t",
+   "answer_len": 1755,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?t",
+   "answer_len": 1755,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  },
+  {
+   "t": 22.8,
+   "url": "https://chatgpt.com/c/6afa165f-1b9c-83e8-8c97-c718d1fb2757?t",
+   "answer_len": 1755,
+   "streaming": false,
+   "send": true,
+   "composer": "what size electric generator d"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 33.1
+}

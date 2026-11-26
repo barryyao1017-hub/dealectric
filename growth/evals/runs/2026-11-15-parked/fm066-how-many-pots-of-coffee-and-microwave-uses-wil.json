@@ -1,0 +1,160 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=How%20many%20pots%20of%20coffee%20and%20microwave%20uses%20will%20a%20power%20station%20give%20me%20on%20a%20boat%20before%20I%20have%20to%20run%20the%20generator%3F",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?temporary-chat=true",
+  "title": "How many pots of coffee and microwave uses will a power station give me on a boat before I have to run the generator?",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?temporary-chat=true#_r_6p_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "A portable power station can typically make 3–12 pots of coffee or run a microwave 6–25 times before you need to recharge it with your boat's generator. The actual number depends on the battery size, coffee maker, and microwave.\n\nEstimated uses per charge\n\nAssuming a standard 1,000W drip coffee maker (10 minutes per pot), a 1,500W microwave (3 minutes per use), and approximately 85% usable battery energy:\n\nPower station capacity\n\n\t\n\nPots of coffee\n\n\t\n\nMicrowave uses\n\n\n\n\n1,000Wh (1kWh)\n\n\t\n\n5\n\n\t\n\n11\n\n\n\n\n2,000Wh (2kWh)\n\n\t\n\n10\n\n\t\n\n22\n\n\n\n\n3,000Wh (3kWh)\n\n\t\n\n15\n\n\t\n\n34\n\n\n\n\n4,000Wh (4kWh)\n\n\t\n\n20\n\n\t\n\n45\n\nThese are separate estimates, not combined totals.\n\nExample: A 2,000Wh power station on your boat\n\nESTIMATED DAILY CONSUMPTION\n\nCoffee pots per day\n\n2\n\nMicrowave uses per day (3 minutes each)\n\n4\n\nDaily energy used\n\n634 Wh\n\nDays before recharge\n\n2.7\nBased on 1,700Wh usable capacity. Excludes other appliances, standby consumption, and battery aging.\n\nOne important detail: your power station needs an inverter powerful enough to handle the appliances. A 1,500W microwave may require a 2,000W or larger continuous-output inverter.\n\nThree questions to calculate your boat's actual runtime\n\nWhat power station are you considering? EcoFlow Delta 2, Delta Pro, Jackery 2000, Bluetti, or something else? A capacity in Wh works too.\n\nWhat kind of coffee maker? Standard drip pot, Keurig, or Nespresso?\n\nWhat wattage is your microwave? If you don't know, I can estimate using a typical boat microwave.\n\nWith those details, I can calculate how many pots of coffee plus microwave uses you'll get before needing to start the generator, and roughly how long the generator would need to run to recharge the station.",
+  "markup": [
+   "A portable power station can typically make **3–12 pots of coffee or run a microwave 6–25 times** before you need to recharge it with your boat's generator. The actual number depends on the battery size, coffee maker, and microwave.\n\n## Estimated uses per charge\n\nAssuming a standard 1,000W drip coffee maker (10 minutes per pot), a 1,500W microwave (3 minutes per use), and approximately 85% usable battery energy:\n\n| Power station capacity | Pots of coffee | Microwave uses |\n|---|---:|---:|\n| 1,000Wh (1kWh) | 5 | 11 |\n| 2,000Wh (2kWh) | 10 | 22 |\n| 3,000Wh (3kWh) | 15 | 34 |\n| 4,000Wh (4kWh) | 20 | 45 |\n\nThese are **separate estimates**, not combined totals.\n\n## Example: A 2,000Wh power station on your boat\n\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text color=\"secondary\" weight=\"medium\" size=\"xs\">ESTIMATED DAILY CONSUMPTION</text>\n  {@body const [pots,setPots] = DIL.useState(2)}\n  {@body const [micros,setMicros] = DIL.useState(4)}\n  {@body const used = pots*167+micros*75}\n  <row align=\"center\" justify=\"between\">\n    **Coffee pots per day**\n    <title size=\"lg\" tabularNums>{pots}</title>\n  </row>\n  <slider min={0} max={8} step={1} value={pots} onChange={setPots}/>\n  <row align=\"center\" justify=\"between\">\n    **Microwave uses per day (3 minutes each)**\n    <title size=\"lg\" tabularNums>{micros}</title>\n  </row>\n  <slider min={0} max={15} step={1} value={micros} onChange={setMicros}/>\n  <divider color=\"subtle\"/>\n  <grid columns={2} gap={3}>\n    <grid-item>\n      <text color=\"secondary\" size=\"xs\">Daily energy used</text>\n      <title size=\"xl\" color=\"default\" tabularNums>{used.toLocaleString()} Wh</title>\n    </grid-item>\n    <grid-item>\n      <text color=\"secondary\" size=\"xs\">Days before recharge</text>\n      <title size=\"xl\" color=\"default\" tabularNums>{used ? (1700/used).toFixed(1) : \"—\"}</title>\n    </grid-item>\n  </grid>\n  <box background=\"surface-tertiary\" height=\"12px\" radius=\"full\" clip>\n    <box background={used>1700?\"danger-solid\":\"rgba(55,135,220,0.85)\"} width={`${Math.min(100,used/1700*100)}%`} height=\"100%\" radius=\"full\"/>\n  </box>\n  <caption>Based on 1,700Wh usable capacity. Excludes other appliances, standby consumption, and battery aging.</caption>\n</box>\n\nOne important detail: your power station needs an inverter powerful enough to handle the appliances. A 1,500W microwave may require a 2,000W or larger continuous-output inverter.\n\n## Three questions to calculate your boat's actual runtime\n\n1. **What power station are you considering?** EcoFlow Delta 2, Delta Pro, Jackery 2000, Bluetti, or something else? A capacity in Wh works too.\n2. **What kind of coffee maker?** Standard drip pot, Keurig, or Nespresso?\n3. **What wattage is your microwave?** If you don't know, I can estimate using a typical boat microwave.\n\nWith those details, I can calculate how many pots of coffee **plus** microwave uses you'll get before needing to start the generator, and roughly how long the generator would need to run to recharge the station."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc11b2-7258-83e8-9830-f9e9773e8578",
+  "search_results": []
+ },
+ "text": "A portable power station can typically make 3–12 pots of coffee or run a microwave 6–25 times before you need to recharge it with your boat's generator. The actual number depends on the battery size, coffee maker, and microwave.\n\nEstimated uses per charge\n\nAssuming a standard 1,000W drip coffee maker (10 minutes per pot), a 1,500W microwave (3 minutes per use), and approximately 85% usable battery energy:\n\nPower station capacity\n\n\t\n\nPots of coffee\n\n\t\n\nMicrowave uses\n\n\n\n\n1,000Wh (1kWh)\n\n\t\n\n5\n\n\t\n\n11\n\n\n\n\n2,000Wh (2kWh)\n\n\t\n\n10\n\n\t\n\n22\n\n\n\n\n3,000Wh (3kWh)\n\n\t\n\n15\n\n\t\n\n34\n\n\n\n\n4,000Wh (4kWh)\n\n\t\n\n20\n\n\t\n\n45\n\nThese are separate estimates, not combined totals.\n\nExample: A 2,000Wh power station on your boat\n\nESTIMATED DAILY CONSUMPTION\n\nCoffee pots per day\n\n2\n\nMicrowave uses per day (3 minutes each)\n\n4\n\nDaily energy used\n\n634 Wh\n\nDays before recharge\n\n2.7\nBased on 1,700Wh usable capacity. Excludes other appliances, standby consumption, and battery aging.\n\nOne important detail: your power station needs an inverter powerful enough to handle the appliances. A 1,500W microwave may require a 2,000W or larger continuous-output inverter.\n\nThree questions to calculate your boat's actual runtime\n\nWhat power station are you considering? EcoFlow Delta 2, Delta Pro, Jackery 2000, Bluetti, or something else? A capacity in Wh works too.\n\nWhat kind of coffee maker? Standard drip pot, Keurig, or Nespresso?\n\nWhat wattage is your microwave? If you don't know, I can estimate using a typical boat microwave.\n\nWith those details, I can calculate how many pots of coffee plus microwave uses you'll get before needing to start the generator, and roughly how long the generator would need to run to recharge the station.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "fm066-how-many-pots-of-coffee-and-microwave-uses-wil.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 2.3,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A99957b45-ad77-49ee-af4",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A99957b45-ad77-49ee-af4",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "typed": 1
+  },
+  {
+   "t": 8.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A99957b45-ad77-49ee-af4",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 10.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A99957b45-ad77-49ee-af4",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 12.7,
+   "url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?t",
+   "answer_len": 1705,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?t",
+   "answer_len": 1705,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?t",
+   "answer_len": 1705,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6afc11b2-7258-83e8-9830-f9e9773e8578?t",
+   "answer_len": 1705,
+   "streaming": false,
+   "send": true,
+   "composer": "How many pots of coffee and mi"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.2
+}

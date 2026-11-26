@@ -1,0 +1,160 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=how%20long%20does%20a%20solar%20generator%20charge%20last",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?temporary-chat=true",
+  "title": "how long does a solar generator charge last",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?temporary-chat=true#_r_6f_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "A solar generator can last anywhere from 2 hours to several days on a single charge, depending on its battery capacity and what you're powering.\n\nTypical runtime by battery size\n\nBattery capacity\n\n\t\n\n100W device\n\n\t\n\n500W device\n\n\n\n\n300Wh (small)\n\n\t\n\n2.5 hours\n\n\t\n\n0.5 hours\n\n\n\n\n500Wh (medium)\n\n\t\n\n4.3 hours\n\n\t\n\n0.85 hours\n\n\n\n\n1,000Wh (large)\n\n\t\n\n8.5 hours\n\n\t\n\n1.7 hours\n\n\n\n\n2,000Wh (extra large)\n\n\t\n\n17 hours\n\n\t\n\n3.4 hours\n\n\n\n\n3,000Wh (very large)\n\n\t\n\n25.5 hours\n\n\t\n\n5.1 hours\n\nEstimates assume 85% usable energy, accounting for conversion losses. Actual results vary.\nHow long can it power common appliances?\n\nFor a 1,000Wh solar generator:\n\nAppliance\n\n\t\n\nEstimated runtime\n\n\n\n\nPhone (15Wh per charge)\n\n\t\n\n50+ charges\n\n\n\n\nLaptop (60W)\n\n\t\n\n14 hours\n\n\n\n\nWi-Fi router (10W)\n\n\t\n\n85 hours\n\n\n\n\nLED light (10W)\n\n\t\n\n85 hours\n\n\n\n\nTV (100W)\n\n\t\n\n8.5 hours\n\n\n\n\nMini fridge (average 40W)\n\n\t\n\n21 hours\n\n\n\n\nSpace heater (1,500W)\n\n\t\n\n34 minutes*\n\nOnly if the generator supports 1,500W continuous output.\n\nWhat if you recharge it with solar panels?\n\nWith sufficient sunlight, a solar generator can keep running much longer.\n\nFor example, a 1,000Wh generator paired with a 200W solar panel might recover roughly 600–800Wh during a sunny day, depending on conditions.\n\nCalculate your runtime\nBattery capacity (Wh)\nPower consumption (W)\n\nEstimated runtime\n\n8.5 hours\n\nOne question: Are you asking how long a solar generator can power appliances on one charge, or how long its battery holds a charge when sitting unused (days, months, or years)? Those are very different.",
+  "markup": [
+   "A **solar generator can last anywhere from 2 hours to several days on a single charge**, depending on its battery capacity and what you're powering.\n\n## Typical runtime by battery size\n\n| Battery capacity | 100W device | 500W device |\n|---|---|---|\n| 300Wh (small) | 2.5 hours | 0.5 hours |\n| 500Wh (medium) | 4.3 hours | 0.85 hours |\n| 1,000Wh (large) | 8.5 hours | 1.7 hours |\n| 2,000Wh (extra large) | 17 hours | 3.4 hours |\n| 3,000Wh (very large) | 25.5 hours | 5.1 hours |\n\n<caption>Estimates assume 85% usable energy, accounting for conversion losses. Actual results vary.</caption>\n\n## How long can it power common appliances?\n\nFor a 1,000Wh solar generator:\n\n| Appliance | Estimated runtime |\n|---|---|\n| Phone (15Wh per charge) | 50+ charges |\n| Laptop (60W) | 14 hours |\n| Wi-Fi router (10W) | 85 hours |\n| LED light (10W) | 85 hours |\n| TV (100W) | 8.5 hours |\n| Mini fridge (average 40W) | 21 hours |\n| Space heater (1,500W) | 34 minutes* |\n\n*Only if the generator supports 1,500W continuous output.*\n\n## What if you recharge it with solar panels?\n\nWith sufficient sunlight, a solar generator can keep running much longer.\n\nFor example, a 1,000Wh generator paired with a 200W solar panel might recover roughly 600–800Wh during a sunny day, depending on conditions.\n\n## Calculate your runtime\n\n{@body const [capacity,setCapacity] = DIL.useState(\"1000\")}\n{@body const [watts,setWatts] = DIL.useState(\"100\")}\n{@body const runtime = Number(capacity)*0.85/Number(watts)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <row align=\"center\" gap={2}>\n    <box flex=\"1\" gap={1}>\n      <label>Battery capacity (Wh)</label>\n      <input inputType=\"number\" value={capacity} onChange={setCapacity}/>\n    </box>\n    <box flex=\"1\" gap={1}>\n      <label>Power consumption (W)</label>\n      <input inputType=\"number\" value={watts} onChange={setWatts}/>\n    </box>\n  </row>\n  <box background=\"surface-secondary\" radius=\"lg\" padding={3} align=\"center\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{Number(watts)>0 && Number(capacity)>0 ? `${runtime.toFixed(1)} hours` : \"—\"}</title>\n  </box>\n</box>\n\n**One question:** Are you asking how long a solar generator can **power appliances on one charge**, or how long its **battery holds a charge when sitting unused** (days, months, or years)? Those are very different."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc1ae2-09b0-83e8-b6a1-e09695ace39f",
+  "search_results": []
+ },
+ "text": "A solar generator can last anywhere from 2 hours to several days on a single charge, depending on its battery capacity and what you're powering.\n\nTypical runtime by battery size\n\nBattery capacity\n\n\t\n\n100W device\n\n\t\n\n500W device\n\n\n\n\n300Wh (small)\n\n\t\n\n2.5 hours\n\n\t\n\n0.5 hours\n\n\n\n\n500Wh (medium)\n\n\t\n\n4.3 hours\n\n\t\n\n0.85 hours\n\n\n\n\n1,000Wh (large)\n\n\t\n\n8.5 hours\n\n\t\n\n1.7 hours\n\n\n\n\n2,000Wh (extra large)\n\n\t\n\n17 hours\n\n\t\n\n3.4 hours\n\n\n\n\n3,000Wh (very large)\n\n\t\n\n25.5 hours\n\n\t\n\n5.1 hours\n\nEstimates assume 85% usable energy, accounting for conversion losses. Actual results vary.\nHow long can it power common appliances?\n\nFor a 1,000Wh solar generator:\n\nAppliance\n\n\t\n\nEstimated runtime\n\n\n\n\nPhone (15Wh per charge)\n\n\t\n\n50+ charges\n\n\n\n\nLaptop (60W)\n\n\t\n\n14 hours\n\n\n\n\nWi-Fi router (10W)\n\n\t\n\n85 hours\n\n\n\n\nLED light (10W)\n\n\t\n\n85 hours\n\n\n\n\nTV (100W)\n\n\t\n\n8.5 hours\n\n\n\n\nMini fridge (average 40W)\n\n\t\n\n21 hours\n\n\n\n\nSpace heater (1,500W)\n\n\t\n\n34 minutes*\n\nOnly if the generator supports 1,500W continuous output.\n\nWhat if you recharge it with solar panels?\n\nWith sufficient sunlight, a solar generator can keep running much longer.\n\nFor example, a 1,000Wh generator paired with a 200W solar panel might recover roughly 600–800Wh during a sunny day, depending on conditions.\n\nCalculate your runtime\nBattery capacity (Wh)\nPower consumption (W)\n\nEstimated runtime\n\n8.5 hours\n\nOne question: Are you asking how long a solar generator can power appliances on one charge, or how long its battery holds a charge when sitting unused (days, months, or years)? Those are very different.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac022-how-long-does-a-solar-generator-charge-last.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A4ea74493-6f91-4c6f-ba7",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A4ea74493-6f91-4c6f-ba7",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A4ea74493-6f91-4c6f-ba7",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 10.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A4ea74493-6f91-4c6f-ba7",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 12.7,
+   "url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?t",
+   "answer_len": 1551,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?t",
+   "answer_len": 1551,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?t",
+   "answer_len": 1551,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6afc1ae2-09b0-83e8-b6a1-e09695ace39f?t",
+   "answer_len": 1551,
+   "streaming": false,
+   "send": true,
+   "composer": "how long does a solar generato"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.3
+}

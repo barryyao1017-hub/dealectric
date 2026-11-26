@@ -1,0 +1,172 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=what%20size%20portable%20power%20station%20do%20i%20need%20to%20run%20a%20refrigerator",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?temporary-chat=true",
+  "title": "what size portable power station do i need to run a refrigerator",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?temporary-chat=true#_r_6r_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "For a typical household refrigerator, I recommend a portable power station with 1,000–2,000 Wh of battery capacity and at least a 1,500 W pure sine wave inverter.\n\nThe exact size depends on your refrigerator and how long you want it to run.\n\nRecommended power station size\n\nBattery capacity\n\n\t\n\nEstimated refrigerator runtime\n\n\n\n\n500 Wh\n\n\t\n\n4–8 hours\n\n\n\n\n1,000 Wh\n\n\t\n\n8–16 hours\n\n\n\n\n1,500 Wh\n\n\t\n\n12–24 hours\n\n\n\n\n2,000 Wh\n\n\t\n\n16–32 hours\n\n\n\n\n3,000 Wh\n\n\t\n\n24–48 hours\n\n\n\n\n4,000 Wh\n\n\t\n\n32–64 hours\n\nEstimates assume a refrigerator averaging 50–100 W over time, with approximately 85% usable energy after inverter losses. Actual runtime varies.\nTwo specifications that matter\n\n1. Battery capacity (Wh): How long it runs\n\nA refrigerator typically consumes around 1–2 kWh per day, although efficient modern models may use considerably less.\n\nFor example, if your refrigerator consumes 1.2 kWh daily:\n\n1,000 Wh battery → approximately 17 hours\n\n2,000 Wh battery → approximately 34 hours\n\n3,000 Wh battery → approximately 51 hours\n\n2. Inverter output (W): Whether it can start the refrigerator\n\nA refrigerator's compressor draws a brief surge of electricity when starting.\n\nTypical requirements:\n\nRunning power: 100–250 W while the compressor is operating\n\nStartup surge: approximately 600–1,500 W, sometimes higher\n\nRecommended inverter: 1,500–2,000 W continuous output with adequate surge capacity\n\nA large battery with an undersized inverter might not start your refrigerator.\n\nHelp me size it accurately\nWhat kind of refrigerator?\nStandard full-size refrigerator\nLarge side-by-side refrigerator\nMini fridge\nOlder garage refrigerator\nHow long do you want it to run?\n8 hours\n12 hours\n24 hours\n48 hours\n72 hours\nRefrigerator model or energy usage (optional)\nCalculate recommended power station size\n\nWith the refrigerator's model number or annual kWh rating, I can give you a much more accurate battery capacity recommendation and estimated runtime.",
+  "markup": [
+   "For a typical household refrigerator, I recommend a **portable power station with 1,000–2,000 Wh of battery capacity and at least a 1,500 W pure sine wave inverter**.\n\nThe exact size depends on your refrigerator and how long you want it to run.\n\n## Recommended power station size\n\n| Battery capacity | Estimated refrigerator runtime |\n|---|---|\n| 500 Wh | 4–8 hours |\n| 1,000 Wh | 8–16 hours |\n| 1,500 Wh | 12–24 hours |\n| 2,000 Wh | 16–32 hours |\n| 3,000 Wh | 24–48 hours |\n| 4,000 Wh | 32–64 hours |\n\n<caption>Estimates assume a refrigerator averaging 50–100 W over time, with approximately 85% usable energy after inverter losses. Actual runtime varies.</caption>\n\n## Two specifications that matter\n\n**1. Battery capacity (Wh): How long it runs**\n\nA refrigerator typically consumes around 1–2 kWh per day, although efficient modern models may use considerably less.\n\nFor example, if your refrigerator consumes 1.2 kWh daily:\n\n- 1,000 Wh battery → approximately 17 hours\n- 2,000 Wh battery → approximately 34 hours\n- 3,000 Wh battery → approximately 51 hours\n\n**2. Inverter output (W): Whether it can start the refrigerator**\n\nA refrigerator's compressor draws a brief surge of electricity when starting.\n\nTypical requirements:\n\n- Running power: 100–250 W while the compressor is operating\n- Startup surge: approximately 600–1,500 W, sometimes higher\n- Recommended inverter: 1,500–2,000 W continuous output with adequate surge capacity\n\nA large battery with an undersized inverter might not start your refrigerator.\n\n## Help me size it accurately\n\n{@body const [fridge,setFridge] = DIL.useState(\"full\")}\n{@body const [duration,setDuration] = DIL.useState(\"24\")}\n{@body const [model,setModel] = DIL.useState(\"\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"Size a portable power station for my \"+({full:\"full-size refrigerator\",mini:\"mini fridge\",side:\"side-by-side refrigerator\",garage:\"older garage refrigerator\"}[fridge])+\" for \"+duration+\" hours. Refrigerator model or energy usage: \"+(model||\"unknown\")+\". Recommend battery Wh and inverter W.\")}>\n    <box gap={1}>\n      <label>What kind of refrigerator?</label>\n      <radio-group direction=\"col\" value={fridge} onChange={setFridge}>\n        <radio value=\"full\">Standard full-size refrigerator</radio>\n        <radio value=\"side\">Large side-by-side refrigerator</radio>\n        <radio value=\"mini\">Mini fridge</radio>\n        <radio value=\"garage\">Older garage refrigerator</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>How long do you want it to run?</label>\n      <radio-group direction=\"col\" value={duration} onChange={setDuration}>\n        <radio value=\"8\">8 hours</radio>\n        <radio value=\"12\">12 hours</radio>\n        <radio value=\"24\">24 hours</radio>\n        <radio value=\"48\">48 hours</radio>\n        <radio value=\"72\">72 hours</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>Refrigerator model or energy usage (optional)</label>\n      <input placeholder=\"e.g. 500 kWh/year or model number\" value={model} onChange={setModel}/>\n    </box>\n    <button block submit>Calculate recommended power station size <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>\n\nWith the refrigerator's model number or annual kWh rating, I can give you a much more accurate battery capacity recommendation and estimated runtime."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6af9a1bf-3504-83e8-b760-731b9657639e",
+  "search_results": []
+ },
+ "text": "For a typical household refrigerator, I recommend a portable power station with 1,000–2,000 Wh of battery capacity and at least a 1,500 W pure sine wave inverter.\n\nThe exact size depends on your refrigerator and how long you want it to run.\n\nRecommended power station size\n\nBattery capacity\n\n\t\n\nEstimated refrigerator runtime\n\n\n\n\n500 Wh\n\n\t\n\n4–8 hours\n\n\n\n\n1,000 Wh\n\n\t\n\n8–16 hours\n\n\n\n\n1,500 Wh\n\n\t\n\n12–24 hours\n\n\n\n\n2,000 Wh\n\n\t\n\n16–32 hours\n\n\n\n\n3,000 Wh\n\n\t\n\n24–48 hours\n\n\n\n\n4,000 Wh\n\n\t\n\n32–64 hours\n\nEstimates assume a refrigerator averaging 50–100 W over time, with approximately 85% usable energy after inverter losses. Actual runtime varies.\nTwo specifications that matter\n\n1. Battery capacity (Wh): How long it runs\n\nA refrigerator typically consumes around 1–2 kWh per day, although efficient modern models may use considerably less.\n\nFor example, if your refrigerator consumes 1.2 kWh daily:\n\n1,000 Wh battery → approximately 17 hours\n\n2,000 Wh battery → approximately 34 hours\n\n3,000 Wh battery → approximately 51 hours\n\n2. Inverter output (W): Whether it can start the refrigerator\n\nA refrigerator's compressor draws a brief surge of electricity when starting.\n\nTypical requirements:\n\nRunning power: 100–250 W while the compressor is operating\n\nStartup surge: approximately 600–1,500 W, sometimes higher\n\nRecommended inverter: 1,500–2,000 W continuous output with adequate surge capacity\n\nA large battery with an undersized inverter might not start your refrigerator.\n\nHelp me size it accurately\nWhat kind of refrigerator?\nStandard full-size refrigerator\nLarge side-by-side refrigerator\nMini fridge\nOlder garage refrigerator\nHow long do you want it to run?\n8 hours\n12 hours\n24 hours\n48 hours\n72 hours\nRefrigerator model or energy usage (optional)\nCalculate recommended power station size\n\nWith the refrigerator's model number or annual kWh rating, I can give you a much more accurate battery capacity recommendation and estimated runtime.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac083-what-size-portable-power-station-do-i-need-to-.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Aeadaf288-15f0-47ce-bba",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Aeadaf288-15f0-47ce-bba",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Aeadaf288-15f0-47ce-bba",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Aeadaf288-15f0-47ce-bba",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Aeadaf288-15f0-47ce-bba",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 14.7,
+   "submit": "enter"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?t",
+   "answer_len": 1942,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 18.8,
+   "url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?t",
+   "answer_len": 1942,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?t",
+   "answer_len": 1942,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  },
+  {
+   "t": 22.8,
+   "url": "https://chatgpt.com/c/6af9a1bf-3504-83e8-b760-731b9657639e?t",
+   "answer_len": 1942,
+   "streaming": false,
+   "send": true,
+   "composer": "what size portable power stati"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 33.4
+}

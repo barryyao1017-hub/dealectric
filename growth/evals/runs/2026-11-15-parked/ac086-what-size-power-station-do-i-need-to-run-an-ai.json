@@ -1,0 +1,160 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=what%20size%20power%20station%20do%20i%20need%20to%20run%20an%20air%20fryer",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?temporary-chat=true",
+  "title": "what size power station do i need to run an air fryer",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?temporary-chat=true#_r_6j_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "For most air fryers, I recommend a portable power station with at least 1,800W continuous AC output and a 1,000Wh battery.\n\nThe right size depends on two things:\n\nOutput power (W): Determines whether the power station can run your air fryer.\n\nBattery capacity (Wh): Determines how long it can run.\n\nRecommended power station sizes\n\nAir fryer wattage\n\n\t\n\nMinimum AC output\n\n\t\n\nRecommended battery\n\n\n\n\n800–1,000W\n\n\t\n\n1,200W\n\n\t\n\n500–1,000Wh\n\n\n\n\n1,200W\n\n\t\n\n1,500W\n\n\t\n\n1,000Wh\n\n\n\n\n1,500W\n\n\t\n\n1,800W\n\n\t\n\n1,000–2,000Wh\n\n\n\n\n1,700–1,800W\n\n\t\n\n2,000W+\n\n\t\n\n1,500–2,000Wh\n\nHow long will it run?\n\nAssuming a typical 1,500W air fryer, with 85% power station efficiency and continuous full-power operation:\n\nAir fryer runtime calculator\n\nBattery capacity\n\n1,024 Wh\n\nAir fryer wattage\n\n1,500 W\n\nEstimated full-power runtime\n\n35 min\n\nActual runtime varies with temperature cycling and losses\n\nFor example, a 1,024Wh power station can run a 1,500W air fryer for roughly 35 minutes at full power. That may be enough for multiple cooking sessions, depending on the food.\n\nImportant: A power station advertised as 2,000Wh isn't necessarily capable of powering a 1,500W air fryer. Check that its continuous AC output is high enough, not just its battery capacity or surge rating.\n\nTwo questions:\n\nHow many watts is your air fryer (or what's the brand and model)?\n\nDo you want to use it for 20–30 minutes, an hour, or multiple meals without recharging?\n\nWith those details, I can recommend the smallest practical power station so you don't overspend.",
+  "markup": [
+   "For most air fryers, I recommend a portable power station with **at least 1,800W continuous AC output and a 1,000Wh battery**.\n\nThe right size depends on two things:\n\n1. **Output power (W):** Determines whether the power station can run your air fryer.\n2. **Battery capacity (Wh):** Determines how long it can run.\n\n## Recommended power station sizes\n\n| Air fryer wattage | Minimum AC output | Recommended battery |\n|---|---:|---:|\n| 800–1,000W | 1,200W | 500–1,000Wh |\n| 1,200W | 1,500W | 1,000Wh |\n| 1,500W | 1,800W | 1,000–2,000Wh |\n| 1,700–1,800W | 2,000W+ | 1,500–2,000Wh |\n\n## How long will it run?\n\nAssuming a typical **1,500W air fryer**, with 85% power station efficiency and continuous full-power operation:\n\n{@body const [capacity,setCapacity] = DIL.useState(1024)}\n{@body const [watts,setWatts] = DIL.useState(1500)}\n{@body const minutes = Math.round(capacity*0.85/watts*60)}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text weight=\"medium\">Air fryer runtime calculator</text>\n  <row align=\"center\" justify=\"between\">\n    <text color=\"secondary\" size=\"sm\">Battery capacity</text>\n    <text weight=\"medium\" tabularNums>{capacity.toLocaleString()} Wh</text>\n  </row>\n  <slider min={256} max={3072} step={128} value={capacity} onChange={setCapacity}/>\n  <row align=\"center\" justify=\"between\">\n    <text color=\"secondary\" size=\"sm\">Air fryer wattage</text>\n    <text weight=\"medium\" tabularNums>{watts.toLocaleString()} W</text>\n  </row>\n  <slider min={800} max={1800} step={100} value={watts} onChange={setWatts}/>\n  <box background=\"surface-secondary\" radius=\"lg\" padding={3} align=\"center\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated full-power runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{minutes >= 60 ? `${Math.floor(minutes/60)} hr ${minutes%60} min` : `${minutes} min`}</title>\n    <text color=\"secondary\" size=\"xs\">Actual runtime varies with temperature cycling and losses</text>\n  </box>\n</box>\n\nFor example, a 1,024Wh power station can run a 1,500W air fryer for roughly 35 minutes at full power. That may be enough for multiple cooking sessions, depending on the food.\n\n**Important:** A power station advertised as 2,000Wh isn't necessarily capable of powering a 1,500W air fryer. Check that its *continuous AC output* is high enough, not just its battery capacity or surge rating.\n\n**Two questions:**\n\n1. How many watts is your air fryer (or what's the brand and model)?\n2. Do you want to use it for 20–30 minutes, an hour, or multiple meals without recharging?\n\nWith those details, I can recommend the smallest practical power station so you don't overspend."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afa17c3-580c-83e8-917a-2b85d0de2cc1",
+  "search_results": []
+ },
+ "text": "For most air fryers, I recommend a portable power station with at least 1,800W continuous AC output and a 1,000Wh battery.\n\nThe right size depends on two things:\n\nOutput power (W): Determines whether the power station can run your air fryer.\n\nBattery capacity (Wh): Determines how long it can run.\n\nRecommended power station sizes\n\nAir fryer wattage\n\n\t\n\nMinimum AC output\n\n\t\n\nRecommended battery\n\n\n\n\n800–1,000W\n\n\t\n\n1,200W\n\n\t\n\n500–1,000Wh\n\n\n\n\n1,200W\n\n\t\n\n1,500W\n\n\t\n\n1,000Wh\n\n\n\n\n1,500W\n\n\t\n\n1,800W\n\n\t\n\n1,000–2,000Wh\n\n\n\n\n1,700–1,800W\n\n\t\n\n2,000W+\n\n\t\n\n1,500–2,000Wh\n\nHow long will it run?\n\nAssuming a typical 1,500W air fryer, with 85% power station efficiency and continuous full-power operation:\n\nAir fryer runtime calculator\n\nBattery capacity\n\n1,024 Wh\n\nAir fryer wattage\n\n1,500 W\n\nEstimated full-power runtime\n\n35 min\n\nActual runtime varies with temperature cycling and losses\n\nFor example, a 1,024Wh power station can run a 1,500W air fryer for roughly 35 minutes at full power. That may be enough for multiple cooking sessions, depending on the food.\n\nImportant: A power station advertised as 2,000Wh isn't necessarily capable of powering a 1,500W air fryer. Check that its continuous AC output is high enough, not just its battery capacity or surge rating.\n\nTwo questions:\n\nHow many watts is your air fryer (or what's the brand and model)?\n\nDo you want to use it for 20–30 minutes, an hour, or multiple meals without recharging?\n\nWith those details, I can recommend the smallest practical power station so you don't overspend.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac086-what-size-power-station-do-i-need-to-run-an-ai.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afb723265-446c-47cb-a3a",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afb723265-446c-47cb-a3a",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afb723265-446c-47cb-a3a",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Afb723265-446c-47cb-a3a",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?t",
+   "answer_len": 1526,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?t",
+   "answer_len": 1526,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?t",
+   "answer_len": 1526,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6afa17c3-580c-83e8-917a-2b85d0de2cc1?t",
+   "answer_len": 1526,
+   "streaming": false,
+   "send": true,
+   "composer": "what size power station do i n"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.2
+}

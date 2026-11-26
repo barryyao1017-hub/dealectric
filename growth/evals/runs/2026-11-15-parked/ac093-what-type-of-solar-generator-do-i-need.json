@@ -1,0 +1,176 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=what%20type%20of%20solar%20generator%20do%20i%20need",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?temporary-chat=true",
+  "title": "what type of solar generator do i need",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?temporary-chat=true#_r_78_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "The type of solar generator you need depends on what you want to power, how long you need to run it, and whether you're using it for home backup, camping, or off-grid living.\n\nA solar generator typically consists of a portable battery, an inverter, a charge controller, and optional solar panels.\n\nSolar generator size guide\n\nSmall — 300–500 Wh\n\nPhones, laptops, Wi-Fi routers, LED lights.\n\nBest for camping and small electronics.\n\nMedium — 1,000–2,000 Wh\n\nRefrigerators, TVs, fans, computers, and small appliances.\n\nBest for short power outages.\n\nLarge — 3,000–6,000 Wh\n\nMultiple appliances, refrigerators, microwaves, and some air conditioners.\n\nBest for extended home backup.\n\nWhole-home — 10,000+ Wh\n\nMultiple household circuits and potentially central AC, depending on system size.\n\nBest for whole-home backup or off-grid use.\n\nFind the right size for you\nWhat will you use it for?\nHome emergency backup\nCamping / outdoor use\nRV / van\nOff-grid living\nWhat do you need to power?\nRefrigerator\nWi-Fi router\nLED lights\nLaptop\nTV\nCPAP machine\nWindow AC\nMicrowave\nHow long should it run without recharging?\n4 hours\n8 hours\n24 hours\n48 hours\n3 days\nFind my solar generator size\n\nImportant: Battery capacity (Wh) determines how long appliances run, while inverter output (W) determines which appliances can operate. Solar panel wattage determines how quickly the battery can recharge in sunlight.\n\nTell me what you're powering using the selections above, and I'll calculate the battery size, inverter rating, and solar panels you need.",
+  "markup": [
+   "The type of **solar generator** you need depends on what you want to power, how long you need to run it, and whether you're using it for home backup, camping, or off-grid living.\n\nA solar generator typically consists of a portable battery, an inverter, a charge controller, and optional solar panels.\n\n## Solar generator size guide\n\n<box gap={3}>\n  <row align=start gap={3}>\n    <AsyncImage query=\"Jackery Explorer 300 portable power station compact\" aspectRatio=\"1:1\" maxWidth=\"116px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Small — 300–500 Wh**\n\n      Phones, laptops, Wi-Fi routers, LED lights.\n\n      Best for camping and small electronics.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=start gap={3}>\n    <AsyncImage query=\"EcoFlow DELTA 2 portable power station\" aspectRatio=\"1:1\" maxWidth=\"116px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Medium — 1,000–2,000 Wh**\n\n      Refrigerators, TVs, fans, computers, and small appliances.\n\n      Best for short power outages.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=start gap={3}>\n    <AsyncImage query=\"EcoFlow DELTA Pro 3 large portable power station\" aspectRatio=\"1:1\" maxWidth=\"116px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Large — 3,000–6,000 Wh**\n\n      Multiple appliances, refrigerators, microwaves, and some air conditioners.\n\n      Best for extended home backup.\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=start gap={3}>\n    <AsyncImage query=\"EcoFlow DELTA Pro Ultra home backup battery system\" aspectRatio=\"1:1\" maxWidth=\"116px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **Whole-home — 10,000+ Wh**\n\n      Multiple household circuits and potentially central AC, depending on system size.\n\n      Best for whole-home backup or off-grid use.\n    </box>\n  </row>\n</box>\n\n## Find the right size for you\n\n{@body const [purpose,setPurpose] = DIL.useState(\"home\")}\n{@body const [devices,setDevices] = DIL.useState([\"fridge\",\"router\"])}\n{@body const [duration,setDuration] = DIL.useState(\"24\")}\n{@body const items=[{id:\"fridge\",name:\"Refrigerator\",watts:60},{id:\"router\",name:\"Wi-Fi router\",watts:12},{id:\"lights\",name:\"LED lights\",watts:30},{id:\"laptop\",name:\"Laptop\",watts:50},{id:\"tv\",name:\"TV\",watts:100},{id:\"cpap\",name:\"CPAP machine\",watts:40},{id:\"ac\",name:\"Window AC\",watts:800},{id:\"microwave\",name:\"Microwave\",watts:1200}]}\n<box border radius=\"2xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"Recommend a solar generator for \"+({home:\"home emergency backup\",camping:\"camping\",offgrid:\"off-grid living\",rv:\"an RV\"}[purpose])+\". Appliances: \"+items.filter(x=>devices.includes(x.id)).map(x=>x.name).join(\", \")+\". Desired runtime: \"+duration+\" hours. Estimate battery capacity, inverter power, solar panel wattage, and suitable models.\")}>\n    <box gap={1}>\n      <label>What will you use it for?</label>\n      <radio-group direction=\"col\" value={purpose} onChange={setPurpose}>\n        <radio value=\"home\">Home emergency backup</radio>\n        <radio value=\"camping\">Camping / outdoor use</radio>\n        <radio value=\"rv\">RV / van</radio>\n        <radio value=\"offgrid\">Off-grid living</radio>\n      </radio-group>\n    </box>\n    <divider color=\"subtle\"/>\n    <box gap={2}>\n      <label>What do you need to power?</label>\n      <grid columns={2} gap={2}>\n        {#each items as item}\n          <grid-item key={item.id}>\n            <checkbox checked={devices.includes(item.id)} lineThrough={false} onChange={v=>setDevices(old=>v?[...old,item.id]:old.filter(x=>x!==item.id))}>{item.name}</checkbox>\n          </grid-item>\n        {/each}\n      </grid>\n    </box>\n    <box gap={1}>\n      <label>How long should it run without recharging?</label>\n      <radio-group direction=\"col\" value={duration} onChange={setDuration}>\n        <radio value=\"4\">4 hours</radio>\n        <radio value=\"8\">8 hours</radio>\n        <radio value=\"24\">24 hours</radio>\n        <radio value=\"48\">48 hours</radio>\n        <radio value=\"72\">3 days</radio>\n      </radio-group>\n    </box>\n    <button block submit disabled={devices.length===0}>Find my solar generator size <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>\n\n**Important:** Battery capacity (Wh) determines how long appliances run, while inverter output (W) determines which appliances can operate. Solar panel wattage determines how quickly the battery can recharge in sunlight.\n\nTell me what you're powering using the selections above, and I'll calculate the battery size, inverter rating, and solar panels you need."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afa1980-b6c0-83e8-9807-92ea884724d4",
+  "search_results": []
+ },
+ "text": "The type of solar generator you need depends on what you want to power, how long you need to run it, and whether you're using it for home backup, camping, or off-grid living.\n\nA solar generator typically consists of a portable battery, an inverter, a charge controller, and optional solar panels.\n\nSolar generator size guide\n\nSmall — 300–500 Wh\n\nPhones, laptops, Wi-Fi routers, LED lights.\n\nBest for camping and small electronics.\n\nMedium — 1,000–2,000 Wh\n\nRefrigerators, TVs, fans, computers, and small appliances.\n\nBest for short power outages.\n\nLarge — 3,000–6,000 Wh\n\nMultiple appliances, refrigerators, microwaves, and some air conditioners.\n\nBest for extended home backup.\n\nWhole-home — 10,000+ Wh\n\nMultiple household circuits and potentially central AC, depending on system size.\n\nBest for whole-home backup or off-grid use.\n\nFind the right size for you\nWhat will you use it for?\nHome emergency backup\nCamping / outdoor use\nRV / van\nOff-grid living\nWhat do you need to power?\nRefrigerator\nWi-Fi router\nLED lights\nLaptop\nTV\nCPAP machine\nWindow AC\nMicrowave\nHow long should it run without recharging?\n4 hours\n8 hours\n24 hours\n48 hours\n3 days\nFind my solar generator size\n\nImportant: Battery capacity (Wh) determines how long appliances run, while inverter output (W) determines which appliances can operate. Solar panel wattage determines how quickly the battery can recharge in sunlight.\n\nTell me what you're powering using the selections above, and I'll calculate the battery size, inverter rating, and solar panels you need.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac093-what-type-of-solar-generator-do-i-need.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Ad79a2f35-d8a0-4596-922",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 18.7,
+   "url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?t",
+   "answer_len": 1532,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 20.7,
+   "url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?t",
+   "answer_len": 1532,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 22.7,
+   "url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?t",
+   "answer_len": 1532,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  },
+  {
+   "t": 24.8,
+   "url": "https://chatgpt.com/c/6afa1980-b6c0-83e8-9807-92ea884724d4?t",
+   "answer_len": 1532,
+   "streaming": false,
+   "send": true,
+   "composer": "what type of solar generator d"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 35.3
+}

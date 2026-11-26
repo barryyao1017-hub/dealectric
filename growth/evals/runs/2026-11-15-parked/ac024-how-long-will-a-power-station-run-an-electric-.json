@@ -1,0 +1,152 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=how%20long%20will%20a%20power%20station%20run%20an%20electric%20blanket",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?temporary-chat=true",
+  "title": "how long will a power station run an electric blanket",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?temporary-chat=true#_r_6t_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "A portable power station can run an electric blanket for about 4–20 hours, depending on the battery capacity, blanket wattage, and heat setting.\n\nMost electric blankets consume 50–150 watts at full power, but may average considerably less on lower settings as the thermostat cycles.\n\nEstimated runtime\n\nAssuming 85% usable battery energy (including inverter losses):\n\nPower station capacity\n\n\t\n\n50W blanket\n\n\t\n\n100W blanket\n\n\t\n\n150W blanket\n\n\n\n\n256Wh\n\n\t\n\n4.4 hrs\n\n\t\n\n2.2 hrs\n\n\t\n\n1.5 hrs\n\n\n\n\n500Wh\n\n\t\n\n8.5 hrs\n\n\t\n\n4.3 hrs\n\n\t\n\n2.8 hrs\n\n\n\n\n768Wh\n\n\t\n\n13.1 hrs\n\n\t\n\n6.5 hrs\n\n\t\n\n4.4 hrs\n\n\n\n\n1,024Wh\n\n\t\n\n17.4 hrs\n\n\t\n\n8.7 hrs\n\n\t\n\n5.8 hrs\n\n\n\n\n2,048Wh\n\n\t\n\n34.8 hrs\n\n\t\n\n17.4 hrs\n\n\t\n\n11.6 hrs\n\nThese estimates assume continuous power consumption. Actual runtime may be longer if the blanket cycles on and off.\n\nRuntime calculator\nPower station battery capacity\n256Wh\n512Wh\n1,024Wh\n2,048Wh\n\nElectric blanket power\n\n100W\n\nUsable battery efficiency\n\n85%\n\nEstimated runtime\n\n8.7 hours\n\nAt 100W average consumption\n\nHow to calculate it\nRuntime (hours)\n=\nBattery Wh\n×\n0.85\nBlanket Watts\nRuntime (hours)=\nBlanket Watts\nBattery Wh×0.85\n\t​\n\n\nFor example, a 1,024Wh power station running a 100W electric blanket would last approximately 8.7 hours.\n\nOne important detail: Electric blankets often cycle their heating elements. A blanket rated at 100W might average only 30–60W on a low setting, significantly extending runtime. Follow the blanket manufacturer's overnight-use instructions.\n\nWhat power station and electric blanket do you have? Give me the models or their Wh and wattage ratings, and I can estimate how many hours they'll run together on low, medium, and high settings.",
+  "markup": [
+   "A portable power station can run an electric blanket for **about 4–20 hours**, depending on the battery capacity, blanket wattage, and heat setting.\n\nMost electric blankets consume **50–150 watts** at full power, but may average considerably less on lower settings as the thermostat cycles.\n\n## Estimated runtime\n\nAssuming 85% usable battery energy (including inverter losses):\n\n| Power station capacity | 50W blanket | 100W blanket | 150W blanket |\n|---|---:|---:|---:|\n| 256Wh | 4.4 hrs | 2.2 hrs | 1.5 hrs |\n| 500Wh | 8.5 hrs | 4.3 hrs | 2.8 hrs |\n| 768Wh | 13.1 hrs | 6.5 hrs | 4.4 hrs |\n| 1,024Wh | 17.4 hrs | 8.7 hrs | 5.8 hrs |\n| 2,048Wh | 34.8 hrs | 17.4 hrs | 11.6 hrs |\n\nThese estimates assume continuous power consumption. Actual runtime may be longer if the blanket cycles on and off.\n\n## Runtime calculator\n\n{@body const [capacity,setCapacity] = DIL.useState(\"1024\")}\n{@body const [watts,setWatts] = DIL.useState(100)}\n{@body const [eff,setEff] = DIL.useState(85)}\n{@body const hours = Number(capacity)*eff/100/watts}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3}>\n    <box gap={1}>\n      <label>Power station battery capacity</label>\n      <radio-group direction=\"col\" value={capacity} onChange={setCapacity}>\n        <radio value=\"256\">256Wh</radio>\n        <radio value=\"512\">512Wh</radio>\n        <radio value=\"1024\">1,024Wh</radio>\n        <radio value=\"2048\">2,048Wh</radio>\n      </radio-group>\n    </box>\n    <divider color=\"subtle\"/>\n    <row align=\"center\" justify=\"between\">\n      **Electric blanket power**\n      <text weight=\"medium\" tabularNums>{watts}W</text>\n    </row>\n    <slider min={20} max={200} step={10} value={watts} onChange={setWatts}/>\n    <row align=\"center\" justify=\"between\">\n      **Usable battery efficiency**\n      <text weight=\"medium\" tabularNums>{eff}%</text>\n    </row>\n    <slider min={70} max={95} step={5} value={eff} onChange={setEff}/>\n  </form>\n  <box background=\"surface-secondary\" radius=\"lg\" padding={3} align=\"center\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{hours.toFixed(1)} hours</title>\n    <text color=\"secondary\" size=\"xs\">At {watts}W average consumption</text>\n  </box>\n</box>\n\n## How to calculate it\n\n\\[\n\\text{Runtime (hours)}=\\frac{\\text{Battery Wh}\\times0.85}{\\text{Blanket Watts}}\n\\]\n\nFor example, a 1,024Wh power station running a 100W electric blanket would last approximately 8.7 hours.\n\n**One important detail:** Electric blankets often cycle their heating elements. A blanket rated at 100W might average only 30–60W on a low setting, significantly extending runtime. Follow the blanket manufacturer's overnight-use instructions.\n\n**What power station and electric blanket do you have?** Give me the models or their Wh and wattage ratings, and I can estimate how many hours they'll run together on low, medium, and high settings."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc2160-9b64-83e8-a605-1b9ac85c77fa",
+  "search_results": []
+ },
+ "text": "A portable power station can run an electric blanket for about 4–20 hours, depending on the battery capacity, blanket wattage, and heat setting.\n\nMost electric blankets consume 50–150 watts at full power, but may average considerably less on lower settings as the thermostat cycles.\n\nEstimated runtime\n\nAssuming 85% usable battery energy (including inverter losses):\n\nPower station capacity\n\n\t\n\n50W blanket\n\n\t\n\n100W blanket\n\n\t\n\n150W blanket\n\n\n\n\n256Wh\n\n\t\n\n4.4 hrs\n\n\t\n\n2.2 hrs\n\n\t\n\n1.5 hrs\n\n\n\n\n500Wh\n\n\t\n\n8.5 hrs\n\n\t\n\n4.3 hrs\n\n\t\n\n2.8 hrs\n\n\n\n\n768Wh\n\n\t\n\n13.1 hrs\n\n\t\n\n6.5 hrs\n\n\t\n\n4.4 hrs\n\n\n\n\n1,024Wh\n\n\t\n\n17.4 hrs\n\n\t\n\n8.7 hrs\n\n\t\n\n5.8 hrs\n\n\n\n\n2,048Wh\n\n\t\n\n34.8 hrs\n\n\t\n\n17.4 hrs\n\n\t\n\n11.6 hrs\n\nThese estimates assume continuous power consumption. Actual runtime may be longer if the blanket cycles on and off.\n\nRuntime calculator\nPower station battery capacity\n256Wh\n512Wh\n1,024Wh\n2,048Wh\n\nElectric blanket power\n\n100W\n\nUsable battery efficiency\n\n85%\n\nEstimated runtime\n\n8.7 hours\n\nAt 100W average consumption\n\nHow to calculate it\nRuntime (hours)\n=\nBattery Wh\n×\n0.85\nBlanket Watts\nRuntime (hours)=\nBlanket Watts\nBattery Wh×0.85\n\t​\n\n\nFor example, a 1,024Wh power station running a 100W electric blanket would last approximately 8.7 hours.\n\nOne important detail: Electric blankets often cycle their heating elements. A blanket rated at 100W might average only 30–60W on a low setting, significantly extending runtime. Follow the blanket manufacturer's overnight-use instructions.\n\nWhat power station and electric blanket do you have? Give me the models or their Wh and wattage ratings, and I can estimate how many hours they'll run together on low, medium, and high settings.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac024-how-long-will-a-power-station-run-an-electric-.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A18085217-327d-4cc5-84e",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A18085217-327d-4cc5-84e",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A18085217-327d-4cc5-84e",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A18085217-327d-4cc5-84e",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 12.6,
+   "url": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?t",
+   "answer_len": 1660,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 14.6,
+   "url": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?t",
+   "answer_len": 1660,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 16.6,
+   "url": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?t",
+   "answer_len": 1660,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a power station "
+  },
+  {
+   "t": 18.6,
+   "url": "https://chatgpt.com/c/6afc2160-9b64-83e8-a605-1b9ac85c77fa?t",
+   "answer_len": 1660,
+   "streaming": false,
+   "send": true,
+   "composer": "how long will a power station "
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 29.2
+}

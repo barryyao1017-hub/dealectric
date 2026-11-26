@@ -1,0 +1,276 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=how%20much%20does%20a%20home%20battery%20backup%20cost",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?temporary-chat=true",
+  "title": "how much does a home battery backup cost",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?temporary-chat=true#_r_53_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "A home battery backup system typically costs $8,000–$20,000 installed for a system that can keep essential appliances running during a power outage.\n\nIf you want to power your entire house, including air conditioning, the cost can reach $20,000–$40,000 or more.\n\nHome battery backup cost breakdown\n\nSystem size\n\n\t\n\nTypical installed cost\n\n\t\n\nWhat it can power\n\n\n\n\n5 kWh\n\n\t\n\n$4,000–$8,000\n\n\t\n\nRefrigerator, Wi-Fi, lights\n\n\n\n\n10–15 kWh\n\n\t\n\n$9,000–$16,000\n\n\t\n\nEssential household circuits\n\n\n\n\n20–30 kWh\n\n\t\n\n$16,000–$30,000\n\n\t\n\nMost household appliances\n\n\n\n\n40+ kWh\n\n\t\n\n$30,000–$50,000+\n\n\t\n\nLarger homes, longer outages\n\nThese are approximate U.S. prices before incentives, assuming a permanently installed system.\n\nExample: Tesla Powerwall 3\nShop\n\nTesla Powerwall 3\n\n$13,000–$16,500\n\nTypical California installed price, 2026\n\n13.5 kWh battery capacity\n\nAutomatic backup during outages\n\nWorks with or without solar panels\n\n10-year warranty\n\nCalifornia's average installed battery cost is currently around $1,030 per kWh. \nEnergySage\n+1\n\nOne important detail: the federal 30% homeowner battery tax credit ended for systems placed in service after December 31, 2025. Some state and utility incentives remain. \nEnergySage\n+1\n\nTwo questions to narrow down your cost\nDo you already have solar panels?\nYes\nNo\nWhat do you want to power during an outage?\nJust essentials (fridge, lights, internet)\nEntire house\nEntire house for 24 hours\nEstimate my battery cost",
+  "markup": [
+   "A **home battery backup system typically costs $8,000–$20,000 installed** for a system that can keep essential appliances running during a power outage.\n\nIf you want to power your entire house, including air conditioning, the cost can reach **$20,000–$40,000 or more**.\n\n## Home battery backup cost breakdown\n\n| System size | Typical installed cost | What it can power |\n|---|---:|---|\n| 5 kWh | $4,000–$8,000 | Refrigerator, Wi-Fi, lights |\n| 10–15 kWh | $9,000–$16,000 | Essential household circuits |\n| 20–30 kWh | $16,000–$30,000 | Most household appliances |\n| 40+ kWh | $30,000–$50,000+ | Larger homes, longer outages |\n\nThese are approximate U.S. prices before incentives, assuming a permanently installed system.\n\n## Example: Tesla Powerwall 3\n\n<row align=start gap={3}>\n  <AsyncImage query=\"Tesla Powerwall 3 white home battery installed garage wall\" aspectRatio=\"3:4\" maxWidth=\"152px\" shop_eligible={true}/>\n  <box flex=\"1\" gap={1}>\n    **<Entity category=\"product\" value=\"Tesla Powerwall 3\"/>**\n\n    <title size=\"lg\">$13,000–$16,500</title>\n    <text color=\"secondary\" size=\"xs\">Typical California installed price, 2026</text>\n    - 13.5 kWh battery capacity\n    - Automatic backup during outages\n    - Works with or without solar panels\n    - 10-year warranty\n  </box>\n</row>\n\nCalifornia's average installed battery cost is currently around **$1,030 per kWh**. <Cite refs={[\"turn143119search0\",\"turn143119search8\"]}/>\n\nOne important detail: the federal 30% homeowner battery tax credit ended for systems placed in service after December 31, 2025. Some state and utility incentives remain. <Cite refs={[\"turn143119search2\",\"turn143119search5\"]}/>\n\n## Two questions to narrow down your cost\n\n{@body const [solar,setSolar] = DIL.useState(\"no\")}\n{@body const [backup,setBackup] = DIL.useState(\"essentials\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"Estimate my home battery backup cost. Existing solar panels: \"+(solar===\"yes\"?\"Yes\":\"No\")+\". Backup goal: \"+(backup===\"essentials\"?\"Essential appliances only\":backup===\"whole\"?\"Whole house\":\"Whole house for 24 hours\")+\". Include battery size, installed cost and expected runtime.\")}>\n    <box gap={1}>\n      <label>Do you already have solar panels?</label>\n      <radio-group direction=\"row\" value={solar} onChange={setSolar}>\n        <radio value=\"yes\">Yes</radio>\n        <radio value=\"no\">No</radio>\n      </radio-group>\n    </box>\n    <divider color=\"subtle\"/>\n    <box gap={1}>\n      <label>What do you want to power during an outage?</label>\n      <radio-group direction=\"col\" value={backup} onChange={setBackup}>\n        <radio value=\"essentials\">Just essentials (fridge, lights, internet)</radio>\n        <radio value=\"whole\">Entire house</radio>\n        <radio value=\"24h\">Entire house for 24 hours</radio>\n      </radio-group>\n    </box>\n    <button submit block>Estimate my battery cost <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>",
+   "## Example: Tesla Powerwall 3\n\n<row align=start gap={3}>\n  <AsyncImage query=\"Tesla Powerwall 3 white home battery installed garage wall\" aspectRatio=\"3:4\" maxWidth=\"152px\" shop_eligible={true}/>\n  <box flex=\"1\" gap={1}>\n    **<Entity category=\"product\" value=\"Tesla Powerwall 3\"/>**\n\n    <title size=\"lg\">$13,000–$16,500</title>\n    <text color=\"secondary\" size=\"xs\">Typical California installed price, 2026</text>\n    - 13.5 kWh battery capacity\n    - Automatic backup during outages\n    - Works with or without solar panels\n    - 10-year warranty\n  </box>\n</row>\n\nCalifornia's average installed battery cost is currently around **$1,030 per kWh**. <Cite refs={[\"turn143119search0\",\"turn143119search8\"]}/>\n\nOne important detail: the federal 30% homeowner battery tax credit ended for systems placed in service after December 31, 2025. Some state and utility incentives remain. <Cite refs={[\"turn143119search2\",\"turn143119search5\"]}/>\n\n## Two questions to narrow down your cost\n\n{@body const [solar,setSolar] = DIL.useState(\"no\")}\n{@body const [backup,setBackup] = DIL.useState(\"essentials\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"Estimate my home battery backup cost. Existing solar panels: \"+(solar===\"yes\"?\"Yes\":\"No\")+\". Backup goal: \"+(backup===\"essentials\"?\"Essential appliances only\":backup===\"whole\"?\"Whole house\":\"Whole house for 24 hours\")+\". Include battery size, installed cost and expected runtime.\")}>\n    <box gap={1}>\n      <label>Do you already have solar panels?</label>\n      <radio-group direction=\"row\" value={solar} onChange={setSolar}>\n        <radio value=\"yes\">Yes</radio>\n        <radio value=\"no\">No</radio>\n      </radio-group>\n    </box>\n    <divider color=\"subtle\"/>\n    <box gap={1}>\n      <label>What do you want to power during an outage?</label>\n      <radio-group direction=\"col\" value={backup} onChange={setBackup}>\n        <radio value=\"essentials\">Just essentials (fridge, lights, internet)</radio>\n        <radio value=\"whole\">Entire house</radio>\n        <radio value=\"24h\">Entire house for 24 hours</radio>\n      </radio-group>\n    </box>\n    <button submit block>Estimate my battery cost <icon name=\"arrow-right\" inline/></button>\n  </form>\n</box>"
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f",
+  "search_results": [
+   {
+    "domain": "energysage.com",
+    "title": "2026 Cost of Energy Storage in California | EnergySage",
+    "url": "https://www.energysage.com/local-data/energy-storage-cost/ca/",
+    "pub_date": 1794096000.0,
+    "snippet": null
+   },
+   {
+    "domain": "energysage.com",
+    "title": "2026 Cost of Energy Storage in Sacramento County, CA | EnergySage",
+    "url": "https://www.energysage.com/local-data/energy-storage-cost/ca/sacramento-county/",
+    "pub_date": 1794096000.0,
+    "snippet": null
+   },
+   {
+    "domain": "energysage.com",
+    "title": "Your Guide to Home Batteries in 2026 | EnergySage",
+    "url": "https://www.energysage.com/energy-storage/",
+    "pub_date": 1787702400.0,
+    "snippet": null
+   },
+   {
+    "domain": "energysage.com",
+    "title": "What are the best batteries for whole-home backup in 2026? | EnergySage",
+    "url": "https://www.energysage.com/energy-storage/best-batteries-for-whole-home-backup/",
+    "pub_date": 1778457600.0,
+    "snippet": null
+   },
+   {
+    "domain": "energysage.com",
+    "title": "Solar Battery Cost: Are They Actually Worth It In 2026? | EnergySage",
+    "url": "https://www.energysage.com/energy-storage/how-much-do-batteries-cost/",
+    "pub_date": 1783900800.0,
+    "snippet": null
+   },
+   {
+    "domain": "lightsonlabs.com",
+    "title": "Home backup batteries: Powerwall, Enphase and FranklinWH compared | Lights On Labs",
+    "url": "https://www.lightsonlabs.com/home-batteries/",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "ocsolar.com",
+    "title": "Home Battery Backup in California (2026 Guide) | OC Solar",
+    "url": "https://ocsolar.com/resources/guides/home-battery-backup-california",
+    "pub_date": 1786406400.0,
+    "snippet": null
+   },
+   {
+    "domain": "tesla.com",
+    "title": "Do You Need a Home Battery for Your Solar Panels | Tesla",
+    "url": "https://www.tesla.com/learn/do-you-need-home-battery-for-your-solar-panels",
+    "pub_date": 1782432000.0,
+    "snippet": null
+   },
+   {
+    "domain": "nrgcleanpower.com",
+    "title": "How Much Does a Tesla Powerwall 3 Cost in California? (October 2026) - NRG Clean Power",
+    "url": "https://nrgcleanpower.com/learning-center/how-much-does-a-tesla-powerwall-3-cost/",
+    "pub_date": 1791158400.0,
+    "snippet": null
+   },
+   {
+    "domain": "energysage.com",
+    "title": "2026 Cost of Energy Storage in Los Angeles, CA | EnergySage",
+    "url": "https://www.energysage.com/local-data/energy-storage-cost/ca/los-angeles-county/los-angeles/",
+    "pub_date": 1788652800.0,
+    "snippet": "STORAGE COST IN LOS ANGELES, CA  Updated Sep 6, 2026  * You'll pay an average of $13,958 to install a 13 kilowatt-hour (kWh) storage system in Los Angeles, CA before any available incentives.  * A so..."
+   },
+   {
+    "domain": "ocsolar.com",
+    "title": "Solar Battery Cost in California (2026) | OC Solar",
+    "url": "https://ocsolar.com/resources/guides/solar-battery-cost-california-2026",
+    "pub_date": 1783728000.0,
+    "snippet": "SOLAR BATTERY COST IN CALIFORNIA: 2026 PRICE GUIDE  Published July 11, 2026 · Updated September 12, 2026 · 10 min read  The short answer  A current California market benchmark is roughly $1,074 per k..."
+   },
+   {
+    "domain": "sparkpowered.com",
+    "title": "Home Battery Backup: Whole-Home vs Portable, Real Costs (2026) | Spark Powered",
+    "url": "https://sparkpowered.com/home-battery-backup",
+    "pub_date": null,
+    "snippet": "INSTALLED WHOLE-HOME BATTERIES  These are sold through installers, so makers don't publish a price. The cost column uses EnergySage's average installed price per kWh for each brand from its first-hal..."
+   },
+   {
+    "domain": "currentenergy.net",
+    "title": "Home Battery Cost in California (2026) | Current Energy",
+    "url": "https://currentenergy.net/answers/home-battery-cost-california/",
+    "pub_date": null,
+    "snippet": "1. Home 2. Answers 3. Home battery cost in California  Updated October 2026 California market data  HOW MUCH DOES A HOME BATTERY COST IN CALIFORNIA?  Current installed prices by capacity, what happen..."
+   }
+  ]
+ },
+ "text": "A home battery backup system typically costs $8,000–$20,000 installed for a system that can keep essential appliances running during a power outage.\n\nIf you want to power your entire house, including air conditioning, the cost can reach $20,000–$40,000 or more.\n\nHome battery backup cost breakdown\n\nSystem size\n\n\t\n\nTypical installed cost\n\n\t\n\nWhat it can power\n\n\n\n\n5 kWh\n\n\t\n\n$4,000–$8,000\n\n\t\n\nRefrigerator, Wi-Fi, lights\n\n\n\n\n10–15 kWh\n\n\t\n\n$9,000–$16,000\n\n\t\n\nEssential household circuits\n\n\n\n\n20–30 kWh\n\n\t\n\n$16,000–$30,000\n\n\t\n\nMost household appliances\n\n\n\n\n40+ kWh\n\n\t\n\n$30,000–$50,000+\n\n\t\n\nLarger homes, longer outages\n\nThese are approximate U.S. prices before incentives, assuming a permanently installed system.\n\nExample: Tesla Powerwall 3\nShop\n\nTesla Powerwall 3\n\n$13,000–$16,500\n\nTypical California installed price, 2026\n\n13.5 kWh battery capacity\n\nAutomatic backup during outages\n\nWorks with or without solar panels\n\n10-year warranty\n\nCalifornia's average installed battery cost is currently around $1,030 per kWh. \nEnergySage\n+1\n\nOne important detail: the federal 30% homeowner battery tax credit ended for systems placed in service after December 31, 2025. Some state and utility incentives remain. \nEnergySage\n+1\n\nTwo questions to narrow down your cost\nDo you already have solar panels?\nYes\nNo\nWhat do you want to power during an outage?\nJust essentials (fridge, lights, internet)\nEntire house\nEntire house for 24 hours\nEstimate my battery cost",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [
+  "2026 home battery storage installed cost per kWh Tesla Powerwall EnergySage 2026"
+ ],
+ "cite_pills": [
+  {
+   "url": "https://www.energysage.com/local-data/energy-storage-cost/ca/",
+   "label": "EnergySage",
+   "title": "2026 Cost of Energy Storage in California"
+  },
+  {
+   "url": "https://nrgcleanpower.com/learning-center/how-much-does-a-tesla-powerwall-3-cost/",
+   "label": "NRG Clean Power",
+   "title": "How Much Does a Tesla Powerwall 3 Cost in California? (October 2026)"
+  },
+  {
+   "url": "https://www.energysage.com/energy-storage/",
+   "label": "EnergySage",
+   "title": "Your Guide to Home Batteries in 2026"
+  },
+  {
+   "url": "https://www.lightsonlabs.com/home-batteries/",
+   "label": "Lights On Labs",
+   "title": "Home backup batteries: Powerwall, Enphase and FranklinWH compared"
+  }
+ ],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac026-how-much-does-a-home-battery-backup-cost.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.2,
+   "url": "https://chatgpt.com/?temporary-chat=true&q=how%20much%20does",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 2.2,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A2d41034d-cc0d-4a7f-a85",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A2d41034d-cc0d-4a7f-a85",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.6,
+   "typed": 1
+  },
+  {
+   "t": 8.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A2d41034d-cc0d-4a7f-a85",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A2d41034d-cc0d-4a7f-a85",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 12.7,
+   "url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 14.7,
+   "url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?t",
+   "answer_len": 1449,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 16.7,
+   "url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?t",
+   "answer_len": 1449,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 18.8,
+   "url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?t",
+   "answer_len": 1449,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6afa1ccc-8df8-83e8-a69e-36e2f1acfc4f?t",
+   "answer_len": 1449,
+   "streaming": false,
+   "send": true,
+   "composer": "how much does a home battery b"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 1 search query(ies) and 13 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.4
+}

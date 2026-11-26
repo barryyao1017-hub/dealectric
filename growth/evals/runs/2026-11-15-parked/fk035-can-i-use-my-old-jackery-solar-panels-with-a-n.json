@@ -1,0 +1,481 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=Can%20I%20use%20my%20old%20Jackery%20solar%20panels%20with%20a%20new%20EcoFlow%20or%20Bluetti%20power%20station%3F",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?temporary-chat=true",
+  "title": "Can I use my old Jackery solar panels with a new EcoFlow or Bluetti power station?",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?temporary-chat=true#_r_75_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "Yes — in many cases, you can use your old Jackery solar panels with a new EcoFlow or BLUETTI power station. You may just need a cable adapter.\n\nThe important thing is to check electrical compatibility, not just whether the connectors fit.\n\nWhat determines compatibility?\n\nSpecification\n\n\t\n\nWhat to check\n\n\n\n\nVoltage (Voc)\n\n\t\n\nMust not exceed the power station's maximum solar input voltage.\n\n\n\n\nCurrent (Isc)\n\n\t\n\nCheck against the station's solar input current limits.\n\n\n\n\nWattage\n\n\t\n\nDetermines how much charging power is available; the station may cap how much it accepts.\n\n\n\n\nConnector\n\n\t\n\nJackery often uses DC barrel connectors, while many EcoFlow and BLUETTI models use XT60, XT60i, or MC4.\n\n\n\n\nPolarity\n\n\t\n\nAdapter wiring must match the power station's positive and negative terminals.\n\nFor example, a Jackery SolarSaga 100W panel might be electrically compatible with an EcoFlow DELTA or RIVER, but require a DC8020-to-XT60 adapter.\n\nExample: Jackery SolarSaga specifications\n\nJackery has several revisions of its panels, so specifications vary by model.\n\nPanel\n\n\t\n\nOperating voltage\n\n\t\n\nOpen-circuit voltage\n\n\n\n\nSolarSaga 100W (JS-100C)\n\n\t\n\n20V\n\n\t\n\n24.8V\n\n\n\n\nSolarSaga 200W (JS-200D)\n\n\t\n\n20.2V\n\n\t\n\n25V\n\nThese are from Jackery's published specifications. \nJackery Europe\n+1\n\nBLUETTI also explicitly supports third-party solar panels on compatible models, provided the input specifications and connectors match. \nBLUETTI - BLUETTI US\n+1\n\nOne caution: If you have multiple Jackery panels, don't connect them in series or parallel until you've checked the combined voltage and current. A series connection can exceed a power station's voltage limit, potentially damaging it.\n\nI can check your exact setup\nWhich Jackery panels do you own?\nSolarSaga 100W\nSolarSaga 200W\nSolarSaga 80W\nOther / not sure\nHow many panels?\n1\n2\n4\nOther\nWhich EcoFlow or BLUETTI are you considering? (Optional)\nCheck compatibility\n\nWith those details, I can tell you whether your panels will work, whether you need an adapter, and whether you can safely use multiple panels together.",
+  "markup": [
+   "**Yes — in many cases, you can use your old Jackery solar panels with a new EcoFlow or BLUETTI power station.** You may just need a cable adapter.\n\nThe important thing is to check **electrical compatibility**, not just whether the connectors fit.\n\n## What determines compatibility?\n\n| Specification | What to check |\n|---|---|\n| **Voltage (Voc)** | Must not exceed the power station's maximum solar input voltage. |\n| **Current (Isc)** | Check against the station's solar input current limits. |\n| **Wattage** | Determines how much charging power is available; the station may cap how much it accepts. |\n| **Connector** | Jackery often uses DC barrel connectors, while many EcoFlow and BLUETTI models use XT60, XT60i, or MC4. |\n| **Polarity** | Adapter wiring must match the power station's positive and negative terminals. |\n\nFor example, a Jackery SolarSaga 100W panel might be electrically compatible with an EcoFlow DELTA or RIVER, but require a DC8020-to-XT60 adapter.\n\n## Example: Jackery SolarSaga specifications\n\nJackery has several revisions of its panels, so specifications vary by model.\n\n| Panel | Operating voltage | Open-circuit voltage |\n|---|---:|---:|\n| SolarSaga 100W (JS-100C) | 20V | 24.8V |\n| SolarSaga 200W (JS-200D) | 20.2V | 25V |\n\nThese are from Jackery's published specifications. <Cite refs={[\"turn688776search3\",\"turn688776search4\"]}/>\n\nBLUETTI also explicitly supports third-party solar panels on compatible models, provided the input specifications and connectors match. <Cite refs={[\"turn688776search1\",\"turn688776search40\"]}/>\n\n**One caution:** If you have multiple Jackery panels, don't connect them in series or parallel until you've checked the combined voltage and current. A series connection can exceed a power station's voltage limit, potentially damaging it.\n\n## I can check your exact setup\n\n{@body const [panel,setPanel] = DIL.useState(\"SolarSaga 100W\")}\n{@body const [quantity,setQuantity] = DIL.useState(\"2\")}\n{@body const [station,setStation] = DIL.useState(\"\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"I have \"+quantity+\" Jackery \"+panel+\" solar panel(s). I am considering \"+(station.trim()||\"EcoFlow or BLUETTI power stations\")+\". Check compatibility and tell me the exact adapter and safe wiring configuration.\")}>\n    <box gap={1}>\n      <label>Which Jackery panels do you own?</label>\n      <radio-group direction=\"col\" value={panel} onChange={setPanel}>\n        <radio value=\"SolarSaga 100W\">SolarSaga 100W</radio>\n        <radio value=\"SolarSaga 200W\">SolarSaga 200W</radio>\n        <radio value=\"SolarSaga 80W\">SolarSaga 80W</radio>\n        <radio value=\"other or unknown model\">Other / not sure</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>How many panels?</label>\n      <radio-group value={quantity} onChange={setQuantity}>\n        <radio value=\"1\">1</radio>\n        <radio value=\"2\">2</radio>\n        <radio value=\"4\">4</radio>\n        <radio value=\"3 or more\">Other</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>Which EcoFlow or BLUETTI are you considering? (Optional)</label>\n      <input value={station} onChange={setStation} placeholder=\"e.g. EcoFlow DELTA 3, BLUETTI AC180\"/>\n    </box>\n    <button block submit>Check compatibility</button>\n  </form>\n</box>\n\nWith those details, I can tell you whether your panels will work, whether you need an adapter, and whether you can safely use multiple panels together.",
+   "## Example: Jackery SolarSaga specifications\n\nJackery has several revisions of its panels, so specifications vary by model.\n\n| Panel | Operating voltage | Open-circuit voltage |\n|---|---:|---:|\n| SolarSaga 100W (JS-100C) | 20V | 24.8V |\n| SolarSaga 200W (JS-200D) | 20.2V | 25V |\n\nThese are from Jackery's published specifications. <Cite refs={[\"turn688776search3\",\"turn688776search4\"]}/>\n\nBLUETTI also explicitly supports third-party solar panels on compatible models, provided the input specifications and connectors match. <Cite refs={[\"turn688776search1\",\"turn688776search40\"]}/>\n\n**One caution:** If you have multiple Jackery panels, don't connect them in series or parallel until you've checked the combined voltage and current. A series connection can exceed a power station's voltage limit, potentially damaging it.\n\n## I can check your exact setup\n\n{@body const [panel,setPanel] = DIL.useState(\"SolarSaga 100W\")}\n{@body const [quantity,setQuantity] = DIL.useState(\"2\")}\n{@body const [station,setStation] = DIL.useState(\"\")}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <form gap={3} onSubmit={()=>GenUI.issueNewTurn(\"I have \"+quantity+\" Jackery \"+panel+\" solar panel(s). I am considering \"+(station.trim()||\"EcoFlow or BLUETTI power stations\")+\". Check compatibility and tell me the exact adapter and safe wiring configuration.\")}>\n    <box gap={1}>\n      <label>Which Jackery panels do you own?</label>\n      <radio-group direction=\"col\" value={panel} onChange={setPanel}>\n        <radio value=\"SolarSaga 100W\">SolarSaga 100W</radio>\n        <radio value=\"SolarSaga 200W\">SolarSaga 200W</radio>\n        <radio value=\"SolarSaga 80W\">SolarSaga 80W</radio>\n        <radio value=\"other or unknown model\">Other / not sure</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>How many panels?</label>\n      <radio-group value={quantity} onChange={setQuantity}>\n        <radio value=\"1\">1</radio>\n        <radio value=\"2\">2</radio>\n        <radio value=\"4\">4</radio>\n        <radio value=\"3 or more\">Other</radio>\n      </radio-group>\n    </box>\n    <box gap={1}>\n      <label>Which EcoFlow or BLUETTI are you considering? (Optional)</label>\n      <input value={station} onChange={setStation} placeholder=\"e.g. EcoFlow DELTA 3, BLUETTI AC180\"/>\n    </box>\n    <button block submit>Check compatibility</button>\n  </form>\n</box>\n\nWith those details, I can tell you whether your panels will work, whether you need an adapter, and whether you can safely use multiple panels together."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6afc1519-8db4-83e8-b463-13efa9086449",
+  "search_results": [
+   {
+    "domain": "r.jackery.net",
+    "title": "Jackery SolarSaga 100W Solar Panel",
+    "url": "https://r.jackery.net/productGuide/Jackery%20SolarSaga%20100W%20Panel%20Solar.pdf",
+    "pub_date": 1686634620.0,
+    "snippet": null
+   },
+   {
+    "domain": "r.jackery.net",
+    "title": "Jackery SolarSaga 100 USER GUIDE",
+    "url": "https://r.jackery.net/productGuide/Jackery%20SolarSaga%20100%20USER%20GUIDE.pdf",
+    "pub_date": 1715839453.0,
+    "snippet": null
+   },
+   {
+    "domain": "r.jackery.net",
+    "title": "Model: JS-100C",
+    "url": "https://r.jackery.net/productGuide/100W%20Solar%20Panel%20Use%20Manual.pdf",
+    "pub_date": 1731616098.0,
+    "snippet": null
+   },
+   {
+    "domain": "manualslib.com",
+    "title": "Jackery SolarSaga 100 User Manual (Page 4 of 20) | ManualsLib",
+    "url": "https://www.manualslib.com/manual/3497382/Jackery-Solarsaga-100.html?page=4",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "manualslib.com",
+    "title": "Jackery SolarSaga 100 User Manual (Page 4 of 15) | ManualsLib",
+    "url": "https://www.manualslib.com/manual/3439785/Jackery-Solarsaga-100.html?page=4",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "s4.bluettipower.com",
+    "title": "● Can I use third-party solar panels to charge the unit?",
+    "url": "https://s4.bluettipower.com/bluetti_lgf/support/2025/05/8b0a5921-da1a-4a44-ae25-bac9bdee890a.pdf",
+    "pub_date": 1631689881.0,
+    "snippet": null
+   },
+   {
+    "domain": "s4.bluettipower.com",
+    "title": "# 5. Appendix",
+    "url": "https://s4.bluettipower.com/bluetti/purchasePageBiz/2024/12/BLUETTI_AC300_User_Manual_US_EN-1735209322886-be55.pdf",
+    "pub_date": 1686275412.0,
+    "snippet": null
+   },
+   {
+    "domain": "sep.turbifycdn.com",
+    "title": "Jackery Solar Generator Connection Guide",
+    "url": "https://sep.turbifycdn.com/ty/cdn/yhst-99239380869547/b7f450ba-b94c-4660-b08f-cc5941c901b0.pdf",
+    "pub_date": 1734079535.0,
+    "snippet": null
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "Portable Solar Panels | BLUETTI - BLUETTI US",
+    "url": "https://www.bluettipower.com/collections/solar-panels",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "BLUETTI Solar Panels: Efficient, Portable, and Durable - BLUETTI US",
+    "url": "https://www.bluettipower.com/pages/solar-panels",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "helpcenter.eu.jackery.com",
+    "title": "SolarSaga 100W (JS-100C) Basic Information – Jackery Europe",
+    "url": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683067679387-SolarSaga-100W-JS-100C-Basic-Information",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "helpcenter.eu.jackery.com",
+    "title": "SolarSaga 200W (JS-200D) Basic Information – Jackery Europe",
+    "url": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683096748955-SolarSaga-200W-JS-200D-Basic-Information",
+    "pub_date": 1783641600.0,
+    "snippet": null
+   },
+   {
+    "domain": "jackery.com",
+    "title": "Ultimate Guide to Solar Panel Voltage - Jackery",
+    "url": "https://www.jackery.com/blogs/knowledge/solar-panel-voltage",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "jackery.com",
+    "title": "How To Read Solar Panels Specifications - Jackery",
+    "url": "https://www.jackery.com/blogs/knowledge/solar-panel-specifications",
+    "pub_date": null,
+    "snippet": null
+   },
+   {
+    "domain": "stormwatts.com",
+    "title": "Best Solar Panels for Each Popular Power Station: Matched by Connector, Voltage, and Watts | StormWatts",
+    "url": "https://stormwatts.com/articles/best-solar-panels-for-each-power-station/",
+    "pub_date": 1792454400.0,
+    "snippet": null
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "BLUETTI 200W Portable Solar Panel - BLUETTI US",
+    "url": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w?variant=46104316248283",
+    "pub_date": null,
+    "snippet": "BLUETTI 200W PORTABLE SOLAR PANEL  4.8 (27 reviews)  US$399.00  📣 Pictures are used for illustration ONLY, please refer to the actual model and user manual. Do NOT mix different models.  📦 Shipping U..."
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "test-1022-app-only - BLUETTI US",
+    "url": "https://checkout.bluettipower.com/pages/test-1022-app-only",
+    "pub_date": null,
+    "snippet": "WHY BLUETTI SOLAR PANELS?  Power, Reliability, and Convenience.  Image: Best-in-Class Efficiency  Image: Best-in-Class Efficiency  BEST-IN-CLASS EFFICIENCY  Get more power from every ray. Our top-tie..."
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "BLUETTI 200W Portable Solar Panel - BLUETTI US",
+    "url": "https://www.bluettipower.com/products/bluetti-sp200l-solar-panel-200w?_pos=2&_sid=8653a00bc&_ss=r&variant=46104316248283",
+    "pub_date": null,
+    "snippet": "Image: BLUETTI 200W Portable Solar Panel  Image: BLUETTI 200W Portable Solar Panel Image: BLUETTI 200W Portable Solar Panel Image: BLUETTI 200W Portable Solar Panel  1 / 3  BLUETTI 200W PORTABLE SOLA..."
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "BLUETTI PV100FX Flexible Solar Panel | 200W - BLUETTI US",
+    "url": "https://www.bluettipower.com/products/pv100fx-flexible-solar-panel",
+    "pub_date": null,
+    "snippet": "BLUETTI PV100 FX FLEXIBLE SOLAR PANEL | 100W  5.0 (1 review)  US$329.00  ~~ ~~  0 0  Days  :  0 0  Hrs  :  0 0  Mins  :  0 0  Secs  Pay over time with Affirm. See if you qualify at checkout.  * * *..."
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "BLUETTI SORA 500 Portable Solar Panel | 500W, 25% High Efficiency - BLUETTI US",
+    "url": "https://www.bluettipower.com/products/500w-portable-solar-panel?variant=49003448860891",
+    "pub_date": null,
+    "snippet": "TECH SPECS  [Button: SORA500]  Image  POWER  Maximum Power 500W  Panel Type N-Type Mono  Conversion Efficiency Up to 25%  Voltage at Max Power(Vmp) 40.92V  Current at Max Power(Imp) 10.22A  Open Circ..."
+   },
+   {
+    "domain": "bluettipower.com",
+    "title": "Types of Solar Panels: Cell Technology, Form, and Compatibility - BLUETTI US",
+    "url": "https://www.bluettipower.com/blogs/articles/what-are-the-different-types-of-solar-panels",
+    "pub_date": 1790035200.0,
+    "snippet": "SOLAR PANEL CONNECTOR AND ELECTRICAL COMPATIBILITY  Image: bluetti power station  Many solar panels use MC4-type PV connectors, a weatherproof click-lock design that has become the industry standard...."
+   },
+   {
+    "domain": "jackery.com",
+    "title": "Jackery SolarSaga 100W Solar Panels: Package List, Usage Scenarios, & How to Use - Jackery",
+    "url": "https://www.jackery.com/blogs/knowledge/the-ultimate-guide-to-100w-solar-panel",
+    "pub_date": 1793577600.0,
+    "snippet": "Jackery SolarSaga 100W Solar Panels: Package List, Usage Scenarios, & How to Use - Jackery  Home > Knowledge  JACKERY SOLARSAGA 100W SOLAR PANELS: PACKAGE LIST, USAGE SCENARIOS, & HOW TO USE  Solar P..."
+   },
+   {
+    "domain": "manualsfile.com",
+    "title": "Jackery 21-0002-000058 SolarSaga 100W Solar Panel User Manual",
+    "url": "https://manualsfile.com/product/k540dqpwga5.html",
+    "pub_date": 1763942400.0,
+    "snippet": "JACKERY 21-0002-000058 SOLARSAGA 100W SOLAR PANEL  JACKERY SOLARSAGA 100W SOLAR PANEL - 587H USER MANUAL  This is the main product document for model 21-0002-000058.  The file format is pdf, 20 pages,..."
+   },
+   {
+    "domain": "thecampingnerd.com",
+    "title": "Can You Use Any Solar Panel With a Jackery? What to Check",
+    "url": "https://thecampingnerd.com/jackery-explorer-solar-panels/",
+    "pub_date": 1707832810.0,
+    "snippet": "WHICH PLUG AND ADAPTER DO I NEED?  Look at the solar port on your station. Current Jackerys use DC8020, older Explorers use DC7909, and the smallest use USB-C. Most third-party panels end in MC4 plugs..."
+   },
+   {
+    "domain": "bluettipower.ca",
+    "title": "Portable, Foldable Solar Panels - BLUETTI CA",
+    "url": "https://www.bluettipower.ca/pages/solar-panels",
+    "pub_date": null,
+    "snippet": "GET YOUR IDEAL SOLAR KIT FAST  Choose One Type of Solar Panel  * ### 350W Solar Panel  Image  [Select]  * ### 200W Solar Panel  Image  [Select]  * ### 100W Solar Panel  Image  [Select]  * ### 60W Sola..."
+   },
+   {
+    "domain": "ecoflow.com",
+    "title": "EcoFlow 110W Lightweight Portable Solar Panel_User Manual",
+    "url": "https://manuals.ecoflow.com/us/product/110w-lightweight-portable-solar-panel?lang=en_US",
+    "pub_date": null,
+    "snippet": "Image  Find the optimal angle for positioning the solar panel:  * Check the dot shadow on the solar angle guide to adjust the brackets, and let the shadow hit as close to the center as possible. When..."
+   },
+   {
+    "domain": "ecoflow.com",
+    "title": "45W Portable Solar Panel (EF-Fold-P045-CG) User Manual",
+    "url": "https://manuals.ecoflow.com/eu/product/45w-solar-panel?lang=en_US",
+    "pub_date": null,
+    "snippet": "Image  For long-term use, ensure that the panel is securely fixed to avoid falling off in windy conditions.  You can connect the panel to an EcoFlow portable power station to store power, or to an Ec..."
+   },
+   {
+    "domain": "ecoflow.com",
+    "title": "EcoFlow 60W Portable Solar Panel (Type-C)_User Manual",
+    "url": "https://manuals.ecoflow.com/eu/product/60w-portable-solar-panel-type-c?lang=en_US",
+    "pub_date": null,
+    "snippet": "Power Your Devices  Via DC5521 Port  You can connect the panel to an EcoFlow portable power station to store power, or to an EcoFlow smart device to power the device directly.  PREREQUISITES  When us..."
+   },
+   {
+    "domain": "ecoflow.com",
+    "title": "EcoFlow 125W Bifacial Modular Solar Panel | EcoFlow US | EcoFlow US",
+    "url": "https://www.ecoflow.com/us/125w-bifacial-modular-solar-panel",
+    "pub_date": null,
+    "snippet": "Image: EF-Image  Home Backyard  RV  Fully charge EcoFlow DELTA Pro 3(4kWh) in as fast as 3-4 hours with 3 sets of 500W (125W × 4) panels^{[1]}.  Fully charge EcoFlow DELTA 3(1kWh) in as fast as 2-3 ho..."
+   },
+   {
+    "domain": "ecoflow.com",
+    "title": "EcoFlow 130W RVMax Rigid Solar Panel_User Manual",
+    "url": "https://manuals.ecoflow.com/us/product/130w-rvmax-rigid-solar-panel?lang=en_US",
+    "pub_date": null,
+    "snippet": "Appearance  Image  1  | Solar Panel (Front)  | Position this side facing the sun. Adequate sunlight ensures higher power generation efficiency. --- | --- | --- 2  | Junction Box  | Includes solar pan..."
+   },
+   {
+    "domain": "thiswatt.com",
+    "title": "Portable Solar Panels for Camping & Power Stations | thisWATT",
+    "url": "https://thiswatt.com/guides/portable-solar-panels-for-power-stations",
+    "pub_date": 1794096000.0,
+    "snippet": "SOLARSAGA 100 PRIME  Open-circuit voltage (Voc) 22.7V ±5%  Short-circuit current (Isc) 5.53A ±5%  Cable or connection Anderson; DC8020 adapter included  SOLARSAGA 200 JS-200E  Open-circuit voltage (Vo..."
+   },
+   {
+    "domain": "manuals.plus",
+    "title": "Jackery Solar Generator Connection Guide: SolarSaga Panels to Power Stations",
+    "url": "https://manuals.plus/m/436d41bfb4fc579c127e678c0d270c5ca75d173f66b10676a4e9f57d26635363",
+    "pub_date": null,
+    "snippet": "JACKERY SOLAR GENERATOR CONNECTION GUIDE  JACKERY SOLARSAGA 80/100/200 SOLAR PANELS (JS-80A/JS-100F/JS-200D)  DC Input  | Portable Power Station Model  | Connection Method  | Connection Details --- |..."
+   },
+   {
+    "domain": "manuals.plus",
+    "title": "EcoFlow 400W Lightweight Portable Solar Panel User Manual",
+    "url": "https://manuals.plus/m/dced02b95f56cc4512a547d44c7cd9bb5c2f1d734cc0062441179b6fd1ef9274",
+    "pub_date": null,
+    "snippet": "POWER YOUR DEVICES  PREREQUISITES  You can connect the solar panel directly to the EcoFlow portable power station to store energy. Alternatively, you can connect the EcoFlow portable power station to..."
+   },
+   {
+    "domain": "manuals.plus",
+    "title": "EcoFlow 400W Lightweight Portable Solar Panel User Manual and Guide",
+    "url": "https://manuals.plus/m/3e2c8ad03cfd3301244bc28f71f17f232a9f8fb3b495d4996240bb38a558ffb8",
+    "pub_date": null,
+    "snippet": "POWER YOUR DEVICES  PREREQUISITES  You can connect the solar panel directly to the EcoFlow portable power station to store energy. Alternatively, you can connect the EcoFlow portable power station to..."
+   },
+   {
+    "domain": "manuals.plus",
+    "title": "220W Bifacial Portable Solar Panel - User Manual",
+    "url": "https://manuals.plus/m/e564bd31cef2a24bb5100f01b58ca3e938339ec422b0a78cc93a8341484e63f1",
+    "pub_date": 1724889600.0,
+    "snippet": "Power Your Devices  https://manuals.ecoflow.com/us/product/220w-bifacial-solar-panel?lang=en_US  2/9   8/29/24, 9:19 AM  220W Bifacial Portable Solar Panel - User Manual Prerequisites You can connect..."
+   },
+   {
+    "domain": "device.report",
+    "title": "EcoFlow 400W Lightweight Portable Solar Panel User Manual",
+    "url": "https://device.report/m/3e2c8ad03cfd3301244bc28f71f17f232a9f8fb3b495d4996240bb38a558ffb8",
+    "pub_date": null,
+    "snippet": "At the same time, set the strap snaps to the desired angle (60 / 45 / 30 from top to bottom).  Tips  Do not let the shadow leave the red circle on the angle guide. Otherwise, the power  !  output will..."
+   },
+   {
+    "domain": "device.report",
+    "title": "EcoFlow 125W Bifacial Modular Solar Panel_User Manual_en PDF document",
+    "url": "https://device.report/m/54bdbc7c346bb28a828770dbc38bc803dac68f569d81ec617ce783ac8f5f7d23",
+    "pub_date": null,
+    "snippet": "Connection Steps You can connect the panel to an EcoFlow portable power station to store power, or to an EcoFlow smart device to power the device directly. During use, ensure that the input voltage an..."
+   },
+   {
+    "domain": "device.report",
+    "title": "EcoFlow 160W Portable Solar Panel (EF-Fold-P160-04)_User Manual PDF document",
+    "url": "https://device.report/m/eac5f4017871e505129514e690b29ba0f909bef9bae122736ce37148591cad53",
+    "pub_date": null,
+    "snippet": "Power Your Devices Prerequisites You can connect the panel to an EcoFlow portable power station to store power, or to an EcoFlow smart device to power the device directly. When using the panel with yo..."
+   },
+   {
+    "domain": "bluettipower.com.au",
+    "title": "SOLAR PANELS - BLUETTI AU",
+    "url": "https://www.bluettipower.com.au/pages/solar-panels",
+    "pub_date": null,
+    "snippet": "FREQUENTLY ASKED QUESTIONS  * Q1: What is a solar panel? A1: A solar panel captures sunlight and converts it into electricity. BLUETTI panels use high-efficiency monocrystalline cells to make the most..."
+   },
+   {
+    "domain": "ridgewatt.com",
+    "title": "Can I use another brand of solar panel on my power station?",
+    "url": "https://ridgewatt.com/learn/third-party-solar-panels/",
+    "pub_date": null,
+    "snippet": "CAN I USE ANOTHER BRAND OF SOLAR PANEL ON MY POWER STATION?  Usually yes, if the voltage and current fit and you have the right cable. What BLUETTI, EcoFlow and Jackery manuals say, and the one mista..."
+   },
+   {
+    "domain": "bluettipower.nz",
+    "title": "SOLAR PANELS - BLUETTI NZ",
+    "url": "https://bluettipower.nz/pages/solar-panels",
+    "pub_date": null,
+    "snippet": "⚡Elite 300  ⚡Elite 30 V2 | Compact 288Wh Backup  Why BLUETTI Panels  How They Work  Select a Kit  FAQs  WHY BLUETTI SOLAR PANELS?  Power, Reliability, and Convenience.  Image: Best-in-Class Efficienc..."
+   },
+   {
+    "domain": "scribd.com",
+    "title": "EcoFlow 60W Solar Panel Guide | PDF | Photovoltaic System | Solar Panel",
+    "url": "https://www.scribd.com/document/928199325/EF-60W-Portable-Solar-Panel-User-Manual-EN-US-Next-Generation",
+    "pub_date": null,
+    "snippet": "panel upright. Get Started  Flat Use Unfold the solar panel and place it flat on the ground with the photovoltaic module facing upwards.  Under different sunlight conditions, you can also lean the sol..."
+   }
+  ]
+ },
+ "text": "Yes — in many cases, you can use your old Jackery solar panels with a new EcoFlow or BLUETTI power station. You may just need a cable adapter.\n\nThe important thing is to check electrical compatibility, not just whether the connectors fit.\n\nWhat determines compatibility?\n\nSpecification\n\n\t\n\nWhat to check\n\n\n\n\nVoltage (Voc)\n\n\t\n\nMust not exceed the power station's maximum solar input voltage.\n\n\n\n\nCurrent (Isc)\n\n\t\n\nCheck against the station's solar input current limits.\n\n\n\n\nWattage\n\n\t\n\nDetermines how much charging power is available; the station may cap how much it accepts.\n\n\n\n\nConnector\n\n\t\n\nJackery often uses DC barrel connectors, while many EcoFlow and BLUETTI models use XT60, XT60i, or MC4.\n\n\n\n\nPolarity\n\n\t\n\nAdapter wiring must match the power station's positive and negative terminals.\n\nFor example, a Jackery SolarSaga 100W panel might be electrically compatible with an EcoFlow DELTA or RIVER, but require a DC8020-to-XT60 adapter.\n\nExample: Jackery SolarSaga specifications\n\nJackery has several revisions of its panels, so specifications vary by model.\n\nPanel\n\n\t\n\nOperating voltage\n\n\t\n\nOpen-circuit voltage\n\n\n\n\nSolarSaga 100W (JS-100C)\n\n\t\n\n20V\n\n\t\n\n24.8V\n\n\n\n\nSolarSaga 200W (JS-200D)\n\n\t\n\n20.2V\n\n\t\n\n25V\n\nThese are from Jackery's published specifications. \nJackery Europe\n+1\n\nBLUETTI also explicitly supports third-party solar panels on compatible models, provided the input specifications and connectors match. \nBLUETTI - BLUETTI US\n+1\n\nOne caution: If you have multiple Jackery panels, don't connect them in series or parallel until you've checked the combined voltage and current. A series connection can exceed a power station's voltage limit, potentially damaging it.\n\nI can check your exact setup\nWhich Jackery panels do you own?\nSolarSaga 100W\nSolarSaga 200W\nSolarSaga 80W\nOther / not sure\nHow many panels?\n1\n2\n4\nOther\nWhich EcoFlow or BLUETTI are you considering? (Optional)\nCheck compatibility\n\nWith those details, I can tell you whether your panels will work, whether you need an adapter, and whether you can safely use multiple panels together.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [
+  "Jackery SolarSaga 100 200 solar panel output voltage connector DC8020 specifications",
+  "EcoFlow solar input third party panels XT60 voltage compatibility official",
+  "BLUETTI third party solar panels MC4 input voltage official"
+ ],
+ "cite_pills": [
+  {
+   "url": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683067679387-SolarSaga-100W-JS-100C-Basic-Information",
+   "label": "Jackery Europe",
+   "title": "SolarSaga 100W (JS-100C) Basic Information"
+  },
+  {
+   "url": "https://helpcenter.eu.jackery.com/hc/en-gb/articles/52683096748955-SolarSaga-200W-JS-200D-Basic-Information",
+   "label": "Jackery Europe",
+   "title": "SolarSaga 200W (JS-200D) Basic Information"
+  },
+  {
+   "url": "https://www.bluettipower.com/collections/solar-panels",
+   "label": "BLUETTI - BLUETTI US",
+   "title": "Portable Solar Panels"
+  },
+  {
+   "url": "https://s4.bluettipower.com/bluetti/purchasePageBiz/2024/12/BLUETTI_AC300_User_Manual_US_EN-1735209322886-be55.pdf",
+   "label": "Bluetti Power",
+   "title": "# 5. Appendix"
+  }
+ ],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "fk035-can-i-use-my-old-jackery-solar-panels-with-a-n.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.4,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 2.4,
+   "submit": "click"
+  },
+  {
+   "t": 4.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A9855717b-d34a-4219-801",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A9855717b-d34a-4219-801",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.5,
+   "typed": 1
+  },
+  {
+   "t": 8.5,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A9855717b-d34a-4219-801",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 10.6,
+   "url": "https://chatgpt.com/c/local-chatgpt%3A9855717b-d34a-4219-801",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 13.1,
+   "url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 15.2,
+   "url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?t",
+   "answer_len": 2062,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 17.2,
+   "url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?t",
+   "answer_len": 2062,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 19.2,
+   "url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?t",
+   "answer_len": 2062,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  },
+  {
+   "t": 21.2,
+   "url": "https://chatgpt.com/c/6afc1519-8db4-83e8-b463-13efa9086449?t",
+   "answer_len": 2062,
+   "streaming": false,
+   "send": true,
+   "composer": "Can I use my old Jackery solar"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 1 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 3 search query(ies) and 42 search result(s) from the SSE stream"
+ ],
+ "latency_s": 31.8
+}

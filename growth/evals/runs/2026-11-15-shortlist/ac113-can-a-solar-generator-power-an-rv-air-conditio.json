@@ -1,0 +1,188 @@
+{
+ "model": "chatgpt.com, temporary chat, web search on",
+ "request": {
+  "url": "https://chatgpt.com/?temporary-chat=true&q=can%20a%20solar%20generator%20power%20an%20rv%20air%20conditioner",
+  "method": "fresh tab, auto-submitted via ?q="
+ },
+ "response": {
+  "final_url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?temporary-chat=true",
+  "title": "can a solar generator power an rv air conditioner",
+  "links_all": [
+   {
+    "text": "Skip to content",
+    "href": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?temporary-chat=true#_r_6f_",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Compare Token Pools",
+    "href": "https://chatgpt.com/c/6af83a5e-8694-83e8-8ff4-fb5845149abe",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "GPT Web Search Timing",
+    "href": "https://chatgpt.com/c/6ae833f3-6948-83e8-9e78-c714ea397741",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "识字查询",
+    "href": "https://chatgpt.com/c/6ae6f235-d6b0-83e8-895a-52257f73c9c9",
+    "rel": "",
+    "where": "dom"
+   },
+   {
+    "text": "Greeting",
+    "href": "https://chatgpt.com/c/6ae6d858-b258-83e8-a1e2-5d4c88d5e311",
+    "rel": "",
+    "where": "dom"
+   }
+  ],
+  "answer": "Yes, a solar generator can power an RV air conditioner, but you need one with enough inverter power, battery capacity, and solar input.\n\nThe biggest challenge isn't necessarily starting the AC—it's keeping it running for several hours.\n\n1. How much power does an RV air conditioner need?\n\nRV AC size\n\n\t\n\nTypical running power\n\n\t\n\nStarting surge\n\n\n\n\n9,000 BTU\n\n\t\n\n700–1,100 W\n\n\t\n\n1,500–2,500 W\n\n\n\n\n13,500 BTU\n\n\t\n\n1,200–1,800 W\n\n\t\n\n2,500–4,000 W\n\n\n\n\n15,000 BTU\n\n\t\n\n1,500–2,000 W\n\n\t\n\n3,000–5,000 W\n\nThese are approximate ranges for conventional compressor AC units. Inverter ACs and units with soft starters may have much lower startup demands.\n\n2. How long can a solar generator run an RV AC?\n\nAssuming a 13,500 BTU air conditioner drawing 1,500 W continuously, with 85% usable battery-to-AC efficiency:\n\nRV air conditioner runtime calculator\n\nBattery capacity\n\n4,000 Wh\n\nAC running power\n\n1,500 W\n\nEstimated continuous runtime\n\n2.3 hours\nWithout solar charging; assumes continuous compressor operation\n\nIn practice, runtime can be longer if the AC cycles off periodically, or shorter in very hot weather.\n\n3. What kind of solar generator works?\nShop\n\nEcoFlow DELTA Pro 3\n\n4,096 Wh battery, 4,000 W AC output. A strong starting point for a conventional RV AC, provided its surge is within the inverter's capabilities.\n\nEstimated runtime: 2.3 hours at 1,500 W.\n\nShop\n\nBLUETTI AC500 with B300S\n\nModular system with 5,000 W inverter output and expandable battery storage.\n\nOne 3,072 Wh B300S battery: approximately 1.7 hours at 1,500 W.\n\n4. Can solar panels keep the AC running all day?\n\nPotentially, but this requires substantial solar capacity.\n\nFor example, a 1,500 W AC running for 8 hours consumes 12 kWh. Replacing that energy with solar could require roughly 3,000–4,000 W of panels under favorable conditions, depending on available sunlight and system losses.\n\nMost RV roofs cannot accommodate that much solar, so a combination of rooftop panels, portable panels, and battery storage is often more practical.\n\n5. What I would recommend\n\nFor a typical 13,500 BTU RV air conditioner:\n\nInverter: 3,000–4,000 W or higher, with adequate surge capacity\n\nBattery: 4–8 kWh for several hours of cooling\n\nSolar panels: 800–1,600 W to meaningfully extend runtime during sunny hours\n\nSoft starter: Often helpful for reducing compressor startup surge\n\nOne question: Is your RV air conditioner 13,500 BTU or 15,000 BTU, and are you trying to run it for a few hours during the day or all night?\n\nThat makes a major difference in how large—and expensive—the solar generator needs to be.",
+  "markup": [
+   "**Yes, a solar generator can power an RV air conditioner**, but you need one with enough inverter power, battery capacity, and solar input.\n\nThe biggest challenge isn't necessarily starting the AC—it's keeping it running for several hours.\n\n## 1. How much power does an RV air conditioner need?\n\n| RV AC size | Typical running power | Starting surge |\n|---|---:|---:|\n| 9,000 BTU | 700–1,100 W | 1,500–2,500 W |\n| 13,500 BTU | 1,200–1,800 W | 2,500–4,000 W |\n| 15,000 BTU | 1,500–2,000 W | 3,000–5,000 W |\n\nThese are approximate ranges for conventional compressor AC units. Inverter ACs and units with soft starters may have much lower startup demands.\n\n## 2. How long can a solar generator run an RV AC?\n\nAssuming a 13,500 BTU air conditioner drawing 1,500 W continuously, with 85% usable battery-to-AC efficiency:\n\n{@body const [battery,setBattery] = DIL.useState(4000)}\n{@body const [watts,setWatts] = DIL.useState(1500)}\n{@body const hours = battery*0.85/watts}\n<box border radius=\"xl\" padding={3} gap={3}>\n  <text weight=\"medium\">RV air conditioner runtime calculator</text>\n  <box gap={1}>\n    <row align=\"center\" justify=\"between\">\n      <label>Battery capacity</label>\n      **{battery.toLocaleString()} Wh**\n    </row>\n    <slider min={1000} max={12000} step={500} value={battery} onChange={setBattery}/>\n  </box>\n  <box gap={1}>\n    <row align=\"center\" justify=\"between\">\n      <label>AC running power</label>\n      **{watts.toLocaleString()} W**\n    </row>\n    <slider min={500} max={2500} step={100} value={watts} onChange={setWatts}/>\n  </box>\n  <box background=\"surface-secondary\" radius=\"lg\" padding={3} align=\"center\" gap={1}>\n    <text color=\"secondary\" weight=\"medium\" size=\"xs\">Estimated continuous runtime</text>\n    <title size=\"2xl\" color=\"default\" tabularNums>{hours.toFixed(1)} hours</title>\n    <caption>Without solar charging; assumes continuous compressor operation</caption>\n  </box>\n</box>\n\nIn practice, runtime can be longer if the AC cycles off periodically, or shorter in very hot weather.\n\n## 3. What kind of solar generator works?\n\n<box gap={3}>\n  <row align=\"start\" gap={3}>\n    <AsyncImage query=\"EcoFlow DELTA Pro 3 portable power station product\" aspectRatio=\"1:1\" maxWidth=\"132px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" value=\"EcoFlow DELTA Pro 3\"/>**\n\n      4,096 Wh battery, 4,000 W AC output. A strong starting point for a conventional RV AC, provided its surge is within the inverter's capabilities.\n\n      <text color=\"secondary\" size=\"sm\">Estimated runtime: 2.3 hours at 1,500 W.</text>\n    </box>\n  </row>\n  <divider color=\"subtle\"/>\n  <row align=\"start\" gap={3}>\n    <AsyncImage query=\"BLUETTI AC500 B300S battery expansion portable power station\" aspectRatio=\"1:1\" maxWidth=\"132px\" shop_eligible={true}/>\n    <box flex=\"1\" gap={1}>\n      **<Entity category=\"product\" value=\"BLUETTI AC500 with B300S\"/>**\n\n      Modular system with 5,000 W inverter output and expandable battery storage.\n\n      <text color=\"secondary\" size=\"sm\">One 3,072 Wh B300S battery: approximately 1.7 hours at 1,500 W.</text>\n    </box>\n  </row>\n</box>\n\n## 4. Can solar panels keep the AC running all day?\n\nPotentially, but this requires substantial solar capacity.\n\nFor example, a 1,500 W AC running for 8 hours consumes **12 kWh**. Replacing that energy with solar could require roughly 3,000–4,000 W of panels under favorable conditions, depending on available sunlight and system losses.\n\nMost RV roofs cannot accommodate that much solar, so a combination of rooftop panels, portable panels, and battery storage is often more practical.\n\n## 5. What I would recommend\n\nFor a typical 13,500 BTU RV air conditioner:\n\n- **Inverter:** 3,000–4,000 W or higher, with adequate surge capacity\n- **Battery:** 4–8 kWh for several hours of cooling\n- **Solar panels:** 800–1,600 W to meaningfully extend runtime during sunny hours\n- **Soft starter:** Often helpful for reducing compressor startup surge\n\n**One question:** Is your RV air conditioner **13,500 BTU or 15,000 BTU**, and are you trying to run it for a few hours during the day or all night?\n\nThat makes a major difference in how large—and expensive—the solar generator needs to be."
+  ],
+  "markup_urls": [],
+  "conversation_id": "6af9a072-e0f8-83e8-9768-f1e8de6943a9",
+  "search_results": []
+ },
+ "text": "Yes, a solar generator can power an RV air conditioner, but you need one with enough inverter power, battery capacity, and solar input.\n\nThe biggest challenge isn't necessarily starting the AC—it's keeping it running for several hours.\n\n1. How much power does an RV air conditioner need?\n\nRV AC size\n\n\t\n\nTypical running power\n\n\t\n\nStarting surge\n\n\n\n\n9,000 BTU\n\n\t\n\n700–1,100 W\n\n\t\n\n1,500–2,500 W\n\n\n\n\n13,500 BTU\n\n\t\n\n1,200–1,800 W\n\n\t\n\n2,500–4,000 W\n\n\n\n\n15,000 BTU\n\n\t\n\n1,500–2,000 W\n\n\t\n\n3,000–5,000 W\n\nThese are approximate ranges for conventional compressor AC units. Inverter ACs and units with soft starters may have much lower startup demands.\n\n2. How long can a solar generator run an RV AC?\n\nAssuming a 13,500 BTU air conditioner drawing 1,500 W continuously, with 85% usable battery-to-AC efficiency:\n\nRV air conditioner runtime calculator\n\nBattery capacity\n\n4,000 Wh\n\nAC running power\n\n1,500 W\n\nEstimated continuous runtime\n\n2.3 hours\nWithout solar charging; assumes continuous compressor operation\n\nIn practice, runtime can be longer if the AC cycles off periodically, or shorter in very hot weather.\n\n3. What kind of solar generator works?\nShop\n\nEcoFlow DELTA Pro 3\n\n4,096 Wh battery, 4,000 W AC output. A strong starting point for a conventional RV AC, provided its surge is within the inverter's capabilities.\n\nEstimated runtime: 2.3 hours at 1,500 W.\n\nShop\n\nBLUETTI AC500 with B300S\n\nModular system with 5,000 W inverter output and expandable battery storage.\n\nOne 3,072 Wh B300S battery: approximately 1.7 hours at 1,500 W.\n\n4. Can solar panels keep the AC running all day?\n\nPotentially, but this requires substantial solar capacity.\n\nFor example, a 1,500 W AC running for 8 hours consumes 12 kWh. Replacing that energy with solar could require roughly 3,000–4,000 W of panels under favorable conditions, depending on available sunlight and system losses.\n\nMost RV roofs cannot accommodate that much solar, so a combination of rooftop panels, portable panels, and battery storage is often more practical.\n\n5. What I would recommend\n\nFor a typical 13,500 BTU RV air conditioner:\n\nInverter: 3,000–4,000 W or higher, with adequate surge capacity\n\nBattery: 4–8 kWh for several hours of cooling\n\nSolar panels: 800–1,600 W to meaningfully extend runtime during sunny hours\n\nSoft starter: Often helpful for reducing compressor startup surge\n\nOne question: Is your RV air conditioner 13,500 BTU or 15,000 BTU, and are you trying to run it for a few hours during the day or all night?\n\nThat makes a major difference in how large—and expensive—the solar generator needs to be.",
+ "citations": [],
+ "raw_citations": [],
+ "consulted": [],
+ "queries": [],
+ "cite_pills": [],
+ "models": [
+  "gpt-6"
+ ],
+ "answer_model": "gpt-6",
+ "stop_reason": "settled",
+ "usage": null,
+ "ui": true,
+ "screenshot": "ac113-can-a-solar-generator-power-an-rv-air-conditio.jpg",
+ "account": "signed in (Plus)",
+ "temporary_chat": true,
+ "trace": [
+  {
+   "t": 2.3,
+   "url": "https://chatgpt.com/?temporary-chat=true",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 2.5,
+   "submit": "click"
+  },
+  {
+   "t": 4.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": ""
+  },
+  {
+   "t": 6.7,
+   "typed": 1
+  },
+  {
+   "t": 8.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 10.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 12.7,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 14.8,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 16.8,
+   "url": "https://chatgpt.com/c/local-chatgpt%3Affbdcf82-a5cb-4d2d-b47",
+   "answer_len": 0,
+   "streaming": false,
+   "send": false,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 18.8,
+   "url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?t",
+   "answer_len": 0,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 18.8,
+   "submit": "enter"
+  },
+  {
+   "t": 20.8,
+   "url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?t",
+   "answer_len": 2574,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 22.8,
+   "url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?t",
+   "answer_len": 2574,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 24.9,
+   "url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?t",
+   "answer_len": 2574,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  },
+  {
+   "t": 26.9,
+   "url": "https://chatgpt.com/c/6af9a072-e0f8-83e8-9768-f1e8de6943a9?t",
+   "answer_len": 2574,
+   "streaming": false,
+   "send": true,
+   "composer": "can a solar generator power an"
+  }
+ ],
+ "notes": [
+  "chatgpt.com signed in (Plus), temporary chat, submitted after 2 send attempt(s), agent Chrome via CDP, hrefs from the DOM plus the answer markup (0 widget button(s)); 0 search query(ies) and 0 search result(s) from the SSE stream"
+ ],
+ "latency_s": 37.5
+}
