@@ -2,8 +2,8 @@
 # Daily cart check of every published discount code (tools/codesweep.py), run by launchd:
 #   ~/Library/LaunchAgents/com.jiayiyao.dealectric.codesweep.plist  (daily, 06:37 local)
 # It runs from the clone at ~/code/dealectric, not the Desktop checkout: macOS denies launchd-spawned processes
-# access to ~/Desktop ("Operation not permitted", seen 2026-10-22). The clone pulls main first and pushes its
-# commit; pull the Desktop checkout before working there. Checks, merges, rebuilds, commits, pushes and redeploys
+# access to ~/Desktop ("Operation not permitted", seen 2026-10-22). The clone is the sweep's alone: each run resets it
+# to origin/main, then pushes its commit; pull the Desktop checkout before working there. Checks, merges, rebuilds, commits, pushes and redeploys
 # the Worker when the link map changed. Log: ~/Library/Logs/claude-automations/dealectric-codesweep.log
 set -u
 export PATH="/Library/Frameworks/Python.framework/Versions/3.12/bin:/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -26,25 +26,20 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   cd "$REPO" || end 1
   # The commit guard (tools/githooks/pre-commit, DLC-267) is a per-clone git setting: keep it on in this clone.
   git config core.hooksPath tools/githooks
-  # Local edits to tracked files made --ff-only refuse (2026-10-31: a line appended to growth/evals/footprint.jsonl
-  # skipped the day). --autostash sets them aside and puts them back, .gitattributes merges the append-only logs line
-  # by line, and --rebase replays a sweep commit whose push failed on an earlier run.
-  if ! git pull -q --rebase --autostash origin main; then
-    git rebase --abort 2>/dev/null
-    echo "git pull failed; skipping today's sweep"
+  # This clone belongs to the sweep alone (Barry, 2026-11-26): sessions work in ~/Desktop/dealectric, and nothing else
+  # edits here. So each run throws away whatever the clone holds and takes GitHub's main outright. Merging instead
+  # jammed the sweep from 11-04 to 11-26 on a coupons.json conflict. All that can be lost is an earlier run's unpushed
+  # result, which this run re-tests anyway; it is logged below. A missed day shows in the daily update.
+  git rebase --abort 2>/dev/null; git merge --abort 2>/dev/null
+  if ! git fetch -q origin main; then
+    echo "git fetch failed; skipping today's sweep"
     end 1
   fi
-  if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
-    echo "local changes clash with main after the pull (kept in git stash list): $(git diff --name-only --diff-filter=U | tr '\n' ' ')skipping today's sweep"
-    end 1
-  fi
-  # Never run on a dirty tree the loop session is mid-edit on: the sweep commits only its own files, but a rebuild
-  # would publish whatever is in src/. Uncommitted changes outside the sweep's own files mean skip today (exit 3, so
-  # the daily update flags it).
-  if [ -n "$(git status --porcelain -- src/build.py src/content.py src/products.py src/links.json worker/src/index.js)" ]; then
-    echo "src/ has uncommitted changes; skipping today's sweep so the rebuild does not publish work in progress"
-    end 3
-  fi
+  unpushed="$(git log --oneline origin/main..HEAD 2>/dev/null)"
+  dirty="$(git status --porcelain --untracked-files=all | wc -l | tr -d ' ')"
+  [ -n "$unpushed" ] && echo "discarding unpushed commits: $(echo "$unpushed" | tr '\n' ';')"
+  [ "$dirty" != "0" ] && echo "discarding $dirty uncommitted or untracked path(s) left by an earlier run"
+  git reset -q --hard origin/main && git clean -fdq && git stash clear || { echo "reset to origin/main failed; skipping today's sweep"; end 1; }
   # The paced sweep can take a few hours when stores rate-limit (DLC-48); caffeinate -i keeps the Mac from idle-sleeping
   # until it ends (only for this process; no setting changes).
   /usr/bin/caffeinate -i python3.12 "$REPO/tools/codesweep.py" "$@"
