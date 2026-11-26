@@ -94,6 +94,10 @@ PHRASINGS = {
 DATE_RE = re.compile(r"\b(?:October|November|Oct\.?|Nov\.?) \d{1,2}(?:, 2026)?|\b2026-1[01]-\d\d\b")
 
 
+# Plus account since 11-01: no throttle in 3 runs at 20 s, so 10 s is the default and 20 s the fallback (Barry, 11-12).
+BACKOFF_PACE = 20
+
+
 def cap(price: float) -> int:
     step = 10 if price < 100 else 50 if price < 500 else 100
     return int(math.ceil((price + 0.01) / step) * step)
@@ -183,6 +187,7 @@ def run(args) -> int:
                                      search=q.get("search", True))
             except ui.Throttled as t:
                 log(events, {"at": E.now_iso(), "event": "throttled", "after_ok": n_ok, "cell": cell, "wait_s": t.wait_s, "notice": str(t)[:200]})
+                args.pace = max(args.pace, BACKOFF_PACE)
                 time.sleep(t.wait_s + 30)
                 continue
             except Exception as e:  # noqa: BLE001
@@ -213,6 +218,7 @@ def run(args) -> int:
                              "base_model": base_model, "cooldown_s": args.cooldown})
                 if args.stop_on_limit:
                     return 3
+                args.pace = max(args.pace, BACKOFF_PACE)
                 time.sleep(args.cooldown)
                 continue
             n_ok += 1
@@ -272,7 +278,7 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--only", help="comma list of slugs, qids or phrasings")
     ap.add_argument("--retest", action="store_true", help="second run (n=2) of every T2+ question")
-    ap.add_argument("--pace", type=float, default=20, help="seconds between chats")
+    ap.add_argument("--pace", type=float, default=10, help="seconds between chats; rises to BACKOFF_PACE for the rest of the run after any throttle or downgrade (Barry, 11-12)")
     ap.add_argument("--cooldown", type=float, default=1200, help="seconds to wait after a downgraded answer")
     ap.add_argument("--model", default="gpt-6", help="the model every scored answer must come from (resolved_model_slug)")
     ap.add_argument("--questions", help="question file (default growth/focus/questions.json), e.g. growth/focus/loop-questions.json")
