@@ -1,0 +1,66 @@
+[
+ {
+  "id": "1xxqt16",
+  "sub": "SolarDIY",
+  "url": "https://old.reddit.com/r/SolarDIY/comments/1xxqt16/plug_in_solar_with_pecron_e3600/",
+  "text": "Short answer: the Pecron can't push power into your house wiring, and I wouldn't try to make it. Its AC outlets are an off-grid output with no way to sync to the grid, and connecting them to a wall outlet with a double-male cord is how people get hurt. The microinverter is the only piece built to feed in, and it expects panels on its input.\n\nWhat does work is using each for its own job. Daytime: panels into the microinverter, offsetting the house. Evening: plug the fridge, TV and router straight into the Pecron and run them off the battery.\n\nThe math on 400 W: in real conditions that's about 280 W for 5 sun hours, so roughly 1.4 kWh a day. The E3600LFP holds 3,072 Wh, so 400 W fills less than half of it, and as someone said above, a panel feeding the grid isn't charging the Pecron. At your planned 1,200 W you'd have around 4 kWh a day, enough to split: some panels on the microinverter, the rest on the Pecron's solar input. Check the string's Voc is inside its 32-150 V window first.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xx9e3s",
+  "sub": "SolarDIY",
+  "url": "https://old.reddit.com/r/SolarDIY/comments/1xx9e3s/help_with_solar_set_up/",
+  "text": "Putting numbers on the 5-day case, since that decides whether skipping the battery is realistic. These are estimates; your APS bill has your real daily kWh.\n\nCentral A/C in an Arizona summer commonly draws 3-5 kW while the compressor runs and can use 30-60 kWh a day. A well pump adds 1-2 kW, with a startup surge several times that. A 10 kWh battery, which is a typical single home unit, carries that A/C for maybe 2-4 hours after sunset. So whole-house backup for 5 days means a very large battery bank or a generator.\n\nThe cheaper split is a critical-loads panel: fridge (about 1.5 kWh a day), the well pump, lights, internet, and one mini-split or window unit cooling one room at 0.5-1 kW. That lands around 10-15 kWh a day, which your array can refill daily through a hybrid inverter and a modest battery.\n\nBattery-less daytime backup does exist on a few inverters, but the output follows the clouds, and motors like a pump or compressor don't tolerate that. I'd treat it as a way to charge phones and run a fridge at noon, nothing more.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xx6xq7",
+  "sub": "SolarDIY",
+  "url": "https://old.reddit.com/r/SolarDIY/comments/1xx6xq7/one_24v_200ah_battery_failed_in_2s4p_48v_stack/",
+  "text": "On the 230 Ah question: in series, a pair is only as big as its smaller battery. A 230 Ah in series with a 200 Ah behaves as a 200 Ah pair, and the extra 30 Ah (about 0.77 kWh at 25.6 V) never gets used. It does work, because each battery's own BMS still protects it. The cost is drift: nothing balances between two batteries in series, so their state of charge slowly separates and one BMS starts cutting off early. Charge each one to full on its own at 24 V before pairing them, and repeat that once or twice a year.\n\nThat mixed pair then sits in parallel with three older pairs. It will carry a little more than a quarter of the current because the new battery has lower internal resistance, which is fine at moderate loads across four strings.\n\nAlso, as far as I know AmpereTime is just LiTime's old name, so the warranty claim is with the same company. Give them the 12.05 V reading and what the 0 V charger did; that's a clear failure description.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xvcgj5",
+  "sub": "Jackery",
+  "url": "https://old.reddit.com/r/Jackery/comments/1xvcgj5/best_places_to_look_for_jackery_this_black_friday/",
+  "text": "On the generator-recharge part of your plan, which hasn't been covered yet: it works well, and the numbers point to a small inverter generator run in short bursts.\n\nThe Explorer 2000 v2 holds 2,042 Wh and its AC input is rated up to 15 A at 120 V, so it can pull up to about 1,800 W and refills in roughly 1.75 hours by Jackery's figure. The 1000 v2 is 1,070 Wh and takes about 1.6 hours in its default mode. A 2,000-2,200 W inverter generator can refill one at a time. Two fast-charging together can pass 3,000 W, so stagger them unless the generator is 4 kW or bigger.\n\nFor sizing the outage: a fridge is about 1.5 kWh a day, and lights, phones and internet bring it to maybe 2-2.5 kWh. One 2000 v2 covers that with a single generator run of under two hours a day, and the house stays quiet overnight.\n\nUse an inverter generator if you can. Power stations sometimes refuse to charge from the rougher output of cheap open-frame units.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xxo0l7",
+  "sub": "UsbCHardware",
+  "url": "https://old.reddit.com/r/UsbCHardware/comments/1xxo0l7/which_wireless_charger_do_i_get/",
+  "text": "Get the 10,000 mAh one today. For a magnetic bank that sticks to the back of a phone, 10k is the practical size. A 20k is about twice the weight and thickness, which is why you're seeing so few wireless ones.\n\nRough math on what he gets: 10,000 mAh is about 37 Wh. Wireless charging loses a lot as heat, so expect around 50-60% to reach the phone, call it 20 Wh. A typical phone battery is 13-19 Wh, so that's about one full charge wirelessly, or closer to one and a half to two if he uses a cable instead.\n\nThree things to check on the listing. It should say Qi2 (15 W, or 25 W on the newer Qi2.2 ones); plain \"magnetic wireless\" is often a slow 7.5 W. It should have a USB-C port of 20 W or more so it also works as a normal wired bank. And his phone needs magnets: iPhone 12 and later have them, most Android phones need a magnetic case.\n\nAnker, Ugreen, Baseus and INIU are all safe picks. Skip no-name ones with huge capacity claims.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xxdr52",
+  "sub": "powerbanks",
+  "url": "https://old.reddit.com/r/powerbanks/comments/1xxdr52/what_would_be_the_smallest_possible_pocket_power/",
+  "text": "Worth knowing what 1,000 mAh actually buys before going that small. At 3.7 V that's 3.7 Wh, and after conversion losses about 2.5-3 Wh reaches the phone. A current phone battery is around 13-19 Wh, so you'd get roughly 15-20%. Enough for a call and a ride home, and that's about it. It's also why almost nobody sells banks that small anymore.\n\nTrue AA-size cells (14500) with a USB-C port do exist, but as far as I've seen the port only charges the cell, it can't power a phone. So the real floor is one of three shapes: a keychain bank like the Tau, a 21700 cell with a power-bank cap like the Nitecore setup linked above (21 x 70 mm, so a fat AA, around 5,000 mAh), or a lipstick-style \"capsule\" bank with a fold-out USB-C plug, usually 5,000 mAh and no cable to carry.\n\nFor a pouch I'd take the 21700 or a capsule. You get about five times the energy of a 1,000 mAh bank for something like 70-100 g, which is 70-90% of a phone charge instead of 15-20%.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xx7eo6",
+  "sub": "powerbanks",
+  "url": "https://old.reddit.com/r/powerbanks/comments/1xx7eo6/best_highcapacity_power_banks_to_be_kept_in_a/",
+  "text": "Two things that change the plan.\n\nFirst, the Ioniq 5 already is the big battery. It has V2L, and the pack is roughly 58-84 kWh depending on year and trim. Your loads, as estimates: Starlink Mini 25-40 W (the standard dish is more like 75-100 W), laptop 40-60 W while working, a compressor cooler averaging 15-25 W, phone negligible. Call it 100 W average, so 2.4 kWh a day and about 17 kWh for the week. That's a quarter of the car's pack or less, and the car lets you set a discharge limit so V2L stops before it eats into your driving range. One fast-charging stop refills all of it.\n\nSecond, heat. A closed car in the sun can pass 60°C (140°F). Most LiFePO4 stations list a charging limit around 45°C and a discharge limit around 60°C, so read the operating range in the manual before buying. Usually the unit refuses to charge rather than fails.\n\nSo I'd get a small 250-500 Wh LiFePO4 station as a buffer, keep it low in the footwell out of direct sun, and top it up from V2L. I'd skip panels entirely on a car that fast charges.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xw74i6",
+  "sub": "powerbanks",
+  "url": "https://old.reddit.com/r/powerbanks/comments/1xw74i6/is_ankerindiasstorecom_legit_looking_to_buy_an/",
+  "text": "I can't verify that site, and I'd treat it as fake until proven otherwise. The signs are all there: a domain that is the brand name plus extra words, a price about 40% under Amazon and Flipkart (₹7,696 against ₹12,699), and a separate shipping fee on top. Real brand stores rarely undercut their own marketplace listings by that much. Look for a GST number and a physical address on the site, and check the domain's registration date with a whois lookup. Clone stores are usually only weeks old.\n\nSafer routes: on Amazon India and Flipkart, read the \"Sold by\" line and buy only where the seller is Anker's own storefront, not a third party. Anker's global site has a where-to-buy page with a country selector, which is how to find what they officially list for India. Anker boxes also carry a verification code you can check on their site after delivery, so buy somewhere with a return window.\n\nFor the MacBook Pro itself, check the bank does 100 W or more from a single USB-C port, and stays under 100 Wh (about 27,000 mAh) if you'll ever fly with it.",
+  "linked": false,
+  "page": null
+ }
+]

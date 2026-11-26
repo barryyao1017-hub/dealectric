@@ -1,0 +1,74 @@
+[
+ {
+  "id": "1xwkrk7",
+  "sub": "bluetti",
+  "url": "https://old.reddit.com/r/bluetti/comments/1xwkrk7/apex_200_solar_panel_recommendations/",
+  "text": "Agree with going bigger than 200 W, and the arithmetic shows why. The Apex 200 holds 2,560 Wh. A folding panel in real conditions gives roughly 70% of its label, and outside midsummer you get maybe 4-5 good sun hours a day. So 200 W is about 140 W x 4.5 h = 630 Wh, around a quarter of the battery per day. 400 W gets you about 1,260 Wh, or half. If you're only topping up after running a fridge and some lights, 200 W can keep pace. If you want to refill from low in a day, you'd need closer to 800 W.\n\nWhatever brand you pick, check two things on the panel's label against the solar input range in the Apex manual. Open-circuit voltage (Voc) has to stay under the port's maximum, including if you later wire two panels in series. And most third-party panels end in MC4, so make sure you have the MC4 cable for the station. Going over on amps is harmless, the station just takes what it can use. Going over on volts is what does damage.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xveeql",
+  "sub": "bluetti",
+  "url": "https://old.reddit.com/r/bluetti/comments/1xveeql/apex_200_any_boaters_using_this_as_an_alternative/",
+  "text": "Rough numbers, since the unit is new and nobody has boat time on it yet. The microwave is the easy part: a 1,000 W (cooking power) microwave pulls roughly 1,500 W from the outlet, so 5 minutes is 125 Wh, about 5% of the Apex 200's 2,560 Wh. You could reheat a dozen meals and barely notice.\n\nThe heater is all about run time. A small ceramic on its low setting is usually 750 W. Half an hour to take the chill off in the morning is 375 Wh, about 15%. Two hours is 1,500 Wh and most of your battery. So brief periods work, overnight doesn't.\n\nTwo boat-specific things I'd check before buying. It weighs 59 lb, so think about how it gets aboard and where it rides. And plan the refill: with no generator it's shore power at the dock or solar, because a 12 V socket off the engine only gives around 100 W, and that takes most of a day of running to put back one weekend's use. I haven't seen a water-resistance rating for it, so I'd keep it in the cabin and off the deck.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xwcpkl",
+  "sub": "Jackery",
+  "url": "https://old.reddit.com/r/Jackery/comments/1xwcpkl/any_ideas_of_how_to_secure_two_solarsaga_200/",
+  "text": "Two things that work for folding panels in wind and still let you chase the sun.\n\nFirst, drop the tilt when it's gusting. In SoCal in late fall the midday sun is only about 35-40 degrees up, so a panel lying flat gets roughly 60% of what a perfectly aimed one does, but one propped at just 20 degrees gets around 85%. A low panel gives the wind far less to grab, and 15% is a cheap price for that.\n\nSecond, use weight instead of stakes. Put each panel on a base you can drag, like a sheet of plywood or a furniture dolly, with the kickstand feet clamped or bungeed to it and a sandbag or a filled 5-gallon water jug (about 40 lb) on the back edge. Run a short tether from the panel's grommets to the weight, so if a gust does lift it, it can't go far. To follow the sun you rotate the whole base instead of pulling stakes.\n\nIn a real Santa Ana gust front I'd still fold them and bring them in. An hour of lost charging beats a cracked panel.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xwdn5q",
+  "sub": "UsbCHardware",
+  "url": "https://old.reddit.com/r/UsbCHardware/comments/1xwdn5q/usb_hub_power_for_15w_usbconly_external_hdd/",
+  "text": "Short version: a plain USB-C to USB-A adapter won't do it, and most hubs won't either.\n\nA USB-A 3.0 port is only required to supply 900 mA at 5 V, which is 4.5 W. Some charging-capable ones go to 1.5 A (7.5 W). The drive wants 15 W, which is 5 V at 3 A, and that current level only exists on USB-C ports. Through an adapter the drive will most likely spin up and drop out, or not mount at all.\n\nOn hubs, the big wattage number is almost always pass-through charging for a laptop, not what each data port gives a device. Downstream ports are typically 4.5-7.5 W. What you need is a powered hub or dock whose spec sheet says a downstream USB-C data port supplies 5 V/3 A (15 W) by itself. That's listed per port when it's true, so if it isn't listed, assume no.\n\nIf this is a desktop, the cleaner fix is a PCIe USB-C card that takes a power cable from the PSU (SATA or 6-pin). Those are built to put the full 3 A on the port, cost about the same as a good powered hub.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xvas66",
+  "sub": "SolarDIY",
+  "url": "https://old.reddit.com/r/SolarDIY/comments/1xvas66/what_is_the_american_equivalent_to_this_dc_solar/",
+  "text": "On top of the Midnite and supply-house answers, a few things worth knowing before you buy any of them, CHINT included.\n\nSize it from the panel label. For current, the usual rule is 1.56 x the string's short-circuit current, so a string of 13 A panels needs a 20 or 25 A breaker (13 x 1.56 = 20.3). For voltage, add up Voc for the string and add 15-20% for cold mornings. Six 50 V panels is 300 V, call it 350 V, so you want a 500 or 600 V DC rating, not 250 V.\n\nCheck whether the breaker is polarized. A lot of DIN-rail DC breakers are marked + and - and only quench the arc properly when wired that way round. The cheap copies often leave this unmarked or get it wrong, and that's the real risk with them, more than the trip point.\n\nIf you only have one or two strings, the breaker is mostly working as a disconnect. Fusing each string is only required at three or more in parallel, so a DC-rated isolator switch is a legitimate option too.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xwkjls",
+  "sub": "preppers",
+  "url": "https://old.reddit.com/r/preppers/comments/1xwkjls/some_thoughts_on_solar/",
+  "text": "350 W out of two 200 W panels is close to the best you'll see. Folding panels rarely beat 85-90% of the label, so you were getting nearly everything they have. The limit is hours of sun, not the panels.\n\nRough math for upstate NY: the station is about 3.6 kWh, so 50% is 1,800 Wh. At 350 W that's a bit over 5 hours of full sun. In summer you can get that. In December you get maybe 2 good sun hours a day, so 400 W of panels makes about 400 x 2 x 0.75 = 600 Wh, roughly 17% of the battery. 1,200 W makes about 1,800 Wh, or 50% a day. That's the difference between keeping a fridge going indefinitely and slowly losing ground.\n\nSince this is backup to the gas generator, there's another way to use it: run the generator an hour or two a day to refill the station at its full AC charge rate, then shut it off and run quietly on battery. That stretches fuel a long way and makes the solar a bonus.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xwyj64",
+  "sub": "OffGrid",
+  "url": "https://old.reddit.com/r/OffGrid/comments/1xwyj64/looking_for_opinions_on_a_offgrid_cabin_solar_and/",
+  "text": "On 24 vs 32 panels, I'd look at what the deficit actually has to cover, because the cabin is empty for most of December and January.\n\nGoing from 32 to 24 panels cuts production by a quarter, so your January figure of 19 kWh/day becomes about 14. While you're away the only real loads are the mini-split holding 5 C and the inverter's idle draw, and when you're there the wood stove carries the heat. A winter weekend then looks like: arrive to a full 30.7 kWh bank, use maybe 10-15 kWh a day, get some back from the sun. Two or three days fits inside the battery even with no sun at all.\n\nThe 8 extra panels are about 8 x 425 W x $0.40 = $1,360 plus racking. For similar money a small inverter generator on the inverter's generator input covers the one bad week. It also closes what I'd call the bigger gap in the plan: with no generator, a failed inverter or a snowed-in array in January has no backstop except the millivolt heater.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xx03ut",
+  "sub": "powerbanks",
+  "url": "https://old.reddit.com/r/powerbanks/comments/1xx03ut/anker_737_on_marketplace_for_60_worth_it/",
+  "text": "$60 is a fair price if the battery is healthy. The 737 is a 24,000 mAh / 86.4 Wh bank with 140 W output and sells for roughly twice that new. The catch with used is that you're buying an unknown number of cycles with no warranty, so I'd test it at the meetup rather than trust the box photo.\n\nWhat you can check in five minutes: press the button and page through the display. If I remember right, this model shows battery health and cycle count, which answers most of your question. Plug in your phone or laptop and confirm the screen shows real wattage going out. Look along the seams and the long flat sides for any bulge, and pass if it's warm while idle or rattles.\n\nAt home, a full discharge should deliver about 60-65 Wh into your devices (86.4 Wh minus conversion losses). If you get well under 50, the cells are tired.\n\nI'd also look up the model number printed on the unit (A1289 for the 737) on Anker's recall page before you go. If all that sounds like too much hassle, that's what the extra money at Best Buy buys you.",
+  "linked": false,
+  "page": null
+ },
+ {
+  "id": "1xwesh6",
+  "sub": "overlanding",
+  "url": "https://old.reddit.com/r/overlanding/comments/1xwesh6/in_my_case_is_it_justified_for_me_buying_a_mobile/",
+  "text": "One thing to pin down before deciding: \"2000W\" is how much it can run at once, not how long. The number that matters for your nights is watt-hours.\n\nYour overnight list adds up roughly like this. The blanket is 100 W on high but it cycles, so call it 60 W average x 8 h = 480 Wh. A fan is about 15 W x 8 h = 120 Wh. Starlink is 25-40 W for a Mini or 50-75 W for the standard dish, and you only need it while you're awake, so 4 hours is 100-300 Wh. That's 700-900 Wh a night, and after inverter losses you'd want about 1,000 Wh of battery.\n\nSo a 1 kWh unit covers a night, and your 2,400 W outlet puts that back in about an hour. Where 2 kWh earns its keep is at home: a fridge uses 1-1.5 kWh a day, so 2 kWh gets you through a day-long Dallas outage and 1 kWh doesn't.\n\nFor 30 nights a year plus outages I think it's worth it. I'd buy on Wh and weight.",
+  "linked": false,
+  "page": null
+ }
+]
