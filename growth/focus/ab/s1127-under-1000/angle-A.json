@@ -1,0 +1,188 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the 'extra watts' figures are three different things: EcoFlow's 4,800 W and Jackery's 4,400 W are motor-start surge, BLUETTI's 3,900 W is a resistive-only Power Lifting mode with no surge figure on its US page, and the 3,600 W Pecron surges to only 4,500 W for 5 s, less than the 2,400 W EcoFlow.",
+ "standout": 2,
+ "standout_why": "Compared against three pages I opened: outageoutfitter.com/best/under-1000 (cited; five 2 kWh units with continuous watts only, no surge, boost, cycle life or recharge time), PopSci's Black Friday roundup (cited; continuous watts, one surge figure for the Anker S2000, and '10,000 cycles' for it with no retention percentage) and EcoFlow's Black Friday page (cited; '2400W Output | 10ms UPS' only). None separates surge from boost or puts cycle life on one yardstick. Business Insider and Popular Mechanics (both cited) refused the fetch, so I could not rule them out; that keeps this at 2, not 3.",
+ "decides": "It confirms a 2 kWh pick but corrects ChatGPT's tie-break. The Elite 200 V2's real edge over the DELTA 3 Max is 200 W continuous (2,600 vs 2,400 W); its 3,900 W is for kettles and heaters and should not be set against EcoFlow's 4,800 W surge. For a fridge compressor start, the EcoFlow is the one with a published surge figure. Availability, read from the maker pages today, also cuts against the BLUETTI as the pick: Elite 200 V2 ships early January (past the four-week rule) and the Anker C2000 Gen 2 in 6-12 weeks, while the DELTA 3 Max at $879 carried no pre-order notice in the text I read, the Jackery ships by Dec 11 and the Pecron mid-December. The Pecron F3000LFP at $899 leads on Wh and continuous watts per dollar but has the thinnest start headroom (1.25x). The Elite 200 V2 honestly wins 'most continuous watts and longest stated cycle life among 2 kWh units', with its ship date in the row.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX C2000 Gen 2",
+  "Jackery Explorer 2000 v2",
+  "Pecron F3000LFP",
+  "DJI Power 2000",
+  "Anker SOLIX S2000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Normalised start headroom (surge ÷ continuous, makers' figures)",
+   "value": "EcoFlow DELTA 3 Max 4,800/2,400 W = 2.0x; Jackery Explorer 2000 v2 4,400/2,200 W = 2.0x; Anker SOLIX C2000 Gen 2 4,000/2,400 W = 1.67x; Pecron F3000LFP 4,500/3,600 W = 1.25x (5 s); BLUETTI Elite 200 V2 no surge figure on its US page (3,900 W is resistive-only Power Lifting); DJI Power 2000 no surge figure on its spec page",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh)",
+   "read": "2026-11-27",
+   "note": "My arithmetic from each maker's page; the per-product rows below carry each source. In absolute surge watts the order is EcoFlow 4,800 > Pecron 4,500 > Jackery 4,400 > Anker 4,000, so the unit with the most continuous watts does not have the most surge."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Continuous / surge / X-Boost, as EcoFlow states them",
+   "value": "2,400 W continuous; 4,800 W surge; X-Boost 'supports heavy-duty appliances up to 3400W'",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh)",
+   "read": "2026-11-27",
+   "note": "Read from the store's product record via storecheck.py search; the product page itself returned HTTP 429 to three fetches. EcoFlow's X-Boost line names refrigerators, washers and circular saws; I found no EcoFlow text today explaining how X-Boost works."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Price, recharge, weight, UPS, warranty",
+   "value": "$879.00 (available; no pre-order notice in the record text); 0-80% in 68 min on wall charging; 20.3 kg (about 44.8 lb); 10 ms auto-switch; 3-year warranty plus 2 years on app registration",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh)",
+   "read": "2026-11-27",
+   "note": "storecheck.py search on us.ecoflow.com. Pounds are my conversion of EcoFlow's 20.3 kg."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "The $879 is a member price",
+   "value": "Member price $879; non-member price $1,199; banner dates Nov 26-30, member perks 'Valid: Nov 19-30 PDT'",
+   "source": "https://us.ecoflow.com/pages/black-friday",
+   "source_title": "EcoFlow Black Friday Sale 2026",
+   "read": "2026-11-27",
+   "note": "The row is under $1,000 only at the member sale price. ChatGPT's $854 came from PopSci's Amazon roundup, which I did not check on Amazon."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Continuous output and what the 3,900 W is",
+   "value": "2,600 W continuous; Power Lifting: 'pure resistive loads of up to 3,900W'; no surge or peak figure on the page",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "The 3,900 W is 1.5x rated and applies to resistive loads only (kettles, heaters, hair dryers), so it is not comparable with a surge rating."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Price, ship date, recharge, solar, warranty, capacity wording",
+   "value": "$899.00; 'expected to ship in early January for orders placed on or after Nov. 18'; 80% in 1.1 hours with TurboBoost (1,800 W AC input), 1.4 h listed for full; solar 12-60 V / 20 A, 1,000 W max; 5-year warranty; title says 2,073.6 Wh, feature list says 2,080 Wh",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Early January is five to six weeks out, past the four-week rule for a pick. Use 2,073.6 Wh; BLUETTI rounds it to 2,080 Wh in the feature list."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Measured usable energy (StorageReview, Dylan Dougherty)",
+   "value": "1.91 kWh discharged, 2.44 kWh to recharge; 53.4 lb (24.2 kg); UPS 15 ms",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-27",
+   "note": "Review dated 2025-04-25. My arithmetic: 1.91 / 2.0736 = 92% of rated capacity, matching the Popular Mechanics figure ChatGPT quoted; 1.91 / 2.44 = 78% round trip. ChatGPT's 85% assumption gives 17 h at 100 W; 1.91 kWh gives 19 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "A named reviewer mixes up peak and Power Lifting",
+   "value": "StorageReview gives '3600W peak' in its intro and says the unit 'can peak at 3,900W' in its build section",
+   "source": "https://www.storagereview.com/review/portable-power-meets-lab-grade-reliability-bluetti-elite-200-v2-review",
+   "source_title": "Portable Power Meets Lab-Grade Reliability: BLUETTI Elite 200 V2 Review",
+   "read": "2026-11-27",
+   "note": "BLUETTI's own page calls 3,900 W a resistive-load mode. This shows why the footnote is needed. StorageReview also cites 'over 6,000' cycles with no retention percentage."
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Price, ship date and the surge behind 3,600 W",
+   "value": "$899.00, 'PRE-ORDER | Ships Mid Dec'; 3,072 Wh LiFePO4; 3,600 W inverter, 'Surge 4500W in 5s'; 3,500+ cycles to 80%; 1,800 W AC charging, 2 hours; 1,600 W solar max (25-120 V, 25 A); 2+3 years warranty",
+   "source": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "source_title": "PECRON F3000LFP Portable Power Station 3600W 3072Wh PRE-ORDER | Ships Mid Dec",
+   "read": "2026-11-27",
+   "note": "storecheck.py search on pecron.com; this confirms the research lead as under $1,000. $899 / 3.072 kWh = $293 per kWh, the lowest of the units read. Surge is 1.25x continuous and 300 W below the DELTA 3 Max's."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Output, cycle life, recharge, ship time",
+   "value": "2,400 W max (NEMA 5-20R, 20 A), peak 4,000 W; '4,000 Cycles to 80% Capacity'; 45 min to 80%, 100% in 88 min on 1,800 W AC; 41.7 lb (18.9 kg); UPS 10 ms; orders on or after November 26 'will ship within 6-12 weeks'",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "The fetched page text showed no standalone price. At 6-12 weeks it cannot be the pick under the four-week rule."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Price, ship date, output, recharge",
+   "value": "$999.00, 'Pre-order · Ships by Dec. 11'; 2,042 Wh LiFePO4; 2,200 W continuous (4,400 W surge); switchover under 20 ms; 0-100% in about 1.7 hours; about 39.5 lb (17.9 kg)",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "storecheck.py search on jackery.com; the product page returned 429. Jackery states only a 0-100% time, the others a 0-80% time, so recharge figures are not like for like."
+  },
+  {
+   "product": "DJI Power 2000",
+   "label": "Cycle life with its test conditions; AC output as amps",
+   "value": "2,048 Wh LFP; 'Maintains over 80% capacity after 4000 cycles' (25 °C, recharged in Standard Mode, discharged at 2,000 W); AC 100-120 V, 25 A; about 22 kg",
+   "source": "https://www.dji.com/power-2000/specs",
+   "source_title": "DJI Power 2000 - Specs",
+   "read": "2026-11-27",
+   "note": "25 A x 120 V = 3,000 W (my arithmetic). DJI was the only maker read today that publishes the discharge load behind its cycle figure."
+  },
+  {
+   "product": "DJI Power 2000",
+   "label": "Headline output and recharge",
+   "value": "'3000W output'; 'Recharge to 80% in just 55 minutes using AC power'",
+   "source": "https://www.dji.com/power-2000",
+   "source_title": "DJI Power 2000",
+   "read": "2026-11-27",
+   "note": "No surge figure and no price on the page text read."
+  },
+  {
+   "product": "general",
+   "label": "AC recharge to 80%, one yardstick (makers' figures)",
+   "value": "Anker C2000 Gen 2 45 min; DJI Power 2000 55 min; BLUETTI Elite 200 V2 1.1 h (66 min); EcoFlow DELTA 3 Max 68 min; Jackery 2000 v2 gives only 0-100% in about 1.7 h; Pecron F3000LFP gives only '2 Hours' at 1,800 W for 3,072 Wh",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Each figure is from that maker's page, cited in the rows above. BLUETTI and EcoFlow are effectively tied (66 vs 68 min)."
+  },
+  {
+   "product": "general",
+   "label": "Cycle life on the 80% yardstick (makers' figures opened today)",
+   "value": "Anker C2000 Gen 2 4,000 to 80%; DJI Power 2000 4,000 to over 80% (at a 2,000 W discharge); Pecron F3000LFP 3,500+ to 80%",
+   "source": "https://www.dji.com/power-2000/specs",
+   "source_title": "DJI Power 2000 - Specs",
+   "read": "2026-11-27",
+   "note": "Anker and Pecron figures are from their pages cited above. Elite 200 V2, DELTA 3 Max, Jackery and Anker S2000 could not be put on this yardstick from a page opened today; see unsourced."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Rival page quotes cycle life with no retention percentage",
+   "value": "PopSci lists the S2000 at $649.97 with '10,000 cycles', 1,500 W and 3,000 W surge",
+   "source": "https://www.popsci.com/gear/black-friday-portable-power-station-deals/",
+   "source_title": "The best Black Friday solar generator deals start at $89",
+   "read": "2026-11-27",
+   "note": "PopSci piece dated 2026-11-26. Our record holds 6,000 cycles to 80% and 10,000 to 60% for this unit; I could not re-open Anker's page today to confirm it."
+  },
+  {
+   "product": "general",
+   "label": "What the cited under-$1,000 rival page carries",
+   "value": "Five 2 kWh units (Elite 200 V2 $899, DELTA 3 Max $879, C2000 Gen 2 $900, Explorer 2000 v2 $999, S2000 $650) with Wh, continuous W, weight, a modelled fridge runtime and warranty; no surge, boost mode, cycle life, recharge time or UPS figure",
+   "source": "https://outageoutfitter.com/best/under-1000",
+   "source_title": "Best Portable Power Station Under $1,000 (2026), Ranked",
+   "read": "2026-11-27",
+   "note": "Updated 2026-10-19, prices checked Nov 26. The page says specs come from the makers and it has not tested the units."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI Elite 200 V2 cycle life with its retention percentage (our record says 6,000+ to 80%): the US product page text gave no cycle figure, StorageReview gives 'over 6,000' with no percentage, the manual PDF downloaded but could not be converted to text, and manuals.plus was seen only as a search snippet.",
+  "BLUETTI Elite 200 V2 surge or peak rating: a search snippet of a manual mirror gave 5,200 W, but I did not open a page that states it.",
+  "EcoFlow DELTA 3 Max cycle life with retention percentage, and EcoFlow's explanation of how X-Boost works: us.ecoflow.com product pages returned HTTP 429 on every fetch.",
+  "Jackery Explorer 2000 v2 cycle life and whether it is rated to 70% or 80%: not in the store record text, and the product page returned 429.",
+  "Anker SOLIX S2000 cycle life from Anker's page (6,000 to 80% / 10,000 to 60%): the URL I tried returned 404 and the store search returned 404.",
+  "Anker SOLIX C2000 Gen 2 price today: the fetched page text showed no standalone price.",
+  "DJI Power 2000 US price and surge rating: store.dji.com redirected to an account page; dji.com shows no price or surge figure.",
+  "Growatt INFINITY 2000 PRO Watt+ wording and ALLPOWERS R2500 V2 surge and cycle wording: not re-read today (the one Growatt URL I tried was a non-US reseller with prices hidden).",
+  "Business Insider and Popular Mechanics pages (both cited by ChatGPT): both refused the fetch, so I could not check whether they state surge, boost mode or cycle-life retention."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 2.8761994999999994
+ }
+}

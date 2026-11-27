@@ -1,0 +1,158 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states the inverter's no-load (idle) draw for any 3,000 Wh unit, a fixed 8 W to 37 W that runs every hour the AC is on and takes 384 Wh to 1,776 Wh out of a two-day fridge run.",
+ "standout": 2,
+ "standout_why": "Compared against powerstations.reviews/jackery-3000, wattpowerstation's home-backup guide, power-verdict's best-3000wh guide, thesolarlab's big-stations roundup, lightsonlabs, thepowerstationreport and powersized (goodhousekeeping.com could not be fetched). Five of the seven give no idle watts at all, and three of them (powerstations.reviews, lightsonlabs, thepowerstationreport) size runtime with a flat 85% 'inverter losses' factor. thesolarlab's roundup gives idle only for the Anker F3800 Plus (about 40 W) and BLUETTI Apex 300 (about 20 W), neither a 3,000 Wh candidate. ChatGPT's own answer says only that low-load inverter losses 'can shorten those estimates', with no number. None shows that the fixed draw differs 4.6× between the units it recommends.",
+ "decides": "It confirms the Jackery HomePower 3000 as the pick for fridge-through-an-outage duty: The Solar Lab measured 8 W idle, the lowest of the five. It also changes the budget order. The Pecron F3000LFP at $899 idles at 37 W, which is 1,776 Wh (58% of its 3,072 Wh) over 48 hours. By The Solar Lab's formula it carries a 1,300 Wh/day fridge about 34 hours, against about 44 hours for the BLUETTI Elite 300 (15 W) and about 49 hours for the Jackery. So the Elite 300, not the Pecron, is the honest value row for a fridge plan; the Pecron's $200 saving costs about 10 fridge-hours. Only the Jackery clears two days on this arithmetic. Separately, BLUETTI's page today says Elite 300 orders placed on or after Nov 27 ship from Dec 28 (31 days out, not the Dec 14 in the desk notes), which touches the four-week rule; its Amazon listing was not checked.",
+ "candidates": [
+  "Jackery HomePower 3000",
+  "BLUETTI Elite 300",
+  "Anker SOLIX F3000",
+  "EcoFlow DELTA 3 Ultra",
+  "Pecron F3000LFP"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Mechanism: idle draw is added to the load for every hour the inverter is on",
+   "value": "Fridge Consumption (Wh) + (Power Station Idle Rate (W) × Run Time in Hours) = Total Required Battery Capacity",
+   "source": "https://www.thesolarlab.com/how-tos/power-station-for-fridge",
+   "source_title": "How Long Will a Power Station Run Your Fridge? (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "The Solar Lab's own formula; it says a station 'consumes a small amount of stored battery power when it's switched on' and that idle draw 'can make or break your power station's runtime'. This page was not among ChatGPT's results. The formula does not add conversion loss separately."
+  },
+  {
+   "product": "general",
+   "label": "Household fridge energy use (The Solar Lab's test of three fridges in three homes)",
+   "value": "about 1,300 Wh per day; 100 to 200 W while the compressor runs",
+   "source": "https://www.thesolarlab.com/how-tos/power-station-for-fridge",
+   "source_title": "How Long Will a Power Station Run Your Fridge? (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "1,300 Wh/day ÷ 24 h = 54.2 W average; two days = 2,600 Wh before any idle draw. This is the load used in the runtime arithmetic below."
+  },
+  {
+   "product": "Jackery HomePower 3000",
+   "label": "Idle draw, measured by The Solar Lab",
+   "value": "8 W",
+   "source": "https://www.thesolarlab.com/review/jackery-homepower-3000-review",
+   "source_title": "Jackery HomePower 3000 Review (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "Quote: 'an idle consumption of just 8 watts', 'the best we've seen from any large power station to date'. The review does not state the test conditions. Arithmetic: 8 W × 48 h = 384 Wh (12.5% of 3,072 Wh); 3,072 ÷ (54.2 + 8) = about 49 h on a 1,300 Wh/day fridge. The Solar Lab gives the weight as just under 60 lb."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Idle draw and efficiency, measured by The Solar Lab",
+   "value": "about 15 W idle; about 86% efficiency",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-300",
+   "source_title": "Bluetti Elite 300 portable power station review (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "Quote: 'We measured the idle rate around 15W, which is almost double what we've seen on some other recent Bluetti power stations.' Test conditions not stated. Arithmetic: 15 W × 48 h = 720 Wh (24% of 3,014.4 Wh); 3,014.4 ÷ (54.2 + 15) = about 44 h on a 1,300 Wh/day fridge."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Idle draw, measured by The Solar Lab",
+   "value": "20 W",
+   "source": "https://www.thesolarlab.com/how-tos/power-station-for-fridge",
+   "source_title": "How Long Will a Power Station Run Your Fridge? (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "The Solar Lab's table: 20 W idle, 1,440 Wh over 3 days. Arithmetic: 20 W × 48 h = 960 Wh (31% of 3,072 Wh); 3,072 ÷ (54.2 + 20) = about 41 h on a 1,300 Wh/day fridge."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Anker's own standby and fridge claims",
+   "value": "up to 5 days of AC standby; 'One F3000 can power a 190W fridge for 42 hours'",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-27",
+   "note": "3,072 Wh ÷ 120 h = 25.6 W implied AC idle draw from Anker's own claim. Anker gives no test conditions for the standby or fridge figures. Its feature list says '2 days of cooling an 8 cu.ft fridge'; the 190 W fridge in the FAQ has no stated size."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "Idle draw and efficiency, measured by The Solar Lab",
+   "value": "about 22 W idle; about 82% efficiency",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-ultra",
+   "source_title": "EcoFlow DELTA 3 Ultra Review (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "Quote: 'if you leave the inverter running while waiting for appliances like refrigerators or sump pumps to cycle on, the unit will consume around 22W of battery power per hour in the background.' Arithmetic: 22 W × 48 h = 1,056 Wh (34% of 3,072 Wh); 3,072 ÷ (54.2 + 22) = about 40 h on a 1,300 Wh/day fridge. The Solar Lab gives the weight as 72 lb."
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Idle draw and efficiency, measured by The Solar Lab",
+   "value": "37 W idle; 83% efficiency at a sustained 3,600 W",
+   "source": "https://www.thesolarlab.com/review/pecron-f3000lfp-review",
+   "source_title": "Pecron F3000LFP Review (The Solar Lab)",
+   "read": "2026-11-27",
+   "note": "Method: 'charged the battery to 100% and let it fully drain with only the inverter switched on... we calculated a 37 Watt idle draw.' Arithmetic: 37 W × 48 h = 1,776 Wh (58% of 3,072 Wh); 3,072 ÷ (54.2 + 37) = about 34 h on a 1,300 Wh/day fridge. The Solar Lab gives the weight as 63 lb."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages use instead: a flat 85% factor",
+   "value": "runtime = rated capacity × 0.85 ÷ watts; HomePower 3000 runs a 41 W fridge about 63 hours",
+   "source": "https://powerstations.reviews/jackery-3000",
+   "source_title": "Jackery 3000: the 3000 Pro, the HomePower 3000, and which to buy",
+   "read": "2026-11-27",
+   "note": "With the idle formula on the same 41 W fridge: Jackery 3,072 ÷ (41 + 8) = about 63 h, so the flat factor happens to fit an 8 W unit. Pecron 3,072 ÷ (41 + 37) = about 39 h, so the flat factor would overstate it by about 24 h. lightsonlabs and thepowerstationreport use the same 85% assumption."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Per-outlet limit: where the full 3,600 W comes out",
+   "value": "NEMA 5-20R outlets 120 V, 20 A, 2,400 W max each; TT-30R 3,600 W max; 3,600 W total",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-27",
+   "note": "Second mechanism: a 3,600 W inverter delivers at most 2,400 W through any one household outlet, so the full rating reaches one cord only through the 30 A RV outlet. Same page: weight 91.5 lb, UPS switchover 20 ms, charging temperature 32–104 °F."
+  },
+  {
+   "product": "Anker SOLIX F3000",
+   "label": "Availability on Anker's US store",
+   "value": "Sold out ('Notify Me'); 'all F3000 orders will ship within 3–7 weeks'; price not shown",
+   "source": "https://www.ankersolix.com/products/f3000",
+   "source_title": "Anker SOLIX F3000 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-27",
+   "note": "The page showed 'Price Loading', so no Anker store price was read today."
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "label": "Maker's page: price, ship date, lifting mode, UPS",
+   "value": "$1,099.00 (was $1,199.00); 'Orders placed on or after Nov. 27: Ships starting Dec. 28'; '2,400 W output (4,800 W lifting) for heavy loads like microwaves and heaters'; 10 ms UPS",
+   "source": "https://www.bluettipower.com/products/elite-300-portable-power-station",
+   "source_title": "BLUETTI Elite 300 Portable Power Station | 2,400W, 3,014Wh",
+   "read": "2026-11-27",
+   "note": "Nov 27 to Dec 28 is 31 days, later than the Dec 14 in the desk notes. The page gives no idle watts, no fridge runtime, no footnote on the lifting mode and no amp or watt rating for the TT-30 outlet. Price also read through storecheck the same day: $1,099, compare-at $1,199, available."
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Maker's store listing",
+   "value": "$899.00, 'PRE-ORDER | Ships Mid Dec'; 3,072 Wh; 3,600 W (4,500 W surge for 5 s); 'AC 30A Output'; 1,800 W AC charging, 15 A max, 2 hours; LiFePO4, 3,500+ cycles to 80%",
+   "source": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "source_title": "PECRON F3000LFP Portable Power Station 3600W 3072Wh PRE-ORDER | Ships Mid Dec",
+   "read": "2026-11-27",
+   "note": "Read through storecheck search of pecron.com. This confirms the $899 lead in the desk notes. The listing gives no idle draw."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Ultra",
+   "label": "Maker's store listing",
+   "value": "DELTA 3 Ultra $1,369.00, 'Limited Stock Remaining. No Restock Planned'; DELTA 3 Ultra Plus $1,599.00; 3,072 Wh; 3,600 W (7,200 W surge); X-Boost to 4,600 W; 10 ms auto-switch",
+   "source": "https://us.ecoflow.com/products/delta-3-ultra-series-portable-power-station",
+   "source_title": "EcoFlow DELTA 3 Ultra Series Portable Power Station (3072Wh)",
+   "read": "2026-11-27",
+   "note": "Read through storecheck search of us.ecoflow.com. The Ultra Plus price is from the same search, listing https://us.ecoflow.com/products/ecoflow-delta-3-ultra-plus-portable-power-station-3072wh. No 'Delta 3000 Gen4' turned up in that search."
+  }
+ ],
+ "unsourced": [
+  "Jackery's own idle or standby figure for the HomePower 3000: jackery.com/pages/solar-generator-homepower-3000 and Jackery's standby-power blog both came back truncated to navigation, and the product page returned HTTP 429 to storecheck. The 8 W is The Solar Lab's measurement only.",
+  "Jackery HomePower 3000 price on jackery.com today (HTTP 429), so no Jackery price is given.",
+  "BLUETTI's own idle or standby figure for the Elite 300: the US product page states none. A second reviewer's lower figure (The Technology Man, under 4 W) and CyberShack's 10 W appeared only in search snippets and were not opened, so they are left out.",
+  "Test conditions for The Solar Lab's idle readings on the Jackery, BLUETTI and EcoFlow units (AC inverter on with no load, or otherwise): only the Pecron review states its method.",
+  "BLUETTI's wording that Power Lifting lowers voltage and suits resistive loads only: the Elite 300 page gives no footnote, and the manual was not opened.",
+  "Idle draw for our other 3,000 Wh rows (ALLPOWERS R3500, Growatt HELIOS 3600, Nature's Generator L3600, Mango Power E): not searched within the call budget.",
+  "Good Housekeeping's solar-generator roundup (a cited rival) could not be fetched, so it was not compared.",
+  "Elite 300 Amazon listing price and stock (it may ship sooner than the store's Dec 28): not checked."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.9199715000000013
+ }
+}

@@ -1,0 +1,112 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the DJI Power 1000 V2 has no solar or car input on the unit itself: DJI's manual lists only AC, SDC, SDC Lite and USB ports, so solar goes through a separately sold MPPT adapter module (labelled 400 W, panels in parallel only) and car charging through a separate SDC adapter.",
+ "standout": 2,
+ "standout_why": "Compared against popsci.com (cited), willitrunpower.com, outagepowerguide.com and powersized.com, all opened 2026-11-27. None mentions SDC ports or a DJI adapter, and PopSci's under-$500 list does not include the DJI at all. willitrunpower already explains X-Boost / Power Lifting / SurgePad as voltage-lowering, resistive-only modes and that they do not count as motor-start surge, so that mechanism would score 0-1. ChatGPT's own second answer hints that 'some DJI charging accessories are proprietary' but gives no mechanism, limit or cost. It is not a 3 because it only decides the pick for shoppers who want solar or car charging.",
+ "decides": "The DJI Power 1000 V2 stays the watts-per-dollar pick only for a shopper who recharges from a wall outlet and uses AC or USB. For solar or car charging, DJI needs an extra adapter, so the pick moves to a unit with the solar input built in. EcoFlow states 500 W for the DELTA 3 Classic and BLUETTI states up to 350 W for the Elite 100 mini; our record gives the Elite 100 V2 1,000 W at 12-60 V. That is the segment where one of ours (ALLPOWERS P1800 or a BLUETTI) can honestly win, but I could not re-read the P1800's solar input today. The BLUETTI page also confirms ChatGPT's 700 W limit on the Elite 100 mini: it states a 700 W total and shows no Power Lifting mode.",
+ "candidates": [
+  "DJI Power 1000 V2",
+  "EcoFlow DELTA 3 Classic",
+  "Anker SOLIX C1000 Gen 2",
+  "ALLPOWERS P1800",
+  "BLUETTI Elite 100 V2",
+  "BLUETTI Elite 100 mini"
+ ],
+ "findings": [
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Ports on the unit (DJI user manual v1.0)",
+   "value": "AC output ports, AC input port, SDC port, SDC Lite port, USB-A ports, USB-C ports; no XT60, car socket or direct PV input listed",
+   "source": "https://dl.djicdn.com/downloads/DJI_Power_1000_V2/20250709/DJI_Power_1000_V2_User_Manual_v1.0_en.pdf",
+   "source_title": "DJI Power 1000 V2 User Manual v1.0 (EN)",
+   "read": "2026-11-27",
+   "note": "DJI's own PDF, read as text through the r.jina.ai reader because a direct fetch returned raw binary. I worked from an extraction summary, not the page images, so check the port list against the PDF before publishing."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Solar charging path",
+   "value": "Through the DJI Power Solar Panel Adapter Module (MPPT), labelled 400 W in the manual's diagram; \"Up to three solar panels can be connected to the adapter module and used in parallel (cannot be used in series).\"",
+   "source": "https://dl.djicdn.com/downloads/DJI_Power_1000_V2/20250709/DJI_Power_1000_V2_User_Manual_v1.0_en.pdf",
+   "source_title": "DJI Power 1000 V2 User Manual v1.0 (EN)",
+   "read": "2026-11-27",
+   "note": "The manual also lists a 1.8kW Solar/Car Super Fast Charger for the SDC port only. It gives no voltage limit, saying only \"Make sure the connected solar panels are within the input specifications of the adapters.\""
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "Car charging path",
+   "value": "Accessories only: Car Power Outlet to SDC Power Adapter, 1kW Super Fast Car Charger (SDC port only), or 1.8kW Solar/Car Super Fast Charger (SDC port only); \"Make sure that the car engine is started before recharging.\"",
+   "source": "https://dl.djicdn.com/downloads/DJI_Power_1000_V2/20250709/DJI_Power_1000_V2_User_Manual_v1.0_en.pdf",
+   "source_title": "DJI Power 1000 V2 User Manual v1.0 (EN)",
+   "read": "2026-11-27",
+   "note": "Same reading method as above. The only SDC cable figures in the manual are a default output of 13.6 V and a maximum of 10 A."
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "label": "UPS behaviour in DJI's words",
+   "value": "\"The power station only supports the basic UPS feature and does not support 0ms switching.\" The manual gives no switch time in ms and says output power \"may be lowered in UPS mode\".",
+   "source": "https://dl.djicdn.com/downloads/DJI_Power_1000_V2/20250709/DJI_Power_1000_V2_User_Manual_v1.0_en.pdf",
+   "source_title": "DJI Power 1000 V2 User Manual v1.0 (EN)",
+   "read": "2026-11-27",
+   "note": "The manual also says the AC output shuts down automatically after more than 30 minutes with no AC device drawing power, which matters for a load that cycles off for long stretches."
+  },
+  {
+   "product": "DJI Power 1000 (original; adapter limits)",
+   "label": "MPPT adapter input limits (DJI Power Series FAQ)",
+   "value": "\"When recharging DJI Power 1000 with solar panels, the DJI Power Solar Panel Adapter Module (MPPT) is required\"; panel open-circuit voltage under 30 V; 200 W per XT60 input; 400 W per module",
+   "source": "https://support.dji.com/help/content?customId=en-us03400009834&spaceId=34&re=US&lang=en",
+   "source_title": "DJI Power Series FAQ (DJI Support)",
+   "read": "2026-11-27",
+   "note": "This FAQ covers the original Power 1000 and the Power 500 and does not name the V2. The 400 W module figure matches the V2 manual's diagram; the 30 V and 200 W limits are DJI's figures for the same adapter, not a V2-specific statement. The FAQ also allows up to two modules on the original Power 1000."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "label": "Built-in solar input, AC output and temperature limits (EcoFlow US spec page)",
+   "value": "Solar input 500 W max; AC output 1,800 W total at 120 V; X-Boost 2,600 W; UPS switch 10 ms; charge 0 to 45 °C (32 to 113 °F); discharge -10 to 45 °C (14 to 113 °F); 12.1 kg; 1,024 Wh LFP",
+   "source": "https://www.ecoflow.com/us/delta-3-classic-portable-power-station/specs",
+   "source_title": "DELTA 3 Classic (1024Wh) specs, EcoFlow US",
+   "read": "2026-11-27",
+   "note": "12.1 kg × 2.2046 = 26.7 lb. The page gives no surge figure, no per-outlet amps, no solar voltage range and no footnote on X-Boost."
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "label": "Output limit and solar input (BLUETTI US store page)",
+   "value": "\"Total output not to exceed 700W\"; no Power Lifting mode mentioned on the page; up to 350 W solar; 10 ms UPS; 23.6 lb; $379.00 (was $429.00)",
+   "source": "https://www.bluettipower.com/products/elite-100-mini-portable-power-station",
+   "source_title": "BLUETTI Elite 100 mini Portable Power Station, BLUETTI US",
+   "read": "2026-11-27",
+   "note": "The page shows \"2–5 Business Days Delivery（Except for pre-sale products）\". Its Tech Specs section came back empty in the fetch, so charge temperature was not read."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages already say about voltage-lowering modes",
+   "value": "willitrunpower: \"EcoFlow X-Boost, BLUETTI Power Lifting and Anker SurgePad lower the output voltage so heaters and kettles keep working\" and \"Boost modes don't count\" as motor-start surge",
+   "source": "https://willitrunpower.com/guides/best-power-station-under-500/",
+   "source_title": "Best power station under $500 (2026): picks by what you need to run | Willrun",
+   "read": "2026-11-27",
+   "note": "This is why the boost-mode mechanism is not the gap. The page's picks are priced as of Nov 19 and it does not list the DJI Power 1000 V2 or the DELTA 3 Classic."
+  },
+  {
+   "product": "general",
+   "label": "PopSci's under-$500 list (the page ChatGPT cited)",
+   "value": "All at Amazon unless noted: EcoFlow DELTA 3 Classic $438.90, Jackery Explorer 1000 V2 $469, Anker SOLIX C1000 Gen 2 $469.99, BLUETTI Elite 100 V2 $493, BLUETTI Elite 100 mini $379.99, Jackery FridgeGuard $429.99 (Costco)",
+   "source": "https://www.popsci.com/gear/black-friday-portable-power-station-deals/",
+   "source_title": "Best Black Friday Portable Power Station Deals 2026, Popular Science",
+   "read": "2026-11-27",
+   "note": "These are PopSci's reported prices, not read by me at Amazon or Costco. The page has no DJI row and no mention of SDC ports, boost modes or a 15 A outlet limit."
+  }
+ ],
+ "unsourced": [
+  "Price of the DJI Power Solar Panel Adapter Module (MPPT) and the Car Power Outlet to SDC adapter: the DJI US store redirected to a sign-in page, B&H returned 403 and DroneNerds returned 429. A $59 figure appeared only in a search snippet, so it is left out.",
+  "DJI Power 1000 V2 US AC output rating (the 2,600 W ChatGPT quoted), per-outlet amp limit, weight, charge temperature and today's price: dji.com/power-1000-v2/specs and /faq redirected to a 404, and the manual has no spec table.",
+  "Anker SOLIX C1000 Gen 2 built-in solar input, SurgePad wording and today's price: both ankersolix.com product URLs I tried returned 404.",
+  "ALLPOWERS P1800 solar input (watts, voltage range) and today's price: storecheck.py failed with a JSON error on allpowers.com for both product and search, and the direct fetch returned a corporate page with no specs.",
+  "A standard's own wording that a 120 V, 15 A plug caps a single appliance at 1,800 W, which would show that inverter ratings above 1,800 W only help when running two appliances at once: not researched within the call budget.",
+  "Amazon prices: amzcheck.py was not run."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 36,
+  "cost_usd_list": 2.9812049000000003
+ }
+}

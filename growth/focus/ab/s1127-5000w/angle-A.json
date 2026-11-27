@@ -1,0 +1,180 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states, side by side, how much of each unit's headline wattage one 120 V leg can carry: Anker's 6,000 W F3800 Plus is capped at 25 A on its L14-30R (3,000 W per leg), while Pecron's 7,200 W F5000LFP is 3,600 W × 2 and Jackery's 7,200 W is 30 A at 240 V with two 3,600 W 120 V banks. A 5,000 W load is therefore a 240 V or balanced-leg load on every one of them, with about 1,000 W to spare on the Anker and 2,200 W on the 7,200 W units.",
+ "standout": 1,
+ "standout_why": "Compared against solarwaypoint.com and holdbackup.com (both cited), ankersolix.com/f3800-plus (cited), powerbencher.com, thewattguide.com and thiswatt.com. Solar Waypoint gives no per-outlet or per-leg figure and no end-of-life percentage for cycle life. HoldBackup already normalises cycle life (Anker 3,000+ to 80%, EcoFlow Delta Pro Ultra 3,500 to 80%, Jackery 4,000 to 70%) and gives the Delta Pro Ultra's 10-second surge, so that half of the angle is taken. Anker's own page carries the raw 25 A / 6,000 W L14-30R line. TheWattGuide (returned, not cited) already has Jackery's two 3,600 W 120 V banks. ChatGPT's answer itself says a 7,200 W total does not mean one 120 V socket supplies 5,000 W, and that 5,000 W is about 21 A at 240 V. What none has is the per-leg figures for the line-up in one table with headroom at 5,000 W, and Pecron's 3,600 W × 2. I could not source the per-leg figure for our own Nature's Generator L6000, which weakens it further.",
+ "decides": "It confirms rather than changes the pick. A 7,200 W / 30 A unit (Jackery Explorer 5000 Plus, $3,499, flagged available in Jackery's store search record) runs a 5,000 W 240 V load with about 2,200 W spare and takes 3,600 W on either 120 V leg. The 6,000 W / 25 A Anker F3800 Plus runs it with about 1,000 W spare and 3,000 W per leg, so an unbalanced panel trips it sooner. The Pecron matches the Jackery at $2,399 but is a pre-order shipping early January, more than four weeks out. The EcoFlow Delta Pro Ultra reads unavailable, and the Titan 5000 Plus is a pre-order shipping late January. Our Nature's Generator L6000 ($2,249.99, flagged available) is the lowest-priced unit I could read that states 6,000 W continuous at 120/240 V. As a 6,000 W split-phase unit it would be 3,000 W per leg by arithmetic, but its store pages returned 429, so its per-outlet, surge and cycle-life figures are not maker-sourced here. The page should not claim per-leg parity with the 7,200 W units for it.",
+ "candidates": [
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro Ultra",
+  "EcoFlow TITAN 5000 Plus",
+  "EcoFlow TITAN 5000",
+  "Pecron F5000LFP",
+  "Anker SOLIX F3800 Plus",
+  "Nature's Generator L6000",
+  "OSCAL PowerMax 6000"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "240 V outlet limit (NEMA L14-30R)",
+   "value": "120V/240V, 25 A max, 6,000 W max",
+   "source": "https://www.ankersolix.com/f3800-plus",
+   "source_title": "F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "Maker's spec table. The receptacle is a 30 A type but Anker caps it at 25 A. Arithmetic: 25 A × 120 V = 3,000 W per 120 V leg; 25 A × 240 V = 6,000 W. A 5,000 W 240 V load draws 20.8 A, leaving 4.2 A (about 1,000 W)."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "120 V outlet limit (AC Output 1 and 2)",
+   "value": "120 V, 20 A max, 2,400 W max each",
+   "source": "https://www.ankersolix.com/f3800-plus",
+   "source_title": "F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "Maker's spec table. No single 120 V outlet line on the page reaches 5,000 W. The page lists no TT-30R rating and no surge or peak figure; AC Output (Total) is given as '6000W Max'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Cycle life, capacity, weight, UPS, AC input, warranty",
+   "value": "3,000+ cycles to 80%; 3,840 Wh (51.2 V, 75 Ah); 136.7 lb; 20 ms; 1,800 W max AC input; 5-year warranty",
+   "source": "https://www.ankersolix.com/f3800-plus",
+   "source_title": "F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "Maker's figures. Solar input is 2 × 1,600 W at 11-165 V, 17 A (3,200 W). The page showed only a 'Buy Now' button, with no price or stock notice in the text read."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "AC output by voltage",
+   "value": "100-120 V AC: 3,600 W × 2; 200-240 V AC: 7,200 W max (dual phase)",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V Pre-Order | Ships Early Jan",
+   "read": "2026-11-27",
+   "note": "Maker's listing text, read through the store's search record with storecheck.py; the product endpoint then returned 429. The 7,200 W exists only at 240 V; each 120 V phase is 3,600 W. A 5,000 W 240 V load leaves 2,200 W. No separate surge figure in the text read."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "Price, availability, capacity, cycle life",
+   "value": "$2,399.00 pre-order, ships early January; 5,120 Wh LiFePO4; 4,000+ cycles to 80%; 3,600 W AC charging with a 30 A cable; '5+1 Years Warranty'",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V Pre-Order | Ships Early Jan",
+   "read": "2026-11-27",
+   "note": "Store search record. The research lead said $2,199; the store read $2,399 today. Early January is more than four weeks out, so it cannot be the pick under the page rules. Pecron's FP5000-48V expansion battery listing says '3+2 Years Warranty', so the warranty wording differs between listings."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Price, availability, rated output, surge",
+   "value": "$3,499.00, flagged available; 7,200 W rated, 14,400 W surge; 5,040 Wh; up to 4,000 W solar; 0 ms UPS",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-27",
+   "note": "Jackery store search record via storecheck.py; the product page and product endpoint returned 429. The notice in the record: 'Bundles with Battery Pack 5000Plus: Pre-order · Ships by Jan. 1; Bundles with STS: Pre-order · Ships by Mar. 1', with no notice for the unit alone. The research lead said sold out; the record says available. Check the unit-alone variant in a browser before publishing."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "120 V limit as a rival page reports the manual",
+   "value": "120 V sockets split into two 3,600 W banks; 240 V outlets rated 30 A; output falls to 3,600 W between 5°F and 14°F",
+   "source": "https://thewattguide.com/articles/5000-watt-solar-generator/",
+   "source_title": "5000 Watt Solar Generator: 5,000W vs 5,000Wh",
+   "read": "2026-11-27",
+   "note": "TheWattGuide's reading of Jackery's manual, not mine. I could not extract text from the manual PDF and Jackery's page returned 429. Arithmetic: 30 A × 240 V = 7,200 W; 5,000 W at 240 V is 20.8 A, leaving 9.2 A (about 2,200 W)."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Cycle life as a cited rival reports it",
+   "value": "4,000 cycles to 70% or more",
+   "source": "https://holdbackup.com/best-home-battery-backup",
+   "source_title": "Best home battery backup power station | HoldBackup",
+   "read": "2026-11-27",
+   "note": "HoldBackup quoting Jackery; not read on Jackery's own page (429). Jackery's count is to 70%, while Anker (3,000+), EcoFlow Delta Pro Ultra (3,500) and Pecron (4,000+) count to 80%, so Jackery's 4,000 is not directly comparable to Pecron's."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Price and availability",
+   "value": "$3,899.00, unavailable (sold out)",
+   "source": "https://us.ecoflow.com/products/delta-pro-ultra",
+   "source_title": "EcoFlow DELTA Pro Ultra Whole-Home Backup Power (UL 9540 Certificated)",
+   "read": "2026-11-27",
+   "note": "EcoFlow US store search record via storecheck.py: available=false, compare-at $7,599. The record does not say which bundle the $3,899 is for. Listing text gives '7.2-21.6kW output' and '6kWh-90kWh capacity'. ChatGPT showed $3,999 at Lowe's."
+  },
+  {
+   "product": "EcoFlow DELTA Pro Ultra",
+   "label": "Surge and cycle life as a cited rival reports them",
+   "value": "7,200 W at 120/240 V; 10.8 kW surge for 10 seconds; 80% capacity after 3,500 cycles; 6,144 Wh per battery; 70 lb inverter + 111.8 lb battery",
+   "source": "https://holdbackup.com/best-home-battery-backup",
+   "source_title": "Best home battery backup power station | HoldBackup",
+   "read": "2026-11-27",
+   "note": "HoldBackup quoting EcoFlow; the manual PDF returned 502 and the store page 429. HoldBackup shows a surge duration for this unit only. Inverter plus one battery is 181.8 lb by its figures (70 + 111.8), where Solar Waypoint lists 70 lb for the product."
+  },
+  {
+   "product": "EcoFlow TITAN 5000 Plus",
+   "label": "Output claim and availability",
+   "value": "'7.2–10kW output and 5kW single-circuit capacity'; pre-order, ships late January",
+   "source": "https://us.ecoflow.com/products/ecoflow-titan-5000-plus",
+   "source_title": "EcoFlow TITAN 5000 Plus Whole Home Battery Storage 5-30kWh",
+   "read": "2026-11-27",
+   "note": "EcoFlow US store search record. The record's price field read $50, which is not the unit price. The listing requires a minimum 60 V solar input. Late January is more than four weeks out."
+  },
+  {
+   "product": "EcoFlow TITAN 5000",
+   "label": "Output claim",
+   "value": "7.2 kW",
+   "source": "https://us.ecoflow.com/products/ecoflow-titan-5000",
+   "source_title": "EcoFlow TITAN 5000 Whole Home Power Battery Backup 5-30kWh",
+   "read": "2026-11-27",
+   "note": "EcoFlow US store search record; the price field read $50. ChatGPT showed 'EcoFlow Titan 5000 5kWh 7200 Watts' at $3,399 at Lowe's, which I did not open."
+  },
+  {
+   "product": "EcoFlow TITAN 5000 Classic",
+   "label": "Left out: short of the line",
+   "value": "4,000 W, 120 V output only",
+   "source": "https://us.ecoflow.com/products/ecoflow-titan-5000-classic",
+   "source_title": "EcoFlow TITAN 5000 Classic Whole Home Battery Backup 5-30kWh",
+   "read": "2026-11-27",
+   "note": "EcoFlow's own notice: 'TITAN 5000 Classic supports 120V output only. For 240V appliances such as central AC and electric water heaters, see TITAN 5000 or TITAN 5000 Plus.' The '5000' in the name is watt-hours, not watts."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Price, availability, headline output",
+   "value": "$2,249.99, flagged available; 6,000 W continuous, 120 V/240 V, pure sine",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "Nature's Generator store search record via storecheck.py (compare-at $6,199.97); the product page returned 429 three times. This is the unit-alone listing. Other listings are $2,649.99 with a transfer switch, $2,999.99 with panels, and $1,799.99 refurbished."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Capacity and charging as the maker's listing text states",
+   "value": "3,840 Wh LiFePO4; up to 2,400 W solar, 150 W wind, '1,800W or 3,600W AC charging'; up to 80% in 1.2 hours; two units combine for 12,000 W",
+   "source": "https://naturesgenerator.com/products/lithium-6000-solar-generator",
+   "source_title": "Nature's Generator L6000 Expandable Solar Generator",
+   "read": "2026-11-27",
+   "note": "Text from the panel-bundle listing's search record, describing the same L6000 unit. Dealectric's record says 3,000 W AC charging and this listing says 1,800 W or 3,600 W: reconcile before publishing."
+  },
+  {
+   "product": "general",
+   "label": "What the cited comparison leaves un-normalised",
+   "value": "Solar Waypoint lists Jackery 5000 Plus cycle life as 3,000 cycles and F3800 Plus 'advertised peak' as 6,000 W, with no end-of-life percentage, no per-outlet limits and no surge duration",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-plus-vs-ecoflow-delta-pro-ultra-vs-jackery-explorer-5000-plus/",
+   "source_title": "Anker Solix F3800 Plus vs EcoFlow DELTA Pro Ultra vs Jackery Explorer 5000 Plus Comparison - Solar Waypoint",
+   "read": "2026-11-27",
+   "note": "Its 3,000-cycle Jackery figure conflicts with the 4,000 to 70% that HoldBackup reports. Its 6,000 W 'peak' for the Anker equals the continuous rating, and Anker's page lists no peak figure. It also lists the Delta Pro Ultra at 70 lb, which per HoldBackup is the inverter without the 111.8 lb battery."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 5000 Plus per-outlet lines (AC1+AC2 / AC3+AC4 at 30 A, 3,600 W; L14-30R/14-50 at 30 A, 7,200 W), surge duration and the 70% cycle basis from Jackery's own page or manual: the product page and endpoint returned 429, and the US manual PDF (cdn.shopify.com/.../Explorer_5000_Plus_User_Manual-US.pdf) downloaded but its text could not be extracted in this session.",
+  "EcoFlow DELTA Pro Ultra per-outlet ratings (5-20R, TT-30, L14-30R), per-leg 120 V limit and output with a single battery from EcoFlow: the store page returned 429 and the manual PDF returned 502.",
+  "Nature's Generator L6000 per-outlet and per-leg limits, surge watts and duration, cycle life with its end-of-life percentage, weight, UPS switchover and warranty: the product page returned 429 on three tries, and the sale end date (lead: 11-29) was not read.",
+  "Anker SOLIX F3800 Plus price and stock today (lead: sold out): storecheck returned 404 for the product and search endpoints, and the page text showed only 'Buy Now'.",
+  "Anker SOLIX F3800 Plus surge or peak watts, TT-30R rating and locked-rotor figure: Anker's page lists none, TheWattGuide's 9,000 W carries no source, and the manual PDF copy at signaturesolar.com downloaded but its text could not be extracted.",
+  "EcoFlow TITAN 5000 and TITAN 5000 Plus unit prices, capacity, surge, per-outlet limits and cycle life: the store search record showed only a $50 price and the product endpoint returned 429.",
+  "OSCAL PowerMax 6000 (a 6,000 W unit Dealectric lists) price and per-leg figures: storecheck returned 404 on oscal.hk and it was not pursued further.",
+  "BLUETTI RV5 + B4810 (5,000 W, linked by Dealectric): not checked for whether it is 120 V only or belongs in a portable power station table.",
+  "A named reviewer's measured usable watt-hours or sustained-load test at 5,000 W for any candidate: not searched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 3.2715171
+ }
+}

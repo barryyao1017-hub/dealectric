@@ -84,3 +84,41 @@ New records: UGREEN Nexode 20K 130W, UGREEN 48K 300W, Baseus FC41 20K 100W, Vant
 Skipped (research reasons in `growth/focus/ab/<folder>/`): x1126-macbook-pro-16 (stores rate-limited; the Float 2 Pro
 likely 4th of 4 on brightness and weight), k1126-full-size-low-profile (Keychron K5 Ultra/Max and NuPhy Air100 beat the
 Lofree 100-key boards on price and stock; writable if a Keychron Amazon record is added).
+
+## Power stations, 2026-11-27 (Barry: "Yes, power stations")
+
+Why: shopper visits since 10-28 put numbered power-station pages at 3.25 visits/page against 0.31 for every other
+power-station page shape (situation pages like "power station to run X in an outage" drew ~0), and BLUETTI + ALLPOWERS
+hold 58 of 63 sales. Cluster `s1127` in `numberedpages.py`; questions in
+`growth/focus/ab-harvest-new-2026-11-27-numbered-ps.json`; harvest run `2026-11-27-numbered-ps-harvest` (20 chats).
+
+How the numbers were chosen (desk research 11-27, Google suggest + Outdoor Gear Lab, Notebookcheck, StorageReview,
+The Solar Lab, Backup Power Hub's store tracker): price cap first ($200 ~300 Wh class; $300 top of the small class;
+$400-500 a 1 kWh LiFePO4 unit; $1,000 a 2 kWh unit or the cheapest 3 kWh); capacity tiers (1,000 / 2,000 / 3,000 /
+5,000 Wh); continuous AC watts (3,000 W runs heater + microwave or most of a TT-30; 5,000 W+ means a 120/240 V unit;
+many "3000W" listings are surge); weight (the ~50 lb one-person carry line, NIOSH 51 lb).
+
+| Page | Pick | Ours placed |
+|---|---|---|
+| [best-power-station-under-200](https://dealectric.com/best-power-station-under-200) | BLUETTI Elite 30 Mini (ours) | 1 |
+| [best-power-station-under-300](https://dealectric.com/best-power-station-under-300) | Pecron E500LFP (Amazon) | Elite 30 V2, Elite 30 Mini lower |
+| [best-1000wh-power-station-under-400](https://dealectric.com/best-1000wh-power-station-under-400) | DJI Power 1000 V2 at Micro-Tools $379.99 | Elite 100 Mini 2, P1800 4 |
+| [best-power-station-under-500](https://dealectric.com/best-power-station-under-500) | DJI Power 1000 V2 at Micro-Tools | Elite 100 Mini 2 |
+| [lightest-2000wh-power-station](https://dealectric.com/lightest-2000wh-power-station) | Anker SOLIX S2000 (ours; ships in 7-13 weeks, said in the answer) | 1 |
+| [best-power-station-under-1000](https://dealectric.com/best-power-station-under-1000) | Pecron F3000LFP (pre-order, no link) | Elite 200 V2 2, S2000 3 |
+| [best-3000w-power-station](https://dealectric.com/best-3000w-power-station) | Dabbsson 3000L (Amazon $969) | ALLPOWERS R3500 2 |
+| [best-3000wh-power-station](https://dealectric.com/best-3000wh-power-station) | BLUETTI Elite 300 (ours) | 1 (Jackery HomePower 3000 tested better but every variant sold out 11-27) |
+| [best-5000w-power-station](https://dealectric.com/best-5000w-power-station) | Nature's Generator L6000 (ours; deal ends 11-29) | 1 |
+| [best-5000wh-power-station](https://dealectric.com/best-5000wh-power-station) | EcoFlow TITAN 5000 Classic (Amazon) | Anker S5000 2 (ships in 15-16 weeks) |
+
+Rejected: best 500Wh (nothing of ours between 400 and 800 Wh), 2000W (duplicate of best-2000wh-power-station), 30 A /
+50 A RV (duplicates, or our 14-50 units sold out), UPS 10 ms (covered), 1500/1800 W (covered; DJI beats the P1800),
+plain best 1000Wh (ours 3rd-4th), under $100, lightest 3000Wh, 2000Wh under $700.
+
+Fixes made by hand before publish: the 3000Wh draft led with the sold-out Jackery (moved below the in-stock Elite 300);
+both DJI pages' pick line sent shoppers to Amazon at $469.99 while Micro-Tools sold it at $379.99 (row now links
+Micro-Tools, no affiliate; `build.py` pick rows take an optional `seller`). Lessons: the research step cannot see that
+a rival's Amazon record price differs from the dealer price it quotes; check every keep-pick and Amazon pick line
+against the answer's price before publishing. Brand stores 429 WebFetch: read partner prices in the Agent Chrome
+first and put them in the question notes (done here; Anker S2000 7-13 weeks and HELIOS $1,599 came from that).
+Growatt HELIOS 3600 record still says $1,399 (store page $1,599 on 11-27; not used by these pages).

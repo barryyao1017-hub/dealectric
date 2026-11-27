@@ -32,14 +32,15 @@ import openpage as O  # noqa: E402  (patches abpage for per-folder rules, querie
 A = O.A
 O.targets = lambda: {}   # openpage's 11-15 targets file lives on the retired work laptop; this run's pages carry their own query and chat files
 RUN = "numbered-1126"
-BATCHES = [("growth/focus/ab-harvest-new-2026-11-26-numbered.json", "2026-11-26-numbered-harvest")]
+BATCHES = [("growth/focus/ab-harvest-new-2026-11-26-numbered.json", "2026-11-26-numbered-harvest"),
+           ("growth/focus/ab-harvest-new-2026-11-27-numbered-ps.json", "2026-11-27-numbered-ps-harvest")]   # power stations (s1127), Barry 11-27
 HERE = Path(__file__).resolve().parent
 STORES = [ROOT / "growth/focus/clusters/stores-2026-11-21.json",   # partner stores' products with no record, read 11-21
           HERE / "stores-2026-11-26.json"]                         # the power bank partner products the 11-26 research named
 KEEPFILE = HERE / "keep.json"              # folders kept after the harvest read (README.md says why each was kept)
 STORE_SKIP = re.compile(r"\((IT|DE|ES|FR|CA|EU|UK)\)|Multilingual|Mystery|Side Dash Cam for|Micro USB|English Version", re.I)
 
-PRICE_RULES = """## Prices on this page (read 2026-11-26, Black Friday week)
+PRICE_RULES = """## Prices on this page (read 2026-11-26 or 11-27, Black Friday week)
 - Each of our rows shows the lowest price the shopper pays through our link on the date read: the store's sale price,
   less our code where the store takes the code on sale prices (the table below already carries cart-tested figures; use
   them as given). Black Friday prices end Nov 30 - Dec 1, 2026 at most stores: a claim that depends on a sale names its
@@ -136,6 +137,25 @@ CLUSTERS = {
   honestly wins (say which). Among near-ties prefer a product we can link: an approved program, then amazon.com.
 - The page needs at least one row from the screens we link. If none fits the question, return status "skip"
   with the reason."""},
+    "s1127": {
+        "name": "portable power stations", "categories": ("power-station",),
+        "ours": r"bluetti|allpowers|oscal|anker solix|growatt|mango|nature'?s generator|tenergy",
+        "rules": """## Rules for this page (numbered pages, power stations, 2026-11-27)
+- The category is portable power stations sold as the battery unit alone (no solar panels in the box). A row with panels
+  or an extra battery in the box is a different product: leave it out unless the question asks for it.
+- Capacity: give watt-hours as the maker states them and the cell chemistry (LiFePO4 / LFP or NMC). Where a named
+  reviewer measured usable AC output, give it with the reviewer's name; most units deliver 80-90% of the rated figure.
+- Output: continuous AC watts, surge, and any "lifting" / "X-Boost" / "Power Lifting" mode for what it is (it lowers the
+  voltage for resistive loads like kettles and heaters; it does not run motors above the rated watts). Name which
+  appliances that output runs, from the appliance maker's figures. 120 V only or 120/240 V, and the RV outlet (TT-30R)
+  where it decides the question.
+- What else decides most questions: price paid, weight (from the maker, in lb), AC recharge time to 80% or full,
+  solar input watts, UPS / EPS switchover in ms, expandability (which extra battery, its price), warranty years.
+- Title and H1: the shopper's question in its own plain words, with its number in it; no model numbers and no brand.
+- Pick honestly: the power station that wins the question, even when it is not ours; our product then wins the segment
+  it honestly wins (say which). Among near-ties prefer a product we can link: an approved program, then amazon.com.
+- The page needs at least one row from the power stations we link that belongs on the question's own terms. If none
+  fits, return status "skip" with the reason."""},
     "p1126": {
         "name": "power banks", "categories": ("power-bank",), "ours": r"aohi|baseus|ugreen|torras|anker|goal ?zero",
         "rules": """## Rules for this page (numbered pages, 2026-11-26)

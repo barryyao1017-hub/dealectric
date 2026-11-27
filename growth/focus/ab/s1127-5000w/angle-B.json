@@ -1,0 +1,198 @@
+{
+ "angle": "B",
+ "gap": "No result ChatGPT got states what a 5,000 W-class station costs per watt-hour or per minute at a 5,000 W load at today's maker-store prices: Pecron F5000LFP $0.47/Wh (pre-order, ships early January), Nature's Generator L6000 and OUPES Guardian 6000 V2 tied at $0.59/Wh, Jackery Explorer 5000 Plus $0.69/Wh.",
+ "standout": 2,
+ "standout_why": "Compared against solarwaypoint.com and holdbackup.com (both cited), powerbencher.com and thewattguide.com. All four print no prices, so none can state cost per Wh or per watt. Runtime at 5,000 W is already covered (thewattguide: 51 min for 5,040 Wh and 39 min for 3,840 Wh; powerbencher: 46 min for the F3800; ChatGPT's own answer: 50-55 min and 38-41 min). Wh per lb is on powerbencher for the older F3800 only. None of the four lists the Nature's Generator L6000, and only thewattguide mentions the OUPES Guardian 6000 V2 and Pecron F5000LFP. The new part is the price-based figures and the comparison of the Jackery's premium with an L6000 expansion battery.",
+ "decides": "It moves the value pick away from ChatGPT's Jackery pick, but it does not make the L6000 a clear #1. The Jackery ($3,499) costs 18% more per Wh than the L6000 ($2,249.99) or the OUPES Guardian 6000 V2 ($2,699); its extra 1,200 Wh over the L6000 costs $1.04/Wh, while the L6000's Power Pod adds 3,840 Wh at $0.39/Wh. L6000 + Power Pod is $3,749.98 for 7,680 Wh (about 78 min at 5,000 W), against the Jackery alone at about 51 min for $251 less. The L6000 and the OUPES tie to the cent on $/Wh and on dollars per minute at 5,000 W; the OUPES gives 768 Wh (about 8 minutes) more for $449 more, and the L6000 is the lower ticket for the same 6,000 W. The Pecron is cheapest per Wh but is a pre-order shipping early January, more than four weeks out. The L6000's standing depends on the sale price: at the $2,999.99 list price in Dealectric's record it would be $0.78/Wh, behind both the OUPES and the Jackery. I could not re-read that list price or the Nov 29 end date today.",
+ "candidates": [
+  "Nature's Generator L6000",
+  "OUPES Guardian 6000 V2",
+  "Pecron F5000LFP",
+  "Jackery Explorer 5000 Plus",
+  "Anker SOLIX F3800 Plus",
+  "EcoFlow TITAN 5000 Plus",
+  "EcoFlow DELTA Pro Ultra"
+ ],
+ "findings": [
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Cost per rated Wh, maker's US store",
+   "value": "$0.586/Wh",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "$2,249.99 ÷ 3,840 Wh = $0.586/Wh. Price, 'available: true', 3,840 Wh LiFePO4 and '6000W continuous' at 120/240 V come from the store's own search listing for this URL, read with storecheck.py search; the product page itself returned HTTP 429 on every attempt."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Cost per continuous watt",
+   "value": "$0.375/W",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "$2,249.99 ÷ 6,000 W = $0.375/W (maker's continuous figure)."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Minutes at a 5,000 W load and dollars per minute",
+   "value": "about 39 min; $57 per minute",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "3,840 Wh × 0.85 ÷ 5,000 W × 60 = 39.2 min; $2,249.99 ÷ 39.2 = $57.4. The 0.85 is an assumed usable share, not a measurement; before losses it is 46 min."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Wall refill time from the maker's AC input watts",
+   "value": "2.1 h at 1,800 W (120 V); 1.1 h at 3,600 W (240 V)",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "3,840 ÷ 1,800 = 2.13 h; 3,840 ÷ 3,600 = 1.07 h, before charging losses. The maker states '1,800W or 3,600W AC charging' and '80% charge in approximately 1.2 hours'. Each hour at 5,000 W takes 5,000 ÷ 1,800 = 2.8 h to put back from a 120 V socket, or 1.4 h at 3,600 W."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "What 3,600 W charging needs",
+   "value": "Super Charging Cable, $119.99, and a 240 V NEMA 14-50R outlet",
+   "source": "https://naturesgenerator.com/products/lithium-super-charging-cable",
+   "source_title": "Nature's Generator Lithium 6ft Super Charging Cable",
+   "read": "2026-11-27",
+   "note": "Store listing: 'Charge the L6000 to 80% in about 1.2 hours', 'Requires NEMA 14-50R Outlet'. Read with storecheck.py search."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Wh per lb",
+   "value": "34.3 Wh/lb",
+   "source": "https://www.pv-magazine.com/2025/08/13/natures-generator-releases-6-8-kw-3-8-kwh-compact-home-backup-battery/",
+   "source_title": "pv magazine (Ryan Kennedy, 13 Aug 2025): Nature's Generator releases compact home backup battery",
+   "read": "2026-11-27",
+   "note": "pv magazine gives 50.8 kg; × 2.2046 = 112.0 lb; 3,840 ÷ 112.0 = 34.3. The same article gives 3,000 cycles, 6 kW continuous and an L14-30R outlet. The maker's own weight could not be opened (429)."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Cost per Wh with one Power Pod",
+   "value": "$0.488/Wh; 7,680 Wh; about 78 min at 5,000 W",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-pod",
+   "source_title": "Nature's Generator L6000 Power Pod",
+   "read": "2026-11-27",
+   "note": "Power Pod $1,499.99, 'adds additional 3840Wh'. ($2,249.99 + $1,499.99) ÷ 7,680 = $0.488/Wh; 7,680 × 0.85 ÷ 5,000 × 60 = 78.3 min. The Pod alone is $1,499.99 ÷ 3,840 = $0.391/Wh. That is a station plus an extra battery, so it is not a row for the unit-alone table."
+  },
+  {
+   "product": "OUPES Guardian 6000 V2",
+   "label": "Cost per rated Wh, maker's US store",
+   "value": "$0.586/Wh",
+   "source": "https://oupes.com/products/oupes-guardian-6000-v2-portable-power-station",
+   "source_title": "OUPES Guardian 6000 V2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "$2,699 ÷ 4,608 Wh = $0.586/Wh, the same as the L6000 to three decimals. The store listing shows 'available: true' and '240V/6,000W (Boost 7,200W) & 120V/3600W dual-voltage output', so it meets 5,000 W only at 240 V. The 4,608 Wh figure is from the store's G5 battery line and bundle titles ('4.6–41.4 kWh'). Read with storecheck.py search; the product page returned 429."
+  },
+  {
+   "product": "OUPES Guardian 6000 V2",
+   "label": "Cost per continuous watt; minutes at 5,000 W; dollars per minute",
+   "value": "$0.450/W; about 47 min; $57 per minute",
+   "source": "https://oupes.com/products/oupes-guardian-6000-v2-portable-power-station",
+   "source_title": "OUPES Guardian 6000 V2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "$2,699 ÷ 6,000 = $0.450/W; 4,608 × 0.85 ÷ 5,000 × 60 = 47.0 min; $2,699 ÷ 47.0 = $57.4. Against the L6000: +768 Wh and +7.8 min for +$449."
+  },
+  {
+   "product": "OUPES Guardian 6000 V2",
+   "label": "Wh per lb",
+   "value": "41.2 Wh/lb",
+   "source": "https://thewattguide.com/articles/5000-watt-solar-generator/",
+   "source_title": "The Watt Guide: 5000 Watt Solar Generator: 5,000W vs 5,000Wh",
+   "read": "2026-11-27",
+   "note": "4,608 ÷ 111.8 lb (net weight as The Watt Guide prints it) = 41.2. The maker's page could not be opened for the weight."
+  },
+  {
+   "product": "OUPES Guardian 6000 V2",
+   "label": "Expansion battery cost per Wh",
+   "value": "$0.258/Wh (G5, 4,608 Wh, $1,190)",
+   "source": "https://oupes.com/products/oupes-g5-extra-battery",
+   "source_title": "OUPES G5 Extra Battery",
+   "read": "2026-11-27",
+   "note": "$1,190 ÷ 4,608 = $0.258/Wh. Station + G5 bought separately: $3,889 ÷ 9,216 Wh = $0.422/Wh. The store's own station + G5 bundle listing shows $4,099."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "Cost per rated Wh and per watt, maker's US store (pre-order)",
+   "value": "$0.469/Wh; $0.333/W",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V Pre-Order | Ships Early Jan",
+   "read": "2026-11-27",
+   "note": "$2,399 ÷ 5,120 Wh = $0.469/Wh; $2,399 ÷ 7,200 W = $0.333/W. The store rates it '200~240vac/ 7200W Max (Dual Phase)' and '3600W*2' at 120 V. Title says pre-order, ships early January, so more than four weeks out. The desk lead of $2,199 is stale. Read with storecheck.py search."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "Minutes at 5,000 W; wall refill time; Wh per lb",
+   "value": "about 52 min; 1.4 h at 3,600 W; 41.3 Wh/lb",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V",
+   "read": "2026-11-27",
+   "note": "5,120 × 0.85 ÷ 5,000 × 60 = 52.2 min. 5,120 ÷ 3,600 = 1.42 h before losses; the maker says '3600W AC Charging with 30A cable; 1.8 Hours'. 5,120 ÷ 123.9 lb = 41.3; the weight is as printed on thewattguide.com/articles/5000-watt-solar-generator/ (read 2026-11-27), not from the maker."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Cost per rated Wh and per watt, maker's US store",
+   "value": "$0.694/Wh; $0.486/W",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-27",
+   "note": "$3,499 ÷ 5,040 Wh = $0.694/Wh; $3,499 ÷ 7,200 W = $0.486/W. The store listing shows 'from' price $3,499, 'available: true', '7200W of rated power (14,400W surge)' and 5,040 Wh; its notices mark only the Battery Pack and transfer-switch bundles as pre-order. Read with storecheck.py search; the product page returned 429, so the variant was not confirmed on the page."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Minutes at 5,000 W; dollars per minute; Wh per lb",
+   "value": "about 51 min; $68 per minute; 37.5 Wh/lb",
+   "source": "https://www.solarwaypoint.com/compare-power-stations/anker-solix-f3800-plus-vs-ecoflow-delta-pro-ultra-vs-jackery-explorer-5000-plus/",
+   "source_title": "Solar Waypoint: Anker Solix F3800 Plus vs EcoFlow DELTA Pro Ultra vs Jackery Explorer 5000 Plus",
+   "read": "2026-11-27",
+   "note": "5,040 × 0.85 ÷ 5,000 × 60 = 51.4 min; $3,499 ÷ 51.4 = $68.1. 5,040 ÷ 134.5 lb (weight as Solar Waypoint prints it) = 37.5."
+  },
+  {
+   "product": "Jackery Explorer 5000 Plus",
+   "label": "Price of its extra capacity over the L6000",
+   "value": "$1.04 per extra Wh",
+   "source": "https://www.jackery.com/products/jackery-explorer-5000-plus",
+   "source_title": "Jackery Explorer 5000 Plus",
+   "read": "2026-11-27",
+   "note": "($3,499 − $2,249.99) ÷ (5,040 − 3,840 Wh) = $1,249.01 ÷ 1,200 = $1.04/Wh, against $0.391/Wh for the L6000's Power Pod. It also buys 7,200 W instead of 6,000 W continuous."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Wh per lb; wall refill time; stock",
+   "value": "28.1 Wh/lb; 2.1 h at 1,800 W; Sold Out",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-27",
+   "note": "3,840 ÷ 136.7 lb (Anker, net) = 28.1, the lowest of the five. 3,840 ÷ 1,800 W ('AC Input Power (Charging): 1800W Max') = 2.13 h; Anker says '< 3hrs' at 120 V 15 A. The L14-30R is rated '120V/240V~ 25A Max, 6000W Max'. The page showed 'Sold Out' / 'Notify Me' and no price, so no cost per Wh is given."
+  },
+  {
+   "product": "general",
+   "label": "5,000 W drain against a 120 V wall socket",
+   "value": "2.8 h of charging per hour of 5,000 W use",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station",
+   "read": "2026-11-27",
+   "note": "5,000 W ÷ 1,800 W = 2.78. This holds for the Anker (1,800 W max AC input) and for the L6000 on its standard cable (1,800 W, Nature's Generator listing). On 240 V at 3,600 W (L6000 with Super Charging Cable, Pecron with 30 A cable) it is 5,000 ÷ 3,600 = 1.4 h."
+  }
+ ],
+ "unsourced": [
+  "Maker product pages for Nature's Generator, OUPES, Pecron, Jackery and EcoFlow: every direct read (storecheck.py product and WebFetch) returned HTTP 429. Their prices, stock flags and spec text come from each store's search listing read with storecheck.py search today; variant-level price and ship notices should be re-read on the page.",
+  "Nature's Generator L6000 sale end date (Nov 29) and $2,999.99 list price: not re-read today. The search listing's compare-at figure was $6,199.97, which is not the list price in Dealectric's record.",
+  "EcoFlow TITAN 5000 Plus and TITAN 5000 full prices: the store listing shows only a $50 pre-order deposit (TITAN 5000 Plus 'Ships Late January'); the product pages returned 429 and the Amazon search came back empty, so no cost per Wh for either.",
+  "EcoFlow DELTA Pro Ultra (inverter + one battery) price and stock today: page returned 429; left out of the cost figures.",
+  "Anker SOLIX F3800 Plus price today: the Anker page showed 'Sold Out' with the price not loaded.",
+  "Jackery Explorer 5000 Plus stock for the unit alone: the listing flag says available, the desk note says sold out; the page could not be opened to settle it.",
+  "Maker-stated weights for the OUPES Guardian 6000 V2, Pecron F5000LFP and Jackery 5000 Plus: taken from The Watt Guide and Solar Waypoint as printed, and for the L6000 from pv magazine (50.8 kg).",
+  "Amazon prices for any candidate: both amzcheck searches returned nothing.",
+  "A named reviewer's measured usable Wh for any of these units: none looked up, so every runtime uses an assumed 85%.",
+  "OSCAL PowerMax 6000 (6,000 W, ours) and BLUETTI RV5 + B4810 (5,000 W, ours): not researched; the OSCAL store address guessed for storecheck returned 404."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 3.5480935
+ }
+}

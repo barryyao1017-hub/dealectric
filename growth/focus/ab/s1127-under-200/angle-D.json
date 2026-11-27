@@ -1,0 +1,103 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the maker's own manual for the $199 pick fixes actual output at 300 W even in its \"600 W\" mode, subtracts about 5 W of self-consumption in its runtime formula (so a 10 W router gets about 16 h, not 29 h), and can cut AC after 1-4 h of low load if ECO mode is switched on.",
+ "standout": 2,
+ "standout_why": "Compared against the two cited pages (The Inertia, PowerSized) and five uncited results (Watt & Warden, MachineFanatic, Radar of Products, The Power Station Guide, RV Gear Lab). The Inertia has no X-Boost, idle-draw or auto-off content and only a hypothetical 85% example. PowerSized gives price, Wh, W and lb for the Elite 30 mini and nothing on mechanism. Watt & Warden lists \"600 W X-Boost\" unexplained and plans at 85%. MachineFanatic says \"An idle inverter drains the pack\" with no watts. The Power Station Guide comes closest: it says boost modes \"temporarily reduce voltage to let motors start\" (BLUETTI's manual limits the mode to pure resistive loads), gives 80-90% usable, and gives idle draw only for no-name units (40-50 W). None gives the maker's self-consumption figure, runtime formula or ECO thresholds for a sub-$200 pick. ChatGPT's own answers already said the 600 W boost is not the continuous rating and estimated about 230 Wh through AC, so the direction is known; the maker's numbers and the low-load effect are new.",
+ "decides": "Confirms the BLUETTI Elite 30 mini as a 300 W pick and changes how the line should be ranked and explained. The 300 W-class rows should be ranked on 300 W, because BLUETTI's manual says actual output stays 300 W in Power Lifting mode. A unit with a true 600 W continuous inverter is a different class (VTOMAN Jump 600X is a lead only; I could not open its page). For the loads this budget serves, self-consumption matters more than the boost figure: by BLUETTI's formula about 246 Wh is usable and 5 W goes to the unit, so small loads lose a third or more of the naive runtime. The page should tell shoppers to leave ECO off for loads under its threshold (off is the default). It should also say the unit will not charge below 32 °F.",
+ "candidates": [
+  "BLUETTI Elite 30 mini",
+  "EcoFlow RIVER 3",
+  "EcoFlow RIVER 2",
+  "VTOMAN Jump 600X",
+  "AFERIY P040",
+  "Anker SOLIX C300X (refurbished)"
+ ],
+ "findings": [
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "Power Lifting mode: actual output (maker's manual, p. 16)",
+   "value": "300 W actual output; mode covers pure resistive loads rated 300-600 W",
+   "source": "https://www.manualslib.com/manual/4692445/Bluetti-Elite-30-Mini.html?page=16#manual",
+   "source_title": "BLUETTI Elite 30 mini User Manual (ManualsLib copy), p. 16",
+   "read": "2026-11-27",
+   "note": "Verbatim: \"While the Elite 30 mini can handle such loads, its actual output power is still 300 W.\" Paraphrased from the same page: the mode is for purely resistive loads (kettles, electric blankets, hair dryers) rated 300-600 W, is disabled by default and is enabled in the BLUETTI app. A 600 W kettle would therefore heat at about half its rated power. BLUETTI's own PDF (https://cdn.shopify.com/s/files/1/0536/3390/8911/files/Elite_30_mini_User_Manual_US_EN-FR-compressed.pdf, linked from support.bluettipower.com/en-us/products/elite-30-mini) was opened but its text could not be extracted, so the ManualsLib copy was read."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "Runtime formula and self-consumption (maker's manual, p. 24)",
+   "value": "Self-consumption about 5 W; DoD 95%; inverter efficiency over 90%",
+   "source": "https://www.manualslib.com/manual/4692445/Bluetti-Elite-30-Mini.html",
+   "source_title": "BLUETTI Elite 30 mini User Manual (ManualsLib copy), p. 24",
+   "read": "2026-11-27",
+   "note": "Verbatim: \"Operation time = Battery Capacity × DoD × η ÷ (Load power + Elite 30 mini's Self-consumption)\"; \"The Elite 30 mini's self-consumption is about 5 W.\"; \"DoD (Depth of Discharge) is 95%.\"; \"η (inverter efficiency) is over 90%.\" My arithmetic at η = 90%: 288 × 0.95 × 0.90 = 246.2 Wh usable. 50 W load: 246.2 ÷ 55 = 4.5 h. 10 W router: 246.2 ÷ 15 = 16.4 h (naive 288 ÷ 10 = 28.8 h). 5 W load: 246.2 ÷ 10 = 24.6 h (naive 57.6 h). 100 W: 246.2 ÷ 105 = 2.3 h. These are maker-formula estimates, not measurements."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "ECO mode auto shut-off of AC/DC at low load (maker's manual, p. 16, section 5.4)",
+   "value": "AC-ECO threshold 10-40 W, DC-ECO 5-20 W, auto-off after 1-4 h; off by default",
+   "source": "https://www.manualslib.com/manual/4692445/Bluetti-Elite-30-Mini.html?page=16#manual",
+   "source_title": "BLUETTI Elite 30 mini User Manual (ManualsLib copy), p. 16",
+   "read": "2026-11-27",
+   "note": "Verbatim: \"the Elite 30 mini will shut off the AC or DC output after a period of low or no load.\" Paraphrased from the same section: thresholds and delay are set in the app; both ECO modes are disabled by default; they are unavailable during AC charging; the manual says to turn ECO off for small devices or critical appliances such as lights and refrigerators. Consequence: with AC-ECO on, a load below the 10 W minimum threshold (a small router, a phone charger) loses AC after 1-4 h; with ECO off the inverter stays on and the 5 W self-consumption keeps running."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "UPS switchover and standby draw",
+   "value": "Within 10 ms (manual); under 10 ms with 5 W standby draw (store page)",
+   "source": "https://www.bluettipower.com/products/elite-30-mini-portable-power-station",
+   "source_title": "BLUETTI Elite 30 mini Portable Power Station | 300W, 288Wh (BLUETTI US)",
+   "read": "2026-11-27",
+   "note": "Store page: \"Switches to battery power in under 10ms when the grid goes down, with just 5W of standby power draw.\" Manual p. 19 (https://www.manualslib.com/manual/4692445/Bluetti-Elite-30-Mini.html?page=19#manual): \"It swiftly switches to battery power within 10 ms during an outage.\" and \"Connect the Elite 30 mini to the wall, and it directly draws power from the outlet to operate connected devices.\" The store FAQ gives \"300W of rated AC output and supports up to 600W Power Lifting\" with no explanation of the mode on that page."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "Charging and discharging temperature limits (maker's manual, p. 21)",
+   "value": "Charges 32 °F to 104 °F (0-40 °C); discharges -4 °F to 104 °F (-20 to 40 °C)",
+   "source": "https://www.manualslib.com/manual/4692445/Bluetti-Elite-30-Mini.html?page=21#manual",
+   "source_title": "BLUETTI Elite 30 mini User Manual (ManualsLib copy), p. 21",
+   "read": "2026-11-27",
+   "note": "Verbatim: \"Charging Temperature 0°C to 40°C/32°F to 104°F\"; \"Discharging Temperature -20°C to 40°C/-4°F to 104°F\". LiFePO4 cells do not accept charge below freezing, so winter car-camping recharge needs the unit warmed first. The same page gives 288 Wh and about 3.3 kg (7.28 lb)."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "Price and stock, BLUETTI US store",
+   "value": "$199.00 (compare-at $249.99), in stock",
+   "source": "https://www.bluettipower.com/products/elite-30-mini-portable-power-station",
+   "source_title": "BLUETTI Elite 30 mini Portable Power Station | 300W, 288Wh (BLUETTI US)",
+   "read": "2026-11-27",
+   "note": "Read with storecheck.py product: variant \"Elite 30 mini\", price 199.0, compare_at 249.99, available true. The page shows \"2–5 Business Days Delivery（Except for pre-sale products）\" and no pre-order notice. This is a sale price; BLUETTI's Black Friday sale end date comes from the desk notes, not from a page I read."
+  },
+  {
+   "product": "EcoFlow RIVER 3",
+   "label": "Measured usable AC energy (StorageReview, Corinne OBrien, 2024-10-07)",
+   "value": "210 Wh delivered against the 245 Wh rating (85.7%), 300 W fan load; 270 Wh drawn from the wall to refill",
+   "source": "https://www.storagereview.com/review/ecoflow-river-3-review",
+   "source_title": "EcoFlow RIVER 3 Review (StorageReview)",
+   "read": "2026-11-27",
+   "note": "210 ÷ 245 = 85.7% is my arithmetic from StorageReview's two figures. The review tested nothing above 300 W, so it has no X-Boost measurement; its text gives a 10 ms transfer time while its spec table says <20 ms."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages say about the boost mechanism",
+   "value": "The Power Station Guide: boost modes \"temporarily reduce voltage to let motors start\"; MachineFanatic: \"An idle inverter drains the pack\" (no watts)",
+   "source": "https://thepowerstationguide.com/blog/best-portable-power-stations-under-200",
+   "source_title": "Best Portable Power Stations Under $200 (2026) | The Power Station Guide",
+   "read": "2026-11-27",
+   "note": "The motor-start description conflicts with BLUETTI's manual, which limits Power Lifting to pure resistive loads and says actual output stays 300 W. MachineFanatic page read the same day: https://www.machinefanatic.com/guide/best-power-station-under-200. Neither page was cited by ChatGPT; the two cited pages (theinertia.com, powersized.com/deals/black-friday/) have no mechanism content."
+  }
+ ],
+ "unsourced": [
+  "EcoFlow's own wording for X-Boost on the RIVER 3 (which loads, voltage reduction, unavailable in bypass) and its AC timeout default: us.ecoflow.com returned 429 twice, and the manuals.plus and REI-hosted manual copies returned 403.",
+  "VTOMAN Jump 600X: whether its 600 W is a true continuous inverter rating, its V-Beyond wording, price and stock; vtoman.com returned 429.",
+  "AFERIY P040 and Anker SOLIX C300X: maker wording on surge or boost modes, self-consumption and auto-off; not reached within the call budget.",
+  "BLUETTI Elite 30 mini bypass (grid pass-through) watt limit, the surge tiers and the 'total output 300 W max for AC and DC combined' line: the ManualsLib text of spec page 21 came out jumbled (300 W and 600 W both appear beside AC charging/bypass), so no figure is given; BLUETTI's PDF is the place to check.",
+  "An independent measurement of the Elite 30 mini's idle draw or usable Wh by a named reviewer: the search returned only Elite 30 V2 results, and I did not open them.",
+  "Maker wording that a voltage reduction is how Power Lifting works on the Elite 30 mini: the manual text I could read states the 300 W actual output but not the voltage behaviour."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.864643900000001
+ }
+}

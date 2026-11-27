@@ -1,0 +1,90 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the Anker SOLIX S2000's whole battery is rated 6.4 V / 314 Ah (two 3.2 V LFP cells' worth, built cell-to-chassis), so a 2 kWh LFP station cannot weigh much under about 25 lb of cells before the case and inverter.",
+ "standout": 2,
+ "standout_why": "Read today: powerbencher (cited) gives the S2000's 35.7 lb and 56.3 Wh/lb but no cause; slopsheets blames a fixed 'tax' of housing, inverter, ports and display, leaves the S2000 out and gives no cell figures; offgridbenchmark, smartgadgetkit and powerstations.reviews give weights only. None names 314 Ah cells, the 6.4 V pack, cell-to-chassis or a cell-weight floor. jackery.com (cited) and solargenreview returned HTTP 429, so I could not check whether they describe Jackery's cell-to-body build; scored 2 rather than 3 because the finding explains the pick and does not change it.",
+ "decides": "Confirms the Anker SOLIX S2000 as lightest at 35.7 lb and explains why: its manual rates the pack at 6.4 V / 314 Ah, and a 314 Ah LFP cell weighs about 5.6 kg, so about 24.7 lb of the 35.7 lb is cell and only about 11 lb is everything else. The Jackery Explorer 2000 v2 (39.5 lb per ChatGPT's results) gets there by dropping the module stage (cell-to-body). The S2000's catch remains its 1,500 W output, which Notebookcheck lists as a con ('low output power').",
+ "candidates": [
+  "Anker SOLIX S2000",
+  "Jackery Explorer 2000 v2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Rated battery capacity (user manual spec table)",
+   "value": "6.4 VDC / 314 Ah / 2,010 Wh",
+   "source": "https://www.manualslib.com/manual/4636114/Anker-Solix-S2000.html",
+   "source_title": "Anker SOLIX S2000 User Manual (ManualsLib), spec table p. 17-18",
+   "read": "2026-11-27",
+   "note": "6.4 V is two 3.2 V LFP cells in series (2 × 3.2 V × 314 Ah = 2,009.6 Wh); the cell count is my arithmetic, the manual does not state it. Same table: discharge -4 to 104 °F, charge 32 to 104 °F. Anker's own support-site copy of the guide would not load."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Cells, weight and size in Anker's words (US page)",
+   "value": "\"next-generation 314Ah LFP cells derived from utility-scale energy storage\"; 8.2 × 11.1 × 12.7 in, 35.7 lb (16.2 kg); 2,010 Wh; 1,500 W AC output",
+   "source": "https://ankersolix.com/s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX US)",
+   "read": "2026-11-27",
+   "note": "Footnote: the 'smallest and lightest 2kWh power station' claim rests on Anker's internal comparison against selected mainstream 2 kWh stations. The same page lists bypass mode at 1,800 W max, while Notebookcheck reports 2,300 W (likely the EU unit). The fetched text showed no price or shipping notice."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Why it is light, in Anker's words",
+   "value": "\"314Ah lithium iron phosphate (LFP) cells built with a cell-to-chassis design\" \"that removes the modular casing layers other 2kWh units carry\"; about 25% lighter and 30% smaller than a 2 kWh-class average of about 21.6 kg / 27.1 L",
+   "source": "https://www.ankersolix.com/au/blogs/news/whats-the-lightest-2kwh-power-station-you-can-take-camping-in-australia",
+   "source_title": "What's the lightest 2kWh power station you can take camping in Australia (Anker SOLIX AU blog, 2026-09-25)",
+   "read": "2026-11-27",
+   "note": "Maker's claim on its Australian site; the class average is Anker's own May 2026 comparison and names no rival weights."
+  },
+  {
+   "product": "general",
+   "label": "Weight of one 314 Ah LFP cell (EVE MB31)",
+   "value": "5,600 g ± 300 g; 3.2 V, 314 Ah; 173.7 × 71.7 × 207.2 mm",
+   "source": "https://www.evemall.eu/power-battery/prismatic-lfp-cell/mb31",
+   "source_title": "EVE MB31 prismatic LFP cell (EVE-branded EU store)",
+   "read": "2026-11-27",
+   "note": "Anker does not name its cell maker, so this is a representative 314 Ah cell. Arithmetic: 1,004.8 Wh / 5.6 kg = about 179 Wh/kg; two cells = 11.2 kg = 24.7 lb, which is 69% of the S2000's 16.2 kg and leaves about 5.0 kg (11 lb) for inverter, case and ports. The page does not confirm it is EVE's official store, though it links to evebattery.com."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Notebookcheck's weight, usable capacity and cons",
+   "value": "16.2 kg, \"the lightest 2-kWh power station we have come across so far\"; just over 1,900 Wh drawn at about 250 W AC (about 95% of the stated 2,000 Wh); cons: \"low output power\", \"few ports\", \"no LED light\"",
+   "source": "https://www.notebookcheck.net/2-kilowatt-hours-have-never-been-this-light-Anker-Solix-S2000-power-station-review.1418245.0.html",
+   "source_title": "2 kilowatt hours have never been this light: Anker Solix S2000 power station review (Notebookcheck, Marcus Schwarten, 2026-10-07)",
+   "read": "2026-11-27",
+   "note": "Notebookcheck gives no cause for the weight (\"the usual LFP cells\"). It tested the EU unit rated 2,000 Wh. About 82% of charging energy reached the battery; about 78% round trip."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Idle draw (ESS News)",
+   "value": "Anker's figures: 6 W with AC on, about 2 W with outlets off; ESS News measured about 2 W average over 10 hours with AC on and no load",
+   "source": "https://www.ess-news.com/2026/05/19/anker-solix-s2000-review-2-kwh-power-station-built-for-the-long-haul/",
+   "source_title": "Anker Solix S2000 review: 2 kWh power station built for the long haul (ESS News, Andrew Riha, 2026-05-19)",
+   "read": "2026-11-27",
+   "note": "Its key specs list '2,009.6 Wh / 314 Ah LFP', which matches the two-cell arithmetic. It notes 1,500 W rules out a hair dryer plus microwave together. Notebookcheck saw just over 10% of charge lost per 24 h with AC on, a higher idle loss than this."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Why it is light, in Jackery's words (cell-to-body)",
+   "value": "CTB \"eliminates the modular stage\": cells go straight into a honeycomb bottom shell; \"41% less volume and 36% less weight than conventional models in its class\"; 17.5 kg",
+   "source": "https://prnewswire.co.uk/news-releases/revolutionary-ev-battery-technology-redefines-portable-power-jackery-becomes-the-first-to-integrate-cell-to-body-technology-302386170.html",
+   "source_title": "Jackery becomes the first to integrate Cell-to-Body technology (Jackery press release, PR Newswire, 2025-02-27)",
+   "read": "2026-11-27",
+   "note": "European release, so 17.5 kg is the EU unit; the US 39.5 lb figure comes from ChatGPT's result titles and other pages' tables because jackery.com returned HTTP 429 today. Its 'lightest 2-kWh LiFePO4 power station' claim dates from February 2025, before the S2000."
+  }
+ ],
+ "unsourced": [
+  "Number of cells inside the S2000 as stated by Anker or shown in a teardown: only the 6.4 V / 314 Ah rating was found, and the two-cell count is arithmetic.",
+  "Anker's reason for the 1,500 W output cap: no Anker text or reviewer ties it to the 6.4 V pack. By my arithmetic 1,500 W at 6.4 V is about 234 A before losses.",
+  "Which maker's 314 Ah cell Anker uses: looked on the US page, the AU blog, ESS News and Notebookcheck.",
+  "Jackery Explorer 2000 v2 battery rating (a search snippet says 45.6 Ah / 44.8 V), US weight and today's price on jackery.com: the product page and storecheck returned HTTP 429, and the Jackery FAQ page did not carry the spec.",
+  "Anker SOLIX S2000 price and ship notice today: storecheck returned 404 on the ankersolix.com product URLs tried, and the page text that loaded showed no price.",
+  "Trina and Hithium 314 Ah cell datasheets as a cross-check on cell weight: both PDFs downloaded but their text could not be extracted here."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.5971670999999996
+ }
+}
