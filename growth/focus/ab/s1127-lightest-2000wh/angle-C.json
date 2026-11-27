@@ -1,0 +1,139 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states that the Anker SOLIX S2000's solar port takes only 8.2 A below 28 V (about 230 W at most from 12 V-class panels), so its 400 W needs a 28-60 V panel such as one Anker PS400 or two PS200 in parallel, and that Anker's own table marks it 'Expandable Battery: No' and '12V DC Port: No'.",
+ "standout": 2,
+ "standout_why": "I opened only one rival page, Powerbencher (cited). It already says the S2000 has no 12 V DC output and that solar input caps at 400 W; it says nothing on the S2000's solar voltage/current window, which panels reach 400 W, or expansion. It also says 'No solar input figure is published' and 'No expansion battery is listed' for the Jackery Explorer 2000 v2. The cited Jackery product page returned HTTP 429 on every try, so I could not compare against it. I did not open solargenreview, keptpowered, thiswatt, slopsheets, powerstations.reviews, offgridbenchmark or smartgadgetkit.",
+ "decides": "It confirms the S2000 as the lightest row at 35.7 lb but does not move the weight ranking. It adds three limits a buyer should see before paying: no expansion battery, no 12 V socket, and 400 W of solar only from a 28-60 V panel. Separately, Anker's US page read today says S2000 orders placed on or after Nov. 26 ship within 7-13 weeks. Under the page's four-week rule that stops it being the pick if another row ships sooner, so the Jackery Explorer 2000 v2 (39.5 lb per ChatGPT's results; its page was unreadable today) needs its stock and price read before the pick is set.",
+ "candidates": [
+  "Anker SOLIX S2000",
+  "Jackery Explorer 2000 v2",
+  "Anker SOLIX C2000 Gen 2",
+  "EcoFlow DELTA 2 Max",
+  "BLUETTI Elite 200 V2"
+ ],
+ "findings": [
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Solar (MPPT) input window, XT60i port",
+   "value": "8.2 A max below 28 V; a higher current limit from 28 V to 60 V; 400 W max",
+   "source": "https://www.ankersolix.com/ca/s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX Canada product page, spec table)",
+   "read": "2026-11-27",
+   "note": "This is Anker's Canadian page; the US page gives no solar voltage or current. The fetch returned the line as '1V - 28V⎓8.2A; 28V - 60V⎓2.5A Max (400W Max)'. Leading digits look dropped: 2.5 A at 60 V is only 150 W, and 400 W / 12.5 A = 32 V fits. The likely true line is '11V - 28V⎓8.2A; 28V - 60V⎓12.5A', which a search snippet of Anker's support article also showed, but that article would not open. Re-read in a browser before printing 11 V or 12.5 A. The '28V⎓8.2A' and '400W Max' parts read cleanly."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Most solar it can take from a panel array under 28 V",
+   "value": "229.6 W at most",
+   "source": "https://www.ankersolix.com/ca/s2000",
+   "source_title": "Anker SOLIX S2000 (Anker SOLIX Canada product page, spec table)",
+   "read": "2026-11-27",
+   "note": "Arithmetic on Anker's figures: 28 V × 8.2 A = 229.6 W. Paralleled 12 V-class panels sit below 28 V, so they cannot reach the 400 W cap however many are added."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Anker panels that reach the 400 W input",
+   "value": "One PS400 (48 V / 8.33 A) or two PS200 (48 V / 4.16 A each); input capped at 400 W even with a larger array",
+   "source": "https://www.ankersolix.com/blogs/solar/solar-panel-sizing-calculator-2000wh-power-station",
+   "source_title": "Solar panel sizing calculator for a 2000Wh power station (Anker SOLIX blog, dated 02/09/2026)",
+   "read": "2026-11-27",
+   "note": "Anker's words: 'use one PS400 or two compatible PS200 panels' and 'Even with an array rated above 400W, the S2000 cannot accept more than that limit.' Arithmetic: two PS200 in parallel = 48 V / 8.32 A, inside the 28-60 V window; in series = 96 V, above the 60 V top of the window. The blog itself only says to confirm that a parallel arrangement is supported."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Expansion battery",
+   "value": "None: comparison table lists 'Expandable Battery: No'",
+   "source": "https://www.ankersolix.com/products/s2000-portable-power-station",
+   "source_title": "Anker SOLIX S2000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-27",
+   "note": "Anker's 22 May 2026 blog adds 'No expansion bay is listed on the S2000 status page' and that chaining units through AC 'is not the same as F2000 BP2000 expansion' (https://www.ankersolix.com/blogs/home-power-backup/anker-solix-s2000-official-specs-rumors-faq)."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "12 V DC (car socket) output",
+   "value": "None: comparison table lists '12V DC Port: No'",
+   "source": "https://www.ankersolix.com/products/s2000-portable-power-station",
+   "source_title": "Anker SOLIX S2000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-27",
+   "note": "The Canadian spec table lists only AC, 2 USB-A (12 W) and 2 USB-C (15 W and 100 W) outputs. Powerbencher already states this ('no 12V DC output, which rules out 12V fridges, tyre pumps and vehicle accessories'), so it is not new."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "1,600 W UltraFast AC charging requirement",
+   "value": "Needs the Anker app; default AC input is 1,150 W",
+   "source": "https://www.ankersolix.com/blogs/home-power-backup/anker-solix-s2000-official-specs-rumors-faq",
+   "source_title": "Anker SOLIX S2000 official specs, rumors, FAQ (Anker SOLIX blog, last updated May 22, 2026)",
+   "read": "2026-11-27",
+   "note": "Anker's words: '1,600 W UltraFast needs the app.' The Canadian spec table gives AC Input (Charging) 1,150 W and AC Input (Ultra-Fast Charging) 1,600 W."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Accessories Anker lists with it",
+   "value": "Anker SOLIX 400W Bifacial Solar Panel; Anker SOLIX Alternator Charger at $329.99",
+   "source": "https://www.ankersolix.com/products/s2000-portable-power-station",
+   "source_title": "Anker SOLIX S2000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-27",
+   "note": "Both sit under 'You May Also Need'. The page does not describe how the Alternator Charger connects or what charge rate the S2000 takes from it, so treat this as a listing, not a stated pairing."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Price, ship time, weight, UPS, warranty on the maker's US store",
+   "value": "$649.99 (list $999.99); 'Orders placed on or after Nov. 26 will ship within 7-13 weeks'; 35.7 lb; 2,010 Wh; 1,500 W rated / 3,000 W peak; 10 ms UPS; 5-year warranty",
+   "source": "https://www.ankersolix.com/products/s2000-portable-power-station",
+   "source_title": "Anker SOLIX S2000 Portable Power Station (Anker SOLIX US store)",
+   "read": "2026-11-27",
+   "note": "Station-only 'Starter Choice' variant. ChatGPT's cards showed $699.99 at Micro Center and $729.99 at Outbound Power; I did not read those sellers."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Which Jackery battery pack pairs with which model",
+   "value": "Battery Pack 2000 Plus v2 is listed as 'Compatible with HomePower 2000 Plus v2' only; Explorer 2000 v2 sits in the 'Standard Series', not the 'Expandable Series'",
+   "source": "https://www.jackery.com/blogs/buying-advice/jackery-homepower-2000-plus-v2-vs-explorer-2000-plus-vs-explorer-2000-v2-which-should-you-buy",
+   "source_title": "Jackery HomePower 2000 Plus v2 vs. Explorer 2000 Plus vs. Explorer 2000 v2: Which Should You Buy (Jackery)",
+   "read": "2026-11-27",
+   "note": "Read from the site's product menu on that page; the article body was cut off by the fetch. Jackery does not say in the text I read that the Explorer 2000 v2 cannot take a pack, only that no pack names it."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "What Powerbencher (cited rival) states on its compatibility",
+   "value": "'No expansion battery is listed'; 'No solar input figure is published'; 2,042 Wh, 2,200 W, 39.5 lb",
+   "source": "https://powerbencher.com/stories/by-size/best-2000wh-portable-power-stations/",
+   "source_title": "Best 2000Wh Power Stations (2026) - Runtime and Weight (Powerbencher)",
+   "read": "2026-11-27",
+   "note": "A rival's statement, not Jackery's. The page gives no prices."
+  },
+  {
+   "product": "EcoFlow DELTA 2 Max",
+   "label": "Expansion and weight, as Powerbencher states them",
+   "value": "'from 2kWh to 6kWh with up to 2 extra batteries'; 2,048 Wh; 50.7 lb",
+   "source": "https://powerbencher.com/stories/by-size/best-2000wh-portable-power-stations/",
+   "source_title": "Best 2000Wh Power Stations (2026) - Runtime and Weight (Powerbencher)",
+   "read": "2026-11-27",
+   "note": "A rival's statement; I did not open EcoFlow's page."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Expansion and weight, as Powerbencher states them",
+   "value": "'No expansion battery appears in its published specifications'; 2,073.6 Wh; 53.35 lb",
+   "source": "https://powerbencher.com/stories/by-size/best-2000wh-portable-power-stations/",
+   "source_title": "Best 2000Wh Power Stations (2026) - Runtime and Weight (Powerbencher)",
+   "read": "2026-11-27",
+   "note": "A rival's statement; I did not open BLUETTI's page."
+  }
+ ],
+ "unsourced": [
+  "Anker's support article on S2000 solar wiring (service.ankersolix.com, 'How do I connect solar panels to Anker SOLIX S2000, and does it support series connections?'): returned 404 to the fetcher three times, and the service.anker.com mirror did too. A search snippet showed a 60 V open-circuit limit, a 12.5 A short-circuit limit and parallel-only wiring; those are not reported as facts here.",
+  "Anker SOLIX S2000 user manual (model AS220): both device.report copies returned 403, so the solar input line, car-charging input and box contents are not read from the manual.",
+  "Whether the S2000 ships with an MC4-to-XT60 solar cable or a car charging cable: the 'What's in the box' section on Anker's US page was blank.",
+  "How the Anker SOLIX Alternator Charger connects to the S2000 and at what watts: the US page lists the accessory without a compatibility statement.",
+  "Jackery Explorer 2000 v2 from Jackery: today's price and stock, weight, DC8020 solar input voltage/amps/watts, which SolarSaga panels and how many, car port output. The product page and the store check returned 429, the Jackery FAQ page was cut off before its content, and the manual copy on manuals.plus came back as an unreadable PDF and then 403.",
+  "Anker SOLIX C2000 Gen 2: weight, price, 12 V socket and expansion battery pairing. The Anker manual PDF exceeded the fetch size limit and the product URL I tried resolved to a different product. A search snippet showed 'PV / XT-60 Input 11-60V⎓17A Max, 800W'; it is not reported as a fact.",
+  "Growatt INFINITY 2000 PRO, DJI Power 2000 and ALLPOWERS R2500 V2 compatibility cells: not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.7135029999999993
+ }
+}
