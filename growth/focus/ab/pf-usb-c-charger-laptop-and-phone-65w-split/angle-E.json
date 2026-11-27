@@ -1,0 +1,138 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states how long its pick can hold full power. Techtest.org (Michael Barton) measured the Anker Prime 100W A2688 holding 100 W for about an hour before it overheated and throttled. Smartzone measured the same charger dropping to 60 W, below the 65 W this question asks for. The same techtest.org author found the UGREEN Nexode 100W 4-port (CD226) passed his 6-hour constant 100 W test.",
+ "standout": 2,
+ "standout_why": "I compared against three pages. Anker's service page (service.anker.com …a08J1000000XmldIAC) and Anker's US product page give only the maker's split (65 W + 35 W) and no measured figures. The product page says only that temperature is 'monitored 35 times per second'. ComputingForGeeks (rank 13 in chat 2) reprints Mighty Gadget's 65 W + 30 W chart for the UGREEN and says 'These six weren't tested with a USB power meter.' Mighty Gadget's own reviews of both chargers state the splits but measure no per-port watts, temperatures or throttling. None of these has a sustained-load or throttling figure. I could not open the cited ugreen.com/it-it page (HTTP 429), and I did not read thisusb.com, soldermag.com or techgearlab.com.",
+ "decides": "The finding pulls the pick away from ChatGPT's first answer (Anker A2688) and toward the UGREEN Nexode 100W 4-port. Both makers rate the laptop port at 65 W with a phone attached. Measured under sustained load, though, the Anker throttles: techtest.org gives about 1 hour at 100 W; Smartzone gives a drop to 60 W after its housing reached 55 °C at 10 minutes. The CD226 passed a 6-hour 100 W test. All of these tests were single-port 100 W loads, not a measured 65 W + 35 W split, so the page must say the throttle under a two-device load is inferred, not measured. The same research rules out the Baseus PicoGo Pro AH22 for this page: techtest.org gives its two-port split as 45 W + 45 W, so it falls short of the 65 W line and goes in the 'left out' note. The UGREEN 100W Retractable has no sustained-load test, so its placement rests on the split alone.",
+ "candidates": [
+  "Anker Prime Charger 100W 3-Port (A2688)",
+  "UGREEN Nexode 100W 4-Port GaN Charger (CD226)",
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+  "Baseus PicoGo Pro AH22 100W"
+ ],
+ "findings": [
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Two-device split, maker's figure",
+   "value": "USB-C1 + USB-C2: 65 W + 35 W; three ports 89 W max",
+   "source": "https://service.anker.com/product-description/a08J1000000XmldIAC?recordId=a08J1000000XmldIAC",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, Prime) – Product Information",
+   "read": "2026-11-27",
+   "note": "Maker's spec table, not a measurement. ChatGPT cited this page."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Sustained 100 W before throttling (techtest.org, Michael Barton, 2024-11-07)",
+   "value": "about 60 min at 100 W, then throttles",
+   "source": "https://techtest.org/ist-das-anker-prime-100w-das-beste-kompakte-ladegeraet-detaillierter-test/",
+   "source_title": "Ist das Anker Prime 100W das beste kompakte Ladegerät? Detaillierter Test",
+   "read": "2026-11-27",
+   "note": "Quote: 'Es schafft die 100 W für ca. eine Stunde, bevor es überhitzt und die Leistung drosselt.' Single-port 100 W load. The throttled wattage is not stated, and there was no two-device test."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Throttled output under a 100 W load (Smartzone, 2024-09-12)",
+   "value": "60 W",
+   "source": "https://www.smartzone.de/anker-prime-100w-faltbares-gan-ladegeraet-im-test-ein-heisses-teil/",
+   "source_title": "Anker Prime 100W faltbares GaN Ladegerät im Test – ein heißes Teil",
+   "read": "2026-11-27",
+   "note": "90-minute 100 W test at 24 °C room temperature. Housing reached 55 °C after 10 minutes; 'Das Ladegerät drosselte daraufhin die Leistung auf 60W' and stayed there. Measured with POWER-Z KM003C and AVHzY CT3 testers and a thermal camera. The article gives no model number; its 170 g weight and PPS 3.3–11 V/5 A match the A2688 (Mighty Gadget lists A2688 at 170 g and A2343 at 183.3 g). The timing differs from techtest's ~1 hour."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Peak temperatures at a 100 W load (Smartzone)",
+   "value": "Housing up to 72 °C; up to 85 °C at the open USB ports",
+   "source": "https://www.smartzone.de/anker-prime-100w-faltbares-gan-ladegeraet-im-test-ein-heisses-teil/",
+   "source_title": "Anker Prime 100W faltbares GaN Ladegerät im Test – ein heißes Teil",
+   "read": "2026-11-27",
+   "note": "Thermal-camera readings during the 90-minute 100 W run."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Efficiency and standby (Smartzone)",
+   "value": "86 % at 100.2 W out (116.0 W in); 89 % at 55.4 W; about 85 % average; standby 0.15 W",
+   "source": "https://www.smartzone.de/anker-prime-100w-faltbares-gan-ladegeraet-im-test-ein-heisses-teil/",
+   "source_title": "Anker Prime 100W faltbares GaN Ladegerät im Test – ein heißes Teil",
+   "read": "2026-11-27",
+   "note": "The author says the meters are not calibrated ('Da wir über keine geeichten Messgeräte verfügen')."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "PPS range measured (techtest.org)",
+   "value": "5–11 V at up to 5 A; no AVS mentioned",
+   "source": "https://techtest.org/ist-das-anker-prime-100w-das-beste-kompakte-ladegeraet-detaillierter-test/",
+   "source_title": "Ist das Anker Prime 100W das beste kompakte Ladegerät? Detaillierter Test",
+   "read": "2026-11-27",
+   "note": "PPS stops at 11 V, so there is no 20 V PPS tier. Efficiency measured at 86.6 %–91.1%."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger (CD226)",
+   "label": "6-hour constant 100 W test (techtest.org, Michael Barton, 2021-11-18)",
+   "value": "Passed the 6-hour 100 W continuous-load test; the charger 'erwärmte sich … massiv' (got very hot)",
+   "source": "https://techtest.org/das-ugreen-cd226-100w-usb-c-ladegeraet-im-test/",
+   "source_title": "Das UGREEN CD226 100W USB C Ladegerät im Test",
+   "read": "2026-11-27",
+   "note": "Same lab and author as the A2688 test. No °C figures and no throttling reported. The test dates from 2021; UGREEN US sells the 4-port as '100w-3c1a-gan-fast-charger' and the 2021 test unit is assumed to match."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger (CD226)",
+   "label": "Second-device behaviour and PPS (techtest.org)",
+   "value": "C1 does not reset when a second device connects; throttling starts only once port 2 draws more than 30 W. PPS 3.3–21 V/3 A on C1 and C2; C3 3.3–5.9 V/3 A or 3.3–11 V/2 A. Efficiency 72.1 % (5 V/1 A) to 90.2 % (20 V/5 A)",
+   "source": "https://techtest.org/das-ugreen-cd226-100w-usb-c-ladegeraet-im-test/",
+   "source_title": "Das UGREEN CD226 100W USB C Ladegerät im Test",
+   "read": "2026-11-27",
+   "note": "With a constant 100 W on port 1, ports 2–4 do not work. The 65 W + 30 W split is the maker's table as printed by Mighty Gadget (James Smythe, SKU 40749/CD226), not a measurement."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "30-minute charge results (Macwelt, Thomas Bergbold, 2026-03-02)",
+   "value": "iPhone 17 Pro +59 %, 11-inch iPad Pro +35 %, MacBook Air M3 +52 % in 30 min",
+   "source": "https://www.macwelt.de/article/3067933/ugreen-nexode-100w-ladegeraet-test.html",
+   "source_title": "Ugreen Nexode 100W Ladegerät Test – Macwelt",
+   "read": "2026-11-27",
+   "note": "Single-device charges. The two-device figure is stated, not measured: 'gut 65 Watt an einem der schnellen USB-C-Ladeanschlüsse'. Four devices: cable 45 W + C1 30 W + C2/USB-A sharing 15 W. Housing 'nicht übermäßig warm', with no °C figure."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Two-port split, sustained output, modes (techtest.org, Michael Barton, 2026-11-23)",
+   "value": "USB-C1 + C2 = 45 W + 45 W; 100 W for about 40 min, then throttles to 80 W; PPS 5–20 V/5 A; AVS 9–20 V/5 A; efficiency 79.3 %–92.8 %",
+   "source": "https://techtest.org/?p=139635",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS",
+   "read": "2026-11-27",
+   "note": "With two devices the laptop port gets 45 W, below the 65 W line, so it is left out of this page."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Price on anker.com US",
+   "value": "$45.99 (list $69.99), pre-order shipping Nov 25 – Dec 5, 2026",
+   "source": "https://www.anker.com/products/a2688-anker-prime-charger-100w-3-ports-gan?variant=43931966079126",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, GaN) - Anker US",
+   "read": "2026-11-27",
+   "note": "Black Friday pricing; the page shows a pre-order notice."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger (CD226)",
+   "label": "Price on us.ugreen.com",
+   "value": "$54.99 (compare-at $54.99), in stock",
+   "source": "https://us.ugreen.com/products/100w-3c1a-gan-fast-charger",
+   "source_title": "UGREEN Nexode 100W 4-Port Charger – UGREEN US",
+   "read": "2026-11-27",
+   "note": "From storecheck.py search; the product read itself returned HTTP 429. This differs from the $42.99 in our record, so recheck the record's URL and variant."
+  }
+ ],
+ "unsourced": [
+  "A measured two-device test (watts actually delivered to the laptop on C1 with a phone on C2, over time) for any candidate. Checked techtest.org, Smartzone, Mighty Gadget, Macwelt and ComputingForGeeks; all give the split as stated, not measured.",
+  "The Android Authority test that the research notes say gives 65/35 W for the Anker Prime 100W and 45/12/10 W for the Prime 67W. Two searches did not surface it, so I did not open it.",
+  "A ChargerLAB teardown or test of the A2688, CD226 or the UGREEN 100W Retractable. None surfaced in searches.",
+  "°C figures and throttled wattage for the UGREEN CD226 under its 6-hour load (techtest gives neither), and any sustained-load test of the UGREEN 100W Retractable.",
+  "The 'Hi-Tech Century test' behind our record's 65 W + 30 W split for the UGREEN 100W Retractable. Not reopened.",
+  "UGREEN's ugreen.com/it-it/products/it-40747 page (cited by ChatGPT) returned HTTP 429, so I could not check it for measured figures.",
+  "TechNerdo's Anker Prime 100W review (Omer YLD, 2026-04-04) reports 48 °C with two devices at '65W + 30W' over 30 min. Left out because it names no model and its split conflicts with Anker's 65 W + 35 W for the A2688."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.5333042000000006
+ }
+}

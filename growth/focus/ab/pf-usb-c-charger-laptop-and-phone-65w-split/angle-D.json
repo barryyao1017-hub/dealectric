@@ -1,0 +1,113 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 65 W is a fixed row in each charger's own port table and not a property of a 100 W rating: techtest.org (Michael Barton, 23 Nov 2026) lists the 100 W Baseus PicoGo Pro AH22 at 45 W + 45 W with two USB-C ports in use, so it misses the 65 W line.",
+ "standout": 2,
+ "standout_why": "Compared against cadiens.com (both pages), racksandwatts.com, computingforgeeks.com, thisusb.com/guides/best-usb-c-chargers, specseveryday.com, techfromalex.com and Anker's cited service page. Between them they already carry the Anker 65+35 and UGREEN 65+30 tables, the 'laptop on C1' rule, the 5 A cable rule ('A 3A cable caps you at 60W', computingforgeeks), a UGREEN charging pause on plug/unplug (cadiens) and 'the charger renegotiates' (thisusb). None names a 100 W charger that fails the line: no page gives the AH22's two-port split, and ChatGPT's second answer only says generically that 'some chargers split 60 W + 40 W or 45 W + 45 W'. None quotes Anker's own wording that a plug or unplug makes the charger re-evaluate distribution with a brief interruption, and none gives techtest.org's PPS ceiling (5-11 V) for the A2688.",
+ "decides": "It confirms the Anker Prime A2688 and UGREEN Nexode 100W picks and removes one of our linked rows. The Baseus PicoGo Pro AH22 (100 W, 3× USB-C, $59.99) gives the laptop 45 W once a phone is plugged in (techtest.org), so it must be named as left out; the page's breakpoint sentence 'a 100 W charger keeps 65 W' needs the qualifier 'if its two-port table says so'. For the Anker, the 65 W exists only on the top port: Anker's table gives USB-C2 + USB-A 12 W + 12 W, and Anker's product page says to use the upper port for laptops. Anker's US store today shows the A2688 at $45.99 as a pre-order shipping Nov 25 - Dec 5, 2026, which the price row must state. techtest.org measured PPS on the A2688 only to 11 V, which matters for ranking on phone mode (a Samsung on C2). I could not open UGREEN's own pages, so the UGREEN 65+30 figure still rests on rival pages and our record, not on a maker page I read.",
+ "candidates": [
+  "Anker Prime Charger 100W 3-port (A2688)",
+  "UGREEN Nexode 100W 4-Port GaN Charger",
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+  "Baseus PicoGo Pro AH22 100W (fails the line: 45 W + 45 W)",
+  "Anker Charger 100W 3 Ports Smart Display (re-evaluating allocation; default two-port split not read)"
+ ],
+ "findings": [
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Watts per port with two USB-C ports in use",
+   "value": "45 W + 45 W (USB-C 1 + 2); 45 W + 45 W + 10 W with all three",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS (techtest.org, Michael Barton, 23 Nov 2026)",
+   "read": "2026-11-27",
+   "note": "Reviewer's port table: 'USB-C 1 + 2 = 45 W + 45 W'; 'Entsprechend werden die Ports gedrosselt, je nachdem, wie viele du nutzt.' Each port alone gives 100 W (5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/5A). The article does not say whether the split is fixed or adapts to draw. 45 W is below the 65 W line."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "PPS / AVS range (single port)",
+   "value": "PPS 5-20 V at up to 5 A on all USB-C ports; AVS 9-20 V / 5 A",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test (techtest.org, Michael Barton)",
+   "read": "2026-11-27",
+   "note": "AVS is listed without naming a port. Ranges in two-port mode are not given."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Maker's port table",
+   "value": "One port 100 W; USB-C1 + USB-C2 65 W + 35 W; USB-C1 + USB-A 65 W + 22.5 W; USB-C2 + USB-A 12 W + 12 W (24 W max); three ports 89 W max",
+   "source": "https://service.anker.com/product-description/a08J1000000XmldIAC?recordId=a08J1000000XmldIAC",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, Prime) - Anker product information (A2688)",
+   "read": "2026-11-27",
+   "note": "The 65 W belongs to USB-C1. A laptop on USB-C2 gets 35 W with a phone on C1, and 12 W with a phone on USB-A. This page is one ChatGPT cited."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Maker's instruction on port and cable",
+   "value": "\"When using both USB-C ports simultaneously, use the upper port for charging laptops.\" \"For optimal 100W charging, use an E-Marker cable.\" \"Charging cables for compatible devices are not included and must be purchased separately.\"",
+   "source": "https://www.anker.com/products/a2688-anker-prime-charger-100w-3-ports-gan",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, GaN) - Anker US",
+   "read": "2026-11-27",
+   "note": "Per-port spec on the page: USB-C1/C2 5V⎓3A, 9V⎓3A, 15V⎓3A, 20V⎓5A (100W Max). The page lists two ports as '100W Max' and three as '89W Max' without the per-port split; the split is on the service page."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Price and availability on Anker's US store",
+   "value": "$45.99 (list $69.99, 'Save $24.00'); 'Pre-order, ship on Nov. 25th - Dec. 5th, 2026'",
+   "source": "https://www.anker.com/products/a2688-anker-prime-charger-100w-3-ports-gan",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, GaN) - Anker US",
+   "read": "2026-11-27",
+   "note": "Read from the product page; storecheck.py returned HTTP 404 for this URL, so the variant was not confirmed by the tool. No sale end date is stated. ChatGPT showed $69.99 at B&H. Amazon was not read."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Voltage steps and PPS range measured by a named reviewer",
+   "value": "USB-C: 5V/3A, 9V/3A, 15V/3A, 20V/5A, no 12 V step; PPS 5-11 V at up to 5 A",
+   "source": "https://techtest.org/ist-das-anker-prime-100w-das-beste-kompakte-ladegeraet-detaillierter-test/",
+   "source_title": "Ist das Anker Prime 100W das beste kompakte Ladegerät? Detaillierter Test (techtest.org, Michael Barton, 7 Nov 2024)",
+   "read": "2026-11-27",
+   "note": "Single-port figures for the A2688; the article does not cover what each port offers in two-port mode. PPS stops at 11 V, short of the 20 V PPS the page rules cite for a Galaxy S26 Ultra's top tier."
+  },
+  {
+   "product": "Anker Prime Charger 100W (A2688)",
+   "label": "Sustained 100 W and efficiency",
+   "value": "Holds 100 W for about one hour before overheating and throttling; efficiency 86.6 % to 91.1 %",
+   "source": "https://techtest.org/ist-das-anker-prime-100w-das-beste-kompakte-ladegeraet-detaillierter-test/",
+   "source_title": "Ist das Anker Prime 100W das beste kompakte Ladegerät? Detaillierter Test (techtest.org, Michael Barton)",
+   "read": "2026-11-27",
+   "note": "\"Es schafft die 100 W für ca. eine Stunde, bevor es überhitzt und die Leistung drosselt.\" Measured at full 100 W single-port load, not at the 65 + 35 W split."
+  },
+  {
+   "product": "general",
+   "label": "Why the laptop's watts change the moment a phone is plugged in (Anker's words, a sibling 100 W model)",
+   "value": "\"When a device is connected or disconnected, the charger re-evaluates power distribution.\" \"This may cause a brief interruption in charging, which is normal.\" \"If compatible, the charger will automatically switch to 95W + 5W mode after about 1 minute.\"",
+   "source": "https://service.anker.com/article-description/Anker-Charger-100W-3-Ports-Smart-Display-FAQ",
+   "source_title": "Anker Charger (100W, 3 Ports, Smart Display) FAQ - Anker support",
+   "read": "2026-11-27",
+   "note": "This is the Smart Display model, not the A2688; the page gives no model number or date. The interruption sentence is Anker's answer about switching between two-port and three-port use. Its Q5 mentions the split changing from 95 + 5 W to 70 + 30 W after a plug or unplug on USB-C1. It shows the allocation is set by plug events and firmware."
+  },
+  {
+   "product": "general",
+   "label": "Why 65 W needs a 5 A cable",
+   "value": "65 W at 20 V is 3.25 A; USB-IF: \"USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A.\"",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-27",
+   "note": "Arithmetic: 65 ÷ 20 = 3.25 A. The USB-IF page does not state the 3 A limit for unmarked cables. A rival already states the consequence: computingforgeeks.com/best-gan-charger-laptop/ says 'A 3A cable caps you at 60W (20V at 3A) whatever the charger can do.'"
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own two-port table for the Nexode 100W 4-Port (65 W + 30 W) and its wording on the charging pause: ugreen.com/it-it/products/it-40747 and us.ugreen.com returned HTTP 429, storecheck.py returned HTTP 403 on us.ugreen.com, and the manuals.plus PDF (B0CYZQ8HVG) came back as unreadable binary. The 65 + 30 figure was seen only on rival pages (cadiens, computingforgeeks, specseveryday, techfromalex).",
+  "UGREEN US store prices today for the Nexode 100W 4-Port and the 100W Retractable, and whether a 5 A cable is in the box: store blocked as above.",
+  "Which output of the UGREEN Nexode 100W Retractable keeps 65 W with a phone attached, in UGREEN's words: product page not reachable.",
+  "A named test of the UGREEN Nexode 100W wall charger's steps and PPS range: techtest.org's 3 March 2022 UGREEN 100W test (ASIN B08Y8B3GLG) describes a unit with a cord to the wall socket and gives no model number, so I did not carry its figures over.",
+  "What USB-C1 and USB-C2 advertise in two-port mode (voltage steps, PPS range) on the Anker A2688 or either UGREEN: no ChargerLAB or techtest.org measurement found.",
+  "Whether the Anker A2688 itself pauses the laptop's charging when a phone is plugged in: Anker's A2688 product and service pages have no such FAQ; only the Smart Display model's FAQ says it.",
+  "The USB Type-C specification's own sentence that cables without a 5 A e-marker are limited to 3 A (60 W at 20 V): the USB-IF charger page does not state it and the USB-IF cable logo PDF came back unreadable.",
+  "Anker A2688 price on Amazon (the research notes' $39.99): not read."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 2.8491473000000003
+ }
+}

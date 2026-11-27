@@ -1,0 +1,96 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that a '100 W from any port' charger can still drop the laptop below 65 W once a phone is plugged in: techtest.org measured the 3-port Baseus PicoGo Pro AH22 splitting 45 W + 45 W on C1 + C2, so how many watts a charger gives one device on its own says nothing about what the laptop keeps with two devices plugged in.",
+ "standout": 2,
+ "standout_why": "I compared against the pages ChatGPT got. The cited service.anker.com A2688 page gives Anker's full table (65+35, 65+22.5, and 12+12 on C2+USB-A), so the advice to use the right port is already covered for Anker. cadiens.com gives UGREEN 4-port at 65+30 and warns that C3 cannot replace C2. soldermag.com, computingforgeeks.com and thisusb.com/guides/best-usb-c-chargers list 65+35 / 65+30 / 70+30 splits. None of them names the Baseus AH22 or any 100 W charger that splits 45+45, and none lists a charger that keeps 65 W on both ports (AOHi Youth 140W). computingforgeeks says outright that it found no 100 W charger described as 45+45.",
+ "decides": "It confirms that the picks have to come from the maker's two-device table and not from single-port watts. It removes the Baseus PicoGo Pro AH22, one of our listed products and a candidate in the cluster map, from the 65 W line on the C1 + C2 pair techtest gives (techtest prints no C1+C3 or C2+C3 split). The Anker Prime 100W A2688 (65+35, C1 only) and UGREEN Nexode 100W 4-Port (65+30, C1+C2 only) stay as the top rows. AOHi The Youth 140W, also one of ours, joins the line as the only charger here where Notebookcheck says both ports hold 65 W, so the phone and laptop can go into either port. That claim comes from a launch article, not a test, so it should not be ranked above the maker-tabled picks without a measured split.",
+ "candidates": [
+  "Anker Prime Charger 100W 3-Port (A2688)",
+  "UGREEN Nexode 100W 4-Port GaN Charger",
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+  "AOHi The Youth 140W PD 3.1 3-Port Charger",
+  "Baseus PicoGo Pro AH22 100W 3-Port (fails the line on C1+C2)",
+  "UGREEN Nexode Pro 160W 5-Port"
+ ],
+ "findings": [
+  {
+   "product": "Anker Prime Charger 100W 3-Port (A2688)",
+   "label": "Two-device split by port pair",
+   "value": "C1 + C2: 65 W + 35 W; C1 + USB-A: 65 W + 22.5 W; C2 + USB-A: 12 W + 12 W; three ports: 89 W total",
+   "source": "https://service.anker.com/product-description/a08J1000000XmldIAC?recordId=a08J1000000XmldIAC",
+   "source_title": "Anker service: product description A2688",
+   "read": "2026-11-27",
+   "note": "Maker's table. The laptop keeps 65 W only on C1. With the laptop on C2 and the phone on USB-A, the laptop gets 12 W. Anker gives no per-port figures for the three-port case."
+  },
+  {
+   "product": "Anker Prime Charger 100W 3-Port (A2688)",
+   "label": "Price on anker.com US",
+   "value": "$45.99 (compare-at $69.99); pre-order, ships Nov 25 – Dec 5, 2026",
+   "source": "https://www.anker.com/products/a2688-anker-prime-charger-100w-3-ports-gan",
+   "source_title": "Anker Prime Charger (100W, 3 Ports, GaN) - Anker US",
+   "read": "2026-11-27",
+   "note": "No sale end date stated. The product page lists only totals ('2 Ports in Use: 100W Max'), not the 65/35 split, and does not mention AVS or PPS."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Two-device split (C1 + C2)",
+   "value": "45 W + 45 W; three ports 45 W + 45 W + 10 W",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS (Michael Barton, techtest.org, 2026-11-23)",
+   "read": "2026-11-27",
+   "note": "Michael Barton (techtest.org) gives 'USB-C 1 + 2 = 45 W + 45 W'. Any single port gives 100 W alone. Barton also found it held 100 W for about 40 minutes before dropping to 80 W. Gentle Mode caps each port at 20 W. AVS 9–20 V/5 A (tested with iPhone 18 Pro Max), PPS 5–20 V/5 A on all USB-C ports. techtest prints no C1+C3 or C2+C3 split."
+  },
+  {
+   "product": "AOHi The Youth 140W",
+   "label": "Two-device split",
+   "value": "65 W + 65 W (both USB-C ports); 140 W from C1 alone",
+   "source": "https://www.notebookcheck.net/AOHI-The-Youth-debuts-as-new-up-to-140W-three-way-power-brick-for-under-70.831858.0.html",
+   "source_title": "AOHI The Youth debuts as new up-to-140W three-way power brick for under $70 (Deirdre O'Donnell, Notebookcheck, 2024-04-27)",
+   "read": "2026-11-27",
+   "note": "Notebookcheck: when two devices charge at once, 'both drop to the 65W standard'. This is a launch article quoting the maker, not a measurement. Unlike the Anker and the UGREEN 4-port, which port the laptop goes into does not matter here."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger",
+   "label": "Per-port maxima and port-pair limit",
+   "value": "C1/C2: 100 W max each; C3: 22.5 W max; USB-A: 22.5 W max; USB-A works alongside C1 or C2 only",
+   "source": "https://us.ugreen.com/products/ugreen-nexode-100w-usb-c-wall-charger-4-ports-1",
+   "source_title": "(Bundle) Nexode 100W Charger + 100W USB-C Cable 2 Pack – UGREEN US",
+   "read": "2026-11-27",
+   "note": "Read through storecheck search text. The maker's US pages show the two-port split (C1 65 W + C2 30 W) only as an image, which I could not read. cadiens.com and our record (Mighty Gadget, from UGREEN's table) give 65 + 30, and 45 + 30 + 22.5 with three USB-C devices. A phone on C3 gets 22.5 W at most."
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger",
+   "label": "Price on us.ugreen.com",
+   "value": "$54.99 (no compare-at discount), in stock",
+   "source": "https://us.ugreen.com/products/100w-3c1a-gan-fast-charger",
+   "source_title": "UGREEN Nexode 100W 4-Port Charger – UGREEN US",
+   "read": "2026-11-27",
+   "note": "Read through storecheck search. Our record shows $42.99 store price read the same day, so the record should be checked against this URL and variant."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port",
+   "label": "Laptop port with all five ports loaded",
+   "value": "56–58 W on C1 (measured, one hour)",
+   "source": "https://www.notebookcheck.net/One-charger-for-almost-everything-5-port-Ugreen-Nexode-Pro-160W-review.1327965.0.html",
+   "source_title": "One charger for almost everything: 5-port Ugreen Nexode Pro 160W review (Abid Ahsan Shanto, Notebookcheck, 2026-06-24)",
+   "read": "2026-11-27",
+   "note": "Notebookcheck prints no two-port table. Port maxima: C1/C2 140 W, C3 100 W, C4 30 W, USB-A 22.5 W, 160 W total."
+  }
+ ],
+ "unsourced": [
+  "UGREEN Nexode 100W Retractable: the maker's two-device table. us.ugreen.com returned HTTP 429 three times, so I am using only the Hi-Tech Century test in our record (cable 65 W + C1 30 W).",
+  "UGREEN Nexode 100W 4-Port: the two-port split as text on a UGREEN page. The US pages show it as an image and ugreen.com/it-it returned 429.",
+  "Baseus AH22: C1+C3 and C2+C3 splits, which are not in techtest.org or Android Authority (Shimul Sood, 2026-10-29). I did not open smartzone.de.",
+  "AOHi The Youth 140W: the maker's own output table or a measured two-device test. The AOHi store search returned 404, and the ChargerLab result was for the MagCube 140W, not the Youth.",
+  "Anker A2688: per-port watts with three ports in use (Anker states only 89 W total).",
+  "Whether the phone port keeps AVS/PPS in two-device mode on the Anker A2688 (C2), UGREEN 4-port (C2) and AOHi Youth (C2). None of the pages I opened says.",
+  "UGREEN Nexode Pro 160W: C1 + C2 two-device split. Neither Notebookcheck nor UGREEN prints one.",
+  "Amazon prices for the Anker A2688 and Baseus AH22. amzcheck search returned no listings."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.3594588000000003
+ }
+}
