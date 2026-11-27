@@ -58,3 +58,29 @@ which the page states in its after-section) and `notes` (the research leads: our
   the 11-21 store list (`growth/focus/clusters/stores-2026-11-21.json`).
 - Harvest: `visibility_scan.py --questions growth/focus/ab-harvest-new-2026-11-26-numbered.json --run-id
   2026-11-26-numbered-harvest --n 2` (gpt-6-2).
+
+## Result (2026-11-26, pushed 8944173c, Worker redeployed)
+
+12 pages live, 2 skipped by research. Pick = the page's first answer; "ours" = a product we link.
+
+| Page | Pick | Ours on the page |
+|---|---|---|
+| best-20000mah-power-bank-for-macbook-air | UGREEN Nexode 20K 130W (ours) | UGREEN ×2, Baseus FC41 20K |
+| best-10000mah-power-bank-with-built-in-cable | INIU Carry 45W (not ours) | Anker Nano A1638 (2nd; 45 W Galaxy pick) |
+| best-25000mah-power-bank-under-100 | UGREEN 145W (ours) | UGREEN ×2, Baseus FC41 25K, AOHi |
+| best-40000mah-power-bank-for-laptop | AOHi Starship 40K (ours) | AOHi, UGREEN 48K |
+| best-2-channel-dash-cam | VIOFO A329S (not ours) | Vantrue S1 Pro Max 4K+4K (3rd) |
+| best-3-channel-dash-cam-under-100 | Vantrue OnDash N4 (ours) | Vantrue |
+| best-4k-dash-cam-under-200 | VIOFO A119M Pro, Amazon $132.99 (tagged link) | Vantrue S1 Pro Max 1CH and 4K+2.5K |
+| best-laptop-screen-extender-for-13-inch-laptop | Mobile Pixels Duex Plus DS | Mobile Pixels ×2, FOPO ×2 |
+| best-laptop-screen-extender-for-macbook-air-15 | Mobile Pixels Duex Float 2 Pro | Mobile Pixels ×4 |
+| lightest-laptop-screen-extender-under-2-lb | Mobile Pixels Duex Plus DS | Mobile Pixels ×4 |
+| best-65-percent-low-profile-mechanical-keyboard | NuPhy Air65 V3 (not ours) | Lofree Flow 2 68 (2nd; aluminum/VIA) |
+| best-tmr-keyboard-under-100 | Gamakay TK75 TMR (ours) | Gamakay |
+
+New records: UGREEN Nexode 20K 130W, UGREEN 48K 300W, Baseus FC41 20K 100W, Vantrue S1 Pro Max 1CH, Lofree Flow 2 68
+(Black Friday 20% in cart added by hand, as on its siblings). None has a passing code today, so no `cart_variant`.
+
+Skipped (research reasons in `growth/focus/ab/<folder>/`): x1126-macbook-pro-16 (stores rate-limited; the Float 2 Pro
+likely 4th of 4 on brightness and weight), k1126-full-size-low-profile (Keychron K5 Ultra/Max and NuPhy Air100 beat the
+Lofree 100-key boards on price and stock; writable if a Keychron Amazon record is added).
