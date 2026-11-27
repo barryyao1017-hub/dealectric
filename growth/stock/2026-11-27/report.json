@@ -1,0 +1,1489 @@
+{
+ "date": "2026-11-27",
+ "changes": [
+  {
+   "slug": "ugreen-nexode-200w-4-port-charger",
+   "field": "price",
+   "old": 61.99,
+   "new": 67.99
+  },
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "field": "stock",
+   "old": "in stock",
+   "new": "sold out"
+  },
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "field": "price",
+   "old": 40.99,
+   "new": 42.99
+  },
+  {
+   "slug": "ugreen-nexode-100w-retractable-cable-charger",
+   "field": "price",
+   "old": 59.99,
+   "new": 49.99
+  }
+ ],
+ "alternatives": {
+  "kept": [],
+  "removed": [],
+  "added": [
+   {
+    "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+    "alt": "rshtech-usb-3-2-usb-c-switch-10gbps-amazon",
+    "was": null,
+    "why": "sold out",
+    "reason": "same 10 Gb/s 2-computer switch, wired remote; 2 USB-A + 2 USB-C ports"
+   }
+  ],
+  "replaced": [],
+  "none": [],
+  "pending": []
+ },
+ "pages": {
+  "pages": [
+   {
+    "page": "/compare/usb-c-charger-two-laptops-100w/",
+    "source": "src/gaps.py",
+    "edits": 3,
+    "skipped": [],
+    "notes": "Three edits, all for the UGREEN Nexode 200W price change (61.99 → 67.99). Things I left alone and why:\n\n- \"Two laptops, lowest price\" row still picks the UGREEN. At $67.99 it remains below the $69.99 the page's analysis uses for the Anker Prime 200W ($34.00 vs $35.00 per port), but the gap is now $2.00 rather than $8.00. It is above the Anker's Black Friday price of $55.99 (through Nov 30) shown in the Anker row. That mismatch existed at the old price too ($61.99 vs $55.99), so I did not reword the label; it may deserve a separate look.\n- Compare-at $99.99 and \"available\" in the UGREEN source note are kept: the store read reported only a price change, so I assumed both still hold.\n- The whole UGREEN source note is now dated 2026-11-27, including the 'Charge 2 Laptops at Once' claim, on the assumption that the same store page was read.\n- The \"checked\" and \"updated\" fields (2026-11-14) are untouched; I assumed the build or the maintainer sets them.\n- The UGREEN table row has no hard-coded price cell and the {buy:...} placeholder fills itself, so neither needed an edit.",
+    "log": [
+     {
+      "old": "UGREEN $61.99 ÷ 2 = $31.00",
+      "new": "UGREEN $67.99 ÷ 2 = $34.00",
+      "why": "Cost per 100 W port was computed from the old $61.99 price; $67.99 ÷ 2 = $33.995, rounded to $34.00 the same way the old figure was."
+     },
+     {
+      "old": "UGREEN's US store lists it at $61.99, in stock",
+      "new": "UGREEN's US store lists it at $67.99 on 2026-11-27, in stock",
+      "why": "Stated price was the old $61.99; updated to $67.99 with the date it was read."
+     },
+     {
+      "old": "UGREEN 200W 4-Port Laptop Charger: $61.99 (compare-at $99.99), available, 'Charge 2 Laptops at Once' (read 2026-11-13)",
+      "new": "UGREEN 200W 4-Port Laptop Charger: $67.99 (compare-at $99.99), available, 'Charge 2 Laptops at Once' (read 2026-11-27)",
+      "why": "Source note carried the old price and the old read date."
+     }
+    ]
+   },
+   {
+    "page": "/ugreen-nexode-200w-4-port-charger",
+    "source": "src/products.py",
+    "edits": 2,
+    "skipped": [],
+    "notes": "Only the summary and the third caveat hold the price in the source. The published buy box (\"$61.99 at UGREEN, no code needed\", \"Price: $61.99 ... verified 2026-11-21\") is not in this entry's strings; it is generated from the record's price/verified fields, which already read 67.99 and 2026-11-27, so it should correct itself on the next build. I left \"UGREEN gives no end date\" unchanged: the record's deal has ends 2026-11-30 but show_end is False, so I took the end date as not meant to be shown; worth a check if UGREEN now publishes an end date. I did not add a mention that the price rose from $61.99, to keep the change minimal.",
+    "log": [
+     {
+      "old": "$61.99 against $99.99 on 2026-11-03",
+      "new": "$67.99 against $99.99 on 2026-11-27",
+      "why": "Summary stated the old price and its read date; the price is now $67.99, read 2026-11-27."
+     },
+     {
+      "old": "$61.99 is a sale price against $99.99 on 2026-11-03",
+      "new": "$67.99 is a sale price against $99.99 on 2026-11-27",
+      "why": "Caveat stated the old sale price and its read date; updated to the new price and today's read."
+     }
+    ]
+   },
+   {
+    "page": "/compare/best-usb-switch-two-computers-keyboard-mouse-ssd/",
+    "source": "src/gaps.py",
+    "edits": 4,
+    "skipped": [],
+    "notes": "Pick, table rows and structure are unchanged. Points I was unsure about:\n- The compare-at price ($69.99) was not in this week's read, so I kept it and dated it to the 2026-11-08 check.\n- I left the \"Fits\" table cell alone because {buy:...} fills in price, stock and the alternative line itself; the sold-out statement and the RSHTECH alternative are in the short answer instead.\n- I said nothing about the RSHTECH's power delivery, since the store read gives only its speed, remote and ports; the lead says the page's power figures apply to the CM691 only.\n- The \"Not recommended\" 5Gbps switch keeps its own 2026-11-08 out-of-stock statement (another product's fact); only the price difference changed.\n- I did not change the \"checked\" and \"updated\" metadata fields. If the build does not stamp \"updated\" itself, it should be set to 2026-11-27.\n- \"desc\" and \"title\" contain no price or stock claims, so they are unchanged.",
+    "log": [
+     {
+      "old": "USB 3 caps a bus-powered external SSD at 0.9 A.</p>",
+      "new": "USB 3 caps a bus-powered external SSD at 0.9 A. The CM691 was sold out on 2026-11-27, when its price read $42.99. A shopper who cannot wait for a restock can look at the RSHTECH USB 3.2/USB C Switch 10Gbps, the alternative shown with the CM691 on this page: also a 10 Gb/s switch for two computers, w",
+      "why": "The short answer presented the pick with no stock caveat; it is now sold out at $42.99 (read 2026-11-27) and an alternative is shown under it."
+     },
+     {
+      "old": "$40.99 ÷ 4 = $10.25",
+      "new": "$42.99 ÷ 4 = $10.75 (price read 2026-11-27)",
+      "why": "Cost per port was computed from the old $40.99 price."
+     },
+     {
+      "old": "$40.99 − $35.99 = $5.00",
+      "new": "$42.99 − $35.99 = $7.00",
+      "why": "Saving against the 5Gbps switch was computed from the old CM691 price."
+     },
+     {
+      "old": "price ($40.99, compare-at $69.99)",
+      "new": "price ($42.99 and sold out on 2026-11-27; compare-at $69.99 from the 2026-11-08 read)",
+      "why": "The source label quoted the old price and carried no stock status."
+     }
+    ]
+   },
+   {
+    "page": "/compare/kvm-switch-for-a-mac-and-pc-4k-144hz/",
+    "source": "src/gaps.py",
+    "edits": 5,
+    "skipped": [],
+    "notes": "The page still picks the UGREEN switch; the RSHTECH switch is named only as the in-the-meantime alternative. I gave no price or stock for the RSHTECH because the store read supplied neither, and I did not add a {buy:...} placeholder for it because I don't have its slug. I left the UGREEN table row alone: it has no price or stock cell, so I assumed the build fills those from the product record. I did not change the \"checked\" / \"updated\" metadata dates, assuming the pipeline sets them; if they are hand-maintained, \"updated\" should become 2026-11-27. One thing outside the change list: the AV Access iDock B10 source line says 265.99 while its row says $212.77 (regular $279.99). I left it, as it is another product's fact.",
+    "log": [
+     {
+      "old": "the UGREEN USB-C Switch shares USB.</p>",
+      "new": "the UGREEN USB-C Switch shares USB (sold out on 2026-11-27; the RSHTECH 10 Gb/s USB switch does the same job).</p>",
+      "why": "The short answer recommends the UGREEN switch as if it can be bought now; it is sold out, so the lead says so and names the alternative."
+     },
+     {
+      "old": "minus the UGREEN switch at 40.99 is 228.01 extra",
+      "new": "minus the UGREEN switch at 42.99 (read 2026-11-27, sold out) is 226.01 extra",
+      "why": "Price changed 40.99 → 42.99, so the difference is 269.00 − 42.99 = 226.01; stock status added."
+     },
+     {
+      "old": "keyboard and mouse on the UGREEN switch. If you want one button for video too",
+      "new": "keyboard and mouse on the UGREEN switch (sold out on 2026-11-27; the RSHTECH USB 3.2/USB C Switch 10Gbps is the same kind of 10 Gb/s two-computer switch). If you want one button for video too",
+      "why": "The what-to-do table relies on the UGREEN switch being available; it is sold out, so the alternative is named."
+     },
+     {
+      "old": "switch keyboard and mouse with {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}.",
+      "new": "switch keyboard and mouse with {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}. The UGREEN switch was sold out on 2026-11-27; the RSHTECH USB 3.2/USB C Switch 10Gbps is the same kind of 10 Gb/s switch for two computers and 4 devices, with 2 USB-A and 2 USB-C ports and a wired remote, and it fits",
+      "why": "The buy advice assumed the switch was in stock; added the sold-out status and the alternative, leaving the placeholder untouched."
+     },
+     {
+      "old": "'doesn't support a monitor', 40.99",
+      "new": "'doesn't support a monitor', 42.99, sold out (read 2026-11-27)",
+      "why": "The source line stated the old price; updated to the new price, stock and read date."
+     }
+    ]
+   },
+   {
+    "page": "/compare/best-kvm-switch-1-monitor-2-computers/",
+    "source": "src/gaps.py",
+    "edits": 3,
+    "skipped": [],
+    "notes": "Only two places on the page depended on the UGREEN switch's price or stock: its source label and its row in the \"Your setup / Fits\" table. The title, description, short answer, comparison row and \"Not recommended\" section don't mention its price or availability, so they are unchanged.\n\nThree things I was unsure about:\n- Fits-table note: if {buy:...} already renders the sold-out status and the RSHTECH alternative line beneath it, the sentence I added duplicates that; drop that edit if so. I stated no price or stock for the RSHTECH because none was given.\n- Source label dates: I split them so that only the price and stock carry 2026-11-27. The spec and the 'not a KVM switch' quote keep 2026-11-10, since this week's read only reported price and stock.\n- \"updated\" field: I bumped it to 2026-11-27 because the content changes today. If the build sets this field itself, drop that edit. I left \"checked\" at 2026-11-10 because the other products were not re-read.",
+    "log": [
+     {
+      "old": "UGREEN USB-C Switch: $40.99, 4× USB 3.2 10 Gb/s, 'not a KVM switch and doesn't support a monitor' (read 2026-11-10)",
+      "new": "UGREEN USB-C Switch: $42.99 and sold out (read 2026-11-27); 4× USB 3.2 10 Gb/s, 'not a KVM switch and doesn't support a monitor' (read 2026-11-10)",
+      "why": "Price moved from $40.99 to $42.99 and the switch is now sold out; the price and stock carry today's read date, while the spec and quote keep the date they were actually read."
+     },
+     {
+      "old": "UGREEN USB-C Switch {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}",
+      "new": "UGREEN USB-C Switch {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps} Sold out on 2026-11-27. The RSHTECH USB 3.2/USB C Switch 10Gbps does the same job: a 10 Gb/s USB-only switch that lets 2 computers share 4 devices, with 2 USB-A + 2 USB-C ports and a wired remote.",
+      "why": "The fits table recommended the UGREEN switch as if it could be bought; it is sold out, so the cell now says so with the date and names the alternative for the same setup."
+     },
+     {
+      "old": "\"updated\": '2026-11-17'",
+      "new": "\"updated\": '2026-11-27'",
+      "why": "The page content changes today, so the updated date should not sit behind the new 2026-11-27 read date."
+     }
+    ]
+   },
+   {
+    "page": "/ugreen-usb-c-switch-2-computers-4-port-10gbps",
+    "source": "src/products.py",
+    "edits": 2,
+    "skipped": [],
+    "notes": "Two edits, both in the UGREEN entry: the summary and the sale-price caveat. Things I left alone and why:\n\n- The first caveat (\"Checked 2026-11-27 on UGREEN's US store: sold out.\") and the \"price\", \"in_stock\" and \"verified\" fields already match the new facts.\n- The alt note already compares against $42.99, and its 12% under / 5% over figures are correct at that price. Its \"ship now from Amazon\" wording is about the RSHTECH and Cable Matters, not the changed product.\n- I did not mention the RSHTECH alternative in the summary or caveats, because the build already shows the alternative line under the product.\n- \"UGREEN gives no end date\" stays, but I am unsure of it: the deal record has 'ends': '2026-11-30' with 'show_end': False. If that end date is confirmed by UGREEN, the caveat should be revised.\n- The published \"$40.99 at UGREEN, no code needed\" and \"verified 2026-11-21\" lines appear to be build-generated from the record, so there is no source text to edit for them.",
+    "log": [
+     {
+      "old": "$40.99 on 2026-11-03 against $69.99.\"",
+      "new": "$42.99 against $69.99 on 2026-11-27, but sold out at UGREEN's US store that day.\"",
+      "why": "Summary quoted the old price and read date and implied the switch could be bought; it is now $42.99 and sold out (read 2026-11-27)."
+     },
+     {
+      "old": "$40.99 is a sale price against $69.99 on 2026-11-03; UGREEN gives no end date.",
+      "new": "$42.99 is a sale price against $69.99 on 2026-11-27, and it cannot be ordered at that price while the store shows it sold out; UGREEN gives no end date.",
+      "why": "Caveat quoted the old sale price and read date, and presented the sale as available although the switch is sold out."
+     }
+    ]
+   },
+   {
+    "page": "/compare/best-usb-c-charger-with-block-and-cable/",
+    "source": "src/gaps.py",
+    "edits": 4,
+    "skipped": [],
+    "notes": "The page showed $50.99 for the UGREEN 100W while the store record moved 59.99 → 49.99; I replaced every $50.99 with $49.99 and recomputed $0.50/W and the $10.00 gap to the 65W. I dropped \"(compare-at $59.99)\" from the source line because this week's read gives only the price; restore it if the compare-at is still confirmed. Stock was not reported as changed, so \"in stock\" stays. The \"desc\" date is widened to a range rather than re-dating the other products' prices; revert that edit if the description should keep only the full-check date. I left the \"checked\" and \"updated\" metadata fields alone, assuming the build or pipeline maintains them. No other advice changes: the Anker Nano 45W is still the cheapest kit at the 40 W bar, and the Belkin 30W still has the highest price per watt.",
+    "log": [
+     {
+      "old": "UGREEN 100W: $50.99 ÷ 100 = $0.51/W",
+      "new": "UGREEN 100W: $49.99 ÷ 100 = $0.50/W",
+      "why": "UGREEN 100W price is now $49.99; price per watt recomputed (still the lowest, so the order is unchanged)."
+     },
+     {
+      "old": "so the extra $50.99 − $39.99 = $11.00 buys",
+      "new": "so the extra $49.99 − $39.99 = $10.00 buys",
+      "why": "Price gap between the UGREEN 100W and 65W recomputed from the new $49.99 price."
+     },
+     {
+      "old": "UGREEN Nexode 100W Retractable price $50.99 (compare-at $59.99), in stock (read 2026-11-08)",
+      "new": "UGREEN Nexode 100W Retractable price $49.99, in stock (read 2026-11-27)",
+      "why": "Source line carries the new price and the date it was read; the compare-at figure was not part of this week's read, so it is dropped."
+     },
+     {
+      "old": "maker-store prices from 2026-11-08",
+      "new": "maker-store prices read 2026-11-08 to 2026-11-27",
+      "why": "One price on the page (UGREEN 100W) is now from 2026-11-27, so a single 2026-11-08 date is no longer accurate."
+     }
+    ]
+   }
+  ],
+  "failed": []
+ },
+ "unlisted": [
+  {
+   "brand": "UGREEN",
+   "lines": [
+    18,
+    38
+   ],
+   "model": "Nexode Power Bank 20,000 mAh 100W",
+   "page": "/best-power-banks-for-flying",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    161,
+    178
+   ],
+   "model": "Nexode Power Bank 20,000 mAh 165W with Retractable USB-C Cable (PB726)",
+   "page": "/best-power-bank-for-steam-deck",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    161,
+    178
+   ],
+   "model": "Nexode Power Bank 20,000 mAh 130W with Smart Digital Display",
+   "page": "/best-power-bank-for-steam-deck",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    241,
+    258
+   ],
+   "model": "C2000 Gen 2",
+   "page": "/best-power-station-for-travel-trailer",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    259,
+    281
+   ],
+   "model": "C2000 Gen 2",
+   "page": "/best-power-station-for-window-air-conditioner",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    282,
+    306
+   ],
+   "model": "C300X DC + 60 W solar panel",
+   "page": "/best-solar-generator-kit-under-500",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Mobile Pixels",
+   "lines": [
+    325,
+    342
+   ],
+   "model": "Duex DS Series (Duex Plus DS 13.3-inch / Duex Max DS 14.1-inch)",
+   "page": "/best-portable-monitor-above-laptop-screen",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    419,
+    436
+   ],
+   "model": "NASync DXP4800 GT",
+   "page": "/best-4-bay-nas-10gbe-under-700",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    419,
+    436
+   ],
+   "model": "NASync DXP4800 Pro",
+   "page": "/best-4-bay-nas-10gbe-under-700",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    746,
+    763
+   ],
+   "model": "C2000 Gen 2",
+   "page": "/power-station-to-run-a-refrigerator-for-24-hours",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    1402,
+    1419
+   ],
+   "model": "HKS201-M24 HDMI 2.1 KVM, 2 PCs, 1 monitor",
+   "page": "/kvm-switch-for-a-mac-and-pc-4k-144hz",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "AV Access",
+   "lines": [
+    1402,
+    1419
+   ],
+   "model": "iDock B10 KVM dock, 1 laptop + 1 desktop",
+   "page": "/kvm-switch-for-a-mac-and-pc-4k-144hz",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    1402,
+    1419
+   ],
+   "model": "HKS202-M24 HDMI 2.1 KVM, 2 PCs, 2 monitors",
+   "page": "/kvm-switch-for-a-mac-and-pc-4k-144hz",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    1528,
+    1544
+   ],
+   "model": "48V 100Ah Bluetooth Golf Cart Battery (2C) + LiTime 58.4V 18A charger",
+   "page": "/best-48v-lithium-golf-cart-battery-kit-with-charger-club-car",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Birdfy",
+   "lines": [
+    1635,
+    1652
+   ],
+   "model": "Feeder (2K, standard kit)",
+   "page": "/bird-feeder-camera-case-for-a-blink-or-wyze-camera-no-subscription",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "MOJAWA",
+   "lines": [
+    1653,
+    1670
+   ],
+   "model": "Run Plus (Refurbished)",
+   "page": "/best-swimming-headphones-with-mp3-storage-under-100",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    1671,
+    1688
+   ],
+   "model": "[Like New] 12V 100Ah Group 24 Bluetooth (open-box)",
+   "page": "/best-group-24-lifepo4-battery-with-bluetooth-for-a-trolling-motor-under-300",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    1972,
+    1990
+   ],
+   "model": "C300 (station only; panel sold separately)",
+   "page": "/solar-generator-kit-for-an-apartment-balcony",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    1991,
+    2009
+   ],
+   "model": "SOLIX C300X DC + 60 W Solar Panel",
+   "page": "/best-solar-generator-kit-for-tent-camping",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    1991,
+    2009
+   ],
+   "model": "SOLIX C300 (station)",
+   "page": "/best-solar-generator-kit-for-tent-camping",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    2169,
+    2187
+   ],
+   "model": "Apex 200 + B300K",
+   "page": "/bluetti-apex-200-vs-apex-300",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    2226,
+    2244
+   ],
+   "model": "HDC202-X24 Thunderbolt KVM",
+   "page": "/best-kvm-switch-for-laptop-and-desktop-dual-monitor",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "AV Access",
+   "lines": [
+    2226,
+    2244
+   ],
+   "model": "iDock C10",
+   "page": "/best-kvm-switch-for-laptop-and-desktop-dual-monitor",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    2226,
+    2244
+   ],
+   "model": "HDC202-P23-N",
+   "page": "/best-kvm-switch-for-laptop-and-desktop-dual-monitor",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    2283,
+    2300
+   ],
+   "model": "Nexode Pro 160W with Retractable Cable (X776)",
+   "page": "/ugreen-nexode-pro-vs-anker-prime-160w",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    2283,
+    2300
+   ],
+   "model": "Nexode Pro 160W 4-Port (X763, older)",
+   "page": "/ugreen-nexode-pro-vs-anker-prime-160w",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "ESR",
+   "lines": [
+    2341,
+    2359
+   ],
+   "model": "Geo Magnetic Wallet Stand",
+   "page": "/best-iphone-case-with-wallet",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Nature's Generator",
+   "lines": [
+    2552,
+    2570
+   ],
+   "model": "MyGrid 10K Gen 2",
+   "page": "/best-solar-and-wind-generator",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    2590,
+    2611
+   ],
+   "model": "C2000 Gen 2",
+   "page": "/best-2000wh-power-station",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    2708,
+    2726
+   ],
+   "model": "LiHeat 12V 100Ah Group 24 Dual-Mode Self Heating",
+   "page": "/best-self-heating-lithium-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    2708,
+    2726
+   ],
+   "model": "12V 100Ah Group 24 Heated",
+   "page": "/best-self-heating-lithium-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Revopoint",
+   "lines": [
+    2803,
+    2821
+   ],
+   "model": "POP 3 Plus",
+   "page": "/best-3d-scanner-for-3d-printing",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    2993,
+    3011
+   ],
+   "model": "Nexode Power Bank 20,000 mAh 130W with Smart Digital Display",
+   "page": "/best-fast-charging-power-bank",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    3302,
+    3319
+   ],
+   "model": "12V 100Ah Group 24 Bluetooth",
+   "page": "/best-12v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    3410,
+    3427
+   ],
+   "model": "48V 100Ah Bluetooth Lithium Battery (golf cart / lawn mower)",
+   "page": "/best-48v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    3410,
+    3427
+   ],
+   "model": "48V 100Ah Bluetooth Golf Cart Lithium Battery (200A)",
+   "page": "/best-48v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    3446,
+    3463
+   ],
+   "model": "48V 105Ah Heated (charger included, warms from charger input below 32°F)",
+   "page": "/best-golf-cart-lithium-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    3446,
+    3463
+   ],
+   "model": "48V 100Ah Conversion Kit (58.4 V 18 A charger, monitor, hold-down)",
+   "page": "/best-golf-cart-lithium-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    3446,
+    3463
+   ],
+   "model": "48V 100Ah Bluetooth battery (battery only)",
+   "page": "/best-golf-cart-lithium-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BougeRV",
+   "lines": [
+    3572,
+    3589
+   ],
+   "model": "12V 42 Quart (40L) Portable Fridge/Freezer",
+   "page": "/electric-coolers-for-camping-battery-included",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Birdfy",
+   "lines": [
+    3626,
+    3643
+   ],
+   "model": "Feeder Wood",
+   "page": "/solar-powered-smart-bird-feeder-camera",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESSAN",
+   "lines": [
+    3644,
+    3661
+   ],
+   "model": "Flat Plug Surge Protector Power Strip 1026",
+   "page": "/best-long-cord-power-strip-15-ft-25-ft",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESSAN",
+   "lines": [
+    3644,
+    3661
+   ],
+   "model": "PS09 10 ft Surge Protector",
+   "page": "/best-long-cord-power-strip-15-ft-25-ft",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESSAN",
+   "lines": [
+    3662,
+    3680
+   ],
+   "model": "European Travel Plug Adapter with AC & USB Ports (Type C)",
+   "page": "/travel-adapter-for-europe-type-c-plug-rating",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "3DMakerpro",
+   "lines": [
+    3789,
+    3806
+   ],
+   "model": "Moose Lite 3D Scanner (pair with QIDI Q2)",
+   "page": "/3d-printer-with-scanner-combo-vs-separate",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Creality",
+   "lines": [
+    3789,
+    3806
+   ],
+   "model": "K1 Max + Raptor combo",
+   "page": "/3d-printer-with-scanner-combo-vs-separate",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Creality",
+   "lines": [
+    3789,
+    3806
+   ],
+   "model": "K2 Pro Combo + Raptor Pro combo",
+   "page": "/3d-printer-with-scanner-combo-vs-separate",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Creality",
+   "lines": [
+    3789,
+    3806
+   ],
+   "model": "K2 Plus + Raptor Pro combo",
+   "page": "/3d-printer-with-scanner-combo-vs-separate",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Creality",
+   "lines": [
+    3789,
+    3806
+   ],
+   "model": "Otter Lite + 3D Printer (All-In-One Combo)",
+   "page": "/3d-printer-with-scanner-combo-vs-separate",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "K&F Concept",
+   "lines": [
+    3879,
+    3896
+   ],
+   "model": "AA 1.5V Lithium 3600 mWh, 8-pack with charger (KF28.0112)",
+   "page": "/best-rechargeable-lithium-aa-batteries-measured-vs-label",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Fosi Audio",
+   "lines": [
+    3951,
+    3968
+   ],
+   "model": "M01-BT",
+   "page": "/best-amplifier-for-passive-subwoofer",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "GardePro",
+   "lines": [
+    3969,
+    3986
+   ],
+   "model": "E8 2.0 Pro",
+   "page": "/trail-camera-that-connects-to-home-wifi",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "GardePro",
+   "lines": [
+    3969,
+    3986
+   ],
+   "model": "A80 Pro",
+   "page": "/trail-camera-that-connects-to-home-wifi",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    4041,
+    4058
+   ],
+   "model": "HKS801-EB23",
+   "page": "/best-8-port-kvm-switch",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Tenergy",
+   "lines": [
+    4059,
+    4076
+   ],
+   "model": "Premium D 10,000 mAh, 4-pack (P/N 90424)",
+   "page": "/best-rechargeable-d-batteries",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "DDPAI",
+   "lines": [
+    4077,
+    4094
+   ],
+   "model": "Z90 Master",
+   "page": "/dash-cam-with-built-in-memory",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Redodo",
+   "lines": [
+    4131,
+    4148
+   ],
+   "model": "12V 120Ah Group 24 Trolling Motor Bluetooth",
+   "page": "/best-lithium-trolling-motor-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    4131,
+    4148
+   ],
+   "model": "12V 100Ah TM with Bluetooth",
+   "page": "/best-lithium-trolling-motor-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "TESmart",
+   "lines": [
+    4185,
+    4202
+   ],
+   "model": "HDC202-X24",
+   "page": "/best-kvm-switch-docking-station",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4329,
+    4346
+   ],
+   "model": "Elite 200 V2 + 2×350W Solar (bundle)",
+   "page": "/refrigerator-backup-power-supply-battery-and-solar",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4365,
+    4382
+   ],
+   "model": "Elite 200 V2 + 2× 350 W Solar (bundle)",
+   "page": "/emergency-battery-pack-for-home-backup",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4419,
+    4437
+   ],
+   "model": "Apex 300 + 2×B300K + 2×500W bundle",
+   "page": "/tiny-home-solar-power-kit",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4419,
+    4437
+   ],
+   "model": "Apex 300 + B300K + 2×350W bundle",
+   "page": "/tiny-home-solar-power-kit",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4419,
+    4437
+   ],
+   "model": "Apex 300 + 2×500W bundle",
+   "page": "/tiny-home-solar-power-kit",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4419,
+    4437
+   ],
+   "model": "Apex 300 + B300K + 2×200W bundle",
+   "page": "/tiny-home-solar-power-kit",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    4456,
+    4473
+   ],
+   "model": "48V (51.2V) 150Ah Lithium Golf Cart and UTV Battery",
+   "page": "/best-48v-lithium-battery-for-golf-cart",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Lectron",
+   "lines": [
+    4765,
+    4783
+   ],
+   "model": "Tesla (NACS) to J1772 48A (older model)",
+   "page": "/best-tesla-to-j1772-adapter",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "AlorAir",
+   "lines": [
+    4784,
+    4802
+   ],
+   "model": "Sentinel HDi65S Black WiFi",
+   "page": "/best-crawl-space-dehumidifier-with-pump",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "AlorAir",
+   "lines": [
+    4784,
+    4802
+   ],
+   "model": "Sentinel HDi90 (Built-in Pump)",
+   "page": "/best-crawl-space-dehumidifier-with-pump",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    4821,
+    4839
+   ],
+   "model": "Vatrer 24V 200Ah Heated",
+   "page": "/best-24v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Redodo",
+   "lines": [
+    4821,
+    4839
+   ],
+   "model": "Redodo 24V 200Ah",
+   "page": "/best-24v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    4821,
+    4839
+   ],
+   "model": "24V 100Ah Bluetooth (low-temp cut-off)",
+   "page": "/best-24v-lifepo4-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    4899,
+    4917
+   ],
+   "model": "Elite 200 V2 + 2×350W Solar bundle",
+   "page": "/cabin-off-grid-solar-system-kits",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    5073,
+    5092
+   ],
+   "model": "C2000 Gen 2 + 400 W",
+   "page": "/balcony-solar-system-with-battery-us",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "VEVOR",
+   "lines": [
+    5093,
+    5112
+   ],
+   "model": "200W Foldable Solar Panel with Frame, 30A PWM Controller",
+   "page": "/portable-solar-panel-with-charge-controller",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5132,
+    5151
+   ],
+   "model": "LiHeat 12V 165Ah Dual-Mode Self Heating",
+   "page": "/best-lifepo4-battery-for-rv",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    5249,
+    5267
+   ],
+   "model": "AC70",
+   "page": "/portable-power-station-for-tv-measured-runtime",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5268,
+    5287
+   ],
+   "model": "12V 100Ah Group 24 Bluetooth",
+   "page": "/lifepo4-battery-with-bms-amp-rating",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Redodo",
+   "lines": [
+    5268,
+    5287
+   ],
+   "model": "12V 100Ah Group 24 Deep Cycle (no Bluetooth)",
+   "page": "/lifepo4-battery-with-bms-amp-rating",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5308,
+    5326
+   ],
+   "model": "48(58.4) V 18A LiFePO4 Charger, IP65",
+   "page": "/best-48v-lithium-golf-cart-charger",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    5308,
+    5326
+   ],
+   "model": "E15-58.4V20A Golf Cart Charger (pre-order)",
+   "page": "/best-48v-lithium-golf-cart-charger",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    5346,
+    5365
+   ],
+   "model": "1000W Pure Sine Wave Inverter 12V",
+   "page": "/portable-power-station-or-inverter",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Sun Gold Power",
+   "lines": [
+    5346,
+    5365
+   ],
+   "model": "2000W 12V Pure Sine Wave Inverter With Charger",
+   "page": "/portable-power-station-or-inverter",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Sun Gold Power",
+   "lines": [
+    5366,
+    5384
+   ],
+   "model": "SGK-PRO3 12 V Off-Grid Solar Kit",
+   "page": "/off-grid-solar-system-for-rv-kits",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5404,
+    5423
+   ],
+   "model": "LiHeat 12V 100Ah Group 24 Dual-Mode Self Heating",
+   "page": "/lifepo4-battery-with-heater-12v-100ah",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vatrer",
+   "lines": [
+    5404,
+    5423
+   ],
+   "model": "12V 100Ah Group 24 Heated (pre-order)",
+   "page": "/lifepo4-battery-with-heater-12v-100ah",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Growatt",
+   "lines": [
+    5444,
+    5462
+   ],
+   "model": "SPF 5000US (SPF 5000 ES)",
+   "page": "/best-off-grid-solar-inverter-48v-split-phase",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Sun Gold Power",
+   "lines": [
+    5463,
+    5481
+   ],
+   "model": "SPH6548P + one SG48100P",
+   "page": "/home-battery-backup-with-inverter-kits",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Sun Gold Power",
+   "lines": [
+    5463,
+    5481
+   ],
+   "model": "SGM-6510M kit with 6 × 370 W panels",
+   "page": "/home-battery-backup-with-inverter-kits",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5482,
+    5500
+   ],
+   "model": "48V 100Ah Bluetooth Lithium Battery (1C)",
+   "page": "/best-budget-lithium-golf-cart-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5482,
+    5500
+   ],
+   "model": "48V (51.2V) 100Ah Bluetooth Golf Cart Battery (200A)",
+   "page": "/best-budget-lithium-golf-cart-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    5578,
+    5596
+   ],
+   "model": "Solar Charging Cable (MC4 to DC7909)",
+   "page": "/best-solar-panel-to-power-station-cable",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "LiTime",
+   "lines": [
+    5597,
+    5615
+   ],
+   "model": "Lithium Golf Cart Battery RS485 Monitoring Display",
+   "page": "/best-golf-cart-lithium-battery-meter",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    5654,
+    5674
+   ],
+   "model": "Apex 300 + 2 × 500W (bundle listing)",
+   "page": "/solar-generator-with-240v-outlet",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    5654,
+    5674
+   ],
+   "model": "Apex 300 + B300K + SolarX 4K",
+   "page": "/solar-generator-with-240v-outlet",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "GardePro",
+   "lines": [
+    5695,
+    5713
+   ],
+   "model": "T5NG Pro (Non-Cellular)",
+   "page": "/best-trail-camera-without-wifi-sd-card",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "GardePro",
+   "lines": [
+    5695,
+    5713
+   ],
+   "model": "E5 2.0 Non-Cellular",
+   "page": "/best-trail-camera-without-wifi-sd-card",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    5734,
+    5752
+   ],
+   "model": "MultiCooler (42 qt)",
+   "page": "/electric-cooler-with-wheels-battery-runtime",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "VEVOR",
+   "lines": [
+    5734,
+    5752
+   ],
+   "model": "T60 12V Car Refrigerator, 63 qt dual zone",
+   "page": "/electric-cooler-with-wheels-battery-runtime",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "NEBULA",
+   "lines": [
+    5888,
+    5906
+   ],
+   "model": "Capsule 3 Laser",
+   "page": "/best-portable-projector-for-presentations",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "ARCCAPTAIN",
+   "lines": [
+    5983,
+    6001
+   ],
+   "model": "TIG200P AC/DC Foot Pedal Kit",
+   "page": "/best-cheap-tig-welder",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Giraffe Tools",
+   "lines": [
+    6021,
+    6039
+   ],
+   "model": "Grandfalls Plus",
+   "page": "/best-wall-mounted-pressure-washer",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "SIRUI",
+   "lines": [
+    6135,
+    6157
+   ],
+   "model": "Traveler 7A (aluminum)",
+   "page": "/travel-tripod-for-dslr-load-per-pound",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "SIRUI",
+   "lines": [
+    6135,
+    6157
+   ],
+   "model": "Traveler 5A (aluminum)",
+   "page": "/travel-tripod-for-dslr-load-per-pound",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "QIDI",
+   "lines": [
+    6283,
+    6304
+   ],
+   "model": "Plus4",
+   "page": "/enclosed-3d-printer-that-heats-up-fastest",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    6305,
+    6325
+   ],
+   "model": "C1000 Gen 2 + 100 W Bifacial Solar Panel",
+   "page": "/balcony-solar-kit-with-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    6305,
+    6325
+   ],
+   "model": "Solarbank 2 E1600 Plus",
+   "page": "/balcony-solar-kit-with-battery",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    6471,
+    6491
+   ],
+   "model": "Elite 100 V2 + Charger 2 (bundle)",
+   "page": "/power-station-that-charges-fastest-from-a-car",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    6725,
+    6744
+   ],
+   "model": "F3000 + 400 W Bifacial Solar Panel",
+   "page": "/best-solar-generator-kit-under-3000",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    7046,
+    7065
+   ],
+   "model": "S5000 + Expansion Battery + 2× 400W Solar Panel",
+   "page": "/best-10kwh-solar-generator-kit-with-solar-panels",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    7086,
+    7105
+   ],
+   "model": "SOLIX F3000 + 400 W Bifacial Solar Panel",
+   "page": "/best-solar-generator-kit-under-4000",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Autel Robotics",
+   "lines": [
+    7232,
+    7249
+   ],
+   "model": "EVO II Dual 640T RTK V3",
+   "page": "/drone-with-thermal-camera",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Vantrue",
+   "lines": [
+    7495,
+    7516
+   ],
+   "model": "Nexus 5 (N5)",
+   "page": "/best-4-channel-dash-cam-under-300",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    8184,
+    8206
+   ],
+   "model": "Nexode Pro Power Bank 10000mAh 45W with Built-in Cable",
+   "page": "/best-10000mah-power-bank-with-built-in-cable",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Baseus",
+   "lines": [
+    8184,
+    8206
+   ],
+   "model": "EnerFill FC11 10000mAh 45W, dual built-in USB-C cables",
+   "page": "/best-10000mah-power-bank-with-built-in-cable",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "AOHi",
+   "lines": [
+    8229,
+    8250
+   ],
+   "model": "Starship 40K with 140 W Magcube Pro GaN+ 3-port charger (bundle)",
+   "page": "/best-40000mah-power-bank-for-laptop",
+   "source": "src/gaps.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    119,
+    219
+   ],
+   "model": "C300 DC",
+   "page": "/lifepo4-vs-nmc-power-stations",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    119,
+    219
+   ],
+   "model": "C1000 Gen 2",
+   "page": "/lifepo4-vs-nmc-power-stations",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    119,
+    219
+   ],
+   "model": "C2000 Gen 2",
+   "page": "/lifepo4-vs-nmc-power-stations",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    220,
+    307
+   ],
+   "model": "PS400 Bifacial",
+   "page": "/solar-watts-to-recharge-power-station",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    220,
+    307
+   ],
+   "model": "350W Solar Panel",
+   "page": "/solar-watts-to-recharge-power-station",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "Anker SOLIX",
+   "lines": [
+    220,
+    307
+   ],
+   "model": "PS200 Bifacial",
+   "page": "/solar-watts-to-recharge-power-station",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "BLUETTI",
+   "lines": [
+    220,
+    307
+   ],
+   "model": "SP200L 200 W",
+   "page": "/solar-watts-to-recharge-power-station",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    308,
+    463
+   ],
+   "model": "MagFlow Pro Qi2 25W 3-in-1 Wireless Charger",
+   "page": "/qi2-vs-qi2-2-vs-magsafe-chargers",
+   "source": "src/compare.py"
+  },
+  {
+   "brand": "UGREEN",
+   "lines": [
+    308,
+    463
+   ],
+   "model": "MagFlow Pro 10000mAh Qi2 25W Magnetic Power Bank",
+   "page": "/qi2-vs-qi2-2-vs-magsafe-chargers",
+   "source": "src/compare.py"
+  }
+ ],
+ "soldout_clicks": [
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "clicks": 3,
+   "chatgpt": 0
+  }
+ ],
+ "read": 3,
+ "usage": "claude-sonnet-5-5: 1 calls, 5,278 new tokens + 2,859 cache reads; claude-fable-5-2: 9 calls, 172,303 new tokens + 1,142,646 cache reads"
+}
