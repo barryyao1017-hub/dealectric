@@ -8959,6 +8959,23 @@ PRODUCTS = [
  "fit": 'MacBook Air owners who charge one device at a time and do not want to carry a separate cable.',
  "caveats": ['With a second device plugged in, the laptop cable gives up to 65 W (Notebookcheck), which is under the 70 W Apple asks for to fast-charge an Air.', 'The price here is the White colour; Cosmic Black was listed at $79.99 on 2026-11-26.', "The output and weight figures are Baseus's own as reported by Notebookcheck, not a bench test."]},
 
+{"slug": 'ugreen-48000mah-300w-power-bank',
+ "brand": 'UGREEN',
+ "program": 'cj:ugreen',
+ "asin": None,
+ "category": 'power-bank',
+ "name": 'UGREEN 300W Power Bank, 48,000 mAh (153.6 Wh LiFePO4), 140 W PD 3.1 + 2× 100 W USB-C',
+ "model": 'Portable Power Station 48000mAh 300W',
+ "url": 'https://us.ugreen.com/products/ugreen-300w-48000mah-portable-charger-power-bank',
+ "price": 118.99,
+ "verified": '2026-11-26',
+ "specs": [('Capacity', '48,000 mAh, 153.6 Wh (Macworld spec list); 153.6 Wh ÷ 48 Ah = 3.2 V cells'), ('Cells', "LiFePO4; 80% capacity after 3,000 charge cycles is UGREEN's claim, as reported by Android Central"), ('Max to one laptop', '140 W from one USB-C port, PD 3.1 (Macworld)'), ('Other ports', '2× USB-C 100 W (PD 3.0) + 2× USB-A 22.5 W; 300 W total; three USB-C together give 100 W each (Macworld)'), ('Recharge', '140 W USB-C input; about 1.5 h (Macworld), just over 100 min (Android Central)'), ('Delivered (reviewer)', "1.8 charges of a 14-inch M2 MacBook Pro (Macworld), about 125 Wh at Apple's 69.6 Wh battery rating"), ('Weight and size', '3.6 lb (1.65 kg); 6.3 × 5.7 × 3 in (Macworld)'), ('In the box', 'One 240 W USB-C to USB-C cable (Android Central)'), ('Airline status', '101–160 Wh band: airline approval needed, two at most, carry-on only (TSA)')],
+ "warranty": '2-year (24-month) limited warranty from the date of delivery (UGREEN US warranty page, read 2026-11-26)',
+ "returns": 'UGREEN US advertises a 30-Day Worry-Free Trial in its site banner (read 2026-11-26); refund conditions are in its Returns & Refunds policy',
+ "summary": 'A 153.6 Wh LiFePO4 bank with one 140 W and two 100 W USB-C ports. Macworld recharged a 14-inch M2 MacBook Pro 1.8 times from it. The lower-priced of the two 140 W banks we link at this size, and the heavier at 1.65 kg.',
+ "fit": 'A desk, car or campsite bank for two or three laptops at once, or for a buyer who wants LiFePO4 cells and the lower price and will not carry it far.',
+ "caveats": ['Its 48,000 mAh is counted at 3.2 V, so it holds about 5% more energy than a 146 Wh 40,000 mAh bank, not 20% more.', 'Reviewers list three different weights: 1.65 kg (Macworld), 1,637 g (powerbanks.fyi) and 1.8 kg (Android Central).', 'At 153.6 Wh it needs airline approval to fly and never goes in a checked bag.', 'One laptop gets 140 W at most; the 300 W figure is three USB-C ports at 100 W each.']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon
