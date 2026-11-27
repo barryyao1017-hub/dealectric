@@ -277,7 +277,7 @@ PRODUCTS = [
  "caveats": ["Slow recharge: about 8 hours from the wall.", "Solar input is 5–24 V, so typical 100 W+ folding panels (Voc 20–45 V, including the ALLPOWERS SP037) are too high-voltage; use a 12 V-class panel.", "Not airline-legal (300 Wh)."]},
 
 # ---------------- BLUETTI (Awin 59271 for US store) ----------------
-{"slug": "bluetti-elite-200-v2",  "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 46252054544603, "category": "power-station",
+{"slug": "bluetti-elite-200-v2", "alt": {'slug': 'growatt-infinity-2000-pro', 'checked': '2026-11-26', 'status': 'ships early January', 'reason': '2,048 Wh LiFePO4 and 2,400 W, close to 2,074 Wh and 2,600 W', 'note': "$799 vs $899 (-11%). Amazon's Elite 200 V2 delivers Jan 14."},  "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 46252054544603, "category": "power-station",
  "newer": ("bluetti-apex-200", "BLUETTI's newer 2.5 kWh station (on sale since 2026-11-04) costs $200 more at $1,099 (launch price to Nov 18) "
            "and adds what the Elite 200 V2 lacks: expansion batteries up to 33 kWh, a TT-30 RV outlet and 3,200 W."),
  "name": "BLUETTI Elite 200 V2 Portable Power Station", "model": "Elite 200 V2",
@@ -290,7 +290,7 @@ PRODUCTS = [
  "fit": "Backing up a fridge, router and lights for a day or two; weekend van use.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships early January.", "Not expandable — buy the AC200L if you may add batteries later.", "The AC outlet count is inferred from BLUETTI's 9-output total; the other ports are listed individually."]},
 
-{"slug": "bluetti-ac200l", "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-ac200l", "alt": {'slug': 'growatt-infinity-2000-pro', 'checked': '2026-11-26', 'status': 'sold out', 'reason': 'same 2,048 Wh LiFePO4 and 2,400 W, also expandable', 'note': '$799 vs $899 (-11%).'}, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI AC200L Portable Power Station", "model": "AC200L",
  # DLC-305 (2026-11-18): BLUETTI removed the remaining-stock page /products/ac200l (it 302/301s here) and its variant
  # 44449450852571 (/variants/<id> is a 404). This is the main AC200L listing: one variant, $899, marked Discontinued and
@@ -328,7 +328,7 @@ PRODUCTS = [
  "fit": "Laptop-first mobile work, camping, CPAP backup.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: Blush Pink ships now; Light Gray ships Dec 28 and Deep Gray in early January.", "288 Wh is small — about four laptop charges.", "Solar input tops out at 28 V, so most 100 W+ folding panels (and the ALLPOWERS SP037) are too high-voltage for it.", "Not airline-legal."]},
 
-{"slug": "bluetti-elite-300",  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1199.0, 'show_end': False}, "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 48309260058843, "category": "power-station",
+{"slug": "bluetti-elite-300", "alt": {'slug': 'growatt-helios-3600-amazon', 'checked': '2026-11-26', 'status': 'ships Dec 14', 'reason': '3,686 Wh LiFePO4 and 3,600 W, vs 3,014 Wh and 2,400 W', 'note': "Amazon B0DF7SZJWY sold by Amazon.com, $1,139 vs $1,099 (+4%), delivery Dec 9. Runner-up ALLPOWERS R3500 $1,199 (+9%), ships now. Amazon's Elite 300 delivers Jan 8."},  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1199.0, 'show_end': False}, "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 48309260058843, "category": "power-station",
  "name": "BLUETTI Elite 300 Portable Power Station", "model": "Elite 300",
  "url": "https://www.bluettipower.com/products/elite-300-portable-power-station", "price": 1099, "list_price": 1199.0, "preorder": 'Dec 14, 2026', "verified": '2026-11-26',
  "specs": [("Capacity", "3,014.4 Wh"), ("Chemistry", "LiFePO4, 6,000+ cycles"), ("AC output", "2,400 W continuous; 4,800 W Power Lifting; 4× 120 V + 1× TT-30"),
@@ -339,7 +339,7 @@ PRODUCTS = [
  "fit": "Multi-day home backup or off-grid work where it will mostly sit in one place.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 14.", "Not expandable: BLUETTI says it cannot link to its B80/B230/B300/B500K batteries.", "$1,199 on BLUETTI's US store on 2026-11-02 (store data, no compare-at price); it was $1,099 via an automatic cart discount off $1,699 on 11-01 and $500 off on 10-22, so the price moves."]},
 
-{"slug": "bluetti-ac180",  "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 44099774480603, "category": "power-station",
+{"slug": "bluetti-ac180", "alt": {'slug': 'allpowers-p1800-1024wh', 'checked': '2026-11-26', 'status': 'ships Dec 24', 'reason': '1,024 Wh vs 1,152 Wh, same 1,800 W, LiFePO4', 'note': "$439 vs $549 (-20%). Amazon's AC180 delivers Jan 8, later than BLUETTI's Dec 24."},  "brand": "BLUETTI", "program": "awin:bluetti_us", "cart_variant": 44099774480603, "category": "power-station",
  "name": "BLUETTI AC180 Portable Power Station", "model": "AC180",
  "url": "https://www.bluettipower.com/products/ac180", "price": 549.0, "preorder": 'Dec 24, 2026', "verified": '2026-11-26',
  "specs": [("Capacity", "1,152 Wh"), ("Chemistry", "LiFePO4, 3,500+ cycles"), ("AC output", "1,800 W continuous; 2,700 W Power Lifting; 4 outlets"),
@@ -365,7 +365,7 @@ PRODUCTS = [
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", "Cycle rating is to 70% capacity, not the usual 80%.", "ALLPOWERS' US page and manual disagree on cycles and UPS time (the manual: ≥4,000 cycles to 70%, 20 ms); the most cautious figure is listed.", "No add-on battery.",
              "Amazon sells it for $419 but marks it non-returnable.", "New since 2026-06-29: one review on ALLPOWERS' US store.", "Shorter warranty than ALLPOWERS' other stations: 24 months, not 5 years."]},
 
-{"slug": "allpowers-r600-299wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
+{"slug": "allpowers-r600-299wh", "alt": {'slug': 'bluetti-elite-30-v2-amazon', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '288 Wh LiFePO4 and the same 600 W output', 'note': 'Amazon B0FMHJG8P2 (Blush Pink), sold by Bluetti, $227 vs $219 (+4%), In Stock, delivery Dec 10.'}, "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R600 Portable Power Station, 299 Wh, 600 W", "model": "R600",
  # DLC-201: while sold out, /go/ opens this in-stock alternative instead (build.py sold_out_alt); back in stock, it opens the R600 again
  "sold_out_alt": ("bluetti-elite-30-v2", "The same size class in stock: 288 Wh LiFePO4, 600 W continuous with 2 AC outlets, at $289.99 ($71 more than the R600's last price)."),
@@ -389,7 +389,7 @@ PRODUCTS = [
  "fit": "Occasional high-draw use (tools, kettles) where weight matters more than cycle life.",
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", "NMC chemistry: ~2,500 cycles vs 3,000–6,000 for LiFePO4.", "Solar: 1,000 W at 13 A needs about 77 V, so panels go in series; the FAQ's 650 W figure disagrees with the spec table."]},
 
-{"slug": "allpowers-r4000-3456wh", "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
+{"slug": "allpowers-r4000-3456wh", "alt": {'slug': 'growatt-helios-3600-amazon', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,686 Wh LiFePO4 and 3,600 W, vs 3,456 Wh and 3,600 W', 'note': '$1,139 vs $1,499 (-24%). Closer match than the R3500 (3,168 Wh, 3,200 W, $1,199).'}, "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "power-station",
  "name": "ALLPOWERS R4000 Portable Power Station, 3,456 Wh, 3,600 W", "model": "R4000",
  "sold_out_alt": ("natures-generator-l3600-expandable-power-station", "The closest in-stock match: 3,072 Wh LiFePO4 and the same 3,600 W at 120 V, at $1,299.99 ($199 less than the R4000's last price, 384 Wh less capacity)."),
  "url": "https://iallpowers.com/products/allpowers-r4000-power-station", "price": 1499, "list_price": 3299.0, "verified": '2026-11-26', "in_stock": False, "lowest_seen": {"price": 1399, "date": "2026-03-02", "source": "Internet Archive copy of ALLPOWERS' US product page"},
@@ -403,7 +403,7 @@ PRODUCTS = [
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: sold out, with no restock date.", "The title's 4,000 W is the 230 V rating; on US 120 V outlets the manual gives 3,600 W.", "Reaching 2,000 W of solar takes panels on all three inputs; one input tops out at 650 W.", "No add-on battery is sold in the US (ALLPOWERS' B3000 is unavailable).",
              "ALLPOWERS' page lists 12–150 V solar from the 2023 build; each input takes 12–60 V.", "ALLPOWERS' page gives both 1 h and 2 h for an AC recharge; on US 120 V power the input is 1,500 W, about 2.5 h to full (2026-10-28 dossier, from the manual)."]},
 
-{"slug": "allpowers-sp037-400w-solar-panel",  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 360.1, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20', "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
+{"slug": "allpowers-sp037-400w-solar-panel", "alt": {'none': 'None: the 400 W matches on Amazon are pre-orders too (Dec 1, Dec 7), and ALLPOWERS gives no date to compare against.', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 360.1, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20', "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-panel",
  "name": "ALLPOWERS SP037 400 W Foldable Solar Panel", "model": "SP037",
  "sold_out_alt": ("allpowers-p1800-sp037-solar-kit", "ALLPOWERS still sells the SP037 in its kit with the P1800 station (1,024 Wh, 1,800 W) at $698."),
  "url": "https://iallpowers.com/products/allpowers-400w-portable-solar-panel", "price": 379.05, "list_price": 699.0, "verified": '2026-11-26', "lowest_seen": {"price": 299, "date": "2026-10-14", "source": "our price checks"},
@@ -517,7 +517,7 @@ PRODUCTS = [
  "fit": "Buyers who want 1 kWh for outages or camping and can wait for December delivery.",
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", "One 200 W panel refills 1,024 Wh in about 1.5–2 sunny days; the station takes up to 650 W of panels.", "Station warranty is 24 months, shorter than ALLPOWERS' 5-year stations."]},
 
-{"slug": "allpowers-s2000-pro-sp037-solar-kit", "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 990.95, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20', "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+{"slug": "allpowers-s2000-pro-sp037-solar-kit", "alt": {'slug': 'allpowers-s2000-pro-se200-solar-kit', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'S2000 Pro (1,451 Wh, 2,400 W) with a 200 W panel instead of 400 W', 'note': 'ALLPOWERS store, ships now. The exact SP037 kit on Amazon (B0GYS6M9YR, $999) had no Add to Cart button on 2026-11-26.'}, "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 990.95, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20', "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "instead": ("allpowers-r2500-v2-sp037-solar-kit", "If the station will mostly stay put (home backup, a van, a cabin), ALLPOWERS' own R2500 V2 kit has the same panel, "
              "1,920 Wh of LiFePO4 instead of 1,451 Wh of NMC, and a 2,500 W inverter for about the same price, but the station weighs 29 kg against 13 kg."),
  "name": "ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit (1,451 Wh, 2,400 W)", "model": "S2000 Pro + 1× SP037",
@@ -543,7 +543,7 @@ PRODUCTS = [
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 4.", "Heavy: 29 kg (63.9 lb) with hand-carry handles and no wheels.", "Surge is 4,000 W in ALLPOWERS' spec table and 5,000 W in its feature list; we quote the lower figure.",
              "Not expandable; ALLPOWERS' expandable 2 kWh model was the R2500 Plus, now sold out.", "AC charging tops out at 1,500 W, below the 2,500 W output."]},
 
-{"slug": "allpowers-r2500-v2-sp037-solar-kit", "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 986.15, 'show_end': False}, "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
+{"slug": "allpowers-r2500-v2-sp037-solar-kit", "alt": {'slug': 'growatt-infinity-2000-pro-2x200w-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 11', 'reason': '2,048 Wh LiFePO4 and 2,400 W, with 400 W of panels', 'note': '$1,199 vs $1,038 (+16%).'}, "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 986.15, 'show_end': False}, "brand": "ALLPOWERS", "program": "cj:allpowers", "category": "solar-kit",
  "name": "ALLPOWERS R2500 V2 + SP037 400 W Solar Generator Kit (1,920 Wh, 2,500 W)", "model": "R2500 V2 + 1× SP037",
  "url": "https://iallpowers.com/products/allpowers-r2500-v2-sp037-400w-solar-panel-2500w-solar-generator-kit?variant=67800818614425", "price": 1038.05, "list_price": 1799, "verified": '2026-11-26', "preorder": 'Dec 11, 2026',
  "specs": [("Battery", "1,920 Wh LiFePO4, 3,500+ cycles"), ("AC output", "2,500 W (4,000 W surge in the spec table)"), ("Panel", "1× SP037 400 W folding"),
@@ -568,7 +568,7 @@ PRODUCTS = [
  "fit": "Weekend camping and blackout basics on a budget.",
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", "300 W inverter: no kettles, hair dryers or microwaves.", "This is the SE100 laminated-panel version; the SP027 panel version is $216.99 and the SF100 version was sold out."]},
 
-{"slug": "bluetti-ac180-200w-solar-kit", "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 899.0}, "cart_variant": 45427542491355, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-ac180-200w-solar-kit", "alt": {'slug': 'allpowers-p1800-sf200-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 24', 'reason': '1,024 Wh vs 1,152 Wh, same 1,800 W and 200 W panel', 'note': '$638 vs $769 (-17%).'}, "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 899.0}, "cart_variant": 45427542491355, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI AC180 + 200 W Solar Panel Kit (1,152 Wh, 1,800 W)", "model": "AC180 + 200 W panel",
  "url": "https://www.bluettipower.com/products/ac180?variant=45427542491355", "price": 769, "preorder": 'Dec 24, 2026', "list_price": 899, "verified": '2026-11-26',
  "specs": [("Battery", "1,152 Wh LiFePO4"), ("AC output", "1,800 W; 2,700 W Power Lifting for resistive loads"), ("Panel", "1× BLUETTI 200 W folding"),
@@ -578,7 +578,7 @@ PRODUCTS = [
  "fit": "Camping and outage backup where a 1 kWh station and one carry-size panel are enough.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 24.", "Sold as a variant of the AC180 page; choose \"AC180+200W Solar\" on the store.", "200 W of panel recharges a 1,152 Wh battery in most of a sunny day; add a second panel for faster refills.", "Dealectric's daily code check tests the AC180 listing's first variant, not this kit."]},
 
-{"slug": "bluetti-elite-200-v2-200w-solar-kit", "cart_variant": 46645791162587, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-200-v2-200w-solar-kit", "alt": {'slug': 'growatt-infinity-2000-pro-2x200w-solar-kit', 'checked': '2026-11-26', 'status': 'the 200 W panel ships Jan 8', 'reason': '2,048 Wh and 2,400 W, with 2 × 200 W panels', 'note': "$1,199, same price; Growatt's 1 × 200 W kit is sold out."}, "cart_variant": 46645791162587, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  "name": "BLUETTI Elite 200 V2 + 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W)", "model": "Elite 200 V2 + 200 W panel",
  "url": "https://www.bluettipower.com/products/elite-200-v2-sp200l", "price": 1199, "preorder": 'Jan 8, 2027 (the 200 W panel)', "verified": '2026-11-26',
  "specs": [("Battery", "2,073.6 Wh LiFePO4"), ("AC output", "2,600 W; 3,900 W Power Lifting"), ("Panel", "1× BLUETTI 200 W"),
@@ -588,7 +588,7 @@ PRODUCTS = [
  "fit": "Home backup for a fridge and essentials, with room to add panels later.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "One 200 W panel uses a fifth of the station's 1,000 W solar input; a 2,000 Wh battery takes more than a day of sun to refill from it."]},
 
-{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "cart_variant": 46252055363803, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
+{"slug": "bluetti-elite-200-v2-2x200w-solar-kit", "alt": {'slug': 'growatt-infinity-2000-pro-2x200w-solar-kit', 'checked': '2026-11-26', 'status': 'the 200 W panel ships Jan 8', 'reason': '2,048 Wh and 2,400 W, same 2 × 200 W of panels', 'note': '$1,199 vs $1,499 (-20%).'}, "cart_variant": 46252055363803, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "solar-kit",
  # DLC-164 (2026-11-06): in the x18 replay ChatGPT picked Jackery's SG 2000 v2 + 2x200 W for its 400 W of panels; this is BLUETTI's 400 W kit
  "name": "BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit (2,073.6 Wh, 2,600 W, 400 W of panels)", "model": "Elite 200 V2 + 2× 200 W panel",
  "url": "https://www.bluettipower.com/products/elite-200-v2-2-sp200l", "price": 1499, "preorder": 'Jan 8, 2027 (the 200 W panel)', "verified": '2026-11-26',
@@ -1420,7 +1420,7 @@ PRODUCTS = [
              "Owners report the fan running often; one Amazon review reports a dead unit in week three."]},
 
 # ---------------- x20 gap-mining batch (2026-11-05, DLC-168): Apex, Solla, GL.iNet, AV Access, AeroClip 2 / C50i, Nexode Pro 160W ----------------
-{"slug": "bluetti-apex-200", "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1399.0}, "cart_variant": 50933675655387, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-apex-200", "alt": {'slug': 'growatt-helios-3600-amazon', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,686 Wh LiFePO4 and 3,600 W, vs 2,560 Wh and 3,200 W', 'note': 'Amazon (sold by Amazon.com), $1,139 vs $1,149 (-1%), delivery Dec 9. Runner-up ALLPOWERS R3500 $1,199.'}, "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1399.0}, "cart_variant": 50933675655387, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Apex 200 Expandable Power Station (2,560 Wh, 3,200 W, 120 V)", "model": "Apex 200",
  "url": "https://www.bluettipower.com/products/apex-200-expandable-power-station", "price": 1149, "preorder": 'mid-February 2027', "list_price": 1399.0, "verified": '2026-11-26',
  "specs": [("Capacity", "2,560 Wh LiFePO4; 6,000+ cycles to 70%"), ("AC output", "3,200 W continuous (3,600 W with an expansion battery or AC/solar input); 5,400 W Power Lifting for resistive loads"),
@@ -1434,7 +1434,7 @@ PRODUCTS = [
              "$1,099 is BLUETTI's launch price for Nov 4–18 (BLUETTI says $1,149 Nov 19–30 and $1,199 Dec 1–5); compare-at $1,399.",
              "UPS mode must be switched on in the app; BLUETTI's manual excludes servers and medical equipment from UPS use."]},
 
-{"slug": "bluetti-apex-300", "sold_out_alt": ['bluetti-apex-200', "BLUETTI's Apex 300 was out of stock on 2026-11-21. The Apex 200 is orderable as a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,149."], "cart_variant": 47351562174683, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
+{"slug": "bluetti-apex-300", "alt": {'slug': 'oscal-powermax-6000-pm400-se-solar-kit', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,600 Wh LiFePO4, 6,000 W at 120/240 V, plus a 400 W panel', 'alt_ships': 'Dec 14', 'note': "Ships sooner: OSCAL dispatches the station Dec 14 (store, read 11-26); $1,969.98 vs $1,699 (+16%). Nature's Generator L6000 ships now but is +32%."}, "sold_out_alt": ['bluetti-apex-200', "BLUETTI's Apex 300 was out of stock on 2026-11-21. The Apex 200 is orderable as a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,149."], "cart_variant": 47351562174683, "brand": "BLUETTI", "program": "awin:bluetti_us", "category": "power-station",
  "name": "BLUETTI Apex 300 Home Battery Backup (2,764.8 Wh, 3,840 W, 120/240 V)", "model": "Apex 300",
  "url": "https://www.bluettipower.com/products/apex-300-home-battery-backup", "price": 1699, "in_stock": False,  "verified": '2026-11-26',
  "specs": [("Capacity", "2,764.8 Wh LiFePO4; 6,000+ cycles to 80%"), ("AC output", "3,840 W; 7,680 W Lifting Power (a resistive-load mode, not a motor-start rating)"),
@@ -3018,7 +3018,7 @@ PRODUCTS = [
  "fit": 'Small shops that want pro-tier laser line counts and the tightest claimed accuracy under $1,000 and already own a recent gaming-class PC.',
  "caveats": ['Same body, weight and marker needs as the MetroX; the gains are speed and claimed accuracy, not new modes.', 'Heavier PC demands than the MetroX: Intel i7 13th Gen class CPU and an RTX 3060 at minimum.', 'Runs on the Revo Metro software that owners report crashing at high frame counts in version 5.8.5.', 'Launched December 2025, so there are fewer independent tests than for the MetroX.', 'The $1,049 Advanced Edition adds only magnetic marker blocks.']},
 
-{"slug": 'oscal-powermax-6000-3600wh-240v', "in_stock": False, "sold_out_alt": ['anker-solix-f3800-plus', 'Sold out at OSCAL on 2026-11-21. The Anker SOLIX F3800 Plus is in stock: 3,840 Wh LFP, 6,000 W at 120/240 V, $2,999.99.'], "cart_variant": 50116542038236,
+{"slug": 'oscal-powermax-6000-3600wh-240v', "alt": {'slug': 'oscal-powermax-6000-pm400-se-solar-kit', 'checked': '2026-11-26', 'status': 'sold out', 'reason': 'the same PowerMax 6000, sold with a 400 W panel', 'alt_ships': 'Dec 14'}, "in_stock": False, "sold_out_alt": ['anker-solix-f3800-plus', 'Sold out at OSCAL on 2026-11-21. The Anker SOLIX F3800 Plus is in stock: 3,840 Wh LFP, 6,000 W at 120/240 V, $2,999.99.'], "cart_variant": 50116542038236,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -3036,7 +3036,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a 240 V well pump, dryer or mini-split plus a refrigerator and lights, or RV and workshop use, when you want 6,000 W at 240 V without paying $2,700 or more.',
  "caveats": ['Pre-sale on 2026-11-06: the store listed shipping around November 26.', 'OSCAL does not name the 240 V receptacle type. Confirm NEMA 14-50 versus L14-30 with support before buying an inlet cord or transfer switch.', 'A lab test measured about 2,960 Wh usable (82% of rated) on average, and only 66% at a slow 100 W AC load.', 'No OSCAL app; the unit pairs through the generic Smart Life app with basic controls.', 'No IP rating; splash and dust resistant only, so keep it sheltered.', "OSCAL's own pages disagree on warranty wording (5 years in the spec table, 4-year+ in a comparison table); the policy page says 60 months."]},
 
-{"slug": 'oscal-powermax-3600-se-3600wh', "in_stock": False, "sold_out_alt": ['natures-generator-l3600-expandable-power-station', "Sold out at OSCAL on 2026-11-21. Nature's Generator L3600 is in stock: 3,072 Wh LiFePO4 and the same 3,600 W at 120 V, $1,399.99 in its Black Friday sale."], "cart_variant": 67899068743900,
+{"slug": 'oscal-powermax-3600-se-3600wh', "alt": {'slug': 'growatt-helios-3600-amazon', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,686 Wh LiFePO4 and the same 3,600 W'}, "in_stock": False, "sold_out_alt": ['natures-generator-l3600-expandable-power-station', "Sold out at OSCAL on 2026-11-21. Nature's Generator L3600 is in stock: 3,072 Wh LiFePO4 and the same 3,600 W at 120 V, $1,399.99 in its Black Friday sale."], "cart_variant": 67899068743900,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -3053,7 +3053,7 @@ PRODUCTS = [
  "fit": 'Multi-day backup for a refrigerator, freezer, CPAP, lights and electronics when nothing in the house needs 240 V.',
  "caveats": ['No 240 V output; it will not run a 240 V well pump or dryer.', 'The store page shows the EU version; confirm the US outlet layout before buying.', 'Few independent reviews of this model.']},
 
-{"slug": 'oscal-powermax-1800-se-1024wh', "sold_out_alt": ['bluetti-elite-100-v2', 'Sold out at OSCAL on 2026-11-21. The BLUETTI Elite 100 V2 has the same 1,024 Wh LiFePO4 and 1,800 W, at $449.99 (Black Friday, regular $499), shipping Dec 22.'], "cart_variant": 50116360700124,
+{"slug": 'oscal-powermax-1800-se-1024wh', "alt": {'slug': 'allpowers-p1800-1024wh', 'checked': '2026-11-26', 'status': 'sold out', 'reason': 'same 1,024 Wh LiFePO4 and 1,800 W output'}, "sold_out_alt": ['bluetti-elite-100-v2', 'Sold out at OSCAL on 2026-11-21. The BLUETTI Elite 100 V2 has the same 1,024 Wh LiFePO4 and 1,800 W, at $449.99 (Black Friday, regular $499), shipping Dec 22.'], "cart_variant": 50116360700124,
  "brand": 'OSCAL',
  "program": 'awin:oscal',
  "category": 'power-station',
@@ -4023,7 +4023,7 @@ PRODUCTS = [
  "fit": 'Golf cart owners replacing six 8 V or eight 6 V lead-acid batteries who want everything to arrive together.',
  "caveats": ["Redodo does not state a UL 2271 listing; Vatrer's kit does, which matters in some communities and for some insurers.", '18 A charger means a full charge takes most of a night; a 30 A or larger charger is a separate purchase.', 'You may need a cart-specific tray or hold-down; check your battery compartment before ordering.']},
 
-{"slug": 'ugreen-nexode-65w-3-port-charger', "sold_out_alt": ['ugreen-nexode-65w-travel-charger-us-uk-eu', "The charger-only option was sold out on 2026-11-21. UGREEN's Nexode 65W 3-port travel charger is in stock at $49.99 with US, UK and EU plugs."],
+{"slug": 'ugreen-nexode-65w-3-port-charger', "alt": {'slug': 'ugreen-nexode-65w-travel-charger-us-uk-eu', 'checked': '2026-11-26', 'status': 'sold out', 'reason': 'same 65 W, three ports, plus UK and EU plugs'}, "sold_out_alt": ['ugreen-nexode-65w-travel-charger-us-uk-eu', "The charger-only option was sold out on 2026-11-21. UGREEN's Nexode 65W 3-port travel charger is in stock at $49.99 with US, UK and EU plugs."],
  "brand": 'UGREEN',
  "program": 'cj:ugreen',
  "category": 'usb-c-charger',
@@ -4090,7 +4090,7 @@ PRODUCTS = [
  "fit": 'Houses that need 240 V for a well pump, central air or a dryer, and want the battery wired to a transfer sub-panel rather than run on extension cords.',
  "caveats": ["Idle draw is the weak spot: a reviewer measured 112 W with the inverter on and nothing plugged in, about 34 hours to empty. Anker's June 2025 firmware claims to halve that; no independent after-update measurement was found.", "The 240 V output cannot be used while the unit charges from a 120 V wall outlet (Anker's own listing).", 'Reaching 6,000 W of 240 V charging needs two expansion batteries; one unit alone charges at about 3,500 W from a generator.', "The '30 A' outlet is a 25 A outlet, which can trip appliances that expect a full 30 A.", 'At 136.7 lb it is a two-person lift up stairs even with the wheels.']},
 
-{"slug": 'bluetti-elite-100-v2', "cart_variant": 47048282177755,
+{"slug": 'bluetti-elite-100-v2', "alt": {'slug': 'allpowers-p1800-1024wh', 'checked': '2026-11-26', 'status': 'ships Dec 25', 'reason': 'same 1,024 Wh LiFePO4 and 1,800 W output', 'note': "P1800 $439 vs $549 (-20%). Runner-up Jackery Explorer 1000 v2 on Amazon $559, delivery Dec 17-21. BLUETTI's own Amazon listing delivers Jan 8, no sooner."}, "cart_variant": 47048282177755,
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "category": 'power-station',
@@ -4489,7 +4489,7 @@ PRODUCTS = [
 #   Duex Max DS: https://www.mobilepixels.us/products/duex-ds-series (spec table, connection methods, what's included;
 #     default option "Duex Max DS - 14.1-inch") and /products.json (variant 42717909876802 175.99, compare-at 299.99;
 #     Duex Plus DS 13.3-inch variant 42717917904962 159.99); warranty/returns as the Trio 3 Pro record
-{"slug": 'fopo-s1-dual-14-inch-laptop-screen-extender', "in_stock": False, "sold_out_alt": ['fopo-s7-dual-14-inch-laptop-screen-extender', "FOPO no longer listed the S1 on 2026-11-21. The S7 is its 14-inch dual sibling with taller 1920 × 1200 panels, $199.99 in FOPO's Black Friday sale."], "cart_variant": 62712052613490,
+{"slug": 'fopo-s1-dual-14-inch-laptop-screen-extender', "alt": {'slug': 'fopo-s7-dual-14-inch-laptop-screen-extender', 'checked': '2026-11-26', 'status': 'no longer listed by FOPO', 'reason': 'same dual 14-inch layout, taller 1920 × 1200 panels'}, "in_stock": False, "sold_out_alt": ['fopo-s7-dual-14-inch-laptop-screen-extender', "FOPO no longer listed the S1 on 2026-11-21. The S7 is its 14-inch dual sibling with taller 1920 × 1200 panels, $199.99 in FOPO's Black Friday sale."], "cart_variant": 62712052613490,
  "brand": 'FOPO',
  "program": 'awin:fopo',
  "asin": None,
@@ -4612,7 +4612,7 @@ PRODUCTS = [
  "fit": 'Shoppers who want 4K60 files from a console or PC without a computer.',
  "caveats": ["The 4K60 recording figure comes from the maker's spec table. I found no independent test.", 'Does not record HDCP-protected sources (maker).', 'Does not support HDR content (maker), so turn HDR off on the source.', 'The maker page gives no maximum storage capacity.']},
 
-{"slug": 'bluetti-ac180-2x200w-solar-kit', "cart_variant": 45791800885467,
+{"slug": 'bluetti-ac180-2x200w-solar-kit', "alt": {'slug': 'bluetti-premium-100-v2-200w-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 24', 'reason': '1,024 Wh and 1,800 W, one 200 W panel instead of two', 'note': '$1,248 vs $1,232 (+1%), same brand. P1800 + 400 W ($698) is -43%, outside the band.'}, "cart_variant": 45791800885467,
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -5722,7 +5722,7 @@ PRODUCTS = [
  "fit": "A 1-1/2 in. backup-pump discharge line, as in the preferred install where the backup gets its own line (Wayne's Method 1).",
  "caveats": ["The main pump's discharge line needs its own check valve too. If yours doesn't have one, buy a second valve."]},
 
-{"slug": 'bluetti-sora-500-solar-panel',
+{"slug": 'bluetti-sora-500-solar-panel', "alt": {'slug': 'bluetti-sora-500-amazon', 'checked': '2026-11-26', 'status': 'ships late January', 'reason': 'the same SORA 500 panel, sold by BLUETTI on Amazon', 'note': 'Amazon B0GXTVVHS3, sold by Bluetti, $899 vs $849 (+6%), delivery Dec 4–6.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -6638,7 +6638,7 @@ PRODUCTS = [
  "fit": 'Adding storage to a Sun Gold Power 48 V kit without changing the inverter or panels.',
  "caveats": ['The store sells a 2-pack at $1,953 and a 4-pack at $3,888 (2026-11-13) if you need more than one.']},
 
-{"slug": 'bluetti-apex-300-b300k',
+{"slug": 'bluetti-apex-300-b300k', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh', 'note': '$2,899 vs $2,599 (+12%), ships now. EcoFlow TITAN 5000 (Amazon, $3,199) shows no stock line, delivery Dec 17.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -6892,7 +6892,7 @@ PRODUCTS = [
  "fit": 'Shoppers building a 4- to 6-battery 48 V bank for long outages.',
  "caveats": ['The listing does not give an amp rating for the built-in bus bars']},
 
-{"slug": 'bluetti-b300k-expansion-battery',
+{"slug": 'bluetti-b300k-expansion-battery', "alt": {'slug': 'bluetti-b300k-amazon', 'checked': '2026-11-26', 'status': 'ships Jan 20', 'reason': 'the same B300K, sold by BLUETTI on Amazon', 'alt_ships': 'Amazon delivery Dec 28', 'note': "Ships sooner: Amazon delivery Dec 28 vs BLUETTI's Jan 20; $1,199 vs $999 (+20%)."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -6943,7 +6943,7 @@ PRODUCTS = [
  "fit": "Carts whose controller draws no more than about 100 A continuous, for owners who already have a 58.4 V lithium charger or will buy Redodo's for $149.99.",
  "caveats": ['Rated output is 5,000 W, about 98 A at 51.2 V. That is half the continuous current of the 200 A packs.', "The charger is not included. Redodo's 58.4 V 18 A charger costs $149.99, for $986.98 in total.", 'The store listing gives output in watts only. It states no surge current or surge duration.']},
 
-{"slug": 'bluetti-apex-300-b300k-solarx-4k',
+{"slug": 'bluetti-apex-300-b300k-solarx-4k', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh', 'note': '$2,899 vs $3,299 (-12%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -7653,7 +7653,7 @@ PRODUCTS = [
  "fit": "A TV-plus-stereo setup with easy speakers and no turntable, where the TV's digital audio output can be set to Dolby Digital or Stereo PCM.",
  "caveats": ["Plain ARC, not eARC, and WiiM lists only Stereo PCM and Dolby Digital over it: set the TV's digital audio format to Stereo PCM or Dolby Digital.", 'No DTS or Dolby Atmos (WiiM FAQ).', 'No phono stage.']},
 
-{"slug": 'bluetti-apex-300-b300k-home-backup-kit-single',
+{"slug": 'bluetti-apex-300-b300k-home-backup-kit-single', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,372 Wh LiFePO4 in two units with 120/240 V; no transfer kit', 'note': '$2,899 vs $3,399 (-15%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -7671,7 +7671,7 @@ PRODUCTS = [
  "fit": 'Backing up chosen home circuits during outages, with solar added through the built-in ports or a SolarX 4K.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "BLUETTI's Apex 300 page listed it as expected to ship late January (read 2026-11-13).", 'Built-in solar ports reject panels over 60 V open-circuit; series strings need the SolarX 4K (150–500 V).', 'The home kit needs an electrician to install it.']},
 
-{"slug": 'bluetti-apex-300-2-b300k-2-500w', "sold_out_alt": ['bluetti-apex-200-b500k-2x500w-solar-kit', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K + 2× 500 W kit is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, 1,000 W of panels, $4,196.'],
+{"slug": 'bluetti-apex-300-2-b300k-2-500w', "alt": {'slug': 'natures-generator-l6000-power-pod-4x440w', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4, 120/240 V, with 1,760 W of panels', 'note': '$5,999.99 vs $5,499 (+9%), ships now.'}, "sold_out_alt": ['bluetti-apex-200-b500k-2x500w-solar-kit', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K + 2× 500 W kit is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, 1,000 W of panels, $4,196.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -7774,7 +7774,7 @@ PRODUCTS = [
  "fit": 'A DSLR with a mid-weight zoom: under the 2× load rule it takes kits up to 8.8 lb, the most per dollar among the carbon travel tripods compared here (149.90 ÷ 17.6 = 8.52 per lb of rated load).',
  "caveats": ['Folds to 18.9 in, longer than the Manfrotto Befree Advanced AS (16.14 in) or the Peak Design Travel Tripod (15.5 in).', 'SIRUI names no test method for its 8 kg load figure.', 'At 3.46 lb it weighs 0.66 lb more than the Befree Advanced AS Carbon.']},
 
-{"slug": 'bluetti-apex-300-2-b300k',
+{"slug": 'bluetti-apex-300-2-b300k', "alt": {'slug': 'natures-generator-l6000-power-pod', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 8,294 Wh', 'note': '$3,749.99 vs $3,899 (-4%), ships now.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "category": 'power-station',
@@ -8432,7 +8432,7 @@ PRODUCTS = [
  "fit": 'A router that needs either AC or 12 V in a short outage, on a small budget.',
  "caveats": ['Its AC-on draw from the battery with no load has not been published by a reviewer, so its AC router hours are an upper bound.']},
 
-{"slug": 'bluetti-apex-300-2-b500k',
+{"slug": 'bluetti-apex-300-2-b500k', "alt": {'slug': 'anker-solix-e10-power-module-2-battery', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 13,005 Wh', 'note': "$5,799 at Anker (record said $6,299) vs $5,399 (+7%), 'Limited Stock'. Wired in through a transfer switch or inlet box; no plug-in outlets."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "category": 'power-station',
@@ -9111,7 +9111,7 @@ PRODUCTS = [
              "The expansion port and the list of compatible extra batteries are the same as the plain DELTA 3's; what the Plus adds is the 140 W USB-C, 36 W USB-A, the second 500 W solar input and the wired UPS link. The PC/NAS link needs a USB-C data cable and the Power Manager software.",
              "The DELTA 3 series replaces the discontinued DELTA 2 (same 1,024 Wh / 1,800 W class); the DELTA 2 extra battery still works with it."]},
 
-{"slug": 'bluetti-elite-30-v2-60w-solar-kit', "preorder": 'Dec 25, 2026 (the 60 W panel)',
+{"slug": 'bluetti-elite-30-v2-60w-solar-kit', "alt": {'slug': 'bluetti-elite-30-v2-100w-solar-kit', 'checked': '2026-11-26', 'status': 'the 60 W panel ships Dec 25', 'reason': 'same Elite 30 V2, 100 W panel instead of 60 W', 'note': '$489.99 vs $399.99 (+22.5%), same brand; the 60 W panel ships Dec 25. Blush Pink ships now.'}, "preorder": 'Dec 25, 2026 (the 60 W panel)',
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9314,7 +9314,7 @@ PRODUCTS = [
  "fit": "Two bays on a budget when you don't need entire-system backup.",
  "caveats": ["Hyper Backup's entire-system mode accepts only a remote Synology NAS or Synology C2, so it can't target this box", 'Its 14.7 W idle draw is close to four times its 3.9 W sleep draw (PC-WELT), so make sure drive sleep is on']},
 
-{"slug": 'allpowers-r3500-sp037-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1676.89, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20',
+{"slug": 'allpowers-r3500-sp037-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'same R3500, with a 600 W panel instead of 400 W', 'note': '$1,993.10 vs $1,803.10 (+11%).'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1676.89, 'show_end': False}, "preorder": 'an unannounced date; the store still shows Nov 20',
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9384,7 +9384,7 @@ PRODUCTS = [
  "fit": 'Home backup where the battery should refill in about a day of sun, and the buyer wants the pair in one order.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", 'On 2026-11-17 the same store sold the R3500 alone at $1,199 and the SP039 alone at $599: $1,798 as two items, $195.10 less than this kit.', "One 600 W panel uses under a third of the R3500's 2,000 W solar input; ALLPOWERS sells a two-panel version of this kit at $2,562.15.", 'ALLPOWERS gives the peak as 7,000 W in its feature list and 6,000 W in its spec table.', 'No named lab-style discharge test of the R3500 has been published.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r3500-sf200-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1264.45, 'show_end': False},
+{"slug": 'allpowers-r3500-sf200-solar-kit', "alt": {'none': 'None: only the SF200 panel is a pre-order (R3500 ships now); no in-stock kit in the band.', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1264.45, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9403,7 +9403,7 @@ PRODUCTS = [
  "fit": 'Buyers who mostly charge from the wall and want a light panel to stretch an outage, or to mount flat on an RV or shed roof.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", "A 200 W panel is a tenth of the R3500's 2,000 W solar input, so a full refill from the sun takes about four sunny days.", 'The SF200 is a flexible panel with no stand; it is made to be strapped or fixed to a surface.', 'ALLPOWERS gives the peak as 7,000 W in its feature list and 6,000 W in its spec table.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r3500-sf100-solar-kit',
+{"slug": 'allpowers-r3500-sf100-solar-kit', "alt": {'none': 'None: as SF200.', 'checked': '2026-11-26'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9423,7 +9423,7 @@ PRODUCTS = [
  "fit": 'Buyers who want the R3500 and a small flexible panel in one order; the panel keeps phones and lights going but will not refill this battery in an outage.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", 'A 100 W panel adds about 375 Wh on a good day, under an eighth of the battery.', 'For $32.01 more, the same station comes with the 200 W SF200.', 'The SF100 is a flexible panel with no stand.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-sp039-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1166.65, 'show_end': False},
+{"slug": 'allpowers-r2500-v2-sp039-solar-kit', "alt": {'slug': 'growatt-infinity-2000-pro-3x200w-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 11', 'reason': '2,048 Wh LiFePO4 and 2,400 W, same 600 W of panels', 'note': '$1,349 vs $1,228 (+10%).'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1166.65, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9442,7 +9442,7 @@ PRODUCTS = [
  "fit": 'Home backup, a cabin or a van where the station stays put and has to be refilled from the sun each day.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", 'The listing says "600W Solar Panel" without a model; its SKU is ALLPOWERS\' SP039, whose own page gives 44 V and 27.5 lb folded.', 'Bought as two items on 2026-11-17, the station ($649) and the SP039 ($599) came to $1,248, so the kit saves $19.95.', 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-se200-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 796.63, 'show_end': False},
+{"slug": 'allpowers-r2500-v2-se200-solar-kit', "alt": {'none': 'None: Growatt + 2 × 200 W is +43% over $838.55.', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 796.63, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9461,7 +9461,7 @@ PRODUCTS = [
  "fit": 'Buyers who want a 2 kWh LiFePO4 station under $850 with a panel that stands on its own for camping or a patio.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", 'Bought as two items on 2026-11-17, the station ($649) and the SE200 ($179.55) came to $828.55, $10 less than this kit.', 'The same listing sells the kit with the flexible SF200 instead at $848.05.', "One 200 W panel uses a fifth of the station's 1,000 W solar input.", 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-se100-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 706.38, 'show_end': False},
+{"slug": 'allpowers-r2500-v2-se100-solar-kit', "alt": {'none': 'None: same as SF100 (band $558–$929).', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 706.38, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9481,7 +9481,7 @@ PRODUCTS = [
  "fit": 'Buyers who charge mostly from the wall and want a small panel for phones, lights and slow top-ups.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", 'Bought as two items on 2026-11-17, the station ($649) and the SE100 ($84.55) came to $733.55, $10 less than this kit.', 'A 100 W panel adds about 375 Wh on a good day, a fifth of the battery.', 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-s2000-pro-sf200-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 646.95, 'show_end': False},
+{"slug": 'allpowers-s2000-pro-sf200-solar-kit', "alt": {'slug': 'allpowers-s2000-pro-2x100w-amazon', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'same S2000 Pro, with 200 W of panels', 'note': "Amazon B09SWSGLQZ, $701.60 vs $681 (+3%), In Stock, seller GiarideDirect. Runner-up ALLPOWERS's S2000 Pro + SE200, $843.60."},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 646.95, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9558,7 +9558,7 @@ PRODUCTS = [
  "fit": 'Buyers who specifically want the S2000; at this price the S2000 Pro kit is the stronger buy.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", 'Wall charging is 400 W, against 1,500 W on the S2000 Pro.', "Solar input is 500 W at 12–70 V, half the S2000 Pro's.", 'NMC chemistry: 2,500+ cycles to 80%, fewer than LiFePO4.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-s2000-sp037-solar-kit',
+{"slug": 'allpowers-s2000-sp037-solar-kit', "alt": {'slug': 'allpowers-s2000-pro-se200-solar-kit', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'S2000 Pro (1,451 Wh, 2,400 W) with a 200 W panel instead of 400 W', 'note': 'ALLPOWERS store, ships now. The exact SP037 kit on Amazon (B0GYS6M9YR, $999) had no Add to Cart button on 2026-11-26.'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9578,7 +9578,7 @@ PRODUCTS = [
  "fit": 'Buyers who specifically want the S2000; at this price the S2000 Pro kit is the stronger buy.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", 'Wall charging is 400 W, against 1,500 W on the S2000 Pro.', 'One SP037 nearly fills the 500 W solar input, so there is no room for a second panel.', 'NMC chemistry: 2,500+ cycles to 80%, fewer than LiFePO4.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r1500-sf100-solar-kit', "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 520.6, 'show_end': False},
+{"slug": 'allpowers-r1500-sf100-solar-kit', "alt": {'slug': 'allpowers-p1800-100w-amazon', 'checked': '2026-11-26', 'status': 'pre-order, no ship date given', 'reason': '1,024 Wh LiFePO4 and 1,800 W, with a 100 W panel', 'note': "Amazon B0CLXSJ1YQ, $488 vs $548 (-11%), In Stock, seller GiarideDirect. Runner-up ALLPOWERS's P1800 + SF200, $638."}, "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 520.6, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -9598,7 +9598,7 @@ PRODUCTS = [
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order: the page says pre-order, no ship date given.", 'A 100 W panel adds about 375 Wh on a good day, a third of the battery; the station takes up to 650 W of panels.', 'The SF100 is a flexible panel with no stand.', 'The two-, three- and four-panel versions of this kit showed no dispatch date on 2026-11-17.', 'ALLPOWERS ships the station and the panel as separate parcels (note on the kit page).']},
 
 # BLUETTI kits added 2026-11-17 (DLC-293 step 2): store read that day, see growth/focus/offers/bluetti_kits_1117.py
-{"slug": 'bluetti-apex-200-200w-solar-kit',
+{"slug": 'bluetti-apex-200-200w-solar-kit', "alt": {'slug': 'natures-generator-l3600-200w', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,072 Wh LiFePO4 and 3,600 W, with a 200 W panel', 'note': '$1,849.99 vs $1,499 (+23%), ships now.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9618,7 +9618,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 ($1,099) and a 200 W panel ($399) came to $1,498, $1 less than this kit.", 'One 200 W panel goes into the 1,000 W XT60 port (12–60 V); the 2,000 W MC4 port needs a string of 60 V or more.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-2x200w-solar-kit',
+{"slug": 'bluetti-apex-200-2x200w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,799 (+11%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9638,7 +9638,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 ($1,099) and two 200 W panels ($399 each) came to $1,897; this kit saves $98.", "Two 200 W panels in series are 49.2 V open-circuit, inside the XT60 port's 12–60 V range; that port takes up to 1,000 W.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-350w-solar-kit',
+{"slug": 'bluetti-apex-200-350w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,699 (+17%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9658,7 +9658,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 ($1,099) and a 350 W panel ($649) came to $1,748; this kit saves $49.", 'One 350 W panel goes into the 1,000 W XT60 port (12–60 V); the 2,000 W MC4 port needs a string of 60 V or more.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-500w-solar-kit',
+{"slug": 'bluetti-apex-200-500w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,849 (+8%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9678,7 +9678,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 ($1,099) and a 500 W panel ($849) came to $1,948; this kit saves $99.", 'One 500 W panel goes into the 1,000 W XT60 port (12–60 V); the 2,000 W MC4 port needs a string of 60 V or more.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-b300k-2x200w-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 3299.0, 'show_end': False},
+{"slug": 'bluetti-apex-200-b300k-2x200w-solar-kit', "alt": {'none': 'None: the close match (Anker F3000 + BP3000 + 400 W) gives no ship date; kits that ship now hold 28%+ less.', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 3299.0, 'show_end': False},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9698,7 +9698,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels are a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 + B300K bundle ($2,199) and two 200 W panels ($399 each) came to $2,997; this kit saves $198.", "Two 200 W panels in series are 49.2 V open-circuit, inside the XT60 port's 12–60 V range; that port takes up to 1,000 W.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-b500k-2x500w-solar-kit',
+{"slug": 'bluetti-apex-200-b500k-2x500w-solar-kit', "alt": {'slug': 'natures-generator-l3600-power-pod-4x440w', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '6,912 Wh LiFePO4, 3,600 W, with 1,760 W of panels', 'note': '$4,799.99 vs $4,196 (+14%), ships now.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9718,7 +9718,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 200 + B500K bundle ($2,749) and two 500 W panels ($849 each) came to $4,447; this kit saves $251.", "Two SORA 500 panels in series give 98.2 V open-circuit, which fits the Apex 200's 60–280 V MC4 solar port; in parallel their 26.6 A of short-circuit current would exceed the XT60 port's 25 A.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-300-350w-solar-kit', "sold_out_alt": ['bluetti-apex-200-350w-solar-kit', 'The Apex 300 kits were out of stock on 2026-11-21. The Apex 200 + 350 W kit is a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,699.'],
+{"slug": 'bluetti-apex-300-350w-solar-kit', "alt": {'slug': 'oscal-powermax-6000-pm400-se-solar-kit', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,600 Wh LiFePO4, 6,000 W at 120/240 V, 400 W panel', 'alt_ships': 'Dec 14', 'note': 'Dispatches Dec 14; $1,969.98 vs $2,348 (-16%).'}, "sold_out_alt": ['bluetti-apex-200-350w-solar-kit', 'The Apex 300 kits were out of stock on 2026-11-21. The Apex 200 + 350 W kit is a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,699.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9738,7 +9738,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and a 350 W panel ($649) came to $2,148; this kit saves $79.", 'One 350 W panel uses one of the two 1,200 W solar ports, so there is room to add a second panel later.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-500w-solar-kit',
+{"slug": 'bluetti-apex-300-500w-solar-kit', "alt": {'slug': 'natures-generator-l6000-2x200w', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4, 6,000 W at 120/240 V, 400 W of panels', 'note': '$2,999.99 vs $2,499 (+20%), ships now.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9757,7 +9757,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and a 500 W panel ($849) came to $2,348, $151 less than this kit.", 'One 500 W panel uses one of the two 1,200 W solar ports, so there is room to add a second panel later.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-2x200w-solar-kit', "sold_out_alt": ['bluetti-apex-200-2x200w-solar-kit', 'The Apex 300 kits were out of stock on 2026-11-21. The Apex 200 + 2× 200 W kit is a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,799.'],
+{"slug": 'bluetti-apex-300-2x200w-solar-kit', "alt": {'slug': 'oscal-powermax-6000-pm400-se-solar-kit', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,600 Wh LiFePO4, 6,000 W at 120/240 V, 400 W panel', 'alt_ships': 'Dec 14', 'note': 'Dispatches Dec 14; $1,969.98 vs $2,399 (-18%). L6000 + 2 × 200 W ships now at +25.05%, just outside.'}, "sold_out_alt": ['bluetti-apex-200-2x200w-solar-kit', 'The Apex 300 kits were out of stock on 2026-11-21. The Apex 200 + 2× 200 W kit is a pre-order shipping late January 2027: 2,560 Wh, 3,200 W at 120 V, $1,799.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9777,7 +9777,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and two 200 W panels ($399 each) came to $2,297; this kit saves $98.", 'Two 200 W panels go one per port, or in series on one port (49.2 V open-circuit, inside the 60 V limit).', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-3x200w-solar-kit',
+{"slug": 'bluetti-apex-300-3x200w-solar-kit', "alt": {'slug': 'natures-generator-l6000-2x440w', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels', 'note': '$3,399.99 vs $2,899 (+17%); rigid panels, not folding.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9797,7 +9797,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and three 200 W panels ($399 each) came to $2,696; this kit saves $297.", 'Three 200 W panels fit as two in series on one port (49.2 V open-circuit) and one on the other; three in series would be 73.8 V, over the 60 V limit.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-2x350w-solar-kit',
+{"slug": 'bluetti-apex-300-2x350w-solar-kit', "alt": {'slug': 'natures-generator-l6000-2x440w', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels', 'note': '$3,399.99 vs $2,899 (+17%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9817,7 +9817,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in one good day of sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and two 350 W panels ($649 each) came to $2,797; this kit saves $198.", "The two 350 W panels go one per solar port; in series they would be 88 V open-circuit, over each port's 60 V limit.", 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-2x500w-solar-kit',
+{"slug": 'bluetti-apex-300-2x500w-solar-kit', "alt": {'slug': 'natures-generator-l6000-2x440w', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels', 'note': '$3,399.99 vs $3,299 (+3%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9836,7 +9836,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in one good day of sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499) and two 500 W panels ($849 each) came to $3,197, $102 less than this kit.", "The two 500 W panels go one per solar port; in series they would be 98.2 V open-circuit, over each port's 60 V limit.", 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-b300k-2x200w-solar-kit',
+{"slug": 'bluetti-apex-300-b300k-2x200w-solar-kit', "alt": {'none': "None: the ships-now kits with panels in the band hold 3,840 Wh, 31% under 5,530 Wh; EcoFlow's TITAN panel bundles on Amazon show no stock line.", 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9855,7 +9855,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels are a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 + B300K bundle ($2,599) and two 200 W panels ($399 each) came to $3,397, $102 less than this kit.", 'Two 200 W panels go one per port, or in series on one port (49.2 V open-circuit, inside the 60 V limit).', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-b300k-2x350w-solar-kit',
+{"slug": 'bluetti-apex-300-b300k-2x350w-solar-kit', "alt": {'none': 'None: as Apex 300 + B300K + 2 × 200 W.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9874,7 +9874,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 + B300K bundle ($2,599) and two 350 W panels ($649 each) came to $3,897, $101 less than this kit.", "The two 350 W panels go one per solar port; in series they would be 88 V open-circuit, over each port's 60 V limit.", 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering.", 'The store address of this listing ends in "b300k-2-200w", but its title, variant and price are for the two 350 W panels.']},
 
-{"slug": 'bluetti-apex-300-b300k-500w-solar-kit',
+{"slug": 'bluetti-apex-300-b300k-500w-solar-kit', "alt": {'none': 'None: as Apex 300 + B300K + 2 × 200 W.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9893,7 +9893,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 + B300K bundle ($2,599) and a 500 W panel ($849) came to $3,448, $150 less than this kit.", 'One 500 W panel uses one of the two 1,200 W solar ports, so there is room to add a second panel later.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-b500k-500w-solar-kit',
+{"slug": 'bluetti-apex-300-b500k-500w-solar-kit', "alt": {'none': 'None: ~8 kWh at 120/240 V with panels that ships now is +36% or more over $4,399.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9912,7 +9912,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 + B500K bundle ($3,299) and a 500 W panel ($849) came to $4,148, $251 less than this kit.", 'One 500 W panel uses one of the two 1,200 W solar ports, so there is room to add a second panel later.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering.", 'The store address of this listing ends in "b500k-350w", but its title, variant and price are for the 500 W panel.']},
 
-{"slug": 'bluetti-apex-300-2-b300k-2x200w-solar-kit',
+{"slug": 'bluetti-apex-300-2-b300k-2x200w-solar-kit', "alt": {'none': 'None: as above (+30% over $4,599).', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -9931,7 +9931,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels are a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-17, the Apex 300 ($1,499), two B300K ($1,099 each) and two 200 W panels ($399 each) came to $4,495, $104 less than this kit.", 'Two 200 W panels go one per port, or in series on one port (49.2 V open-circuit, inside the 60 V limit).', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-elite-30-mini-60w-solar-kit',
+{"slug": 'bluetti-elite-30-mini-60w-solar-kit', "alt": {'slug': 'bluetti-elite-30-mini-100w-solar-kit', 'checked': '2026-11-26', 'status': 'the 60 W panel ships Dec 25', 'reason': 'same Elite 30 Mini, 100 W panel instead of 60 W', 'note': '$389.99 vs $319.99 (+22%), same brand; the 60 W panel ships Dec 25.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10007,7 +10007,7 @@ PRODUCTS = [
  "fit": 'Routers, laptops, a CPAP and light car camping; not for kitchen appliances or anything over 700 W. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 100 mini ($379) and a 100 W panel ($249) came to $628; this kit saves $98.", "The 100 W panel uses under a third of the station's 350 W solar input.", "Rated 700 W in total; a reviewer's unit shut down at 900 W (There's A Trick For That, via The Cool Down)."]},
 
-{"slug": 'bluetti-elite-100-mini-200w-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 649.0, 'show_end': False},
+{"slug": 'bluetti-elite-100-mini-200w-solar-kit', "alt": {'slug': 'bluetti-elite-100-mini-100w-solar-kit', 'checked': '2026-11-26', 'status': 'the 200 W panel ships Jan 8', 'reason': 'same Elite 100 Mini, 100 W panel instead of 200 W', 'note': '$529.99 vs $609.99 (-13%), same brand; only the 200 W panel is late (Jan 8).'},  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 649.0, 'show_end': False},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10025,7 +10025,7 @@ PRODUCTS = [
  "fit": 'Routers, laptops, a CPAP and light car camping; not for kitchen appliances or anything over 700 W. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 100 mini ($379) and a 200 W panel ($329.99) came to $708.99; this kit saves $99.", "The 200 W panel uses over half of the station's 350 W solar input.", "Rated 700 W in total; a reviewer's unit shut down at 900 W (There's A Trick For That, via The Cool Down)."]},
 
-{"slug": 'bluetti-elite-100-mini-350w-solar-kit',
+{"slug": 'bluetti-elite-100-mini-350w-solar-kit', "alt": {'none': 'None: no ~1 kWh kit with 350–400 W of panels ships now within ±25% of $999 (P1800 + 400 W is $698, -30%; the Elite 100 Mini + 100 W is -47%).', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10044,7 +10044,7 @@ PRODUCTS = [
  "fit": 'Routers, laptops, a CPAP and light car camping; not for kitchen appliances or anything over 700 W. The panel can refill the battery in one good day of sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 350 W panel ships Jan 10.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 100 mini ($429) and a 350 W panel ($649) came to $1,078; this kit saves $79.", "The 350 W panel is the most the station's solar input accepts.", "Rated 700 W in total; a reviewer's unit shut down at 900 W (There's A Trick For That, via The Cool Down).", 'The store address of this listing ends in "200w", but its title, variant and price are for the 350 W panel.']},
 
-{"slug": 'bluetti-elite-100-v2-100w-solar-kit',
+{"slug": 'bluetti-elite-100-v2-100w-solar-kit', "alt": {'slug': 'allpowers-p1800-sf200-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 25', 'reason': 'same 1,024 Wh and 1,800 W, with a 200 W panel', 'note': "$638 vs $679 (-6%). Runner-up: Amazon Elite 100 V2 + 100 W ($699.99) delivers Jan 8, later than BLUETTI's Dec 25."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10063,7 +10063,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a coffee maker, electric cooler, CPAP and laptops. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 25.", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 100 V2 ($449.99) and a 100 W panel ($249) came to $698.99; this kit saves $99.", "One 100 W panel uses a tenth of the station's 1,000 W solar input, so panels can be added later.", 'OutdoorGearLab measured 890 Wh delivered from the 1,024 Wh rating.']},
 
-{"slug": 'bluetti-elite-100-v2-200w-solar-kit', "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 729.0, 'show_end': False},
+{"slug": 'bluetti-elite-100-v2-200w-solar-kit', "alt": {'slug': 'allpowers-p1800-sf200-solar-kit', 'checked': '2026-11-26', 'status': 'the 200 W panel ships Jan 8', 'reason': 'same 1,024 Wh and 1,800 W, also with a 200 W panel', 'note': "$638 vs $699 (-9%). Amazon's Elite 100 V2 + 200 W delivers Jan 22."}, "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 729.0, 'show_end': False},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10082,7 +10082,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a coffee maker, electric cooler, CPAP and laptops. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 100 V2 ($449.99) and a 200 W panel ($329.99) came to $779.98; this kit saves $130.", "One 200 W panel uses a fifth of the station's 1,000 W solar input, so panels can be added later.", 'OutdoorGearLab measured 890 Wh delivered from the 1,024 Wh rating.']},
 
-{"slug": 'bluetti-elite-100-v2-350w-solar-kit',
+{"slug": 'bluetti-elite-100-v2-350w-solar-kit', "alt": {'slug': 'bluetti-premium-100-v2-200w-solar-kit', 'checked': '2026-11-26', 'status': 'the 350 W panel ships Jan 10', 'reason': 'same 1,024 Wh and 1,800 W, 200 W panel instead of 350 W', 'note': '$1,248 vs $1,099 (+14%), same brand, ships now. P1800 + 400 W ($698, -36%) and + 600 W ($798, -27%) fall outside the ±25% band.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10101,7 +10101,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a coffee maker, electric cooler, CPAP and laptops. The panel can refill the battery in one good day of sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 350 W panel ships Jan 10.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 100 V2 ($499) and a 350 W panel ($649) came to $1,148; this kit saves $49.", "One 350 W panel uses about a third of the station's 1,000 W solar input, so panels can be added later.", 'OutdoorGearLab measured 890 Wh delivered from the 1,024 Wh rating.']},
 
-{"slug": 'bluetti-elite-200-v2-350w-solar-kit', 
+{"slug": 'bluetti-elite-200-v2-350w-solar-kit', "alt": {'slug': 'growatt-infinity-2000-pro-2x200w-solar-kit', 'checked': '2026-11-26', 'status': 'the 350 W panel ships Jan 10', 'reason': '2,048 Wh and 2,400 W, with 400 W of panels', 'note': '$1,199 vs $1,449 (-17%).'}, 
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10120,7 +10120,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge and essentials, or an off-grid cabin weekend. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 350 W panel ships Jan 10.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 200 V2 ($899) and a 350 W panel ($649) came to $1,548; this kit saves $99.", "One 350 W panel uses about a third of the station's 1,000 W solar input, so panels can be added later.", 'Not expandable: buy the Apex 200 if you may add batteries later.']},
 
-{"slug": 'bluetti-elite-200-v2-2x350w-solar-kit',
+{"slug": 'bluetti-elite-200-v2-2x350w-solar-kit', "alt": {'slug': 'growatt-infinity-2000-pro-4x200w-solar-kit', 'checked': '2026-11-26', 'status': 'the 350 W panel ships Jan 10', 'reason': '2,048 Wh and 2,400 W, with 800 W of panels', 'note': '$1,699 vs $2,148 (-21%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10139,7 +10139,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge and essentials, or an off-grid cabin weekend. The panels can refill the battery in one good day of sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 350 W panel ships Jan 10.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 200 V2 ($899) and two 350 W panels ($649 each) came to $2,197; this kit saves $49.", "Two 350 W panels in series would be 88 V open-circuit (2 × 44 V, BLUETTI's panel spec table), over the station's 60 V solar limit, so they have to be wired in parallel; we did not find a parallel connector in the kit's listing.", 'Not expandable: buy the Apex 200 if you may add batteries later.']},
 
-{"slug": 'bluetti-elite-300-2x200w-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1699.0, 'show_end': False},
+{"slug": 'bluetti-elite-300-2x200w-solar-kit', "alt": {'none': "None: no ~3 kWh kit with ~400 W of panels ships now within ±25% of $1,499.99 (Nature's Generator L3600 + 200 W, $1,849.99, has half the panels).", 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1699.0, 'show_end': False},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10158,7 +10158,7 @@ PRODUCTS = [
  "fit": 'Multi-day home backup or an RV with a 30 A inlet, where the station mostly stays in one place. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 300 ($1,099) and two 200 W panels ($329.99 each) came to $1,758.98; this kit saves $259.", "Two 200 W panels in series are 49.2 V open-circuit, inside the station's 60 V solar limit.", 'Not expandable: BLUETTI says it cannot link to its expansion batteries.']},
 
-{"slug": 'bluetti-elite-300-350w-solar-kit',
+{"slug": 'bluetti-elite-300-350w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'the 350 W panel ships Jan 10', 'reason': '3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,649 (+21%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10177,7 +10177,7 @@ PRODUCTS = [
  "fit": 'Multi-day home backup or an RV with a 30 A inlet, where the station mostly stays in one place. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 350 W panel ships Jan 10.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 300 ($1,199) and a 350 W panel ($649) came to $1,848; this kit saves $199.", "One 350 W panel uses about a third of the station's 1,200 W solar input, so panels can be added later.", 'Not expandable: BLUETTI says it cannot link to its expansion batteries.']},
 
-{"slug": 'bluetti-elite-300-500w-solar-kit',
+{"slug": 'bluetti-elite-300-500w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'the 500 W panel ships late January', 'reason': '3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,699.99 (+17%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10196,7 +10196,7 @@ PRODUCTS = [
  "fit": 'Multi-day home backup or an RV with a 30 A inlet, where the station mostly stays in one place. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 500 W panel ships late January.", "Bought separately at BLUETTI's US store on 2026-11-21, the Elite 300 ($1,099) and a 500 W panel ($849) came to $1,948; this kit saves $248.", "The SORA 500's 49.1 V and 13.31 A fit the station's solar input (1,200 W max, 12–60 V, 22 A).", 'Not expandable: BLUETTI says it cannot link to its expansion batteries.']},
 
-{"slug": 'bluetti-elite-400-350w-solar-kit',
+{"slug": 'bluetti-elite-400-350w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'ships mid-January', 'reason': '3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,849 (+8%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10215,7 +10215,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a fridge, router and lights over several days, rolled to where it is needed. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-January.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 400 ($1,499) and a 350 W panel ($649) came to $2,148; this kit saves $299.", "One 350 W panel uses about a third of the station's 1,000 W solar input, so panels can be added later.", '86 lb: it rolls on its own wheels but needs two people for stairs or a car boot.']},
 
-{"slug": 'bluetti-elite-400-500w-solar-kit',
+{"slug": 'bluetti-elite-400-500w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'the 500 W panel ships late January', 'reason': '3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $2,249 (-11%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10234,7 +10234,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a fridge, router and lights over several days, rolled to where it is needed. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 500 W panel ships late January.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 400 ($1,499) and a 500 W panel ($849) came to $2,348; this kit saves $99.", "The SORA 500's 49.1 V and 13.31 A fit the station's solar input (1,000 W max, 12–60 V, 20 A).", '86 lb: it rolls on its own wheels but needs two people for stairs or a car boot.']},
 
-{"slug": 'bluetti-elite-400-2x200w-solar-kit', 
+{"slug": 'bluetti-elite-400-2x200w-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'ships mid-January', 'reason': '3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel', 'note': '$1,993.10 vs $1,899 (+5%).'}, 
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10253,7 +10253,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a fridge, router and lights over several days, rolled to where it is needed. The panels are a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-January.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 400 ($1,499) and two 200 W panels ($399 each) came to $2,297; this kit saves $398.", "Two 200 W panels in series are 49.2 V open-circuit, inside the station's 60 V solar limit.", '86 lb: it rolls on its own wheels but needs two people for stairs or a car boot.']},
 
-{"slug": 'bluetti-elite-400-2x350w-solar-kit',
+{"slug": 'bluetti-elite-400-2x350w-solar-kit', "alt": {'slug': 'mango-power-e-solar-generator-kit-pro', 'checked': '2026-11-26', 'status': 'ships mid-January', 'reason': '3,533 Wh LiFePO4 and 3,000 W, with 2 × 400 W panels', 'alt_ships': 'Mango Power asks for 1–2 extra weeks', 'note': "$2,499 vs $2,448 (+2%); Mango asks for 1–2 extra weeks' handling, still well before mid-January. Runner-up R3500 + 2 × SP039 $2,562.15."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10272,7 +10272,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a fridge, router and lights over several days, rolled to where it is needed. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-January.", "Bought separately at BLUETTI's US store on 2026-11-17, the Elite 400 ($1,499) and two 350 W panels ($649 each) came to $2,797; this kit saves $349.", "Two 350 W panels in series would be 88 V open-circuit (2 × 44 V, BLUETTI's panel spec table), over the station's 60 V solar limit, so they have to be wired in parallel; we did not find a parallel connector in the kit's listing.", '86 lb: it rolls on its own wheels but needs two people for stairs or a car boot.']},
 
-{"slug": 'bluetti-pioneer-na-200w-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1099.0, 'show_end': False},
+{"slug": 'bluetti-pioneer-na-200w-solar-kit', "alt": {'slug': 'bluetti-pioneer-na-100w-solar-kit', 'checked': '2026-11-26', 'status': 'the 200 W panel ships Jan 8', 'reason': 'same sodium-ion Pioneer Na, 100 W panel instead of 200 W', 'note': '$849 vs $999 (-15%). No other sodium-ion station is sold in the US.'},  "deal": {'name': 'Black Friday', 'ends': '2026-11-30', 'regular': 1099.0, 'show_end': False},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10291,7 +10291,7 @@ PRODUCTS = [
  "fit": "Unheated garages, cabins, work trucks and winter camping, where a lithium station can't be charged. The panel can refill the battery in one good day of sun.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "Bought separately at BLUETTI's US store on 2026-11-17, the Pioneer Na ($700) and a 200 W panel ($399) came to $1,099; this kit saves $100.", "One 200 W panel uses under half of the station's 500 W solar input.", 'In a mild climate a lithium unit stores more for less: the Elite 100 V2 was $499 for 1,024 Wh the same day.', 'Below 14°F it recharges only to 60% (BLUETTI).']},
 
-{"slug": 'bluetti-pioneer-na-2x200w-solar-kit',
+{"slug": 'bluetti-pioneer-na-2x200w-solar-kit', "alt": {'none': 'None: the only sodium-ion kit that ships now (Pioneer Na + 100 W, $849) is 43% under $1,498.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10309,7 +10309,7 @@ PRODUCTS = [
  "fit": "Unheated garages, cabins, work trucks and winter camping, where a lithium station can't be charged. The panels can refill the battery in one good day of sun.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "The kit price equals the Pioneer Na ($700) plus two 200 W panels ($399 each) bought separately at BLUETTI's US store on 2026-11-17.", 'The two 200 W panels go in series (49.2 V open-circuit, inside the 60 V limit); in parallel the pair would exceed the 10 A input limit.', 'In a mild climate a lithium unit stores more for less: the Elite 100 V2 was $499 for 1,024 Wh the same day.', 'Below 14°F it recharges only to 60% (BLUETTI).']},
 
-{"slug": 'bluetti-pioneer-na-350w-solar-kit',
+{"slug": 'bluetti-pioneer-na-350w-solar-kit', "alt": {'none': 'None: Pioneer Na + 100 W ($849) is 29% under $1,199; no other sodium-ion station is sold in the US.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10368,7 +10368,7 @@ PRODUCTS = [
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", '400 W of panels adds about 1.5 kWh on a good day (5 sun hours at 75% of rating), against a 5.12 kWh battery; BLUETTI sells the same kit with six panels at $4,599.', "The 12 V output is 100 A. BLUETTI says leveling systems that draw more than 100 A at startup need a B1210 or the coach's existing 12 V lead-acid battery, and neither is in the box.", 'Panels must be wired in parallel (PV100 FX 41.4 V open-circuit against the 50 V limit).', "The kit page does not name the 100 W panel model, so PV100 FX figures are inferred from it being BLUETTI's RV panel.", "Installation means wiring into the coach's 120 V and 12 V panels; this is not a plug-in power station."]},
 
 # >>> DLC-321 new store products, prepared 2026-11-18: generated by growth/focus/offers/newproducts_1118.py (re-run `apply`; do not edit by hand)
-{"slug": 'allpowers-r3500-2x-sp037-solar-kit',
+{"slug": 'allpowers-r3500-2x-sp037-solar-kit', "alt": {'slug': 'allpowers-r3500-sp039-solar-kit', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'same R3500, one 600 W panel instead of 2 × 400 W', 'note': '$1,993.10 vs $2,182.15 (-9%).'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10387,7 +10387,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge, freezer and other essentials, with folding panels set out in the sun each day.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the R3500 ($1,199) and two SP037 ($379.05 each) came to $1,957.10, $225.05 less than this kit.", "Two SP037 panels in series are 90.6 V open-circuit, inside the R3500's 12–150 V solar range; 800 W uses 40% of its 2,000 W solar input, so there is room for more panels.", 'ALLPOWERS sells the R3500 with one 600 W SP039 panel at $1,993.10 and with two (1,200 W) at $2,562.15 on other listings.', 'ALLPOWERS gives the peak as 7,000 W in its feature list and 6,000 W in its spec table.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r3500-2x-sf200-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1389.85, 'show_end': False},
+{"slug": 'allpowers-r3500-2x-sf200-solar-kit', "alt": {'none': 'None: as SF200.', 'checked': '2026-11-26'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1389.85, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10406,7 +10406,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge, freezer and other essentials, with flexible panels fixed flat to an RV, van or shed roof.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", "The kit price equals the R3500 ($1,199) plus two SF200 ($132 each) bought separately at ALLPOWERS' US store on 2026-11-18 (the SF200 was sold out on its own that day).", "Two SF200 panels in series are 76.8 V open-circuit, inside the R3500's 12–150 V solar range; 400 W is a fifth of its 2,000 W solar input, so a full refill from the sun takes about two sunny days.", 'The SF200 is a flexible panel with no stand; it is made to be strapped or fixed to a surface.', 'ALLPOWERS gives the peak as 7,000 W in its feature list and 6,000 W in its spec table.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r3500-2x-sf100-solar-kit',
+{"slug": 'allpowers-r3500-2x-sf100-solar-kit', "alt": {'none': 'None: as SF200.', 'checked': '2026-11-26'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10426,7 +10426,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge, freezer and other essentials, with flexible panels fixed flat to an RV, van or shed roof.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", "The kit price equals the R3500 ($1,199) plus two SF100 ($99.99 each) bought separately at ALLPOWERS' US store on 2026-11-18.", "200 W of panels is a tenth of the R3500's 2,000 W solar input: about 750 Wh on a good day, under a quarter of the battery.", 'The SF100 is a flexible panel with no stand; it is made to be strapped or fixed to a surface.', 'ALLPOWERS gives the peak as 7,000 W in its feature list and 6,000 W in its spec table.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-2x-sp037-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1346.25, 'show_end': False},
+{"slug": 'allpowers-r2500-v2-2x-sp037-solar-kit', "alt": {'slug': 'growatt-infinity-2000-pro-4x200w-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 11', 'reason': '2,048 Wh LiFePO4 and 2,400 W, same 800 W of panels', 'note': '$1,699 vs $1,417 (+20%).'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 1346.25, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10445,7 +10445,7 @@ PRODUCTS = [
  "fit": 'Home backup, a cabin or a van where the station stays put, with folding panels set out in the sun each day.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the R2500 V2 ($649) and two SP037 ($379.05 each) came to $1,407.10, $10 less than this kit.", "The two SP037 panels go in series (90.6 V open-circuit, inside the 150 V limit); in parallel their 21.2 A would exceed the station's 20 A solar input.", "800 W of panels uses most of the station's 1,000 W solar input.", 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-2x-se200-solar-kit',  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 967.2, 'show_end': False},
+{"slug": 'allpowers-r2500-v2-2x-se200-solar-kit', "alt": {'slug': 'growatt-infinity-2000-pro-2x200w-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 11', 'reason': '2,048 Wh LiFePO4 and 2,400 W, same 400 W of panels', 'note': '$1,199 vs $1,018 (+18%).'},  "deal": {'name': 'Black Friday', 'ends': '2026-12-04', 'auto_total': 967.2, 'show_end': False},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10464,7 +10464,7 @@ PRODUCTS = [
  "fit": 'Home backup, a cabin or a van where the station stays put, with folding panels that stand on their own at a campsite or on a patio.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the R2500 V2 ($649) and two SE200 ($179.55 each) came to $1,008.10, $10 less than this kit.", "Two SE200 panels in series are 97.92 V open-circuit, inside the station's 12–150 V solar range; 400 W uses 40% of its 1,000 W input.", 'For $19.95 more, ALLPOWERS sells the R2500 V2 with one 400 W SP037 folding panel: the same wattage in one heavier panel.', 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-2x-se100-solar-kit',
+{"slug": 'allpowers-r2500-v2-2x-se100-solar-kit', "alt": {'none': 'None: Growatt + 2 × 200 W is +45% over $828.10.', 'checked': '2026-11-26'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10483,7 +10483,7 @@ PRODUCTS = [
  "fit": 'Home backup, a cabin or a van where the station stays put, with folding panels that stand on their own at a campsite or on a patio.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the R2500 V2 ($649) and two SE100 ($84.55 each) came to $818.10, $10 less than this kit.", "200 W of panels uses a fifth of the station's 1,000 W solar input.", 'For $10.45 more, ALLPOWERS sells the R2500 V2 with one 200 W SE200 panel: the same wattage in one panel.', 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-sf200-solar-kit',
+{"slug": 'allpowers-r2500-v2-sf200-solar-kit', "alt": {'none': 'None: Growatt + 2 × 200 W is +41% over $848.05.', 'checked': '2026-11-26'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10503,7 +10503,7 @@ PRODUCTS = [
  "fit": 'Home backup, a cabin or a van where the station stays put, with flexible panel fixed flat to an RV, van or shed roof.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: pre-order; the page says it ships Dec 11.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the R2500 V2 ($649) and one SF200 ($132) came to $781, $67.05 less than this kit (the SF200 was sold out on its own that day).", "One 200 W panel uses a fifth of the station's 1,000 W solar input.", 'The SF200 is a flexible panel with no stand; it is made to be strapped or fixed to a surface.', 'Station weighs 29 kg (63.9 lb) with no wheels.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-r2500-v2-sf100-solar-kit',
+{"slug": 'allpowers-r2500-v2-sf100-solar-kit', "alt": {'none': 'None: Growatt + 2 × 200 W ($1,199) is +55%; the S2000 Pro kits in the band are NMC with 24% less capacity.', 'checked': '2026-11-26'},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10541,7 +10541,7 @@ PRODUCTS = [
  "fit": 'Buyers who need a 2,400 W inverter for tools, a microwave or a well pump, with folding panels that stand on their own at a campsite or on a patio.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: ships now (no pre-order label or ship date on the page).", "The kit price equals the S2000 Pro ($664.05) plus two SE100 ($84.55 each) bought separately at ALLPOWERS' US store on 2026-11-18.", "200 W of panels uses a fifth of the station's 1,000 W solar input; in series the pair is 48.96 V open-circuit, inside the 150 V limit.", 'ALLPOWERS sells the same S2000 Pro with one 200 W SE200 panel at $843.60, also shipping now, and with two 200 W SF200 flexible panels at $813.', 'NMC chemistry: about 2,500 cycles, fewer than LiFePO4.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-s2000-pro-2x-sf200-solar-kit',
+{"slug": 'allpowers-s2000-pro-2x-sf200-solar-kit', "alt": {'slug': 'allpowers-s2000-pro-2x-se100-solar-kit', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'same S2000 Pro, 2 × 100 W panels instead of 2 × 200 W', 'note': "$833.15 vs $813 (+2%), ships now from ALLPOWERS. Amazon's 2 × 200 W kit is a pre-order (Dec 3)."},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10560,7 +10560,7 @@ PRODUCTS = [
  "fit": 'Buyers who need a 2,400 W inverter for tools, a microwave or a well pump, with flexible panels fixed flat to an RV, van or shed roof.',
  "caveats": ["Checked 2026-11-26 on ALLPOWERS' US store: labelled pre-order, but the dispatch date it shows has passed and no new date is given.", "Bought as separate items at ALLPOWERS' US store on 2026-11-18, the S2000 Pro ($664.05) and two SF200 ($132 each) came to $928.05; this kit saves $115.05 (the SF200 was sold out on its own that day).", "Two SF200 panels in series are 76.8 V open-circuit, inside the 150 V limit; in parallel their 12.5 A at maximum power sits just under the station's 13 A input.", 'The SF200 is a flexible panel with no stand; it is made to be strapped or fixed to a surface.', 'Usable capacity tested at about 1,250–1,380 Wh on 2026 units (reviewers).', 'NMC chemistry: about 2,500 cycles, fewer than LiFePO4.', 'ALLPOWERS ships the station and the panels as separate parcels (note on the kit page).']},
 
-{"slug": 'allpowers-s2000-pro-sf100-solar-kit',
+{"slug": 'allpowers-s2000-pro-sf100-solar-kit', "alt": {'slug': 'allpowers-s2000-pro-se100-amazon', 'checked': '2026-11-26', 'status': 'pre-order, no current ship date', 'reason': 'same S2000 Pro, with a 100 W panel', 'note': "Amazon B0CHYH3VT7, $637.12 vs $777.10 (-18%), In Stock, seller GiarideDirect (third party). Runner-up ALLPOWERS's own S2000 Pro + SE100, $748.60, ships now."},
  "brand": 'ALLPOWERS',
  "program": 'cj:allpowers',
  "asin": None,
@@ -10699,7 +10699,7 @@ PRODUCTS = [
  "caveats": ["Pre-sale: OSCAL's kit page gives December 14 as the estimated shipping date for the power station and says the solar panels ship first, the station later (read 2026-11-18).", 'OSCAL listed the PowerMax 6000 alone at $1,659.99 (sold out on 2026-11-18) and the PM400 SE at $369.98; at those prices the parts come to $3,139.91, so this kit saves $339.93.', "OSCAL's pages give the station's solar input as 2,400 W max with no voltage range in text, so confirm the limit in the manual before wiring panels in series (4 PM400 SE panels in series would be 172.8 V open-circuit).", 'OSCAL does not name the 240 V receptacle type. Confirm NEMA 14-50 versus L14-30 with support before buying an inlet cord or transfer switch.', 'A lab test measured about 2,960 Wh usable (82% of rated) on average from the PowerMax 6000, and only 66% at a slow 100 W AC load.', "The code is OSCAL's first-order discount, so it works once per customer.", "OSCAL's warranty table covers the station for 60 months and does not list solar panels."]},
 # <<< DLC-321
 # >>> DLC-321 phase 3, BLUETTI store items prepared 2026-11-18: generated by growth/focus/offers/bluetti_1118.py (re-run `apply`; do not edit by hand)
-{"slug": 'bluetti-2-apex-200-2-b300k-hub-a1-home-backup-kit',
+{"slug": 'bluetti-2-apex-200-2-b300k-hub-a1-home-backup-kit', "alt": {'slug': 'anker-solix-e10-power-module-2-battery', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 10,650 Wh', 'note': "$5,799 vs $5,699 (+2%), 'Limited Stock'."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10719,7 +10719,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", 'No parts comparison is made for this bundle (see the note on its home backup kit).', 'The home backup kit has to be installed by an electrician.', "BLUETTI sells its Apex 300 Home Integration Kit at $699 (single) and $799 (parallel); this bundle's listing does not say which kit it holds, so no parts comparison is made.", 'No solar panel in the box.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-2-apex-300-2-b300k-hub-a1',
+{"slug": 'bluetti-2-apex-300-2-b300k-hub-a1', "alt": {'slug': 'anker-solix-e10-power-module-2-battery', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 11,059 Wh', 'note': '$5,799 vs $6,099 (-5%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10739,7 +10739,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, two Apex 300 units ($1,499 each), two B300Ks ($1,099 each) and the Hub A1 ($699, sold out on its own that day) came to $5,895; this bundle saves $196.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-2-fridgepower-2-bc200',
+{"slug": 'bluetti-2-fridgepower-2-bc200', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships Jan 11', 'reason': 'two 3,686 Wh LiFePO4 units, vs two 4,032 Wh systems', 'note': '$2,899 vs $3,099.99 (-6%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10758,7 +10758,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, two FridgePower units ($949 each) and two BC200s ($899 each) came to $3,696; this bundle saves $397.", 'No solar panel in the box.', 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-ac180-100w-solar-kit',
+{"slug": 'bluetti-ac180-100w-solar-kit', "alt": {'slug': 'allpowers-p1800-sf200-solar-kit', 'checked': '2026-11-26', 'status': 'ships Dec 24', 'reason': '1,024 Wh vs 1,152 Wh, same 1,800 W, with a 200 W panel', 'note': '$638 vs $679 (-6%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10777,7 +10777,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a fridge, a coffee maker and laptops. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 24.", "Bought separately at BLUETTI's US store on 2026-11-18, the AC180 ($549) and the 100 W panel ($249) came to $798; this bundle saves $119.", "StorageReview measured 1,030 Wh usable from the AC180's 1,152 Wh at a 350 W load."]},
 
-{"slug": 'bluetti-ac180-charger-1-200w-solar-kit',
+{"slug": 'bluetti-ac180-charger-1-200w-solar-kit', "alt": {'none': 'None: nothing with an alternator charger and a panel ships now within ±25% of $1,018.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10796,7 +10796,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a fridge, a coffee maker and laptops. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 24.", "Bought separately at BLUETTI's US store on 2026-11-18, the AC180 ($549), the Charger 1 ($219) and the 200 W panel ($399) came to $1,167; this bundle saves $149.", "Charger 1 must be wired to the vehicle's starter battery; a station whose DC input is below 560 W holds it under that figure.", "StorageReview measured 1,030 Wh usable from the AC180's 1,152 Wh at a 350 W load."]},
 
-{"slug": 'bluetti-ac180-charger-2-bundle',
+{"slug": 'bluetti-ac180-charger-2-bundle', "alt": {'none': 'None: the AC180 + Charger 1 page shows no date but every other AC180 page says Dec 24, so it is not a safe ships-now pick; Pioneer Na + Charger 2 is sodium-ion.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10815,7 +10815,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a fridge, a coffee maker and laptops.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 24.", "Bought separately at BLUETTI's US store on 2026-11-18, the AC180 ($549) and the Charger 2 ($429) came to $978; this bundle saves $79.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', "StorageReview measured 1,030 Wh usable from the AC180's 1,152 Wh at a 350 W load."]},
 
-{"slug": 'bluetti-ac180-2-pack',
+{"slug": 'bluetti-ac180-2-pack', "alt": {'none': 'None: no brand sells a two-unit ~1 kWh pack that ships now; one 2 kWh Growatt is a different use.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10834,7 +10834,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a fridge, a coffee maker and laptops.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 24.", "Bought separately at BLUETTI's US store on 2026-11-18, two AC180 units ($549 each) came to $1,098; this bundle saves $100.", 'No solar panel in the box.', "StorageReview measured 1,030 Wh usable from the AC180's 1,152 Wh at a 350 W load."]},
 
-{"slug": 'bluetti-apex-200-2-b300k',
+{"slug": 'bluetti-apex-200-2-b300k', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '7,372 Wh LiFePO4 in two units, vs 8,090 Wh', 'note': '$2,899 vs $3,199 (-9%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10854,7 +10854,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099) and two B300Ks ($1,099 each) came to $3,297; this bundle saves $98.", 'No solar panel in the box.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-b500k',
+{"slug": 'bluetti-apex-200-b500k', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '7,372 Wh LiFePO4 in two units, vs 7,680 Wh', 'note': '$2,899 vs $2,749 (+5%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10874,7 +10874,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099) and the B500K ($1,599) came to $2,698, $51 less than this bundle.", 'No solar panel in the box.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-b500k-30a-tt-30-cable',
+{"slug": 'bluetti-apex-200-b500k-30a-tt-30-cable', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '7,372 Wh LiFePO4 in two units, vs 7,680 Wh', 'note': '$2,899 vs $2,799 (+4%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10894,7 +10894,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099), the B500K ($1,599) and the 30A TT-30 Cable ($79) came to $2,777, $22 less than this bundle.", 'No solar panel in the box.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-charger-2-bundle',
+{"slug": 'bluetti-apex-200-charger-2-bundle', "alt": {'slug': 'bluetti-elite-400-charger-2-bundle', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '3,840 Wh vs 2,560 Wh, same Charger 2', 'alt_ships': 'mid-January', 'note': 'Ships sooner: mid-January vs mid-February; same brand, $1,599.99 vs $1,598.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10914,7 +10914,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099) and the Charger 2 ($429) came to $1,528, $70 less than this bundle.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-charger-2-2x200w-solar-kit',
+{"slug": 'bluetti-apex-200-charger-2-2x200w-solar-kit', "alt": {'none': 'None: nothing with Charger 2-class alternator charging and panels ships sooner within the band.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10934,7 +10934,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099), the Charger 2 ($429) and two 200 W panels ($399 each) came to $2,326; this bundle saves $127.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-charger-2-2x350w-solar-kit',
+{"slug": 'bluetti-apex-200-charger-2-2x350w-solar-kit', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10954,7 +10954,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099), the Charger 2 ($429) and two 350 W panels ($649 each) came to $2,826; this bundle saves $227.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-200-charger-2-2x500w-solar-kit',
+{"slug": 'bluetti-apex-200-charger-2-2x500w-solar-kit', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10974,7 +10974,7 @@ PRODUCTS = [
  "fit": 'Home backup for 120 V essentials (fridge, freezer, furnace fan, router) and RVs with a 30 A inlet. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-February.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 200 ($1,099), the Charger 2 ($429) and two 500 W panels ($849 each) came to $3,226; this bundle saves $327.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No 240 V output: it cannot run a 240 V well pump, dryer or split-phase transfer switch; that needs the Apex 300.']},
 
-{"slug": 'bluetti-apex-300-2-b300k-solarx-4k',
+{"slug": 'bluetti-apex-300-2-b300k-solarx-4k', "alt": {'slug': 'natures-generator-l6000-power-pod', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 8,294 Wh', 'note': '$3,749.99 vs $4,498 (-17%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -10993,7 +10993,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), two B300Ks ($1,099 each) and the SolarX 4K ($699) came to $4,396, $102 less than this bundle.", 'A panel string under 150 V will not run the SolarX 4K, and a 600 V / 20 A PV disconnect is needed and not included (Notebookcheck).', 'No solar panels are in this bundle.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-b300k-50a-cable',
+{"slug": 'bluetti-apex-300-b300k-50a-cable', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh', 'note': '$2,899 vs $2,928 (-1%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11012,7 +11012,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B300K ($1,099) and the 50A Cable ($129) came to $2,727, $201 less than this bundle.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-b300k-charger-2-dc-hub-2x350w-solar-kit',
+{"slug": 'bluetti-apex-300-b300k-charger-2-dc-hub-2x350w-solar-kit', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11031,7 +11031,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B300K ($1,099), the Charger 2 ($429), the DC Hub ($299) and two 350 W panels ($649 each) came to $4,624, $271 less than this bundle.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-b300k-hub-d1',
+{"slug": 'bluetti-apex-300-b300k-hub-d1', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh', 'note': '$2,899 vs $2,999 (-3%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11051,7 +11051,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B300K ($1,099) and the Hub D1 ($299) came to $2,897; this bundle saves $48.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a-kit',
+{"slug": 'bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a-kit', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11070,7 +11070,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch. The panels are a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B500K ($1,599), the Charger 2 ($429), the DC Hub ($299), two 350 W panels ($649 each) and the 50A Cable ($129) came to $5,253, $471 less than this bundle.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.', "The Apex 300 manual lists the MC4-to-XT60 solar charging cable as sold separately, so check the kit's box list before ordering."]},
 
-{"slug": 'bluetti-apex-300-b500k-solarx-4k', "sold_out_alt": ['bluetti-apex-200-b500k', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K bundle is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, $2,749.'],
+{"slug": 'bluetti-apex-300-b500k-solarx-4k', "alt": {'slug': 'natures-generator-l6000-power-pod', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 7,885 Wh', 'note': '$3,749.99 vs $3,999 (-6%).'}, "sold_out_alt": ['bluetti-apex-200-b500k', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K bundle is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, $2,749.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11090,7 +11090,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B500K ($1,599) and the SolarX 4K ($699) came to $3,797; this bundle saves $98.", 'A panel string under 150 V will not run the SolarX 4K, and a 600 V / 20 A PV disconnect is needed and not included (Notebookcheck).', 'No solar panels are in this bundle.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-charger-1-hub-d1',
+{"slug": 'bluetti-apex-300-charger-1-hub-d1', "alt": {'none': 'None: no 120/240 V station sold with an alternator charger ships now or sooner.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11109,7 +11109,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the Charger 1 ($219) and the Hub D1 ($299) came to $2,017, $131 less than this bundle.", "Charger 1 must be wired to the vehicle's starter battery; a station whose DC input is below 560 W holds it under that figure.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-hub-d1',
+{"slug": 'bluetti-apex-300-hub-d1', "alt": {'slug': 'natures-generator-l6000-expandable-power-station', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4 and 6,000 W at 120/240 V', 'note': '$2,249.99 vs $1,899 (+18%), ships now.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11129,7 +11129,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "The bundle price equals the Apex 300 ($1,499) and the Hub D1 ($299) bought separately at BLUETTI's US store on 2026-11-18.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-solarx-4k',
+{"slug": 'bluetti-apex-300-solarx-4k', "alt": {'slug': 'natures-generator-l6000-expandable-power-station', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '3,840 Wh LiFePO4 and 6,000 W at 120/240 V', 'note': "$2,249.99 vs $2,299 (-2%); its solar input is 2.4 kW, not SolarX's 4 kW."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11149,7 +11149,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499) and the SolarX 4K ($699) came to $2,198, $1 less than this bundle.", 'A panel string under 150 V will not run the SolarX 4K, and a 600 V / 20 A PV disconnect is needed and not included (Notebookcheck).', 'No solar panels are in this bundle.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-2-b500k-solarx-4k', "sold_out_alt": ['bluetti-apex-200-b500k-2x500w-solar-kit', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K + 2× 500 W kit is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, 1,000 W of panels, $4,196.'],
+{"slug": 'bluetti-apex-300-2-b500k-solarx-4k', "alt": {'slug': 'anker-solix-e10-power-module-2-battery', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '12,288 Wh LiFePO4 whole-home system, 120/240 V', 'note': '$5,799 vs $5,899 (-2%).'}, "sold_out_alt": ['bluetti-apex-200-b500k-2x500w-solar-kit', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K + 2× 500 W kit is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, 1,000 W of panels, $4,196.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11169,7 +11169,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), two B500Ks ($1,599 each) and the SolarX 4K ($699) came to $5,396, $103 less than this bundle.", 'A panel string under 150 V will not run the SolarX 4K, and a 600 V / 20 A PV disconnect is needed and not included (Notebookcheck).', 'No solar panels are in this bundle.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-b500k', "sold_out_alt": ['bluetti-apex-200-b500k', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K bundle is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, $2,749.'],
+{"slug": 'bluetti-apex-300-b500k', "alt": {'slug': 'natures-generator-l6000-power-pod', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 7,885 Wh', 'note': '$3,749.99 vs $3,699 (+1%).'}, "sold_out_alt": ['bluetti-apex-200-b500k', 'The Apex 300 bundles were out of stock on 2026-11-21. The Apex 200 + B500K bundle is a pre-order shipping late January 2027: 7,680 Wh, 3,200 W at 120 V, $2,749.'],
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11189,7 +11189,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499) and the B500K ($1,599) came to $3,098, $201 less than this bundle.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-b500k-home-backup-kit',
+{"slug": 'bluetti-apex-300-b500k-home-backup-kit', "alt": {'slug': 'natures-generator-l6000-power-pod', 'checked': '2026-11-26', 'status': 'sold out', 'reason': '7,680 Wh LiFePO4 and 6,000 W at 120/240 V; no transfer kit', 'note': '$3,749.99 vs $4,099 (-9%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11246,7 +11246,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages where a 2,000 W outlet is wanted from a 25 lb station. The panel can refill the battery in a day or two of good sun.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", "The bundle price equals the Premium 100 V2 ($849) and the 200 W panel ($399) bought separately at BLUETTI's US store on 2026-11-18.", 'We found no independent capacity test of the Premium 100 V2.']},
 
-{"slug": 'bluetti-apex-300-b300k-charger-2-dc-hub',
+{"slug": 'bluetti-apex-300-b300k-charger-2-dc-hub', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11265,7 +11265,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the B300K ($1,099), the Charger 2 ($429) and the DC Hub ($299) came to $3,326, $72 less than this bundle.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-apex-300-charger-2-dc-hub',
+{"slug": 'bluetti-apex-300-charger-2-dc-hub', "alt": {'none': 'None: as above.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11284,7 +11284,7 @@ PRODUCTS = [
  "fit": 'Home backup that includes a 240 V load (well pump, dryer) through an electrician-installed transfer switch.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "Bought separately at BLUETTI's US store on 2026-11-18, the Apex 300 ($1,499), the Charger 2 ($429) and the DC Hub ($299) came to $2,227, $72 less than this bundle.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', 'No USB or 12 V ports on the Apex 300 without the $299 Hub D1; at 84 lb it lives in one place.']},
 
-{"slug": 'bluetti-elite-100-v2-charger-2-bundle',
+{"slug": 'bluetti-elite-100-v2-charger-2-bundle', "alt": {'none': "None: no ~1 kWh LiFePO4 station sold with an alternator charger ships now within ±25% of $759.99 (Pioneer Na + Charger 2 is sodium-ion and +31%; Amazon's same bundle delivers Jan 8).", 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11304,7 +11304,7 @@ PRODUCTS = [
  "fit": 'Camping, car trips and short outages: a coffee maker, electric cooler, CPAP and laptops.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Dec 25.", "Bought separately at BLUETTI's US store on 2026-11-18, the Elite 100 V2 ($499) and the Charger 2 ($429) came to $928; this bundle saves $30.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', 'OutdoorGearLab measured 890 Wh delivered from the 1,024 Wh rating.']},
 
-{"slug": 'bluetti-elite-200-v2-charger-2-bundle',
+{"slug": 'bluetti-elite-200-v2-charger-2-bundle', "alt": {'slug': 'ecoflow-delta-2-max-800w-alternator-charger', 'checked': '2026-11-26', 'status': 'ships early January', 'reason': '2,048 Wh LiFePO4, 2,400 W, with an 800 W alternator charger', 'note': "Amazon B0D1CN8MLS, $1,249 vs $1,299 (-4%), In Stock, sold by EcoFlow, delivery Dec 10. Its charger is 800 W vs Charger 2's 1,200 W."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11323,7 +11323,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge and essentials, or an off-grid cabin weekend.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships early January.", "Bought separately at BLUETTI's US store on 2026-11-18, the Elite 200 V2 ($899) and the Charger 2 ($429) came to $1,328; this bundle saves $29.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'No solar panel in the box.', 'Not expandable: buy the Apex 200 if you may add batteries later.']},
 
-{"slug": 'bluetti-elite-400-charger-2-bundle',
+{"slug": 'bluetti-elite-400-charger-2-bundle', "alt": {'none': 'None: as Charger 1.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11360,7 +11360,7 @@ PRODUCTS = [
  "fit": 'Routers, laptops, a CPAP and light car camping; not for kitchen appliances or anything over 700 W.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", "Bought separately at BLUETTI's US store on 2026-11-18, the Elite 100 mini ($429) and the Charger 1 ($219) came to $648; this bundle saves $19.", "Charger 1 must be wired to the vehicle's starter battery; a station whose DC input is below 560 W holds it under that figure.", 'No solar panel in the box.', "Rated 700 W in total; a reviewer's unit shut down at 900 W (There's A Trick For That, via The Cool Down)."]},
 
-{"slug": 'bluetti-elite-200-v2-charger-1-200w-solar-kit', 
+{"slug": 'bluetti-elite-200-v2-charger-1-200w-solar-kit', "alt": {'none': 'None: nothing that ships now has both an alternator charger and a panel within ±25% of $1,448.', 'checked': '2026-11-26'}, 
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11379,7 +11379,7 @@ PRODUCTS = [
  "fit": 'Home backup for a fridge and essentials, or an off-grid cabin weekend. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order: the page says the 200 W panel ships Jan 8.", "Bought separately at BLUETTI's US store on 2026-11-18, the Elite 200 V2 ($899), the Charger 1 ($219) and the 200 W panel ($399) came to $1,517; this bundle saves $69.", "Charger 1 must be wired to the vehicle's starter battery; a station whose DC input is below 560 W holds it under that figure.", 'Not expandable: buy the Apex 200 if you may add batteries later.']},
 
-{"slug": 'bluetti-elite-400-charger-1-bundle',
+{"slug": 'bluetti-elite-400-charger-1-bundle', "alt": {'none': 'None: no 3–4 kWh station with an alternator charger ships now within ±25%.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11398,7 +11398,7 @@ PRODUCTS = [
  "fit": 'Outage backup for a fridge, router and lights over several days, rolled to where it is needed.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships mid-January.", "Bought separately at BLUETTI's US store on 2026-11-18, the Elite 400 ($1,499) and the Charger 1 ($219) came to $1,718; this bundle saves $119.", "Charger 1 must be wired to the vehicle's starter battery; a station whose DC input is below 560 W holds it under that figure.", 'No solar panel in the box.', '86 lb: it rolls on its own wheels but needs two people for stairs or a car boot.']},
 
-{"slug": 'bluetti-fridgepower-2-pack',
+{"slug": 'bluetti-fridgepower-2-pack', "alt": {'slug': 'growatt-infinity-2000-pro', 'checked': '2026-11-26', 'status': 'ships Jan 11', 'reason': '2,048 Wh LiFePO4 and 2,400 W each; buy two', 'note': 'Two at $799 = $1,598 vs $1,599.99.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11417,7 +11417,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, two FridgePower units ($949 each) came to $1,898; this bundle saves $199.", 'No solar panel in the box.', 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-fridgepower-2-bc200',
+{"slug": 'bluetti-fridgepower-2-bc200', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships Jan 11', 'reason': '7,372 Wh LiFePO4 in two units, 120/240 V, vs 6,048 Wh', 'note': '$2,899 vs $2,399 (+21%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11436,7 +11436,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, the FridgePower ($949) and two BC200s ($899 each) came to $2,747; this bundle saves $200.", 'No solar panel in the box.', 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-fridgepower-3-bc200',
+{"slug": 'bluetti-fridgepower-3-bc200', "alt": {'slug': 'growatt-helios-3600-x2-hub', 'checked': '2026-11-26', 'status': 'ships Jan 11', 'reason': '7,372 Wh LiFePO4 in two units, vs 8,064 Wh', 'note': '$2,899 vs $3,429 (-15%).'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11455,7 +11455,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, the FridgePower ($949) and three BC200s ($899 each) came to $3,646; this bundle saves $250.", 'No solar panel in the box.', 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-fridgepower-bc200',
+{"slug": 'bluetti-fridgepower-bc200', "alt": {'slug': 'growatt-helios-3600', 'checked': '2026-11-26', 'status': 'ships Jan 11', 'reason': '3,686 Wh LiFePO4 and 3,600 W, vs 4,032 Wh and 1,800 W', 'note': "$1,399 vs $1,599.99 (-13%) at Growatt's store (Awin). A floor unit, not slim or wall-hung. Amazon's $1,139 is 29% under, outside the band."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11474,7 +11474,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, the FridgePower ($949) and the BC200 ($899) came to $1,848; this bundle saves $149.", 'No solar panel in the box.', 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-fridgepower-charger-2-dc-hub-200w-solar-kit',
+{"slug": 'bluetti-fridgepower-charger-2-dc-hub-200w-solar-kit', "alt": {'none': 'None: nothing with an alternator charger, a panel and ~2 kWh ships before Jan 11 within the band (Elite 300 + 2 × 200 W also waits for its panel to Jan 8).', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11493,7 +11493,7 @@ PRODUCTS = [
  "fit": 'Keeping a refrigerator, a sump pump or a fish tank running through an outage from a unit that stays plugged in behind the appliance. The panel is a top-up, not a daily refill, for a battery this size.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: pre-order; the page says it ships Jan 11.", "Bought separately at BLUETTI's US store on 2026-11-18, the FridgePower ($949), the Charger 2 ($429), the DC Hub ($299) and the 200 W panel ($399) came to $2,076; this bundle saves $77.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'FridgePower is a new model; we found no independent capacity or runtime test of it.']},
 
-{"slug": 'bluetti-fridgepower-charger-2-dc-hub',
+{"slug": 'bluetti-fridgepower-charger-2-dc-hub', "alt": {'none': "None: the Elite 300 has no Charger 2 bundle on BLUETTI's store; the EcoFlow DELTA 2 Max + alternator charger ($1,249) is 26.5% under.", 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11606,7 +11606,7 @@ PRODUCTS = [
  "fit": 'Laptops, phones, cameras, a router or a small fan on a desk, in a car or at a campsite; nothing that draws over 300 W.',
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", '300 W output: no kettle, microwave or hair dryer.']},
 
-{"slug": 'bluetti-2-b300k-for-apex-300-200', 
+{"slug": 'bluetti-2-b300k-for-apex-300-200', "alt": {'slug': 'bluetti-b500k-charger-2', 'checked': '2026-11-26', 'status': 'the B300K ships Jan 20', 'reason': 'B500K fits Apex 300/200: 5,120 Wh vs 5,530 Wh, plus Charger 2', 'note': '$2,199 vs $2,398 (-8%), ships now. Runner-up: the same 2 × B300K on Amazon (B0FZ87DKWC, $1,999.99) delivers Dec 28: sooner than Jan 20 but not now.'}, 
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11700,7 +11700,7 @@ PRODUCTS = [
  "fit": "Adding stored energy to a compatible BLUETTI station: the bundle charges from the vehicle's alternator and roof panels at the same time and feeds an RV's 12 V circuits.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", "Bought separately at BLUETTI's US store on 2026-11-18, the B500K ($1,599), the Charger 2 ($429) and the DC Hub ($299) came to $2,327, $72 less than this listing.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'On its own the battery has no AC outlets; it powers household loads only through a compatible BLUETTI station.']},
 
-{"slug": 'bluetti-b300k-charger-2',
+{"slug": 'bluetti-b300k-charger-2', "alt": {'slug': 'bluetti-b500k-trolley-2', 'checked': '2026-11-26', 'status': 'ships Jan 20', 'reason': 'B500K fits Apex 300/200: 5,120 Wh vs 2,765 Wh; no Charger 2', 'note': '$1,699 vs $1,599 (+6%), ships now. B500K + Charger 2 ($2,199) is +38%.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11738,7 +11738,7 @@ PRODUCTS = [
  "fit": "Adding stored energy to a compatible BLUETTI station: the bundle charges from the vehicle's alternator and roof panels at the same time and feeds an RV's 12 V circuits.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: ships now (no pre-order label or ship date on the page).", "Bought separately at BLUETTI's US store on 2026-11-18, the B300K ($1,099), the Charger 2 ($429) and the DC Hub ($299) came to $1,827; this listing saves $28.", "Charger 2 is wired to the vehicle's starter battery, and its 1,200 W is BLUETTI's top figure: the station's own DC input sets what it actually takes.", 'On its own the battery has no AC outlets; it powers household loads only through a compatible BLUETTI station.']},
 
-{"slug": 'bluetti-pv100-fx-flexible-solar-panel-6-pack',
+{"slug": 'bluetti-pv100-fx-flexible-solar-panel-6-pack', "alt": {'slug': 'bluetti-pv100-fx-2-pack-amazon', 'checked': '2026-11-26', 'status': 'sold out', 'reason': 'the same PV100 FX panels as a 2-pack; three make 600 W', 'note': "Amazon B0FS67DKV5, sold by Bluetti, $279.99 per 2-pack ($839.97 for six, -15%), 'Only 10 left', delivery Dec 9."},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11756,7 +11756,7 @@ PRODUCTS = [
  "fit": "Recharging a BLUETTI station whose solar input accepts this panel's voltage; check the station's voltage and current limits first.",
  "caveats": ["Checked 2026-11-26 on BLUETTI's US store: sold out, with no restock date.", "The set costs $987, the same as three sets of two at BLUETTI's US store on 2026-11-18 ($329 each).", 'A flexible panel with no stand, made to be fixed to an RV or van roof.', "At 41.4 V open-circuit each, the panels are wired in parallel on BLUETTI's RV5, whose solar input is limited to 50 V."]},
 # <<< DLC-321 phase 3
-{"slug": 'bluetti-elite-200-v2-charger-1-bundle',
+{"slug": 'bluetti-elite-200-v2-charger-1-bundle', "alt": {'none': 'None: the EcoFlow DELTA 2 Max + alternator charger ($1,249) is 34% over $929.99.', 'checked': '2026-11-26'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,
@@ -11810,7 +11810,7 @@ PRODUCTS = [
  "fit": 'For Tesla and other NACS-port cars charging from a 4-prong dryer outlet without a Tesla adapter.',
  "caveats": ['NACS only: a J1772 car needs a NACS-to-J1772 adapter (EVDANCE sells one from $59.95).', 'Fits 4-prong 14-30 outlets only, not 3-prong 10-30.', "The maker's product text carries over a line about Tesla needing a J1772 adapter, which doesn't apply to this NACS model.", 'The maker page gives no ground-fault trip level, so check with your electrician whether a GFCI breaker will be needed.']},
 
-{"slug": 'bluetti-apex-200-b300k',
+{"slug": 'bluetti-apex-200-b300k', "alt": {'slug': 'ecoflow-titan-5000-classic-amazon', 'checked': '2026-11-26', 'status': 'ships mid-February', 'reason': '5,017 Wh LFP and 4,000 W, vs 5,325 Wh and 3,200 W', 'note': 'Amazon B0HJZSDJZP, sold by EcoFlow, $2,199 (same), In Stock, delivery Dec 10. Launched in October: no independent review yet.'},
  "brand": 'BLUETTI',
  "program": 'awin:bluetti_us',
  "asin": None,

@@ -633,21 +633,18 @@ def sold_out_alt(p):
 
 # DLC-358 (Barry, 11-26): a sold-out product, or a pre-order that ships more than 14 days out, gets one line under it
 # with a researched alternative: freshness, the reason, then that alternative's buy link. The product's own buy link
-# keeps opening the product itself (the DLC-201 redirect is off). src/alternatives.json holds each pick and its research
-# summary ({orig slug: {alt, checked, status, reason, ...}}); the line shows only while the product is still sold out or
-# on pre-order and the alternative still ships (now, or sooner than the product when the entry allows a pre-order).
-try:
-    ALTERNATIVES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "alternatives.json"), encoding="utf-8"))
-except FileNotFoundError:
-    ALTERNATIVES = {}
+# keeps opening the product itself (the DLC-201 redirect is off). Each record holds its pick in "alt" ({slug, checked,
+# status, reason, alt_ships?, note?}), or {"none": why, "checked"} when nothing qualified; the weekly upkeep
+# (tools/upkeep, growth/stock/README.md) writes it. The line shows only while the product is still sold out or on
+# pre-order and the alternative still ships (now, or sooner than the product when the entry allows a pre-order).
 
 
 def alternative(p):
     """(alternative record, entry) for a product that has a researched alternative showing today, or None."""
-    a = ALTERNATIVES.get(p["slug"])
-    if not a or (in_stock(p) and not preorder(p)):
+    a = p.get("alt")
+    if not a or not a.get("slug") or (in_stock(p) and not preorder(p)):
         return None
-    q = BY_SLUG.get(a["alt"])
+    q = BY_SLUG.get(a["slug"])
     if not q or not in_stock(q) or (preorder(q) and not a.get("alt_ships")):
         return None
     return q, a
@@ -3136,6 +3133,10 @@ def main():
     open(lm, "w").write(json.dumps(lmap, indent=1, ensure_ascii=False) + "\n")
     # Sales dashboard: page, brand and offer records (topic, experiment, hypothesis), copied into D1 by the Worker cron.
     import dashmeta
+    # growth/stock/README.md: where each product is written about, for the weekly upkeep's page rewrites
+    import pageindex
+    pageindex.write(pageindex.build(PRODUCTS, GAP_PAGES, COMPARISONS, KITS, BUYBOX, compare_path,
+                                    {p["brand"] for p in PRODUCTS if not str(p.get("program", "")).startswith("amazon")}))
     dashmeta.write(os.path.join(repo, "worker", "src", "dash-meta.json"), PRODUCTS, GAP_PAGES, COMPARISONS, KITS, LINKS,
                    codes_path, urls, lmap)
     sync_tree(out, final)
