@@ -1,0 +1,143 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got that I could open states what a front-plus-rear camera draws while parked. A 2-channel camera that keeps recording pulls about 4 to 5 W from the starter battery (roughly 8 to 10 Ah a day at 12 V), while sleep-until-impact modes pull 0.2 to 0.5 W but only start recording about 2 seconds after the hit.",
+ "standout": 2,
+ "standout_why": "I compared against thecargearguide (the cited A229 Plus/Pro/A329S comparison and its front-and-rear roundup), productbible (front-and-rear roundup and VIOFO comparison) and pacificpartsdept. They say a hardwire kit is needed, name the HK4/HK6 modes, and give kit prices and rear-cable lengths. thecargearguide gives two isolated figures: the BP100 pack at 3 W for one camera, and BlackVue under 1 mA per Vortex Radar. None gives measured watts for a 2-channel camera per parking mode, the per-day battery arithmetic, the wake delay against pre-buffer trade-off, or the ACC-wire reason parking mode switches on its own. Not read: Vortex Radar (HTTP 403) and Car and Driver (fetch blocked), both cited by ChatGPT. Vortex Radar tests parking draw, so it may hold part of this, which is why this is 2 and not 3.",
+ "decides": "It confirms the ranking and splits it by use. For driving evidence only, parking draw is irrelevant and the A229 Pro 2CH or our Vantrue S1 Pro Max stand on image specs. For a car parked for days, the pick needs a sleep-until-impact mode: the VIOFO A329S with the HK6 kit (maker: under 40 mA at 12.6 V) or a Thinkware radar model. The A229 Pro and A229 Plus only have modes rcg530 measured at 3.9 to 5.0 W with two cameras. Our Vantrue S1 Pro 2CH has a collision-detection mode rcg530 measured at 0.21 W, an honest segment win for a low-drain parked front-plus-rear camera under $150, with the caveat that it records after the hit, not before. Every row should state the kit needed and its price.",
+ "candidates": [
+  "VIOFO A329S 2CH",
+  "VIOFO A229 Pro 2CH",
+  "VIOFO A229 Plus 2CH",
+  "VIOFO A229 Ultra 2CH",
+  "Vantrue S1 Pro Max 4K + 4K",
+  "Vantrue S1 Pro Max 4K + 2.5K",
+  "Vantrue S1 Pro 2CH",
+  "Thinkware U3000 Pro 2CH"
+ ],
+ "findings": [
+  {
+   "product": "VIOFO A229 Pro 2CH",
+   "label": "Measured parking-mode draw, front + rear",
+   "value": "4.98 W low bitrate; 4.84 W auto event detection waiting; 4.98 W auto event detection recording; 4.50 W time-lapse 10 fps (1CH: 3.39 W low bitrate)",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "Dashcam with low power consumption in parking mode / timelapse? (DashCamTalk, rcg530 post #22, 2024-03-05)",
+   "read": "2026-11-26",
+   "note": "rcg530's summary table; firmware v1.0_230901 for the 2CH row. The page does not state the test voltage. My arithmetic at 12 V nominal: 4.98 W / 12 V = 0.415 A, × 24 h = 9.96 Ah per day. The rear camera adds about 1.6 W (4.98 − 3.39)."
+  },
+  {
+   "product": "VIOFO A229 Plus 2CH",
+   "label": "Measured parking-mode draw, front + rear",
+   "value": "4.07 W low bitrate; 4.23 W auto event detection waiting; 3.87 W time-lapse 10 fps (1CH: 2.43 W low bitrate)",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "Dashcam with low power consumption in parking mode / timelapse? (DashCamTalk, rcg530 post #22, 2024-03-05)",
+   "read": "2026-11-26",
+   "note": "Firmware v1.0_231117 for the 2CH row. My arithmetic at 12 V nominal: 4.07 W / 12 V = 0.339 A, × 24 h = 8.1 Ah per day."
+  },
+  {
+   "product": "Vantrue S1 Pro 2CH",
+   "label": "Measured parking-mode draw, front + rear",
+   "value": "0.21 W collision detection; 3.88 W low bitrate; 4.04 W low frame rate; 4.33 W motion detection with no motion",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "Dashcam with low power consumption in parking mode / timelapse? (DashCamTalk, rcg530 post #22, 2024-03-05)",
+   "read": "2026-11-26",
+   "note": "No firmware listed for the Vantrue rows. My arithmetic at 12 V nominal: 0.21 W = 0.0175 A = 0.42 Ah per day, against 3.88 W = 0.323 A = 7.8 Ah per day. That is about 18 times less in collision detection. This is one of our linked rows."
+  },
+  {
+   "product": "Vantrue S1 Pro Max (4K + 4K / 4K + 2.5K)",
+   "label": "Measured draw and wake delay",
+   "value": "8.7 W with both cameras recording (screen and Wi-Fi on); 4.9 W front camera with GPS; about 4.1 to 4.2 W in Low Bit Rate parking mode (1080p 15 fps, screen off). Quick Start Collision Detection starts recording about 2.3 s after an impact; Power Saving Collision Detection takes about 10 s. Both record 30 s, then sleep.",
+   "source": "https://dashcamtalk.com/forum/threads/reviewing-and-testing-the-vantrue-s1-pro-max.53368/",
+   "source_title": "Reviewing and Testing the Vantrue S1 Pro Max (DashCamTalk, EricSan posts #15 and #19, 2025-06-22 and 2025-06-23)",
+   "read": "2026-11-26",
+   "note": "Averages of at least 30 s, GPS included. Parking figures include the Vantrue VP03 (II) hardwire kit, which EricSan says is sold separately. He also notes the manual states 6 W. Watts for the two collision modes are in an image I could not read. My arithmetic at 12 V nominal: 4.15 W = 0.346 A = 8.3 Ah per day in Low Bit Rate."
+  },
+  {
+   "product": "VIOFO A329S 2CH",
+   "label": "Low Power Impact Detection, maker's figures",
+   "value": "Under 40 mA at 12.6 V on the product listing; \"minimum: 0.24W/20mA power consumption at 12V\" in VIOFO's blog. Recording begins within 2 seconds of an impact; no pre-buffer is mentioned.",
+   "source": "https://www.viofo.com/blogs/viofo-car-dash-camera-guide-faq-and-news/highlights-of-the-a329s-series-what-are-low-power-impact-mode-hybrid-parking-mode",
+   "source_title": "Highlights of the A329S Series: What Are Low Power Impact Mode & Hybrid Parking Mode? (VIOFO, 2025-12-24)",
+   "read": "2026-11-26",
+   "note": "The 40 mA figure is from VIOFO's store listing text for https://www.viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor, read through the store's search because the product page returned 429. Listing wording: \"Extends parking surveillance from hours to days on a single car battery.\" My arithmetic: 40 mA × 12.6 V = 0.50 W, under 0.96 Ah per day, about a tenth of the A229 Pro 2CH's 4.98 W low bitrate. I found no independent bench figure for the A329S 2CH."
+  },
+  {
+   "product": "VIOFO A329S 2CH",
+   "label": "Which kit unlocks voltage-based hybrid parking",
+   "value": "\"Cut-off Voltage is only available with the HK6 hardwire kit\"; cut-off time switching works with HK4 or HK6. HK6 is $25.99 at viofo.com, sold separately.",
+   "source": "https://www.viofo.com/products/viofo-type-c-hk6-acc-hardwire-kit-for-a329s-series-support-hybrid-parking-mode",
+   "source_title": "VIOFO Type-C HK6 ACC Hardwire Kit for A329S/A229/A119M Pro Series",
+   "read": "2026-11-26",
+   "note": "Price and text from VIOFO's US store search (first variant; fuse-tap options may differ). HK6 listing: \"the older HK4 does not support voltage-based switching.\" The quoted sentence is from the VIOFO blog above. Hybrid mode starts in time-lapse or low bitrate, then drops to Low Power Impact Detection at the set time or voltage."
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH",
+   "label": "Parking modes, kit and pre-buffer",
+   "value": "Three parking modes with the HK4 hardwire kit (sold separately); buffered Auto Event Detection saves 15 seconds before impact. HK4 is $17.99 at viofo.com (compare-at $25.99).",
+   "source": "https://www.viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors",
+   "source_title": "VIOFO A229 Pro 2CH Front and Rear 4K+2K HDR Dual Dash Cam with Sony STARVIS 2 Sensors",
+   "read": "2026-11-26",
+   "note": "Listing text and HK4 price read through VIOFO's US store search (HK4 listing: https://www.viofo.com/products/viofo-type-c-hk4-hardwire-cable-for-a119mini2-a229-plus-a229-pro-a229-ultra-a329-t130-wm1, first variant). The trade-off: the mode that keeps the 15 s before a hit is the one rcg530 measured at 4.84 W waiting. The low-drain modes on other cameras record only after the hit."
+  },
+  {
+   "product": "general",
+   "label": "Why parking mode needs a three-wire kit (ACC sense)",
+   "value": "VIOFO: \"With ACC detection, the dash cam will switch to parking mode automatically if the vehicle engine is off, and switch back to normal recording after the vehicle engine is on.\" Its fuse-tap listing: two taps are \"enough for one constant power and one ACC-switched connection (as required by most VIOFO hardwire kits)\".",
+   "source": "https://www.viofo.com/products/viofo-mini-hk3-acc-hardwire-cable-for-a119v3-a129-duo-a129-duo-ir-a129-plus-duo-a129-pro-duo",
+   "source_title": "VIOFO Mini HK3 ACC Hardwire Cable (ACC wording); 2PCS Circuit Fuse Tap listing (two-fuse wording)",
+   "read": "2026-11-26",
+   "note": "Both read through VIOFO's US store search. The fuse-tap listing is https://www.viofo.com/products/2pcs-circuit-fuse-tap-with-mini-micro2-micro3-ato-mini-low-profile-adapter-holder ($5.99). The ACC sentence sits on the HK3 (older mini-USB) listing; I could not open the HK4 page to quote the same sentence for the USB-C kit."
+  },
+  {
+   "product": "Vantrue hardwire kits",
+   "label": "Low-voltage cutoff and ACC, maker's words and prices",
+   "value": "Voltage Display Hardwire Kit $29.99: three cutoff levels, 11.6 / 12 / 12.4 V (23.6 / 24 / 24.4 V), listed for the S1 Pro among others. Universal 11.5ft ACC Hardwire Kit $24.99: cuts power at 11.6 V or 23.2 V. 5-Level Adjustable Hardwire Kit $34.99: \"Auto shift to parking mode once ignition off thanks to the ACC linkage function\", but the S1 Pro is not on its list.",
+   "source": "https://www.vantrue.com/products/voltage-display-hardwire-kit",
+   "source_title": "Vantrue Voltage Display Hardwire Kit",
+   "read": "2026-11-26",
+   "note": "Read through Vantrue's US store search. Other listings: https://www.vantrue.com/products/universal-11-5ft-acc-hardwire-kit and https://www.vantrue.com/products/5-level-adjustable-hardwire-kit. None of these listings names the S1 Pro Max; see unsourced."
+  },
+  {
+   "product": "Thinkware U3000 2-Ch (earlier model, not the U3000 Pro)",
+   "label": "Measured parking-mode draw",
+   "value": "0.20 W radar (waiting for motion); 0.11 W energy saving (waiting for impact); 3.73 W motion detection with no motion; 3.33 W time-lapse",
+   "source": "https://dashcamtalk.com/forum/threads/dashcam-with-low-power-consumption-in-parking-mode-timelapse.48676/page-2",
+   "source_title": "Dashcam with low power consumption in parking mode / timelapse? (DashCamTalk, rcg530 post #22, 2024-03-05)",
+   "read": "2026-11-26",
+   "note": "This is the non-Pro U3000; use it only as the mechanism reference for radar parking, not as a U3000 Pro figure. My arithmetic at 12 V nominal: 0.20 W = 0.4 Ah per day."
+  },
+  {
+   "product": "VIOFO 2-channel line",
+   "label": "Maker's US store prices today",
+   "value": "A329S 2CH $459.99; A229 Pro 2CH $349.99; A229 Plus 2CH $229.99; A229 Ultra 2CH $409.99 (all in stock, no compare-at price)",
+   "source": "https://www.viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor",
+   "source_title": "VIOFO US store listings",
+   "read": "2026-11-26",
+   "note": "Read through VIOFO's US store search; first-listed variant of each. ChatGPT showed $469.99 for the A329S 2CH at VIOFO, so the store reads $10 lower today. The other three match ChatGPT's first chat. Other listing URLs: https://www.viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors, https://www.viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor, https://www.viofo.com/products/viofo-a229-ultra-2ch-4k-front-4k-rear-dashcam-with-dual-sony-starvis-2-sensors"
+  },
+  {
+   "product": "VIOFO A229 series / A329S",
+   "label": "Rear camera link",
+   "value": "A229 2CH kits ship with a 6 m USB-C rear cable; 8 m and 10 m are sold, and the cable \"cannot be extended manually by connecting other USB cables\". The A329S rear camera (RC420) uses a 6 m coaxial cable.",
+   "source": "https://www.viofo.com/products/viofo-rear-cable-interior-cable-for-a229-plus-a229-pro-a229-ultra-car-dash-camera",
+   "source_title": "VIOFO Rear Cable/Interior Cable for A229 Plus/A229 Pro/A229 Ultra ($9.99)",
+   "read": "2026-11-26",
+   "note": "Read through VIOFO's US store search. RC420 listing: https://www.viofo.com/products/rc420-2k-hdr-rear-camera-with-6m-cable-and-adhesive-sticker-for-viofo-a329-a329s-a329t-series. Secondary to the parking-draw finding; rivals already give lengths, but not the no-extension limit."
+  }
+ ],
+ "unsourced": [
+  "Vortex Radar's best-dashcams page (HTTP 403) and Car and Driver's page (fetch blocked): I could not check whether either states parking-mode watts.",
+  "VIOFO's HK4 product page (HTTP 429): the HK4's cutoff voltage steps and its ACC wording. Search summaries pointed to 11.8 / 12.0 / 12.2 / 12.4 V from a DashCamTalk post that I did not open.",
+  "Which kit on Vantrue's store is the VP03 (II) that EricSan used on the S1 Pro Max, and its price; the Vantrue S1 Pro Max page returned 429 and no kit listing names that camera.",
+  "Watts for the S1 Pro Max's two collision-detection modes: they sit in an image in EricSan's post #19. A search summary gave 3.9 W for the power-saving mode, but I did not open that post.",
+  "An independent bench measurement of the VIOFO A329S 2CH in low bitrate and Low Power Impact Detection; only VIOFO's own figures were opened.",
+  "Measured parking draw for the Thinkware U3000 Pro 2CH; rcg530's table covers only the earlier U3000.",
+  "A sourced usable-capacity figure for a typical starter battery, so the page can give Ah per day but not a sourced days-until-cutoff number.",
+  "Parking-mode draw for the Botslab G980H and the DDPAI N5 Pro / Z90 Pro: not looked up within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 30,
+  "cost_usd_list": 3.2106991999999996
+ }
+}
