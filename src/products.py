@@ -8976,6 +8976,22 @@ PRODUCTS = [
  "fit": 'A desk, car or campsite bank for two or three laptops at once, or for a buyer who wants LiFePO4 cells and the lower price and will not carry it far.',
  "caveats": ['Its 48,000 mAh is counted at 3.2 V, so it holds about 5% more energy than a 146 Wh 40,000 mAh bank, not 20% more.', 'Reviewers list three different weights: 1.65 kg (Macworld), 1,637 g (powerbanks.fyi) and 1.8 kg (Android Central).', 'At 153.6 Wh it needs airline approval to fly and never goes in a checked bag.', 'One laptop gets 140 W at most; the 300 W figure is three USB-C ports at 100 W each.']},
 
+{"slug": 'vantrue-s1-pro-max-1ch',
+ "brand": 'Vantrue',
+ "program": 'awin:vantrue',
+ "category": 'dash-cam',
+ "name": 'Vantrue S1 Pro Max 1CH Front Dash Cam, 4K, Sony STARVIS 2 IMX678, HDR, GPS, supercapacitor',
+ "model": 'S1 Pro Max 1CH',
+ "url": 'https://www.vantrue.com/products/s1-pro-max-1ch',
+ "price": 135.99,
+ "verified": '2026-11-26',
+ "specs": [('Channels', "1: front only (Vantrue's '1CH' listing)"), ('Front camera', '3840 × 2160 at 30 fps, Sony STARVIS 2 IMX678, 155° lens, HDR (DashCamTalk, S1 Pro Max front camera)'), ('Codec and bitrate', 'H.265, 32.0 Mb/s (DashCamTalk); EricSan measured 31.9 Mb/s on the front camera after a late-2025 firmware'), ('Storage', 'microSD, 32 GB to 1 TB (Vantrue)'), ('Power backup', 'Supercapacitor (DashCamTalk)'), ('GPS and Wi-Fi', 'GPS and Wi-Fi (DashCamTalk)'), ('Parking mode', 'Non-buffered (DashCamTalk); needs a hardwire kit, which EricSan describes as available separately'), ('Measured power', '4.9 W, front camera with GPS (EricSan, DashCamTalk forum)')],
+ "warranty": "18 months with registration (DashCamTalk's spec table for the S1 Pro Max)",
+ "returns": "30 days; item unused and in its original packaging; return shipping at the buyer's expense (Vantrue refund policy, read 2026-11-26)",
+ "summary": "The front-only version of Vantrue's S1 Pro Max: a Sony STARVIS 2 IMX678 recording 3840 × 2160 at 30 fps in H.265 at 32.0 Mb/s (DashCamTalk), which is about 8.9 hours of 4K on a 128 GB card, with cards up to 1 TB.",
+ "fit": "A driver who wants 4K of the road ahead only, bought from the maker's store under $200, and the longest loop per card among the 4K cameras at this price.",
+ "caveats": ["DashCamTalk's 32.0 Mb/s, H.265 and score figures come from its S1 Pro Max entry, which describes the 4K + 4K kit; they are applied here to the same front camera.", "DashCamTalk scores the S1 Pro Max 6.8 of 10 overall: day video 9, night video 7, discreetness 5; it lists 'Larger sized camera' as a weakness.", "Parking mode is non-buffered and needs a hardwire kit, sold separately. Vantrue's hardwire kit listings read on 2026-11-26 do not name the S1 Pro Max, so ask Vantrue which kit fits before ordering.", "Price read 2026-11-26 through vantrue.com's store search feed (variant Default Title, id 51187927351605, list $199.99); the product page itself returned HTTP 429 that day."]},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

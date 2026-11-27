@@ -1,0 +1,115 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that two sensors can both be native 3840 × 2160 and still differ 1.9× in light-collecting area per pixel (Sony IMX678, type 1/1.8, 2.0 µm, STARVIS 2, against Sony IMX415, type 1/2.8, 1.45 µm, first-generation STARVIS), nor Sony's own statement that DOL HDR blurs the outline of a fast-moving target while Clear HDR does not.",
+ "standout": 2,
+ "standout_why": "Compared against Product Bible, RoadGearLab, Tony Reviews Things, Pacific Parts Dept and DashCamTalk's best list (all opened 2026-11-26). RoadGearLab already has native against upscaled 4K, the IMX678's size ('1/1.8-inch ... 8.29MP effective'), bitrates and GB per hour. Pacific Parts Dept has the upscaling point and the U3 card. None names the IMX415 as the smaller native-4K sensor, gives a pixel size, or explains HDR motion artifacts. Rivals therefore hold part of the sensor story (hence 2, not 3).",
+ "decides": "It confirms an IMX678 camera as the pick for night plate detail (VIOFO A119M Pro front-only, 70mai A810S with a rear camera). Our Botslab G980H 4K + 2K is native 4K on the front channel but uses the smaller IMX415, and Android Authority's reviewer found plates hard to read at night, so it is honestly the cheaper daylight-4K pick, not the overall winner. Our Vantrue S1 Pro Max 4K + 2.5K would compete on sensor terms, but I could not re-read its IMX678 claim on Vantrue's page today.",
+ "candidates": [
+  "VIOFO A119M Pro",
+  "70mai A810S",
+  "Vantrue S1 Pro Max 4K + 2.5K",
+  "Vantrue S1 Pro Max 1CH",
+  "Botslab G980H 4K + 2K",
+  "DDPAI N5 Pro",
+  "Vantrue E1 Pro",
+  "Miofive S1 Ultra"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Sensor optical format, per Sony's security sensor lineup",
+   "value": "IMX678: type 1/1.8, 16:9; IMX415: type 1/2.8, 16:9",
+   "source": "https://www.sony-semicon.com/en/products/is/security/security.html",
+   "source_title": "Sony Semiconductor Solutions: Image Sensor for Security Camera lineup",
+   "read": "2026-11-26",
+   "note": "Sony's lineup page gives image size and aspect ratio only. Pixel size and effective pixels are in Sony's flyers, which I could not read (encrypted PDF)."
+  },
+  {
+   "product": "general",
+   "label": "Pixel size and effective resolution of the two native-4K sensors",
+   "value": "IMX415: 1.45 µm × 1.45 µm, 3864 × 2192 (~8.46 MP), type 1/2.8 (6.4 mm), STARVIS. IMX678: 2.0 µm × 2.0 µm, 3856 × 2180 (~8.40 MP), type 1/1.8 (8.86 mm), STARVIS 2",
+   "source": "https://www.e-consystems.com/blog/camera/technology/sony-imx415-vs-imx715-vs-imx678-which-sony-starvis-sensor-does-your-vision-system-need/",
+   "source_title": "e-con Systems: Sony IMX415 vs IMX715 vs IMX678 (Prabu Kumar, 2026-04-29, updated 2026-05-06)",
+   "read": "2026-11-26",
+   "note": "Named third-party source (a camera-module maker), not Sony. Arithmetic: 2.0² = 4.00 µm² against 1.45² = 2.10 µm², so 1.90× the area per pixel on the IMX678. Both sensors fill 3840 × 2160 without interpolation. Prabu Kumar calls the IMX678 'the preferred choice for low-light AI vision systems' because of 'its larger pixel architecture and STARVIS 2 technology'."
+  },
+  {
+   "product": "general",
+   "label": "HDR modes each sensor supports",
+   "value": "IMX415: multi-exposure + DOL HDR; IMX678: DOL HDR + Clear HDR",
+   "source": "https://www.e-consystems.com/blog/camera/technology/sony-imx415-vs-imx715-vs-imx678-which-sony-starvis-sensor-does-your-vision-system-need/",
+   "source_title": "e-con Systems: Sony IMX415 vs IMX715 vs IMX678 (Prabu Kumar)",
+   "read": "2026-11-26",
+   "note": "This is what the sensor supports; which mode a given dash cam's firmware uses is not stated here. The same article says STARVIS 2 has 'a wide dynamic range advantage exceeding 8 dB over STARVIS'."
+  },
+  {
+   "product": "general",
+   "label": "Why HDR can smear a moving plate, in Sony's words",
+   "value": "DOL HDR: 'this can cause some artifacts, such as a blurred outline and chromatic aberration, if the target is in fast motion'. Clear HDR 'has the advantage of delivering images of a moving target without chromatic aberration'",
+   "source": "https://www.sony-semicon.com/en/technology/security/index.html",
+   "source_title": "Sony Semiconductor Solutions: Security camera image sensor technology (STARVIS / STARVIS 2)",
+   "read": "2026-11-26",
+   "note": "Sony explains that DOL takes two exposures in succession with a short time gap, while Clear HDR captures both images at the same time. Sony also defines STARVIS as sensitivity of at least 2,000 mV/µm² (colour product, 706 cd/m² light source)."
+  },
+  {
+   "product": "Botslab G980H 4K + 2K",
+   "label": "Image sensor and channels, per Botslab's specification page",
+   "value": "'Powered by the Sony IMX 415 sensor'; video resolution '4K + 2K' (2-channel: front + rear); angle of view 170° + 150°; '24/7 Parking Mode: ✓ (Hard wire kit needed)'; 'Includes a 64GB MicroSD card'",
+   "source": "https://www.botslab.com/pages/botslab-g980h-product-specifications",
+   "source_title": "Botslab G980H Product Specifications",
+   "read": "2026-11-26",
+   "note": "The page does not say which camera has the IMX415, and gives no frame rate, aperture, codec or card maximum."
+  },
+  {
+   "product": "Botslab G980H",
+   "label": "Night plate legibility, named reviewer",
+   "value": "Daylight: 4K front 'excellent for capturing finer details like license plates'. Night or highway speed: 'reading license plates can be difficult'; 'Low-light video can be poor'; 'The camera lacks HDR or a dedicated night mode'. One hour of front 4K 'will consume around 13GB'",
+   "source": "https://www.androidauthority.com/botslab-g980h-review-3511197/",
+   "source_title": "Android Authority: Botslab G980H review (Bogdan Petrovan, 2024-12-24)",
+   "read": "2026-11-26",
+   "note": "The unit reviewed had a 1080p rear camera, not the 2K rear of the bundle we link, and the review is from 2024. Its spec table lists the IMX415 for the front camera. Arithmetic: 13 GB/hour ≈ 29 Mb/s."
+  },
+  {
+   "product": "VIOFO A119M Pro",
+   "label": "Image sensor and channels, named reviewer",
+   "value": "Sony STARVIS 2 IMX678, 3840 × 2160, 1-channel (front only); DashCamTalk score 7.8",
+   "source": "https://dashcamtalk.com/best-dash-cams/",
+   "source_title": "DashCamTalk: Best Dash Cams of 2026",
+   "read": "2026-11-26",
+   "note": "VIOFO's own product page returned HTTP 429 today, so this is DashCamTalk's figure. DashCamTalk: 'One of the best single channel dash cams from a video quality perspective.' Product Bible and RoadGearLab also list the IMX678."
+  },
+  {
+   "product": "70mai A810S",
+   "label": "Front image sensor, named reviewer",
+   "value": "Sony STARVIS 2 IMX678, 3840 × 2160 front; DashCamTalk score 7.7",
+   "source": "https://dashcamtalk.com/best-dash-cams/",
+   "source_title": "DashCamTalk: Best Dash Cams of 2026",
+   "read": "2026-11-26",
+   "note": "70mai's own page was not opened. RoadGearLab lists the 2-channel kit as 4K front (IMX678) + 1080p rear (IMX662)."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages already state (not new)",
+   "value": "RoadGearLab: 'Some cheap \"4K\" dash cams use 4MP or 5MP sensors and stretch the image to 3840 x 2160'; IMX678 'is a 1/1.8-inch sensor with 3840 x 2160 resolution and 8.29MP effective'; A119M Pro ~62 Mbps against A810S ~29 Mbps front; 'At 30 Mbps, about 13.5 GB per hour; at 60 Mbps, about 27 GB'",
+   "source": "https://roadgearlab.com/best-4k-dash-cam/",
+   "source_title": "RoadGearLab: Best 4K Dash Cam 2026: 6 True-4K Picks Compared",
+   "read": "2026-11-26",
+   "note": "The page should not lead with upscaling, bitrate or card size as its new fact. Pacific Parts Dept adds that the ROVE R2-4K is upscaled from 2.5K and that a 4K camera needs a U3 card (https://pacificpartsdept.com/dash-cams/best-front-and-rear-dash-cam-under-200/, read 2026-11-26)."
+  }
+ ],
+ "unsourced": [
+  "Sony's own flyer figures for the IMX678 and IMX415 (unit cell size, sensitivity in digits at F5.6 and 1/30 s): the IMX678 flyer on sony-semicon.com is an encrypted PDF I could not extract, and the IMX415 flyer URL returned 404. Pixel sizes above are e-con Systems' figures.",
+  "Which HDR method (DOL or Clear HDR) the VIOFO A119M Pro, 70mai A810S, Vantrue S1 Pro Max and DDPAI N5 Pro firmware uses: no maker statement opened.",
+  "The sensor claim and the resolution with both cameras recording on Vantrue's S1 Pro Max 4K + 2.5K page, and the sensor on VIOFO's A119M Pro page: vantrue.com and viofo.com returned HTTP 429 on every attempt today (WebFetch and storecheck.py).",
+  "DDPAI N5 Pro front sensor model: store.ddpai.com returned HTTP 429. A search snippet names GC8613 for the different N5 Dual 2026, which I did not open, so it is not reported as a finding.",
+  "Sensors of the Miofive S1 Ultra and Vantrue E1 Pro / Element 1 Pro S: not reached within the call budget.",
+  "Today's prices for any candidate: this angle read none on a maker's store (Shopify stores were returning 429). DashCamTalk's list shows $132.99 for the A119M Pro and $159.99 for the A810S, but those are not maker-store readings.",
+  "A measured night comparison of an IMX415 dash cam against an IMX678 dash cam by one named reviewer on the same road."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.7753045000000007
+ }
+}
