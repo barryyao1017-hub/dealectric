@@ -1,0 +1,131 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states how many watts each 2 kWh station burns just keeping its AC inverter on with nothing plugged in: The Solar Lab reports about 27 W for the EcoFlow DELTA 3 Max, 17 W for the DJI Power 2000, about 18 W for the Anker SOLIX C2000 Gen 2, 9.5 W for the BLUETTI Elite 200 V2 and about 6 W for the Anker SOLIX S2000.",
+ "standout": 2,
+ "standout_why": "Compared against popsci.com Black Friday deals (cited), us.ecoflow.com Black Friday page (cited), outageoutfitter.com/best/under-1000 (cited), outagereadyhq.com, thewattlist.com and powerreserveguide.com. None gives an idle or no-load watt figure for any unit. The closest is outagereadyhq's flat 'count 85% of the battery as usable, because the inverter uses some energy itself', the same flat 85% ChatGPT used. Rivals do print X-Boost and lifting watts (outagereadyhq, powerreserveguide, thewattlist), and thewattlist says the AC180's lifting mode is 'for resistive heat loads', so the lifting-mode point is only partly new. Two cited pages, businessinsider.com and popularmechanics.com, could not be opened (fetch blocked), so they are unchecked; that is why this is 2 and not 3.",
+ "decides": "The page's ranking (capacity and continuous watts per dollar) is unchanged; idle draw is the tie-breaker for the use ChatGPT assumed (fridge, Wi-Fi, lights through an outage, AC left on all day). At 24 h with AC on, idle alone takes about 648 Wh (32% of 2,048 Wh) on the DELTA 3 Max, 408 Wh (20%) on the DJI Power 2000, 432 Wh (21%) on the C2000 Gen 2, 228 Wh (11% of 2,073.6 Wh) on the Elite 200 V2 and 144 Wh (7% of 2,010 Wh) on the S2000. That backs the Elite 200 V2 over the DELTA 3 Max, which was ChatGPT's first-chat pick at near the same price, and narrows the DJI Power 2000's lead for low-load backup. The S2000 has the lowest idle but only 1,500 W output and a long ship time. Second point: BLUETTI's 3,900 W Power Lifting figure is, in BLUETTI's own words, for 'pure resistive loads', so the Elite 200 V2's ceiling for motors and compressors is its 2,600 W rating.",
+ "candidates": [
+  "BLUETTI Elite 200 V2",
+  "DJI Power 2000",
+  "EcoFlow DELTA 3 Max",
+  "Anker SOLIX C2000 Gen 2",
+  "Anker SOLIX S2000"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why a station drains with nothing plugged in",
+   "value": "\"the inverter itself requires energy to stay on and to ensure the power inside the unit's batteries is ready for action\"; the display, fans, control electronics and Wi-Fi/Bluetooth add to it",
+   "source": "https://www.thesolarlab.com/how-tos/idle-consumption",
+   "source_title": "The Solar Lab: idle consumption how-to",
+   "read": "2026-11-27",
+   "note": "The Solar Lab's own definition: 'idle consumption refers to the energy a power station uses just to stay on'. The page gives no formal test method; its one example is an estimate of over 70 W for the Anker F3800."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Idle draw, AC inverter on, no load (The Solar Lab)",
+   "value": "about 27 W",
+   "source": "https://www.thesolarlab.com/review/ecoflow-delta-3-max",
+   "source_title": "EcoFlow DELTA 3 Max Review: A Step Forward or a Step Sideways?",
+   "read": "2026-11-27",
+   "note": "'After a few tests, we calculated the idle consumption at about 27 watts' with the AC inverter left on; the review estimates about three days of standby. Arithmetic: 2,048 Wh / 27 W = 76 h; 27 W x 24 h = 648 Wh/day, 32% of rated capacity. Same review: efficiency 79% (load not stated), weight 45 lb. No author or date shown."
+  },
+  {
+   "product": "DJI Power 2000",
+   "label": "Idle draw, AC inverter on, no load (The Solar Lab)",
+   "value": "about 17 W",
+   "source": "https://www.thesolarlab.com/review/dji-power-2000",
+   "source_title": "The Solar Lab: DJI Power 2000 review",
+   "read": "2026-11-27",
+   "note": "'With the AC inverter left on, it consumed right around 17W idling', which the review says 'translates to about 5 days of idle runtime'. Arithmetic: 17 W x 24 h = 408 Wh/day, 20% of 2,048 Wh. Same review: efficiency about 84% (load not stated), 48.5 lb."
+  },
+  {
+   "product": "DJI Power 2000",
+   "label": "Maker spec page: AC output and standby figure",
+   "value": "DYM2000L: AC 100-120 V, 25 A, 50/60 Hz; 2,048 Wh; approx. 22 kg; over 80% capacity after 4,000 cycles; no standby or idle power listed",
+   "source": "https://www.dji.com/power-2000/specs",
+   "source_title": "DJI Power 2000 Specs",
+   "read": "2026-11-27",
+   "note": "The spec page gives volts and amps, not a watt rating: 120 V x 25 A = 3,000 VA by arithmetic. It lists no peak watts, no UPS switchover time and no AC recharge time."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "9.5 W",
+   "source": "https://www.thesolarlab.com/review/bluetti-elite-200-v2-review",
+   "source_title": "Bluetti Elite 200 V2 Review: A Solid Comeback?",
+   "read": "2026-11-27",
+   "note": "'coming in at just 9.5W per hour'; the review does not say whether the AC inverter was on or how it was measured. The Solar Lab says it bought the unit itself. Same review: efficiency 94% (load not stated), 53.4 lb. Arithmetic: 9.5 W x 24 h = 228 Wh/day, 11% of 2,073.6 Wh; 2,073.6 / 9.5 = 218 h."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Idle draw as listed in The Gadgeteer's feature list",
+   "value": "10 W with AC and DC left on; UPS 15 ms; 24.2 kg / 53.4 lb",
+   "source": "https://the-gadgeteer.com/2025/01/06/BLUETTI-elite-200-v2-portable-power-station-review-power-your-gear-through-winter-storms-and-more/",
+   "source_title": "The Gadgeteer: BLUETTI Elite 200 V2 portable power station review (Greg Cleveland)",
+   "read": "2026-11-27",
+   "note": "'Low idle consumption, 10w/h with AC and DC left on' sits in the bulleted 'Other features' list, so it reads as a maker-supplied claim, not Cleveland's measurement. He calls the advertised 15 ms 'on the edge of being too long' for switchover but found no issues in use. Published 2025-01-06, updated 2026-11-02."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Power Lifting, in BLUETTI's words",
+   "value": "\"effortlessly supports pure resistive loads of up to 3,900W\" (examples given: kettles, electric blankets, hair dryers)",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station (BLUETTI US store)",
+   "read": "2026-11-27",
+   "note": "The 3,900 W figure applies to resistive heating loads only; a fridge compressor or pump is limited by the 2,600 W continuous rating. Same page: $899.00, 'expected to ship in early January for orders placed on or after Nov. 18', AC input 1,800 W, 80% in 1.1 h, full in 1.4 h, 5-year warranty. The page gives no idle figure, UPS time or weight."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Idle draw: Anker's claim",
+   "value": "9 W",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station (Anker SOLIX US)",
+   "read": "2026-11-27",
+   "note": "'With just 9W of idle power consumption, it can power a portable fridge for 7 days or a dual-door fridge for up to 32 hours.' No test conditions are given for the 9 W. Same page: 2,400 W rated, 4,000 W peak, UPS 10 ms, 41.7 lb, and 'all C2000 Gen 2 orders placed on or after November 26th will ship within 6–12 weeks'. The page text showed no price."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Idle draw with AC outlets on standby (The Solar Lab)",
+   "value": "about 18 W",
+   "source": "https://www.thesolarlab.com/review/anker-solix-c2000-gen-2",
+   "source_title": "The Solar Lab: Anker SOLIX C2000 Gen 2 review",
+   "read": "2026-11-27",
+   "note": "'In our real-world testing with AC outlets on standby mode' idle 'sat closer to 18W per hour'; it says Anker's 9 W 'is true if you only have the screen and USB ports active'. Arithmetic: 18 W x 24 h = 432 Wh/day, 21% of 2,048 Wh. Same review: efficiency about 89%, 42 lb."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Idle draw (The Solar Lab)",
+   "value": "about 6 W",
+   "source": "https://www.thesolarlab.com/review/anker-solix-s2000",
+   "source_title": "The Solar Lab: Anker SOLIX S2000 review",
+   "read": "2026-11-27",
+   "note": "'the unit consumed only about 6 watts per hour'. Arithmetic: 6 W x 24 h = 144 Wh/day, 7% of 2,010 Wh. Same review: efficiency 91%, about 36 lb, 1,500 W inverter."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "X-Boost on EcoFlow's Black Friday page (cited by ChatGPT)",
+   "value": "page lists 2,048 Wh, 2,400 W, member price $879 and non-member $1,199; no X-Boost, surge or idle figure for this model",
+   "source": "https://us.ecoflow.com/pages/black-friday?_pos=5&_sid=bf897f97d&_ss=r",
+   "source_title": "EcoFlow Black Friday Sale 2026 (EcoFlow US)",
+   "read": "2026-11-27",
+   "note": "ChatGPT's first chat quoted an $854 member price and $899 regular; the page read today shows $879 member and $1,199 non-member. The Solar Lab's DELTA 3 Max review says X-Boost 'always seemed like a gimmick to us from the start'."
+  }
+ ],
+ "unsourced": [
+  "BLUETTI's manual wording on how Power Lifting works (the lowered output voltage) and the ECO mode auto-shut-off thresholds and hours: the manual PDF downloaded from s4.bluettipower.com but could not be converted to text, so nothing from it is used.",
+  "A maker-stated idle or no-load figure for the DJI Power 2000 (DJI's spec page lists none), the EcoFlow DELTA 3 Max (EcoFlow's Black Friday page lists none; its manual was not opened) and the BLUETTI Elite 200 V2 (BLUETTI's product page lists none).",
+  "EcoFlow's own description of X-Boost for the DELTA 3 Max (3,400 W, resistive loads): seen only on rival pages and in search snippets.",
+  "Idle draw for the Growatt INFINITY 2000 PRO, ALLPOWERS R2500 V2, Jackery Explorer 2000 v2 and Pecron F3000LFP: no review or manual opened for these.",
+  "A refrigerator's average running watts from an appliance maker or ENERGY STAR, to turn idle watts into fridge hours: not fetched, so the arithmetic is given only as idle watt-hours per 24 h and share of rated capacity.",
+  "Whether businessinsider.com and popularmechanics.com (both cited by ChatGPT) state any idle figure: both pages were blocked to the fetch tool.",
+  "The Solar Lab's test method, load, author and date for its idle and efficiency figures: its review pages do not state them.",
+  "Today's prices for the DJI Power 2000, Anker SOLIX C2000 Gen 2 and Anker SOLIX S2000: outside this angle and not re-read; the C2000 Gen 2 page text showed no dollar figure."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.7820091
+ }
+}

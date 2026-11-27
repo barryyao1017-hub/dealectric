@@ -1,0 +1,198 @@
+{
+ "angle": "F",
+ "gap": "No result ChatGPT got states that a 3,072 Wh / 3,600 W station (Pecron F3000LFP) is $899 at its maker's US store today, the same $879-899 ChatGPT's 2 kWh picks cost and about $293 per kWh against $429-434, or that the BLUETTI Elite 200 V2 it picked does not ship until early January.",
+ "standout": 3,
+ "standout_why": "Compared against outageoutfitter.com/best/under-1000 (cited), PopSci's Black Friday roundup (cited), outagereadyhq's under-$1,000 page and thewattlist's under-$1,000 page. Outage Outfitter and OutageReadyHQ already give price per kWh and some ship notes, but only for 2 kWh units; none of the four lists a 3 kWh unit under $1,000 (PopSci's 3 kWh rows are $1,098.99 and $1,299), and none mentions the Pecron F3000LFP, DJI Power 2000, Growatt Infinity 2000 Pro, ALLPOWERS R2500 V2 or the Elite 200 V2's January ship date. Three cited pages could not be opened: Business Insider and Popular Mechanics refused the fetch, and EcoFlow's Black Friday page was not read.",
+ "decides": "Ranked by capacity and continuous watts per dollar, the Pecron F3000LFP at $899 takes the top row (3,072 Wh, 3,600 W, ships mid-December), not ChatGPT's 2 kWh picks; Dealectric has no Pecron program, and its weight is unsourced. The Elite 200 V2 ships in more than four weeks, so by the page rules it can be listed but cannot be the pick. Our honest top-three row is the ALLPOWERS R2500 V2: $304 per kWh and 4.3 W per dollar at the code price, shipping from Dec 4. It beats the Pecron on watts per dollar but not on capacity per dollar. The Growatt Infinity 2000 Pro at $799 is the linked 2 kWh unit that showed as available with no pre-order notice. The DJI Power 2000, the desk research's #1, could not be priced today, so it cannot be ranked from this angle.",
+ "candidates": [
+  "Pecron F3000LFP",
+  "ALLPOWERS R2500 V2",
+  "DJI Power 2000",
+  "Anker SOLIX S2000",
+  "Growatt INFINITY 2000 PRO",
+  "EcoFlow DELTA 3 Max",
+  "BLUETTI Elite 200 V2",
+  "Anker SOLIX C2000 Gen 2",
+  "Jackery Explorer 2000 v2",
+  "Jackery Explorer 1500 v2",
+  "EcoFlow DELTA 3 Plus",
+  "Anker SOLIX C1000 Gen 2",
+  "EcoFlow DELTA 2 Max",
+  "EcoFlow DELTA 3 Max Plus (over $1,000)",
+  "Jackery HomePower 2000 Plus v2 (over $1,000)",
+  "BLUETTI Elite 300 (over $1,000)"
+ ],
+ "findings": [
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Maker's US store price and ship notice",
+   "value": "$899.00, pre-order, ships mid-December (listing title: \"PRE-ORDER | Ships Mid Dec\")",
+   "source": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "source_title": "PECRON F3000LFP Portable Power Station 3600W 3072Wh PRE-ORDER | Ships Mid Dec",
+   "read": "2026-11-27",
+   "note": "Read through the store's Shopify search endpoint (storecheck.py search), which returned title, price, availability true and the description text. The product page itself returned HTTP 429 three times, so variants and the cart price were not checked. The compare-at of $6,193 is not a real list price; do not quote it."
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Capacity, output, charging, warranty (maker's listing text)",
+   "value": "3,072 Wh; 3,600 W continuous, 4,500 W surge for 5 s; 30 A AC output; 1,800 W AC charging, about 2 hours; 1,600 W solar max (XT60, 25-120 V DC, 25 A); 3,200 W AC + solar, 1.3 hours; 2 + 3 years warranty",
+   "source": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "source_title": "PECRON F3000LFP Portable Power Station 3600W 3072Wh",
+   "read": "2026-11-27",
+   "note": "Arithmetic: $899 / 3.072 kWh = $292.64 per kWh; 3,600 W / $899 = 4.00 W per dollar. Where it loses: the surge is only 1.25× rated (4,500 W on 3,600 W), against 4,800 W surge on EcoFlow's 2,400 W unit; it is a pre-order; we cannot link it. The text read does not state the cell chemistry beyond \"LFP\" in the model name, or the outlet type of the 30 A output."
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "label": "Expansion battery and its price",
+   "value": "EP3800-48V, 3,840 Wh (51.2 V 75 Ah) LiFePO4, 3,500+ cycles to 80%, about 66.8 lb, $799.00",
+   "source": "https://www.pecron.com/products/pecron-ep3800-48v-expansion-battery-3840wh-for-e1500lfp-e3600lfp-e1000lfp-e2400lfp-f3000lfp",
+   "source_title": "PECRON EP3800-48V Expansion Battery 3840Wh for E1500LFP/ E3600LFP/ E1000LFP/ E2400LFP/ F3000LFP/ E3800LFP",
+   "read": "2026-11-27",
+   "note": "Store search endpoint. Pecron's listing names the F3000LFP as compatible. The F3000LFP's own text says \"Expandable 2*EP...\" but was cut off in what was read."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Maker's US store price",
+   "value": "$879.00, available; 2,048 Wh; 2,400 W continuous, 4,800 W surge, X-Boost to 3,400 W; 0-80% in 68 min on wall charging",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Portable Power Station (2048Wh)",
+   "read": "2026-11-27",
+   "note": "Store search endpoint; the product page returned 429. ChatGPT's first chat showed $899.00, so the store is $20 lower today. $879 / 2.048 kWh = $429.20 per kWh; 2.73 W per dollar. Loses to the Pecron: same price band, 1,024 Wh less. The compare-at of $2,398 is not a real list price."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "label": "Amazon price as reported by Popular Science",
+   "value": "$854 (was $1,199), Amazon",
+   "source": "https://www.popsci.com/gear/black-friday-portable-power-station-deals/",
+   "source_title": "Best Black Friday Portable Power Station Deals 2026",
+   "read": "2026-11-27",
+   "note": "PopSci's figure, page dated 2026-11-26. Not read on Amazon (amzcheck returned nothing). The $854 \"member price\" ChatGPT attributed to EcoFlow's Black Friday page was not verified."
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max Plus",
+   "label": "Left out: over $1,000",
+   "value": "$1,149.00 (2,048 Wh, 3,000 W)",
+   "source": "https://us.ecoflow.com/products/ecoflow-delta-3-max-plus-portable-power-station-2048wh",
+   "source_title": "EcoFlow DELTA 3 Max Plus Portable Power Station (2048Wh)",
+   "read": "2026-11-27",
+   "note": "Store search endpoint. This is the 3,000 W version of the Delta 3 Max; it misses the line by $149."
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "label": "Maker's US store price and ship date",
+   "value": "$899.00; \"The Elite 200 V2 is expected to ship in early January for orders placed on or after Nov. 18.\"; 2,600 W, 3,900 W Power Lifting for pure resistive loads; 1.4 h to full, 80% in 1.1 h with TurboBoost; solar 12-60 V, 20 A, 1,000 W max; 5-year warranty",
+   "source": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 200 V2 Portable Power Station | 2,600W 2,080Wh",
+   "read": "2026-11-27",
+   "note": "Product page opened. $899 / 2.0736 kWh = $433.54 per kWh; at our $854.05 code price, $411.87 per kWh. Loses on ship time: early January is more than four weeks out, and neither ChatGPT answer nor any rival page read says so. The page states neither weight nor UPS time; Outage Outfitter gives 53.4 lb."
+  },
+  {
+   "product": "Jackery Explorer 2000 v2",
+   "label": "Maker's US store price and ship notice",
+   "value": "$999.00, \"Pre-order · Ships by Dec. 11\"; 2,042 Wh LiFePO4; 2,200 W continuous, 4,400 W surge",
+   "source": "https://www.jackery.com/products/jackery-explorer-2000-v2-portable-power-station",
+   "source_title": "Jackery Explorer 2000 v2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Store search endpoint. $999 / 2.042 kWh = $489.23 per kWh, the dearest 2 kWh unit under the line and $1 inside it. Outage Outfitter gives 39.5 lb, the lightest of the 2 kWh units at 2,200 W or more."
+  },
+  {
+   "product": "Jackery Explorer 1500 v2",
+   "label": "Maker's US store price",
+   "value": "$949.00; 1,536 Wh; 2,000 W AC, 4,000 W surge",
+   "source": "https://www.jackery.com/products/jackery-explorer-1500-v2-portable-power-station",
+   "source_title": "Jackery Explorer 1500 v2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Store search endpoint. $949 / 1.536 kWh = $617.84 per kWh; loses on capacity per dollar to every 2 kWh row."
+  },
+  {
+   "product": "Jackery HomePower 2000 Plus v2",
+   "label": "Left out: over $1,000",
+   "value": "$1,199.00 (2,048 Wh, 2,400 W, expandable to 12 kWh)",
+   "source": "https://www.jackery.com/products/jackery-homepower-2000-plus-v2",
+   "source_title": "Jackery HomePower 2000 Plus v2",
+   "read": "2026-11-27",
+   "note": "Store search endpoint."
+  },
+  {
+   "product": "Growatt INFINITY 2000 PRO",
+   "label": "Maker's US store price",
+   "value": "$799.00 (compare-at $1,349.00), available; 2,048 Wh LiFePO4, 4,000+ cycles; 2,400 W (3,400 W Watt+); 1,800 W AC charging, 2 h to full; 1,200 W solar; TT-30 and 30 A Anderson",
+   "source": "https://growattportable.com/products/growatt-infinity-2000-pro-portable-power-station",
+   "source_title": "Growatt INFINITY 2000 PRO Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Store search endpoint; no pre-order notice in the text returned. $799 / 2.048 kWh = $390.14 per kWh; 3.00 W per dollar. Loses on price per kWh to the R2500 V2 and the Pecron. Growatt's Infinity 2000 Pro Extra Battery ($749) showed unavailable."
+  },
+  {
+   "product": "Anker SOLIX C2000 Gen 2",
+   "label": "Ship notice and specs on the maker's page",
+   "value": "\"Due to high demand, all C2000 Gen 2 orders placed on or after November 26th will ship within 6–12 weeks.\"; 2,048 Wh; 2,400 W rated, 4,000 W peak; 41.7 lb (18.9 kg); AC input 1,800 W, full in 88 min; 58 min with AC + solar (2,600 W)",
+   "source": "https://www.ankersolix.com/products/c2000-gen2",
+   "source_title": "Anker SOLIX C2000 Gen 2 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Product page opened; it rendered no price for the unit alone (see unsourced). Loses on ship time: 6-12 weeks."
+  },
+  {
+   "product": "ALLPOWERS R2500 V2",
+   "label": "Price per kWh and watts per dollar from Dealectric's own record",
+   "value": "$649.00 store, $584.10 with code DEALECTRIC10 (cart test 2026-11-26); 1,920 Wh LiFePO4; 2,500 W continuous",
+   "source": "https://www.allpowers.com",
+   "source_title": "ALLPOWERS US store (Dealectric record; the store page itself was not re-read)",
+   "read": "2026-11-26",
+   "note": "Not re-read today: storecheck's search on allpowers.com failed twice. The figures are the brief's table. $584.10 / 1.920 kWh = $304.22 per kWh and 4.28 W per dollar; at $649, $338.02 per kWh and 3.85 W per dollar. The brief's 11-27 browser read gives pre-order, dispatch from Dec 4. Loses to the Pecron on capacity (1,152 Wh less); it has the smallest battery of the 2 kWh class."
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "label": "Price per kWh from Dealectric's own record",
+   "value": "$649.99; 2,010 Wh; 1,500 W rated",
+   "source": "https://www.ankersolix.com",
+   "source_title": "Anker SOLIX US store (Dealectric record; the product page was not re-read)",
+   "read": "2026-11-21",
+   "note": "Not re-read today. $649.99 / 2.010 kWh = $323.38 per kWh; 2.31 W per dollar. Loses on output (1,500 W, the lowest of the 2 kWh units) and ship time: the brief's 11-27 read says 7-13 weeks for orders from Nov 26, and Outage Outfitter says 4 to 9 weeks."
+  },
+  {
+   "product": "general",
+   "label": "What the cited Outage Outfitter page already lists",
+   "value": "Elite 200 V2 $899 ($434/kWh, 53.4 lb); DELTA 3 Max $879 ($429/kWh, 44.8 lb); C2000 Gen 2 $900 ($439/kWh, 41.7 lb); Explorer 2000 v2 $999 ($489/kWh, 39.5 lb); S2000 $650 ($323/kWh, 35.7 lb)",
+   "source": "https://outageoutfitter.com/best/under-1000",
+   "source_title": "Best Portable Power Station Under $1,000 (2026), Ranked",
+   "read": "2026-11-27",
+   "note": "Five rows, all 2 kWh, ranked by battery size. It has no 3 kWh unit and no Pecron, DJI, Growatt or ALLPOWERS row. It gives no ship date for the Elite 200 V2 or C2000 Gen 2. The weights here are that page's figures, not read on the makers' pages."
+  },
+  {
+   "product": "general",
+   "label": "3 kWh units in the cited PopSci roundup are all over $1,000",
+   "value": "Bluetti Elite 300 $1,098.99 (3,014 Wh, 2,400 W) and EcoFlow DELTA 3000 Gen4 $1,299 (3,072 Wh, 3,600 W), both Amazon; EcoFlow DELTA 2 Max $977 (2,048 Wh, 2,400 W); Anker SOLIX C1000 Gen 2 $469.99 (1,024 Wh, 2,000 W)",
+   "source": "https://www.popsci.com/gear/black-friday-portable-power-station-deals/",
+   "source_title": "Best Black Friday Portable Power Station Deals 2026",
+   "read": "2026-11-27",
+   "note": "PopSci's Amazon prices, page dated 2026-11-26; not read on Amazon. Against these, the Pecron at $899 is the only 3 kWh unit found under the line. PopSci lists the Elite 200 V2 only as a Charger 1 bundle at $989.10. The C1000 Gen 2, ChatGPT's third pick, has half the capacity of the 2 kWh rows."
+  },
+  {
+   "product": "general",
+   "label": "What the other under-$1,000 pages in the results list",
+   "value": "OutageReadyHQ: six models, largest 2,048 Wh, with $/Wh and stock notes dated Oct 31 and Nov 10. The Watt List: nine models, largest 2,042 Wh, September prices, no $/Wh figures or ship dates",
+   "source": "https://outagereadyhq.com/best/best-portable-power-station-under-1000/",
+   "source_title": "Best portable power station under $1,000 (2026)",
+   "read": "2026-11-27",
+   "note": "Second page read the same day: https://thewattlist.com/2026/09/05/best-portable-power-stations-under-1000-2026/. Neither names the Pecron F3000LFP, DJI Power 2000, Growatt Infinity 2000 Pro, ALLPOWERS R2500 V2 or any 3 kWh unit."
+  }
+ ],
+ "unsourced": [
+  "DJI Power 2000 price today: store.dji.com redirected to an account page, us.store.dji.com returned 404, dji.com/power-2000 shows no price, and the Amazon search returned nothing. The desk research's $679.99 stays unverified, so it cannot be ranked. dji.com/power-2000 did give 2,048 Wh, 3,000 W AC and 80% in 55 min on AC (read 2026-11-27).",
+  "Anker SOLIX C2000 Gen 2 price for the unit alone: the product page rendered no price and the store's Shopify endpoints returned 404. The $849.99 lead and Outage Outfitter's $900 were not confirmed.",
+  "Pecron F3000LFP weight, cycle rating, UPS switchover time and the outlet type of its 30 A output: the product page returned HTTP 429 on three tries. No manual or named reviewer was reached within the call budget.",
+  "Pecron F3000LFP variants and cart price: only the search-endpoint price of $899 was read.",
+  "EcoFlow DELTA 3 Max weight, UPS time and warranty from EcoFlow's own page, and the $854 member price: the product page returned 429 and the Black Friday page was not read.",
+  "BLUETTI Elite 200 V2 weight and UPS switchover from BLUETTI's page: the page text read did not state them.",
+  "Business Insider's Black Friday power-station deals page and Popular Mechanics' best portable power stations page (both cited by ChatGPT): the fetch tool could not open either, so the standout score rests on the four rival pages that were read. The 92% measured-capacity figure ChatGPT credited to Popular Mechanics was not verified.",
+  "ALLPOWERS R2500 V2 store price, Dec 4 dispatch notice and weight re-read today: storecheck failed on allpowers.com. The table's 11-26 cart-tested figures were used as given.",
+  "Anker SOLIX S2000 price and 7-13 week ship notice re-read today: not attempted within the budget; figures are from the brief.",
+  "Amazon prices for any model: amzcheck returned no results."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 33,
+  "cost_usd_list": 2.7144782000000003
+ }
+}
