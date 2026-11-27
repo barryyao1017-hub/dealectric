@@ -22,7 +22,9 @@ import json
 import re
 import subprocess
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 import urllib.parse
 from pathlib import Path
 
@@ -33,6 +35,7 @@ from products import PRODUCTS  # noqa: E402
 JSON_HOST = {"www.soundcore.com": "us.soundcore.com"}
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 JINA = "https://r.jina.ai/"
+DEADLINE = 1200   # seconds; the sweep kills the read at 1500
 MAX_MOVE = 0.25   # a title-only match priced further than this from the record is not taken as the record's variant
 
 
@@ -51,12 +54,57 @@ def jina(url: str, fmt: str = "text", meta: bool = False) -> tuple[int, str]:
     return _curl(JINA + url, ["-H", f"X-Return-Format: {fmt}"] + (["-H", "Accept: application/json"] if meta else []))
 
 
+_JSON_CACHE: dict[str, tuple[dict | None, str]] = {}
+_JSON_LOCK = threading.Lock()
+
+
 def product_json(js_url: str) -> tuple[dict | None, str]:
-    code, body = _curl(js_url)
-    if code == 200 and body.lstrip().startswith("{"):
-        return json.loads(body), "direct"
-    via = f"direct {code}"
+    """One read per listing per run: records that are variants of one listing (BLUETTI's bundles) share it."""
+    with _JSON_LOCK:
+        if js_url in _JSON_CACHE:
+            return _JSON_CACHE[js_url]
+    r = _product_json(js_url)
+    with _JSON_LOCK:
+        _JSON_CACHE[js_url] = r
+    return r
+
+
+_LOCK = threading.Lock()
+_HOST_NEXT: dict[str, float] = {}   # per store: when the next direct read may go
+_BLOCKED: set[str] = set()           # stores that answered 429 this run: read through r.jina.ai from then on
+_JINA_NEXT = [0.0]                   # r.jina.ai without a key takes 20 requests a minute in all
+HOST_GAP, JINA_GAP = 1.5, 3.2
+
+
+def _wait_slot(key, gap):
+    with _LOCK:
+        nxt = _HOST_NEXT.get(key, 0.0) if key != "jina" else _JINA_NEXT[0]
+        now = time.monotonic()
+        slot = max(nxt, now)
+        if key == "jina":
+            _JINA_NEXT[0] = slot + gap
+        else:
+            _HOST_NEXT[key] = slot + gap
+    if slot > now:
+        time.sleep(slot - now)
+
+
+def _product_json(js_url: str) -> tuple[dict | None, str]:
+    """DLC-358 (11-26): some stores answer every direct read from this machine with a 429 (iallpowers.com, us.ugreen.com,
+    sungoldpower.com that day). A store that does is marked and read through r.jina.ai for the rest of the run, without
+    retries that would hold up the other stores; each store is paced on its own, r.jina.ai on one shared pace."""
+    host = urllib.parse.urlsplit(js_url).netloc
+    via = "direct blocked earlier this run"
+    if host not in _BLOCKED:
+        _wait_slot(host, HOST_GAP)
+        code, body = _curl(js_url)
+        if code == 200 and body.lstrip().startswith("{"):
+            return json.loads(body), "direct"
+        if code == 429:
+            _BLOCKED.add(host)
+        via = f"direct {code}"
     for _ in range(2):
+        _wait_slot("jina", JINA_GAP)
         code, body = jina(js_url)
         i = body.find("{")
         if code == 200 and i >= 0:
@@ -64,7 +112,6 @@ def product_json(js_url: str) -> tuple[dict | None, str]:
                 return json.loads(body[i:]), via + ", read via r.jina.ai"
             except json.JSONDecodeError:
                 pass
-        time.sleep(4)
     return None, f"{via}; r.jina.ai {code}"
 
 
@@ -151,17 +198,31 @@ def main(argv: list[str]) -> int:
     outp = argv[argv.index("--out") + 1] if "--out" in argv else None
     stockp = argv[argv.index("--stock-out") + 1] if "--stock-out" in argv else None
     args = [a for a in args if a not in (outp, stockp)]
-    rows = []
-    for p in PRODUCTS:
-        if args and p["slug"] not in args:
-            continue
-        r = check(p)
-        rows.append(r)
-        flag = ("SKIP " + r["skip"]) if "skip" in r else ("ERROR " + r["error"]) if "error" in r else (
-            ("PRICE " if r["price_diff"] else "") + ("STOCK " if r["stock_diff"] else "") or "ok")
-        live = f"{r['price']} -> {r['live_price']} avail={r['live_available']}" if "live_price" in r else ""
-        print(f"{p['slug'][:60]:60} {flag} {live}", flush=True)
-        time.sleep(1.5)
+    # DLC-358 (11-26): read one store per thread, each store paced on its own and a store that answers 429 read through r.jina.ai (_product_json), so ~580 records
+    # across ~100 stores finish well inside the sweep's 1500 s; past DEADLINE the rows read so far are written anyway
+    # (the 11-18 to 11-26 runs read one record at a time, timed out every day and left stock.json at 11-18).
+    todo = [p for p in PRODUCTS if not args or p["slug"] in args]
+    by_host: dict[str, list[dict]] = {}
+    for p in todo:
+        by_host.setdefault(urllib.parse.urlsplit(p.get("url") or "").netloc, []).append(p)
+    start, done = time.monotonic(), {}
+
+    def run_host(ps):
+        for p in ps:
+            if time.monotonic() - start > DEADLINE:
+                return
+            r = check(p)
+            done[p["slug"]] = r
+            flag = ("SKIP " + r["skip"]) if "skip" in r else ("ERROR " + r["error"]) if "error" in r else (
+                ("PRICE " if r["price_diff"] else "") + ("STOCK " if r["stock_diff"] else "") or "ok")
+            live = f"{r['price']} -> {r['live_price']} avail={r['live_available']}" if "live_price" in r else ""
+            print(f"{p['slug'][:60]:60} {flag} {live}", flush=True)
+
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(run_host, sorted(by_host.values(), key=len, reverse=True)))
+    rows = [done[p["slug"]] for p in todo if p["slug"] in done]
+    if len(rows) < len(todo):
+        print(f"deadline: {len(todo) - len(rows)} records not read in {DEADLINE} s", flush=True)
     if outp:
         Path(outp).write_text(json.dumps({"date": _dt.date.today().isoformat(), "rows": rows}, indent=1))
     if stockp:
