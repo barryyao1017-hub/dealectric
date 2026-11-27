@@ -288,8 +288,10 @@ def main() -> int:
         print(f"  {k:3d}  {src}  /go/{slug}")
     print(f"\nSweep: {sweep_health(today)} ({SWEEP_LOG})")
     try:   # the page flow's own lines (growth/pageflow/README.md, DLC-369): last run, queue, how its pages read, retire states
-        sys.path.insert(0, str(Path(__file__).resolve().parent / "pageflow"))
-        import run as _pageflow
+        import importlib.util   # loaded by path: "run" is too common a module name to import by name
+        _spec = importlib.util.spec_from_file_location("pageflow_run", Path(__file__).resolve().parent / "pageflow" / "run.py")
+        _pageflow = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(_pageflow)
         print("\nPage flow (new pages from the cluster maps):\n" + _pageflow.summary())
     except Exception as e:  # noqa: BLE001  (never let this section break the update)
         print(f"\nPage flow: not read ({e})")
