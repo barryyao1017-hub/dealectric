@@ -12825,7 +12825,7 @@ PRODUCTS = [
 {"slug": 'rshtech-usb-3-2-usb-c-switch-10gbps-amazon',
  "brand": 'RSHTECH',
  "program": 'amazon:us',
- "category": 'power-station',
+ "category": 'usb-switch',
  "name": 'RSHTECH USB 3.2/USB C Switch 10Gbps, 2 Computers Share 4 Devices',
  "model": 'RSH-A201C',
  "url": 'https://www.amazon.com/dp/B0DYTFBGLQ',

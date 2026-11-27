@@ -84,7 +84,9 @@ def apply(products: list[dict], statuses: dict, reads: dict, today: str | None =
             changes.append({"slug": p["slug"], "field": "stock", "old": "in stock" if was_in else "sold out", "new": "in stock" if now_in else "sold out"})
         if (was_pre or None) != (now_pre or None):
             new = _set(new, "preorder", now_pre)
-            changes.append({"slug": p["slug"], "field": "ship date", "old": was_pre or "ships now", "new": now_pre or "ships now"})
+            date_of = lambda t: re.sub(r"\s*\(.*\)$", "", t or "")
+            if date_of(was_pre) != date_of(now_pre):   # the same date reworded ("(power station)") is no change for the pages
+                changes.append({"slug": p["slug"], "field": "ship date", "old": was_pre or "ships now", "new": now_pre or "ships now"})
         price = s.get("price")
         if str(p.get("program", "")).startswith("amazon"):
             if p.get("asin") and price is not None:

@@ -86,7 +86,7 @@ def targets(changed: dict, index: dict) -> dict:
         for e in index["products"].get(slug, []):
             if e["source"] not in ("src/gaps.py", "src/compare.py", "src/products.py", "src/focus.py"):
                 continue
-            entry = e["page"].strip("/") if e["source"] != "src/focus.py" else slug
+            entry = e["page"].strip("/").split("/")[-1] if e["source"] != "src/focus.py" else slug
             out.setdefault((e["source"], entry, e["page"]), []).append(slug)
     return out
 

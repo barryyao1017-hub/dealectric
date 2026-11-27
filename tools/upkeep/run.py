@@ -4,7 +4,7 @@ page that mentions a changed product, keep each sold-out or long-pre-order produ
 commit, deploy and check the links, and write the week's report for the daily update.
 
 Run by tools/codesweep.sh once a week (Sundays), after the daily code tests, in the sweep's clone. By hand:
-    python3.12 tools/upkeep/run.py [--brands BLUETTI,OSCAL] [--slugs a,b] [--no-push] [--max-research 40] [--tabs 3]
+    python3.12 tools/upkeep/run.py [--brands BLUETTI,OSCAL] [--slugs a,b] [--no-push] [--max-research 15] [--tabs 3]
 --no-push: everything up to and including the local commit; nothing is pushed or deployed (a test run).
 """
 from __future__ import annotations
@@ -151,7 +151,7 @@ def main(argv: list[str]) -> int:
     products = fresh_products()
     sel_slugs = {p["slug"] for p in sel}
     alt = L.run([p for p in products if p["slug"] in sel_slugs or p["slug"] in statuses], statuses, day_dir, verify_read,
-                int(opt("--max-research") or 40))
+                int(opt("--max-research") or 15))
     log(f"alternatives: {', '.join(f'{k} {len(v)}' for k, v in alt.items())}")
     changed: dict[str, list[str]] = {}
     for c in changes:

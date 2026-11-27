@@ -41,7 +41,8 @@ def ask(prompt: str, models=CHEAP, schema: dict | None = None, tools: list[str] 
         d = {}
         for attempt in range(4):
             try:
-                p = subprocess.run(cmd + list(E.CLI_ISOLATION), capture_output=True, text=True, timeout=timeout, cwd=E.cli_cwd())
+                p = subprocess.run(cmd + list(E.CLI_ISOLATION), capture_output=True, text=True, timeout=timeout, cwd=E.cli_cwd(),
+                                   env={**__import__('os').environ, 'AMZ_CHROME': '1'})   # amzcheck.py reads Amazon in the Agent Chrome
                 d = json.loads(p.stdout)
             except subprocess.TimeoutExpired:
                 d = {"is_error": True, "result": f"timed out after {timeout} s"}
@@ -81,6 +82,6 @@ def ask(prompt: str, models=CHEAP, schema: dict | None = None, tools: list[str] 
 def usage_line() -> str:
     parts = []
     for m, u in USAGE.items():
-        tok = sum(u.get(k, 0) for k in E.USAGE_KEYS)
-        parts.append(f"{m}: {u.get('calls', 0)} calls, {tok:,} tokens")
+        fresh = sum(u.get(k, 0) for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens"))
+        parts.append(f"{m}: {u.get('calls', 0)} calls, {fresh:,} new tokens + {u.get('cache_read_input_tokens', 0):,} cache reads")
     return "; ".join(parts) or "no model calls"

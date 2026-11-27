@@ -39,7 +39,7 @@ SCHEMA = {"type": "object", "properties": {
         "warranty": {"type": "string"}, "returns": {"type": "string"}, "summary": {"type": "string"}, "fit": {"type": "string"}}},
     "runner_up": {"type": ["object", "null"]}, "reason": {"type": "string"}, "why": {"type": "string"},
     "spec_table_md": {"type": "string"}, "reviews": {"type": "array", "items": {"type": "string"}},
-    "none_reason": {"type": ["string", "null"]}}, "required": ["reason", "why"]}
+    "none_reason": {"type": ["string", "null"]}, "confident": {"type": "boolean"}}, "required": ["reason", "why", "confident"]}
 
 PROMPT = """You are choosing ONE alternative for a product on Dealectric, a shopping site, under these rules:
 
@@ -57,8 +57,11 @@ winner. Never invent a figure; write "not confirmed" when you cannot confirm one
 
 Answer with JSON only: winner (null if nothing qualifies; for a product we list give its slug, else slug null with
 brand, name, model, url, asin when on Amazon, price, stock as read, specs [[label, value], ...] from the maker,
-warranty, returns, summary (one factual sentence) and fit (one sentence on who it suits)), runner_up (same fields),
-reason (the line shown on the page, max 70 characters, comparing to the original, e.g. "same 1,024 Wh LiFePO4 and
+warranty, returns, summary (one factual sentence) and fit (one sentence on who it suits); name and model are the
+product's plain retail name, never a note), runner_up (same fields),
+confident (true only when the winner's specs came from the maker's page or manual and its price and stock were
+read today on the store or Amazon listing you name; false for a provisional pick), reason (the line shown on the
+page, max 70 characters, comparing to the original, e.g. "same 1,024 Wh LiFePO4 and
 1,800 W output"), why (one paragraph: why the winner beats the runner-up under the rules), spec_table_md (a short
 markdown table: original vs candidates), reviews (URLs), none_reason (when winner is null)."""
 
@@ -146,7 +149,10 @@ def _program_for(url: str, products: list[dict]) -> str | None:
 
 
 def _new_slug(w: dict, products: list[dict]) -> str:
-    base = re.sub(r"[^a-z0-9]+", "-", f"{w['brand']} {w.get('model') or w['name']}".lower()).strip("-")[:70]
+    label = re.sub(r"\([^)]*\)|,.*$", "", w["name"])          # the retail name, no parentheses, no spec list
+    if not label.lower().startswith(w["brand"].lower()):
+        label = f"{w['brand']} {label}"
+    base = "-".join(re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-").split("-")[:9])[:60]
     base += "-amazon" if w.get("asin") else ""
     slugs = {q["slug"] for q in products}
     s, n = base, 2
@@ -155,15 +161,14 @@ def _new_slug(w: dict, products: list[dict]) -> str:
     return s
 
 
-def minimal_record(w: dict, products: list[dict], today: str) -> dict | None:
+def minimal_record(w: dict, products: list[dict], today: str, category: str) -> dict | None:
     if w.get("asin"):
         prog, url, price = "amazon:us", f"https://www.amazon.com/dp/{w['asin']}", None
     else:
         prog, url, price = _program_for(w["url"], products), w["url"], w.get("price")
         if not prog:
             return None
-    cat = next((q["category"] for q in products if q["brand"] == w["brand"]), None)
-    return {"slug": _new_slug(w, products), "brand": w["brand"], "program": prog, "category": w.get("category") or cat or "power-station",
+    return {"slug": _new_slug(w, products), "brand": w["brand"], "program": prog, "category": category,   # the original's category
             "name": w["name"], "model": w.get("model") or w["name"], "url": url, "price": price,
             **({"asin": w["asin"]} if w.get("asin") else {}), "verified": today,
             "specs": [tuple(x[:2]) for x in w.get("specs") or [] if len(x) >= 2] or [("Specs", "see the maker's page")],
@@ -203,7 +208,7 @@ def write_proof(day_dir: Path, p: dict, s: dict, res: dict, verdict: str) -> Non
         f"\nModel: {res.get('_model')}\n")
 
 
-def run(products: list[dict], statuses: dict, day_dir: Path, verify_read, max_research: int = 40, workers: int = 3) -> dict:
+def run(products: list[dict], statuses: dict, day_dir: Path, verify_read, max_research: int = 15, workers: int = 3) -> dict:
     """Apply the plan. verify_read(record) -> status dict for one product read live now (read.py + classify.py)."""
     today = dt.date.today().isoformat()
     by = {p["slug"]: p for p in products}
@@ -243,9 +248,17 @@ def run(products: list[dict], statuses: dict, day_dir: Path, verify_read, max_re
             if had:
                 report["removed"].append({"slug": p["slug"], "alt": had, "why": "no qualifying replacement"})
             continue
+        if not res.get("confident"):
+            report["pending"].append({"slug": p["slug"], "why": f"provisional pick {w.get('name')}: not confirmed today, so not published"})
+            write_proof(day_dir, p, s, res, "pending: provisional pick")
+            continue
         q = by.get(w.get("slug") or "")
+        if not q:   # a product we list under another slug: same Amazon ASIN or same store page
+            wu = (w.get("url") or "").split("?")[0].rstrip("/")
+            q = next((x for x in products if (w.get("asin") and x.get("asin") == w["asin"]) or
+                      (wu and (x.get("url") or "").split("?")[0].rstrip("/") == wu)), None)
         if not q:
-            rec = minimal_record(w, products, today)
+            rec = minimal_record(w, products, today, p["category"])
             if not rec:
                 report["pending"].append({"slug": p["slug"], "why": f"winner {w.get('name')} is sold by a store we have no program with; add its record by hand"})
                 write_proof(day_dir, p, s, res, "pending: needs a hand-added record")
@@ -256,6 +269,10 @@ def run(products: list[dict], statuses: dict, day_dir: Path, verify_read, max_re
                 write_proof(day_dir, p, s, res, f"rejected after live read ({sq['status']})")
                 continue
             add_record(rec)
+            if rec.get("asin") and sq.get("price") is not None:   # so the line shows Amazon's price before the daily refresh
+                amz = json.loads(A.AMAZON.read_text())
+                amz["asins"][rec["asin"]] = {"at": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"), "in_stock": True, "price": sq["price"]}
+                A.AMAZON.write_text(json.dumps(amz, indent=1, sort_keys=True) + "\n")
             products.append(rec)
             by[rec["slug"]] = rec
             statuses[rec["slug"]] = sq
