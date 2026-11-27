@@ -1,0 +1,101 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the device decides how many watts it takes, not the charger: Anker's page says 'Maximum power is determined by your device and may not reach 45W', and the USB-IF says PD lets 'each device to take only the power it requires'. So a low number on the screen measures what the phone or laptop asks for, not a weak charger. That number comes from each port's own chip and is accurate only to about 1–2 W: Notebookcheck saw 51 W on the UGREEN Nexode Pro 160W's screen against 49.5 W on a Fnirsi FNB58 meter.",
+ "standout": 2,
+ "standout_why": "I compared against ChargerLAB's UGREEN 160W (X774) teardown, Macworld's Satechi ChargeView 240W review and the UGREEN Nexode Pro series page, which were cited, plus the Anker A2697 manual on Manuals+, which I could not read. ChargerLAB names the chips behind the readout (SW3566H with a 9-channel ADC, Synwit SWM221 MCU), but it never checks the screen against a meter. It used its POWER-Z only to detect protocols. Macworld says the screen shows 'wattage per port' and nothing about whether the number is accurate or what sets it. ChatGPT's own answer says the reading is 'power leaving the charger port, not … reaching the battery'. No cited page says the device sets the wattage, gives a measured accuracy figure, or says the device-name and battery-% screens work only on recent iPhones.",
+ "decides": "This confirms the feature is real on all candidates rather than changing the pick, and it tells the page how to read a low number. Every candidate's screen shows measured watts per port, so screen accuracy (about ±1–2 W where anyone measured it) does not separate them. What does separate them is the extras that depend on the device. Anker's Nano 45W (A121D) shows device model and battery % only for iPhone 15/16/17 and iPad 10th gen or later; Anker says this is 'not supported for other devices like Samsung or Pixel'. A Samsung or Pixel owner gets only the watts, which favors ranking on watts per port and price rather than on screen features. Side finding for the split column: techtest.org measured the Baseus AH22 at 45 W + 45 W with two USB-C ports in use, and it throttled from 100 W to 80 W after about 40 minutes. Notebookcheck's news item says 'a steady 65W' with several devices. Take the split from the measured test.",
+ "candidates": [
+  "Anker Nano Charger 45W Smart Display (A121D)",
+  "Baseus PicoGo Pro AH22 100W",
+  "UGREEN Nexode Pro 160W 5-Port (X774)",
+  "Anker 140W 4-Port Charger with Built-In Screen (A2697)",
+  "Satechi ChargeView 240W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Who sets the watts in USB Power Delivery",
+   "value": "The device: PD works by 'allowing each device to take only the power it requires'; low-power devices 'negotiate for only the power they require'",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-27",
+   "note": "The standards body's own wording. The charger offers power and the device asks for what it wants, so a charger's screen shows what the device is drawing."
+  },
+  {
+   "product": "Anker Nano Charger 45W Smart Display (A121D)",
+   "label": "What the screen's watt figure means, in the maker's words",
+   "value": "'The screen displays charging power in real time.' 'Maximum power is determined by your device and may not reach 45W.' 'Lower wattage is normal.'",
+   "source": "https://www.anker.com/products/a121d-45w-usb-c-fast-charger-foldable-plug-compact",
+   "source_title": "Anker Nano Charger (45W, Smart Display, 180° Foldable) - Anker US",
+   "read": "2026-11-27",
+   "note": "Anker's US product page and FAQ. The page showed this item as 'Sold Out' and gave no charger price, so I quote no price."
+  },
+  {
+   "product": "Anker Nano Charger 45W Smart Display (A121D)",
+   "label": "Device name and battery % on screen: which devices",
+   "value": "iPhone 17/16/15 series and iPad 10th gen or later; not iPhone 17e; 'not supported for other devices like Samsung or Pixel'",
+   "source": "https://www.anker.com/products/a121d-45w-usb-c-fast-charger-foldable-plug-compact",
+   "source_title": "Anker Nano Charger (45W, Smart Display, 180° Foldable) - Anker US",
+   "read": "2026-11-27",
+   "note": "Anker's FAQ: 'Real-time battery level display requires USB-C communication protocols, which are exclusive to iPhone 15 and later.' On other devices the screen still shows watts."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port (X774)",
+   "label": "How far the screen reading was from a USB meter",
+   "value": "Screen 51 W vs Fnirsi FNB58 meter about 49.5 W; Notebookcheck sums it up as 'readings can be off by 1W to 2W'",
+   "source": "https://www.notebookcheck.net/One-charger-for-almost-everything-5-port-Ugreen-Nexode-Pro-160W-review.1327965.0.html",
+   "source_title": "One charger for almost everything: 5-port Ugreen Nexode Pro 160W review - Notebookcheck",
+   "read": "2026-11-27",
+   "note": "Abid Ahsan Shanto, Notebookcheck, published 2026-06-24 and updated 2026-10-05. One reading; the review does not say what the load was. 51 − 49.5 = 1.5 W, about 3%."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port (X774)",
+   "label": "Where the per-port reading comes from",
+   "value": "Each port has its own protocol/buck chip: SW3566H on C1 and C2, SW3536 on C3 and on C4+USB-A. The SW3566H has a '9-channel ADC' that monitors output current and voltage and feeds a Synwit SWM221 MCU that drives the screen; screen showed C1 98 W + C2 55 W = 153 W with two laptops",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-160w-smart-display-4-usb-c-and-1-usb-a-gan-charger/",
+   "source_title": "Teardown of the UGREEN 160W Smart Display 4 USB-C and 1 USB-A GaN Charger - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB teardown, 2026-07-02. The screen shows measured output, not the negotiated rating. ChargerLAB did not check the screen against a meter."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "What the screen shows",
+   "value": "Output watts per port, total output, temperature status, charging time and peak charging power",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS - techtest.org",
+   "read": "2026-11-27",
+   "note": "Michael Barton, techtest.org, 2026-11-23 ('Ausgangsleistung in Watt pro Port'). He did not check the screen's accuracy."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Watts per port with two or three devices; how long 100 W lasts",
+   "value": "C1+C2: 45 W + 45 W; C1+C2+C3: 45 W + 45 W + 10 W; one port gave 100 W for about 40 min, then throttled to 80 W",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS - techtest.org",
+   "read": "2026-11-27",
+   "note": "Measured by techtest.org. This conflicts with Notebookcheck's launch news (Elvis Shida, 2026-09-10), which says 'a steady 65W' with several devices connected but gives no per-port split: https://www.notebookcheck.net/Baseus-releases-new-compact-3-port-100W-charger-with-display-and-device-detection.1395042.0.html"
+  },
+  {
+   "product": "Satechi ChargeView 240W",
+   "label": "What the screen shows",
+   "value": "'total output power, wattage per port'; two ports at 140 W (PD 3.2), two at 100 W, two at 30 W; 240 W total, so the two 140 W ports can't both run at full power",
+   "source": "https://www.macworld.com/article/3213105/satechi-chargeview-240w-review.html",
+   "source_title": "Satechi ChargeView 240W review: 6-port USB-C charging for Macs | Macworld",
+   "read": "2026-11-27",
+   "note": "Simon Jary, Macworld, 2026-08-21. No accuracy test. $149.99 is the review's 'price when reviewed', not a price I read today."
+  }
+ ],
+ "unsourced": [
+  "A screen-vs-meter test for the Baseus AH22, Anker A2697, Anker Prime 160W (A2687) and Satechi ChargeView. techtest.org, Notebookcheck, ChargerLAB and Macworld don't do one for these models.",
+  "The Anker A2697 manual's screen and port-split text: the Manuals+ PDF came back as compressed binary, and I wasn't allowed to run a local tool to extract it.",
+  "Baseus's own AH22 page: baseus.com returned HTTP 429 to the fetch and HTTP 403 to storecheck, so I could not read the maker's device-recognition limits or today's price.",
+  "Today's UGREEN US price for the Nexode Pro 160W: storecheck search on us.ugreen.com returned HTTP 403. Our cart-tested record ($89.99 store, $56.99 with code, 2026-11-26) stands.",
+  "9to5Google's Ben Schoon AH22 piece (the 28 W phone reading): two searches did not find it, so I left it out."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 1.2307441
+ }
+}

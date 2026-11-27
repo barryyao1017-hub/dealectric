@@ -1,0 +1,139 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got says which display chargers, and which of their ports, support the AVS mode the iPhone 18 Pro needs for its 60 W tier. Anker's own spec for the A2697, ChatGPT's top pick, lists only PD 3.0 and PPS, with no AVS and no iPhone 18 among its compatible devices. techtest.org saw the Baseus AH22 fast-charge an iPhone 18 Pro Max over SPR AVS at 9–20 V / 5 A. On the UGREEN X774, AVS is only on C1 and C2. The 2025 Anker Nano 45W Smart Display (A121D) has no AVS; its 2026 successor, sold under the same name, gets AVS only after an update through the Anker app.",
+ "standout": 2,
+ "standout_why": "I compared against the cited pages that opened: ChargerLAB's X774 teardown, Macworld's Satechi ChargeView 240W review, and the UGREEN US Nexode Pro series page. The Anker A2697 manual on manuals.plus loaded only as image data, and the manuals.plus page for the UGREEN 100W 4-port returned 403. ChargerLAB does list AVS on the X774's C1 and C2, and Macworld says the Satechi's two 140 W ports use AVS. Those are the parts rivals already have. None of them checks the Anker A2697, ChatGPT's pick in chat 1, against the iPhone 18 Pro. None covers the Baseus AH22 or the AVS firmware and version split on the Anker Nano 45W Smart Display. None notes that the AH22 drops to 45 W per port once a second device is plugged in. Apple's spec page, which sets the AVS requirement, was not among ChatGPT's results.",
+ "decides": "This moves the pick away from the Anker A2697 for anyone charging an iPhone 18 Pro. Anker's spec lists no AVS for it, and Apple's 15-minute-to-50% figure needs an adapter that is 60 W-capable with AVS. Among the display chargers, the iPhone 18 Pro buyer is left with the Baseus AH22 (ours; a named reviewer measured the fast charge), the UGREEN X774 on C1 or C2 (ours; ChargerLAB found AVS), and the Satechi ChargeView 240W (AVS per Macworld). The AH22 is the 100 W pick for a phone plus one more device, but its 100 W holds only with one port in use; two devices get 45 W + 45 W. For a laptop over 100 W plus an iPhone, the X774 is the pick: 28 V on C1 and C2 for a MacBook Pro, and AVS on whichever of those two the iPhone uses. Anyone buying the Nano 45W should check the model and run the app update before expecting AVS.",
+ "candidates": [
+  "Baseus PicoGo Pro AH22 100W",
+  "UGREEN Nexode Pro 160W 5-Port (X774)",
+  "Anker 140W 4-Port Charger (A2697)",
+  "Anker Prime 160W 3-Port (A2687)",
+  "Anker Nano 45W Smart Display (A121D and 2026 version)",
+  "Satechi ChargeView 240W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "iPhone 18 Pro top-speed charging requirement",
+   "value": "Up to 50% in about 15 minutes needs an adapter that is 60 W-capable or higher with Adjustable Voltage Supply (AVS) and a 60 W-capable USB-C cable. The footnote reads: 'USB PD 3.1 (or better) power adapters ... with Adjustable Voltage Supply (AVS)'. Apple tested with its 40W Dynamic Power Adapter with 60W Max (A3351).",
+   "source": "https://www.apple.com/iphone-18-pro/specs/",
+   "source_title": "iPhone 18 Pro and iPhone 18 Pro Max - Technical Specifications - Apple",
+   "read": "2026-11-27",
+   "note": "This is Apple's own spec page, footnote 9. A charger without AVS still charges the phone, but not at this tier."
+  },
+  {
+   "product": "Anker 140W 4-Port Charger (A2697)",
+   "label": "Protocols on maker spec sheet",
+   "value": "BC1.2, Apple, QC3.0, PD3.0, FCP, AFC, PPS. AVS is not listed.",
+   "source": "https://service.anker.com/article-description/Specification-of-Anker-140W-Charger-A2697",
+   "source_title": "Specification of Anker 140W Charger A2697",
+   "read": "2026-11-27",
+   "note": "The product page title says 'PD 3.1' because C1 and C2 offer 28 V / 5 A, but the spec's protocol list reads PD3.0. Neither the spec nor the product page mentions AVS. This is the maker's document; I found no independent AVS test."
+  },
+  {
+   "product": "Anker 140W 4-Port Charger (A2697)",
+   "label": "Maker's compatibility list and exclusions",
+   "value": "Lists iPhone 16/15/14/13/12/SE, Samsung S24/S23, Pixel 8/7, MacBook Air/Pro and Steam Deck. It does not list iPhone 18. Dell XPS 15 (9500/9510), Alienware X14 and Precision 5570 'may not charge at full speed' because of Dell's proprietary protocol. Output above 100 W needs an E-Marker cable.",
+   "source": "https://www.anker.com/products/a2697-anker-charger-140w-4-port",
+   "source_title": "Anker Charger (140W, 4-Port, PD 3.1) with USB-C Cable - Anker US",
+   "read": "2026-11-27",
+   "note": "Anker US showed $59.99 (was $89.99), Dark Gray, in stock, ships in 3–7 business days. These are the maker's statements."
+  },
+  {
+   "product": "Anker 140W 4-Port Charger (A2697)",
+   "label": "Per-port split",
+   "value": "Alone: C1 or C2 140 W, C3 40 W, USB-A 33 W. Two devices: C1+C2 70 W + 70 W; C1/C2 + C3 100 W + 40 W. Four devices: 65 W + 45 W + 12 W + 12 W.",
+   "source": "https://service.anker.com/article-description/Specification-of-Anker-140W-Charger-A2697",
+   "source_title": "Specification of Anker 140W Charger A2697",
+   "read": "2026-11-27",
+   "note": "This is the maker's output table."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "AVS and iPhone 18 Pro Max test",
+   "value": "USB PD 3.2. SPR AVS 9–20 V at 5 A; PPS 5–20 V at up to 5 A. The charger fast-charged an iPhone 18 Pro Max in practice ('Das AH22 kann das iPhone 18 Pro Max auch in der Praxis schnellladen').",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS (techtest.org, Michael Barton, 2026-11-23)",
+   "read": "2026-11-27",
+   "note": "Michael Barton's own test. He notes that about half of the AVS-labelled chargers he tried fail with the iPhone 18 Pro Max. He does not say which of the three ports carry AVS. Xiaomi 100 W works on USB-C1 only."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Per-port split and what the screen shows",
+   "value": "C1 alone 100 W. C1+C2 45 W + 45 W. C1+C2+C3 45 W + 45 W + 10 W. The screen shows total output, watts per port, temperature status, charging time and peak power. Gentle Mode caps each port at 20 W.",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS (techtest.org, Michael Barton)",
+   "read": "2026-11-27",
+   "note": "With a second device plugged in, the iPhone's port gets 45 W, which is below Apple's 60 W-capable tier. In the same test, output fell from 100 W to 80 W after about 40 minutes of sustained load."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port (X774)",
+   "label": "AVS by port (protocol readout)",
+   "value": "C1: PD3.2/PPS/AVS, AVS 9–20 V 3 A/5 A, PPS 4–21 V 5 A, 28 V 5 A. C2: PD3.2/PPS/AVS, with the same fixed voltages including 28 V 5 A. C3: PD3.0/PPS 5–21 V 5 A, no AVS, 100 W max. C4: 30 W max, and the two readouts disagree on whether it does PD. No protocol readout for USB-A.",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-160w-smart-display-4-usb-c-and-1-usb-a-gan-charger/",
+   "source_title": "Teardown of the UGREEN 160W Smart Display 4 USB-C and 1 USB-A GaN Charger - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB measured with a POWER-Z KM003C. The spec sheet gives model X774, P/N 35379. The display showed C1 98 W + C2 55 W = 153 W. ChargerLAB does not say whether the screen shows C3, C4 or USB-A. It measured more than 30 W into an iPhone 17 and 131.8 W into a MacBook Pro 16. This page was in ChatGPT's results and was cited."
+  },
+  {
+   "product": "Anker Prime 160W 3-Port (A2687)",
+   "label": "Protocols and app dependence on maker page",
+   "value": "140 W from one port over 'PD 3.1' at 5/9/15/20/28 V; the spec table says 150 W max (28 V 5.36 A). The page does not mention AVS or PD 3.2. The screen shows 'real-time power distribution for each port'. Dual-Laptop Mode, custom modes and device recognition all need the Anker app over Bluetooth. Dynamic power distribution for iPhone 17 needs a firmware update in the app.",
+   "source": "https://www.anker.com/products/a2687-anker-prime-charger-160w-3-ports-gan",
+   "source_title": "Anker Prime Charger (160W, 3 Ports, Smart Display) - Anker US",
+   "read": "2026-11-27",
+   "note": "Anker US showed $99.99 (was $149.99), in stock. For two or three devices the page gives only the 160 W total, not a per-port split. The maker's page contradicts itself on the single-port maximum (140 W vs 150 W)."
+  },
+  {
+   "product": "Anker Nano 45W Smart Display (A121D, 2025)",
+   "label": "Version without AVS; exclusions",
+   "value": "Model A121D: 5 V 3 A, 9 V 3 A, 15 V 3 A, 20 V 2.25 A (45 W max). Supports '3A PPS. Does not support 5A PPS.' Samsung S23+, S23 Ultra, S24+ and S24 Ultra are limited to 27 W. The page has no AVS or iPhone 18 wording. Device name and battery display cover iPhone 15/16/17 (not 17e) and iPad 10th gen or later.",
+   "source": "https://www.anker.com/products/a121d-45w-usb-c-fast-charger-foldable-plug-compact",
+   "source_title": "Anker Nano Charger (45W, Smart Display, 180° Foldable) - Anker US",
+   "read": "2026-11-27",
+   "note": "Marked 'Sold Out' on Anker US when read. These are the maker's statements."
+  },
+  {
+   "product": "Anker Nano 45W Smart Display (2026 version)",
+   "label": "AVS arrives only through a firmware update",
+   "value": "'AVS charging support will be available through an OTA update via the Anker app by Sept. 30th.' Recognition of iPhone 18 Pro and Pro Max comes through the same OTA. Anker claims up to 60 W to the iPhone 18 series, but footnote 3 says 'maximum PD output of 45W'. Anker US listed it at $25.99 (was $34.99) and also showed a second listing at $29.99.",
+   "source": "https://www.anker.com/world-first-45w-smart-display-iphone-charger",
+   "source_title": "Anker Smart Display Charger - Your iPhone Is Ready. Are Your Accessories?",
+   "read": "2026-11-27",
+   "note": "This is the maker's claim. The update runs in the Anker app with the charger connected by USB cable. Notebookcheck (Elvis Shida, 2026-09-10) calls this an upgrade of the 'identically named 2025 model', which means a shopper can't tell the versions apart by name. I found no independent AVS test."
+  },
+  {
+   "product": "Anker Nano 45W Smart Display (2026 version)",
+   "label": "Reviewer note on version difference",
+   "value": "AVS adaptive charging is the main upgrade. The 2025 model recognized iPhone 15–17; the new one adds iPhone 18 Pro and 18 Pro Max by OTA. It sells for $34.99 on Amazon US.",
+   "source": "https://www.notebookcheck.net/Anker-releases-new-compact-charger-with-smart-display-and-AVS-support.1396125.0.html",
+   "source_title": "Anker releases new compact charger with smart display and AVS support - Notebookcheck (Elvis Shida)",
+   "read": "2026-11-27",
+   "note": "This is a news report, not a test. The $34.99 Amazon price is Notebookcheck's figure from 2026-09-10, not read today."
+  },
+  {
+   "product": "Satechi ChargeView 240W",
+   "label": "AVS ports and screen",
+   "value": "The two 140 W USB-C ports use AVS (PD 3.2). PPS is on all ports, and iPhones fall back to fixed PD. The LCD shows each port's wattage and the total. All six ports are USB-C, with no USB-A.",
+   "source": "https://www.macworld.com/article/3213105/satechi-chargeview-240w-review.html",
+   "source_title": "Satechi ChargeView 240W review: 6-port USB-C charging for Macs - Macworld",
+   "read": "2026-11-27",
+   "note": "Macworld review, which was in ChatGPT's results and cited. Macworld lists it at $149.99. It says the Amazon Black Friday deal ends November 30 and that the 140W model is listed at $74.99."
+  }
+ ],
+ "unsourced": [
+  "Baseus's own US page for the AH22 (maker's port-by-port AVS statement and today's price): baseus.com returned HTTP 429 twice and storecheck returned 403. Techtest.org does not say which ports carry AVS.",
+  "An independent AVS test (ChargerLAB or similar) of the Anker Prime 160W A2687 and the Anker A2697. Anker's pages don't list AVS, but I found no lab readout confirming it is absent.",
+  "The model number of the 2026 Anker Nano 45W Smart Display, and whether the 2025 A121D also gets the AVS update. Neither Anker's page nor Notebookcheck says.",
+  "Whether the screens on the A2697 and the X774 show the USB-A port and the lower-power ports (X774 C3/C4). The A2697 manual on manuals.plus loaded only as image data, and ChargerLAB doesn't say.",
+  "The UGREEN US product page for the X774 (maker's AVS statement and today's price): storecheck returned 403. The UGREEN Nexode Pro 100W 4-port Smart Display manual on manuals.plus also returned 403.",
+  "Today's Amazon prices for the Baseus AH22 (B0HB4ZPDF4) and Anker A2687 (B0F9NK4M7Q): amzcheck was blocked."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.4700168999999996
+ }
+}
