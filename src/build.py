@@ -138,6 +138,11 @@ FAVICON = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect w
 from content import PAGES, LLMS_TXT, ROBOTS_TXT, WELL_KNOWN
 from compare import COMPARISONS, COMPARE_REV
 from gaps import GAP_PAGES
+# Retired comparison pages (page flow retire rule, growth/pageflow/README.md; DLC-369): a record carrying
+# "retired": {"date", "to": <slug of the nearest live page>, "why"} leaves every list, hub and the sitemap, and its URL
+# keeps a short noindex page that points to the live one (as retired product pages do).
+RETIRED_PAGES = [g for g in GAP_PAGES if g.get("retired")]
+GAP_PAGES = [g for g in GAP_PAGES if not g.get("retired")]
 
 # src/rival_reads.json (2026-11-17 freshness sweep, tools/freshapply.py): other brands' price cells re-read on the makers'
 # pages, {"cells": {"<page slug>|<maker url>": {"from": cell as written, "to": cell with today's read}}}. A cell is swapped
@@ -2546,6 +2551,21 @@ def codes_index():
             html.escape(f"{n} working discount codes for {', '.join(brands)}, each tested daily in the brand's own US store cart (last check {checked}), with the saving per product and the buy link.", quote=True), body, ld)
 
 
+def retired_compare_page(g):
+    """The page a retired comparison leaves at its URL: what it was, when it was retired, and the live page to read instead."""
+    r = g["retired"]
+    live = next((c for c in COMPARISONS + GAP_PAGES if c["slug"] == r.get("to")), None)
+    nxt = (f'<p><a class="btn" href="{compare_path(live)}">{html.escape(live["h1"])} →</a></p>' if live else "")
+    body = f"""
+<p class="small"><a href="/compare/">Comparisons</a></p>
+<h1>{html.escape(g["h1"])}</h1>
+<p class="lead">This comparison is no longer kept up to date (retired {html.escape(r["date"])}). Its prices and picks were last checked on {html.escape(str(g.get("checked") or g.get("updated") or r["date"]))}.</p>
+{nxt}
+<p>Every comparison we keep current, with dated prices and tested codes: <a href="/compare/">all comparisons</a>.</p>
+"""
+    return f'{g["h1"]}: no longer kept up to date', "This comparison is no longer kept up to date; the link on the page leads to the current one.", body, None
+
+
 def retired_page(old):
     name, new, note = RETIRED[old]
     nxt = (f'<p><a class="btn" href="/products/{new}/">See the {html.escape(short_name(BY_SLUG[new]))} →</a></p>' if new else "")
@@ -3100,6 +3120,9 @@ def main():
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w").write(page(path, title, desc, body, ld, image=img[0] if img else None))
         urls.append(SITE["url"] + path)
+    for g in RETIRED_PAGES:  # kept for old links; noindex and left out of the sitemap
+        os.makedirs(os.path.join(out, compare_path(g).strip("/")), exist_ok=True)
+        open(os.path.join(out, compare_path(g).strip("/"), "index.html"), "w").write(page(compare_path(g), *retired_compare_page(g), noindex=True))
     for old in RETIRED:  # kept for old links; noindex and left out of the sitemap
         path = f"/products/{old}/"
         os.makedirs(os.path.join(out, path.strip("/")), exist_ok=True)
