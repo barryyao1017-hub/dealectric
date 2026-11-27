@@ -1,0 +1,286 @@
+# Published changes, 2026-11-26 (DLC-358)
+
+Commit 3cd674f4. Barry's rules: researched alternatives for sold-out products and pre-orders shipping more than 14 days out; original buy links unchanged; DLC-201 sold-out redirect off.
+
+## Alternatives added (90)
+
+Each line shows under the product on every page that lists it (product page, comparison rows and picks, Where-to-buy lists, brand code tables).
+
+- [ALLPOWERS R1500 + SF100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r1500-sf100-solar-kit) (pre-order, no ship date given) → ALLPOWERS P1800 + 100 W Solar Panel — 1,024 Wh LiFePO4 and 1,800 W, with a 100 W panel
+- [ALLPOWERS R2500 V2 + 2× SE200 200 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-2x-se200-solar-kit) (ships Dec 11) → Growatt INFINITY 2000 PRO + 2 × 200 W Solar Panel Kit — 2,048 Wh LiFePO4 and 2,400 W, same 400 W of panels
+- [ALLPOWERS R2500 V2 + 2× SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-2x-sp037-solar-kit) (ships Dec 11) → Growatt INFINITY 2000 PRO + 4 × 200 W Solar Panel Kit — 2,048 Wh LiFePO4 and 2,400 W, same 800 W of panels
+- [ALLPOWERS R2500 V2 + SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-sp037-solar-kit) (ships Dec 11) → Growatt INFINITY 2000 PRO + 2 × 200 W Solar Panel Kit — 2,048 Wh LiFePO4 and 2,400 W, with 400 W of panels
+- [ALLPOWERS R2500 V2 + SP039 600 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-sp039-solar-kit) (ships Dec 11) → Growatt INFINITY 2000 PRO + 3 × 200 W Solar Panel Kit — 2,048 Wh LiFePO4 and 2,400 W, same 600 W of panels
+- [ALLPOWERS R3500 + 2× SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-2x-sp037-solar-kit) (pre-order, no current ship date) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — same R3500, one 600 W panel instead of 2 × 400 W
+- [ALLPOWERS R3500 + SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-sp037-solar-kit) (pre-order, no current ship date) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — same R3500, with a 600 W panel instead of 400 W
+- [ALLPOWERS R4000 Portable Power Station](https://dealectric.com/allpowers-r4000-3456wh) (sold out) → Growatt HELIOS 3600 Portable Power Station — 3,686 Wh LiFePO4 and 3,600 W, vs 3,456 Wh and 3,600 W
+- [ALLPOWERS R600 Portable Power Station](https://dealectric.com/allpowers-r600-299wh) (sold out) → BLUETTI Elite 30 V2 Portable Power Station — 288 Wh LiFePO4 and the same 600 W output
+- [ALLPOWERS S2000 Pro + 2× SF200 200 W Solar Generator Kit](https://dealectric.com/allpowers-s2000-pro-2x-sf200-solar-kit) (pre-order, no current ship date) → ALLPOWERS S2000 Pro + 2× SE100 100 W Solar Generator Kit — same S2000 Pro, 2 × 100 W panels instead of 2 × 200 W
+- [ALLPOWERS S2000 Pro + SF100 100 W Solar Generator Kit](https://dealectric.com/allpowers-s2000-pro-sf100-solar-kit) (pre-order, no current ship date) → ALLPOWERS S2000 Pro + SE100 100 W Solar Panel Kit — same S2000 Pro, with a 100 W panel
+- [ALLPOWERS S2000 Pro + SF200 200 W Solar Generator Kit](https://dealectric.com/allpowers-s2000-pro-sf200-solar-kit) (pre-order, no current ship date) → ALLPOWERS S2000 Pro + 2 × 100 W Folding Solar Panels — same S2000 Pro, with 200 W of panels
+- [ALLPOWERS S2000 Pro + SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-s2000-pro-sp037-solar-kit) (pre-order, no current ship date) → ALLPOWERS S2000 Pro + SE200 200 W Solar Generator Kit — S2000 Pro (1,451 Wh, 2,400 W) with a 200 W panel instead of 400 W
+- [ALLPOWERS S2000 + SP037 400 W Solar Generator Kit](https://dealectric.com/allpowers-s2000-sp037-solar-kit) (pre-order, no current ship date) → ALLPOWERS S2000 Pro + SE200 200 W Solar Generator Kit — S2000 Pro (1,451 Wh, 2,400 W) with a 200 W panel instead of 400 W
+- [BLUETTI 2× Apex 200 + 2× B300K + Hub A1 + Home Backup Kit Bundle](https://dealectric.com/bluetti-2-apex-200-2-b300k-hub-a1-home-backup-kit) (ships mid-February) → Anker SOLIX E10 — 12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 10,650 Wh
+- [BLUETTI 2× Apex 300 + 2× B300K + Hub A1 Bundle](https://dealectric.com/bluetti-2-apex-300-2-b300k-hub-a1) (sold out) → Anker SOLIX E10 — 12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 11,059 Wh
+- [BLUETTI 2× B300K Expansion Battery for Apex 300 / Apex 200](https://dealectric.com/bluetti-2-b300k-for-apex-300-200) (the B300K ships Jan 20) → BLUETTI B500K Expansion Battery + Charger 2 — B500K fits Apex 300/200: 5,120 Wh vs 5,530 Wh, plus Charger 2
+- [BLUETTI 2× FridgePower + 2× BC200 Bundle](https://dealectric.com/bluetti-2-fridgepower-2-bc200) (ships Jan 11) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — two 3,686 Wh LiFePO4 units, vs two 4,032 Wh systems
+- [BLUETTI AC180 Portable Power Station](https://dealectric.com/bluetti-ac180) (ships Dec 24) → ALLPOWERS P1800 Portable Power Station — 1,024 Wh vs 1,152 Wh, same 1,800 W, LiFePO4
+- [BLUETTI AC180 + 100 W Solar Panel Kit](https://dealectric.com/bluetti-ac180-100w-solar-kit) (ships Dec 24) → ALLPOWERS P1800 + SF200 200 W Solar Generator Kit — 1,024 Wh vs 1,152 Wh, same 1,800 W, with a 200 W panel
+- [BLUETTI AC180 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-ac180-200w-solar-kit) (ships Dec 24) → ALLPOWERS P1800 + SF200 200 W Solar Generator Kit — 1,024 Wh vs 1,152 Wh, same 1,800 W and 200 W panel
+- [BLUETTI AC180 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-ac180-2x200w-solar-kit) (ships Dec 24) → BLUETTI Premium 100 V2 + 200 W Solar Panel Kit — 1,024 Wh and 1,800 W, one 200 W panel instead of two
+- [BLUETTI AC200L Portable Power Station](https://dealectric.com/bluetti-ac200l) (sold out) → Growatt INFINITY 2000 PRO Portable Power Station — same 2,048 Wh LiFePO4 and 2,400 W, also expandable
+- [BLUETTI Apex 200 Expandable Power Station](https://dealectric.com/bluetti-apex-200) (ships mid-February) → Growatt HELIOS 3600 Portable Power Station — 3,686 Wh LiFePO4 and 3,600 W, vs 2,560 Wh and 3,200 W
+- [BLUETTI Apex 200 + 2× B300K Bundle](https://dealectric.com/bluetti-apex-200-2-b300k) (ships mid-February) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units, vs 8,090 Wh
+- [BLUETTI Apex 200 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-200w-solar-kit) (ships mid-February) → Nature's Generator L3600 + 200 W Folding Panel — 3,072 Wh LiFePO4 and 3,600 W, with a 200 W panel
+- [BLUETTI Apex 200 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-2x200w-solar-kit) (ships mid-February) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel
+- [BLUETTI Apex 200 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-350w-solar-kit) (ships mid-February) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel
+- [BLUETTI Apex 200 + 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-500w-solar-kit) (ships mid-February) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel
+- [BLUETTI Apex 200 + B300K Expansion Battery Bundle](https://dealectric.com/bluetti-apex-200-b300k) (ships mid-February) → EcoFlow TITAN 5000 Classic Power Station — 5,017 Wh LFP and 4,000 W, vs 5,325 Wh and 3,200 W
+- [BLUETTI Apex 200 + B500K Bundle](https://dealectric.com/bluetti-apex-200-b500k) (ships mid-February) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units, vs 7,680 Wh
+- [BLUETTI Apex 200 + B500K + 2× 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-b500k-2x500w-solar-kit) (ships mid-February) → Nature's Generator L3600 + Power Pod + 4 × 440 W Rigid Bifacial Panels — 6,912 Wh LiFePO4, 3,600 W, with 1,760 W of panels
+- [BLUETTI Apex 200 + B500K + 30A TT-30 Cable Bundle](https://dealectric.com/bluetti-apex-200-b500k-30a-tt-30-cable) (ships mid-February) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units, vs 7,680 Wh
+- [BLUETTI Apex 200 + Charger 2 Bundle](https://dealectric.com/bluetti-apex-200-charger-2-bundle) (ships mid-February) → BLUETTI Elite 400 + Charger 2 Bundle — 3,840 Wh vs 2,560 Wh, same Charger 2; ships sooner: mid-January
+- [BLUETTI Apex 300 Home Battery Backup](https://dealectric.com/bluetti-apex-300) (sold out) → OSCAL PowerMax 6000 + PM400 SE 400 W Solar Generator Kit — 3,600 Wh LiFePO4, 6,000 W at 120/240 V, plus a 400 W panel; ships sooner: Dec 14
+- [BLUETTI Apex 300 + 2× B300K Home Battery Backup Bundle](https://dealectric.com/bluetti-apex-300-2-b300k) (sold out) → Nature's Generator L6000 + Power Pod — 7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 8,294 Wh
+- [BLUETTI Apex 300 + 2× B300K + 2× 500 W Solar Panels](https://dealectric.com/bluetti-apex-300-2-b300k-2-500w) (sold out) → Nature's Generator L6000 + Power Pod + 4 × 440 W Rigid Bifacial Panels — 7,680 Wh LiFePO4, 120/240 V, with 1,760 W of panels
+- [BLUETTI Apex 300 + 2× B300K + SolarX 4K Bundle](https://dealectric.com/bluetti-apex-300-2-b300k-solarx-4k) (sold out) → Nature's Generator L6000 + Power Pod — 7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 8,294 Wh
+- [BLUETTI Apex 300 + 2× B500K Home Battery Backup Bundle](https://dealectric.com/bluetti-apex-300-2-b500k) (sold out) → Anker SOLIX E10 — 12,288 Wh LiFePO4 whole-home system, 120/240 V, vs 13,005 Wh
+- [BLUETTI Apex 300 + 2× B500K + SolarX 4K Bundle](https://dealectric.com/bluetti-apex-300-2-b500k-solarx-4k) (sold out) → Anker SOLIX E10 — 12,288 Wh LiFePO4 whole-home system, 120/240 V
+- [BLUETTI Apex 300 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-2x200w-solar-kit) (sold out) → OSCAL PowerMax 6000 + PM400 SE 400 W Solar Generator Kit — 3,600 Wh LiFePO4, 6,000 W at 120/240 V, 400 W panel; ships sooner: Dec 14
+- [BLUETTI Apex 300 + 2× 350 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-2x350w-solar-kit) (sold out) → Nature's Generator L6000 + 2 × 440 W Rigid Bifacial Panels — 3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels
+- [BLUETTI Apex 300 + 2× 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-2x500w-solar-kit) (sold out) → Nature's Generator L6000 + 2 × 440 W Rigid Bifacial Panels — 3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels
+- [BLUETTI Apex 300 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-350w-solar-kit) (sold out) → OSCAL PowerMax 6000 + PM400 SE 400 W Solar Generator Kit — 3,600 Wh LiFePO4, 6,000 W at 120/240 V, 400 W panel; ships sooner: Dec 14
+- [BLUETTI Apex 300 + 3× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-3x200w-solar-kit) (sold out) → Nature's Generator L6000 + 2 × 440 W Rigid Bifacial Panels — 3,840 Wh LiFePO4, 6,000 W at 120/240 V, 880 W of panels
+- [BLUETTI Apex 300 + 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-500w-solar-kit) (sold out) → Nature's Generator L6000 + 2 × 200 W Folding Solar Panels — 3,840 Wh LiFePO4, 6,000 W at 120/240 V, 400 W of panels
+- [BLUETTI Apex 300 + B300K Home Battery Backup Bundle](https://dealectric.com/bluetti-apex-300-b300k) (sold out) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh
+- [BLUETTI Apex 300 + B300K + 50A Cable Bundle](https://dealectric.com/bluetti-apex-300-b300k-50a-cable) (sold out) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh
+- [BLUETTI Apex 300 + B300K + Home Backup Kit](https://dealectric.com/bluetti-apex-300-b300k-home-backup-kit-single) (sold out) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units with 120/240 V; no transfer kit
+- [BLUETTI Apex 300 + B300K + Hub D1 Bundle](https://dealectric.com/bluetti-apex-300-b300k-hub-d1) (sold out) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh
+- [BLUETTI Apex 300 + B300K + SolarX 4K Bundle](https://dealectric.com/bluetti-apex-300-b300k-solarx-4k) (sold out) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units with 120/240 V, vs 5,530 Wh
+- [BLUETTI Apex 300 + B500K Bundle](https://dealectric.com/bluetti-apex-300-b500k) (sold out) → Nature's Generator L6000 + Power Pod — 7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 7,885 Wh
+- [BLUETTI Apex 300 + B500K + Home Backup Kit Bundle](https://dealectric.com/bluetti-apex-300-b500k-home-backup-kit) (sold out) → Nature's Generator L6000 + Power Pod — 7,680 Wh LiFePO4 and 6,000 W at 120/240 V; no transfer kit
+- [BLUETTI Apex 300 + B500K + SolarX 4K Bundle](https://dealectric.com/bluetti-apex-300-b500k-solarx-4k) (sold out) → Nature's Generator L6000 + Power Pod — 7,680 Wh LiFePO4 and 6,000 W at 120/240 V, vs 7,885 Wh
+- [BLUETTI Apex 300 + Hub D1 Bundle](https://dealectric.com/bluetti-apex-300-hub-d1) (sold out) → Nature's Generator L6000 Expandable Power Station — 3,840 Wh LiFePO4 and 6,000 W at 120/240 V
+- [BLUETTI Apex 300 + SolarX 4K Bundle](https://dealectric.com/bluetti-apex-300-solarx-4k) (sold out) → Nature's Generator L6000 Expandable Power Station — 3,840 Wh LiFePO4 and 6,000 W at 120/240 V
+- [BLUETTI B300K Expansion Battery + Charger 2](https://dealectric.com/bluetti-b300k-charger-2) (ships Jan 20) → BLUETTI B500K Expansion Battery + Foldable Trolley 2 — B500K fits Apex 300/200: 5,120 Wh vs 2,765 Wh; no Charger 2
+- [BLUETTI B300K Expansion Battery for Apex 300 / Apex 200](https://dealectric.com/bluetti-b300k-expansion-battery) (ships Jan 20) → BLUETTI B300K Expansion Battery — the same B300K, sold by BLUETTI on Amazon; ships sooner: Amazon delivery Dec 28
+- [BLUETTI Elite 100 mini + 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-100-mini-200w-solar-kit) (the 200 W panel ships Jan 8) → BLUETTI Elite 100 mini + 100 W Solar Panel Kit — same Elite 100 Mini, 100 W panel instead of 200 W
+- [BLUETTI Elite 100 V2 Portable Power Station](https://dealectric.com/bluetti-elite-100-v2) (ships Dec 25) → ALLPOWERS P1800 Portable Power Station — same 1,024 Wh LiFePO4 and 1,800 W output
+- [BLUETTI Elite 100 V2 + 100 W Solar Panel Kit](https://dealectric.com/bluetti-elite-100-v2-100w-solar-kit) (ships Dec 25) → ALLPOWERS P1800 + SF200 200 W Solar Generator Kit — same 1,024 Wh and 1,800 W, with a 200 W panel
+- [BLUETTI Elite 100 V2 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-100-v2-200w-solar-kit) (the 200 W panel ships Jan 8) → ALLPOWERS P1800 + SF200 200 W Solar Generator Kit — same 1,024 Wh and 1,800 W, also with a 200 W panel
+- [BLUETTI Elite 100 V2 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-100-v2-350w-solar-kit) (the 350 W panel ships Jan 10) → BLUETTI Premium 100 V2 + 200 W Solar Panel Kit — same 1,024 Wh and 1,800 W, 200 W panel instead of 350 W
+- [BLUETTI Elite 200 V2 Portable Power Station](https://dealectric.com/bluetti-elite-200-v2) (ships early January) → Growatt INFINITY 2000 PRO Portable Power Station — 2,048 Wh LiFePO4 and 2,400 W, close to 2,074 Wh and 2,600 W
+- [BLUETTI Elite 200 V2 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-200-v2-200w-solar-kit) (the 200 W panel ships Jan 8) → Growatt INFINITY 2000 PRO + 2 × 200 W Solar Panel Kit — 2,048 Wh and 2,400 W, with 2 × 200 W panels
+- [BLUETTI Elite 200 V2 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-200-v2-2x200w-solar-kit) (the 200 W panel ships Jan 8) → Growatt INFINITY 2000 PRO + 2 × 200 W Solar Panel Kit — 2,048 Wh and 2,400 W, same 2 × 200 W of panels
+- [BLUETTI Elite 200 V2 + 2× 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-200-v2-2x350w-solar-kit) (the 350 W panel ships Jan 10) → Growatt INFINITY 2000 PRO + 4 × 200 W Solar Panel Kit — 2,048 Wh and 2,400 W, with 800 W of panels
+- [BLUETTI Elite 200 V2 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-200-v2-350w-solar-kit) (the 350 W panel ships Jan 10) → Growatt INFINITY 2000 PRO + 2 × 200 W Solar Panel Kit — 2,048 Wh and 2,400 W, with 400 W of panels
+- [BLUETTI Elite 200 V2 + Charger 2 Bundle](https://dealectric.com/bluetti-elite-200-v2-charger-2-bundle) (ships early January) → EcoFlow DELTA 2 Max + 800 W Alternator Charger — 2,048 Wh LiFePO4, 2,400 W, with an 800 W alternator charger
+- [BLUETTI Elite 30 mini + 60 W Solar Panel Kit](https://dealectric.com/bluetti-elite-30-mini-60w-solar-kit) (the 60 W panel ships Dec 25) → BLUETTI Elite 30 mini + 100 W Solar Panel Kit — same Elite 30 Mini, 100 W panel instead of 60 W
+- [BLUETTI Elite 30 V2 + 60 W Solar Panel Kit](https://dealectric.com/bluetti-elite-30-v2-60w-solar-kit) (the 60 W panel ships Dec 25) → BLUETTI Elite 30 V2 + 100 W Solar Panel Kit — same Elite 30 V2, 100 W panel instead of 60 W
+- [BLUETTI Elite 300 Portable Power Station](https://dealectric.com/bluetti-elite-300) (ships Dec 14) → Growatt HELIOS 3600 Portable Power Station — 3,686 Wh LiFePO4 and 3,600 W, vs 3,014 Wh and 2,400 W
+- [BLUETTI Elite 300 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-300-350w-solar-kit) (the 350 W panel ships Jan 10) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel
+- [BLUETTI Elite 300 + 500 W Solar Panel Kit](https://dealectric.com/bluetti-elite-300-500w-solar-kit) (the 500 W panel ships late January) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh LiFePO4 and 3,200 W, with a 600 W panel
+- [BLUETTI Elite 400 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-400-2x200w-solar-kit) (ships mid-January) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel
+- [BLUETTI Elite 400 + 2× 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-400-2x350w-solar-kit) (ships mid-January) → Mango Power E Solar Generator Kit Pro — 3,533 Wh LiFePO4 and 3,000 W, with 2 × 400 W panels; ships sooner: Mango Power asks for 1–2 extra weeks
+- [BLUETTI Elite 400 + 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-400-350w-solar-kit) (ships mid-January) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel
+- [BLUETTI Elite 400 + 500 W Solar Panel Kit](https://dealectric.com/bluetti-elite-400-500w-solar-kit) (the 500 W panel ships late January) → ALLPOWERS R3500 + SP039 600 W Solar Generator Kit — 3,168 Wh vs 3,840 Wh, 3,200 W, with a 600 W panel
+- [BLUETTI FridgePower + 2× BC200 Bundle](https://dealectric.com/bluetti-fridgepower-2-bc200) (ships Jan 11) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units, 120/240 V, vs 6,048 Wh
+- [BLUETTI 2× FridgePower Pack](https://dealectric.com/bluetti-fridgepower-2-pack) (ships Jan 11) → Growatt INFINITY 2000 PRO Portable Power Station — 2,048 Wh LiFePO4 and 2,400 W each; buy two
+- [BLUETTI FridgePower + 3× BC200 Bundle](https://dealectric.com/bluetti-fridgepower-3-bc200) (ships Jan 11) → Growatt HELIOS 3600 ×2 + Double Voltage Hub — 7,372 Wh LiFePO4 in two units, vs 8,064 Wh
+- [BLUETTI FridgePower + BC200 Bundle](https://dealectric.com/bluetti-fridgepower-bc200) (ships Jan 11) → Growatt HELIOS 3600 Portable Power Station — 3,686 Wh LiFePO4 and 3,600 W, vs 4,032 Wh and 1,800 W
+- [BLUETTI Pioneer Na + 200 W Solar Panel Kit](https://dealectric.com/bluetti-pioneer-na-200w-solar-kit) (the 200 W panel ships Jan 8) → BLUETTI Pioneer Na + 100 W Solar Panel Kit — same sodium-ion Pioneer Na, 100 W panel instead of 200 W
+- [BLUETTI PV100 FX 100 W Flexible Solar Panel](https://dealectric.com/bluetti-pv100-fx-flexible-solar-panel-6-pack) (sold out) → BLUETTI PV100 FX Flexible Solar Panel — the same PV100 FX panels as a 2-pack; three make 600 W
+- [BLUETTI SORA 500 Portable Solar Panel](https://dealectric.com/bluetti-sora-500-solar-panel) (ships late January) → BLUETTI SORA 500 500 W Portable Solar Panel — the same SORA 500 panel, sold by BLUETTI on Amazon
+- [FOPO S1 Dual 14-inch Laptop Screen Extender](https://dealectric.com/fopo-s1-dual-14-inch-laptop-screen-extender) (no longer listed by FOPO) → FOPO S7 Dual 14-inch Laptop Screen Extender — same dual 14-inch layout, taller 1920 × 1200 panels
+- [OSCAL PowerMax 1800 SE Portable Power Station](https://dealectric.com/oscal-powermax-1800-se-1024wh) (sold out) → ALLPOWERS P1800 Portable Power Station — same 1,024 Wh LiFePO4 and 1,800 W output
+- [OSCAL PowerMax 3600 SE Portable Power Station](https://dealectric.com/oscal-powermax-3600-se-3600wh) (sold out) → Growatt HELIOS 3600 Portable Power Station — 3,686 Wh LiFePO4 and the same 3,600 W
+- [OSCAL PowerMax 6000 Portable Power Station](https://dealectric.com/oscal-powermax-6000-3600wh-240v) (sold out) → OSCAL PowerMax 6000 + PM400 SE 400 W Solar Generator Kit — the same PowerMax 6000, sold with a 400 W panel; ships sooner: Dec 14
+- [UGREEN Nexode 65W 3-Port GaN Charger](https://dealectric.com/ugreen-nexode-65w-3-port-charger) (sold out) → UGREEN Nexode 65W 3-Port GaN Travel Charger with US — same 65 W, three ports, plus UK and EU plugs
+
+## No qualifying alternative (38)
+
+- [ALLPOWERS R2500 V2 + 2× SE100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-2x-se100-solar-kit): None: Growatt + 2 × 200 W is +45% over $828.10.
+- [ALLPOWERS R2500 V2 + SE100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-se100-solar-kit): None: same as SF100 (band $558–$929).
+- [ALLPOWERS R2500 V2 + SE200 200 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-se200-solar-kit): None: Growatt + 2 × 200 W is +43% over $838.55.
+- [ALLPOWERS R2500 V2 + SF100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-sf100-solar-kit): None: Growatt + 2 × 200 W ($1,199) is +55%; the S2000 Pro kits in the band are NMC with 24% less capacity.
+- [ALLPOWERS R2500 V2 + SF200 200 W Solar Generator Kit](https://dealectric.com/allpowers-r2500-v2-sf200-solar-kit): None: Growatt + 2 × 200 W is +41% over $848.05.
+- [ALLPOWERS R3500 + 2× SF100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-2x-sf100-solar-kit): None: as SF200.
+- [ALLPOWERS R3500 + 2× SF200 200 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-2x-sf200-solar-kit): None: as SF200.
+- [ALLPOWERS R3500 + SF100 100 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-sf100-solar-kit): None: as SF200.
+- [ALLPOWERS R3500 + SF200 200 W Solar Generator Kit](https://dealectric.com/allpowers-r3500-sf200-solar-kit): None: only the SF200 panel is a pre-order (R3500 ships now); no in-stock kit in the band.
+- [ALLPOWERS SP037 400 W Foldable Solar Panel](https://dealectric.com/allpowers-sp037-400w-solar-panel): None: the 400 W matches on Amazon are pre-orders too (Dec 1, Dec 7), and ALLPOWERS gives no date to compare against.
+- [BLUETTI 2× AC180 Pack](https://dealectric.com/bluetti-ac180-2-pack): None: no brand sells a two-unit ~1 kWh pack that ships now; one 2 kWh Growatt is a different use.
+- [BLUETTI AC180 + Charger 1 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-ac180-charger-1-200w-solar-kit): None: nothing with an alternator charger and a panel ships now within ±25% of $1,018.
+- [BLUETTI AC180 + Charger 2 Bundle](https://dealectric.com/bluetti-ac180-charger-2-bundle): None: the AC180 + Charger 1 page shows no date but every other AC180 page says Dec 24, so it is not a safe ships-now pick; Pioneer Na + Charger 2 is sodium-ion.
+- [BLUETTI Apex 200 + B300K + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-b300k-2x200w-solar-kit): None: the close match (Anker F3000 + BP3000 + 400 W) gives no ship date; kits that ship now hold 28%+ less.
+- [BLUETTI Apex 200 + Charger 2 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-charger-2-2x200w-solar-kit): None: nothing with Charger 2-class alternator charging and panels ships sooner within the band.
+- [BLUETTI Apex 200 + Charger 2 + 2× 350 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-charger-2-2x350w-solar-kit): None: as above.
+- [BLUETTI Apex 200 + Charger 2 + 2× 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-200-charger-2-2x500w-solar-kit): None: as above.
+- [BLUETTI Apex 300 + 2× B300K + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-2-b300k-2x200w-solar-kit): None: as above (+30% over $4,599).
+- [BLUETTI Apex 300 + B300K + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-b300k-2x200w-solar-kit): None: the ships-now kits with panels in the band hold 3,840 Wh, 31% under 5,530 Wh; EcoFlow's TITAN panel bundles on Amazon show no stock line.
+- [BLUETTI Apex 300 + B300K + 2× 350 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-b300k-2x350w-solar-kit): None: as Apex 300 + B300K + 2 × 200 W.
+- [BLUETTI Apex 300 + B300K + 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-b300k-500w-solar-kit): None: as Apex 300 + B300K + 2 × 200 W.
+- [BLUETTI Apex 300 + B300K + Charger 2 + DC Hub Bundle](https://dealectric.com/bluetti-apex-300-b300k-charger-2-dc-hub): None: as above.
+- [BLUETTI Apex 300 + B300K + Charger 2 + DC Hub + 2× 350 W Kit](https://dealectric.com/bluetti-apex-300-b300k-charger-2-dc-hub-2x350w-solar-kit): None: as above.
+- [BLUETTI Apex 300 + B500K + 500 W Solar Panel Kit](https://dealectric.com/bluetti-apex-300-b500k-500w-solar-kit): None: ~8 kWh at 120/240 V with panels that ships now is +36% or more over $4,399.
+- [BLUETTI Apex 300 + B500K + Charger 2 + DC Hub + 2× 350 W + 50A Cable Kit](https://dealectric.com/bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a-kit): None: as above.
+- [BLUETTI Apex 300 + Charger 1 + Hub D1 Bundle](https://dealectric.com/bluetti-apex-300-charger-1-hub-d1): None: no 120/240 V station sold with an alternator charger ships now or sooner.
+- [BLUETTI Apex 300 + Charger 2 + DC Hub Bundle](https://dealectric.com/bluetti-apex-300-charger-2-dc-hub): None: as above.
+- [BLUETTI Elite 100 mini + 350 W Solar Panel Kit](https://dealectric.com/bluetti-elite-100-mini-350w-solar-kit): None: no ~1 kWh kit with 350–400 W of panels ships now within ±25% of $999 (P1800 + 400 W is $698, -30%; the Elite 100 Mini + 100 W is -47%).
+- [BLUETTI Elite 100 V2 + Charger 2 Bundle](https://dealectric.com/bluetti-elite-100-v2-charger-2-bundle): None: no ~1 kWh LiFePO4 station sold with an alternator charger ships now within ±25% of $759.99 (Pioneer Na + Charger 2 is sodium-ion and +31%; Amazon's same bundle delivers Jan 8).
+- [BLUETTI Elite 200 V2 + Charger 1 + 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-200-v2-charger-1-200w-solar-kit): None: nothing that ships now has both an alternator charger and a panel within ±25% of $1,448.
+- [BLUETTI Elite 200 V2 + Charger 1 560 W Alternator Charger Bundle](https://dealectric.com/bluetti-elite-200-v2-charger-1-bundle): None: the EcoFlow DELTA 2 Max + alternator charger ($1,249) is 34% over $929.99.
+- [BLUETTI Elite 300 + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-elite-300-2x200w-solar-kit): None: no ~3 kWh kit with ~400 W of panels ships now within ±25% of $1,499.99 (Nature's Generator L3600 + 200 W, $1,849.99, has half the panels).
+- [BLUETTI Elite 400 + Charger 1 Bundle](https://dealectric.com/bluetti-elite-400-charger-1-bundle): None: no 3–4 kWh station with an alternator charger ships now within ±25%.
+- [BLUETTI Elite 400 + Charger 2 Bundle](https://dealectric.com/bluetti-elite-400-charger-2-bundle): None: as Charger 1.
+- [BLUETTI FridgePower + Charger 2 + DC Hub Bundle](https://dealectric.com/bluetti-fridgepower-charger-2-dc-hub): None: the Elite 300 has no Charger 2 bundle on BLUETTI's store; the EcoFlow DELTA 2 Max + alternator charger ($1,249) is 26.5% under.
+- [BLUETTI FridgePower + Charger 2 + DC Hub + 200 W Solar Panel Kit](https://dealectric.com/bluetti-fridgepower-charger-2-dc-hub-200w-solar-kit): None: nothing with an alternator charger, a panel and ~2 kWh ships before Jan 11 within the band (Elite 300 + 2 × 200 W also waits for its panel to Jan 8).
+- [BLUETTI Pioneer Na + 2× 200 W Solar Panel Kit](https://dealectric.com/bluetti-pioneer-na-2x200w-solar-kit): None: the only sodium-ion kit that ships now (Pioneer Na + 100 W, $849) is 43% under $1,498.
+- [BLUETTI Pioneer Na + 350 W Solar Panel Kit](https://dealectric.com/bluetti-pioneer-na-350w-solar-kit): None: Pioneer Na + 100 W ($849) is 29% under $1,199; no other sodium-ion station is sold in the US.
+
+## Record corrections from the live read (113)
+
+Old → new stock state, ship date and price, read in the Agent Chrome on the exact linked variant.
+
+- `bluetti-elite-30-v2 | pre 'Dec 28 for Light Gray and early January 2027 for Deep Gray' -> None | line: None`
+- `allpowers-p1800-1024wh | pre 'Dec 7, 2026' -> None | line: None`
+- `allpowers-sp037-400w-solar-panel | pre 'an unannounced date; the store still shows Nov 20' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-p1800-sp037-solar-kit | pre 'Dec 7, 2026' -> None | line: None`
+- `allpowers-p1800-sf200-solar-kit | pre 'Dec 15, 2026' -> None | line: None`
+- `allpowers-s2000-pro-sp037-solar-kit | pre 'an unannounced date; the store still shows Nov 20' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `bluetti-elite-200-v2-200w-solar-kit | pre 'early January 2027' -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-200-v2-2x200w-solar-kit | pre 'early January 2027' -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-30-v2-100w-solar-kit | pre 'Dec 28 for Light Gray and early January 2027 for Deep Gray' -> None | line: None`
+- `bluetti-apex-200 | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-300 | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-elite-100-v2 | pre 'Dec 22, 2026' -> 'Dec 25, 2026' | price 449.99->549.0 | line: ships Dec 25`
+- `bluetti-apex-300-b300k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-b300k-expansion-battery | pre None -> 'Jan 20, 2027' | line: ships Jan 20`
+- `bluetti-apex-300-b300k-solarx-4k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-home-backup-kit-single | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2-b300k-2-500w | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2-b300k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2-b500k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-elite-30-v2-60w-solar-kit | pre 'Dec 28 for Light Gray and early January 2027 for Deep Gray' -> 'early January 2027 (Deep Gray), Dec 28 (Light Gray)' | line: ships early January`
+- `allpowers-r3500-sp037-solar-kit | pre 'an unannounced date; the store still shows Nov 20' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-p1800-600w-solar-kit | pre 'Dec 7, 2026' -> None | line: None`
+- `allpowers-r3500-sf200-solar-kit | pre 'an unannounced date; the store still shows Nov 9' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-r3500-sf100-solar-kit | pre 'Nov 9, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-s2000-pro-sf200-solar-kit | pre 'an unannounced date; the store still shows Nov 19' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-s2000-sf200-solar-kit | pre 'Nov 20, 2026' -> None | line: None`
+- `allpowers-s2000-sp037-solar-kit | pre 'Nov 20, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-r1500-sf100-solar-kit | pre 'an unannounced date; the store still shows Oct 30' -> 'no date given' | line: pre-order, no ship date given`
+- `bluetti-apex-200-200w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-2x200w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-350w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-500w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-b300k-2x200w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-b500k-2x500w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-300-350w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-500w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2x200w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-3x200w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2x350w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2x500w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-2x200w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-2x350w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-500w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b500k-500w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2-b300k-2x200w-solar-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-elite-30-mini-60w-solar-kit | pre None -> 'Dec 25, 2026 (60 W panel)' | line: the 60 W panel ships Dec 25`
+- `bluetti-elite-100-mini-200w-solar-kit | pre None -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-100-mini-350w-solar-kit | pre 'Dec 25, 2026' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `bluetti-elite-100-v2-100w-solar-kit | pre 'Dec 22, 2026' -> 'Dec 25, 2026' | price 599.99->679.0 | line: ships Dec 25`
+- `bluetti-elite-100-v2-200w-solar-kit | pre 'Dec 22, 2026' -> 'Jan 8, 2027 (200 W panel)' | price 649.99->699.0 | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-100-v2-350w-solar-kit | pre 'Dec 25, 2026' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `bluetti-elite-200-v2-350w-solar-kit | pre 'early January 2027' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `bluetti-elite-200-v2-2x350w-solar-kit | pre 'early January 2027' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `bluetti-elite-300-2x200w-solar-kit | pre 'Dec 14, 2026' -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-300-350w-solar-kit | pre 'Dec 25, 2026' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `bluetti-elite-300-500w-solar-kit | pre 'late January 2027' -> 'late January 2027 (500 W panel)' | line: the 500 W panel ships late January`
+- `bluetti-elite-400-350w-solar-kit | pre 'mid-January 2027' -> 'mid January 2027' | line: ships mid January`
+- `bluetti-elite-400-500w-solar-kit | pre 'late January 2027' -> 'late January 2027 (500 W panel)' | line: the 500 W panel ships late January`
+- `bluetti-elite-400-2x200w-solar-kit | pre 'mid-January 2027' -> 'mid January 2027' | line: ships mid January`
+- `bluetti-elite-400-2x350w-solar-kit | pre 'mid-January 2027' -> 'mid January 2027' | line: ships mid January`
+- `bluetti-pioneer-na-200w-solar-kit | pre None -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-pioneer-na-2x200w-solar-kit | pre None -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-pioneer-na-350w-solar-kit | pre 'Dec 25, 2026' -> 'Jan 10, 2027 (350 W panel)' | line: the 350 W panel ships Jan 10`
+- `allpowers-r3500-2x-sp037-solar-kit | pre 'Nov 20, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-r3500-2x-sf200-solar-kit | pre 'an unannounced date; the store still shows Nov 9' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-r3500-2x-sf100-solar-kit | pre 'Nov 9, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-s2000-pro-2x-sf200-solar-kit | pre 'Nov 19, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-s2000-pro-sf100-solar-kit | pre 'Nov 16, 2026' -> 'no current date (the store still shows a dispatch date that has passed)' | line: pre-order, no current ship date`
+- `allpowers-s2000-2x-sf200-solar-kit | pre 'Nov 20, 2026' -> None | line: None`
+- `bluetti-2-apex-200-2-b300k-hub-a1-home-backup-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-2-apex-300-2-b300k-hub-a1 | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-2-fridgepower-2-bc200 | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-ac180-100w-solar-kit | pre 'Dec 14, 2026' -> 'Dec 24, 2026' | line: ships Dec 24`
+- `bluetti-ac180-charger-1-200w-solar-kit | pre 'Dec 14, 2026' -> 'Dec 24, 2026' | line: ships Dec 24`
+- `bluetti-ac180-charger-2-bundle | pre 'Dec 14, 2026' -> 'Dec 24, 2026' | line: ships Dec 24`
+- `bluetti-ac180-2-pack | pre 'Dec 14, 2026' -> 'Dec 24, 2026' | line: ships Dec 24`
+- `bluetti-apex-200-2-b300k | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-b500k | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-b500k-30a-tt-30-cable | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-charger-2-bundle | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-charger-2-2x200w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-charger-2-2x350w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-200-charger-2-2x500w-solar-kit | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+- `bluetti-apex-300-2-b300k-solarx-4k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-50a-cable | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-charger-2-dc-hub-2x350w-sol | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-hub-d1 | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b500k-charger-2-dc-hub-2x350w-50a | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b500k-solarx-4k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-charger-1-hub-d1 | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-hub-d1 | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-solarx-4k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-2-b500k-solarx-4k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b500k | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b500k-home-backup-kit | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-b300k-charger-2-dc-hub | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-apex-300-charger-2-dc-hub | pre 'late January 2027' -> None | line: sold out`
+- `bluetti-elite-100-v2-charger-2-bundle | pre 'mid-December 2026' -> 'Dec 25, 2026' | line: ships Dec 25`
+- `bluetti-elite-400-charger-2-bundle | pre 'mid-January 2027' -> 'mid January 2027' | line: ships mid January`
+- `bluetti-elite-200-v2-charger-1-200w-solar-kit | pre 'early January 2027' -> 'Jan 8, 2027 (200 W panel)' | line: the 200 W panel ships Jan 8`
+- `bluetti-elite-400-charger-1-bundle | pre 'mid-January 2027' -> 'mid January 2027' | line: ships mid January`
+- `bluetti-fridgepower-2-pack | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-fridgepower-2-bc200 | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-fridgepower-3-bc200 | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-fridgepower-bc200 | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-fridgepower-charger-2-dc-hub-200w-solar-ki | pre 'late November 2026' -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-fridgepower-charger-2-dc-hub | pre None -> 'Jan 11, 2027' | line: ships Jan 11`
+- `bluetti-2-b300k-for-apex-300-200 | pre 'Jan 20, 2027' -> 'Jan 20, 2027 (B300K)' | line: the B300K ships Jan 20`
+- `bluetti-b300k-charger-2 | pre 'Dec 14, 2026' -> 'Jan 20, 2027' | line: ships Jan 20`
+- `bluetti-b300k-charger-2-dc-hub | pre 'Dec 14, 2026' -> None | line: None`
+- `bluetti-pv100-fx-flexible-solar-panel-6-pack stock True->False | line: sold out`
+- `bluetti-ac180-charger-1-bundle | pre 'Dec 14, 2026' -> None | line: None`
+- `bluetti-apex-200-b300k | pre 'late January 2027' -> 'mid February 2027' | line: ships mid February`
+
+## New minimal records (20)
+
+- [Growatt INFINITY 2000 PRO + 3 × 200 W Solar Panel Kit](https://dealectric.com/growatt-infinity-2000-pro-3x200w-solar-kit) (awin:growatt)
+- [Growatt INFINITY 2000 PRO + 4 × 200 W Solar Panel Kit](https://dealectric.com/growatt-infinity-2000-pro-4x200w-solar-kit) (awin:growatt)
+- [Growatt HELIOS 3600 ×2 + Double Voltage Hub](https://dealectric.com/growatt-helios-3600-x2-hub) (awin:growatt)
+- [Mango Power E Solar Generator Kit Pro](https://dealectric.com/mango-power-e-solar-generator-kit-pro) (awin:mangopower)
+- [Nature's Generator L6000 + Power Pod](https://dealectric.com/natures-generator-l6000-power-pod) (awin:naturesgenerator)
+- [Nature's Generator L6000 + 2 × 200 W Folding Solar Panels](https://dealectric.com/natures-generator-l6000-2x200w) (awin:naturesgenerator)
+- [Nature's Generator L6000 + 2 × 440 W Rigid Bifacial Panels](https://dealectric.com/natures-generator-l6000-2x440w) (awin:naturesgenerator)
+- [Nature's Generator L6000 + Power Pod + 4 × 440 W Rigid Bifacial Panels](https://dealectric.com/natures-generator-l6000-power-pod-4x440w) (awin:naturesgenerator)
+- [Nature's Generator L3600 + 200 W Folding Panel](https://dealectric.com/natures-generator-l3600-200w) (awin:naturesgenerator)
+- [Nature's Generator L3600 + Power Pod + 4 × 440 W Rigid Bifacial Panels](https://dealectric.com/natures-generator-l3600-power-pod-4x440w) (awin:naturesgenerator)
+- [Growatt HELIOS 3600 Portable Power Station](https://dealectric.com/growatt-helios-3600-amazon) (amazon:us)
+- [EcoFlow TITAN 5000 Classic Power Station](https://dealectric.com/ecoflow-titan-5000-classic-amazon) (amazon:us)
+- [EcoFlow DELTA 2 Max + 800 W Alternator Charger](https://dealectric.com/ecoflow-delta-2-max-800w-alternator-charger) (amazon:us)
+- [BLUETTI Elite 30 V2 Portable Power Station](https://dealectric.com/bluetti-elite-30-v2-amazon) (amazon:us)
+- [ALLPOWERS S2000 Pro + SE100 100 W Solar Panel Kit](https://dealectric.com/allpowers-s2000-pro-se100-amazon) (amazon:us)
+- [ALLPOWERS S2000 Pro + 2 × 100 W Folding Solar Panels](https://dealectric.com/allpowers-s2000-pro-2x100w-amazon) (amazon:us)
+- [ALLPOWERS P1800 + 100 W Solar Panel](https://dealectric.com/allpowers-p1800-100w-amazon) (amazon:us)
+- [BLUETTI SORA 500 500 W Portable Solar Panel](https://dealectric.com/bluetti-sora-500-amazon) (amazon:us)
+- [BLUETTI PV100 FX Flexible Solar Panel](https://dealectric.com/bluetti-pv100-fx-2-pack-amazon) (amazon:us)
+- [BLUETTI B300K Expansion Battery](https://dealectric.com/bluetti-b300k-amazon) (amazon:us)
+
+## Other
+
+- Sold-out redirect (DLC-201) off: 15 /go/ links that opened a substitute now open their own product; each has an alternative line instead.
+- 153 stale stock sentences corrected on 45 comparison pages: page-text-changes.md.
+- Daily stock read (tools/pricecheck.py) fixed: it timed out every day since 11-18; now parallel by store, 429 stores via r.jina.ai, written by a 20-minute deadline (test: 494 records read, 85 unread).
