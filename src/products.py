@@ -8992,7 +8992,7 @@ PRODUCTS = [
  "fit": "A driver who wants 4K of the road ahead only, bought from the maker's store under $200, and the longest loop per card among the 4K cameras at this price.",
  "caveats": ["DashCamTalk's 32.0 Mb/s, H.265 and score figures come from its S1 Pro Max entry, which describes the 4K + 4K kit; they are applied here to the same front camera.", "DashCamTalk scores the S1 Pro Max 6.8 of 10 overall: day video 9, night video 7, discreetness 5; it lists 'Larger sized camera' as a weakness.", "Parking mode is non-buffered and needs a hardwire kit, sold separately. Vantrue's hardwire kit listings read on 2026-11-26 do not name the S1 Pro Max, so ask Vantrue which kit fits before ordering.", "Price read 2026-11-26 through vantrue.com's store search feed (variant Default Title, id 51187927351605, list $199.99); the product page itself returned HTTP 429 that day."]},
 
-{"slug": 'lofree-flow-2-68',
+{"slug": 'lofree-flow-2-68', "deal": {'name': 'Black Friday Month', 'ends': '2026-11-30', 'auto_total': 111.20, 'show_end': False},
  "brand": 'Lofree',
  "program": 'cj:lofree',
  "asin": None,
