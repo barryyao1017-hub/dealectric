@@ -1,0 +1,148 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 6,000 W units (Nature's Generator L6000, Anker SOLIX F3800 Plus) deliver their full rating only through the L14-30R at 120/240 V and 25 A, with every 120 V outlet capped at 3,000 W (TT-30R) or 2,400 W (5-20R), so a 5,000 W load must be a 240 V load and takes 20.8 A of the 25 A available.",
+ "standout": 1,
+ "standout_why": "Compared against solarwaypoint.com and holdbackup.com (cited), thiswatt.com, powerbencher.com and thewattguide.com (not cited), and the Anker F3800 Plus page (cited). Solarwaypoint and thiswatt give no outlet or leg figures. Holdbackup names outlet types and a 7,200 W total but no per-outlet watts. Powerbencher says 5,000 W at 120 V is about 42 A and no household outlet can deliver it, but gives no figures for a qualifying unit's outlets. Thewattguide already has the principle ('anything above that must leave the unit through 240V outlets or several outlets at once') and per-120 V figures for Jackery (two 3,600 W banks) and OUPES (3,600 W from 120 V). ChatGPT's own answer also warns that one 120 V socket may not supply 5,000 W. What none has: the Nature's Generator L6000 at all, the 25 A L14-30R limit on the two 6,000 W units, the headroom left once a 5,000 W load is running, or the 1,800 W pass-through cap on a 120 V cord.",
+ "decides": "It confirms rather than changes the pick. Every unit in the line makes 5,000 W only at 240 V through the L14-30R (or a transfer switch fed from it); none does it from a 120 V outlet. The L6000 qualifies on its maker's manual, but with the tightest margin: a 5,000 W 240 V load leaves 1,000 W in total (about 500 W per leg). The 7,200 W units (Pecron F5000LFP by its maker's '3600W*2' figure) leave 2,200 W, so a shopper running a 5,000 W load plus anything else should take a 7,200 W unit. Pecron's ships early January, which is more than four weeks out. The L6000 passes through only 1,800 W on its 120 V cord; 6,000 W pass-through needs the $119.99 240 V cable and a 14-50R outlet.",
+ "candidates": [
+  "Nature's Generator L6000",
+  "Anker SOLIX F3800 Plus",
+  "Pecron F5000LFP",
+  "Jackery Explorer 5000 Plus",
+  "EcoFlow DELTA Pro Ultra"
+ ],
+ "findings": [
+  {
+   "product": "Nature's Generator L6000",
+   "label": "240 V outlet rating (manual, section 2.2.1 item 12)",
+   "value": "\"Line 1 and 2 NEMA L14-30R Outlet: Provides up to 120/240Vac 25A 6000W output.\"",
+   "source": "https://naturesgenerator.com/pages/manuals/natures-generator-lithium-6000",
+   "source_title": "Nature's Generator Lithium 6000 User Manual",
+   "read": "2026-11-27",
+   "note": "The only outlet that carries the full 6,000 W. Troubleshooting 3.6a repeats '240V 25A 6000W maximum'. Arithmetic: 5,000 W ÷ 240 V = 20.8 A of 25 A, leaving 1,000 W (about 500 W per leg)."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "120 V outlet ratings (manual, section 2.2.1 items 15, 17, 18)",
+   "value": "TT-30R on Line 2: \"up to 120Vac 25A 3000W AC output\"; NEMA 5-20R on Line 1 and Line 2: \"Each outlet can provide up to 120Vac 20A 2400W output.\"",
+   "source": "https://naturesgenerator.com/pages/manuals/natures-generator-lithium-6000",
+   "source_title": "Nature's Generator Lithium 6000 User Manual",
+   "read": "2026-11-27",
+   "note": "Largest 120 V outlet is 3,000 W. A 5,000 W load at 120 V would need 41.7 A (5,000 ÷ 120). The manual states no separate per-leg limit; 3,000 W per leg is 25 A × 120 V from its own figures."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Pass-through (power relay) limit while plugged into the wall (manual, section 2.5)",
+   "value": "\"can support up to 1800W of power\" on the included 120 V cord; \"can be increased to 6000W by being recharged by the super charge cable\"; switchover \"within 10ms\"",
+   "source": "https://naturesgenerator.com/pages/manuals/natures-generator-lithium-6000",
+   "source_title": "Nature's Generator Lithium 6000 User Manual",
+   "read": "2026-11-27",
+   "note": "Manual also says 'The L2 outlets are in line with the power input' on the 120 V cord, and an overload breaker trips above 15 A in relay mode. As a plugged-in UPS on a 120 V cord it passes through 1,800 W, not 5,000 W."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Cable needed for 6,000 W pass-through",
+   "value": "Lithium 6ft Super Charging Cable, $119.99; requires a 240 V NEMA 14-50R outlet; \"Supports up to 6000W (120/240V) for L6000\"",
+   "source": "https://naturesgenerator.com/products/lithium-super-charging-cable",
+   "source_title": "Nature's Generator Lithium 6ft Super Charging Cable",
+   "read": "2026-11-27",
+   "note": "Read through storecheck.py search on naturesgenerator.com; listed as available."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Output, weight, warranty (manual, sections 4 and 6.2)",
+   "value": "6,000 W continuous, 12,000 W peak, 120 V/240 V, 60 Hz, pure sine; 112.4 lb (51 kg); warranty \"Twelve (12) Months: Shipping, Parts and Labor\"",
+   "source": "https://naturesgenerator.com/pages/manuals/natures-generator-lithium-6000",
+   "source_title": "Nature's Generator Lithium 6000 User Manual",
+   "read": "2026-11-27",
+   "note": "The help-center page (https://naturesgenerator.com/pages/help-center/lithium-6000) lists '12 Months' in its spec table and also shows an 'Up to 5-year warranty' badge; the two disagree."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Two units combined",
+   "value": "\"from 6,000 W (120/240V 25A) to 12,000 W (120/240V 50A)\" with the L6000 Combiner Cable, $199.99",
+   "source": "https://naturesgenerator.com/products/lithium-6000-combiner-cable",
+   "source_title": "Nature's Generator L6000 Combiner Cable",
+   "read": "2026-11-27",
+   "note": "Maker's second statement of the 25 A limit on a single unit. Read through storecheck.py."
+  },
+  {
+   "product": "Nature's Generator L6000",
+   "label": "Store price, power station alone",
+   "value": "$2,249.99, in stock (3,840 Wh LiFePO4, UL 2743 per the listing)",
+   "source": "https://naturesgenerator.com/products/lithium-6000-power-station",
+   "source_title": "Nature's Generator L6000 Expandable Power Station",
+   "read": "2026-11-27",
+   "note": "Read through storecheck.py (available: true). The product page itself returned HTTP 429 to a direct fetch, so no sale end date was read today."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "AC output per port (maker's tech specs and FAQ)",
+   "value": "L14-30R: \"120V/240V~ 25A Max, 60Hz, 6000W Max\"; TT-30R: \"(120V~25A)\", \"3000W Max, 120V\"; AC output \"120V~ 20A Max, 60Hz, 2400W Max\"",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "Same 25 A limit as the L6000: a 5,000 W 240 V load takes 20.8 A and leaves 1,000 W. Weight 136.7 lb net on the same page."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Limits when charging from a 120 V source",
+   "value": "240 V output (L14-30R) cannot be used while charging from 120 V AC; on a 120 V wall outlet the TT-30R and 5-20R ports have a \"Bypass limit of up to 1,440W\"",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "The first clause is the page reader's paraphrase of the listing; only the bypass figure is a direct quote. With a 120 V generator the FAQ says TT-30R output is 'available when connected to the L1 phase' and 'No output when connected to the L2 phase'."
+  },
+  {
+   "product": "Anker SOLIX F3800 Plus",
+   "label": "Availability at the maker's US store",
+   "value": "Sold Out, 'Notify Me' button, no ship date",
+   "source": "https://www.ankersolix.com/products/f3800-plus",
+   "source_title": "Anker SOLIX F3800 Plus Portable Power Station - Anker SOLIX US",
+   "read": "2026-11-27",
+   "note": "The page showed 'Price Loading', so no price was read today."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "AC output per voltage (maker's listing)",
+   "value": "\"100Vac~120Vac/ 50/60Hz/ 3600W*2\"; \"200~240vac/ 7200W Max (Dual Phase)\"; \"120V Charging Supported During 240V Output\"",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V Pre-Order | Ships Early Jan",
+   "read": "2026-11-27",
+   "note": "The maker states the split outright: two 3,600 W 120 V legs, 7,200 W only at 240 V. A 5,000 W 240 V load leaves 2,200 W (1,100 W per leg). Read through storecheck.py."
+  },
+  {
+   "product": "Pecron F5000LFP",
+   "label": "Store price and ship date",
+   "value": "$2,399.00, pre-order, ships early January (5,120 Wh LiFePO4, 4,000+ cycles to 80%, '5+1 Years Warranty')",
+   "source": "https://www.pecron.com/products/pecron-f5000lfp-portable-power-station",
+   "source_title": "PECRON F5000LFP Portable Power Station 7200W 5120Wh 120V/240V Pre-Order | Ships Early Jan",
+   "read": "2026-11-27",
+   "note": "The desk research lead said $2,199; the store shows $2,399 today. Ship date is more than four weeks out."
+  },
+  {
+   "product": "general",
+   "label": "Why 5,000 W cannot come from a 120 V outlet on these units",
+   "value": "5,000 W ÷ 120 V = 41.7 A; 5,000 W ÷ 240 V = 20.8 A. The largest 120 V outlet read on any unit here is 25 A / 3,000 W (TT-30R on the L6000 and F3800 Plus).",
+   "source": "https://naturesgenerator.com/pages/manuals/natures-generator-lithium-6000",
+   "source_title": "Nature's Generator Lithium 6000 User Manual",
+   "read": "2026-11-27",
+   "note": "Arithmetic on the makers' outlet ratings. Powerbencher makes the general 42 A point for household outlets; no page read applies it to a qualifying unit's own outlets."
+  }
+ ],
+ "unsourced": [
+  "Jackery Explorer 5000 Plus per-outlet ratings (each 120 V port, the AC1+AC2 / AC3+AC4 pair limit, L14-30R / 14-50 amps), price and stock: jackery.com returned HTTP 429 to both the page fetch and storecheck.py, the manual PDF (cdn.shopify.com/.../Explorer_5000_Plus_User_Manual-US.pdf) downloaded but its text could not be extracted, and B&H returned 403. Thewattguide.com says the 120 V sockets are split into two 3,600 W banks and the 240 V outlets are rated 30 A; that was not checked against Jackery's own page.",
+  "EcoFlow DELTA Pro Ultra per-outlet and per-leg AC ratings, price and stock: us.ecoflow.com returned HTTP 429, the manual PDF exceeded the fetch size limit, and manuals.ecoflow.com returned no spec text.",
+  "EcoFlow TITAN 5000 / TITAN 5000 Plus outlet ratings and prices: not opened within the call budget.",
+  "OSCAL PowerMax 6000 and BLUETTI RV5 per-outlet and per-leg ratings: not opened within the call budget.",
+  "A maker's explicit per-leg limit or unbalanced-load behaviour for the Nature's Generator L6000 and Anker F3800 Plus: neither the manual nor the product page states one; the 3,000 W per leg figure is 25 A × 120 V from their outlet ratings.",
+  "Neutral-to-ground bonding (bonded or floating neutral) for any unit, which decides which transfer switch type is correct: the L6000 manual text read covers only a ground terminal, and no other maker page read mentions it.",
+  "Nature's Generator L6000 sale end date (11-29 in the desk research) and the L6000 product page's own outlet list: the product page returned HTTP 429 to a direct fetch; price and stock came from storecheck.py only."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 2.9475613999999997
+ }
+}
