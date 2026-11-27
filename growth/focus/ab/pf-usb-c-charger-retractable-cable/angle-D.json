@@ -1,0 +1,104 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got says why most built-in cables stop at 60 W. Under the USB-C cable rule, a cable without an electronic marker (e-marker) chip is rated at 3 A, and 3 A at 20 V is 60 W. A cable can carry more than 60 W only if it is rated above 3 A: UGREEN's 100 W retractable cable advertises 20 V/5 A (ChargerLAB), while ESR's Xtend tops out at 20 V/3 A.",
+ "standout": 2,
+ "standout_why": "I compared this against the pages ChatGPT cited: UGREEN's retractable hub page, the UGREEN 100W product page, Belkin's 67W FAQ (337679) and The Verge's Baseus EnerCore piece. I also checked ChargerLAB's 100W teardown, which was in ChatGPT's results but not cited. UGREEN's hub page gives no cable watts or length at all. Belkin's FAQ gives '67W when charging one device' but no volts or amps and doesn't say whether that is the cable. ChargerLAB lists the 20V5A setting for the 100W cable but never says that 3 A (60 W) is the limit for a cable without a 5 A rating. ChatGPT called the UGREEN 65W cable's 60 W limit 'the notable trap' but never said what causes it. No page gives the 3 A / 5 A reason, which lets a shopper read any cable's volts × amps and tell whether it can go past 60 W.",
+ "decides": "This confirms the pick and makes it easy to check. The 60 W limit comes from cable current, so a cable rated above 60 W has to advertise more than 3 A. The UGREEN Nexode 100W Retractable passes: ChargerLAB measured a 20V/5A setting and PPS up to 5 A on the cable itself, so it stays the top pick for full-power laptop charging through the cable. The ESR Xtend 45W (5–20 V, up to 3 A per ESR) and the UGREEN Nexode 65W Retractable (60 W cable) both hit the 3 A ceiling. They suit phones and small laptops, not 65 W+ laptops through the cable. A new lead from a partner store: the UGREEN Nexode Pro 160W with Retractable USB-C Cable (us.ugreen.com, $149.99, read 2026-11-27). GeekDad and UGREEN-sourced coverage say its cable gives up to 140 W, which would beat the 100W model. 140 W over USB-C requires PD 3.1 at 28 V/5 A, but I could not open UGREEN's page to confirm the cable's volts and amps, so it should not displace the 100W pick until that figure is read. Also, our record has the UGREEN 100W at $42.49, but today's storecheck search of us.ugreen.com returned $49.99 (compare-at $59.99). Re-read the price before rendering.",
+ "candidates": [
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+  "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable",
+  "UGREEN Nexode 65W Charger with Retractable USB-C Cable",
+  "ESR Xtend 45W Retractable Charger (2D001)",
+  "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+  "Baseus EnerCore CJ11 67W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Current limit for a USB-C cable without an electronic marker",
+   "value": "Cables rated above 3 A must carry an electronic marker. A USB 2.0 Type-C cable 'may be electronically marked (required if cable supports >3A)'. At 20 V, 3 A = 60 W.",
+   "source": "https://ti.com/document-viewer/lit/html/SSZTBJ8/GUID-61351F5F-3B46-4F6A-A613-320B3A36C17A",
+   "source_title": "Texas Instruments technical article SSZTBJ8 (Brian Gosselin and Nate Enos, May 2016)",
+   "read": "2026-11-27",
+   "note": "TI's summary of the USB Type-C spec, quoted verbatim: 'cables are required to be electronically marked if they are either full-featured and/or rated at more than 3A'. The article names 2 cable current ratings; the table that lists them is an image, so the 3 A and 5 A values come from the >3A wording. 60 W = 20 V × 3 A is my arithmetic. TI also defines a 'captive cable' (one end soldered in place or a non-USB connector), which is what a built-in retractable cable is. I could not confirm whether the e-marker requirement applies to captive cables, so the page should present the 3 A / 60 W ceiling as a current-rating limit, not as proof that a built-in cable has a chip."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "Voltage/current settings advertised on the built-in retractable cable",
+   "value": "5V/3A, 9V/3A, 12V/3A, 15V/3A, 20V/5A (100 W max); PPS 5–21 V up to 5 A",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable – ChargerLAB (Joshua, 2026-11-04)",
+   "read": "2026-11-27",
+   "note": "Settings read off the cable with ChargerLAB's POWER-Z KM003C tester. The 20V/5A setting is what lets this cable exceed the 3 A / 60 W ceiling. ChargerLAB also lists UFCS, QC3+, PD 3.0/PPS, DCP, Samsung 5V/2A and Apple 2.4A. It did not test AVS and gives no wire gauge or e-marker detail."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "Built-in cable length and mechanism",
+   "value": "about 72.5 cm (28.5 in); eight length settings; flat cable; clock-spring retractor",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable – ChargerLAB (Joshua, 2026-11-04)",
+   "read": "2026-11-27",
+   "note": "ChargerLAB's measurement. Total output is 100 W shared across all outputs; the article does not give the cable's share when other ports are in use."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "label": "Output voltage/current range",
+   "value": "5–20 V, up to 3 A; 45 W maximum total with both ports in use",
+   "source": "https://www.esrtech.com/apps/help/product/2d001",
+   "source_title": "esr Xtend 45W Retractable Charger – ESR help page (2D001)",
+   "read": "2026-11-27",
+   "note": "ESR's FAQ, verbatim: 'The charger supports 5–20V and up to 3A, with a maximum total output of 45W when both ports are in use.' Protocols listed: PD3.0, PD2.0, QC3.0, QC2.0, UFCS, AVS, PPS. The page does not mention 60 W. If the '60 W for one device' claim on our record holds, it can only be 20 V × 3 A = 60 W, exactly the 3 A ceiling."
+  },
+  {
+   "product": "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+   "label": "Single-device output, cable length and two-device split",
+   "value": "up to 67 W for one device; 3.3 ft (1 m) cable; 45 W + 20 W (65 W combined) with two devices",
+   "source": "https://www.belkin.com/support-article/?articleNum=337679",
+   "source_title": "Belkin Official Support – Belkin UltraCharge Retractable GaN Wall Charger 67W FAQs",
+   "read": "2026-11-27",
+   "note": "Belkin's FAQ. It does not say whether the 67 W comes through the retractable cable or the USB-C port, and it gives no volts or amps. 67 W at 20 V would need 3.35 A, above the 3 A ceiling (my arithmetic), so treat 67 W through the cable as unverified until Belkin gives the cable's volts and amps."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable",
+   "label": "Built-in cable output and length (reviewer report)",
+   "value": "up to 140 W; up to 70 cm (27.6 in) with eight lengths; USB-C1 140 W, USB-C2 100 W, USB-A 22.5 W; 160 W total",
+   "source": "https://geekdad.com/2026/07/the-ugreen-nexode-pro-160w-charger-features-a-retractable-cable-and-smart-display/",
+   "source_title": "The UGREEN Nexode Pro 160W Charger Features a Retractable Cable and Smart Display – GeekDad (Michael Knight, 2026-07-31, updated 2026-08-26)",
+   "read": "2026-11-27",
+   "note": "GeekDad repeats the maker's figures; it measured nothing. No volts or amps given. 140 W over USB-C means PD 3.1 at 28 V × 5 A, so the cable would need a 5 A rating (my arithmetic, not stated by GeekDad)."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable",
+   "label": "Price on UGREEN US store",
+   "value": "$149.99 (compare-at $149.99), in stock",
+   "source": "https://us.ugreen.com/products/ugreen-160w-retractable-charger",
+   "source_title": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable – UGREEN US",
+   "read": "2026-11-27",
+   "note": "From the storecheck.py search of us.ugreen.com. The product page itself returned HTTP 429, so variants and stock notices were not read. A bundle with a 100W cable 2-pack was listed at $105.99 (compare-at $166.98) at https://us.ugreen.com/products/nexode-pro-160w-cable-bundle."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "Price on UGREEN US store (storecheck search)",
+   "value": "$49.99 (compare-at $59.99), in stock",
+   "source": "https://us.ugreen.com/products/ugreen-100w-retractable-gan-charger",
+   "source_title": "UGREEN Nexode 100W Charger with Retractable USB-C Cable – UGREEN US",
+   "read": "2026-11-27",
+   "note": "Conflicts with the $42.49 store price on our record for the same day. The product page returned HTTP 429, so I could not check whether a variant explains the gap. Re-read before rendering."
+  }
+ ],
+ "unsourced": [
+  "The USB Type-C spec's own wording on the 3 A default and 5 A e-marker rule: the usb.org R2.0 PDF was over WebFetch's 10 MB limit and the curl download needed approval, so the rule comes from TI's article quoting the spec.",
+  "Whether the USB Type-C spec requires an e-marker in a captive (built-in) cable rated at 5 A: no primary text found; vendor blogs disagree.",
+  "Volts and amps for the UGREEN Nexode Pro 160W's built-in cable, from UGREEN's US and Canadian product pages (both returned HTTP 429).",
+  "Volts and amps and the multi-port split for the UGREEN Nexode 65W Retractable cable, re-read today on us.ugreen.com (rate-limited); the 60 W (20 V/3 A) figure on our record was not re-read.",
+  "Volts and amps for the Belkin 67W retractable cable: not in Belkin's FAQ; the product page was not opened.",
+  "Baseus EnerCore CJ11 cable volts and amps and its US price: The Verge could not be fetched and Baseus's page was not reached within the budget.",
+  "ESR's '60 W for one device with AVS' statement: not on ESR's 2D001 help page; ESR's US product page returned HTTP 429."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.4698577
+ }
+}

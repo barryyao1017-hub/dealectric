@@ -1,0 +1,149 @@
+{
+ "angle": "C",
+ "gap": "No result ChatGPT got states which device each built-in cable can bring to its top charging tier: Apple requires AVS and USB-PD 3.2 at 60 W or more for iPhone 18 Pro, ChargerLAB's readout of the UGREEN 100W cable shows PD 3.0/PPS and no AVS, the ESR Xtend 45W is the only retractable charger read with a named AVS claim, and the only cable read above 100 W is the UGREEN Nexode Pro 160W's (140 W per Android Central and Notebookcheck).",
+ "standout": 2,
+ "standout_why": "Compared against UGREEN's US retractable landing page (names and prices only, no cable watts or protocols), both Belkin support articles (67 W, PD/PPS, no AVS mention, no phone or laptop tier), and ChargerLAB's teardown (lists the cable's protocols but ties them to no device and does not mention AVS). None maps a cable to Apple's iPhone 18 Pro or MacBook fast-charge requirements, and none gives the 160W model's cable watts. The Verge page would not open, and us.ugreen.com and esrtech.com product pages returned HTTP 429 on every attempt, so the UGREEN 100W product page was not compared.",
+ "decides": "It splits the pick by device instead of crowning the UGREEN 100W for everyone. For an iPhone 18 Pro or Pro Max, the ESR Xtend 45W (ours) is the only one read with an AVS claim; ChargerLAB's readout of the UGREEN 100W cable shows no AVS, so by Apple's rule that cable does not give that phone its top tier. For a 14-inch MacBook Pro, the UGREEN 100W cable (ours) is the lowest-priced one read that clears Apple's 96 W fast-charge line; the 60–67 W cables do not. For a 16-inch MacBook Pro (Nov 2023 or later), only the UGREEN Nexode Pro 160W's cable reaches 140 W, so ChatGPT's 'strongest verified option' is not the top-wattage cable. UGREEN is a partner store, but the 160W has no Dealectric record yet.",
+ "candidates": [
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable (X606)",
+  "ESR Xtend 45W Retractable Charger (2D001)",
+  "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable (X776)",
+  "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+  "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+  "Baseus EnerCore CJ11 67W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What an iPhone 18 Pro / Pro Max needs for its top wired speed",
+   "value": "Apple 40W Dynamic Power Adapter with 60W Max, or a third-party adapter of 60 W or higher that uses Adjustable Voltage Supply (AVS) and supports USB-PD 3.2; about 50% in around 15 minutes",
+   "source": "https://support.apple.com/en-us/102574",
+   "source_title": "Apple Support: Fast charge your iPhone",
+   "read": "2026-11-27",
+   "note": "Same page: iPhone 17, 17 Pro and 17 Pro Max need a 40 W or higher adapter (50% in around 20 minutes); iPhone Air and 17e need 20 W or higher. Apple's times are its own lab results. Page was read through a summarising fetch; requirement wording is partly quoted, partly paraphrased."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable (X606)",
+   "label": "Protocols ChargerLAB detected on the built-in cable",
+   "value": "UFCS, QC3+, PD 3.0/PPS, DCP, Samsung 5V/2A, Apple 2.4A; fixed 5/9/12/15 V at 3 A and 20 V at 5 A (100 W); PPS 5–21 V at up to 5 A; no AVS in the readout",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "Measured by ChargerLAB with a POWER-Z KM003C; model X606, part number 65591. The article does not mention AVS; 'no AVS' is absence from the detected list, not a ChargerLAB statement. Set against Apple's rule above, this cable does not meet the iPhone 18 Pro's 60 W AVS / PD 3.2 requirement."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable (X606)",
+   "label": "Fast-charge modes on the ports that the cable lacks",
+   "value": "USB-C1 and USB-C2 show QC3.0, FCP, SCP, AFC and SFCP; the built-in cable's list has none of FCP, SCP or AFC",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB protocol readout. A phone that fast-charges only over Huawei SCP/FCP or Samsung AFC would have to use a port with its own cable, not the built-in one. USB-C2 tops out at 30 W (20 V/1.5 A) with PPS 5–11 V at 2.75 A; USB-A 22.5 W."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable (X606)",
+   "label": "Built-in cable length, measured",
+   "value": "about 72.5 cm (28.5 in), eight length stops, magnetic connector",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB's measurement; ChatGPT's table gave 2.5 ft (about 76 cm)."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable (X606)",
+   "label": "Price on UGREEN's US store",
+   "value": "$42.49 (list $59.99)",
+   "source": "https://us.ugreen.com/pages/ugreen-retractable-charging-cables",
+   "source_title": "UGREEN Retractable Charging Devices - Built-In Cables for Easy Power – UGREEN US",
+   "read": "2026-11-27",
+   "note": "Read from UGREEN's US retractable landing page, not the product page (HTTP 429). No sale end date shown there."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable (X776)",
+   "label": "Built-in cable output, one device",
+   "value": "up to 140 W over USB PD 3.1 (Android Central, Harish Jonnalagadda; Notebookcheck, Abhinav Fating); Dong Ngo's spec table prints 145 W for 'USB-C1 and Retractable cable'",
+   "source": "https://www.androidcentral.com/accessories/power-charging/3-reasons-the-ugreen-nexode-pro-160w-is-now-my-go-to-gan-charger",
+   "source_title": "3 reasons the UGREEN Nexode Pro 160W is now my go-to GaN charger - Android Central",
+   "read": "2026-11-27",
+   "note": "The reviewers restate UGREEN's rating; none measured it. Android Central (11 Sep 2026) used the EU model for about three months: USB-C2 100 W, USB-A 22.5 W, three USB-C devices at 65 + 65 + 30 W, cable 70 cm. The 140 vs 145 W conflict is unresolved because UGREEN's US product page would not open."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable (X776)",
+   "label": "Protocols and cable length per named reviewers",
+   "value": "Notebookcheck: PD 3.2, PD 3.1, PPS, QC, AFC, SCP, UFCS, with AVS not listed; cable up to 70 cm (27.6 in) with eight lengths. Dong Ngo: PD 3.1 with PPS up to 5–21 V, AFC, SCP, UFCS and AVS; model X776; 310 g",
+   "source": "https://www.notebookcheck.net/Ugreen-launches-new-160-W-fast-GaN-charger-with-WiFi-built-in-cable-and-display.1353761.0.html",
+   "source_title": "Ugreen launches new 160 W fast GaN charger with WiFi, built-in cable and display - Notebookcheck",
+   "read": "2026-11-27",
+   "note": "Second source: https://dongknows.com/ugreen-nexode-pro-160w-charger-with-retractable-cable-review/ (Dong Ngo, read 2026-11-27). The two disagree on AVS, and neither is a lab readout, so do not claim AVS for this model on these sources."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable (X776)",
+   "label": "Price on UGREEN's US store",
+   "value": "$99.98 (list $149.99)",
+   "source": "https://us.ugreen.com/pages/ugreen-retractable-charging-cables",
+   "source_title": "UGREEN Retractable Charging Devices - Built-In Cables for Easy Power – UGREEN US",
+   "read": "2026-11-27",
+   "note": "Read from the landing page, which links /products/ugreen-160w-retractable-charger; the product page returned HTTP 429, so stock status, variant and sale end date were not read. Partner store (cj:ugreen), no Dealectric record yet."
+  },
+  {
+   "product": "general",
+   "label": "Which built-in cable wattage fast-charges which MacBook, per Apple's adapter list",
+   "value": "16-inch MacBook Pro (2021 or later): 140 W only, and over a USB-C charge cable only on the Nov 2023 or later models. 14-inch MacBook Pro (2021 or later): 96 W or 140 W. MacBook Air (2022 or later): 70 W, 96 W or 140 W; 67 W on 13.6-inch models only",
+   "source": "https://support.apple.com/en-us/102378",
+   "source_title": "Apple Support: Fast charge your MacBook Air or MacBook Pro",
+   "read": "2026-11-27",
+   "note": "Apple lists its own adapters; applying the wattage lines to third-party chargers is our inference. A built-in USB-C cable cannot be MagSafe 3, so a 2021 or early-2023 16-inch MacBook Pro has no fast-charge pairing on Apple's list from any retractable charger. A 60 W cable (UGREEN 65W) sits under every MacBook line; 67 W cables (Belkin, Baseus) reach only the 13.6-inch Air line; 100 W clears the 14-inch Pro line; only 140 W clears the 16-inch line."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "label": "AVS and 60 W claim, named reviewer",
+   "value": "rated 45 W; 'supports up to 60W dynamic charging with AVS', which the reviewer says unlocks the fastest charge speeds on iPhone 18 Pro and 18 Pro Max; built-in cable up to 3.1 ft; one extra USB-C port",
+   "source": "https://9to5mac.com/?p=1076912",
+   "source_title": "Hands-on: ESR's 45W Xtend charger is an excellent iPhone fast charger on the go - 9to5Mac",
+   "read": "2026-11-27",
+   "note": "Michael Burkhardt, 1 Nov 2026. Hands-on, not a lab measurement. The article does not say whether the 60 W mode is on the built-in cable, the port or both, and does not mention PD 3.2. It quotes $49.99 regular, $35.99 (white) and $41.99 (burgundy) on Amazon as of 1 Nov; those are not today's prices."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "label": "ESR's support page: output and stated limits",
+   "value": "'supports 5–20V and up to 3A, with a maximum total output of 45W when both ports are in use'; power is split automatically between two devices; 'some OPPO and Huawei phones support only proprietary charging protocols' and may charge slowly or not at all; for full speed the device should need 45 W or less with nothing in the other USB-C port",
+   "source": "https://www.esrtech.com/apps/help/product/2d001",
+   "source_title": "ESR Xtend 45W Retractable Charger - ESR Help",
+   "read": "2026-11-27",
+   "note": "ESR's own troubleshooting page. It does not state the 60 W figure, an AVS voltage range or a per-output split; 20 V × 3 A = 60 W is consistent with the claim but is our arithmetic, not ESR's statement."
+  },
+  {
+   "product": "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+   "label": "Cable/port output and protocols per Belkin's FAQ",
+   "value": "up to 67 W to one device through either the built-in cable or the USB-C port; two devices 45 W + 20 W (65 W combined); 'Both USB-C ports support PD 3.1 and PPS' (the hardware section says PD 3.2 with PPS); AVS not mentioned; cable 3.3 ft (1 m); larger laptops 'may' charge slower",
+   "source": "https://www.belkin.com/support-article/?articleNum=337679",
+   "source_title": "Belkin Official Support - Belkin UltraCharge Retractable GaN Wall Charger 67W FAQs",
+   "read": "2026-11-27",
+   "note": "This is ChatGPT's cited page; it settles that 67 W is on the cable itself. Belkin contradicts itself on PD version within the page. With no AVS statement, it cannot be shown to meet Apple's iPhone 18 Pro requirement."
+  },
+  {
+   "product": "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+   "label": "T-Mobile variant differs on cable length",
+   "value": "model WCH021-WH-TM: built-in cable 2.6 ft / 0.8 m (the general FAQ says 3.3 ft / 1 m); PD 3.1 plus PPS; 67 W single, 45 W + 20 W dual; foldable prongs for US, CN, JP and UK versions, fixed plugs elsewhere",
+   "source": "https://www.belkin.com/support-article/?articleNum=337690",
+   "source_title": "Belkin Official Support - Meet The Belkin UltraCharge Retractable GaN Wall Charger 67W (T-Mobile)",
+   "read": "2026-11-27",
+   "note": "Two Belkin documents give two cable lengths for the 67W model depending on variant; match the SKU before quoting a length."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own US product pages for the 100W and Pro 160W retractable chargers (us.ugreen.com/products/ugreen-100w-retractable-gan-charger and /ugreen-160w-retractable-charger): HTTP 429 on every attempt, and storecheck.py returned HTTP 403. Missing: UGREEN's multi-device split tables, its cable watts for the 160W (140 vs 145 W), its PD/AVS statement, stock status and sale end dates.",
+  "ESR's product page for the Xtend 45W (esrtech.com/products/white-45w-avs-gan-retractable-wall-charger-us-plug-xtend): HTTP 429. Missing: ESR's own wording of the 60 W AVS claim, whether it applies to the built-in cable or only the port, the AVS and PPS ranges, PD 3.2, and today's store price.",
+  "An independent lab readout (ChargerLAB or similar) showing AVS on the ESR Xtend 45W's built-in cable; searched, found only 9to5Mac's hands-on restating ESR.",
+  "Baseus EnerCore CJ11 67W: The Verge's article could not be fetched and the Baseus store returned HTTP 403/429, so no per-cable watts, protocols, price or availability were read.",
+  "UGREEN Nexode 65W retractable (X605) and Anker Nano 35W retractable: maker pages not opened within the call budget, so no protocol or exclusion statements beyond what the Dealectric record already holds.",
+  "Samsung Galaxy S26 Ultra's PPS requirement (Android Authority's test named in the cluster rules) was not opened, so no cable-to-Samsung pairing is reported.",
+  "Amazon prices: amzcheck.py was not run within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 3,
+  "cost_usd_list": 2.7978514999999997
+ }
+}

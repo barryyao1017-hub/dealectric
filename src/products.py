@@ -9076,6 +9076,22 @@ PRODUCTS = [
  "fit": 'iPhone 17-series owners (Apple asks for 40 W or more) and Galaxy owners on the 45 W PPS class who want the lowest price per watt.',
  "caveats": ['$15.19 is a sale price against a $24.99 compare-at. The store states no end date.', "At 45 W it is below Apple's 60W-capable line for iPhone 18 Pro's top tier. smartzone.de reports SPR AVS, but UGREEN's spec sheet was not read.", 'PPS stops at 11 V, so there is no 20 V PPS for the Galaxy S26 Ultra 60 W mode or Pixel Pro XL. smartzone.de expects about 27 W on a Pixel 9/10 Pro XL.', 'smartzone.de measured 71 °C on the housing under sustained load.']},
 
+{"slug": 'ugreen-nexode-pro-160w-retractable-cable-charger',
+ "brand": 'UGREEN',
+ "program": 'cj:ugreen',
+ "category": 'usb-c-charger',
+ "name": 'UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable',
+ "model": 'X776',
+ "url": 'https://us.ugreen.com/products/ugreen-160w-retractable-charger',
+ "price": 99.98,
+ "verified": '2026-11-27',
+ "specs": [('Built-in cable', "Retractable USB-C, up to 70 cm (27.6 in), eight lock lengths, up to 140 W (UGREEN's rating, per Notebookcheck)"), ('USB-C1', 'Up to 140 W (Notebookcheck)'), ('USB-C2', 'Up to 100 W (Notebookcheck)'), ('USB-A', '22.5 W (Notebookcheck)'), ('Total output', '160 W (PCWorld)'), ('All ports in use', 'Built-in cable and top USB-C port 65 W each (PCWorld)'), ('Protocols', 'PD 3.2, PD 3.1, PPS, QC, AFC, SCP, UFCS (Notebookcheck)')],
+ "warranty": "2 years from delivery (UGREEN's limited warranty, proof of purchase required)",
+ "returns": '30 days from delivery; refunds only, no exchanges; buyer pays return shipping unless the product is faulty; original shipping not refunded',
+ "summary": "The only wall charger we found whose built-in retractable cable is rated above 100 W: 140 W from the cable, per UGREEN's figures as Notebookcheck and PCWorld report them.",
+ "fit": 'A laptop that draws more than 100 W through the built-in cable, or a laptop plus a second laptop on USB-C2.',
+ "caveats": ["Price read on 2026-11-27 from UGREEN US's retractable collection page ($99.98, compare-at $149.99). UGREEN's product feed listed $149.99 the same day, and the product page was rate-limited, so check the cart price.", "The 140 W cable rating is UGREEN's, repeated by Notebookcheck (Abhinav Fating) and PCWorld (Gabriela Vatu). No reviewer we read published a meter reading through the cable.", "AVS: Notebookcheck's protocol list includes PD 3.2 but omits AVS. Do not claim the iPhone 18 Pro top tier on these sources.", 'With all ports in use, the cable drops to 65 W (PCWorld).']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

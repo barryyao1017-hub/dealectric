@@ -1,0 +1,114 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states a reviewer's measured watts through any retractable cable. splitbrain.org (Andreas Gohr) measured the UGREEN Nexode 65W (X605) cable at a steady 55 W for an hour on a Framework 13 under full CPU load, below its 60 W rating. Android Authority (Rita El Khoury) measured the Baseus EnerCore CJ11 cable topping out at about 65 W on a MacBook Air M3, while its USB-C ports gave 69.1 W. smartzone.de measured the CJ11 dropping from 67 W to 55 W after about 45 minutes of constant load.",
+ "standout": 2,
+ "standout_why": "Of the cited pages, the Belkin support articles 337679 and 337690 and UGREEN's retractable collection page (us.ugreen.com/pages/ugreen-retractable-charging-cables) give only maker ratings. The UGREEN collection page lists no cable watts at all. The UGREEN 100W product page returned HTTP 429 on both tries, and WebFetch cannot open The Verge piece, so I could not confirm that neither has a measurement. One uncited result, ChargerLAB's teardown of the UGREEN 100W (rank 11, 2026-11-04), does print measured PDOs and a measured cable length (72.5 cm). That covers part of this angle for that one model, but it gives no measured watts delivered. No result in either chat has a sustained-load or real-device watt reading for any retractable cable.",
+ "decides": "This supports the map's line with a caveat. The measured figures show that a retractable cable's rating is not what a laptop gets over time. The X605 cable held 55 W, not 60 W (splitbrain). The CJ11 cable stopped near 65 W on a MacBook Air M3 (Android Authority) and the CJ11 throttled to 55 W after about 45 minutes (smartzone). The UGREEN 100W is still the only one of our rows rated for 100 W through the cable, but no reviewer I opened published a meter reading of 100 W through it. ChargerLAB's readout found 20 V/5 A and PPS 5–21 V at 5 A, and listed only PD 3.0/PPS, so it does not show the AVS mode an iPhone 18 Pro needs for its top speed. For an iPhone 18 Pro buyer that favours the ESR Xtend 45W, whose AVS rests on ESR's own spec. No independent meter test of the ESR exists in what I found. One new lead could change the top pick: UGREEN's US store now lists a 'Nexode Pro 160W Charger with Retractable USB-C Cable' at $99.98 (compare-at $149.99), and reviews say its cable carries up to 140 W. That figure comes from the maker only, and Dong Knows' spec table says 145 W. No reviewer I opened measured it, and this pass did not open its product page.",
+ "candidates": [
+  "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+  "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+  "ESR Xtend 45W Retractable Charger (2D001)",
+  "Baseus EnerCore CJ11 67W",
+  "Belkin UltraCharge Retractable GaN Wall Charger 67W (WCH022)",
+  "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable"
+ ],
+ "findings": [
+  {
+   "product": "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+   "label": "Measured sustained watts through the retractable cable",
+   "value": "55 W steady for about 1 hour (rated 60 W)",
+   "source": "https://www.splitbrain.org/blog/2026-07/04-retractable_cable_usb-c_chargers",
+   "source_title": "splitbrain.org – Retractable cable USB-C chargers (Andreas Gohr)",
+   "read": "2026-11-27",
+   "note": "Published July 2026 (URL path 2026-07). Test device: Framework Laptop 13 with the CPU held at 100% by `stress` and the battery drained to about 40%. Power was read from the laptop's ISL9241 charger ADC with ectool at the start and after an hour. Same test: hottest point 56 °C, measured with a thermal camera. Measured cable length 67 cm including the connector."
+  },
+  {
+   "product": "Baseus EnerCore CJ11 67W",
+   "label": "Measured watts through the retractable cable vs. the USB-C ports",
+   "value": "Cable about 65 W max on a MacBook Air M3; USB-C ports 69.1 W (19.46 V × 3.55 A); cable 34.5 W (17.6 V × 1.96 A) on a Pixel 10 Pro XL",
+   "source": "https://www.androidauthority.com/baseus-enercore-cj11-usb-c-wall-charger-review-3595326/",
+   "source_title": "Android Authority – Baseus EnerCore CJ11 review (Rita El Khoury)",
+   "read": "2026-11-27",
+   "note": "Published 2025-09-13. Cable readings came from a Satechi meter, port readings from a ChargerLAB Power-Z AK001. The reviewer puts the cable's slightly lower Pixel figure down to the battery already filling. With a MacBook and a Pixel charging together, the MacBook got 45 W and the Pixel fell to 9 V, about 20–23 W. Cable length about 32 in (~82 cm), per the reviewer."
+  },
+  {
+   "product": "Baseus EnerCore CJ11 67W",
+   "label": "Sustained-load throttling and temperature",
+   "value": "Fell from 67 W to 55 W after an average of 45 minutes; 59 °C on the housing and up to 66 °C at the open ports",
+   "source": "https://www.smartzone.de/baseus-enercore-cj11-67w-ladegeraet-mit-einziehbarem-kabel-im-test/",
+   "source_title": "smartzone.de – Baseus EnerCore CJ11 67W Ladegerät mit einziehbarem Kabel im Test (Jan)",
+   "read": "2026-11-27",
+   "note": "Tested 2025-08-11 with a constant load. Measured PDOs, the same on the cable, C1 and C2: 5/9/12/15 V at 3 A and 20 V at 3.35 A. PPS 5–11 V at 5 A and 5–21 V at 3.2 A. Splits: cable + one port 45 W + 20 W when the first device asks for 20 V; all three in use, cable 45 W and C1/C2 10 W each. AVS not mentioned. smartzone gives the cable as 70 cm, while Android Authority says about 82 cm."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "Measured protocol readout and cable length on the retractable cable",
+   "value": "Fixed PDOs 5 V/3 A, 9 V/3 A, 12 V/3 A, 15 V/3 A, 20 V/5 A; PPS 5–21 V at up to 5 A; protocols listed UFCS, QC3+, PD 3.0/PPS; cable 72.5 cm",
+   "source": "https://www.chargerlab.com/teardown-of-the-ugreen-nexode-100w-charger-with-retractable-usb-c-cable/",
+   "source_title": "ChargerLAB – Teardown of the UGREEN Nexode 100W Charger with Retractable USB-C Cable (Joshua)",
+   "read": "2026-11-27",
+   "note": "Published 2026-11-04 and read with a POWER-Z KM003C. The readout lists PD 3.0/PPS and does not list AVS (a PD 3.2 mode). That AVS is missing is my inference from the readout; ChargerLAB does not state it. USB-C1 reads the same as the cable. USB-C2: 20 V/1.5 A max (30 W), PPS 5–11 V at 2.75 A. The cable measured 72.5 cm, against UGREEN's 75 cm. No watts were measured under load. Unit weighs 303.8 g."
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "label": "Split with four devices and 30-minute charge gains",
+   "value": "USB-C1 and cable 45 W / 30 W, USB-C2 + USB-A 15 W shared; 30 min: iPhone 17 Pro +59%, iPad Pro 11 +35%, MacBook Air M3 +52%",
+   "source": "https://www.macwelt.de/article/3067933/ugreen-nexode-100w-ladegeraet-test.html",
+   "source_title": "Macwelt – Ugreen Nexode 100W Ladegerät mit einziehbarem Kabel im Test (Thomas Bergbold)",
+   "read": "2026-11-27",
+   "note": "Published 2026-03-02. The review does not say whether the cable or USB-C1 got 45 W, and does not name the port used for the 30-minute tests. With one device it says the full 100 W is available at the cable or C1, but gives no meter reading. The 95% efficiency is UGREEN's claim. Macwelt says the housing did not get unduly warm, with no figure."
+  },
+  {
+   "product": "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+   "label": "Measured PPS range on the cable, efficiency, temperature",
+   "value": "Cable PPS 5–21 V at up to 3 A; USB-C port PPS 5–11 V at 4.5 A; efficiency 79–90%; nearly 90 °C after 4+ hours at 65 W on the USB-C port in 27–30 °C ambient",
+   "source": "https://techtest.org/?p=132753",
+   "source_title": "techtest.org – UGREEN X605 Test: 65W Ladegerät mit ausziehbarem USB-C Kabel",
+   "read": "2026-11-27",
+   "note": "The author says the cable's 3 A PPS limit caps some Samsung phones at about 25–30 W. AVS is not mentioned. The 90 °C reading was taken on the USB-C port, not the cable."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "label": "iPhone 18 draw (ESR's lab, not independent)",
+   "value": "iPhone 18 Pro 43 W, iPhone 18 Pro Max 53 W",
+   "source": "https://www.izreview.com/esr-xtend-45w-retractable-charger-review/",
+   "source_title": "izReview – ESR Xtend 45W Review (Metin Karal)",
+   "read": "2026-11-27",
+   "note": "izReview reprints ESR's lab figures and took no meter readings of its own. 45 W rated, with up to 60 W for one device per ESR via PD 3.2 AVS. Cable 3.1 ft / 95 cm is the listed spec. These are the maker's claims."
+  },
+  {
+   "product": "Belkin UltraCharge Retractable GaN Wall Charger 67W",
+   "label": "Cable output and split (maker only)",
+   "value": "67 W to one device; 45 W + 20 W (65 W combined) with two; cable 3.3 ft (1 m)",
+   "source": "https://www.belkin.com/support-article/?articleNum=337679",
+   "source_title": "Belkin Official Support – UltraCharge Retractable GaN Wall Charger 67W FAQs",
+   "read": "2026-11-27",
+   "note": "These are Belkin ratings with no measured data. The same page also says '67W total output' for both outputs together and gives both PD 3.2 and PD 3.1, which contradicts the 65 W split. Belkin's US product pages give 30 W each when both are used."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W Charger with Retractable USB-C Cable",
+   "label": "Listed on UGREEN US store (lead, maker rating only)",
+   "value": "$99.98 (compare-at $149.99) on us.ugreen.com; cable rated up to 140 W per reviews quoting UGREEN; 70 cm cable",
+   "source": "https://us.ugreen.com/pages/ugreen-retractable-charging-cables",
+   "source_title": "UGREEN Retractable Charging Devices – UGREEN US",
+   "read": "2026-11-27",
+   "note": "The price was read from the collection listing. I did not open the product page, so variant and stock are unchecked. Dong Ngo (dongknows.com, 2026-08-11) prints 145 W for USB-C1 and the cable in his spec table and '140W per port' in his pros. He measured no watts; he reports it 'remained cool to the touch'. Neither source confirms PD 3.1 at 28 V on the cable."
+  }
+ ],
+ "unsourced": [
+  "A reviewer's meter reading of 100 W, or any watt figure under load, through the UGREEN Nexode 100W's retractable cable. Searched ChargerLAB, Macwelt, Notebookcheck and the general web; ChargerLAB gives PDOs only and Macwelt states availability without a reading.",
+  "An independent meter test of the ESR Xtend 45W cable, including whether AVS appears on a tester and what watts an iPhone 18 Pro draws. Gizmochina's hands-on (45 W with iPhone 18 Pro) returned HTTP 403. izReview and others reprint ESR's lab data.",
+  "Any measured figure for the Belkin UltraCharge Retractable 67W (WCH022): searched ChargerLAB, teardowns and power-meter reviews and found only Belkin ratings.",
+  "A measured watt figure through the UGREEN Nexode Pro 160W's retractable cable. Korben's review, said to include 14-inch MacBook Pro charge tests on the cable, returned HTTP 403. Dong Knows measured nothing.",
+  "A measured AVS readout for the Baseus CJ11 or the UGREEN X605: neither smartzone nor techtest mentions AVS.",
+  "Today's maker-store prices: us.ugreen.com returned HTTP 429 to WebFetch and storecheck.py, and I did not read ESR, Baseus or Belkin prices because prices are outside this angle.",
+  "The Verge article (cited rival): WebFetch cannot open theverge.com, so I could not confirm it has no measurements.",
+  "Which Baseus EnerCore model splitbrain.org tested. The author does not name it (21.99 €, 80 cm cable), so I did not attribute its 58 W → 47 W throttling to the CJ11."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 28,
+  "cost_usd_list": 1.5416033
+ }
+}
