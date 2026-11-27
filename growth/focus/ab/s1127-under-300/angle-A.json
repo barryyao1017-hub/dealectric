@@ -1,0 +1,141 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states the under-$300 picks on one basis: continuous watts with the boost modes stripped out (the EcoFlow '1,000 W' and BLUETTI '1,500 W' figures are X-Boost and Power Lifting, so every pick is a 300-600 W machine), cycle life with its end-of-life percentage, and the rated lifetime energy each dollar buys (Pecron E500LFP 2,016 kWh for $269; BLUETTI Elite 30 mini 1,728 kWh for $199, with no percentage given by BLUETTI).",
+ "standout": 2,
+ "standout_why": "Compared against Nineteen Lab (the cited page), Portable Power Rank and PowerStationPicks. Nineteen Lab already labels Power Lifting as resistive-only and gives one end-of-life threshold (Jackery 300 v2, 4,000 cycles to 70%), so the boost half of this is partly covered. It gives no cycle count for the EcoFlow or the BLUETTI, no prices, and lists the River 2 Max at 512 Wh, while the unit EcoFlow's US store sells at $289 is the 499 Wh 'RIVER 2 Max 500'. Portable Power Rank has prices but no cycle claims at all, and calls the Elite 30 V2's 1,500 W a 'peak'. PowerStationPicks quotes '4,000+' and '3,000+' cycles with no percentage. None of the three lists the Segway Lumina 500 or the Pecron E500LFP, two of ChatGPT's three picks, and none works out lifetime energy per dollar.",
+ "decides": "It confirms the capacity-per-dollar order and adds a second ranking. On dollars per rated Wh, the Segway Lumina 500 leads at $0.29/Wh on Amazon ($149.99, lower than the $199.99 Curacao price ChatGPT showed), then Pecron E500LFP $0.47, EcoFlow RIVER 2 Max 500 $0.58, Elite 30 mini $0.69 and Elite 30 V2 $1.01. So the Elite 30 V2 cannot honestly be #1 on capacity; its case is the 10 ms UPS with 980 W bypass, 80% in 45 minutes, about 9.5 lb and a 5-year warranty. On rated lifetime energy per dollar the order flips: the Elite 30 mini (6,000+ cycles) is at about 11.5 cents per kWh, ahead of the Pecron at 13.3 and the EcoFlow at 19.3. That is a segment a linked product wins (longest-lived and lightest, for 300 W loads), with the caveat that BLUETTI's page gives no end-of-life percentage. The Segway's cycle rating could not be sourced, so it has no place in that second ranking.",
+ "candidates": [
+  "Segway Lumina 500",
+  "Pecron E500LFP",
+  "EcoFlow RIVER 2 Max 500",
+  "BLUETTI Elite 30 V2",
+  "BLUETTI Elite 30 mini",
+  "EcoFlow RIVER 520 Gen4 (left out, $309)"
+ ],
+ "findings": [
+  {
+   "product": "Pecron E500LFP",
+   "label": "Price, capacity, continuous AC output, cycle life with threshold, recharge, warranty",
+   "value": "$269.00 (compare-at $528.00), in stock; 576 Wh LiFePO4 (19.2 V 30 Ah); 600 W pure sine inverter; 3,500+ cycles to 80%; 500 W max AC charge, 80% in 60 min and 100% in 90 min; 100 W solar (12-28 V Voc); 24-month warranty after registration",
+   "source": "https://www.pecron.com/products/pecron-e500lfp-portable-power-station-600w-576wh",
+   "source_title": "PECRON E500LFP Portable Power Station 600W 576Wh",
+   "read": "2026-11-27",
+   "note": "Read from the Pecron US store's own product record (store search JSON via storecheck.py); the rendered product page returned HTTP 429 twice. Maker's wording: 'LiFePo4 Battery with 3,500+ Life Cycles to 80%'. No surge figure appears in the text read."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max 500",
+   "label": "Price, capacity, continuous AC output, boost mode, recharge, weight",
+   "value": "$289.00, in stock; 499 Wh LFP; 500 W output; X-Boost to 1,000 W; 0-100% in 60 min; 6.1 kg (13.4 lb by conversion)",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "EcoFlow RIVER 2 Max 500 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Read from the EcoFlow US store's product record (store search JSON via storecheck.py); the rendered page returned HTTP 429 twice. EcoFlow's text gives 'Safest LFP battery provides 10 years of use' and no cycle count. 499 Wh is 2.5% less than the 512 Wh RIVER 2 Max that Nineteen Lab lists (13/512)."
+  },
+  {
+   "product": "EcoFlow RIVER 2 Max (512 Wh version)",
+   "label": "Manual specifications: cycle life threshold and surge",
+   "value": "512 Wh (20 Ah, 25.6 V) LFP; '80%+ capacity after 3000 cycles'; AC output 'Pure sine wave, 500W total (1000W Peak)'; about 6.1 kg (13.4 lb)",
+   "source": "https://manualslib.fr/manual/643829/Ecoflow-River-2-Max.html?page=4",
+   "source_title": "Specifications - EcoFlow RIVER 2 Max user manual V1.0 (ManualsLib copy)",
+   "read": "2026-11-27",
+   "note": "This is the manual for the 512 Wh RIVER 2 Max, not the 499 Wh '500' variant on sale. Applying its 3,000-cycles-to-80% figure to the '500' is an assumption and should be footnoted as such."
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "label": "Price, ship time, continuous AC output, boost mode, cycle life wording, recharge, UPS, weight, warranty",
+   "value": "$289.99 (Blush Pink), 2-5 business days delivery; 288 Wh LiFePO4; 600 W continuous; 'Up to 1,500W Lifting Power' for pure resistive devices; 'Over 3,000 cycles and a 10-year lifespan' with no capacity percentage; 80% in 45 min, AC charging 70 min at 380 W; 200 W solar; UPS 10 ms or less with 980 W bypass; 4.5 W standby; 4.3 kg (about 9.5 lb); 5-year warranty",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "BLUETTI Elite 30 V2 Portable Power Station | 600W 288Wh",
+   "read": "2026-11-27",
+   "note": "The page rendered the Blush Pink variant; its later ship-date notes for Deep Gray and Light Gray do not apply to Pink. The page lists no separate surge rating: 1,500 W is the Power Lifting figure, not a motor-start surge."
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "label": "Price, continuous AC output, boost mode, cycle life wording, recharge, UPS, weight",
+   "value": "$199.00 (list $249.99), 2-5 business days delivery; 288 Wh; 300 W output with 600 W Power Lifting; '6,000+ Cycle Life' with no capacity percentage; 80% in 46 min and 100% in 103 min; UPS under 10 ms; 5 W standby; 7.3 lb (3.3 kg)",
+   "source": "https://www.bluettipower.com/products/elite-30-mini",
+   "source_title": "BLUETTI Elite 30 mini Portable Power Station",
+   "read": "2026-11-27",
+   "note": "The page calls the 600 W both a 'surge' ('300W output (600W surge)') and 'Power Lifting' in its FAQ. Its Tech Specs section was empty in the text read, and no warranty length in years is given."
+  },
+  {
+   "product": "Segway Lumina 500",
+   "label": "Amazon price and listing title",
+   "value": "$149.99; title: 'Segway Lumina 500 Portable Power Station with LiFePO4 Battery, 512Wh 9-Port PowerHouse, 600W AC Output ... 100W USB-C PD Output'",
+   "source": "https://www.amazon.com/dp/B0DHFQ5XYR",
+   "source_title": "Segway Lumina 500 Portable Power Station with LiFePO4 Battery, 512Wh (Amazon US, ASIN B0DHFQ5XYR)",
+   "read": "2026-11-27",
+   "note": "Read with amzcheck.py (not walled): 60% five-star, 1,360 ratings. This is $50 below the $199.99 Curacao price ChatGPT showed. ASIN B0CS8GMQ7Q, which some manual sites tie to the Lumina, is the Segway Cube 1000 ($351.96), so do not link it."
+  },
+  {
+   "product": "general",
+   "label": "Dollars per rated Wh at prices read today",
+   "value": "Segway Lumina 500 $0.293/Wh; Pecron E500LFP $0.467/Wh; EcoFlow RIVER 2 Max 500 $0.579/Wh; BLUETTI Elite 30 mini $0.691/Wh; BLUETTI Elite 30 V2 $1.007/Wh",
+   "source": "https://www.pecron.com/products/pecron-e500lfp-portable-power-station-600w-576wh",
+   "source_title": "Arithmetic on the prices and capacities in the findings above",
+   "read": "2026-11-27",
+   "note": "149.99/512; 269/576; 289/499; 199/288; 289.99/288. Rated Wh as each maker states it, with no inverter loss applied. Black Friday prices: BLUETTI and EcoFlow sales run to Nov 30 per the research notes."
+  },
+  {
+   "product": "general",
+   "label": "Rated lifetime energy (rated Wh x rated cycles) and cost per lifetime kWh",
+   "value": "Pecron E500LFP 2,016 kWh, 13.3 cents/kWh (to 80%, maker); EcoFlow RIVER 2 Max 500 1,497 kWh, 19.3 cents/kWh (to 80%, from the 512 Wh model's manual); BLUETTI Elite 30 mini 1,728 kWh, 11.5 cents/kWh (no percentage given); BLUETTI Elite 30 V2 864 kWh, 33.6 cents/kWh (no percentage given)",
+   "source": "https://www.bluettipower.com/products/elite-30-mini",
+   "source_title": "Arithmetic on the cycle claims and prices in the findings above",
+   "read": "2026-11-27",
+   "note": "576x3,500; 499x3,000; 288x6,000; 288x3,000, each divided into the price read. No capacity fade or inverter loss applied, so real delivered energy is lower for all. At one full cycle a day, 3,000 cycles is 8.2 years and 6,000 is 16.4 years, so calendar ageing would cap the mini's advantage for an occasional user. The footnote is the finding: only Pecron states its threshold on its own page."
+  },
+  {
+   "product": "general",
+   "label": "Continuous AC watts against the headline boost figure",
+   "value": "Pecron 600 W (no boost figure in the text read); Segway 600 W (Amazon title); BLUETTI Elite 30 V2 600 W, headline 1,500 W is Power Lifting for resistive loads; EcoFlow RIVER 2 Max 500 500 W, headline 1,000 W is X-Boost; BLUETTI Elite 30 mini 300 W, headline 600 W is Power Lifting",
+   "source": "https://us.ecoflow.com/products/river-2-max-500-portable-power-station",
+   "source_title": "Maker pages listed in the findings above",
+   "read": "2026-11-27",
+   "note": "EcoFlow's manual for the 512 Wh model separately lists '1000W Peak', the same number as X-Boost. BLUETTI lists no surge rating apart from Power Lifting. Portable Power Rank prints the Elite 30 V2's 1,500 W as 'peak'."
+  },
+  {
+   "product": "general",
+   "label": "AC recharge times put on the same basis",
+   "value": "To 80%: BLUETTI Elite 30 V2 45 min, Elite 30 mini 46 min, Pecron E500LFP 60 min. To 100%: EcoFlow RIVER 2 Max 500 60 min, BLUETTI Elite 30 V2 70 min (380 W), Pecron 90 min (500 W), Elite 30 mini 103 min",
+   "source": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "source_title": "Maker pages listed in the findings above",
+   "read": "2026-11-27",
+   "note": "EcoFlow states only 0-100%; BLUETTI headlines 80%. Energy added per minute to full: EcoFlow 499 Wh in 60 min (8.3 Wh/min), Pecron 576 Wh in 90 (6.4), Elite 30 V2 288 Wh in 70 (4.1), mini 288 Wh in 103 (2.8). The larger units refill more energy per minute even where the BLUETTI percentages look faster. The 70 min is listed as 'AC Charging: 70 Mins, 380W'; the page does not say outright that it means a full charge."
+  },
+  {
+   "product": "EcoFlow RIVER 520 Gen4",
+   "label": "Left out for being just over the line",
+   "value": "$309.00 (compare-at $569.00), in stock; 500 W AC, 1,000 W X-Boost; 4.6 kg; under 10 ms UPS; recharge 'Ready in 50 min'",
+   "source": "https://us.ecoflow.com/products/river-520-gen-4",
+   "source_title": "EcoFlow RIVER 520 Gen4 Portable Power Station",
+   "read": "2026-11-27",
+   "note": "Read from the EcoFlow US store's product record (store search JSON via storecheck.py). It is $9 over the budget at the sale price. The capacity in Wh was not in the text read."
+  },
+  {
+   "product": "general",
+   "label": "What the three rival under-$300 pages state",
+   "value": "Nineteen Lab: no prices, runtime as Wh x 0.85, River 2 Max at 512 Wh, only Jackery with a threshold (4,000 cycles to 70%). Portable Power Rank: prices, no cycle claims, 85% estimate, one measured figure (Anker C300 230 Wh via OutdoorGearLab). PowerStationPicks: '4,000+' and '3,000+' cycles with no percentage. None lists the Segway Lumina 500 or Pecron E500LFP",
+   "source": "https://reviews.nineteenlab.dev/best/power-station-under-300/",
+   "source_title": "Best Portable Power Stations Under $300 (2026): Honest Tier Picks | Nineteen Lab",
+   "read": "2026-11-27",
+   "note": "Also read: https://portablepowerrank.com/reviews/best-portable-power-stations-under-300/ and https://powerstationpicks.net/best-portable-power-stations-under-300/, both 2026-11-27."
+  }
+ ],
+ "unsourced": [
+  "Segway Lumina 500 cycle life and its end-of-life percentage, 1,200 W peak, AC recharge time, UPS switchover, weight and warranty: store.segway.com rendered only the page title, the manual PDF came back as unreadable binary, manuals.plus returned 403, Academy returned a bot wall and the Segway Denmark page returned 404. Only the Amazon title and price were read.",
+  "Segway Lumina 500 price on Segway's own US store and at Curacao (the $199.99 ChatGPT showed): neither page was readable; only Amazon's $149.99 was read.",
+  "A cycle count stated by EcoFlow for the 499 Wh RIVER 2 Max 500 itself, plus its EPS switchover time, AC input watts and warranty years: the US product page returned HTTP 429 on two tries; the 3,000-cycles-to-80% figure comes from the 512 Wh model's manual.",
+  "The end-of-life percentage behind BLUETTI's 'Over 3,000 cycles' (Elite 30 V2) and '6,000+' (Elite 30 mini): neither product page states it and the BLUETTI manual PDF was not opened. A search summary showed a retailer (PB Tech) listing '3,000+ cycles to 80%' for the V2, but that page was not opened.",
+  "Pecron E500LFP surge watts, weight in lb and UPS switchover: not in the store record text read, and the rendered page returned HTTP 429.",
+  "A named reviewer's measured usable AC watt-hours for any of the five candidates: none looked up within the call budget.",
+  "Tenergy T320, VTOMAN Jump 600X and EBL 519 Wh from the research notes: not re-read today, so left out of the table.",
+  "The Amazon price of the BLUETTI Elite 30 V2 (about $227 per the research note): not re-read today."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 32,
+  "cost_usd_list": 3.0387539000000006
+ }
+}
