@@ -339,10 +339,8 @@ def links_map():
                         "saving": round(t["list"] - t["after"], 2) if t and t.get("code") else None,
                         "exclusive": False, "after": t["after"] if t and t.get("code") else None,
                         "tested": t["date"] if t else None, "note": None}
-    for p in PRODUCTS:   # DLC-201: a sold-out product's link opens its in-stock alternative until it is back
-        q = None if is_amazon(p) else sold_out_alt(p)
-        if q:
-            m[p["slug"]] = {**m[q["slug"]], "instead_of": p["slug"]}
+    # DLC-201's redirect (a sold-out product's link opening its alternative) is off since DLC-358 (Barry, 11-26): every
+    # link opens its own product; the page shows the researched alternative beside it (alt_line).
     for old, (_, new, _) in RETIRED.items():
         if new:
             m[old] = m[new]  # old /go/ links (still in caches and transcripts) open the replacement
@@ -630,11 +628,67 @@ def stock_date(p):
 def sold_out_alt(p):
     """DLC-201: the in-stock product /go/<slug> opens while this one is sold out ("sold_out_alt": (slug, text) in
     products.py), or None. Back in stock, the link opens the product itself again with no edit."""
-    alt = p.get("sold_out_alt")
-    if in_stock(p) or not alt:
+    return None   # off since DLC-358 (Barry, 11-26): links open their own product; alt_line shows the alternative
+
+
+# DLC-358 (Barry, 11-26): a sold-out product, or a pre-order that ships more than 14 days out, gets one line under it
+# with a researched alternative: freshness, the reason, then that alternative's buy link. The product's own buy link
+# keeps opening the product itself (the DLC-201 redirect is off). src/alternatives.json holds each pick and its research
+# summary ({orig slug: {alt, checked, status, reason, ...}}); the line shows only while the product is still sold out or
+# on pre-order and the alternative still ships (now, or sooner than the product when the entry allows a pre-order).
+try:
+    ALTERNATIVES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "alternatives.json"), encoding="utf-8"))
+except FileNotFoundError:
+    ALTERNATIVES = {}
+
+
+def alternative(p):
+    """(alternative record, entry) for a product that has a researched alternative showing today, or None."""
+    a = ALTERNATIVES.get(p["slug"])
+    if not a or (in_stock(p) and not preorder(p)):
         return None
-    q = BY_SLUG.get(alt[0])
-    return q if q and in_stock(q) and not is_amazon(q) else None
+    q = BY_SLUG.get(a["alt"])
+    if not q or not in_stock(q) or (preorder(q) and not a.get("alt_ships")):
+        return None
+    return q, a
+
+
+def _md(d):
+    d = datetime.date.fromisoformat(d)
+    return f"{d:%b} {d.day}"
+
+
+def alt_text(p):
+    """'Checked Nov 26: ships Jan 11. Close match that ships now: <name>, <reason>, $679 → ' (plain text; the caller
+    adds the link), or ''."""
+    hit = alternative(p)
+    if not hit:
+        return ""
+    q, a = hit
+    if is_amazon(q):
+        price = amz_price_text(q["asin"])
+    else:
+        c, _, after, tdate = best_offer(q)   # a code only when it passed a cart test on this very product
+        price = f"{money(after)} with code {c['code']}" if c and tdate else money(q["price"]) + deal_note(q, short=True)
+    ships = f"ships sooner ({a['alt_ships']})" if a.get("alt_ships") else "ships now"
+    return (f"Checked {_md(a['checked'])}: {a['status']}. Close match that {ships}: {a.get('name') or title_name(q)}, "
+            f"{a['reason']}, {price} → ")
+
+
+def alt_br(p):
+    """The alternative line on its own line inside a list item, or ''."""
+    return f'<br><span class="alt">{alt_line(p, tag="")}</span>' if alt_text(p) else ""
+
+
+def alt_line(p, tag="p"):
+    """The alternative line as HTML in a <p> (tag="p"), bare (tag="")."""
+    t = alt_text(p)
+    if not t:
+        return ""
+    q = alternative(p)[0]
+    rel = "sponsored nofollow noopener" if q.get("program") != "none" else "nofollow noopener"
+    inner = f'{html.escape(t)}<a href="{go_link(q)}" rel="{rel}">Buy</a>'
+    return f'<{tag} class="alt">{inner}</{tag}>' if tag else inner
 
 
 def preorder(p):
@@ -1012,7 +1066,8 @@ def product_record(p):
                   "effective_price": round(p["price"] - best[1], 2) if p["price"] is not None else None,
                   "codes_page": SITE["url"] + codes_path(p["brand"]), "in_stock": None if is_amazon(p) else in_stock(p), "verified": verified_on(p),
                   # DLC-201: while sold out, the link opens this in-stock product instead
-                  **({"sold_out_link_opens": sold_out_alt(p)["slug"]} if not is_amazon(p) and sold_out_alt(p) else {}),
+                  **({"alternative": {"slug": alternative(p)[0]["slug"], "url": go_link(alternative(p)[0]), "note": alt_text(p).rstrip(" →")}}
+                     if alternative(p) else {}),   # DLC-358: replaces DLC-201's sold_out_link_opens
                   # DLC-320: the same item at a lower price from a seller we can link (Amazon), read on price_checked
                   **({"lower_price_offer": {"merchant": "Amazon.com", "price": amazon_lead(p)["price"], "price_checked": amazon_lead(p)["date"],
                                             "link": amazon_lead(p)["url"], "affiliate": True, "network": "Amazon Associates"}} if amazon_lead(p) else {}),
@@ -1153,7 +1208,7 @@ def offer_block(p, net, prog, url):
 <div class="card offer" style="margin:18px 0">
   {head}
   {lines}
-  {sold_out}
+  {sold_out}{alt_line(p)}
   <p><strong>Buy:</strong> <a href="{html.escape(url)}" rel="sponsored nofollow noopener">{html.escape(url)}</a> — {opens}</p>
   <p><a class="btn" href="{html.escape(url)}" rel="sponsored nofollow noopener" target="_blank">{"Buy on Amazon" if is_amazon(p) else f"Buy at {b}"} →</a></p>{pick_skip}
   <p class="small">Warranty: {html.escape(p['warranty'])}. Returns: {html.escape(p['returns'])}. {net_line}
@@ -1469,7 +1524,8 @@ def brand_codes_page(brand):
         else:
             cell, sav, aft, tested = "no code applies", "–", price, "–"
         prow += (f'<tr><td><a href="/products/{p["slug"]}/">{html.escape(short_name(p))}</a></td><td>{price}</td><td>{cell}</td><td>{sav}</td><td>{aft}</td><td>{tested}</td>'
-                 f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>')
+                 f'<td><a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></td></tr>'
+                 + (f'<tr class="alt"><td colspan="7">{alt_line(p, tag="")}</td></tr>' if alt_text(p) else ""))
     rej = ""
     if rejected:
         items = "".join(f"<li><code>{html.escape(c['code'])}</code> — {html.escape(c['terms'])}; from {html.escape(c['source'])}; rejected {code_last_date(c)}</li>" for c in rejected)
@@ -1545,7 +1601,7 @@ def compare_row(c, r):
     if r.get("note"):
         name += f'<br><span class="small">{r["note"]}</span>'
     cells = "".join(f"<td>{r['cells'].get(k, '—')}</td>" for k, _ in c["columns"])
-    return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{deal}</td></tr>"
+    return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{deal}</td></tr>" + alt_rows(c, r)
 
 
 def buy_inline(slug):
@@ -1605,7 +1661,7 @@ def compare_where_to_buy_compact(ours):
             items.append(f'<li>{name}: <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy on Amazon</a> ({amz_price_text(p["asin"])})</li>')
             continue
         code = f', code <strong>{html.escape(cd["code"])}</strong> {money(after)}' if cd else ""
-        items.append(f'<li>{name}: {money(p["price"])}{stock_note(p)}{code} — <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy</a></li>')
+        items.append(f'<li>{name}: {money(p["price"])}{stock_note(p)}{code} — <a href="{go_link(p)}" rel="sponsored nofollow noopener">buy</a>{alt_br(p)}</li>')
     return (f'<h2>Where to buy</h2>\n<ul>{"".join(items)}</ul>\n<p class="small">Buy links are affiliate links to the brand\'s '
             f'official US store; see the <a href="/disclosure/">disclosure</a>.</p>\n')
 
@@ -1636,10 +1692,10 @@ def compare_where_to_buy(ours, c, filler=True):
             continue
         if c.get("buy_compare") and (gap_compare(c, p) or (cd and applied_by_link(p, cd))):
             items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}: {html.escape(gap_compare(c, p) or link_offer(p)[1])}. Buy: '
-                         f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a></li>')
+                         f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{alt_br(p)}</li>')
             continue
         items.append(f'<li>{html.escape(names.get(slug) or short_name(p))}, {money(p["price"])}{stock_note(p)}. Buy: '
-                     f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}</li>')
+                     f'<a href="{go_link(p)}" rel="sponsored nofollow noopener">{go_link(p)}</a>{code}{alt_br(p)}</li>')
     coded = any(best_offer(BY_SLUG[s])[0] for s in slugs)
     applied = [s for s in slugs if applied_by_link(BY_SLUG[s], best_offer(BY_SLUG[s])[0])]
     # the length gate (iterate.py) caps this line: on the RV page it sits in the page's first chunk, ahead of the lead
@@ -1859,7 +1915,7 @@ def compare_row_v2(c, r):
                 price, buy = "see merchant", f'{a}Open the cart with {word}</a>'
         if r.get("note"):
             name += f'<br><span class="small">{r["note"]}</span>'
-        return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
+        return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>" + alt_rows(c, r)
     if r.get("slug"):
         p = BY_SLUG[r["slug"]]
         name = f'<a href="/products/{p["slug"]}/">{html.escape(r.get("model") or short_name(p))}</a>'
@@ -1910,7 +1966,32 @@ def compare_row_v2(c, r):
             buy = f'<a href="{html.escape(r["url"])}" rel="nofollow noopener">{html.escape(r["brand"])}\'s page</a>'
     if r.get("note"):
         name += f'<br><span class="small">{r["note"]}</span>'
-    return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>"
+    return f"<tr><td>{name}</td>{cells}<td>{price}</td><td>{buy}</td></tr>" + alt_rows(c, r)
+
+
+def row_products(r):
+    """The records a table row stands for: its product, or a kit row's items."""
+    if r.get("kit"):
+        return [p for p, _ in kit_products(KIT_BY_SLUG[r["kit"]])]
+    return [BY_SLUG[r["slug"]]] if r.get("slug") else []
+
+
+def alt_rows(c, r):
+    """DLC-358: the alternative line under a table row whose product (or a kit item) is sold out or a far pre-order."""
+    span = len(c["columns"]) + 3
+    return "".join(f'<tr class="alt"><td colspan="{span}">{alt_line(p, tag="")}</td></tr>'
+                   for p in row_products(r) if alt_text(p))
+
+
+def pick_alt(c):
+    """DLC-358: the alternative line under the page's 'Updated · Pick' line, for the pick (or the pick kit's items)."""
+    kit0 = c.get("kit") or (c["rows"][0].get("kit") if c["rows"] else None)
+    if kit0:
+        ps = [p for p, _ in kit_products(KIT_BY_SLUG[kit0])]
+    else:   # pick_line links the first row we sell, as the pick or as the "Dealectric link" beside it
+        r = next((x for x in c["rows"] if x.get("slug")), None)
+        ps = [BY_SLUG[r["slug"]]] if r else []
+    return "".join(alt_line(p) + "\n" for p in ps if alt_text(p))
 
 
 def amazon_row_link(asin):
@@ -2266,7 +2347,7 @@ def compare_page_v2(c):
 <!-- method {METHOD_V2}; angle {c.get('angle', '')} -->
 <h1>{c['h1']}</h1>
 <p class="small">Updated {c.get('updated') or c['published']}{pick_line(c)}</p>
-{fill_v2(c['answer'])}
+{pick_alt(c)}{fill_v2(c['answer'])}
 {f'<p class="searched">Searched as: {tags}</p>' if tags else ''}
 {method_line(c)}<div class="scroll"><table>
 <tr><th>Model</th>{heads}<th>Price</th><th>Buy</th></tr>
@@ -2309,7 +2390,7 @@ def compare_page(c):
     upd = updated_line(c) if AB_PUSH else ""
     pilot = bool(c.get("buy_compare"))   # DLC-237 buy-link pilot: comparison line under the H1, no code text in prose
     if pilot:
-        upd = f'<p class="small">Updated {c.get("updated") or c["published"]}{pick_line(c)}</p>\n'
+        upd = f'<p class="small">Updated {c.get("updated") or c["published"]}{pick_line(c)}</p>\n' + pick_alt(c)
         c = dict(c, intro=_pilot_fill(c["intro"]), after=_pilot_fill(c["after"]))
     if c.get("ai_note"):   # AI-note layout (x19, 2026-11-04): the note to the assistant first, then the page for people
         top = f"""<h1>{c['h1']}</h1>
