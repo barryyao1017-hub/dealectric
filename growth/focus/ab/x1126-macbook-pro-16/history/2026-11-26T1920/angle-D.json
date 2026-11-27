@@ -1,0 +1,131 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 16-inch MacBook Pro (M5 Pro / M5 Max) drives a 2560x1600 120 Hz portable screen natively from any of its three Thunderbolt 5 ports with its separate MagSafe 3 port left free for the 140 W charger, or that Apple supports variable refresh on such a screen only over USB-C/Thunderbolt and says not to use HDMI.",
+ "standout": 2,
+ "standout_why": "Compared against four pages opened 2026-11-26. Macworld's best-portable-monitors-for-Mac roundup gives the Duex Float 2 Pro's 65 W pass-through and the single-display limit of non-Pro M1/M2 Macs, but nothing on what the 16-inch Pro's ports drive, MagSafe, or HDMI versus USB-C. Macworld's espresso Pro review gives a 13 W draw and 100 W pass-through but no Mac-side limits. PCWorld only recommends 'a USB-C port with DisplayPort Alternate Mode and USB Power Delivery'. Three cited pages could not be compared: the RTINGS and TechRadar fetches returned only navigation or one truncated pick, and seattlepi.com refused the fetch. ChatGPT's own answer warns that pass-through may not fully power a 16-inch Pro but never says the charger can go into MagSafe instead.",
+ "decides": "It confirms the plan works without a driver: Apple lists DisplayPort on all three Thunderbolt 5 ports and up to three external displays at 4K 144 Hz on the M5 Pro, so a 2560x1600 120 Hz or 144 Hz panel sits inside the Mac's limits. It removes pass-through wattage as a ranking factor for this laptop, because the 140 W charger has its own MagSafe 3 port; the Float 2 Pro's 65 W pass-through is neither a plus nor a limit here. It makes the USB-C cable the one to use for 120 Hz with Adaptive Sync, so a FreeSync panel (the UPERFECT GR16EQ lead) gets variable refresh on the Mac only over USB-C, not mini HDMI. The pick order still rests on refresh, brightness and weight; I could not re-read those store pages today (HTTP 429), so this angle does not confirm them.",
+ "candidates": [
+  "UPERFECT GR16EQ",
+  "UPERFECT GR16DQ",
+  "SOTSU FlipAction Pro 16 Gen 2",
+  "Mobile Pixels Duex Float 2 Pro",
+  "Mobile Pixels Fold 16 QHD",
+  "ASUS ZenScreen MB16QHG"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Current 16-inch MacBook Pro chips and video path on its USB-C ports",
+   "value": "M5 Pro or M5 Max; 'Three Thunderbolt 5 (USB-C) ports with support for: Charging, DisplayPort, Thunderbolt 5 (up to 120Gb/s), USB 4'; 'Thunderbolt 5 (USB-C) ports support native DisplayPort 2.1 speeds'",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "Apple's wording. DisplayPort on the port is what a driver-free USB-C portable monitor uses; no DisplayLink-type driver is involved on this laptop."
+  },
+  {
+   "product": "general",
+   "label": "External displays the 16-inch MacBook Pro drives",
+   "value": "M5 Pro: up to three external displays, each up to 6K at 60 Hz or 4K at 144 Hz, over any combination of Thunderbolt and HDMI; M5 Max: up to four",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "A 2560x1600 panel at 120 Hz or 144 Hz has fewer pixels than 4K at 144 Hz, so it is inside Apple's stated limit; the comparison is mine. Dual-screen extenders (two added screens) are also inside the count on both chips."
+  },
+  {
+   "product": "general",
+   "label": "Separate charging port and included charger",
+   "value": "MagSafe 3 port in addition to the three Thunderbolt 5 ports and an HDMI port; 140W USB-C Power Adapter included",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "Because charging has its own port, the charger need not pass through the monitor. A monitor's pass-through figure (65 W on the Duex Float 2 Pro per Macworld) matters only if the shopper chooses to charge through the screen, where it is below the 140 W adapter Apple ships."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Pro 16 battery, and what a bus-powered screen costs",
+   "value": "99.6 Wh actual rating (listed as 100-watt-hour)",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "Arithmetic: each 10 W a screen draws from the Mac is 10 Wh per hour, about 10% of the battery per hour on top of the Mac's own use. At Macworld's 13 W for the espresso Pro 15 that is about 13% per hour (13 / 99.6)."
+  },
+  {
+   "product": "general",
+   "label": "Pixel density of the MacBook Pro 16's own screen against portable panels",
+   "value": "MacBook Pro 16: 3456x2234 at 254 ppi (Apple). 16-inch 2560x1600: about 189 ppi. 15.6-inch 1920x1080: about 141 ppi. 15.6-inch 3840x2160: about 282 ppi",
+   "source": "https://www.apple.com/macbook-pro/specs/",
+   "source_title": "MacBook Pro - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "Only the 254 ppi figure is Apple's. The others are arithmetic, diagonal pixels divided by diagonal inches: sqrt(2560²+1600²)/16 = 188.7; sqrt(1920²+1080²)/15.6 = 141.2; sqrt(3840²+2160²)/15.6 = 282.4. A 16-inch 2560x1600 panel has about 74% of the MacBook's linear density, a 15.6-inch 1080p panel about 56%."
+  },
+  {
+   "product": "general",
+   "label": "Variable refresh (Adaptive Sync / FreeSync-type) on a Mac: which cable",
+   "value": "Any Mac with Apple silicon on macOS Monterey 12 or later; 'connect your Adaptive Sync display to the Thunderbolt port of your Mac' with a Thunderbolt, USB-C or other DisplayPort-enabled cable; 'Do not use an HDMI cable or adapter.'",
+   "source": "https://support.apple.com/102144",
+   "source_title": "Use an Adaptive Sync external display with your Mac - Apple Support",
+   "read": "2026-11-26",
+   "note": "Page shows a published date of July 16, 2026. Turned on in System Settings > Displays > Refresh Rate > Variable or Adaptive. Apple says it suits gaming and video, may flicker or stutter in other apps, and to pick a fixed rate or ask the display maker if it does."
+  },
+  {
+   "product": "general",
+   "label": "macOS resolution on an external display",
+   "value": "'By default, your Mac automatically uses the best resolution for the display.' 'Using a scaled resolution may affect performance.'",
+   "source": "https://support.apple.com/guide/mac-help/change-your-displays-resolution-mchl86d72b76/mac",
+   "source_title": "Change your Mac display's resolution - Apple Support",
+   "read": "2026-11-26",
+   "note": "Apple's wording, macOS 27 version of the page. It does not mention HiDPI or text sharpness, so it does not by itself support the claim that 1080p text looks soft."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Panel and pass-through as Macworld lists them",
+   "value": "16-inch, 2560x1600 at 120 Hz, 65W pass-through charging; $299.99 when reviewed",
+   "source": "https://www.macworld.com/article/2836233/best-portable-monitors-for-mac.html",
+   "source_title": "Best Portable Monitors for Mac 2026: Top lightweight displays for your MacBook | Macworld",
+   "read": "2026-11-26",
+   "note": "Macworld's figures, not Mobile Pixels' own; the store page returned HTTP 429 today. The $299.99 is Macworld's review-time price, not today's store price."
+  },
+  {
+   "product": "general",
+   "label": "Which Macs need a display driver for a two-screen extender",
+   "value": "Macworld: 'plain (non-Pro/Max) M1 and M2 Macs plus the new MacBook Neo are limited to connecting just a single monitor' and need 'free software (rather like DisplayLink)'",
+   "source": "https://www.macworld.com/article/2836233/best-portable-monitors-for-mac.html",
+   "source_title": "Best Portable Monitors for Mac 2026: Top lightweight displays for your MacBook | Macworld",
+   "read": "2026-11-26",
+   "note": "From Macworld's Trio 3 Pro entry. The 16-inch MacBook Pro has only ever shipped with Pro or Max chips in the Apple silicon line-up Apple lists today (M5 Pro, M5 Max), so this limit does not apply to it; that inference is mine."
+  },
+  {
+   "product": "espresso Pro 15",
+   "label": "Bus-power draw and pass-through, as Macworld reports them",
+   "value": "'the Pro 15 uses around 13W'; passes through up to 100 W to the laptop when the screen has its own charger",
+   "source": "https://www.macworld.com/article/3178482/espresso-pro-4k-touch-portable-monitor-review.html",
+   "source_title": "espresso Pro 4K Touch portable monitor review: Genius stand, brilliant screen | Macworld",
+   "read": "2026-11-26",
+   "note": "Macworld's figures. Macworld also found brightness better 'when plugged into a wall charger rather than taking power from the laptop'. This is a 4K 60 Hz screen, outside the page's 2560x1600 120 Hz line; it is here only as the one draw figure a named reviewer gives."
+  },
+  {
+   "product": "general",
+   "label": "What a cited rival says about the video path",
+   "value": "PCWorld: 'We recommend buying a portable monitor that has a USB-C port with DisplayPort Alternate Mode and USB Power Delivery.'",
+   "source": "https://www.pcworld.com/article/1787210/best-portable-monitors.html?t=Windows",
+   "source_title": "Best portable monitors 2026: Displays that go with you | PCWorld",
+   "read": "2026-11-26",
+   "note": "This is the part of the mechanism a rival already has. It gives no Mac-side limit, no watt figure for the laptop port and nothing on HDMI versus USB-C for variable refresh."
+  }
+ ],
+ "unsourced": [
+  "How many watts a 16-inch MacBook Pro Thunderbolt 5 port supplies to a bus-powered screen. Apple's specs page and MacBook Pro guide give no figure. Intel's Thunderbolt 5 technology brief (search snippet: 'Minimum PC port power for accessories 15W') downloaded as a PDF I could not extract text from, and Plugable's Thunderbolt 4 vs 5 article does not state it. So there is no sourced comparison of port output against a screen's draw.",
+  "Rated power draw, brightness, weight, ports, per-port refresh limits and today's price for the UPERFECT GR16EQ, UPERFECT GR16DQ, SOTSU FlipAction Pro 16 Gen 2 and Mobile Pixels Duex Float 2 Pro from their own stores. uperfect.com, sotsu.com and mobilepixels.us all returned HTTP 429 to storecheck.py and to direct fetches on 2026-11-26, so the desk-research figures (12 W, 11 W, 450 cd/m2 and the rest) are not re-read here.",
+  "Whether each candidate's mini HDMI input reaches 120 Hz at 2560x1600 from the MacBook Pro's HDMI port; it needs the makers' pages or manuals, which were unreachable.",
+  "Whether the UPERFECT GR16EQ's FreeSync shows up as 'Variable' in macOS; looked for a maker statement or a named reviewer's test and opened neither.",
+  "Apple's own statement of how macOS renders scaled (HiDPI) modes on a 2560x1600 or 1080p external panel; Apple's resolution help page says only that a scaled resolution 'may affect performance'.",
+  "ASUS ZenScreen MB16QHG and Mobile Pixels Fold 16 QHD power and port details; not opened within the call budget.",
+  "What RTINGS, TechRadar and seattlepi say on power or cabling; the RTINGS and TechRadar fetches returned only navigation or one truncated pick, and seattlepi.com refused the fetch."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 31,
+  "cost_usd_list": 2.7018592000000003
+ }
+}

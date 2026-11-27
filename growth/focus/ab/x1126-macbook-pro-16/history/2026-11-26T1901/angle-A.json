@@ -1,0 +1,154 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states what the rated figures of the 16-inch 2560x1600 screens mean on one USB-C cable from a 16-inch MacBook Pro: the makers' watt figures are three different kinds of number (7.5 W typical, 11.0 W measured at full brightness, under 13 W ceiling), which is about 7.5% to 13% of the MacBook's 99.6 Wh battery per hour, and ASUS says its screen reaches maximum brightness only with the wall adapter plugged in.",
+ "standout": 2,
+ "standout_why": "I read Macworld's best-for-Mac list and PCWorld's list in full. Macworld gives 350 nits, 2.9 lb and 65 W pass-through for the Duex Float 2 Pro and only 'Laptop battery drain' for the espresso Pro; it has no watt figure, no ppi and nothing on brightness when powered by the laptop. PCWorld gives one measured brightness (Arzopa Z1FC, 337 nits) and no draw figures, macOS scaling or bus-power limits. ChatGPT's own answer says only that a bus-powered monitor shortens battery life and that pass-through may not fully power a 16-inch Pro, with no numbers. Three cited pages could not be compared: the RTINGS article body did not load, TechRadar's page was cut off after its first pick, and seattlepi.com was blocked. RTINGS measures brightness and power in its reviews, so it may hold part of this.",
+ "decides": "It confirms the Duex Float 2 Pro as the pick on the 16-inch 16:10 120 Hz line rather than changing it. Its 7.5 W is the lowest stated draw of the three, but that is a maker 'typical' figure set against a measured full-brightness figure and a maker ceiling, so the page should not call it the most efficient. Its 65 W pass-through is 46% of Apple's 140 W adapter, so it will not hold a 16-inch Pro's charge under heavy load. The ASUS MB16QHG's 500 nits should not be ranked on brightness as a one-cable figure. Two ChatGPT picks fall just short of the line: the Arzopa Z3FC (\"2.5K\" there means 2560x1440, 16:9, 16.1-inch) and the Arzopa Z1RC (60 Hz). No 2560x1600 screen matches the MacBook's sharpness: all sit near 189 ppi against Apple's 254 ppi.",
+ "candidates": [
+  "Mobile Pixels Duex Float 2 Pro",
+  "UPERFECT GR16DQ (formerly UGame C2)",
+  "ASUS ZenScreen MB16QHG",
+  "Arzopa Z1RC",
+  "Arzopa Z3FC",
+  "Mobile Pixels Fold 16 QHD",
+  "LG gram +view 16MR70",
+  "espresso Pro 15"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "16-inch MacBook Pro reference figures (Apple)",
+   "value": "16.2-inch, 3456 x 2234, 254 ppi, ProMotion up to 120 Hz, 100 Wh battery (99.6 Wh in Apple's footnote), 140 W USB-C adapter included",
+   "source": "https://support.apple.com/en-us/121554",
+   "source_title": "MacBook Pro (16-inch, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-26",
+   "note": "Apple's page for the 2024 M4 Pro / M4 Max model; I did not open a later model's page. Every normalised row below uses these figures."
+  },
+  {
+   "product": "general",
+   "label": "Pixel density of each panel class against the MacBook's 254 ppi",
+   "value": "16.0-inch 2560x1600: 188.7 ppi (74%); 16.1-inch 2560x1440: 182.4 ppi (72%); 16.0-inch 1920x1200: 141.5 ppi (56%); 15.6-inch 3840x2160: 282.4 ppi (111%); 16.0-inch 3840x2400: 283.0 ppi (111%)",
+   "source": "https://support.apple.com/en-us/121554",
+   "source_title": "MacBook Pro (16-inch, 2024) - Tech Specs - Apple Support",
+   "read": "2026-11-26",
+   "note": "Arithmetic: ppi = sqrt(width^2 + height^2) / diagonal in inches, on nominal diagonals; percentage is against Apple's 254 ppi. Only the 4K-class panels reach the MacBook's density; every 2560-wide 16-inch panel is about three quarters of it."
+  },
+  {
+   "product": "general",
+   "label": "Workspace at clean 2x scaling",
+   "value": "MacBook Pro 16 native 3456x2234 at 2x gives 1728x1117; a 2560x1600 panel at 2x gives 1280x800",
+   "source": "https://mightygadget.com/mobile-pixels-duex-float-2-pro-review/",
+   "source_title": "Mobile Pixels Duex Float 2 Pro Review - Mighty Gadget (James Smythe, 2026-08-16)",
+   "read": "2026-11-26",
+   "note": "Arithmetic on Apple's native resolution. James Smythe (Mighty Gadget) reports the same effect on Windows: 200% scaling at 2560x1600 leaves a working area 'closer to a 1280 x 800 canvas'. To get a MacBook-like workspace, a 2560x1600 panel must run at a non-integer scale. No macOS test was opened."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Power draw as stated, against the MacBook's 99.6 Wh battery",
+   "value": "7.5 W typical (maker's figure) = 7.5% of the battery per hour",
+   "source": "https://www.gadgetpilipinas.net/2026/10/mobile-pixels-duex-float-2-pro-feature/",
+   "source_title": "Mobile Pixels Duex Float 2 Pro feature - Gadget Pilipinas (Giancarlo Viterbo, 2026-10-22)",
+   "read": "2026-11-26",
+   "note": "Viterbo: 'Power draw is listed at 7.5W typical'. This is the maker's spec repeated, not a measurement, and the brightness setting behind 'typical' is not given. Arithmetic: 7.5 / 99.6. The draw is on top of the MacBook's own. Mobile Pixels' product page returned HTTP 429 on every attempt today."
+  },
+  {
+   "product": "Arzopa Z1RC",
+   "label": "Measured draw and brightness by setting, against the 99.6 Wh battery",
+   "value": "100%: 415.7 nits, 11.0 W (11.0%/h); 75%: 329.8 nits, 8.5 W (8.5%/h); 50%: 242.8 nits, 6.7 W (6.7%/h); 25%: 154.9 nits, 4.9 W; 0%: 66.1 nits, 3.5 W",
+   "source": "https://www.servethehome.com/arzopa-z1rc-16-qhd-portable-monitor-review/2/",
+   "source_title": "Arzopa Z1RC 16 QHD Portable Monitor Review - ServeTheHome (Sam Sabinash, 2026-05-23)",
+   "read": "2026-11-26",
+   "note": "ServeTheHome measured power at the USB-C input. Arithmetic: watts / 99.6 Wh. Sabinash writes that Arzopa 'advertises this as a 500-nit-class monitor' and calls the 415.7 nits a 'notable gap'. The nearest like-for-like row to the Duex Float's rated 350 nits is 329.8 nits at 8.5 W."
+  },
+  {
+   "product": "Arzopa Z1RC",
+   "label": "Refresh rate (why it sits just short of the 120 Hz line)",
+   "value": "60 Hz maximum",
+   "source": "https://www.servethehome.com/arzopa-z1rc-16-qhd-portable-monitor-review/2/",
+   "source_title": "Arzopa Z1RC 16 QHD Portable Monitor Review - ServeTheHome (Sam Sabinash, 2026-05-23)",
+   "read": "2026-11-26",
+   "note": "Sabinash: 'its maximum refresh rate is just 60Hz'. It is 16-inch 2560x1600 16:10 by Arzopa's store title, so it matches on size and shape but not on refresh rate."
+  },
+  {
+   "product": "ASUS ZenScreen MB16QHG",
+   "label": "Maker's stated panel and power figures",
+   "value": "16-inch, 2560x1600, 16:10, 500 cd/m2 typical, DisplayHDR 400, power consumption under 13 W (up to 13.1% of the 99.6 Wh battery per hour), 1.2 kg (2.65 lb), 2x USB-C (DP Alt Mode) + HDMI 2.0, power adapter in the box",
+   "source": "https://www.asus.com/us/displays-desktops/monitors/zenscreen/asus-zenscreen-mb16qhg/techspec/",
+   "source_title": "ASUS ZenScreen MB16QHG - Tech Specs - ASUS USA",
+   "read": "2026-11-26",
+   "note": "'<13W' is a ceiling, not a typical or measured figure. Arithmetic: 13 / 99.6. The tech-spec page showed no price or stock status."
+  },
+  {
+   "product": "ASUS ZenScreen MB16QHG",
+   "label": "Condition attached to the rated brightness",
+   "value": "Maximum brightness only with the power adapter plugged in; on laptop power the monitor limits brightness. 120 Hz stated.",
+   "source": "https://www.asus.com/us/displays-desktops/monitors/zenscreen/asus-zenscreen-mb16qhg/",
+   "source_title": "ASUS ZenScreen MB16QHG - ASUS USA product page",
+   "read": "2026-11-26",
+   "note": "ASUS says brightness 'can be adjusted to its maximum value with the adapter plugged in'; otherwise it is limited so the screen does not draw more than the laptop can supply. So 500 nits is a wall-power figure, not a one-cable figure. The page shows weight as both 1290 g and 1.2 kg. USB-C needs DP Alt Mode."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Pass-through charging against the MacBook's own adapter",
+   "value": "65 W pass-through = 46% of Apple's 140 W adapter",
+   "source": "https://www.macworld.com/article/2836233/best-portable-monitors-for-mac.html",
+   "source_title": "Best Portable Monitors for Mac 2026 - Macworld",
+   "read": "2026-11-26",
+   "note": "Macworld lists 16-inch, 2560x1600, 120 Hz, up to 350 nits, 2.9 lb (1.3 kg) and 65 W; these are the maker's figures as Macworld lists them. Arithmetic: 65 / 140, with 140 W from Apple's spec page. Macworld already has the 65 W figure; the ratio is the addition."
+  },
+  {
+   "product": "Mobile Pixels Duex Float 2 Pro",
+   "label": "Store price today",
+   "value": "$247.99 (compare-at $389.99), in stock",
+   "source": "https://www.mobilepixels.us/products/duex-float",
+   "source_title": "Duex Float 2 Pro - Mobile Pixels",
+   "read": "2026-11-26",
+   "note": "Read from the store's own search record through storecheck.py search. The product page itself returned HTTP 429, so I did not read variant, dispatch or sale-end notices."
+  },
+  {
+   "product": "Arzopa Z3FC",
+   "label": "What '2.5K' means on this model (why it is left out of the 16:10 line)",
+   "value": "16.1-inch, 2560x1440 (16:9), 180 Hz, 400 nits, 780 g by Arzopa's listing; 182.4 ppi; $132.98 (compare-at $359.99), in stock",
+   "source": "https://www.arzopa.com/products/arzopa-z3fc-16-1-180hz-2560x1440-qhd-portable-gaming-monitor",
+   "source_title": "Arzopa Z3FC 16.1\" 2.5K 180Hz Portable Gaming Monitor FreeSync - Arzopa",
+   "read": "2026-11-26",
+   "note": "Read from Arzopa's store search record (title, URL slug '2560x1440-qhd', description '1440p QHD ... 400 nits ... 780g') through storecheck.py search; the product page returned HTTP 429. ChatGPT called it a '16.1-inch 2.5K' 'good size match', but it is 16:9, with 160 fewer rows than the 16:10 screens labelled the same way. The ppi is my arithmetic."
+  },
+  {
+   "product": "Arzopa Z1RC",
+   "label": "Store price today",
+   "value": "$117.79 (compare-at $229.98), in stock; Arzopa states 16-inch 2560x1600 16:10, 1.7 lb",
+   "source": "https://www.arzopa.com/products/z1rc-2k-portable-monitor",
+   "source_title": "Arzopa Z1RC 16\" 2.5K 16:10 Portable Monitor 123%sRGB - Arzopa",
+   "read": "2026-11-26",
+   "note": "Read from the store's search record through storecheck.py search; the product page returned HTTP 429, so I did not read variant or dispatch notices."
+  },
+  {
+   "product": "UPERFECT GR16DQ (formerly UGame C2)",
+   "label": "Store price today and stated panel",
+   "value": "$189.99 (compare-at $269.99), in stock; 16-inch, 2560x1600, 120 Hz by UPERFECT's listing",
+   "source": "https://www.uperfectmonitor.com/products/120hz-gaming-monitor",
+   "source_title": "GR16DQ | 120Hz Gaming Monitor 1600P 16 Inch Display VESA - UPERFECT",
+   "read": "2026-11-26",
+   "note": "Read from the store's search record through storecheck.py search; the listing says 'This monitor was originally called UGame C2'. The product page returned HTTP 429, so the 400-nit and 1.7 lb leads, power draw, port limits and stock notices were not read."
+  }
+ ],
+ "unsourced": [
+  "Mobile Pixels' own statement of the Duex Float 2 Pro's power draw, and whether its 350 nits or 120 Hz depends on external power or on USB-C versus mini-HDMI: mobilepixels.us returned HTTP 429 on six attempts and B&H returned 403; the 7.5 W figure is from Gadget Pilipinas repeating the maker's spec.",
+  "A measured brightness or measured power draw for the Duex Float 2 Pro from a named reviewer: Mighty Gadget and Gadget Pilipinas both repeat the maker's figures only.",
+  "UPERFECT GR16DQ brightness, weight, power draw, which port carries 120 Hz and whether brightness is capped on laptop power: the product page returned HTTP 429.",
+  "Arzopa Z3FC and Z1RC maker statements on power draw, refresh rate by port and Mac behaviour: the product pages returned HTTP 429.",
+  "The nit figure the ASUS MB16QHG reaches on one USB-C cable without its adapter: ASUS gives no number and the Tom's Hardware review body did not load.",
+  "ASUS MB16QHG US price and stock today: neither ASUS page showed them.",
+  "LG gram +view 16MR70 US specs (refresh rate, nits, power draw, pass-through, weight with folio) and price: the two lg.com/us URLs I tried returned 404.",
+  "Whether a 16-inch MacBook Pro runs each of these screens at 120 Hz over USB-C in macOS: no maker page or named macOS test was opened.",
+  "Weight as carried (panel plus cover or stand) for each screen on one basis: only Macworld's 2.9 lb for the Duex Float 2 Pro and ASUS's 1.2 kg / 1290 g were read; no source says what each figure includes.",
+  "What the RTINGS, TechRadar and seattlepi pages say on power draw, brightness on laptop power or pixel density: their bodies could not be read."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 40,
+  "cost_usd_list": 2.7893071000000003
+ }
+}
