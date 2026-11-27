@@ -1,0 +1,160 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that a 160 W total does not by itself keep the Mac's port at 140 W once a second device is plugged in: Notebookcheck lists the Anker Prime 160W's two-port split as 100 W + 60 W or 70 W + 70 W, and 100 W is the 20 V ceiling USB-IF says applied before the 28 V level existed.",
+ "standout": 2,
+ "standout_why": "Compared against thegadgetmasters (cited), Macworld (cited), Apple Support 102378 (cited), thisusb, specsource, thunderboltlaptop and MacRumors. The basic mechanism is already on rival pages, so that part is not new: thisusb and specsource both say 140 W needs the 28 V level and a 240 W EPR cable, and thisusb prints the Anker 140W 4-port's 100 W + 40 W split and says the Mac's port 'drops to 100W or less, below the 140W line'. What none of them has: (1) a two-port split for any 160 W charger (thegadgetmasters and thunderboltlaptop only say 'read the allocation chart', Macworld prints only 65 W + 65 W (+30 W) for the UGREEN Nexode Pro 160W and nothing for a laptop plus a phone); (2) the link between a '100 W' cell in a split table and the Mac being back on 20 V, off the 28 V contract; (3) GRL's description of how the 28 V mode is entered and lost. ChatGPT's first answer said a charger with more than 140 W total 'can be useful if you need to power a phone without sacrificing the MacBook's full allocation'; the one 160 W split I could source says otherwise. Standout is held at 2, not 3, because the Anker Prime split comes from a Notebookcheck news article (not a bench test, and Anker's own page prints only '160W Max'), and I could not read UGREEN's or AOHi's tables.",
+ "decides": "It confirms that any pick works for the Mac alone: one port at 28 V / 5 A plus a MagSafe 3 cable (any 16-inch since 2021) or a 240 W EPR USB-C cable (Nov 2023 models or later, per Apple). It changes the second ranking figure, 'watts the laptop port keeps with a second device': that is 100 W on the Anker 140W 4-Port (Anker's table) and 100 W on the Anker Prime 160W (Notebookcheck), so neither keeps Apple's 140 W fast-charge pairing while a phone charges. The page must not credit the UGREEN Nexode Pro 160W or the AOHi The Youth with keeping 140 W plus a phone until their own two-port tables are read; I could not open either store today. Apple's single-port adapter is the only candidate with no sharing at all. The map's top three are not overturned, but the tiebreak between them is unsourced for the two we link.",
+ "candidates": [
+  "Apple 140W USB-C Power Adapter",
+  "Anker Charger 140W 4-Port PD 3.1 (A2697 / B2697)",
+  "Anker Prime Charger 160W 3 Ports Smart Display (A2687)",
+  "UGREEN Nexode Pro 160W 5-Port (X774)",
+  "AOHi The Youth 140W PD 3.1 3-Port",
+  "Plugable 140W GaN Charger (PS-EPR-140C1)",
+  "UGREEN Nexode 200W 4-Port"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why 140 W is a 28 V figure and 100 W is a 20 V figure (USB-IF)",
+   "value": "28 V fixed voltage enables up to 140 W; before PD 3.1 the limit was 100 W at 20 V / 5 A",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-27",
+   "note": "USB-IF's words: 'New 28V, 36V, and 48V fixed voltages enable up to 140W, 180W and 240W power levels, respectively.' and 'Prior to this update, USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A.' Arithmetic: 28 V x 5 A = 140 W; 20 V x 5 A = 100 W. So a port listed at 100 W in a split table is at 20 V or below, not on the 28 V level."
+  },
+  {
+   "product": "general",
+   "label": "How the 28 V mode is entered, and what the cable must report (Granite River Labs)",
+   "value": "The laptop (sink) asks to enter EPR mode; the cable's e-marker must be set 'EPR Mode Capable' and report 50 V and 5 A; on exit the voltage drops to 20 V or lower and the charger returns to SPR mode (100 W ceiling)",
+   "source": "https://www.graniteriverlabs.com/en-us/technical-blog/usb-power-delivery-specification-3-1",
+   "source_title": "USB Power Delivery Specification 3.1 (GRL technical blog, Cindy Chang, 2021-09-14)",
+   "read": "2026-11-27",
+   "note": "GRL is a USB test lab; this is its summary of the spec, not the spec PDF. Quotes: 'Sink sends EPR_Mode message, where the Data Object is set as Enter'; 'The E-Marker must be set to EPR Mode Capable and provide notification that it supports 50V and 5A'; 'Sink needs to transmit an EPR_KeepAlive message at specified intervals to maintain EPR mode'; 'the voltage should drop to 20V or lower'; SPR 'upper limit of 100W remain[s] unchanged'. Consequence: a 100 W (20 V / 5 A) e-marked cable has an e-marker but no EPR flag, so the charger never offers 28 V."
+  },
+  {
+   "product": "general",
+   "label": "Apple's fast-charge pairings for the 16-inch MacBook Pro",
+   "value": "140W USB-C Power Adapter + USB-C to MagSafe 3 Cable (2021 or later); or + 240W USB-C Charge Cable for MacBook Pro (16-inch, Nov 2023) or later; or Apple Studio Display XDR + Thunderbolt cable. Up to 50% in around 30 minutes",
+   "source": "https://support.apple.com/en-us/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-27",
+   "note": "Page dated November 05, 2026. Apple's test note: '16-inch MacBook Pro systems tested with Apple 140W USB-C Power Adapter (Model A2452)', with drained units. Apple lists no adapter below 140 W for the 16-inch."
+  },
+  {
+   "product": "general",
+   "label": "Cited rival disagrees with Apple on which years fast-charge over USB-C",
+   "value": "Macworld: 'Models from 2021 and 2023 feature 100W Thunderbolt 4 ports' and USB-C fast charging on '2024 and later' Thunderbolt 5 models; Apple: 240W USB-C Charge Cable works on 'MacBook Pro (16-inch, Nov 2023) or later'",
+   "source": "https://www.macworld.com/article/819438/best-macbook-usb-c-charger.html",
+   "source_title": "The best USB-C charger for your MacBook Pro, MacBook Air or Neo in 2026 | Macworld",
+   "read": "2026-11-27",
+   "note": "Apple's line is in the support page above. Anker's FAQ sides with Apple (M3 and M4: EPR USB-C or MagSafe 3; M1 and M2: MagSafe 3 only). Only the first 100,000 characters of the Macworld page were read."
+  },
+  {
+   "product": "Anker Charger 140W 4-Port PD 3.1 (A2697 / B2697)",
+   "label": "Single-port output and which ports reach 28 V",
+   "value": "USB-C1 and USB-C2: 9 V 3 A / 15 V 3 A / 20 V 5 A / 28 V 5 A (140 W max); USB-C3: 40 W max (20 V 2 A top); USB-A: 33 W max",
+   "source": "https://www.anker.com/products/a2697-anker-charger-140w-4-port",
+   "source_title": "Anker Charger (140W, 4-Port, PD 3.1) with USB-C Cable",
+   "read": "2026-11-27",
+   "note": "Maker's table. The page gives the model number as B2697 although the URL and ChatGPT's answer say A2697."
+  },
+  {
+   "product": "Anker Charger 140W 4-Port PD 3.1 (A2697 / B2697)",
+   "label": "What the laptop port keeps with a second device",
+   "value": "USB-C1/C2 + C3: 100 W + 40 W; USB-C1/C2 + USB-A: 100 W + 33 W; USB-C1 + USB-C2: 70 W + 70 W; three ports: 65 W + 45 W + 30 W; four devices: 134 W total",
+   "source": "https://www.anker.com/products/a2697-anker-charger-140w-4-port",
+   "source_title": "Anker Charger (140W, 4-Port, PD 3.1) with USB-C Cable",
+   "read": "2026-11-27",
+   "note": "Maker's table. 100 W is the 20 V level, so the Mac leaves the 28 V contract when a phone is plugged in. Anker also writes: 'Please unplug the cable when not in use to avoid limiting the maximum output power of other ports.'"
+  },
+  {
+   "product": "Anker Charger 140W 4-Port PD 3.1 (A2697 / B2697)",
+   "label": "Maker's cable wording and MacBook icon note",
+   "value": "'An E-Marker cable is required to achieve charging speeds above 100W'; with a third-party charger a plug symbol in the Mac's battery icon is normal and 'Charging will resume as normal after about one minute'",
+   "source": "https://www.anker.com/products/a2697-anker-charger-140w-4-port",
+   "source_title": "Anker Charger (140W, 4-Port, PD 3.1) with USB-C Cable",
+   "read": "2026-11-27",
+   "note": "Anker's cable wording is looser than GRL's summary of the standard: a 100 W cable also has an e-marker; 28 V needs one flagged EPR (sold as 240 W). The listing title says a USB-C cable is included; the page did not state its rating in what I read (thisusb says a 5 ft 240 W cable is in the box)."
+  },
+  {
+   "product": "Anker Charger 140W 4-Port PD 3.1 (A2697 / B2697)",
+   "label": "Price, maker's US store",
+   "value": "$59.99 (struck-through $89.99)",
+   "source": "https://www.anker.com/products/a2697-anker-charger-140w-4-port",
+   "source_title": "Anker Charger (140W, 4-Port, PD 3.1) with USB-C Cable",
+   "read": "2026-11-27",
+   "note": "Read on the product page; no sale end date seen. ChatGPT showed $53.99 at B&H, which I did not open."
+  },
+  {
+   "product": "Anker Prime Charger 160W 3 Ports Smart Display (A2687)",
+   "label": "Single-port output",
+   "value": "USB-C1 / C2 / C3: 5 V 3 A / 9 V 3 A / 15 V 3 A / 20 V 5 A / 28 V 5 A / 28 V 5.36 A (150 W max); FAQ: '140W PD 3.1 Fast Charging on a single port'",
+   "source": "https://www.anker.com/products/a2687-anker-prime-charger-160w-3-ports-gan",
+   "source_title": "Anker Prime Charger (160W, 3 Ports, Smart Display)",
+   "read": "2026-11-27",
+   "note": "Maker's spec line. The 150 W figure needs AI Mode and specific Anker accessories per Anker's FAQ, so 140 W (28 V x 5 A) is the figure for a MacBook. The display shows 'EPR Cable' when a 240 W cable is attached. The page gives two- and three-port output only as '160W Max', with no per-port split."
+  },
+  {
+   "product": "Anker Prime Charger 160W 3 Ports Smart Display (A2687)",
+   "label": "What the laptop port keeps with a second device",
+   "value": "Two ports: 100 W + 60 W, or 70 W + 70 W; three ports: 100 W + 30 W + 30 W, or 70 W + 70 W + 20 W",
+   "source": "https://www.notebookcheck.net/Compact-new-Anker-3-port-charger-launches-with-discount.1127046.0.html",
+   "source_title": "Compact new Anker 3-port charger launches with discount (Notebookcheck, Polly Allcock, 2025-09-29, updated 2026-02-18)",
+   "read": "2026-11-27",
+   "note": "Notebookcheck (Polly Allcock) lists these splits in a news article citing Anker's product page; it is not a bench test. Anker's page adds that in AI Mode 2.0 the charger 'Auto-detects and reallocates power every 2 minutes', and that port priority and custom splits are set in the app; I found no Anker statement that any mode holds 140 W on one port while a second port is in use."
+  },
+  {
+   "product": "Anker Prime Charger 160W 3 Ports Smart Display (A2687)",
+   "label": "Maker's cable rule by MacBook chip",
+   "value": "16-inch MacBook Pro, M1 and M2: 'only use a USB-C to MagSafe 3 cable'; M3 and M4: 'either an EPR (140W / 240W) USB-C to USB-C cable or a USB-C to MagSafe 3 cable'",
+   "source": "https://service.anker.com/au/article-description/Anker-Prime-Charger-160W-3-Ports-GaNPrime-FAQ",
+   "source_title": "Anker Prime Charger (160W, 3 Ports, GaNPrime) FAQ (Anker support)",
+   "read": "2026-11-27",
+   "note": "Anker's AU support article for the 160W 3-port Prime; it does not print a model number. Same FAQ: with a third-party adapter the Mac's icon 'may not change right away' and switches 'after several seconds'; 'To reach 150W max charging from one port, the charger must be set to AI Mode'."
+  },
+  {
+   "product": "Anker Prime Charger 160W 3 Ports Smart Display (A2687)",
+   "label": "Price, maker's US store",
+   "value": "$99.99 (list $149.99, 'Save $50.00')",
+   "source": "https://www.anker.com/products/a2687-anker-prime-charger-160w-3-ports-gan",
+   "source_title": "Anker Prime Charger (160W, 3 Ports, Smart Display)",
+   "read": "2026-11-27",
+   "note": "No sale end date seen. Anker's '16-inch MacBook Pro to 50% in just 25 minutes' on this page is a maker's claim."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port (X774)",
+   "label": "Per-port maximum and a measured five-device result",
+   "value": "USB-C1 and C2: 140 W max; USB-C3: 100 W; USB-C4: 30 W; USB-A: 22.5 W; 160 W total. With a laptop on USB-C1 and four other devices charging, that port 'hovered around 56W to 58W' over a 1-hour test",
+   "source": "https://www.notebookcheck.net/One-charger-for-almost-everything-5-port-Ugreen-Nexode-Pro-160W-review.1327965.0.html",
+   "source_title": "One charger for almost everything: 5-port Ugreen Nexode Pro 160W review (Notebookcheck, Abid Ahsan Shanto, 2026-06-24, updated 2026-10-05)",
+   "read": "2026-11-27",
+   "note": "Notebookcheck (Abid Ahsan Shanto) checked readings with a Fnirsi FNB58 and found the built-in display 1 to 2 W off (51 W shown vs about 49.5 W). The review prints no two-port split and no 28 V voltage list, and did not test a MacBook Pro 16. Weight about 360 g."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port (X774)",
+   "label": "Two-laptop split as a rival reports it",
+   "value": "65 W + 65 W, or 65 W + 65 W + 30 W",
+   "source": "https://www.macworld.com/article/819438/best-macbook-usb-c-charger.html",
+   "source_title": "The best USB-C charger for your MacBook Pro, MacBook Air or Neo in 2026 | Macworld",
+   "read": "2026-11-27",
+   "note": "Macworld's figures for the 'Ugreen Nexode Pro 160W Charger' ($85.49 at Amazon on its page); it does not say which 160 W variant (4-port X763 or 5-port X774) or give a laptop + phone split. Use only as a lead until UGREEN's table is read."
+  }
+ ],
+ "unsourced": [
+  "UGREEN Nexode Pro 160W 5-Port (X774): UGREEN's own two-port table (C1 + C2, C1 + C4, C1 + USB-A) and whether USB-C1 stays on 28 V with a phone attached. us.ugreen.com, uk.ugreen.com and ugreen.com/en-ph returned HTTP 429 to page fetches and 403 to storecheck.py; UGREEN's CA series page has no table; Notebookcheck's review prints only per-port maxima.",
+  "UGREEN Nexode Pro 160W 5-Port: store price today and the cable in the box. The store could not be opened, so I did not re-read the $89.99 / $56.99 figures in the brief.",
+  "AOHi The Youth 140W: USB-C1 voltage list, USB-C2 maximum and every multi-port split. iaohi.com returned 429 to page fetches and 403 to storecheck.py. Search snippets disagreed on USB-C2 (100 W vs 22.5 W), so no value is given; the 65 W + 65 W figure in our record was not re-verified, and the price and code were not retested.",
+  "Anker Prime 160W: Anker's own per-port split table. The product page gives only '160W Max' for two and three ports; the 100 W + 60 W figure rests on Notebookcheck's news article.",
+  "A named bench measurement of a 16-inch MacBook Pro drawing 28 V (about 140 W) from any third-party candidate, over MagSafe 3 or a 240 W USB-C cable. None found in the pages opened.",
+  "The USB PD 3.1 specification text itself for EPR entry and exit. I used USB-IF's public page and GRL's summary, not the spec PDF.",
+  "Maker pages for Plugable PS-EPR-140C1, Apple's 140W adapter store page, UGREEN Nexode 200W and the Baseus 140 W models were not opened for this angle; Amazon prices were not checked.",
+  "The last 31,000 characters of the Macworld page and the other rival results (verdictbits, belkin, charginggearlab, compatwiki, gearexplained, mynewcharger, thunderboltlaptop's second page) were not read, so they may hold part of this finding."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 40,
+  "cost_usd_list": 3.1938326999999993
+ }
+}
