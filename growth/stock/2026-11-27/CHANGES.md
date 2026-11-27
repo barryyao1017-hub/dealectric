@@ -1,17 +1,18 @@
 # Weekly catalog upkeep, 2026-11-27
 
-Read 3 products; 4 record changes; 1 alternatives added, 0 replaced, 0 removed, 0 with none, 0 pending; 7 pages edited, 0 failed. Model use: claude-sonnet-5-5: 1 calls, 5,278 new tokens + 2,859 cache reads; claude-fable-5-2: 9 calls, 172,303 new tokens + 1,142,646 cache reads.
+Read 12 products; 6 record changes; 0 alternatives added, 0 replaced, 0 removed, 0 with none, 0 pending; 8 pages edited, 0 failed. Model use: claude-sonnet-5-5: 2 calls, 24,745 new tokens + 2,859 cache reads; claude-fable-5-2: 11 calls, 104,933 new tokens + 32,835 cache reads.
 
 ## Flags changed
 
-- [UGREEN Nexode 200W 4-Port GaN Charger, 3× USB-C + USB-A (two laptops at 100 W each)](https://dealectric.com/ugreen-nexode-200w-4-port-charger): price 61.99 → 67.99
-- [UGREEN USB-C Switch, 2 Computers to 4 USB 3.2 Gen 2 (10 Gb/s) Devices](https://dealectric.com/ugreen-usb-c-switch-2-computers-4-port-10gbps): stock in stock → sold out
-- [UGREEN USB-C Switch, 2 Computers to 4 USB 3.2 Gen 2 (10 Gb/s) Devices](https://dealectric.com/ugreen-usb-c-switch-2-computers-4-port-10gbps): price 40.99 → 42.99
-- [UGREEN Nexode 100W Charger with Retractable USB-C Cable](https://dealectric.com/ugreen-nexode-100w-retractable-cable-charger): price 59.99 → 49.99
+- [UGREEN Nexode 100W 4-Port GaN Charger, 3× USB-C + USB-A](https://dealectric.com/ugreen-nexode-100w-4-port-gan-charger): price 54.99 → 42.99
+- [UGREEN Nexode 500W 6-Port Desktop Charger, 240 W from one port](https://dealectric.com/ugreen-nexode-500w-6-port-desktop-charger): price 249.99 → 199.99
+- [UGREEN Nexode 65W 3-Port GaN Travel Charger with US, UK and EU Plugs](https://dealectric.com/ugreen-nexode-65w-travel-charger-us-uk-eu): price 49.99 → 42.99
+- [UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)](https://dealectric.com/ugreen-nexode-65w-retractable-cable-charger): price 39.99 → 41.99
+- [UGREEN Nexode 100W Charger with Retractable USB-C Cable](https://dealectric.com/ugreen-nexode-100w-retractable-cable-charger): price 49.99 → 42.49
+- [UGREEN Nexode Air USB-C Charger (65W, GaN, Foldable Plug)](https://dealectric.com/ugreen-nexode-air-65w-gan-charger): price 39.99 → 24.99
 
 ## Alternatives
 
-- added: [UGREEN USB-C Switch, 2 Computers to 4 USB 3.2 Gen 2 (10 Gb/s) Devices](https://dealectric.com/ugreen-usb-c-switch-2-computers-4-port-10gbps) → RSHTECH USB 3.2/USB C Switch 10Gbps, 2 Computers Share 4 Devices: same 10 Gb/s 2-computer switch, wired remote; 2 USB-A + 2 USB-C ports
 
 ## No qualifying substitute
 
@@ -21,13 +22,14 @@ Read 3 products; 4 record changes; 1 alternatives added, 0 replaced, 0 removed, 
 
 ## Pages edited
 
-- [/compare/usb-c-charger-two-laptops-100w/](https://dealectric.com/compare/usb-c-charger-two-laptops-100w/) (src/gaps.py): 3 edits
-- [/ugreen-nexode-200w-4-port-charger](https://dealectric.com/ugreen-nexode-200w-4-port-charger) (src/products.py): 2 edits
-- [/compare/best-usb-switch-two-computers-keyboard-mouse-ssd/](https://dealectric.com/compare/best-usb-switch-two-computers-keyboard-mouse-ssd/) (src/gaps.py): 4 edits
-- [/compare/kvm-switch-for-a-mac-and-pc-4k-144hz/](https://dealectric.com/compare/kvm-switch-for-a-mac-and-pc-4k-144hz/) (src/gaps.py): 5 edits
-- [/compare/best-kvm-switch-1-monitor-2-computers/](https://dealectric.com/compare/best-kvm-switch-1-monitor-2-computers/) (src/gaps.py): 3 edits
-- [/ugreen-usb-c-switch-2-computers-4-port-10gbps](https://dealectric.com/ugreen-usb-c-switch-2-computers-4-port-10gbps) (src/products.py): 2 edits
-- [/compare/best-usb-c-charger-with-block-and-cable/](https://dealectric.com/compare/best-usb-c-charger-with-block-and-cable/) (src/gaps.py): 4 edits
+- [/starlink-mini-usb-c-power-requirements](https://dealectric.com/starlink-mini-usb-c-power-requirements) (src/gaps.py): 1 edits
+- [/best-usb-c-charger-for-laptop](https://dealectric.com/best-usb-c-charger-for-laptop) (src/gaps.py): 2 edits
+- [/best-travel-charging-kit](https://dealectric.com/best-travel-charging-kit) (src/gaps.py): 4 edits
+- [/ugreen-nexode-500w-6-port-desktop-charger](https://dealectric.com/ugreen-nexode-500w-6-port-desktop-charger) (src/products.py): 1 edits
+- [/best-65w-travel-charger-interchangeable-plugs](https://dealectric.com/best-65w-travel-charger-interchangeable-plugs) (src/gaps.py): 4 edits
+- [/ugreen-nexode-65w-travel-charger-us-uk-eu](https://dealectric.com/ugreen-nexode-65w-travel-charger-us-uk-eu) (src/products.py): 2 edits
+- [/best-usb-c-charger-with-block-and-cable](https://dealectric.com/best-usb-c-charger-with-block-and-cable) (src/gaps.py): 8 edits
+- [/ugreen-nexode-air-65w-gan-charger](https://dealectric.com/ugreen-nexode-air-65w-gan-charger) (src/products.py): 2 edits
 
 ## Mentioned on a page but not in the product list
 
@@ -159,4 +161,3 @@ Read 3 products; 4 record changes; 1 alternatives added, 0 replaced, 0 removed, 
 
 ## Clicks on sold-out products, last 7 days (the cost of keeping the original link)
 
-- [UGREEN USB-C Switch, 2 Computers to 4 USB 3.2 Gen 2 (10 Gb/s) Devices](https://dealectric.com/ugreen-usb-c-switch-2-computers-4-port-10gbps): 3 clicks (0 from ChatGPT)
