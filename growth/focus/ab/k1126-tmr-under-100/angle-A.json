@@ -1,0 +1,196 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got states that the \"0.125 ms\" latency makers print for these boards is just the 8,000 Hz report interval (1 ÷ 8,000 s), while the only measured figures in the under-$100 TMR group are four to six times that and nearly level: 0.60 ms wired / 0.75 ms 2.4 GHz for the Gamakay TK75 TMR (HLPlanet, OSLTT) against about 0.5-0.6 ms wired for the MonsGeek FUN60 Ultra TMR, with no measurement at all for the Epomaker HE65 V2 TMR.",
+ "standout": 2,
+ "standout_why": "Compared against mkbguide (cited), PCWorld (cited), Notebookcheck (cited), keyboardtester.click (cited), GamePadSquire's FUN60 Ultra TMR review and HLPlanet's TMR-vs-Hall page (both in the results, uncited); RTINGS' 60% list rendered empty for me, so I could not compare its body text. mkbguide gives per-mode polling for the HE65 V2 TMR (8,000 / 8,000 / 125 Hz) but no latency, rapid-trigger step, scan rate or battery, and says only that polling is not a latency measurement. keyboardtester.click gives the TK75 TMR's 256 kHz scan rate and 8,000 mAh battery but no latency figure for any board, and prices it at $109.99. GamePadSquire carries measured latency and battery hours for the FUN60 alone. None puts the three boards on one basis, none has HLPlanet's TK75 TMR measurement or its roughly 0.3 mm phantom-release finding, none flags that the FUN60's 3 h and the HE65's 30 h battery figures were taken at different polling rates, and none carries MonsGeek's own footnote that 0.01 mm is guaranteed only on six listed switches. It is not a 3 because GamePadSquire already has the FUN60 half of the latency comparison.",
+ "decides": "Latency does not separate the boards: the TK75 TMR's measured 0.60 ms wired sits level with the FUN60 Ultra TMR's roughly 0.5-0.6 ms, and all three advertise the same 8,000 Hz and 0.01 mm. The pick therefore falls to layout, battery, Bluetooth rate and price. The Gamakay TK75 TMR (ours, $89.99 at the sale price only; list $159.99) is an honest pick for the 75% / long-battery segment: 8,000 mAh against 4,000 mAh, Bluetooth at 1,000 Hz against the HE65's 125 Hz, and it is one of the two boards with a measured latency. The Epomaker HE65 V2 TMR at $59.99 wins on price and arrow keys but has an ABS case and no measured latency. The FUN60 Ultra TMR keeps the aluminium 60% slot, with about 3 h at 8K wireless and a polling rate the driver cannot lower (Notebookcheck). The caveat for our row is to set rapid-trigger release near 0.4 mm, not 0.01 mm (HLPlanet). Womier's K75 TMR, which ChatGPT showed at $85.99 from Newegg, is $119.99 at Womier's own store today, so it is over the line there.",
+ "candidates": [
+  "Gamakay TK75 TMR",
+  "Epomaker HE65 V2 TMR",
+  "MonsGeek FUN60 Ultra TMR",
+  "Womier K75 TMR",
+  "Womier SK75 TMR",
+  "Epomaker HE75 V2 TMR"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What the makers' \"0.125 ms\" figure is",
+   "value": "0.125 ms = 1 ÷ 8,000 Hz, the interval between USB reports, not key-to-PC latency",
+   "source": "https://epomaker.com/products/epomaker-he80",
+   "source_title": "EPOMAKER HE80 (Epomaker US store listing text, read through store search)",
+   "read": "2026-11-26",
+   "note": "Epomaker's own HE80 copy ties the figure to polling: \"latency is significantly reduced to a mere 0.125ms, 8x quicker than conventional 1k polling keyboard\". Its HE68 Lite copy says 8 kHz polling registers \"in 0.125 millisecond\". Arithmetic: 1 / 8,000 s = 0.000125 s = 0.125 ms; 1 / 1,000 s = 1 ms, which is the 8x."
+  },
+  {
+   "product": "Epomaker HE65 V2 TMR",
+   "label": "Maker latency claim per mode, and whether anyone measured it",
+   "value": "0.125 ms wired, 0.125 ms 2.4 GHz, 14 ms Bluetooth (maker claim as quoted by HLPlanet); no measured latency in the review",
+   "source": "https://www.hlplanet.com/epomaker-he65-v2-tmr-review/",
+   "source_title": "Epomaker HE65 V2 TMR Review (HLPlanet, dated 2026-09-07)",
+   "read": "2026-11-26",
+   "note": "HLPlanet reports the maker's figures and says the reviewer could not perceive a difference between 0.125 ms and a few milliseconds; no test tool is named. I could not open Epomaker's own product page (HTTP 429), so the claim is read from the reviewer's page."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Measured latency (named reviewer)",
+   "value": "0.60 ms wired, 0.75 ms 2.4 GHz",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet, dated 2026-05-18)",
+   "read": "2026-11-26",
+   "note": "HLPlanet measured with OSLTT. Arithmetic: 0.60 / 0.125 = 4.8x and 0.75 / 0.125 = 6.0x the 8,000 Hz report interval. HLPlanet reviewed it at $119.99, with Mercury V3 switches."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Measured latency (secondhand)",
+   "value": "RTINGS about 0.5 ms single-key and about 0.7 ms multi-key; IGN about 0.6 ms wired and about 1.1 ms 2.4 GHz",
+   "source": "https://gamepadsquire.com/keyboards/monsgeek-fun60-ultra-tmr/",
+   "source_title": "MonsGeek FUN60 Ultra TMR Review (GamePadSquire, dated 2026-08-01)",
+   "read": "2026-11-26",
+   "note": "Read on GamePadSquire, which attributes the figures to RTINGS and IGN. RTINGS' own review page returned no body text to me, so these are not verified at the original source. Different rigs from HLPlanet's OSLTT, so compare the TK75 TMR figure only loosely."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Polling rate by connection, scan rate",
+   "value": "8,000 Hz wired and 2.4 GHz, 1,000 Hz Bluetooth; 256,000 Hz scan rate",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet)",
+   "read": "2026-11-26",
+   "note": "Gamakay's own blog post (https://gamakay.com/blogs/news/gamakay-tk75-tmr-review-budget-tmr-keyboard-iso-de, read 2026-11-26) states 8,000 Hz for wired and 2.4 GHz and gives no Bluetooth rate."
+  },
+  {
+   "product": "Epomaker HE65 V2 TMR",
+   "label": "Polling rate by connection, scan rate, build",
+   "value": "8,000 Hz wired and 2.4 GHz, 125 Hz Bluetooth; 64,000 Hz scan rate; ABS plastic case; 66 keys plus a knob",
+   "source": "https://www.hlplanet.com/epomaker-he65-v2-tmr-review/",
+   "source_title": "Epomaker HE65 V2 TMR Review (HLPlanet)",
+   "read": "2026-11-26",
+   "note": "mkbguide (https://mkbguide.com/blog/best-gaming-keyboards-under-100, read 2026-11-26) gives the same 8,000 / 8,000 / 125 Hz split as Epomaker's listing. Scan rate is 64 kHz against the TK75 TMR's 256 kHz, both from HLPlanet's spec lists."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Polling rate by connection (maker)",
+   "value": "8,000 Hz in wired or 2.4 GHz modes; no Bluetooth rate and no scan rate stated",
+   "source": "https://monsgeek.com/product/fun60-ultra",
+   "source_title": "FUN60 Ultra (MonsGeek product page)",
+   "read": "2026-11-26",
+   "note": "Page wording: \"8000Hz polling rate in wired or 2.4G wireless modes\". Battery is listed as \"4000mAh (for tri-mode version only)\"."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Rapid-trigger \"0.01 mm\" as the maker qualifies it",
+   "value": "RT range 0.01-2.00 mm, actuation 0.1-3.40 mm; 0.01 mm precision guaranteed only for six listed switches, other switches may perform at 0.1 mm",
+   "source": "https://monsgeek.com/product/fun60-ultra",
+   "source_title": "FUN60 Ultra (MonsGeek product page)",
+   "read": "2026-11-26",
+   "note": "Mechanical-switch support is for the TMR version only. The page says Akko Magnetic Creamy Yellow switches are not compatible because of magnet orientation."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Rapid-trigger usable floor against the advertised step",
+   "value": "Adjustable to 0.01 mm; phantom releases on neighbouring keys at release settings below about 0.3 mm; reviewer suggests about 0.4 mm",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet)",
+   "read": "2026-11-26",
+   "note": "HLPlanet attributes it to plate flex under firm presses and gives no confirmed phantom-free minimum. It also advises turning rapid trigger off on any key fitted with a mechanical switch."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Battery life and the polling rate it was measured at",
+   "value": "4,000 mAh; about 3 h on 2.4 GHz at 8,000 Hz with LEDs on; about 4-5 h on Bluetooth",
+   "source": "https://www.notebookcheck.net/MonsGeek-Fun60-Ultra-TMR-hands-on-review-Rapid-trigger-keyboard-with-8-kHz-wireless-polling-made-affordable.989224.0.html",
+   "source_title": "MonsGeek Fun60 Ultra TMR hands-on review (Notebookcheck, dated 2025-03-30)",
+   "read": "2026-11-26",
+   "note": "Notebookcheck says the driver cannot change the polling rate, so runtime cannot be traded for speed. PCWorld (https://www.pcworld.com/article/3014690/monsgeek-fun60-ultra-review.html, read 2026-11-26) says it \"often only lasted a few hours\" at 8,000 Hz with RGB on and that the mode switch sits under the Caps Lock keycap."
+  },
+  {
+   "product": "Epomaker HE65 V2 TMR",
+   "label": "Battery life and the polling rate it was measured at",
+   "value": "4,000 mAh (2 × 2,000 mAh); about 30 h with RGB on",
+   "source": "https://www.hlplanet.com/epomaker-he65-v2-tmr-review/",
+   "source_title": "Epomaker HE65 V2 TMR Review (HLPlanet)",
+   "read": "2026-11-26",
+   "note": "HLPlanet used 1,000 Hz for daily testing, so the 30 h is not comparable with the FUN60's 3 h at 8,000 Hz. Both are 4,000 mAh. Brightness and usage pattern are not specified."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Battery",
+   "value": "8,000 mAh; not depleted during HLPlanet's review period",
+   "source": "https://www.hlplanet.com/?p=8777",
+   "source_title": "GamaKay TK75 TMR Review (HLPlanet)",
+   "read": "2026-11-26",
+   "note": "Twice the capacity of the FUN60 Ultra TMR and HE65 V2 TMR (4,000 mAh each). No hour figure exists."
+  },
+  {
+   "product": "Gamakay TK75 TMR",
+   "label": "Price, maker's US store",
+   "value": "$89.99, list $159.99, in stock",
+   "source": "https://gamakay.com/products/gamakay-tk75-tmr-magnetic-keyboard-8k-polling-rate",
+   "source_title": "GamaKay TK75 TMR 75% Mechanical Keyboard – 8K Polling Rate, Magnetic Switch",
+   "read": "2026-11-26",
+   "note": "Read with storecheck search on gamakay.com. Under $100 only at the sale price. I did not read the sale end date on the page; the brief gives Nov 30. keyboardtester.click (dated 2026-11-05) still shows $109.99."
+  },
+  {
+   "product": "Epomaker HE65 V2 TMR",
+   "label": "Price, maker's US store",
+   "value": "$59.99, list $99.99, in stock",
+   "source": "https://epomaker.com/products/epomaker-he65-v2-tmr",
+   "source_title": "EPOMAKER HE65 V2 TMR",
+   "read": "2026-11-26",
+   "note": "Read with storecheck search on epomaker.com. This is the store's lowest variant price; variants were not broken out because the product endpoint returned HTTP 429."
+  },
+  {
+   "product": "MonsGeek FUN60 Ultra TMR",
+   "label": "Price and availability, maker's store",
+   "value": "$69.99-$89.99 across variants (wired or tri-mode, HE or TMR sensor); page showed \"Unavailable\" buttons and an \"Email me when available\" waitlist",
+   "source": "https://monsgeek.com/product/fun60-ultra",
+   "source_title": "FUN60 Ultra (MonsGeek product page)",
+   "read": "2026-11-26",
+   "note": "The page gives a range, not a price per variant, and I could not tell which variants the Unavailable state covers. Re-read the page before quoting a price; do not treat $89.99 as a confirmed in-stock price for the tri-mode TMR."
+  },
+  {
+   "product": "Womier K75 TMR",
+   "label": "Price, maker's US store (over the line)",
+   "value": "$119.99, list $134.99, in stock; 6,000 mAh (2 × 3,000 mAh)",
+   "source": "https://womierkeyboard.com/products/womier-k75-tmr-wireless-magnetic-gaming-keyboard",
+   "source_title": "Womier K75 TMR 75% Wireless Magnetic Gaming Keyboard",
+   "read": "2026-11-26",
+   "note": "Read with storecheck search on womierkeyboard.com. ChatGPT showed it at $85.99 from Newegg, which I did not open. At Womier's own store it is over $100."
+  },
+  {
+   "product": "Womier SK75 TMR",
+   "label": "Price and latency wording, maker's US store (over the line)",
+   "value": "$128.00, list $159.00; advertises \"8000Hz polling rate and ultra-fast 0.125ms response time\"",
+   "source": "https://womierkeyboard.com/products/womier-sk75-tmr-magnetic-keyboard",
+   "source_title": "Womier SK75 TMR Wireless Magnetic Switch Aluminum Keyboard",
+   "read": "2026-11-26",
+   "note": "A second maker printing the 8,000 Hz report interval as a response time. Its 8,000 mAh battery and 0.1-3.5 mm actuation range are from the same listing."
+  },
+  {
+   "product": "Epomaker HE75 V2 TMR",
+   "label": "Price, maker's US store (over the line)",
+   "value": "$109.65, list $129.00, in stock",
+   "source": "https://epomaker.com/products/epomaker-he75-v2-tmr",
+   "source_title": "EPOMAKER HE75 V2 TMR",
+   "read": "2026-11-26",
+   "note": "Read with storecheck search on epomaker.com. It is the 75% TMR board just short of the budget."
+  }
+ ],
+ "unsourced": [
+  "Gamakay's own spec wording for the TK75 TMR (per-mode polling, scan rate, rapid-trigger step, any latency claim, sale end date): the product page returned HTTP 429 on every try, so only price and stock come from the store; specs are from HLPlanet.",
+  "Epomaker's own spec table for the HE65 V2 TMR (scan rate, rapid-trigger step, battery hours, per-variant prices): HTTP 429 on the page, the .js endpoint and storecheck product; specs are from HLPlanet and mkbguide.",
+  "RTINGS' own latency numbers for the FUN60 Ultra and the body of its 60% list: both pages returned navigation only, so the RTINGS figures are secondhand through GamePadSquire.",
+  "A measured latency for the Epomaker HE65 V2 TMR from any named reviewer: HLPlanet did not measure it; I did not open APH Networks, Tech4Gamers or DROIX.",
+  "MonsGeek's Bluetooth polling rate and scan rate for the FUN60 Ultra TMR: not on the maker page; Notebookcheck and GamePadSquire say only that Bluetooth is lower.",
+  "A per-variant, in-stock price today for the FUN60 Ultra TMR tri-mode: the maker page gave only a range with Unavailable buttons, and the amzcheck Amazon search returned nothing.",
+  "The Womier K75 TMR's $85.99 Newegg price that ChatGPT showed: Newegg not opened.",
+  "A battery-hours figure for the TK75 TMR at 8,000 Hz on 2.4 GHz: HLPlanet did not deplete it; no other source opened.",
+  "Rapid-trigger usable floor for the FUN60 Ultra TMR and HE65 V2 TMR from a named reviewer, to set beside HLPlanet's roughly 0.3 mm on the TK75 TMR: not found in the pages opened."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 38,
+  "cost_usd_list": 3.0110349999999992
+ }
+}
