@@ -1,0 +1,111 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got puts the deciding check on one APDO line: ChargerLAB's POWER-Z readout of Samsung's own 60 W adapter (EP-T6010) shows three PPS ranges (5–11 V 5 A, 5–16 V 4 A, 5–21 V 3 A) over plain PD 3.0, and Android Authority says the S26 Ultra needs the 20 V/3 A one from a single port. So the check is a PPS range that reaches 20–21 V at 3 A on one port. The 'PD 3.1' badge from Samsung's footnote is not it, and neither are a fixed 20 V/3 A PDO, a high-current PPS range that stops at 11 V or 16 V, or the 65 W headline.",
+ "standout": 1,
+ "standout_why": "I compared this against the pages ChatGPT cited: SamMobile on the Trio (the Trio gives only 45 W, as 20 V 2.25 A PPS), Samsung CA/AE (PPS 5–20 V 3 A, plus a footnote asking for PD 3.1 and Direct Charging), the ChargerLAB EP-T6010 teardown (it lists the APDOs and 51.54 W on the S26 Ultra, but never says which range the phone draws) and itechguides. ChatGPT's answer already tells shoppers to look for 'PPS 3.3–21 V ⎓ 3 A' and warns that a fixed 20 V/3 A PDO doesn't count. Two things are new. First, ChargerLAB's tester reads Samsung's own adapter as PD 3.0, which contradicts Samsung's 'PD 3.1 or higher' footnote, so a shopper can't filter chargers on a PD 3.1 badge. Second, an 11 V or 16 V PPS range is not enough even when its rated watts look adequate. That only refines what the rival pages already say. It doesn't decide anything they leave open.",
+ "decides": "It confirms the Samsung EP-T6010 as the safe pick, the only charger with a published S26 Ultra test: Android Authority measured a 60 W peak for about 2 minutes, about 48 W for about 16 minutes and 42 minutes to full; ChargerLAB measured 51.54 W. A third-party charger, ours included, can sit alongside it only if its maker states a PPS range of at least 20 V at 3 A on the port the phone uses, while that port is the only one in use. I could not reopen any UGREEN or Baseus spec table today because us.ugreen.com returned 403/429. So the UGREEN Nexode 65W travel charger, UGREEN Nexode Air 65W and Baseus PicoGo Pro AH22 rest on our earlier records, are paper matches only, and none has a measured S26 Ultra result. The Samsung 65W Trio is the well-known charger that fails this check (20 V 2.25 A PPS = 45 W, per SamMobile).",
+ "candidates": [
+  "Samsung 60W Power Adapter EP-T6010",
+  "UGREEN Nexode 65W 3-Port GaN Travel Charger (US/UK/EU plugs)",
+  "UGREEN Nexode Air 65W USB-C Charger",
+  "Baseus PicoGo Pro AH22 100W 3-Port Charger",
+  "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+  "Samsung 65W Trio Power Adapter (fails the check)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "What the S26 Ultra needs for 60 W",
+   "value": "USB PD 3.1 charger with PPS and 20 V/3 A from a single port; the 20 V mode is less common than PPS alone",
+   "source": "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/",
+   "source_title": "Samsung's 60W Galaxy S26 Ultra finally charges fast, but only because it lags on battery size - Android Authority",
+   "read": "2026-11-27",
+   "note": "Robert Triggs. The article tested no third-party chargers and says it is unclear whether they support Samsung's 20 V mode."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "Charging curve on the S26 Ultra",
+   "value": "60 W peak for about 2 min; about 48 W sustained for about 16 min; 42 min to full; 37% at 10 min, 85% at 30 min",
+   "source": "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/",
+   "source_title": "Samsung's 60W Galaxy S26 Ultra finally charges fast, but only because it lags on battery size - Android Authority",
+   "read": "2026-11-27",
+   "note": "Android Authority's measurement with Samsung's adapter. It says the bundled 3 A cable is enough and a 5 A cable does not charge faster."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "PPS ranges and protocol read by a tester",
+   "value": "Fixed PDOs 5 V/9 V/15 V/20 V at 3 A; PPS 5–11 V 5 A, 5–16 V 4 A, 5–21 V 3 A; POWER-Z KM003C reads PD3.0, PPS, QC5, DCP; label: PPS 5–20 V 3 A (15–60 W)",
+   "source": "https://www.chargerlab.com/teardown-of-samsung-60w-low-standby-gan-charger-ep-t6010/",
+   "source_title": "Teardown of Samsung 60W Low Standby GaN Charger (EP-T6010) - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB's readout. Arithmetic: 11 V × 5 A = 55 W, so the first range cannot reach 60 W. Only the 5–21 V 3 A range matches the 20 V/3 A mode Android Authority names. The protocol chip (BPS BP63430N) is described as PD 3.1-capable, but the tester reads PD 3.0."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "Power measured on the S26 Ultra",
+   "value": "about 51.54 W",
+   "source": "https://www.chargerlab.com/teardown-of-samsung-60w-low-standby-gan-charger-ep-t6010/",
+   "source_title": "Teardown of Samsung 60W Low Standby GaN Charger (EP-T6010) - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB measurement. The article does not say which PDO or APDO the phone requested."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "Samsung's spec and Super Fast Charging 3.0 condition",
+   "value": "PDO 9/15/20 V at 3 A; PPS 5–20 V at 3 A; 'PDO/PPS Max 60W'; Super Fast Charging 3.0: Galaxy S26 Ultra and later. Footnote: the device needs USB PD 3.1 or higher and Direct Charging support",
+   "source": "https://www.samsung.com/ca/mobile-accessories/60w-power-adapter-black-ep-t6010nbegca/",
+   "source_title": "60W USB-C Power Adapter (Adapter Only) | Samsung Canada",
+   "read": "2026-11-27",
+   "note": "Maker's page. No cable included. Shown as Out of Stock on the CA page."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "US price, Samsung store",
+   "value": "$54.99, no compare-at price; Delivery and In-Store Pickup shown as 'Not Available'",
+   "source": "https://www.samsung.com/us/mobile-accessories/60w-pd-power-adapter-black-sku-ep-t6010nbegus/",
+   "source_title": "60W PD Power Adapter, Black | Samsung US (EP-T6010NBEGUS)",
+   "read": "2026-11-27",
+   "note": "The page doesn't say whether 'Not Available' means sold out or just no zip code entered. The Best Buy figure ChatGPT showed ($30.77) was not checked."
+  },
+  {
+   "product": "Samsung 65W Trio Power Adapter",
+   "label": "Why it can't give the S26 Ultra 60 W",
+   "value": "Fast charging only at 45 W (20 V, 2.25 A) PPS",
+   "source": "https://www.sammobile.com/news/samsungs-65w-trio-adapter-cant-charge-your-galaxy-s26-ultra-at-60w/",
+   "source_title": "Samsung's 65W Trio adapter can't charge your Galaxy S26 Ultra at 60W - SamMobile",
+   "read": "2026-11-27",
+   "note": "SamMobile reporting Samsung's clarification that SFC 3.0 needs 60 W under PPS (volts × amps in PPS mode ≥ 60 W). 20 V × 2.25 A = 45 W."
+  },
+  {
+   "product": "general",
+   "label": "Cable advice conflict",
+   "value": "SamMobile: use a 5 A cable as the safer choice; Android Authority: the bundled 3 A cable is enough and 5 A does not charge faster",
+   "source": "https://www.sammobile.com/news/heres-what-you-need-charge-galaxy-s26-ultra-60w/",
+   "source_title": "Here's what you need to charge Galaxy S26 Ultra at 60W - SamMobile",
+   "read": "2026-11-27",
+   "note": "SamMobile gives no PPS voltage or current figures. Follow Android Authority, which measured; SamMobile did not."
+  },
+  {
+   "product": "UGREEN Nexode 65W 3-Port GaN Travel Charger (US/UK/EU plugs)",
+   "label": "Single-port outputs",
+   "value": "65 W, 65 W, 22.5 W (C1, C2, A); combined 65 W",
+   "source": "https://www.digitalcameraworld.com/reviews/ugreen-nexode-65w-3-port-travel-charger-one-for-the-global-nomad",
+   "source_title": "Ugreen Nexode 65W 3-Port Travel Charger: one for the global nomads - Digital Camera World",
+   "read": "2026-11-27",
+   "note": "Gareth Bevan, 30 Oct 2023, tested with a MacBook. No PPS range is stated. The same article also says the USB-C ports max at 45 W, which conflicts with its spec list. No phone test."
+  }
+ ],
+ "unsourced": [
+  "UGREEN's own PPS range for the Nexode 65W travel charger (our record says 3.3–21 V 3 A): us.ugreen.com returned 403 to storecheck and 429 to fetch on 2026-11-27, and no spec PDF or reviewer readout turned up in search.",
+  "UGREEN Nexode Air 65W PPS 5–21 V 3.25 A and Baseus PicoGo Pro AH22 PPS 5–20 V 5 A: these come from our records (Charge-Test, techtest.org), which I did not reopen today; the UGREEN maker page was rate-limited.",
+  "Any named third-party charger measured on an S26 Ultra at about 60 W. ChargerLAB's S26 Ultra compatibility test page returned only its intro to fetch; GSMArena's review (with the unnamed 67 W charger) returned HTTP 402; PhoneArena's test returned 403.",
+  "Which PPS APDO and voltage the S26 Ultra actually negotiates (a readout of about 20 V × 3 A), and its charge-pump ratio. No teardown or protocol trace found.",
+  "UGREEN Nexode 100W 4-port PPS ceiling ('PPS 25W' lead): not checked within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.4088466
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "angle": "A",
+ "gap": "No result ChatGPT got points out that Samsung's 65W Trio and its 60W EP-T6010 list the same PPS voltage range (5.0–20.0 V). What separates them is the PPS current printed for 20 V: 3 A, which makes 60 W, on the EP-T6010 against 2.25 A, which makes 45 W, on the Trio. The 'look for a PPS range up to 21 V' check that ChatGPT gave shoppers therefore cannot tell a 60 W charger from a 45 W one. The amps at 20 V can.",
+ "standout": 1,
+ "standout_why": "Pages compared: SamMobile 'Samsung's 65W Trio adapter can't charge your Galaxy S26 Ultra at 60W' (cited) gives the Trio as '45W, 20V, 2.25A' but no other spec lines. It does not show that the Trio's PPS voltage range matches the 60 W adapter's, and it lists neither the Trio's per-port PPS limits nor its two-device split. SamMobile 'Here's what you need…' asks for PD 3.0/3.1 with PPS and a 5 A cable, and gives no voltage or current figures. Android Authority states the 20 V/3 A single-port rule and names no third-party charger. The Samsung CA EP-T6010 page (cited) gives only that charger's own line. ChatGPT's answer told shoppers to look for 'PPS: 3.3–21 V ⎓ 3 A', a pattern the Trio's 5.0–20.0 V range would also pass on voltage. GSMArena (cited) returned HTTP 402, so I could not check it. The ChargerLAB compatibility test page would not render its test data for me.",
+ "decides": "It confirms Samsung's EP-T6010 as the pick, since it is the only charger whose maker lists PPS at 3 A across the whole 5–20 V range on one port. It also gives the page its rule for reading any spec label: take the PPS current listed at 20 V and multiply by 20, ignoring the headline watts and the voltage span. On that rule the Trio comes to 45 W on USB-C1 and 24.75 W at most on USB-C2. A third-party charger only counts if its sheet says 3 A or more at 20 V under PPS. The UGREEN Nexode 65W travel charger's '3.3–21 V 3 A' line, as carried in our record, would pass this test. However, I could not open UGREEN's page today (HTTP 429/403), so its placing still rests on our record and has not been re-read.",
+ "candidates": [
+  "Samsung 60W Power Adapter EP-T6010",
+  "Samsung 65W Power Adapter Trio EP-T6530",
+  "UGREEN Nexode 65W 3-Port GaN Travel Charger (US/UK/EU plugs)",
+  "UGREEN Nexode Pro 65W 3-Port",
+  "Baseus PicoGo Pro AH22 100W"
+ ],
+ "findings": [
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "PPS output as stated by Samsung",
+   "value": "PPS 5–20 V at 3 A (60 W at 20 V); PDO 9 V, 15 V, 20 V at 3 A; USB PD 3.1",
+   "source": "https://www.samsung.com/ca/mobile-accessories/60w-power-adapter-black-ep-t6010nbegca/",
+   "source_title": "60W USB-C Power Adapter (Adapter Only) | Samsung Canada",
+   "read": "2026-11-27",
+   "note": "Spec lines quoted: 'PDO : 9 V, 15 V, 20 V / PPS : 5-20 V' and 'PDO : 3 A(9 V, 15 V, 20 V) / PPS : 3 A(5-20 V)'. Normalised: 20 V × 3 A = 60 W PPS."
+  },
+  {
+   "product": "Samsung 60W Power Adapter EP-T6010",
+   "label": "Samsung's compatibility and charging-time claim",
+   "value": "Super Fast Charging 3.0 on Galaxy S26 Ultra and later; about 75% in about 30 min (Samsung internal testing); no cable in the box",
+   "source": "https://www.samsung.com/ca/mobile-accessories/60w-power-adapter-black-ep-t6010nbegca/",
+   "source_title": "60W USB-C Power Adapter (Adapter Only) | Samsung Canada",
+   "read": "2026-11-27",
+   "note": "Samsung's footnote says SFC 3.0 needs a PD 3.1 device that supports Direct Charging. The 75% figure is Samsung's own claim. The CA page showed 'Out of Stock' and template placeholders in the price fields, so no price was taken from it."
+  },
+  {
+   "product": "Samsung 65W Power Adapter Trio EP-T6530",
+   "label": "PPS output on USB-C1 as stated by Samsung",
+   "value": "PPS 5.0–20.0 V, with current tiers of 3.5 A (5–11 V), 2.8 A (5–16 V) and 2.25 A (5–20 V); 45 W PPS at 20 V. PDO 20 V at 3.25 A (65 W fixed)",
+   "source": "https://www.samsung.com/ca/mobile-accessories/65w-power-adapter-trio-black-ep-t6530nbegca",
+   "source_title": "65W Power Adapter Trio | Samsung Canada",
+   "read": "2026-11-27",
+   "note": "This is the footnote finding. The PPS voltage range is the same as the EP-T6010's (5–20 V). The current at 20 V is 2.25 A, and 20 × 2.25 = 45 W, which matches Samsung's own 'Super Fast Charging 2.0 max. 45 W'. The 65 W headline comes only from the fixed 20 V/3.25 A PDO, which the S26 Ultra's SFC 3.0 does not use."
+  },
+  {
+   "product": "Samsung 65W Power Adapter Trio EP-T6530",
+   "label": "USB-C2 PPS and the two-device split",
+   "value": "USB-C2 PPS 5.0–11.0 V at 2.25 A (Super Fast Charging max 25 W); C1+C2 = 40 W + 25 W; C1+A = 50 W + 15 W; all three = 35 W + 25 W + 5 W",
+   "source": "https://www.samsung.com/ca/mobile-accessories/65w-power-adapter-trio-black-ep-t6530nbegca",
+   "source_title": "65W Power Adapter Trio | Samsung Canada",
+   "read": "2026-11-27",
+   "note": "USB-C2 never reaches 20 V under PPS: 11 V × 2.25 A = 24.75 W at most. With a second device on C2, C1 falls to 40 W."
+  },
+  {
+   "product": "general",
+   "label": "What the S26 Ultra needs, and what it measured on Samsung's 60 W adapter",
+   "value": "USB PD 3.1 with PPS and 20 V/3 A from a single port. Peaked at 60 W for about 2 min, held about 48 W for about 16 min, and reached full in 42 min (37% at 10 min, 85% at 30 min)",
+   "source": "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/",
+   "source_title": "Samsung's 60W Galaxy S26 Ultra finally charges fast, but only because it lags on battery size - Android Authority",
+   "read": "2026-11-27",
+   "note": "Robert Triggs's test. He writes that PPS is increasingly common but the 20 V requirement is less so, and that third-party chargers do not always make clear whether they support the 20 V mode."
+  },
+  {
+   "product": "general",
+   "label": "Cable: the two named sources disagree",
+   "value": "Android Authority: the bundled 3 A cable 'should be sufficient' and 'a 5A cable won't make the phone charge faster'. SamMobile: recommends a 5 A cable for non-Samsung chargers as the safer choice",
+   "source": "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/",
+   "source_title": "Samsung's 60W Galaxy S26 Ultra finally charges fast… - Android Authority",
+   "read": "2026-11-27",
+   "note": "SamMobile's advice is from https://www.sammobile.com/news/heres-what-you-need-charge-galaxy-s26-ultra-60w/, read 2026-11-27. Arithmetic: 20 V × 3 A = 60 W, so a 3 A cable carries the full PPS 60 W. Android Authority's measured result is the one to follow."
+  },
+  {
+   "product": "Samsung 65W Power Adapter Trio EP-T6530",
+   "label": "SamMobile's statement (cited rival)",
+   "value": "'only supports fast charging at 45W, 20V, 2.25A'",
+   "source": "https://www.sammobile.com/news/samsungs-65w-trio-adapter-cant-charge-your-galaxy-s26-ultra-at-60w/",
+   "source_title": "Samsung's 65W Trio adapter can't charge your Galaxy S26 Ultra at 60W - SamMobile",
+   "read": "2026-11-27",
+   "note": "This is the part a rival already covers. SamMobile does not say that the Trio's PPS voltage range matches the 60 W adapter's, and it does not give the Trio's per-port PPS limits."
+  }
+ ],
+ "unsourced": [
+  "The UGREEN Nexode 65W travel charger's PPS line (our record says 3.3–21 V at 3 A on both USB-C ports). us.ugreen.com and ca.ugreen.com returned HTTP 429, and storecheck.py returned HTTP 403. I saw the figure only in a search snippet, which is not allowed as a source.",
+  "The UGREEN Nexode Pro 65W 3-port's PPS rating. A search snippet said its UGREEN listings read 'PPS 45W' for Samsung, but ugreen.com/en-ae and B&H returned 429 and 403.",
+  "The Baseus PicoGo Pro AH22's per-port PPS current at 20 V. baseus.com returned HTTP 429.",
+  "A US price for the EP-T6010. Samsung US has no live product page at the URL I tried. ChatGPT showed $30.77 at Best Buy, but I did not open the Best Buy listing. Android Authority's '$59.99 at Amazon' dates from April 2026.",
+  "Any named measurement of a third-party charger on the S26 Ultra. The ChargerLAB compatibility test page would not render its test data, and GSMArena's lab-test page returned HTTP 402. PhoneArena's 'I tested' article returned 403."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 27,
+  "cost_usd_list": 1.3428050999999999
+ }
+}
