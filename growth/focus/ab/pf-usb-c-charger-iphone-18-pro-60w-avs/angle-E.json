@@ -1,0 +1,141 @@
+{
+ "angle": "E",
+ "gap": "No result ChatGPT got states that a named lab measured an SPR AVS profile (9–20 V at up to 5 A) on all three USB-C ports of the Baseus PicoGo Pro AH22, confirmed in practice that it fast-charges an iPhone 18 Pro Max, and measured it keeping 45 W + 45 W with two devices plugged in (techtest.org, Michael Barton, 2026-11-23).",
+ "standout": 2,
+ "standout_why": "I compared against these pages: Apple Support 102574; Charge-Test (iPhone 18 Pro Max, cited in chat 1); ChargerLAB's iPhone 18 Pro review (cited in chat 2), whose English page shows only an intro with no per-charger table; ChargerLAB's iPhone 18 Pro Max review (cited in chat 2); iThinkDifferent (cited in both chats); and zeerawireless (uncited). LTT Labs (cited) returned 403, so I could not compare its text. iThinkDifferent lists the AH22 as AVS-capable from the maker's claim only and has no measurements of its own. Charge-Test's named list has no AH22, ESR or Belkin. ChargerLAB's tables name Apple, CUKTECH, CANDYSIGN, Lenovo, Rewoda and a 'UGREEN 160W'. No rival page gives a measured AVS profile or a measured two-device split for any multi-port charger. The 1-minute AVS advantage on the smaller Pro is only partly new: ChatGPT already quoted LTT saying a non-AVS charger finished 'within a minute or two'.",
+ "decides": "Apple's 40W Dynamic adapter stays the best-measured pick. On the smaller iPhone 18 Pro, 充电头网 measured it at 17.45 V SPR AVS and 15 min to 50%. On the Pro Max, ChargerLAB measured 51.23 W peak on the compatibility test and 52.9 W peak, 15 min to 50%, on the full-charge test. Our Baseus PicoGo Pro AH22 honestly wins the multi-device segment because a named lab measured its AVS profile on every port and a 45 W + 45 W split. 45 W per port is still above the roughly 42 W the smaller Pro drew on AVS, though 充电头网's peak reading was 45.3 W in another section. That inference comes from comparing two different labs' numbers. Our UGREEN Nexode Air 65W has a named AVS confirmation only on Charge-Test's tested version, and Notebookcheck measured no iPhone. ESR Xtend 45W has only ESR's own lab figure, so it should not enter the top three on measurements. The UGREEN Nexode Pro 160W 5-port has conflicting lab results and should not be featured as an AVS pick unless the exact model is confirmed. On the smaller Pro, the measured AVS advantage over a 15 V PD charger is 1 minute to 50%. The same lab measured full charge 7 minutes slower with AVS (84 vs 77 min). The page should state this honestly.",
+ "candidates": [
+  "Apple 40W Dynamic Power Adapter with 60W Max",
+  "UGREEN Nexode Air 65W (AVS version)",
+  "Baseus PicoGo Pro AH22 100W",
+  "ESR Xtend 45W Retractable (2D001)",
+  "UGREEN Nexode Pro 160W 5-Port",
+  "mophie 60W GaN Dynamic Charger",
+  "Belkin UltraCharge Retractable 67W (WCH022)"
+ ],
+ "findings": [
+  {
+   "product": "Apple 40W Dynamic Power Adapter with 60W Max",
+   "label": "Measured draw on iPhone 18 Pro (not Max), AVS",
+   "value": "17.45 V / 2.42 A / ~42.3 W, SPR AVS (only charger in the test to trigger the AVS tier)",
+   "source": "https://www.chongdiantou.com/archives/1790039765929.html",
+   "source_title": "解锁SPR AVS快充，iPhone 18 Pro 充电评测 - 充电头网",
+   "read": "2026-11-27",
+   "note": "充电头网 (ChargerLAB's Chinese-language site), dated 2026-09-22, measured with a POWER-Z KM003C. The same article gives a 45.3 W peak in its full-charge section."
+  },
+  {
+   "product": "Apple 40W Dynamic Power Adapter with 60W Max",
+   "label": "Full charge, iPhone 18 Pro, 25 °C chamber",
+   "value": "15 min to 50%, 31 min to 80%, 84 min (1h24m47s) to 100%",
+   "source": "https://www.chongdiantou.com/archives/1790039765929.html",
+   "source_title": "解锁SPR AVS快充，iPhone 18 Pro 充电评测 - 充电头网",
+   "read": "2026-11-27",
+   "note": "充电头网, 2026-09-22. The heading of the full-charge section says 'Pro Max', but the review covers the iPhone 18 Pro."
+  },
+  {
+   "product": "Apple 140W USB-C Power Adapter (no SPR AVS)",
+   "label": "Measured draw and full charge, iPhone 18 Pro",
+   "value": "14.46 V / 2.85 A / ~41.2 W via PD 15 V; 16 min to 50%, 30 min to 80%, 1h17m to 100%",
+   "source": "https://www.chongdiantou.com/archives/1790039765929.html",
+   "source_title": "解锁SPR AVS快充，iPhone 18 Pro 充电评测 - 充电头网",
+   "read": "2026-11-27",
+   "note": "Arithmetic: compared with the 40W Dynamic, the 140W adapter (no AVS) is 1 min slower to 50% and 7 min faster to 100% on the smaller Pro. This is the well-known charger that shoppers assume works and that does not negotiate SPR AVS."
+  },
+  {
+   "product": "Apple 40W Dynamic Power Adapter with 60W Max",
+   "label": "Measured on iPhone 18 Pro Max",
+   "value": "17.35 V / 2.95 A / 51.23 W SPR AVS (compatibility); 52.9 W peak, 15 min to 50%, 29 min to 80%, 1h12m to 100% (full-charge test)",
+   "source": "https://www.chargerlab.com/charging-review-of-iphone-18-pro-max/",
+   "source_title": "Charging Review of iPhone 18 Pro Max - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB, 2026-10-12, 25 °C chamber. One chart's text says 1h24m to full, which conflicts with the 1h12m in the curve section. For comparison, the Apple 140W gave 42.97 W via PD, 17 min to 50% and 1h10m to full."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Measured protocol profile, all three USB-C ports",
+   "value": "SPR AVS 9–20 V at 5 A; PPS 5–20 V at 5 A; fixed PD up to 20 V/5 A (100 W)",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS",
+   "read": "2026-11-27",
+   "note": "techtest.org, Michael Barton, 2026-11-23. He tested it with an iPhone 18 Pro Max and states it fast-charges the phone in practice, but gives no watts or voltage for that test."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "Watts per port with two and three devices",
+   "value": "45 W + 45 W (C1 + C2); 45 W + 45 W + 10 W (C1 + C2 + C3)",
+   "source": "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/",
+   "source_title": "Baseus PicoGo Pro AH22 im Test: 100W USB-C-Ladegerät mit Display und AVS",
+   "read": "2026-11-27",
+   "note": "techtest.org, 2026-11-23. Same review: held 100 W for about 40 min before dropping to 80 W; average efficiency 88.18% (79.3–92.8%); idle draw 0.1–0.4 W depending on the display."
+  },
+  {
+   "product": "UGREEN Nexode Air 65W",
+   "label": "AVS used by iPhone 18 Pro Max",
+   "value": "Yes, SPR AVS 9–20 V at up to 3 A, on the reviewer's tested version only",
+   "source": "https://charge-test.com/iphone-18-pro-max-charging-test-do-you-really-need-a-usb-pd-3-2-avs-charger/",
+   "source_title": "iPhone 18 Pro Max Charging Test: Do You Really Need a USB PD 3.2 AVS Charger? - Charge-Test",
+   "read": "2026-11-27",
+   "note": "Charge-Test, 2026-09-25, updated 2026-11-11. The page calls it 'Nexode Air 65W Mini' and flags that AVS depends on the version. Dealectric's record carries the Version 1 (no AVS) / Version 3 (AVS) split from an earlier read. Cited by ChatGPT in chat 1."
+  },
+  {
+   "product": "UGREEN Nexode Air 65W",
+   "label": "Notebookcheck lab figures",
+   "value": "0.028 W idle; up to 67.7 W drawn from the wall at start of a laptop charge, settling at 58–65 W; up to 50.9 °C on the case (FLIR)",
+   "source": "https://www.notebookcheck.net/Compact-powerful-and-efficient-Ugreen-Nexode-Air-65W-USB-C-GaN-charger-review.1343228.0.html",
+   "source_title": "Compact, powerful and efficient: Ugreen Nexode Air 65W USB-C GaN charger review - Notebookcheck",
+   "read": "2026-11-27",
+   "note": "Daniel Schmidt, published 2026-07-15, updated 2026-10-05. The review states 'USB Power Delivery 3.2, including AVS and PPS' but measured no iPhone. These are wall-side figures tested with a Honor MagicBook Art 14."
+  },
+  {
+   "product": "general",
+   "label": "AVS vs no AVS, iPhone 18 Pro Max (chargers not named)",
+   "value": "Working SPR AVS: 52 W peak, 15 min to 50%, 29 min to 80%, ~70 min to 100%. 65 W without AVS: 43 W peak, 18 / 32 / ~71 min",
+   "source": "https://charge-test.com/iphone-18-pro-max-charging-test-do-you-really-need-a-usb-pd-3-2-avs-charger/",
+   "source_title": "iPhone 18 Pro Max Charging Test: Do You Really Need a USB PD 3.2 AVS Charger? - Charge-Test",
+   "read": "2026-11-27",
+   "note": "Charge-Test. The iPhone requested about 17.4 V at 3 A on AVS. Eight named chargers advertised SPR AVS but fell back to about 45 W fixed PD, among them the UGREEN Nexode Pro 160W X774 and the Belkin UltraCharge 22K power bank."
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port",
+   "label": "AVS on iPhone 18 Pro Max (named labs disagree)",
+   "value": "ChargerLAB: negotiated 18 V/3 A AVS at 'nearly 52W'. Charge-Test: X774 did not use AVS; X776 used it only with PPS disabled in the app",
+   "source": "https://www.chargerlab.com/iphone-18-pro-max-avs-compatibility-test-ugreen-nexode-pro-160w-5-port-usb-c-charger",
+   "source_title": "iPhone 18 Pro Max AVS Compatibility Test: UGREEN Nexode Pro 160W 5-Port USB-C Charger - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB, 2026-10-09, gives no model number, port or firmware. Its Pro Max review table lists 'UGREEN 160W Charger' at 17.54 V / 2.97 A / 52.04 W SPR AVS. The Charge-Test result is from the Charge-Test URL above."
+  },
+  {
+   "product": "mophie 60W GaN Dynamic Charger",
+   "label": "AVS on iPhone 18 Pro Max",
+   "value": "18 V/3 A AVS, around 50 W",
+   "source": "https://www.chargerlab.com/iphone-18-pro-max-avs-compatibility-test-mophie-60w-gan-dynamic-charger",
+   "source_title": "iPhone 18 Pro Max AVS Compatibility Test: mophie 60W GaN Dynamic Charger - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "ChargerLAB, 2026-10-20. No voltage or current breakdown is given. This is a rival with no Dealectric link."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable (2D001)",
+   "label": "Draw on iPhone 18 Pro / Pro Max (maker's lab, not independent)",
+   "value": "43 W (iPhone 18 Pro), 53 W (iPhone 18 Pro Max)",
+   "source": "https://www.izreview.com/esr-xtend-45w-retractable-charger-review/",
+   "source_title": "ESR Xtend 45W Review: Retractable Wall Charger, 60W Peak - IZreview",
+   "read": "2026-11-27",
+   "note": "IZreview (Metin Karal) labels these 'ESR's own lab data'. The page shows no date. The reviewer did not measure them, and the 15-minute-to-50% figure is ESR's rating."
+  }
+ ],
+ "unsourced": [
+  "LTT Labs iPhone 18 Pro charging article and its 2026-09-24 test-results page: both returned 403, so I could not read LTT's measured watts, the ~17 V figure or the charge times ChatGPT quoted.",
+  "An independent measurement of the ESR Xtend 45W on an iPhone 18 Pro: the Gizmochina hands-on (2026-11-21, said to show 45 W and about 15 min to 50%) returned 403. I found no ChargerLAB or Charge-Test result.",
+  "An independent measurement of the Belkin UltraCharge Retractable 67W (WCH022) with an iPhone 18 Pro or Pro Max: the search found only Belkin's own claims (iPhone 17 timings) and BGR's recommendation.",
+  "The watts or voltage the iPhone 18 Pro Max actually drew from the Baseus PicoGo Pro AH22: techtest.org states it fast-charges but gives no number.",
+  "Any third-party charger measured on the smaller iPhone 18 Pro (not Pro Max): every per-charger AVS test I opened (ChargerLAB, Charge-Test) used the Pro Max. ChargerLAB's English iPhone 18 Pro review page showed no per-charger table.",
+  "Model number (X774 vs other) of the UGREEN Nexode Pro 160W 5-Port that Dealectric links: us.ugreen.com returned 403 through storecheck, and I did not open a page that states it.",
+  "Which UGREEN Nexode Air 65W version UGREEN's US store ships today: I could not reach UGREEN's page."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 25,
+  "cost_usd_list": 1.4301629000000005
+ }
+}

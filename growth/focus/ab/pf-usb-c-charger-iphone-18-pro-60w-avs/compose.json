@@ -1,0 +1,163 @@
+{
+ "status": "ok",
+ "angle": "A",
+ "why_angle": "The cited pages give the iPhone's AVS draw (about 52 W on the Pro Max) and test one charger at a time. None compares that draw with what a multi-port AVS charger's phone port keeps once a second device is plugged in: 45 W + 45 W on the Baseus AH22, 45 W total on the ESR Xtend, 45 W + 20 W on the Belkin. None uses the USB PD 3.2 power rule to explain why a 45 W port drops the phone out of AVS. This page also sets ChargerLAB's AVS pass for the 5-port UGREEN 160W against techtest.org's and Charge-Test's failures.",
+ "slug": "usb-c-chargers-avs-iphone-18-pro-60w-fast-charge",
+ "must": [
+  "led by Apple's 40W Dynamic adapter",
+  "more than 45 W to itself"
+ ],
+ "products": [],
+ "page": {
+  "title": "USB-C chargers with AVS that fast charge an iPhone 18 Pro (the 60W tier)",
+  "h1": "Which USB-C chargers fast charge an iPhone 18 Pro at 60W with AVS?",
+  "desc": "Which USB-C chargers give an iPhone 18 Pro its AVS fast-charge tier, what labs measured (42 W on the Pro, 52 W on the Pro Max), and what a second device plugged into the charger does to it.",
+  "answer": "<p class=\"lead\"><strong>Short answer.</strong> Chargers with SPR AVS, led by Apple's 40W Dynamic adapter, fast charge an iPhone 18 Pro, but not at 60W: ChargerLAB's test measured 42.3 W (Pro Max 52.9 W). Multi-port AVS chargers keep that tier only while the phone's port has more than 45 W to itself.</p>",
+  "columns": [
+   [
+    "avs",
+    "AVS on iPhone 18 Pro / Pro Max (who confirmed it)"
+   ],
+   [
+    "one_port",
+    "Most watts one port gives one device"
+   ],
+   [
+    "second_device",
+    "Phone's port with a second device plugged in"
+   ],
+   [
+    "ports",
+    "Ports"
+   ]
+  ],
+  "rows": [
+   {
+    "brand": "Apple",
+    "model": "40W Dynamic Power Adapter with 60W Max (A3351)",
+    "url": "https://www.apple.com/shop/product/mgkn4am/a/40w-dynamic-power-adapter-with-60w-max",
+    "cells": {
+     "avs": "SPR AVS 9–20 V, 3 A. Pro: 17.45 V × 2.42 A = 42.3 W (充电头网). Pro Max: 17.35 V × 2.95 A = 51.23 W, 52.9 W peak (ChargerLAB)",
+     "one_port": "60 W max (Apple)",
+     "second_device": "Single port, so the phone always has it to itself (Charge-Test)",
+     "ports": "1× USB-C; Apple says to use the cable from the iPhone box",
+     "price": "$29.99 (Target, 2026-11-27; sale price, regular $39.99)"
+    }
+   },
+   {
+    "slug": "ugreen-nexode-air-65w-gan-charger",
+    "model": "UGREEN Nexode Air 65W (AVS version 3)",
+    "cells": {
+     "avs": "SPR AVS 9–20 V, 3 A, used by the Pro Max on Charge-Test's unit (TinkerVault meter read the same range). Only version 3 has it: weighs 76 g against about 82 g for older stock (techtest.org)",
+     "one_port": "65 W (20 V / 3.25 A, TinkerVault)",
+     "second_device": "Single port, no split (Charge-Test)",
+     "ports": "1× USB-C"
+    }
+   },
+   {
+    "slug": "baseus-picogo-pro-ah22-100w-3-port-display-charger",
+    "model": "Baseus PicoGo Pro AH22 100W",
+    "cells": {
+     "avs": "SPR AVS 9–20 V at 5 A on all three USB-C ports. AVS fast charging confirmed on a Pro Max, no watts given (techtest.org)",
+     "one_port": "100 W from any one port used alone (techtest.org)",
+     "second_device": "45 W + 45 W, or 45 + 45 + 10 W with three devices (techtest.org): below the AVS tier",
+     "ports": "3× USB-C, display"
+    }
+   },
+   {
+    "slug": "esr-xtend-45w-retractable-charger",
+    "model": "ESR Xtend 45W Retractable (2D001)",
+    "cells": {
+     "avs": "PD 3.2 AVS and 'dynamic 45–60W peak' per ESR only; no independent iPhone test",
+     "one_port": "Up to 60 W to one device (ESR claim)",
+     "second_device": "45 W total across both ports (ESR)",
+     "ports": "Retractable 3.1 ft USB-C cable + 1× USB-C"
+    }
+   },
+   {
+    "brand": "Belkin",
+    "model": "UltraCharge Retractable GaN Wall Charger 67W (WCH022)",
+    "url": "https://www.belkin.com/p/retractable-gan-wall-charger-67w/WCH022dqWH.html",
+    "cells": {
+     "avs": "'Adjustable Voltage Supply (AVS) protocol' per Belkin, with no voltage range given; no independent iPhone test",
+     "one_port": "67 W (Belkin)",
+     "second_device": "45 W + 20 W (Belkin support FAQ)",
+     "ports": "Retractable 3.3 ft USB-C cable + 1× USB-C (Belkin)",
+     "price": "$39.99 (Belkin, 2026-11-27)"
+    }
+   }
+  ],
+  "after": "<p>AVS (Adjustable Voltage Supply, part of USB PD 3.2) lets an iPhone 18 Pro or Pro Max ask the charger for an in-between voltage. The Pro Max asks for about 17.4 V at 3 A, per Charge-Test. Apple says 50% in around 15 minutes needs its 40W Dynamic adapter or a third-party adapter that is 60 W-capable, uses AVS and supports USB-PD 3.2. Without AVS the phone still fast charges at the fixed 15 V level. The AVS label on the box is not proof: Charge-Test lists several chargers that advertise SPR AVS yet fell back to fixed PD at about 45 W. Each row above therefore names who confirmed AVS, and claims that come only from the maker are marked. Dealectric does not test units; every figure here comes from the lab or maker named next to it.</p><h2>What the differences mean</h2><ul><li><strong>60 W is the charger's ceiling, not the phone's draw.</strong> On Apple's adapter the iPhone 18 Pro drew 17.45 V × 2.42 A = 42.3 W (充电头网, ChargerLAB's Chinese site). The Pro Max drew 17.35 V × 2.95 A = 51.23 W with a 52.9 W peak (ChargerLAB): 52.9 ÷ 60 = 88% of the label.</li><li><strong>Without AVS the phone takes fixed 15 V.</strong> Apple's own 140W MacBook adapter gave the Pro Max 14.44 V × 2.98 A = 42.97 W (ChargerLAB). On the smaller Pro it gave 14.46 V × 2.85 A = 41.2 W (充电头网).</li><li><strong>Time AVS saves to 50%.</strong> Smaller Pro: 16 − 15 = 1 minute (充电头网). Pro Max: 17 − 15 = 2 minutes (ChargerLAB) or 18 − 15 = 3 minutes (Charge-Test). AVS does not finish a full charge sooner: on the smaller Pro the AVS adapter took 1 h 24 min against 1 h 17 min without it, 84 − 77 = 7 minutes slower (充电头网).</li><li><strong>A second device can take the phone off AVS.</strong> The AH22's 45 W per port is less than the Pro Max's 17.4 V × 3 A = 52.2 W request.</li></ul><table><thead><tr><th>Your use</th><th>Fits</th><th>Why</th></tr></thead><tbody><tr><td>One iPhone, least doubt</td><td>Apple 40W Dynamic (A3351)</td><td>Measured on both the Pro and the Pro Max; one port</td></tr><tr><td>One iPhone, lower price</td><td>UGREEN Nexode Air 65W, {price:ugreen-nexode-air-65w-gan-charger} at UGREEN</td><td>SPR AVS seen by Charge-Test; check that you got the 76 g version</td></tr><tr><td>iPhone and laptop on one plug</td><td>Baseus PicoGo Pro AH22</td><td>100 W to one port; the phone keeps AVS only while it charges alone</td></tr><tr><td>Built-in cable for travel</td><td>ESR Xtend 45W or Belkin UltraCharge 67W</td><td>AVS on the maker's word only</td></tr><tr><td>You already own a 15 V / 3 A USB-C charger</td><td>Keep it</td><td>1 to 3 minutes slower to 50%</td></tr></tbody></table><h2>Why the phone's port needs more than 45 W to itself</h2><p>Under USB PD 3.2, a charger's rated power sets how much current its AVS mode can give above 15 V. GW Instek's summary of the spec: a source rated above 45 W and up to 60 W offers AVS from 9 to 20 V at 3 A, while a 27–45 W source offers it only from 9 to 15 V. TinkerVault's meter read one 45 W charger as 3 A up to 15 V and 2.25 A from 15 to 20 V. Under either reading, a 45 W port cannot meet the Pro Max's request: 17.4 V × 2.25 A = 39 W, which is less than the 45 W fixed 15 V level. The smaller Pro's 2.42 A is also above 2.25 A.</p><p>That is what a second device does to a multi-port charger. On the Baseus PicoGo Pro AH22, techtest.org measured SPR AVS at 9–20 V and 5 A on all three USB-C ports and confirmed AVS fast charging with an iPhone 18 Pro Max. With two devices plugged in, though, each port drops to 45 W. ESR states a 45 W maximum total for its Xtend 45W when both ports are in use, and Belkin gives 45 W + 20 W for its UltraCharge 67W. By the rule above, the phone on any of these falls back to fixed 15 V while the second device charges. No lab has tested that case, so this is a reading of the spec, not a measurement. Apple's adapter and the Nexode Air have a single port, so they never split. If one charger has to serve a laptop too, the AH22 still gives the phone AVS whenever it charges alone. {buy:baseus-picogo-pro-ah22-100w-3-port-display-charger}</p><p>The Nexode Air 65W has its own catch. Michael Barton at techtest.org found three hardware versions sold under one model number, with the same print and the same housing. Version 1 has no AVS. Version 2 has AVS but does not hold 65 W. Version 3 has both. The only measurable clue is weight: 76 g for version 3 against about 82 g for the older two. Charge-Test confirmed AVS only on its own tested unit. Weigh yours when it arrives, and return it if it weighs about 82 g. {buy:ugreen-nexode-air-65w-gan-charger}</p><p>Does Apple's MacBook charger have AVS? No. ChargerLAB measured Apple's 140W at 42.97 W and its 70W at 43.31 W over fixed PD on the Pro Max.</p><h2>Not recommended</h2><p><strong>UGREEN Nexode Pro 160W 5-Port, bought for iPhone AVS.</strong> UGREEN lists AVS on its USB-C 1 and 2 ports, but the labs disagree on whether the phone uses it. techtest.org found the iPhone 18 Pro Max did not use AVS on this charger, and Charge-Test found the X774 fell back to fixed PD at about 45 W. ChargerLAB's unit did negotiate 18 V / 3 A at nearly 52 W, but ChargerLAB gave no model number. It is a strong laptop charger, but don't buy it for the iPhone's AVS tier.</p>",
+  "sources": [
+   [
+    "Apple's requirement for 50% in around 15 minutes (60 W-capable, AVS, USB-PD 3.2) and model A3351",
+    "https://support.apple.com/en-us/102574"
+   ],
+   [
+    "iPhone 18 Pro Max: Apple 40W Dynamic 17.35 V × 2.95 A = 51.23 W, 52.9 W peak, 15 min to 50%; Apple 140W 42.97 W and 70W 43.31 W over fixed PD, 17 min to 50%",
+    "https://www.chargerlab.com/charging-review-of-iphone-18-pro-max/"
+   ],
+   [
+    "iPhone 18 Pro: 17.45 V × 2.42 A = 42.3 W SPR AVS on Apple 40W Dynamic; Apple 140W 41.2 W; times to 50% and 100%",
+    "https://www.chongdiantou.com/archives/1790039765929.html"
+   ],
+   [
+    "Pro Max requests about 17.4 V at 3 A; 15 vs 18 min to 50%; Nexode Air 65W AVS on the tested version; Apple adapter single port; X774 fell back to fixed PD",
+    "https://charge-test.com/iphone-18-pro-max-charging-test-do-you-really-need-a-usb-pd-3-2-avs-charger/"
+   ],
+   [
+    "Baseus AH22: SPR AVS 9–20 V 5 A on all USB-C ports, AVS confirmed on Pro Max, 100 W single port, 45 + 45 W and 45 + 45 + 10 W splits",
+    "https://techtest.org/baseus-picogo-pro-ah22-im-test-100w-usb-c-ladegeraet-mit-display-und-avs/"
+   ],
+   [
+    "UGREEN Nexode Air 65W: three versions under one model number; version 3 weighs 76 g against about 82 g",
+    "https://techtest.org/achtung-ugreen-nexode-air-65w-mini-es-gibt-drei-versionen-mit-massiven-unterschieden/"
+   ],
+   [
+    "UGREEN Nexode Pro 160W 5-port: AVS listed on USB-C 1/2 but not used by iPhone 18 Pro Max",
+    "https://techtest.org/ugreen-nexode-pro-160w-mit-display-im-test-5-ports-2x-140-w-pps-und-avs/"
+   ],
+   [
+    "UGREEN Nexode Pro 160W 5-port: 18 V/3 A AVS at nearly 52 W in ChargerLAB's test",
+    "https://www.chargerlab.com/iphone-18-pro-max-avs-compatibility-test-ugreen-nexode-pro-160w-5-port-usb-c-charger/"
+   ],
+   [
+    "USB PD SPR AVS voltage window and current by charger rated power",
+    "https://www.gwinstek.com/en-global/power_load/index/20240604"
+   ],
+   [
+    "Meter readouts: Nexode Air 65W AVS 9–20 V 3 A (PD 20 V / 3.25 A); a 45 W charger's AVS at 2.25 A above 15 V",
+    "https://www.tinkervault.com/usb-power-sources/ac-pd32-adapters"
+   ],
+   [
+    "ESR Xtend 45W: 5–20 V up to 3 A, 45 W total when both ports are in use",
+    "https://www.esrtech.com/apps/help/product/2d001"
+   ],
+   [
+    "ESR Xtend 45W: 'dynamic 45–60W peak', PD 3.2 AVS and PPS claim",
+    "https://www.esrtech.com/blogs/charging/esr-xtend-45w-retractable-charger-guide"
+   ],
+   [
+    "Belkin WCH022: AVS claim, 67 W, 3.3 ft retractable cable, iPhone 18 Pro listed, $39.99",
+    "https://www.belkin.com/p/retractable-gan-wall-charger-67w/WCH022dqWH.html"
+   ],
+   [
+    "Belkin UltraCharge Retractable 67W two-device split 45 W + 20 W",
+    "https://www.belkin.com/au/support-article/?articleNum=337679"
+   ]
+  ]
+ },
+ "unsourced": [
+  "Apple 40W Dynamic price on Apple's US store: apple.com showed no price, Adorama and B&H returned 403, the Best Buy page timed out, and Amazon search returned no listing. Target's price is used instead.",
+  "mophie 60W GaN Dynamic (ChargerLAB: 18 V/3 A AVS, about 50 W): no maker product page or US price found, so it is left out of the table.",
+  "Whether the AH22, ESR Xtend or Belkin keep AVS on the phone's port with a second device plugged in: no lab tested this. The page states it as a reading of the PD 3.2 rule.",
+  "Which Nexode Air 65W version UGREEN's US store ships today: storecheck returned HTTP 403.",
+  "An independent iPhone 18 Pro test of the ESR Xtend 45W or Belkin WCH022: none found at ChargerLAB, Charge-Test or techtest.org."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 18,
+  "cost_usd_list": 1.7560135000000003
+ }
+}

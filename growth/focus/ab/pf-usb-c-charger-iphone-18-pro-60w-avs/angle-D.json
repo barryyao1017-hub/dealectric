@@ -1,0 +1,138 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that, under USB PD 3.2, the current a charger can supply in the 15–20 V AVS range depends on its rated power. A charger rated 45 W or less either offers AVS only from 9 to 15 V or supplies at most 2.25 A above 15 V. That means a 45 W-class 'AVS' charger cannot supply the roughly 17.4 V at 3 A that the iPhone 18 Pro Max asks for, and the phone falls back to fixed 15 V at about 43 W.",
+ "standout": 2,
+ "standout_why": "I compared the pages ChatGPT cited plus the unsited results. Apple Support (102574) says 'a 60W-capable adapter that uses AVS and supports USB-PD 3.2' but never explains why 60 W is required. Charge-Test gives the request (about 17.4 V at 3 A) and shows that SPR AVS works while EPR AVS gives no benefit, but it does not tie the AVS voltage window or current to the charger's rated power. ChargerLAB's Pro and Pro Max reviews give per-charger readings and the 9–20 V range with no current rule. iThinkDifferent says only 'fine steps'. Both iTechGuides pages say 60 W is needed but give no reason. LTT Labs returned 403. Charge-Test already has part of the finding (the 17.4 V / 3 A request), so the new piece is the rule linking rated power to the AVS window and current.",
+ "decides": "It confirms that Apple's '60W-capable' wording is an electrical requirement, not marketing. A charger only gives the top tier if it can supply about 3 A at about 17.4 V for a Pro Max, or just under 2.5 A at about 17 V for the smaller Pro, which means it must be rated above 45 W with a 20 V/3 A level. That keeps the Apple 40W Dynamic (60W Max), the UGREEN Nexode Air 65W (measured AVS 9–20 V at 3 A) and the Baseus PicoGo Pro AH22 (AVS 9–20 V at 3 A/5 A) in the top group. It rules out any charger whose port is rated 45 W, even if it says 'AVS'. For our ESR Xtend 45W: ESR says one device can get 5–20 V at up to 3 A, so it may qualify on its own. When both ports are in use it is limited to 45 W total, which by this rule closes the 17 V window. Its own AVS range has not been independently read out, so it should be a qualified row, not a top pick.",
+ "candidates": [
+  "Apple 40W Dynamic Power Adapter with 60W Max",
+  "UGREEN Nexode Air 65W (AVS version, X860)",
+  "Baseus PicoGo Pro AH22 100W",
+  "ESR Xtend 45W Retractable Charger (2D001)",
+  "UGREEN Nexode Air 100W (X880)",
+  "Verbatim Mini GaN Charger 140W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "SPR AVS voltage window and max current by charger rated power (USB PD 3.2)",
+   "value": ">27–45 W: 9–15 V, 3 A; >45–60 W: 9–20 V, 3 A; >60–100 W: 9–20 V, 5 A (5 A cable); 100–140 W: 9–20 V, 5 A",
+   "source": "https://www.gwinstek.com/en-global/power_load/index/20240604",
+   "source_title": "USB Type-C Power Delivery Cable Test - GW Instek",
+   "read": "2026-11-27",
+   "note": "GW Instek's Table 4 sums up the PD spec. Its exact words: 'The maximum current of the standard power range SPR is determined by 15 volts in the range of 9 to 15 volts; and 20 volts in the range of 15 to 20 volts.' I could not open the USB-IF spec itself (see unsourced)."
+  },
+  {
+   "product": "general",
+   "label": "SPR AVS has two separate current fields and fixed voltage steps",
+   "value": "9–15 V and 15–20 V current fields; 100 mV voltage step; 50 mA current step in the request",
+   "source": "https://ratatoskr.run/linux-usb/2026/03/3461707/t",
+   "source_title": "[PATCH v2 0/3] Add support for AVS in TCPM (Badhri Jagan Sridharan, Google), 2026-03-16",
+   "read": "2026-11-27",
+   "note": "The Linux kernel source comment reads 'SPR AVS has two different current ranges 9V - 15V, 15V - 20V'. The constants are SPR_AVS_TIER1_MAX_VOLT_MV=15000, SPR_AVS_TIER2_MAX_VOLT_MV=20000 and SPR_AVS_VOLT_MV_STEP=100. The code takes the 15–20 V maximum from the charger's APDO field pdo_spr_avs_apdo_15v_to_20v_max_current_ma()."
+  },
+  {
+   "product": "general",
+   "label": "AVS step compared with PPS step",
+   "value": "AVS 100 mV steps; PPS 20 mV steps; SPR AVS range 9–20 V",
+   "source": "https://www.androidauthority.com/usb-power-delivery-need-to-know-3602089/",
+   "source_title": "6 things you need to know to untangle the USB Power Delivery charging mess (Robert Triggs, Android Authority, 2025-09-30)",
+   "read": "2026-11-27",
+   "note": "Triggs also writes 'AVS becomes mandatory for SPR devices requesting >27W'."
+  },
+  {
+   "product": "general",
+   "label": "Apple's requirement for iPhone 18 Pro / Pro Max fast charging",
+   "value": "Apple 40W Dynamic Power Adapter with 60W Max, or a third-party adapter that is 60 W-capable (or greater), uses AVS and supports USB-PD 3.2; 50% in around 15 min",
+   "source": "https://support.apple.com/en-us/102574",
+   "source_title": "Fast charge your iPhone - Apple Support (published 2026-10-22)",
+   "read": "2026-11-27",
+   "note": "The body text says USB-PD 3.2, but the testing footnote says 'USB PD 3.1 (or better)'. Apple's test used drained phones and the 'cable that came in the box'."
+  },
+  {
+   "product": "iPhone 18 Pro Max",
+   "label": "Voltage and current the phone requests over SPR AVS",
+   "value": "about 17.4 V at 3 A, about 52 W (fixed PD: 15 V at up to 3 A, about 45 W)",
+   "source": "https://charge-test.com/iphone-18-pro-max-charging-test-do-you-really-need-a-usb-pd-3-2-avs-charger/",
+   "source_title": "iPhone 18 Pro Max Charging Test: Do You Really Need a USB PD 3.2 AVS Charger? - Charge-Test",
+   "read": "2026-11-27",
+   "note": "Charge-Test peak readings: 51.6 W from a 60 W charger with working SPR AVS; 43.3 W from a 140 W charger with only EPR AVS (15–28 V, which the phone ignored). It also lists chargers that advertise 9–20 V/3 A AVS but still fell back to about 45 W fixed PD: 4smarts GaN Flex 100W, ICY BOX IB-PS1002, TOPADRE 65W, and UGREEN Nexode Pro 160W X774."
+  },
+  {
+   "product": "iPhone 18 Pro Max",
+   "label": "Measured on Apple's 40W Dynamic adapter compared with Apple's 140 W and 70 W adapters",
+   "value": "40W Dynamic: 17.35 V × 2.95 A = 51.23 W (SPR AVS); 140 W: 14.44 V × 2.98 A = 42.97 W (PD); 70 W: 14.63 V × 2.96 A = 43.31 W (PD)",
+   "source": "https://www.chargerlab.com/charging-review-of-iphone-18-pro-max/",
+   "source_title": "Charging Review of iPhone 18 Pro Max - ChargerLAB",
+   "read": "2026-11-27",
+   "note": "This shows Apple's own MacBook chargers, which have no SPR AVS, held at about 43 W. ChargerLAB: 50% in 15 min on the 40W Dynamic compared with 17 min on the 140 W (detailed section; the article's summary section gives different full-charge times)."
+  },
+  {
+   "product": "iPhone 18 Pro",
+   "label": "Voltage and current the smaller Pro draws over AVS",
+   "value": "17.0–17.5 V, just under 2.5 A at peak (about 42 W); on a non-AVS 15 V profile it drew up to 3 A (about 40 W)",
+   "source": "https://www.itechguides.com/does-the-iphone-18-pro-need-an-avs-charger-for-fast-charging/",
+   "source_title": "iPhone 18 Pro Charging: Does It Need an AVS Charger? - iTechGuides (reporting LTT Labs, Oct 2026)",
+   "read": "2026-11-27",
+   "note": "These are LTT Labs' figures as reported by iTechGuides; the LTT page itself returned 403. ChargerLAB's iPhone 18 Pro page (https://www.chargerlab.com/charging-review-of-iphone-18-pro/, read 2026-11-27) gives 'around 40W' and calls the mode 'Apple's new 18V3A AVS fast-charging mode'."
+  },
+  {
+   "product": "general",
+   "label": "Arithmetic: why a 45 W 'AVS' charger cannot give the top tier",
+   "value": "At 17.4 V the phone can draw at most 2.25 A from a 45 W charger: 17.4 V × 2.25 A ≈ 39 W, which is below the 15 V × 3 A = 45 W fixed level. Some 45 W sources advertise AVS only up to 15 V",
+   "source": "https://www.tinkervault.com/usb-power-sources/ac-pd32-adapters",
+   "source_title": "Best USB PD 3.2 AVS SPR wall chargers: list and tests - TinkerVault",
+   "read": "2026-11-27",
+   "note": "TinkerVault's KM003C meter read the Baseus EnerFill FN22 45W as 'PD 3.2 AVS SPR 45W: 9-20V3A, 2.25A', meaning 3 A at 9–15 V and 2.25 A at 15–20 V. GW Instek's table gives ≤45 W sources only 9–15 V. Under either reading, a 45 W source cannot supply 3 A at 17.4 V. The arithmetic is mine."
+  },
+  {
+   "product": "Apple 40W Dynamic Power Adapter with 60W Max",
+   "label": "SPR AVS profile and whether the iPhone uses it",
+   "value": "9–20 V, up to 3 A; the iPhone used AVS",
+   "source": "https://charge-test.com/iphone-18-pro-max-charging-test-do-you-really-need-a-usb-pd-3-2-avs-charger/",
+   "source_title": "iPhone 18 Pro Max Charging Test - Charge-Test",
+   "read": "2026-11-27",
+   "note": "Charge-Test lists the model as A3352. Apple's test note, as quoted by iTechGuides, gives A3351. The ID may differ by region, so check it before printing."
+  },
+  {
+   "product": "UGREEN Nexode Air 65W (X860)",
+   "label": "SPR AVS window detected",
+   "value": "9–20 V at 3 A (PD up to 20 V/3.25 A)",
+   "source": "https://www.tinkervault.com/usb-power-sources/ac-pd32-adapters",
+   "source_title": "Best USB PD 3.2 AVS SPR wall chargers: list and tests - TinkerVault",
+   "read": "2026-11-27",
+   "note": "Read with a KM003C meter. Charge-Test confirms the iPhone 18 Pro Max used AVS on 'the tested version' of the Nexode Air 65W Mini and warns that similarly named versions may lack it."
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W",
+   "label": "SPR AVS window detected on USB-C1",
+   "value": "9–20 V at 3 A, with 5 A also listed",
+   "source": "https://www.tinkervault.com/usb-power-sources/ac-pd32-adapters",
+   "source_title": "Best USB PD 3.2 AVS SPR wall chargers: list and tests - TinkerVault",
+   "read": "2026-11-27",
+   "note": "Read with a KM003C meter. TinkerVault notes that Baseus's own protocol list does not mention AVS."
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "label": "Output range and shared limit, per maker",
+   "value": "5–20 V, up to 3 A; 45 W maximum total when both ports are in use",
+   "source": "https://www.esrtech.com/apps/help/product/2d001",
+   "source_title": "esr Xtend 45W Retractable Charger - ESR help page",
+   "read": "2026-11-27",
+   "note": "The page names AVS only in a protocol list and gives no AVS voltage window. 20 V × 3 A implies 60 W to one device; with the shared 45 W total, the 15–20 V rule above means the iPhone would lose AVS speed while a second device charges (my inference, not tested). izreview (Metin Karal) quotes ESR's own lab data: iPhone 18 Pro 43 W and Pro Max 53 W. These are the maker's claims, and the review is undated."
+  }
+ ],
+ "unsourced": [
+  "The USB-IF PD Revision 3.2/3.3 spec text for the SPR AVS APDO and PDP table. The usb.org ZIP (USB_PD_R3.3_V1.0.zip) download was not approved in this session, and the Scribd copy was truncated, so the PDP rule is sourced from GW Instek's summary table and the Linux TCPM patch.",
+  "An independent reading of the ESR Xtend 45W's AVS window (9–15 V or 9–20 V, and current at 15–20 V) or a ChargerLAB/Charge-Test trace with an iPhone 18 Pro. I searched ChargerLAB and the review sites and found none; esrtech.com product pages returned 429/403.",
+  "Whether the Belkin UltraCharge Retractable 67W (WCH022) has SPR AVS. iThinkDifferent says it 'uses PPS rather than AVS', while the desk notes cite BGR for AVS. I did not open BGR or Belkin's page.",
+  "The AVS window of the Anker Nano Charger Neo ('Dynamic 45W-65W'). I did not find a meter readout.",
+  "The LTT Labs article itself (403). The smaller Pro's 17.0–17.5 V and just-under-2.5 A figures come from iTechGuides' report of it."
+ ],
+ "_meta": {
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 1.4990043999999998
+ }
+}
