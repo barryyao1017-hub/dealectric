@@ -8992,6 +8992,23 @@ PRODUCTS = [
  "fit": "A driver who wants 4K of the road ahead only, bought from the maker's store under $200, and the longest loop per card among the 4K cameras at this price.",
  "caveats": ["DashCamTalk's 32.0 Mb/s, H.265 and score figures come from its S1 Pro Max entry, which describes the 4K + 4K kit; they are applied here to the same front camera.", "DashCamTalk scores the S1 Pro Max 6.8 of 10 overall: day video 9, night video 7, discreetness 5; it lists 'Larger sized camera' as a weakness.", "Parking mode is non-buffered and needs a hardwire kit, sold separately. Vantrue's hardwire kit listings read on 2026-11-26 do not name the S1 Pro Max, so ask Vantrue which kit fits before ordering.", "Price read 2026-11-26 through vantrue.com's store search feed (variant Default Title, id 51187927351605, list $199.99); the product page itself returned HTTP 429 that day."]},
 
+{"slug": 'lofree-flow-2-68',
+ "brand": 'Lofree',
+ "program": 'cj:lofree',
+ "asin": None,
+ "category": 'keyboard',
+ "name": 'Lofree Flow 2 68 Low-profile Mechanical Keyboard, 65%, aluminum (Pulse tactile, Surfer linear or Void silent)',
+ "model": 'Flow 2 68',
+ "url": 'https://www.lofree.co/products/flow-2-68-low-profile-mechanical-keyboard',
+ "price": 139.0,
+ "verified": '2026-11-26',
+ "specs": [('Store listing', '$139.00, in stock, no list price shown (Lofree store listing, product-level read 2026-11-26). Variants per the 2026-11-21 read: Space Gray with Pulse (variant 47208105476315) $139, Silver with Surfer (47208802091227) $139, Silver with Void (47209944285403) $149'), ('Price at checkout', "$111.20 for Pulse or Surfer, $119.20 for Void: Lofree's Black Friday Month takes 20% off keyboards in the cart with nothing to enter (cart read 2026-11-21; the banner was on the product page on 2026-11-26 and shows no end date)"), ('Layout', '68 keys (65%): arrow keys kept, no function row'), ('Switches', 'Kailh x Lofree Cloud Series, hot-swappable: Surfer linear and Void silent linear (1.3 ± 0.3 mm actuation), Pulse tactile (1.6 ± 0.3 mm); 40 ± 10 gf, 2.8 ± 0.25 mm total travel (Lofree)'), ('Body', 'Anodized aluminum, CNC-machined from a single block; 635 g; 341.2 × 107 × 21.5 mm (Lofree)'), ('Connectivity', 'USB-C wired, Bluetooth 5.3, 2.4 GHz; 1,000 Hz on wired and 2.4 GHz (Lofree)'), ('Battery', '2,000 mAh; Lofree rates up to 90 h with the backlight off in Bluetooth mode and up to 13 h with the backlight on'), ('Keycaps and backlight', 'PBT + PC double-shot keycaps; white backlight (Lofree)'), ('Software', "VIA; Lofree's Download Center lists a VIA Configurator download per layout (ANSI US, ANSI US Mac, ISO DE, FR, UK, Nordic)"), ('Works with', 'Windows, Android, macOS, iPadOS, iOS (Lofree)')],
+ "warranty": '1-year limited warranty from the purchase date (Lofree)',
+ "returns": "Non-defect returns accepted; buyer pays return shipping to Lofree's Hong Kong warehouse; no return window stated",
+ "summary": "The 68-key size of Lofree's aluminum Flow 2: a 65% low-profile board with 2.4 GHz at 1,000 Hz, Bluetooth 5.3, USB-C, hot-swappable Cloud Series switches and VIA remapping, on a 2,000 mAh battery.",
+ "fit": 'For a desk where the aluminum case, a white backlight and VIA matter more than weeks between charges. Its 2,000 mAh battery is rated up to 90 h with the backlight off on Bluetooth and up to 13 h with it on.',
+ "caveats": ['The 68 has a smaller battery than the Flow 2 84 and 100 (2,000 mAh against 3,000 mAh), so battery results from reviews of the larger sizes do not carry over.', 'White backlight only; total switch travel is 2.8 mm.', "VIA needs the file matching your layout from Lofree's Download Center.", 'No named reviewer has tested the 68-key size; RTINGS tested the 100-key Flow 2.', 'Per-variant price and stock were last read on 2026-11-21; on 2026-11-26 the store listing was read at product level ($139.00, in stock).']},
+
 # Brands whose own programs declined us or never answered. "program": "amazon:us" means: a plain tagged amazon.com link on
 # the page (never through /go/), Amazon's price with its read date (src/amazon_prices.json, refreshed daily), and the
 # Amazon Associates statement in every footer. `url` is the Amazon listing (the bare unit, sold by the brand's Amazon

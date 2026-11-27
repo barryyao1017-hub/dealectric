@@ -1,0 +1,121 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got that I could read states that VIA's own supported-keyboards list (\"Compatible as of 9/19/2026\") has no Lofree, NuPhy or Keychron K7 entry, so the Lofree Flow 2's \"VIA remapping\" only works after loading Lofree's JSON definition file by hand (Digital Trends' Paulo Vargas: \"VIA wouldn't properly recognize the keyboard without it\").",
+ "standout": 1,
+ "standout_why": "Compared against keebscout's low-profile guide and mkbguide's low-profile and 65% guides, which I read in full; none mentions the VIA definition file. The four RTINGS pages (best low-profile, Flow 2 review, Air75 V3 review, the comparison) returned only a navigation shell, so I could not check whether the cited Flow 2 review already covers the VIA step; that is why this is 1 and not 2. My first candidate mechanism, that each low-profile hot-swap socket takes one switch family, is already on rival pages: mkbguide says hot-swap \"very rarely means you can drop in any low-profile switch you like\" and \"NuPhy's V3 boards take the LP 3.0 Nano generation\"; keebscout says the \"three ecosystems ... do not mix\". All three maker stores (lofree.co, nuphy.com, keychron.com) returned HTTP 429 on every attempt, so nothing here is in the makers' own words.",
+ "decides": "It does not change the pick; it qualifies the Lofree Flow 2 68 row. A shopper choosing the Flow 2 68 for remapping should know VIA will not detect it until Lofree's JSON file is loaded, and that Vargas found the Fn key could not be remapped (on the 84-key Mac version; no Flow 2 68 review was found). For switch swaps, the three candidates are separate ecosystems per the rival pages, so spare switches from one will not carry to another.",
+ "candidates": [
+  "NuPhy Air65 V3",
+  "Lofree Flow 2 68",
+  "Keychron K7 Max",
+  "Keychron K7 Pro"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "VIA supported-keyboards list: entries for the candidate boards",
+   "value": "No Lofree entry (Flow, Flow 2, Flow Lite), no NuPhy entry, no Keychron K7 Pro or K7 Max entry; list is headed \"Compatible as of 9/19/2026\"",
+   "source": "https://www.caniusevia.com/docs/supported_keyboards",
+   "source_title": "Supported Keyboards | VIA",
+   "read": "2026-11-26",
+   "note": "Read through a fetch tool that searched the list for the names; other Keychron boards (Q60, V2) are listed. The page itself does not explain what happens to unlisted boards."
+  },
+  {
+   "product": "general",
+   "label": "VIA's condition for official support",
+   "value": "\"To add official support, the keyboard implementation must first be present in QMK Firmware and its `via` keymap in VIA's external QMK userspace.\"",
+   "source": "https://www.caniusevia.com/docs/specification",
+   "source_title": "Specification | VIA",
+   "read": "2026-11-26",
+   "note": "VIA project documentation. The page does not describe the manual JSON-loading route."
+  },
+  {
+   "product": "Lofree Flow 2 (84-key Mac version tested)",
+   "label": "VIA setup as a named reviewer found it",
+   "value": "Needs the correct JSON configuration file: \"VIA wouldn't properly recognize the keyboard without it\"; \"The company eventually sent me the file directly.\"; \"VIA works well enough once configured, although the Fn key still can't be customized.\"",
+   "source": "https://www.digitaltrends.com/computing/the-lofree-flow-2-review/",
+   "source_title": "Lofree Flow 2 review, Digital Trends (Paulo Vargas, 2026-08-09)",
+   "read": "2026-11-26",
+   "note": "Tested the 84-key (75%) Mac version, not the 68. Carrying this to the Flow 2 68 is an inference from the shared family."
+  },
+  {
+   "product": "Lofree Flow 2 (84-key Mac version tested)",
+   "label": "Hot-swap scope as a named reviewer states it",
+   "value": "\"Hot-swappable doesn't mean every mechanical switch you find online will fit.\"; \"compatibility is narrower than it is in the standard MX-style market.\"",
+   "source": "https://www.digitaltrends.com/computing/the-lofree-flow-2-review/",
+   "source_title": "Lofree Flow 2 review, Digital Trends (Paulo Vargas, 2026-08-09)",
+   "read": "2026-11-26",
+   "note": "The review does not name which switch families fit. It quotes Lofree's battery rating (\"up to 120 hours with the backlight switched off\") and says no rundown test was done."
+  },
+  {
+   "product": "Lofree Flow 2",
+   "label": "VIA support and battery at announcement",
+   "value": "Upgraded hardware and firmware make it \"compatible with VIA, the popular open-source keyboard customisation suite\"; 84-key battery 3,000 mAh; no battery figure given for the 68-key",
+   "source": "https://www.notebookcheck.net/Lofree-Flow-2-New-wireless-low-profile-mechanical-keyboard-packs-touch-bar-new-keycaps-and-improved-customisation-with-VIA.1035461.0.html",
+   "source_title": "Lofree Flow 2: New wireless low-profile mechanical keyboard packs touch bar, new keycaps and improved customisation with VIA, Notebookcheck (Julian van der Merwe, 2025-06-13)",
+   "read": "2026-11-26",
+   "note": "Announcement article, not a test."
+  },
+  {
+   "product": "general",
+   "label": "Kailh Choc V2 socket and stem (the switch family Lofree's low-profile switches are reported to belong to)",
+   "value": "\"Choc V2 switches are not interchangeable with Choc V1 switches\"; Choc V2 is \"completely incompatible with standard MX keyboards\"; the variants \"share the same MX-compatible + stem and Choc V2 footprint\"; the Choc V2 switches Keebio lists have 2.8 mm total travel",
+   "source": "https://blog.keeb.io/kailh-choc-v2-switch-comparison/",
+   "source_title": "Kailh Choc V2 Switch Comparison, Keebio Blog (Danny, 2026-03-16)",
+   "read": "2026-11-26",
+   "note": "Keebio is a parts seller. The 2.8 mm figure is for Kailh Deep Sea Mini and Black Cloud, not Lofree's Surfer, Pulse or Void. I did not source Lofree stating its Flow 2 sockets are Choc V2."
+  },
+  {
+   "product": "general",
+   "label": "Rival page already covering the switch-family lock",
+   "value": "\"It very rarely means you can drop in any low-profile switch you like\"; \"NuPhy's V3 boards take the LP 3.0 Nano generation\"; \"Gateron states its low-profile switches are for compatible Gateron LP platforms, not arbitrary LP boards\"; Lofree Flow 2 \"~2.8 mm total travel\"; NuPhy Air75 V3 \"~3.5 mm travel on the LP 3.0 platform\"",
+   "source": "https://mkbguide.com/blog/best-low-profile-mechanical-keyboards",
+   "source_title": "Best Low-Profile Mechanical Keyboards (2026), MKB Guide",
+   "read": "2026-11-26",
+   "note": "A result in the second chat (rank 5), not cited. It names the Air65 V3 and the 68-key Flow 2 only as size variants. This is why the hot-swap mechanism is not a new fact for our page."
+  },
+  {
+   "product": "general",
+   "label": "Rival page on low-profile ecosystems",
+   "value": "\"Three ecosystems cover almost everything on this page, and they do not mix.\"; \"a low-profile socket takes low-profile switches only.\"; Gateron's low-profile line \"keeps an MX-style cross stem\"",
+   "source": "https://keebscout.com/guides/low-profile-mechanical-keyboards/",
+   "source_title": "Best Low-Profile Mechanical Keyboards (2026), keebscout",
+   "read": "2026-11-26",
+   "note": "A result in both chats, not cited. Its 65% low-profile list names the Keychron K7 but not the NuPhy Air65 V3 or Lofree Flow 2 68."
+  },
+  {
+   "product": "general",
+   "label": "Rival 65% guide: coverage of the candidates",
+   "value": "Does not name the NuPhy Air65 V3, Lofree Flow 2 68 or Keychron K7 Max/Pro",
+   "source": "https://mkbguide.com/blog/best-65-percent-keyboards",
+   "source_title": "Best 65% Keyboards (2026): 10 Picks Compared, MKB Guide",
+   "read": "2026-11-26",
+   "note": "A result in both chats, not cited."
+  },
+  {
+   "product": "general",
+   "label": "WebHID availability (the browser interface web configurators rely on)",
+   "value": "\"This feature is not Baseline because it does not work in some of the most widely-used browsers.\"; marked Experimental",
+   "source": "https://developer.mozilla.org/en-US/docs/Web/API/WebHID_API",
+   "source_title": "WebHID API, MDN Web Docs",
+   "read": "2026-11-26",
+   "note": "The browser-by-browser table did not render, so no browser names are given. I did not source any of the three makers stating that its configurator uses WebHID."
+  }
+ ],
+ "unsourced": [
+  "Every price and stock status for the NuPhy Air65 V3, Lofree Flow 2 68 and Keychron K7 Max/Pro: lofree.co, nuphy.com and keychron.com returned HTTP 429 to storecheck.py and to page fetches on every attempt on 2026-11-26, including after a wait; web.archive.org could not be fetched.",
+  "Lofree's own statement of which switches fit the Flow 2 68 sockets, whether VIA works only by cable, where Lofree publishes the JSON file, and the 68-key model's battery, height, weight and polling rate per connection.",
+  "NuPhy's own statement of which switches fit the Air65 V3 (Gateron low-profile 3.0 / Nano, and whether 2.0 switches fit), its configurator and browser requirement, and polling rate per connection. A search snippet said NuPhy's low-profile 3.0 switch page lists 'Kick75 / Air75 V3' without the Air65 V3; I could not open the page.",
+  "Keychron's sentence that the K7 Max is 'compatible with Gateron/Keychron low-profile mechanical switches only, as QMK does NOT support low-profile optical switches': seen only in a search snippet, page not opened.",
+  "The body of the four RTINGS pages (best low-profile, Lofree Flow 2 review, NuPhy Air75 V3 review, NuPhy vs Keychron comparison): only the navigation shell loaded, so I could not read their hot-swap compatibility, travel, latency or VIA notes, nor confirm what they lack.",
+  "Tom's Guide's Lofree Flow 2 review ('one huge drawback'): the fetched page was truncated before the review text.",
+  "Whether the VIA GitHub repository holds a Lofree definition: the one path I tried (the-via/keyboards/tree/master/v3/lofree) returned 404, which does not prove absence.",
+  "Any review that tested the Lofree Flow 2 68 itself."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 44,
+  "cost_usd_list": 3.180453800000001
+ }
+}
