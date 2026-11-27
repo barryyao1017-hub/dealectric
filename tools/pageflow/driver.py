@@ -220,7 +220,25 @@ def fresh(run: str) -> int:
     if not todo:
         print("no record to re-read")
         return 0
+    # growth/stock/<day>/ is the weekly upkeep's own report for that day (the daily update reads it). A re-read of a few
+    # products must not replace it: this run's copies go to runs/<run>/upkeep/ and the day's files are put back.
+    day = ROOT / "growth/stock" / C.today()
+    week = {f.name: f.read_bytes() for f in day.glob("*") if f.is_file()} if day.exists() else {}
     r = subprocess.run(["python3.12", str(ROOT / "tools/upkeep/run.py"), "--slugs", ",".join(todo), "--no-push", "--max-research", "3"], cwd=ROOT)
+    mine = rdir(run) / "upkeep"
+    mine.mkdir(parents=True, exist_ok=True)
+    for f in list(day.glob("*")) if day.exists() else []:
+        if not f.is_file():
+            continue
+        (mine / f.name).write_bytes(f.read_bytes())
+        if f.name in week:
+            f.write_bytes(week[f.name])
+        else:
+            f.unlink()
+    A.sh("git", "add", "-A", "--", str(day), str(mine))
+    if A.sh("git", "diff", "--cached", "--quiet").returncode:
+        A.sh("git", "commit", "-q", "-m", f"pageflow {run}: store re-read of {len(todo)} products kept with the run (the day's weekly upkeep report is untouched)\n\n"
+             "Co-Authored-By: Claude Fable 5.2 <noreply@anthropic.com>\n")
     if r.returncode == 0:
         C.jsave(rdir(run) / "fresh.json", {"date": C.today(), "slugs": sorted(set(done["slugs"]) | set(todo))})
     return r.returncode

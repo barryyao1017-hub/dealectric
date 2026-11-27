@@ -2,46 +2,42 @@
  "date": "2026-11-27",
  "changes": [
   {
-   "slug": "ugreen-nexode-100w-4-port-gan-charger",
+   "slug": "ugreen-nexode-200w-4-port-charger",
    "field": "price",
-   "old": 54.99,
+   "old": 61.99,
+   "new": 67.99
+  },
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "field": "stock",
+   "old": "in stock",
+   "new": "sold out"
+  },
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "field": "price",
+   "old": 40.99,
    "new": 42.99
-  },
-  {
-   "slug": "ugreen-nexode-500w-6-port-desktop-charger",
-   "field": "price",
-   "old": 249.99,
-   "new": 199.99
-  },
-  {
-   "slug": "ugreen-nexode-65w-travel-charger-us-uk-eu",
-   "field": "price",
-   "old": 49.99,
-   "new": 42.99
-  },
-  {
-   "slug": "ugreen-nexode-65w-retractable-cable-charger",
-   "field": "price",
-   "old": 39.99,
-   "new": 41.99
   },
   {
    "slug": "ugreen-nexode-100w-retractable-cable-charger",
    "field": "price",
-   "old": 49.99,
-   "new": 42.49
-  },
-  {
-   "slug": "ugreen-nexode-air-65w-gan-charger",
-   "field": "price",
-   "old": 39.99,
-   "new": 24.99
+   "old": 59.99,
+   "new": 49.99
   }
  ],
  "alternatives": {
   "kept": [],
   "removed": [],
-  "added": [],
+  "added": [
+   {
+    "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+    "alt": "rshtech-usb-3-2-usb-c-switch-10gbps-amazon",
+    "was": null,
+    "why": "sold out",
+    "reason": "same 10 Gb/s 2-computer switch, wired remote; 2 USB-A + 2 USB-C ports"
+   }
+  ],
   "replaced": [],
   "none": [],
   "pending": []
@@ -49,194 +45,180 @@
  "pages": {
   "pages": [
    {
-    "page": "/starlink-mini-usb-c-power-requirements",
+    "page": "/compare/usb-c-charger-two-laptops-100w/",
     "source": "src/gaps.py",
-    "edits": 1,
+    "edits": 3,
     "skipped": [],
-    "notes": "The sources line is the only place in the source that states the Nexode's price. The table's price cell and the {buy:ugreen-nexode-100w-4-port-gan-charger} placeholder fill themselves, and no computed figure (cost per hour, Wh per lb) or advice uses the charger's price.\n\nI left \"checked\" and \"updated\" at 2026-11-17: only one price was re-read, and I wasn't sure whether the build or the editor owns those fields. Bump \"updated\" if a price change should count as a page update.\n\nNot touched because they belong to other products, but stale against the published page: the cost-per-hour line and the sources still use Elite 100 V2 $499 (page shows $549) and UGREEN 145W $79.99 (page shows $59.98, regular $99.99), and the sources give older ship dates for the BLUETTI stations.",
+    "notes": "Three edits, all for the UGREEN Nexode 200W price change (61.99 → 67.99). Things I left alone and why:\n\n- \"Two laptops, lowest price\" row still picks the UGREEN. At $67.99 it remains below the $69.99 the page's analysis uses for the Anker Prime 200W ($34.00 vs $35.00 per port), but the gap is now $2.00 rather than $8.00. It is above the Anker's Black Friday price of $55.99 (through Nov 30) shown in the Anker row. That mismatch existed at the old price too ($61.99 vs $55.99), so I did not reword the label; it may deserve a separate look.\n- Compare-at $99.99 and \"available\" in the UGREEN source note are kept: the store read reported only a price change, so I assumed both still hold.\n- The whole UGREEN source note is now dated 2026-11-27, including the 'Charge 2 Laptops at Once' claim, on the assumption that the same store page was read.\n- The \"checked\" and \"updated\" fields (2026-11-14) are untouched; I assumed the build or the maintainer sets them.\n- The UGREEN table row has no hard-coded price cell and the {buy:...} placeholder fills itself, so neither needed an edit.",
     "log": [
      {
-      "old": "USB-C3 22.5 W max; charger $54.99 (UGREEN US store, 2026-11-17)",
-      "new": "USB-C3 22.5 W max (UGREEN US store, 2026-11-17); charger $42.99 (read 2026-11-27)",
-      "why": "Nexode price dropped from $54.99 to $42.99, read 2026-11-27. The port specs keep their 2026-11-17 read date because only the price was re-read."
-     }
-    ]
-   },
-   {
-    "page": "/best-usb-c-charger-for-laptop",
-    "source": "src/gaps.py",
-    "edits": 2,
-    "skipped": [],
-    "notes": "Only two strings in the source state the old $54.99: the price-per-watt bullet and the source label. The table price cell and the {buy:ugreen-nexode-100w-4-port-gan-charger} line are filled by the build, so I left them alone. No stock or ship-date wording about this charger appears on the page, and the pick and laptop-to-charger table do not depend on its price. At $0.43 per watt the Nexode 100W now ties the AOHi, but the page makes no ranking claim that this breaks. I left \"checked\" and \"updated\" (both 2026-11-17) and the \"maker prices checked 2026-11-17\" wording in desc unchanged, because only this one price was re-read; bump \"updated\" to 2026-11-27 if the build does not do it itself.",
-    "log": [
-     {
-      "old": "UGREEN Nexode 100W $54.99 ÷ 100 W = $0.55",
-      "new": "UGREEN Nexode 100W $42.99 (read 2026-11-27) ÷ 100 W = $0.43",
-      "why": "Price fell from $54.99 to $42.99, so the price-per-watt figure is recomputed (42.99 ÷ 100 = $0.43). The list header is dated 2026-11-17, so this one figure carries its own read date."
+      "old": "UGREEN $61.99 ÷ 2 = $31.00",
+      "new": "UGREEN $67.99 ÷ 2 = $34.00",
+      "why": "Cost per 100 W port was computed from the old $61.99 price; $67.99 ÷ 2 = $33.995, rounded to $34.00 the same way the old figure was."
      },
      {
-      "old": "UGREEN Nexode 100W 4-Port (charger only) price $54.99",
-      "new": "UGREEN Nexode 100W 4-Port (charger only) price $42.99 (read 2026-11-27)",
-      "why": "The source label quoted the old price."
+      "old": "UGREEN's US store lists it at $61.99, in stock",
+      "new": "UGREEN's US store lists it at $67.99 on 2026-11-27, in stock",
+      "why": "Stated price was the old $61.99; updated to $67.99 with the date it was read."
+     },
+     {
+      "old": "UGREEN 200W 4-Port Laptop Charger: $61.99 (compare-at $99.99), available, 'Charge 2 Laptops at Once' (read 2026-11-13)",
+      "new": "UGREEN 200W 4-Port Laptop Charger: $67.99 (compare-at $99.99), available, 'Charge 2 Laptops at Once' (read 2026-11-27)",
+      "why": "Source note carried the old price and the old read date."
      }
     ]
    },
    {
-    "page": "/best-travel-charging-kit",
+    "page": "/ugreen-nexode-200w-4-port-charger",
+    "source": "src/products.py",
+    "edits": 2,
+    "skipped": [],
+    "notes": "Only the summary and the third caveat hold the price in the source. The published buy box (\"$61.99 at UGREEN, no code needed\", \"Price: $61.99 ... verified 2026-11-21\") is not in this entry's strings; it is generated from the record's price/verified fields, which already read 67.99 and 2026-11-27, so it should correct itself on the next build. I left \"UGREEN gives no end date\" unchanged: the record's deal has ends 2026-11-30 but show_end is False, so I took the end date as not meant to be shown; worth a check if UGREEN now publishes an end date. I did not add a mention that the price rose from $61.99, to keep the change minimal.",
+    "log": [
+     {
+      "old": "$61.99 against $99.99 on 2026-11-03",
+      "new": "$67.99 against $99.99 on 2026-11-27",
+      "why": "Summary stated the old price and its read date; the price is now $67.99, read 2026-11-27."
+     },
+     {
+      "old": "$61.99 is a sale price against $99.99 on 2026-11-03",
+      "new": "$67.99 is a sale price against $99.99 on 2026-11-27",
+      "why": "Caveat stated the old sale price and its read date; updated to the new price and today's read."
+     }
+    ]
+   },
+   {
+    "page": "/compare/best-usb-switch-two-computers-keyboard-mouse-ssd/",
     "source": "src/gaps.py",
     "edits": 4,
     "skipped": [],
-    "notes": "Things I left alone and why:\n\n- Middle cart sum ($59.99 + $84.99 = $144.98): it uses UGREEN's charger-plus-two-cables bundle listing, a different product page that was not re-read, so I kept it with its 2026-11-11 date. The published kit line for that kit is built from the charger alone plus a cable 2-pack plus the bank ($126.31 on 2026-11-26), and it will drop with the charger's new price. The prose sum and the rendered kit price already disagreed before this change and still do; that needs a decision from whoever owns the kit definition.\n- \"Lowest price of any kit with a 100 W wall charger\": still true ($103.21 against the other 100W kit), so unchanged. At list price the Laptop and phone traveler and the UK and Europe kit now tie at $103.21; no sentence on the page compared those two, so nothing to edit.\n- UK and Europe kit discount: the page previously showed $103.21 through the link with a discount applied. I don't know whether that discount still applies at the new $42.99 price; the {kit:...} placeholder will render whatever the records say, and I made no claim about it in prose.\n- 65W charger old price: the page prose said $44.98 (read 2026-11-11) while the store record's old value was $49.99. Both are replaced by $42.99, so the discrepancy is gone.\n- \"checked\" and \"updated\" fields: left as they are, assuming the build or publisher sets them. If they are hand-maintained, \"updated\" should become 2026-11-27.",
+    "notes": "Pick, table rows and structure are unchanged. Points I was unsure about:\n- The compare-at price ($69.99) was not in this week's read, so I kept it and dated it to the 2026-11-08 check.\n- I left the \"Fits\" table cell alone because {buy:...} fills in price, stock and the alternative line itself; the sold-out statement and the RSHTECH alternative are in the short answer instead.\n- I said nothing about the RSHTECH's power delivery, since the store read gives only its speed, remote and ports; the lead says the page's power figures apply to the CM691 only.\n- The \"Not recommended\" 5Gbps switch keeps its own 2026-11-08 out-of-stock statement (another product's fact); only the price difference changed.\n- I did not change the \"checked\" and \"updated\" metadata fields. If the build does not stamp \"updated\" itself, it should be set to 2026-11-27.\n- \"desc\" and \"title\" contain no price or stock claims, so they are unchanged.",
     "log": [
      {
-      "old": "<strong>Cart cost (UGREEN US, 2026-11-11):</strong> $54.99 + $60.22 = $115.21; $59.99 + $84.99 = $144.98; $44.98 + $60.22 = $105.20.",
-      "new": "<strong>Cart cost (UGREEN US; the two $42.99 charger prices read 2026-11-27, bundle prices read 2026-11-11):</strong> $42.99 + $60.22 = $103.21; $59.99 + $84.99 = $144.98; $42.99 + $60.22 = $103.21.",
-      "why": "Both standalone chargers are now $42.99 (read 2026-11-27), so the first and third cart totals become $103.21. The $59.99, $60.22 and $84.99 bundle prices were not re-read and keep their 2026-11-11 date."
+      "old": "USB 3 caps a bus-powered external SSD at 0.9 A.</p>",
+      "new": "USB 3 caps a bus-powered external SSD at 0.9 A. The CM691 was sold out on 2026-11-27, when its price read $42.99. A shopper who cannot wait for a restock can look at the RSHTECH USB 3.2/USB C Switch 10Gbps, the alternative shown with the CM691 on this page: also a 10 Gb/s switch for two computers, w",
+      "why": "The short answer presented the pick with no stock caveat; it is now sold out at $42.99 (read 2026-11-27) and an alternative is shown under it."
      },
      {
-      "old": "charger alone $54.99 (UGREEN US, 2026-11-11)",
-      "new": "charger alone $42.99 (UGREEN US, 2026-11-27)",
-      "why": "The source line stated the old price and read date for the 100W 4-port charger."
+      "old": "$40.99 ÷ 4 = $10.25",
+      "new": "$42.99 ÷ 4 = $10.75 (price read 2026-11-27)",
+      "why": "Cost per port was computed from the old $40.99 price."
      },
      {
-      "old": "US/UK/EU plugs $44.98 (UGREEN US, 2026-11-11)",
-      "new": "US/UK/EU plugs $42.99 (UGREEN US, 2026-11-27)",
-      "why": "The source line stated an old price and read date for the 65W travel charger."
+      "old": "$40.99 − $35.99 = $5.00",
+      "new": "$42.99 − $35.99 = $7.00",
+      "why": "Saving against the 5Gbps switch was computed from the old CM691 price."
      },
      {
-      "old": "priced 2026-11-11",
-      "new": "priced 2026-11-11 (charger prices updated 2026-11-27)",
-      "why": "The meta description dated every price 2026-11-11; the two charger prices were re-read on 2026-11-27."
+      "old": "price ($40.99, compare-at $69.99)",
+      "new": "price ($42.99 and sold out on 2026-11-27; compare-at $69.99 from the 2026-11-08 read)",
+      "why": "The source label quoted the old price and carried no stock status."
      }
     ]
    },
    {
-    "page": "/ugreen-nexode-500w-6-port-desktop-charger",
-    "source": "src/products.py",
-    "edits": 1,
+    "page": "/compare/kvm-switch-for-a-mac-and-pc-4k-144hz/",
+    "source": "src/gaps.py",
+    "edits": 5,
     "skipped": [],
-    "notes": "Only the summary string in the source depends on the price; the \"price\" (199.99) and \"verified\" ('2026-11-27') fields already hold the new values, and specs, fit, caveats, warranty and returns do not mention price. I did not state a discounted price at the new store price (e.g. $149.99), because the $50 code was last tested on 2026-11-03 against $249.99 and nothing here confirms it still applies. The published page's build-generated \"where to buy\" lines ($179.99 through the link, $229.99 without it, \"Store price $249.99 ... takes $50 off\") do not agree with each other or with the new price. They are not in this entry's strings, so I left them alone; they should be checked after the rebuild.",
+    "notes": "The page still picks the UGREEN switch; the RSHTECH switch is named only as the in-the-meantime alternative. I gave no price or stock for the RSHTECH because the store read supplied neither, and I did not add a {buy:...} placeholder for it because I don't have its slug. I left the UGREEN table row alone: it has no price or stock cell, so I assumed the build fills those from the product record. I did not change the \"checked\" / \"updated\" metadata dates, assuming the pipeline sets them; if they are hand-maintained, \"updated\" should become 2026-11-27. One thing outside the change list: the AV Access iDock B10 source line says 265.99 while its row says $212.77 (regular $279.99). I left it, as it is another product's fact.",
     "log": [
      {
-      "old": "UGREEN's page code took $50 off $249.99 in the cart on 2026-11-03.",
-      "new": "UGREEN's store lists it at $199.99 (read 2026-11-27), down from $249.99; the page code's $50 off was tested in the cart on 2026-11-03 at the old $249.99 price.",
-      "why": "The summary gave $249.99 as the price the code applies to; the store price is now $199.99 (read 2026-11-27), so the $50-off statement is kept only as a dated test at the old price."
+      "old": "the UGREEN USB-C Switch shares USB.</p>",
+      "new": "the UGREEN USB-C Switch shares USB (sold out on 2026-11-27; the RSHTECH 10 Gb/s USB switch does the same job).</p>",
+      "why": "The short answer recommends the UGREEN switch as if it can be bought now; it is sold out, so the lead says so and names the alternative."
+     },
+     {
+      "old": "minus the UGREEN switch at 40.99 is 228.01 extra",
+      "new": "minus the UGREEN switch at 42.99 (read 2026-11-27, sold out) is 226.01 extra",
+      "why": "Price changed 40.99 → 42.99, so the difference is 269.00 − 42.99 = 226.01; stock status added."
+     },
+     {
+      "old": "keyboard and mouse on the UGREEN switch. If you want one button for video too",
+      "new": "keyboard and mouse on the UGREEN switch (sold out on 2026-11-27; the RSHTECH USB 3.2/USB C Switch 10Gbps is the same kind of 10 Gb/s two-computer switch). If you want one button for video too",
+      "why": "The what-to-do table relies on the UGREEN switch being available; it is sold out, so the alternative is named."
+     },
+     {
+      "old": "switch keyboard and mouse with {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}.",
+      "new": "switch keyboard and mouse with {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}. The UGREEN switch was sold out on 2026-11-27; the RSHTECH USB 3.2/USB C Switch 10Gbps is the same kind of 10 Gb/s switch for two computers and 4 devices, with 2 USB-A and 2 USB-C ports and a wired remote, and it fits",
+      "why": "The buy advice assumed the switch was in stock; added the sold-out status and the alternative, leaving the placeholder untouched."
+     },
+     {
+      "old": "'doesn't support a monitor', 40.99",
+      "new": "'doesn't support a monitor', 42.99, sold out (read 2026-11-27)",
+      "why": "The source line stated the old price; updated to the new price, stock and read date."
      }
     ]
    },
    {
-    "page": "/best-65w-travel-charger-interchangeable-plugs",
+    "page": "/compare/best-kvm-switch-1-monitor-2-computers/",
+    "source": "src/gaps.py",
+    "edits": 3,
+    "skipped": [],
+    "notes": "Only two places on the page depended on the UGREEN switch's price or stock: its source label and its row in the \"Your setup / Fits\" table. The title, description, short answer, comparison row and \"Not recommended\" section don't mention its price or availability, so they are unchanged.\n\nThree things I was unsure about:\n- Fits-table note: if {buy:...} already renders the sold-out status and the RSHTECH alternative line beneath it, the sentence I added duplicates that; drop that edit if so. I stated no price or stock for the RSHTECH because none was given.\n- Source label dates: I split them so that only the price and stock carry 2026-11-27. The spec and the 'not a KVM switch' quote keep 2026-11-10, since this week's read only reported price and stock.\n- \"updated\" field: I bumped it to 2026-11-27 because the content changes today. If the build sets this field itself, drop that edit. I left \"checked\" at 2026-11-10 because the other products were not re-read.",
+    "log": [
+     {
+      "old": "UGREEN USB-C Switch: $40.99, 4× USB 3.2 10 Gb/s, 'not a KVM switch and doesn't support a monitor' (read 2026-11-10)",
+      "new": "UGREEN USB-C Switch: $42.99 and sold out (read 2026-11-27); 4× USB 3.2 10 Gb/s, 'not a KVM switch and doesn't support a monitor' (read 2026-11-10)",
+      "why": "Price moved from $40.99 to $42.99 and the switch is now sold out; the price and stock carry today's read date, while the spec and quote keep the date they were actually read."
+     },
+     {
+      "old": "UGREEN USB-C Switch {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps}",
+      "new": "UGREEN USB-C Switch {buy:ugreen-usb-c-switch-2-computers-4-port-10gbps} Sold out on 2026-11-27. The RSHTECH USB 3.2/USB C Switch 10Gbps does the same job: a 10 Gb/s USB-only switch that lets 2 computers share 4 devices, with 2 USB-A + 2 USB-C ports and a wired remote.",
+      "why": "The fits table recommended the UGREEN switch as if it could be bought; it is sold out, so the cell now says so with the date and names the alternative for the same setup."
+     },
+     {
+      "old": "\"updated\": '2026-11-17'",
+      "new": "\"updated\": '2026-11-27'",
+      "why": "The page content changes today, so the updated date should not sit behind the new 2026-11-27 read date."
+     }
+    ]
+   },
+   {
+    "page": "/ugreen-usb-c-switch-2-computers-4-port-10gbps",
+    "source": "src/products.py",
+    "edits": 2,
+    "skipped": [],
+    "notes": "Two edits, both in the UGREEN entry: the summary and the sale-price caveat. Things I left alone and why:\n\n- The first caveat (\"Checked 2026-11-27 on UGREEN's US store: sold out.\") and the \"price\", \"in_stock\" and \"verified\" fields already match the new facts.\n- The alt note already compares against $42.99, and its 12% under / 5% over figures are correct at that price. Its \"ship now from Amazon\" wording is about the RSHTECH and Cable Matters, not the changed product.\n- I did not mention the RSHTECH alternative in the summary or caveats, because the build already shows the alternative line under the product.\n- \"UGREEN gives no end date\" stays, but I am unsure of it: the deal record has 'ends': '2026-11-30' with 'show_end': False. If that end date is confirmed by UGREEN, the caveat should be revised.\n- The published \"$40.99 at UGREEN, no code needed\" and \"verified 2026-11-21\" lines appear to be build-generated from the record, so there is no source text to edit for them.",
+    "log": [
+     {
+      "old": "$40.99 on 2026-11-03 against $69.99.\"",
+      "new": "$42.99 against $69.99 on 2026-11-27, but sold out at UGREEN's US store that day.\"",
+      "why": "Summary quoted the old price and read date and implied the switch could be bought; it is now $42.99 and sold out (read 2026-11-27)."
+     },
+     {
+      "old": "$40.99 is a sale price against $69.99 on 2026-11-03; UGREEN gives no end date.",
+      "new": "$42.99 is a sale price against $69.99 on 2026-11-27, and it cannot be ordered at that price while the store shows it sold out; UGREEN gives no end date.",
+      "why": "Caveat quoted the old sale price and read date, and presented the sale as available although the switch is sold out."
+     }
+    ]
+   },
+   {
+    "page": "/compare/best-usb-c-charger-with-block-and-cable/",
     "source": "src/gaps.py",
     "edits": 4,
     "skipped": [],
-    "notes": "The source's Price paragraph and first source line still used $44.98 (read 2026-11-13), not the $49.99 the published table showed; both now use $42.99, read 2026-11-27. I dropped \"(was $61.43)\" from the source line because this week's read does not confirm that strikethrough price still shows. I left \"checked\" and \"updated\" (2026-11-14) alone, assuming the build or publisher maintains them; bump \"updated\" to 2026-11-27 if it does not. The pick, table rows, placeholders and other products' prices are unchanged. The UGREEN now costs the same as the TESSAN WTA07 ($42.99), but the page makes no price comparison between them, so nothing needed correcting there.",
+    "notes": "The page showed $50.99 for the UGREEN 100W while the store record moved 59.99 → 49.99; I replaced every $50.99 with $49.99 and recomputed $0.50/W and the $10.00 gap to the 65W. I dropped \"(compare-at $59.99)\" from the source line because this week's read gives only the price; restore it if the compare-at is still confirmed. Stock was not reported as changed, so \"in stock\" stays. The \"desc\" date is widened to a range rather than re-dating the other products' prices; revert that edit if the description should keep only the full-check date. I left the \"checked\" and \"updated\" metadata fields alone, assuming the build or pipeline maintains them. No other advice changes: the Anker Nano 45W is still the cheapest kit at the 40 W bar, and the Belkin 30W still has the highest price per watt.",
     "log": [
      {
-      "old": "3-port costs $59.99 − $44.98 = $15.01 more than the UGREEN, for 2 W more rating",
-      "new": "3-port costs $59.99 − $42.99 = $17.00 more than the UGREEN ($42.99 on us.ugreen.com, read 2026-11-27), for 2 W more rating",
-      "why": "UGREEN price is now $42.99; the gap to Native Union is recomputed and the read date stated."
+      "old": "UGREEN 100W: $50.99 ÷ 100 = $0.51/W",
+      "new": "UGREEN 100W: $49.99 ÷ 100 = $0.50/W",
+      "why": "UGREEN 100W price is now $49.99; price per watt recomputed (still the lowest, so the order is unchanged)."
      },
      {
-      "old": "KUXIU costs $44.98 − $28.99 = $15.99 less",
-      "new": "KUXIU costs $42.99 − $28.99 = $14.00 less",
-      "why": "KUXIU saving recomputed from the new $42.99 UGREEN price."
+      "old": "so the extra $50.99 − $39.99 = $11.00 buys",
+      "new": "so the extra $49.99 − $39.99 = $10.00 buys",
+      "why": "Price gap between the UGREEN 100W and 65W recomputed from the new $49.99 price."
      },
      {
-      "old": "UGREEN Nexode 65W 3-Port Travel Charger price $44.98 (was $61.43), UGREEN US store, read 2026-11-13",
-      "new": "UGREEN Nexode 65W 3-Port Travel Charger price $42.99, UGREEN US store, read 2026-11-27",
-      "why": "Source line stated the old price and read date; the unconfirmed 'was' price is dropped."
+      "old": "UGREEN Nexode 100W Retractable price $50.99 (compare-at $59.99), in stock (read 2026-11-08)",
+      "new": "UGREEN Nexode 100W Retractable price $49.99, in stock (read 2026-11-27)",
+      "why": "Source line carries the new price and the date it was read; the compare-at figure was not part of this week's read, so it is dropped."
      },
      {
-      "old": "Prices checked 13 Nov 2026.",
-      "new": "Prices checked 13 Nov 2026; UGREEN price read 27 Nov 2026.",
-      "why": "The description's price date is stale for the UGREEN, which was re-read on 2026-11-27."
-     }
-    ]
-   },
-   {
-    "page": "/ugreen-nexode-65w-travel-charger-us-uk-eu",
-    "source": "src/products.py",
-    "edits": 2,
-    "skipped": [],
-    "notes": "1) The after-code price is not restated in the summary. The published code box contradicts itself ($12 off vs. $7 off, both against $49.99) and no cart test exists against the new $42.99 price, so any after-code figure ($30.99 or $35.99) would be a guess. The code box is built from the code records, not this entry, so it could not be edited here; it still shows $49.99 and needs a re-test at the new price. 2) The bundle price ($44.98) was not in this week's reads; it is left as is and only the comparison to the charger's price was corrected. If the bundle price also moved, that caveat needs another look.",
-    "log": [
-     {
-      "old": "$49.99 on 2026-11-03, $37.99 with the code printed on UGREEN's page.",
-      "new": "$42.99 on 2026-11-27, before the code printed on UGREEN's page.",
-      "why": "Price fell from $49.99 to $42.99 (read 2026-11-27). The $37.99 after-code figure was computed from the old price and the code has not been confirmed against $42.99, so the stale total is removed rather than recomputed."
-     },
-     {
-      "old": "for $44.98, less than the charger alone",
-      "new": "for $44.98, $1.99 more than the charger alone at $42.99 on 2026-11-27",
-      "why": "The comparison relied on the old $49.99 price; at $42.99 the charger alone is now cheaper than the $44.98 bundle."
-     }
-    ]
-   },
-   {
-    "page": "/best-usb-c-charger-with-block-and-cable",
-    "source": "src/gaps.py",
-    "edits": 8,
-    "skipped": [],
-    "notes": "Decision for an editor: the 100W now costs only $0.50 more than the 65W pick and has the lower price per watt ($0.42 vs $0.65), plus a 5 A cable and a second USB-C port. I kept the pick and structure as instructed and only corrected the arithmetic in the \"Sustained power\" bullet, but the case for the 65W over the 100W is much weaker at this gap.\n\nThings I was unsure about:\n- 65W source line: I dropped \"(compare-at $49.99)\" because this week's read gave only the new price. Stock had no reported change, so I kept \"in stock\" under the new read date.\n- \"updated\" ('2026-11-12') and \"checked\" ('2026-11-08') are left alone. The published page already showed a 2026-11-27 price with \"Updated 2026-11-12\", so I assumed price refreshes don't bump them; bump \"updated\" if they should.\n- The first bullet's heading changed from \"Same price, more power.\" to \"$2.00 more, more power.\" because the 65W no longer matches the Belkin 45W's $39.99.\n\nNot touched, as it concerns other products: the prose and sources give the Belkin 30W at $46.99 and the Anker 35W at $29.99 (maker, 2026-11-08), while the published table shows both at $19.99 on Amazon (2026-11-26). The \"Not recommended\" paragraph's comparison rests on the $46.99 maker price.",
-    "log": [
-     {
-      "old": "<strong>Same price, more power.</strong> The UGREEN Nexode 65W and Belkin\\'s 45W + cable both cost $39.99.",
-      "new": "<strong>$2.00 more, more power.</strong> The UGREEN Nexode 65W costs $41.99 (read 2026-11-27), $2.00 more than Belkin\\'s 45W + cable at $39.99 ($41.99 − $39.99).",
-      "why": "65W rose from $39.99 to $41.99, so it no longer costs the same as the Belkin 45W kit; the gap is now $2.00."
-     },
-     {
-      "old": "UGREEN 100W: $49.99 ÷ 100 = $0.50/W",
-      "new": "UGREEN 100W: $42.49 ÷ 100 = $0.42/W",
-      "why": "100W price is now $42.49; price per watt recomputed (0.4249, rounds to $0.42). It stays first in the ranking."
-     },
-     {
-      "old": "UGREEN 65W: $39.99 ÷ 65 = $0.62/W",
-      "new": "UGREEN 65W: $41.99 ÷ 65 = $0.65/W",
-      "why": "65W price is now $41.99; price per watt recomputed (0.646, rounds to $0.65). It stays between the Anker 45W ($0.58) and Anker 35W ($0.86)."
-     },
-     {
-      "old": "so the extra $49.99 − $39.99 = $10.00 buys about a 35-minute burst",
-      "new": "so the extra $42.49 − $41.99 = $0.50 (both read 2026-11-27) buys about a 35-minute burst",
-      "why": "Both prices changed; the gap between the 100W and the 65W is now $0.50, not $10.00."
-     },
-     {
-      "old": "it costs $7.00 more than the UGREEN Nexode 65W ($46.99 − $39.99)",
-      "new": "it costs $5.00 more than the UGREEN Nexode 65W ($46.99 − $41.99)",
-      "why": "The difference against the 65W's new $41.99 price is $5.00."
-     },
-     {
-      "old": "against $0.62/W for the UGREEN",
-      "new": "against $0.65/W for the UGREEN",
-      "why": "Matches the recomputed 65W price per watt."
-     },
-     {
-      "old": "UGREEN Nexode 65W Retractable price $39.99 (compare-at $49.99), in stock (read 2026-11-08)",
-      "new": "UGREEN Nexode 65W Retractable price $41.99, in stock (read 2026-11-27)",
-      "why": "Source line carries the new 65W price and read date; the old compare-at figure was not re-read, so it is dropped."
-     },
-     {
-      "old": "UGREEN Nexode 100W Retractable price $49.99, in stock",
-      "new": "UGREEN Nexode 100W Retractable price $42.49, in stock",
-      "why": "Source line carries the new 100W price; its read date was already 2026-11-27."
-     }
-    ]
-   },
-   {
-    "page": "/ugreen-nexode-air-65w-gan-charger",
-    "source": "src/products.py",
-    "edits": 2,
-    "skipped": [],
-    "notes": "I removed the 'compare-at price is the same, so no discount' wording instead of replacing it: the record has list_price None and this week's read gives only the new price, so I did not state a compare-at price or a saving versus $39.99. The last caveat (the separate 'UGREEN x Honkai: Star Rail 65W Charger' listing at $22.79, compare-at $39.99) is left unchanged because it describes another listing and makes no explicit comparison with this product's price; it is now only $2.20 cheaper than the Nexode Air rather than $17.20. The fit advice and other caveats do not depend on price. The price box and buy lines on the published page are generated from the record and placeholders, so they need no edit.",
-    "log": [
-     {
-      "old": "\"$39.99 at UGREEN's US store on 2026-11-27; compare-at price is the same, so no discount\"",
-      "new": "\"$24.99 at UGREEN's US store on 2026-11-27\"",
-      "why": "Price read changed from 39.99 to 24.99. The 'compare-at price is the same, so no discount' claim was tied to the old price and is no longer supported."
-     },
-     {
-      "old": "at $39.99 on UGREEN's US store on 2026-11-27",
-      "new": "at $24.99 on UGREEN's US store on 2026-11-27",
-      "why": "Summary stated the old price."
+      "old": "maker-store prices from 2026-11-08",
+      "new": "maker-store prices read 2026-11-08 to 2026-11-27",
+      "why": "One price on the page (UGREEN 100W) is now from 2026-11-27, so a single 2026-11-08 date is no longer accurate."
      }
     ]
    }
@@ -1495,7 +1477,13 @@
    "source": "src/compare.py"
   }
  ],
- "soldout_clicks": [],
- "read": 12,
- "usage": "claude-sonnet-5-5: 2 calls, 24,745 new tokens + 2,859 cache reads; claude-fable-5-2: 11 calls, 104,933 new tokens + 32,835 cache reads"
+ "soldout_clicks": [
+  {
+   "slug": "ugreen-usb-c-switch-2-computers-4-port-10gbps",
+   "clicks": 3,
+   "chatgpt": 0
+  }
+ ],
+ "read": 3,
+ "usage": "claude-sonnet-5-5: 1 calls, 5,278 new tokens + 2,859 cache reads; claude-fable-5-2: 9 calls, 172,303 new tokens + 1,142,646 cache reads"
 }
