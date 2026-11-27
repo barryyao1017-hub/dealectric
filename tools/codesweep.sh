@@ -72,5 +72,7 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   else
     echo "gapmine skipped: sweep exit $rc or src/docs not clean"
   fi
+  # The weekly catalog upkeep (tools/upkeep/run.py) runs from its own Claude scheduled task, dealectric-weekly-upkeep
+  # (Sundays 10:00; Barry 2026-11-27), not from here. It works in its own worktree and rebases before it pushes.
   end $rc
 } >>"$LOG" 2>&1
