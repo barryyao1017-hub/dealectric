@@ -111,6 +111,32 @@ Not page count. The readings that matter: the share of new pages with a shopper 
 ledger), visits a page by cluster and page type, clicks and sales. A cluster whose pages of one type keep reading zero
 gets a lower prior by itself, and its lines sink in the queue.
 
+## Pilot, 2026-11-27: USB-C chargers (run `2026-11-27-pf-usb-c-charger`)
+
+Barry picked the cluster. Before the run its 35 pages had drawn 12 shopper visits and no click since 10-28, so this is
+a test of the method on a weak cluster, and under the 11-13 value rule (ticket under $150) it would rank last.
+
+- **Choices** (6 plain chats): ChatGPT asks which device is charged (5 of 6 chats), sorts picks by watts (30 / 45 / 65-67 /
+  100 / 100+), by what the laptop port keeps with a phone plugged in, by PPS, ports and price.
+- **Map** (one agent, 11 minutes, 70 tool calls): 9 axes, 25 products, 12 lines. What it found that we had not built on:
+  Apple's 60 W tier for iPhone 18 Pro needs AVS, the Galaxy S26 Ultra needs PPS at 20 V / 3 A, the 16-inch MacBook Pro
+  fast charges only at 140 W, and "retractable cable" and "display" are the searched features. Eight news items; six of
+  our pages flagged; four record prices a sale had overtaken.
+- **Gates**: 9 lines queued, 2 covered by our pages, 1 hunch failed on demand (no search suggestion).
+- **Store re-read**: 6 record prices corrected (Black Friday), 8 existing pages edited to match.
+- **Openness**: all 7 comparison questions open in ChatGPT's own results (coverage 0 to 0.38).
+- **Built and published** (f7509fd7; Worker deployed; IndexNow 12 URLs): 3 numbered pages, 4 feature-finder pages, 2
+  product records from product lines, 3 more records the page research added. Two pages lead with a rival we link only
+  through Amazon (Samsung's 60 W adapter, Apple's 40 W adapter) and one with an Amazon record (Anker Nano Charger Neo).
+  The iPhone page reports that ChargerLAB measured 42.3 W, not 60 W.
+- **Time**: about 11 minutes for the map, 15 for 14 chats, 8 for two records, 3 for the re-read, about 40 for the research
+  (Fable ran out of usage part-way; Opus 5.5 took over), 4 for the gates and builds.
+- **Reading**: DLC-371, 14 days (12-11) and 28 days (12-25).
+
+The same day the other six clusters got their choices, maps and gates: 43 lines queued in all, 33 already covered, 23
+rejected because none of the products we link is in the top three (portable monitors by price, most Hall effect
+keyboard lines, EcoFlow's new stations), 4 hunches without demand.
+
 ## Open ends
 
 - ChatGPT's shopping-research quiz (the literal multiple-choice screen) is not captured: its composer menu does not open

@@ -12,7 +12,7 @@
 | Which USB-C chargers fast charge an iPhone 18 Pro at the full 60 W (the ones with AVS)? | finder | built | [usb-c-chargers-avs-iphone-18-pro-60w-fast-charge](https://dealectric.com/usb-c-chargers-avs-iphone-18-pro-60w-fast-charge) |
 | Is the new 100 W three-port charger with a display and AVS worth buying for a laptop and an iPhone 18 Pro? | product | built | [baseus-picogo-pro-ah22-100w-3-port-display-charger](https://dealectric.com/baseus-picogo-pro-ah22-100w-3-port-display-charger) |
 
-Queue after the run: 0 queued, 0 failed:real, 0 failed:ours, 2 failed:uncovered, 1 failed:demand, 0 skipped, 9 built
+Queue after the run: 43 queued, 0 failed:real, 23 failed:ours, 33 failed:uncovered, 4 failed:demand, 0 skipped, 9 built
 
 Retire rule (off: no page is retired yet), ledger of 2026-11-27:
 - 0 pages are 45+ days old with no shopper visit, click or sale (first step for each: one rework)

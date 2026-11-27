@@ -1,0 +1,1628 @@
+{
+ "cluster": "power-bank",
+ "summary": "Power banks are bought device-first: the shopper names a phone or laptop, which fixes the watts one port must deliver (45 W Samsung, 65-100 W laptops, 140 W 16-inch MacBook Pro), then picks a size (10,000 mAh pocket, 20,000-25,000 mAh bag, about 27,000 mAh at the 100 Wh airline line). After that the choice turns on wired or magnetic, a built-in or retractable cable or wall plug, and price tiers near $30, $50 and $100. In the last 60 days Qi2.2 25 W magnetic banks multiplied (Baseus AM71 10,000 mAh on 2026-11-26, UGREEN MagFlow Slim, Anker MagGo 2 Pro), Macworld re-tested laptop banks on 2026-11-04, a HAIARA budget bank was recalled after 600 incident reports, and Black Friday prices moved on several of ours and rivals.",
+ "axes": [
+  {
+   "id": "watts",
+   "label": "Watts from one port to the device you charge",
+   "kind": "number",
+   "unit": "W",
+   "rank": 1,
+   "why": "ChatGPT asked 'What device will you charge?' in 6 of 6 chats and split picks by single-port watts. Macworld ranks laptop banks by max single-port watts, and Apple lists the adapter watts each MacBook fast-charges at.",
+   "sources": [
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://support.apple.com/en-us/102378"
+   ],
+   "breakpoints": [
+    {
+     "value": "45",
+     "why": "Samsung's top phone adapter is a 45 W PD unit sold with a 5 A cable; ChatGPT offered 'Samsung fast charging' as a device choice and warned a phone only takes 45 W if the bank speaks its protocol. (Page read 2026-11-27; it gives the adapter name only, no PPS table.)",
+     "source": "https://www.samsung.com/us/business/mobile-accessories/45w-pd-power-adapter-with-5a-usb-c-cable-black-sku-ep-t4511xbegus/"
+    },
+    {
+     "value": "65-70",
+     "why": "Apple lists the 67 W (13.6-inch only) and 70 W adapters as the smallest that fast-charge a MacBook Air 2022 or later; ChatGPT's laptop floor was 'at least 65W USB-C'. (Apple page published 2026-11-05, read 2026-11-27.)",
+     "source": "https://support.apple.com/en-us/102378"
+    },
+    {
+     "value": "100",
+     "why": "Macworld: for a 14-inch MacBook Pro, Air or Neo, 100 W PD 3.0 is 'all you need for fast charging'; Apple lists 96 W as the 14-inch fast-charge adapter. (Macworld updated 2026-11-04, read 2026-11-27.)",
+     "source": "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+    },
+    {
+     "value": "140",
+     "why": "Apple: the 16-inch MacBook Pro fast-charges only with a 140 W adapter, over MagSafe 3 or (Nov 2023 model and later) the 240 W USB-C cable. On a bank that means one PD 3.1 port rated 140 W, not a 140 W total.",
+     "source": "https://support.apple.com/en-us/102378"
+    }
+   ]
+  },
+  {
+   "id": "capacity",
+   "label": "Capacity printed on the bank",
+   "kind": "number",
+   "unit": "mAh",
+   "rank": 2,
+   "why": "Engadget sorts its picks into low, medium and high capacity. ChatGPT split picks at 10,000 mAh (pocket, 1-2 phone charges), 20,000 mAh (trips, several devices) and 25,000 mAh (laptop).",
+   "sources": [
+    "https://engadget.com/best-power-bank-143048526.html"
+   ],
+   "breakpoints": [
+    {
+     "value": "5000",
+     "why": "Engadget: a 5,000 mAh bank fills a phone roughly 50-75%. It is the slim magnetic size. (Updated 2026-02-13, read 2026-11-27.)",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    },
+    {
+     "value": "10000",
+     "why": "Engadget measured about 5,800 mAh transferred from 10,000 mAh banks (1.64-1.86 iPhone 15 charges on its picks).",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    },
+    {
+     "value": "20000",
+     "why": "Engadget measured about 11,250 mAh transferred from 20,000 mAh banks; Macworld lists 20,000 mAh laptop banks at 65-74 Wh.",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    },
+    {
+     "value": "25000",
+     "why": "25,000 mAh is 90 Wh in Macworld's spec lists, the common laptop size under the airline line; Engadget measured about 16,200 mAh transferred.",
+     "source": "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+    },
+    {
+     "value": "27000-27650",
+     "why": "The largest banks under 100 Wh: Macworld lists 27,000 mAh at 99.9 Wh and 27,650 mAh at 99.54 Wh and calls 99.9 Wh 'awfully close to the airline maximum'.",
+     "source": "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+    }
+   ]
+  },
+  {
+   "id": "wh",
+   "label": "Watt-hours against the airline limit",
+   "kind": "number",
+   "unit": "Wh",
+   "rank": 3,
+   "why": "Engadget's buying advice opens its flying section on the 100 Wh line, and two of our pages are built on it. TSA sends every power bank to carry-on.",
+   "sources": [
+    "https://engadget.com/best-power-bank-143048526.html",
+    "https://www.tsa.gov/travel/security-screening/whatcanibring/items/power-banks"
+   ],
+   "breakpoints": [
+    {
+     "value": "100",
+     "why": "Engadget: banks rated 100 Wh or less are allowed in carry-on luggage only. TSA: power banks 'must be packed in carry-on bags'. (Both read 2026-11-27.)",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    },
+    {
+     "value": "160",
+     "why": "Macworld: 'Most U.S. flight regulations allow for lithium-ion batteries up to 160Wh, if permitted by the individual airlines'; EU operators must approve anything from 100 to 160 Wh.",
+     "source": "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+    }
+   ]
+  },
+  {
+   "id": "wireless",
+   "label": "Magnetic wireless charging speed",
+   "kind": "number",
+   "unit": "W",
+   "rank": 4,
+   "why": "ChatGPT asked 'wired or magnetic wireless?' in 6 of 6 chats. Search suggestions for 'best magsafe power bank' run to iPhone 17, 17 Pro Max and 18 Pro Max, and TechRadar's overall favorite on 2026-11-26 is a magnetic 10K.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+magsafe+power+bank+",
+    "https://www.techradar.com/lists/news/top-portable-chargers"
+   ],
+   "breakpoints": [
+    {
+     "value": "15",
+     "why": "Engadget: Qi2 certification means up to 15 W with magnetic attachment.",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    },
+    {
+     "value": "25",
+     "why": "Qi2.2 raises magnetic charging to 25 W; Notebookcheck's 2026-11-26 and 2026-11-05 launch reports both lead with it.",
+     "source": "https://www.notebookcheck.net/Slim-Baseus-magnetic-power-bank-launches-with-30W-fast-charging-and-10-000mAh-capacity.1460576.0.html"
+    }
+   ]
+  },
+  {
+   "id": "price",
+   "label": "Price",
+   "kind": "price",
+   "unit": "$",
+   "rank": 5,
+   "why": "Search suggestions complete 'best power bank under' with 100, 50 and 30 (US-dollar tiers), and ChatGPT called about $30 the budget buy. Our under-$50 page drew the most visits in the cluster (8).",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+"
+   ],
+   "breakpoints": [
+    {
+     "value": "30",
+     "why": "Suggested search 'best power bank under 30'; ChatGPT's 'about $30' budget tier.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+"
+    },
+    {
+     "value": "50",
+     "why": "Suggested search 'best power bank under 50'.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+"
+    },
+    {
+     "value": "100",
+     "why": "Suggested search 'best power bank under 100', the first completion.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+"
+    }
+   ]
+  },
+  {
+   "id": "cable",
+   "label": "Built-in or retractable cable",
+   "kind": "feature",
+   "unit": "",
+   "rank": 6,
+   "why": "ChatGPT asked 'Does a built-in cable matter?' in 4 of 6 chats, with retractable as its own option. Search suggests 'best power bank with built in cables'.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+"
+   ],
+   "breakpoints": [
+    {
+     "value": "built-in",
+     "why": "A fixed USB-C cable on the bank; many banks have one.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+with+built+in+"
+    },
+    {
+     "value": "retractable",
+     "why": "A reel cable that winds into the body; few banks have one (Anker Nano A1638, UGREEN Nexode 20K 165W, TORRAS PearlGo and PackGo Cube were read today).",
+     "source": "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah"
+    }
+   ]
+  },
+  {
+   "id": "wall_plug",
+   "label": "Built-in folding wall plug",
+   "kind": "feature",
+   "unit": "",
+   "rank": 7,
+   "why": "'Best power bank with wall plug' is the first completion of 'best power bank with' and also appears in the root list. ChatGPT offered a folding plug as the one-item travel choice.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+"
+   ],
+   "breakpoints": [
+    {
+     "value": "yes",
+     "why": "The bank recharges straight from a socket and doubles as the wall charger.",
+     "source": "https://www.amazon.com/dp/B0CX4992Z8"
+    }
+   ]
+  },
+  {
+   "id": "weight",
+   "label": "Weight for carrying on foot",
+   "kind": "number",
+   "unit": "oz",
+   "rank": 8,
+   "why": "Search suggests 'best power bank for backpacking' and 'best 10000mah power bank for backpacking'. ChatGPT's hiking pick was 'about 5 oz' with IPX7.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+10000mah+power+bank+",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+for+"
+   ],
+   "breakpoints": [
+    {
+     "value": "5",
+     "why": "Nitecore's NB10000 Gen4 is 143 g (5 oz) with IPX7, the weight ChatGPT quoted for hiking; ordinary compact 10K banks are 5.6 oz and up (INIU P50).",
+     "source": "https://www.nitecore.com/product/nb10000gen4"
+    }
+   ]
+  },
+  {
+   "id": "delivered",
+   "label": "Energy that reaches the device, against the label",
+   "kind": "number",
+   "unit": "% of label",
+   "rank": 9,
+   "why": "Engadget and Macworld both rank on delivered charge, not label mAh. ChatGPT said it put independent test results ahead of advertised capacity.",
+   "sources": [
+    "https://engadget.com/best-power-bank-143048526.html",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "breakpoints": [
+    {
+     "value": "60",
+     "why": "Engadget's transfers average near 60% of label mAh (5,800 of 10,000; 11,250 of 20,000; 16,200 of 25,000).",
+     "source": "https://engadget.com/best-power-bank-143048526.html"
+    }
+   ]
+  },
+  {
+   "id": "ac_outlet",
+   "label": "AC outlet on the bank",
+   "kind": "feature",
+   "unit": "",
+   "rank": 10,
+   "why": "Search suggests 'best power bank with ac outlet', plus 'power bank 120v' and 'power bank 110v'.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+1"
+   ],
+   "breakpoints": [
+    {
+     "value": "yes",
+     "why": "It runs a device that has no USB-C charging; few banks under 100 Wh have one.",
+     "source": "https://www.amazon.com/dp/B0BFBTR94M"
+    }
+   ]
+  },
+  {
+   "id": "cell",
+   "label": "Cell type (semi-solid-state, LiFePO4)",
+   "kind": "feature",
+   "unit": "",
+   "rank": 11,
+   "why": "Search suggests 'solid state power bank' with anker, belkin, reviews, magsafe and 'vs lithium ion'. Android Central's 2026-10-01 slim-bank test calls out the semi-solid-state cell.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=solid+state+power+bank",
+    "https://www.androidcentral.com/accessories/power-charging/i-tested-the-best-slim-qi2-power-banks-released-in-2026-baseus-torras-iniu-reelcharge"
+   ],
+   "breakpoints": [
+    {
+     "value": "semi-solid-state",
+     "why": "A safety feature few banks have, asked for by name.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=solid+state+power+bank"
+    }
+   ]
+  },
+  {
+   "id": "ccc",
+   "label": "3C (CCC) mark for flights inside China",
+   "kind": "feature",
+   "unit": "",
+   "rank": 12,
+   "why": "Three of the ten completions of 'which power bank has' are about the CCC certificate, the CCC logo and 3C certification.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=which+power+bank+has+",
+    "https://english.beijing.gov.cn/latest/news/202506/t20250628_4131163.html"
+   ],
+   "breakpoints": [
+    {
+     "value": "yes",
+     "why": "Since 2025-06-28 CAAC bars power banks without a clear 3C label, or from recalled batches, from domestic flights in China. (Beijing government notice dated 2025-06-28, read 2026-11-27.)",
+     "source": "https://english.beijing.gov.cn/latest/news/202506/t20250628_4131163.html"
+    }
+   ]
+  },
+  {
+   "id": "input",
+   "label": "How fast the bank itself recharges",
+   "kind": "number",
+   "unit": "W",
+   "rank": 13,
+   "why": "ChatGPT told shoppers to 'check how quickly the bank recharges, not just advertised capacity'; Macworld lists power input among its seven factors.",
+   "sources": [
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "breakpoints": [
+    {
+     "value": "65",
+     "why": "The usual input on 25,000 mAh laptop banks (UGREEN 145W: '65W Recharge' on the store page read 2026-11-27).",
+     "source": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop"
+    }
+   ]
+  }
+ ],
+ "rules": "The headline watt figure on a power bank is usually the total across ports. What decides a purchase is the most one port gives one device: UGREEN's 130W bank is 100 W + 30 W, and Baseus's FC41 100W drops to 65 W when a second device joins (Notebookcheck). Apple's support page is the authority for MacBook fast-charge watts, and Macworld's Test Score (two refills of a 14-inch MacBook Pro, percentages added) is the comparable measure of delivered energy for laptop banks. Engadget measured about 60% of label mAh reaching a phone, so mAh is a size class, not a charge count. Watt-hours decide flying: 100 Wh without approval, 100-160 Wh only with the airline's consent. Makers compute Wh at 3.6 V, 3.7 V or 3.2 V (LiFePO4), so mAh figures are not comparable across chemistries. Qi2 means 15 W and Qi2.2 means 25 W; 'magnetic' or 'MagSafe-compatible' alone means neither. Link prices that depend on a code need a cart test dated that week. A price in a reviewer's widget is a lead, not a price. INIU recalled its BI-B41 (CPSC, December 2025); that model is not in the current lineup read here.",
+ "field": [
+  {
+   "product": "Baseus EnerFill FC11 20,000 mAh 45W",
+   "brand": "Baseus",
+   "ours": "baseus-enerfill-fc11-20000mah-45w",
+   "link": "program",
+   "url": "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-built-in-usb-c-cables-20000mah-45w",
+   "price": "$39.99 store; $28.99 through our link with code BF11 (cart test 2026-11-18)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "20000",
+    "watts": "45",
+    "cable": "two built-in USB-C",
+    "price": "28.99"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Baseus EnerFill FC41 25,000 mAh 145W",
+   "brand": "Baseus",
+   "ours": "baseus-enerfill-fc41-25000mah-145w",
+   "link": "program",
+   "url": "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w",
+   "price": "$79.99 store; $46.99 through our link with code FC41 (cart test 2026-11-18)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "25000",
+    "wh": "91.25",
+    "watts": "140",
+    "cable": "two built-in USB-C",
+    "input": "65"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Baseus PicoGo AM52 Qi2.2 10,000 mAh 45W",
+   "brand": "Baseus",
+   "ours": "baseus-picogo-am52-qi2-2-10000mah-45w",
+   "link": "program",
+   "url": "https://www.baseus.com/products/picogo-am52-qi2-2-magnetic-power-bank-10000mah-45w",
+   "price": "$59.99 store; $56.99 through our link with code AM52 (cart test 2026-11-26)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "wireless": "25",
+    "watts": "45",
+    "input": "30"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN 145W 25,000 mAh 3-Port",
+   "brand": "UGREEN",
+   "ours": "ugreen-145w-25000mah-3-port-power-bank",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+   "price": "$59.98",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "25000",
+    "wh": "90",
+    "watts": "140",
+    "input": "65",
+    "weight": "17.7"
+   },
+   "tested_by": [
+    "Macworld: listed as 'Power in a portable package', 140 W max port, 503 g, best price $59.98; its test score fell outside the text read, https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ]
+  },
+  {
+   "product": "UGREEN Nexode 20,000 mAh 130W with Smart Digital Display",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-20000mah-130w-power-bank",
+   "link": "program",
+   "url": "https://us.ugreen.com/",
+   "price": "$54.99",
+   "price_read": "2026-11-26",
+   "figures": {
+    "capacity": "20000",
+    "wh": "72",
+    "watts": "100"
+   },
+   "tested_by": [
+    "Macworld: lists the UGREEN 100W 20,000 mAh at 72 Wh, 100 W, 419 g, best price $54.99, https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ]
+  },
+  {
+   "product": "UGREEN 300W 48,000 mAh",
+   "brand": "UGREEN",
+   "ours": "ugreen-48000mah-300w-power-bank",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-300w-48000mah-portable-charger-power-bank",
+   "price": "$118.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "48000",
+    "wh": "153.6",
+    "watts": "140",
+    "cell": "LiFePO4",
+    "weight": "57.6"
+   },
+   "tested_by": [
+    "Macworld: Test Score 180%, 'best high-capacity', 1.65 kg, https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ]
+  },
+  {
+   "product": "UGREEN Nexode 200W 25,000 mAh with Smart Digital Display",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-25000mah-200w-power-bank",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-nexode-power-bank-25000mah-200w-with-smart-digital-display",
+   "price": "$129.99 store; $79.99 through our link with code UL35525 (cart test 2026-11-26)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "25000",
+    "wh": "90",
+    "watts": "140",
+    "input": "65"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "AOHi The Future Starship 240W 27,600 mAh",
+   "brand": "AOHi",
+   "ours": "aohi-future-starship-240w-27600mah",
+   "link": "program",
+   "url": "https://www.iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-display-power-bank",
+   "price": "$119.00 store (listing title advertises $95.20); $95.20 through our link with code 20AUTUMN (cart test 2026-11-10)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "27600",
+    "wh": "99.36",
+    "watts": "140"
+   },
+   "tested_by": [
+    "ChargerLab: 118.7 W + 94.2 W with two USB-C ports in use (from our product record; not re-opened today)"
+   ]
+  },
+  {
+   "product": "AOHi Starship 2-in-1 40,000 mAh 140W",
+   "brand": "AOHi",
+   "ours": "aohi-starship-40000mah-140w",
+   "link": "program",
+   "url": "https://www.iaohi.com/products/starship-140w-40-000mah-power-bank",
+   "price": "$179.00 store (listing title advertises $143); $143.20 through our link with code 20AUTUMN (cart test 2026-11-10)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "40000",
+    "wh": "146",
+    "watts": "140",
+    "input": "140"
+   },
+   "tested_by": [
+    "ChargerLAB: 80% in 55 min and full in about 2 h 20 min on a 140 W charger (from our product record; not re-opened today)"
+   ]
+  },
+  {
+   "product": "AOHi The BLACK WARRIOR 25,200 mAh 170W",
+   "brand": "AOHi",
+   "ours": "aohi-black-warrior-25200mah-170w",
+   "link": "program",
+   "url": "https://www.iaohi.com/products/new-aohi-the-black-warrior-25200mah-170w-pd3-0-led-display-power-bank-with-240w-c-c-cable",
+   "price": "$89.99 on this listing today (our record had $79.99 on 2026-11-17 and $64.00 with code 20AUTUMN on 2026-11-10)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "25200",
+    "wh": "90.72",
+    "watts": "100",
+    "input": "100"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "TORRAS MiniMag Pro 10,000 mAh",
+   "brand": "TORRAS",
+   "ours": "minimag-pro-10k",
+   "link": "program",
+   "url": "https://torraslife.com/products/minimag-pro-power-bank-10k-mah",
+   "price": "$79.99 store, all four colours (our record had $72.00 on 2026-11-25 and $61.20 with code WELCOMEBACK on 2026-11-26)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "wireless": "15",
+    "watts": "30",
+    "cell": "semi-solid-state (TORRAS, from our record)",
+    "weight": "6.9"
+   },
+   "tested_by": [
+    "Android Central (Namerah Saud Fatmi, 2026-10-01): hands-on, 15 W wireless, 30 W in and out, 0.57 in, 195 g, IP54, $79.99; no measured charge data, https://www.androidcentral.com/accessories/power-charging/i-tested-the-best-slim-qi2-power-banks-released-in-2026-baseus-torras-iniu-reelcharge"
+   ]
+  },
+  {
+   "product": "Anker Nano Power Bank 10,000 mAh 45W, retractable cable (A1638)",
+   "brand": "Anker",
+   "ours": "anker-nano-power-bank-10k-45w-a1638",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0FKN5RCV7",
+   "price": "$45.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "watts": "45",
+    "cable": "retractable USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Goal Zero Sherpa 100AC",
+   "brand": "Goal Zero",
+   "ours": "goalzero-sherpa-100ac",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0BFBTR94M",
+   "price": "$249.95",
+   "price_read": "2026-11-27",
+   "figures": {
+    "wh": "94.7",
+    "watts": "100",
+    "ac_outlet": "yes, 100 W",
+    "weight": "33.6"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 20,000 mAh 165W with Retractable USB-C Cable",
+   "brand": "UGREEN",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+   "price": "$99.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "20000",
+    "wh": "72",
+    "watts": "100",
+    "cable": "retractable USB-C",
+    "weight": "18.9"
+   },
+   "tested_by": [
+    "Macworld: Test Score 78%, 'best mid-range', 100 W max port, 535 g, https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ]
+  },
+  {
+   "product": "Baseus EnerFill FC11 10,000 mAh 45W with dual built-in USB-C cables",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-usb-c-cables-10000mah-45w",
+   "price": "$35.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "watts": "45",
+    "cable": "two built-in USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Baseus PicoGo AC22 10,000 mAh 45W with built-in cable",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.baseus.com/products/picogo-ac22-ultra-mini-power-bank-with-built-in-usb-c-cable-10000mah-45w",
+   "price": "$39.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "watts": "45",
+    "cable": "built-in USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "TORRAS PackGo Cube 10,000 mAh",
+   "brand": "TORRAS",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://torraslife.com/products/packgo-cube-power-bank-10k-mah",
+   "price": "$89.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "cable": "retractable USB-C, with Lightning adapter",
+    "cell": "semi-solid-state (TORRAS store text)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "INIU SnapGo Air 10,000 mAh Qi2.2 25W",
+   "brand": "INIU",
+   "ours": "",
+   "link": "none",
+   "url": "https://iniushop.com/products/iniu-p781-qi2-2-magnetic-power-bank",
+   "price": "$54.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "wireless": "25",
+    "watts": "45",
+    "weight": "6.9"
+   },
+   "tested_by": [
+    "Android Central (2026-10-01): hands-on, 25 W wireless, 45 W out, 27 W in, 0.5 in, 195.4 g; highest wired output and lowest price of its 10,000 mAh group, https://www.androidcentral.com/accessories/power-charging/i-tested-the-best-slim-qi2-power-banks-released-in-2026-baseus-torras-iniu-reelcharge"
+   ]
+  },
+  {
+   "product": "INIU Carry 10,000 mAh 45W with built-in cable (P55L-E2)",
+   "brand": "INIU",
+   "ours": "",
+   "link": "none",
+   "url": "https://iniushop.com/products/iniu-carry-p55l-e2-power-bank-45w-10000mah",
+   "price": "$26.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "watts": "45",
+    "cable": "built-in USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "INIU Cougar P62 20,000 mAh 65W",
+   "brand": "INIU",
+   "ours": "",
+   "link": "none",
+   "url": "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w",
+   "price": "$46.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "20000",
+    "wh": "65",
+    "watts": "65",
+    "weight": "11.4"
+   },
+   "tested_by": [
+    "Macworld: Test Score 87%, 'lightest, compact', 324 g, https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ]
+  },
+  {
+   "product": "Anker Prime Power Bank 26,250 mAh 300W",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0F66LNB8D",
+   "price": "$159.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "26250",
+    "wh": "99.75",
+    "watts": "140",
+    "weight": "21.1"
+   },
+   "tested_by": [
+    "Macworld: Test Score 125%, best overall, https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "Engadget: 0.83 of a MacBook Pro charge, 5-5.5 iPhone 15 charges, https://engadget.com/best-power-bank-143048526.html"
+   ]
+  },
+  {
+   "product": "Anker Laptop Power Bank 25,000 mAh 165W with built-in cables",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0DCBB2YTR",
+   "price": "$91.19",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "25000",
+    "wh": "90",
+    "watts": "100",
+    "cable": "built-in",
+    "weight": "21"
+   },
+   "tested_by": [
+    "Macworld: Test Score 92%, https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "Engadget: best laptop power bank, 0.68 of a MacBook Pro charge in 53 min, https://engadget.com/best-power-bank-143048526.html"
+   ]
+  },
+  {
+   "product": "Anker Nano 3-in-1 Portable Charger 10,000 mAh 30W",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0CX4992Z8",
+   "price": "$37.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "watts": "30",
+    "wall_plug": "yes"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Anker MagGo 2 Pro Power Bank Qi2.2 25W 10,000 mAh",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0GVYMQ3GT",
+   "price": "$85.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "wireless": "25"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Nitecore NB10000 Gen4",
+   "brand": "Nitecore",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0H61KHJ1X",
+   "price": "$67.16",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "10000",
+    "wh": "39",
+    "watts": "22.5",
+    "weight": "5"
+   },
+   "tested_by": []
+  }
+ ],
+ "lines": [
+  {
+   "id": "20000mah-under-30",
+   "ptype": "numbered",
+   "question": "best 20000mAh power bank under $30",
+   "axes": {
+    "capacity": "20000",
+    "price": "30"
+   },
+   "why": "$30 is the budget tier ChatGPT names and a suggested search ('best power bank under 30'). 20,000 mAh is the size it gives for trips and several devices.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+",
+    "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-built-in-usb-c-cables-20000mah-45w",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "asked": "Google completes 'best power bank under' with 'best power bank under 30' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+). ChatGPT offered 'affordable / best budget (about $30)'.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Baseus EnerFill FC11 20,000 mAh 45W",
+     "why": "$28.99 through our link (store $39.99); two built-in USB-C cables at 45 W each, four devices at once, 30 W input (Notebookcheck, from our record)"
+    },
+    {
+     "product": "Cuktech CP253L 20K",
+     "why": "74 Wh, 45 W, one built-in cable, 499 g; $27.45 'best price today' in Macworld's guide ($34.99 list), a widget price not checked at a retailer"
+    }
+   ],
+   "ours": [
+    "baseus-enerfill-fc11-20000mah-45w"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Only two 20,000 mAh banks were found under $30 today. The Baseus rank depends on code BF11 (cart test 2026-11-18): re-test it. If Cuktech's $27.45 holds at a retailer it is cheaper by $1.54 and Macworld has tested it, so the ranking is close. Just above the line: INIU Carry 20,000 mAh 22.5W $32.99 and INIU Carry 20,000 mAh 45W with cable $36.99 (iniushop.com, 2026-11-27). /best-20000mah-power-bank-under-50 holds the wider tier and drew 8 visits.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "baseus-enerfill-fc11-20000mah-45w",
+    "demand": 0.0,
+    "value": 0.3,
+    "prior": 2.67,
+    "score": 0.4
+   }
+  },
+  {
+   "id": "65w-under-50",
+   "ptype": "numbered",
+   "question": "best 65W power bank under $50 for a laptop",
+   "axes": {
+    "watts": "65",
+    "price": "50"
+   },
+   "why": "65-70 W is where a MacBook Air fast-charges (Apple lists 67 W and 70 W adapters) and ChatGPT's laptop floor. $50 is a suggested price tier.",
+   "sources": [
+    "https://support.apple.com/en-us/102378",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://iniushop.com/products/iniu-p62-e1-power-bank-smallest-20000mah-65w"
+   ],
+   "asked": "'best power bank under 50' is a Google completion (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+) and ChatGPT set 'at least 65W USB-C (laptop)'. The cross of the two is our judgement.",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "INIU Cougar P62 20,000 mAh 65W",
+     "why": "Macworld Test Score 87%, 324 g, 65 Wh; $46.99 at iniushop.com (Macworld widget $39.94)"
+    },
+    {
+     "product": "Pisen Bolt 67W 20K",
+     "why": "Macworld Test Score 90%, 74 Wh, 414 g; $40.99 in Macworld's widget"
+    },
+    {
+     "product": "Cuktech 15SE 85W",
+     "why": "Macworld 'best budget 20K', 65 W max port, 73.44 Wh, Test Score 60%; $39.99 in Macworld's widget"
+    }
+   ],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "None of ours reaches 65 W under $50. UGREEN Nexode 130W (100 W port) is $54.99 and Baseus FC41 20K 100W is $59.99, so a $5 code on either would put ours on this line. Baseus FC11 is 45 W only. /best-20000mah-power-bank-under-50 already discusses the INIU Cougar 65W; check whether it answers the laptop question before adding a page. Pisen and Cuktech prices are Macworld widget prices to verify.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "140w-under-100",
+   "ptype": "numbered",
+   "question": "best 140W power bank under $100 for a 16-inch MacBook Pro",
+   "axes": {
+    "watts": "140",
+    "price": "100"
+   },
+   "why": "Apple fast-charges the 16-inch MacBook Pro only at 140 W, which on a bank means one PD 3.1 port rated 140 W. $100 is the first suggested price tier.",
+   "sources": [
+    "https://support.apple.com/en-us/102378",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+    "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w"
+   ],
+   "asked": "'best power bank under 100' is the first completion of 'best power bank under' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+under+). Macworld has 'best value 140W' and 'budget 140W' sections. The cross is our judgement.",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "Baseus EnerFill FC41 25,000 mAh 145W",
+     "why": "140 W from USB-C1, 91.25 Wh, two built-in cables; $46.99 through our link with code FC41 (store $79.99)"
+    },
+    {
+     "product": "UGREEN 145W 25,000 mAh",
+     "why": "140 W port, 90 Wh, 503 g (Macworld); $59.98 with no code"
+    },
+    {
+     "product": "Cuktech 15 Ultra (165W)",
+     "why": "140 W port, Macworld Test Score 123%; $67.14 in Macworld's widget"
+    }
+   ],
+   "ours": [
+    "baseus-enerfill-fc41-25000mah-145w",
+    "ugreen-145w-25000mah-3-port-power-bank"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-25000mah-power-bank-under-100",
+   "notes": "The same products answer /best-25000mah-power-bank-under-100 (published 2026-11-26); confirm that page states the 140 W single-port figure and Apple's cable rule before treating this as covered. Neither of ours has a Macworld score in the text read; the tested rivals are INIU Cougar P64 (119%, $88.99) and Cuktech 15 Ultra (123%). INIU's 27,000 mAh 140W is $79.99 but out of stock at iniushop.com today. Re-test code FC41 (cart test 2026-11-18).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-25000mah-power-bank-under-100"
+   }
+  },
+  {
+   "id": "100wh-biggest-carry-on",
+   "ptype": "numbered",
+   "question": "biggest power bank allowed on a plane without airline approval (under 100 Wh)",
+   "axes": {
+    "wh": "100"
+   },
+   "why": "100 Wh is the line below which a bank flies in carry-on without the airline's consent (Engadget; TSA sends all power banks to carry-on). The biggest banks stop at 99.4-99.9 Wh, about 27,000-27,650 mAh.",
+   "sources": [
+    "https://engadget.com/best-power-bank-143048526.html",
+    "https://www.tsa.gov/travel/security-screening/whatcanibring/items/power-banks",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "asked": "Google completes 'power bank 1' with 'power bank 100wh' and 'power bank 100 watt hours' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+1) and 'which power bank has' with 'the highest capacity'.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Reelcharge ReelPro 200W (27K)",
+     "why": "99.9 Wh, 140 W port, Macworld Test Score 124%; $95.99 in Macworld's widget"
+    },
+    {
+     "product": "EcoFlow RAPID Pro 27K (300W)",
+     "why": "99.54 Wh, 140 W, built-in cable, Macworld Test Score 120%; $89.99 in Macworld's widget"
+    },
+    {
+     "product": "AOHi The Future Starship 240W",
+     "why": "99.36 Wh, two 140 W ports (ChargerLab measured 118.7 W + 94.2 W together); $95.20 through our link"
+    }
+   ],
+   "ours": [
+    "aohi-future-starship-240w-27600mah"
+   ],
+   "ours_rank": 3,
+   "covered_by": "best-power-bank-allowed-on-plane",
+   "notes": "All four leaders sit within 0.6 Wh of each other, so the ranking is on delivered energy and price. Anker Prime 26K (99.75 Wh, Macworld 125%) is $159.99 on Amazon today. Our page's research priced the EcoFlow at $175.99; Macworld's widget now shows $89.99, about $0.90 per Wh against $0.96 for the AOHi at $95.20, so the page's cost-per-Wh order needs a re-check at a retailer. AOHi has no Macworld score.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-power-bank-allowed-on-plane"
+   }
+  },
+  {
+   "id": "160wh-with-approval",
+   "ptype": "numbered",
+   "question": "highest capacity power bank you can take on a plane with airline approval (160 Wh)",
+   "axes": {
+    "wh": "160"
+   },
+   "why": "Between 100 and 160 Wh a bank flies only if the airline permits it (Macworld). That band, not a mAh figure, is the ceiling for a flyable bank.",
+   "sources": [
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://us.ugreen.com/products/ugreen-300w-48000mah-portable-charger-power-bank",
+    "https://www.iaohi.com/products/starship-140w-40-000mah-power-bank"
+   ],
+   "asked": "Google completes 'which power bank has' with 'the highest capacity' and 'highest mah' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=which+power+bank+has+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN 300W 48,000 mAh",
+     "why": "153.6 Wh LiFePO4, 140 W port, Macworld Test Score 180%, 1.65 kg; $118.99"
+    },
+    {
+     "product": "AOHi Starship 2-in-1 40,000 mAh",
+     "why": "146 Wh, two 140 W outputs, 140 W input; $143.20 through our link (store $179.00)"
+    }
+   ],
+   "ours": [
+    "ugreen-48000mah-300w-power-bank",
+    "aohi-starship-40000mah-140w"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-40000mah-power-bank-for-laptop",
+   "notes": "Only two banks in the 100-160 Wh band were sourced, both ours; search for rivals before claiming the line. Macworld calls the UGREEN 'too powerful for a commercial flight' in the same guide that states the 160 Wh rule; at 153.6 Wh it is inside the band, so quote both and name the approval step. Our own research found Delta caps power banks at 100 Wh with no exceptions (lead, re-check). Re-test AOHi code 20AUTUMN (cart test 2026-11-10).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-40000mah-power-bank-for-laptop"
+   }
+  },
+  {
+   "id": "two-100w-ports",
+   "ptype": "numbered",
+   "question": "which power bank can charge two laptops at once at 100W each",
+   "axes": {
+    "watts": "100",
+    "ports": "2 USB-C at 100 W together"
+   },
+   "why": "A bank's headline watts are a total: a '130W' bank gives 100 W + 30 W and a '100W' bank can fall to 65 W once a second device joins. Two laptops need 100 W from each of two ports at the same time.",
+   "sources": [
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://www.iaohi.com/products/aohi-the-future-starship-240w-27-600mah-led-display-power-bank",
+    "https://www.amazon.com/dp/B0F66LNB8D"
+   ],
+   "asked": "Google completes 'best power bank with' with 'best power bank with 2 usb-c ports' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+). ChatGPT offered 'multiple devices' in 6 of 6 chats and split on '130W combined'.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Prime 26K 300W",
+     "why": "140 W from each USB-C port (our research note), Macworld Test Score 125%; $159.99 on Amazon"
+    },
+    {
+     "product": "AOHi The Future Starship 240W",
+     "why": "rated 140 W + 100 W together, ChargerLab measured 118.7 W + 94.2 W; 99.36 Wh; $95.20 through our link"
+    },
+    {
+     "product": "UGREEN 300W 48,000 mAh",
+     "why": "three USB-C at 100 W each together (Macworld, our record); 153.6 Wh, needs airline approval; $118.99"
+    }
+   ],
+   "ours": [
+    "aohi-future-starship-240w-27600mah",
+    "ugreen-48000mah-300w-power-bank"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Check the split with two ports in use for AOHi Black Warrior (2x100 W ports, 170 W total, so not 100 + 100) and UGREEN Nexode 200W (140 + 100 single-port ratings). ChargerLab's 94.2 W on the AOHi's second port is just under 100 W; say so. The Anker per-port figure comes from our research notes: re-open Anker's spec sheet. /best-fast-charging-power-bank touches this and drew no visits.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "aohi-future-starship-240w-27600mah, ugreen-48000mah-300w-power-bank",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 2.67,
+    "score": 0.534
+   }
+  },
+  {
+   "id": "qi2-2-25w-10000",
+   "ptype": "numbered",
+   "question": "best 25W Qi2.2 magnetic power bank 10000mAh",
+   "axes": {
+    "wireless": "25",
+    "capacity": "10000"
+   },
+   "why": "Qi2.2 lifts magnetic charging from 15 W to 25 W. At least five 10,000 mAh banks with it are on sale, from $54.99 to $149.99.",
+   "sources": [
+    "https://www.notebookcheck.net/Slim-Baseus-magnetic-power-bank-launches-with-30W-fast-charging-and-10-000mAh-capacity.1460576.0.html",
+    "https://iniushop.com/products/iniu-p781-qi2-2-magnetic-power-bank",
+    "https://www.baseus.com/products/picogo-am52-qi2-2-magnetic-power-bank-10000mah-45w",
+    "https://www.amazon.com/dp/B0GVYMQ3GT"
+   ],
+   "asked": "Google completes 'best magsafe power bank' with iPhone 17, 17 Pro, 17 Pro Max and 18 Pro Max (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+magsafe+power+bank+). ChatGPT asked wired or magnetic in 6 of 6 chats. Our page drew 5 visits in 16 days.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "INIU SnapGo Air 10,000 mAh",
+     "why": "25 W wireless, 45 W wired, 0.5 in, 195.4 g (Android Central); $54.99"
+    },
+    {
+     "product": "Baseus PicoGo AM52 Qi2.2",
+     "why": "25 W wireless, 45 W wired, 30 W input; $56.99 through our link (store $59.99)"
+    },
+    {
+     "product": "UGREEN MagFlow 10,000 mAh Qi2 25W",
+     "why": "25 W wireless, 45 W wired, 13.9 mm (Notebookcheck on the Slim model, to be matched to the store listing); $79.99"
+    }
+   ],
+   "ours": [
+    "baseus-picogo-am52-qi2-2-10000mah-45w",
+    "https://us.ugreen.com/products/ugreen-25w-magnetic-power-bank-10000mah"
+   ],
+   "ours_rank": 2,
+   "covered_by": "best-qi2-2-25w-magnetic-power-bank",
+   "notes": "New since the page was published: Notebookcheck (2026-11-26) reports a Baseus PicoGo Air AM71 10,000 mAh Qi2.2 25W, 30 W wired, 14.73 mm, at $44.87 on Amazon ($79.99 list). That would undercut every bank here, but baseus.com lists AM71 only as a 5,000 mAh model today, so find the listing. Also on sale: Anker MagGo 2 Pro $85.99 (Amazon), Baseus AM61 Qi2.2 $69.99, UGREEN MagFlow Pro with liquid cooling $149.99, UGREEN MagFlow 20,000 mAh 25W $119.99. Android Central's piece is hands-on with no measurements; the ranking above is on rated figures and price. TORRAS MiniMag Pro is 15 W and does not belong on this line.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-qi2-2-25w-magnetic-power-bank"
+   }
+  },
+  {
+   "id": "built-in-cable-10000",
+   "ptype": "numbered",
+   "question": "best 10000mAh power bank with built-in cable",
+   "axes": {
+    "capacity": "10000",
+    "cable": "built-in"
+   },
+   "why": "10,000 mAh is the pocket size ChatGPT gives for everyday phone charging, and a built-in cable was its next question in 4 of 6 chats.",
+   "sources": [
+    "https://iniushop.com/products/iniu-carry-p55l-e2-power-bank-45w-10000mah",
+    "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-usb-c-cables-10000mah-45w",
+    "https://www.amazon.com/dp/B0FKN5RCV7"
+   ],
+   "asked": "Google completes 'best power bank with' with 'built in cables' and 'power bank with built in' with 'cable' and 'usb c cable' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+with+built+in+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "INIU Carry 10,000 mAh 45W (P55L-E2)",
+     "why": "45 W, built-in USB-C cable; $26.99, the lowest price read"
+    },
+    {
+     "product": "Baseus EnerFill FC11 10,000 mAh 45W",
+     "why": "45 W, two built-in USB-C cables, four devices (store text); $35.99"
+    },
+    {
+     "product": "Anker Nano 10,000 mAh 45W (A1638)",
+     "why": "45 W, retractable cable, Anker rates it 45 W for Samsung and 40 W for iPhone 17; $45.99 on Amazon"
+    }
+   ],
+   "ours": [
+    "https://www.baseus.com/products/enerfill-fc11-power-bank-with-dual-usb-c-cables-10000mah-45w",
+    "anker-nano-power-bank-10k-45w-a1638"
+   ],
+   "ours_rank": 2,
+   "covered_by": "best-10000mah-power-bank-with-built-in-cable",
+   "notes": "The page was published 2026-11-26. Check that it carries the two Baseus 10,000 mAh cable banks that have no record (FC11 10K $35.99, PicoGo AC22 10K $39.99). No measured figures were found for these three; the order is price at equal rated watts.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-10000mah-power-bank-with-built-in-cable"
+   }
+  },
+  {
+   "id": "retractable-cable",
+   "ptype": "finder",
+   "question": "which power bank has a retractable USB-C cable",
+   "axes": {
+    "cable": "retractable"
+   },
+   "why": "A reel cable winds into the body, so nothing dangles or gets lost. Only a handful of banks have one, and they span 10,000 mAh phone banks to 100 W laptop banks.",
+   "sources": [
+    "https://www.amazon.com/dp/B0FKN5RCV7",
+    "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+    "https://torraslife.com/products/pearlgo-power-bank-10k-mah"
+   ],
+   "asked": "ChatGPT offered 'retractable USB-C cable' as its own answer to 'Does a built-in cable matter?' (4 of 6 chats) and described the longer retractable cable as the convenience upgrade.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Nano 10,000 mAh 45W (A1638)",
+     "why": "phone size, 45 W on the reel cable; $45.99 on Amazon, the lowest price read"
+    },
+    {
+     "product": "UGREEN Nexode 20,000 mAh 165W with Retractable USB-C Cable",
+     "why": "laptop size, 100 W max port, 72 Wh, Macworld Test Score 78% ('best mid-range'); $99.99"
+    },
+    {
+     "product": "TORRAS PearlGo 10,000 mAh",
+     "why": "45 W, retractable USB-C, carry hook (store text); $69.99"
+    }
+   ],
+   "ours": [
+    "anker-nano-power-bank-10k-45w-a1638",
+    "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+    "https://torraslife.com/products/pearlgo-power-bank-10k-mah"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Leads to check: UGREEN Nexode Pro 25,000 mAh 200W with retractable cables is $89.99 on Amazon (B0GS97HMFN). Macworld lists a 'Nexode Pro 25K' at 100 W max port, 124% score, $139.99, and us.ugreen.com has a '200W 25000mAh Built-in Cable' at $139.99; confirm they are one product, and if so it outranks the 20K at a lower price. TORRAS PackGo Cube (retractable, semi-solid-state) is $89.99. Two devices at once drop the Anker to 15 W + 7.5 W (our record).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "anker-nano-power-bank-10k-45w-a1638, https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah, https://torraslife.com/products/pearlgo-power-bank-10k-mah",
+    "demand": 0.0,
+    "value": 0.31,
+    "prior": 1.03,
+    "score": 0.16
+   }
+  },
+  {
+   "id": "wall-plug",
+   "ptype": "finder",
+   "question": "which power bank has a built-in wall plug",
+   "axes": {
+    "wall_plug": "yes"
+   },
+   "why": "A folding plug lets the bank recharge straight from a socket and stand in for the wall charger. It is the first completion of 'best power bank with'.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+",
+    "https://www.amazon.com/dp/B0CX4992Z8",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "asked": "'best power bank with wall plug' is the first completion of 'best power bank with' and also appears for 'best power bank' alone; 'power bank with built in wall plug' and '... cables and wall plug' follow (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+with+built+in+). ChatGPT offered a folding wall plug as the travel choice.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Nano 3-in-1 10,000 mAh 30W",
+     "why": "10,000 mAh, 30 W, wall plug (Amazon listing title); $37.99"
+    },
+    {
+     "product": "Statik SmartCharge Pro",
+     "why": "15,000 mAh / 54 Wh, 60 W, power bank and wall charger, 370 g, Macworld Test Score 54%; $99.99 in Macworld's widget"
+    }
+   ],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "No partner store carries one: searches of baseus.com and us.ugreen.com for a power bank with a plug returned none today. The Anker can be linked only through amazon.com. Only two products were sourced, so the field needs filling (Amazon search stopped answering during this session). Open the Anker listing for the plug type and cable before writing.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "ac-outlet-under-100wh",
+   "ptype": "finder",
+   "question": "which power bank has an AC outlet and is allowed on a plane",
+   "axes": {
+    "ac_outlet": "yes",
+    "wh": "100"
+   },
+   "why": "An AC outlet runs gear that cannot charge over USB-C. Under 100 Wh the bank still flies in carry-on without approval.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+power+bank+with+",
+    "https://www.amazon.com/dp/B0BFBTR94M",
+    "https://engadget.com/best-power-bank-143048526.html"
+   ],
+   "asked": "'best power bank with ac outlet' is a completion of 'best power bank with'; 'power bank 120v' and 'power bank 110v' complete 'power bank 1' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=power+bank+1).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Goal Zero Sherpa 100AC",
+     "why": "94.7 Wh, 100 W AC outlet (modified sine wave), 100 W USB-C PD, 2.1 lb (our record); $249.95 on Amazon"
+    }
+   ],
+   "ours": [
+    "goalzero-sherpa-100ac"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "The rank is provisional: the Sherpa is the only AC-outlet bank verified. Rivals surfaced only in unverified roundups (ZeroKor R65, Daran R100, powkey HP500S) and none was opened, so the top three is unfinished. At $249.95 the Sherpa may lose on price to any tested rival. Its outlet is modified sine wave: say which devices that rules out. The record had no price until today.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "goalzero-sherpa-100ac",
+    "demand": 0.0,
+    "value": 0.42,
+    "prior": 1.03,
+    "score": 0.216
+   }
+  },
+  {
+   "id": "semi-solid-state",
+   "ptype": "finder",
+   "question": "which power bank has a semi-solid-state battery",
+   "axes": {
+    "cell": "semi-solid-state"
+   },
+   "why": "Semi-solid-state cells are sold as the safer chemistry and few banks use them. Shoppers ask for them by name after a year of power bank recalls.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=solid+state+power+bank",
+    "https://www.androidcentral.com/accessories/power-charging/i-tested-the-best-slim-qi2-power-banks-released-in-2026-baseus-torras-iniu-reelcharge",
+    "https://torraslife.com/products/packgo-cube-power-bank-10k-mah"
+   ],
+   "asked": "Google completes 'solid state power bank' with anker, reviews, belkin, magsafe, 'vs lithium ion', ccc and 'for iphone' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=solid+state+power+bank).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "TORRAS MiniMag Pro 10,000 mAh",
+     "why": "ATL semi-solid-state cell (TORRAS, our record), 15 W magnetic, 30 W USB-C, IP54, 195 g (Android Central); $79.99"
+    },
+    {
+     "product": "TORRAS PackGo Cube 10,000 mAh",
+     "why": "semi-solid-state cell with a retractable USB-C cable (store text); $89.99"
+    },
+    {
+     "product": "ReelCharge ReelSafe 5,000 mAh",
+     "why": "semi-solid-state, 15 W wireless, 20 W wired, 119 g (Android Central); $49.99 in that article"
+    }
+   ],
+   "ours": [
+    "minimag-pro-10k",
+    "https://torraslife.com/products/packgo-cube-power-bank-10k-mah"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "The rank is provisional. Kuxiu S2/S3, BMX SolidSafe, Zens and Belkin BoostSolid surfaced in search but none was opened, and no measured safety or capacity test was found for any bank on this line. TORRAS store price rose to $79.99 today (our record: $72.00 on 2026-11-25); re-test code WELCOMEBACK. TORRAS does not state Wh or Qi2 certification. The MiniMag Pro product page is one of 14 product pages here that drew almost no visits; a finder may serve it better.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "minimag-pro-10k, https://torraslife.com/products/packgo-cube-power-bank-10k-mah",
+    "demand": 0.0,
+    "value": 0.36,
+    "prior": 1.03,
+    "score": 0.185
+   }
+  },
+  {
+   "id": "3c-mark-china",
+   "ptype": "finder",
+   "question": "which power bank has 3C certification for flights in China",
+   "axes": {
+    "ccc": "yes"
+   },
+   "why": "Since 2025-06-28 China's aviation regulator bars power banks without a clear 3C label from domestic flights. A traveller with a US-bought bank needs to know before the trip.",
+   "sources": [
+    "https://english.beijing.gov.cn/latest/news/202506/t20250628_4131163.html",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=which+power+bank+has+"
+   ],
+   "asked": "Three of ten completions of 'which power bank has': 'ccc certificate', 'ccc logo', '3c certification' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=which+power+bank+has+); also 'solid state power bank ccc'.",
+   "hunch": false,
+   "top3": [],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "No product could be placed: no page opened today states that a US-sold power bank carries the 3C mark. Leads: baseus.com sells a 'Picogo Air AM71 3C Magnetic Power Bank 5000mAh 22.5W' ($69.99), where the '3C' may refer to the mark; ask Baseus or read the label photo. Notebookcheck reported Nitecore models with the CCC mark (seen in search only). Ask each partner which US SKUs carry it. Our flying pages do not mention the rule.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "5oz-10000-backpacking",
+   "ptype": "numbered",
+   "question": "lightest 10000mAh power bank for backpacking, about 5 oz",
+   "axes": {
+    "weight": "5",
+    "capacity": "10000"
+   },
+   "why": "ChatGPT's hiking pick was 'about 5 oz' with IPX7 against 5.6 oz for a compact everyday bank. Nitecore's NB10000 Gen4 is 143 g with IPX7.",
+   "sources": [
+    "https://www.nitecore.com/product/nb10000gen4",
+    "https://www.amazon.com/dp/B0H61KHJ1X",
+    "https://iniushop.com/products/new-colorful-iniu-carry-p50-e1-power-bank-45w-smallest-10000mah"
+   ],
+   "asked": "Google completes 'best 10000mah power bank' with 'for backpacking' first, and 'best power bank for' with backpacking and camping (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+10000mah+power+bank+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Nitecore NB10000 Gen4",
+     "why": "143 g (5 oz), IPX7, 39 Wh, 22.5 W per port and 15 W total with two (Nitecore); $67.16 on Amazon"
+    },
+    {
+     "product": "INIU Pocket Rocket P50 10,000 mAh 45W",
+     "why": "5.6 oz, 45 W (INIU store text); $34.99; TechRadar's 'best small' on 2026-11-26"
+    }
+   ],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "No partner sells an ultralight or IPX7 bank; the Nitecore can be linked only through amazon.com. Nitecore NB10000 Gen3 is $64.95 on Amazon (weight not read). Engadget's outdoor pick is the Nestout 15,000 mAh (32 W; weight not read). TORRAS MiniMag Pro is 195 g with IP54 and does not place. A third entry needs sourcing.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "samsung-45w",
+   "ptype": "numbered",
+   "question": "which power bank charges a Samsung Galaxy at 45W",
+   "axes": {
+    "watts": "45"
+   },
+   "why": "Samsung's fastest phone charging is 45 W and needs the bank to speak Samsung's protocol; a '45W' label alone does not give it. ChatGPT told shoppers so.",
+   "sources": [
+    "https://www.samsung.com/us/business/mobile-accessories/45w-pd-power-adapter-with-5a-usb-c-cable-black-sku-ep-t4511xbegus/",
+    "https://www.amazon.com/dp/B0FKN5RCV7"
+   ],
+   "asked": "ChatGPT offered 'Samsung fast charging' as a device choice in 6 of 6 chats and said a phone will not charge at 45 W unless it supports the necessary protocol. Google completes 'best power bank for' with 'android phone' and 'best magsafe power bank' with 'samsung' and 's26 ultra'.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Nano 10,000 mAh 45W (A1638)",
+     "why": "Anker states 45 W for Samsung from the cable or port used alone (our record); $45.99 on Amazon"
+    }
+   ],
+   "ours": [
+    "anker-nano-power-bank-10k-45w-a1638"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "The rank is provisional: only one bank has a maker statement of 45 W to a Samsung phone. The page needs each candidate's PPS range from its spec sheet: Baseus FC11 ($28.99), INIU P50 ($34.99), INIU Carry ($26.99), UGREEN Nexode 130W (PD 3.0 with PPS), AOHi Future Starship (PPS 3.3-21 V 5 A in our record). It also needs Samsung's own statement of what 45 W requires; the Samsung page opened gives the adapter name only. /best-power-bank-for-phone-fast-charge-wattage (0 visits) may already hold part of this.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "anker-nano-power-bank-10k-45w-a1638",
+    "demand": 0.0,
+    "value": 0.31,
+    "prior": 2.67,
+    "score": 0.414
+   }
+  },
+  {
+   "id": "ugreen-nexode-20000-165w-retractable",
+   "ptype": "product",
+   "question": "is the 20000mAh 165W power bank with a retractable cable worth $100",
+   "axes": {
+    "cable": "retractable",
+    "watts": "100",
+    "capacity": "20000"
+   },
+   "why": "It is the laptop-size bank on the retractable-cable line: 100 W from one port and Macworld's 'best mid-range' pick, with a 78% Test Score.",
+   "sources": [
+    "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+    "https://www.macworld.com/article/2395511/best-laptop-power-bank.html"
+   ],
+   "asked": "ChatGPT offered a retractable cable as the convenience upgrade and '165W (four-device charging)' as a figure it split picks on. Macworld gives the product its own section.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN Nexode 20,000 mAh 165W with Retractable USB-C Cable",
+     "why": "second on the retractable-cable line; 72 Wh, 100 W max port, 535 g, Macworld Test Score 78%; $99.99"
+    }
+   ],
+   "ours": [
+    "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Product pages drew 0.07 visits a page in this cluster (14 pages, 1 visited), so build this only alongside the retractable-cable finder. The store listing's text was empty in the store feed; take specs from the page itself or the manual. Check for a code (none read) and compare with the Nexode Pro 25,000 mAh 200W retractable at $89.99 on Amazon.",
+   "product": {
+    "brand": "UGREEN",
+    "name": "UGREEN Nexode Power Bank 20000mAh 165W with Retractable USB-C Cable",
+    "url": "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+    "variant": "",
+    "price": "$99.99",
+    "program": "cj:ugreen"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://us.ugreen.com/products/ugreen-retractable-cable-power-bank-20000mah",
+    "demand": null,
+    "value": 0.39,
+    "prior": 0.14,
+    "score": 0.044
+   }
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-11-26",
+   "what": "Notebookcheck: Baseus PicoGo Air AM71 10,000 mAh launches with Qi2.2 25 W wireless, 30 W wired, 14.73 mm; $79.99 list, $44.87 on Amazon. baseus.com lists AM71 only as a 5,000 mAh model today.",
+   "source": "https://www.notebookcheck.net/Slim-Baseus-magnetic-power-bank-launches-with-30W-fast-charging-and-10-000mAh-capacity.1460576.0.html",
+   "effect": "qi2-2-25w-10000: a partner-brand bank that would be the cheapest on the line once a linkable listing is found"
+  },
+  {
+   "date": "2026-11-26",
+   "what": "TechRadar publishes its power bank guide: Anker MagGo 10K Slim is the favorite, INIU P50-E1 best small, Anker 737 for power users.",
+   "source": "https://www.techradar.com/lists/news/top-portable-chargers",
+   "effect": "wireless and capacity axes; none of ours is among the picks in the part of the page read"
+  },
+  {
+   "date": "2026-11-09",
+   "what": "KATU, citing CPSC: about 11,000 HAIARA W5 PRO power banks sold on Amazon by Mitrytech (May 2025 to September 2026, $18-$22) recalled after 600 reports of fires and other thermal incidents, 3 burn injuries.",
+   "source": "https://katu.com/news/local/lithium-power-banks-recalled-after-hundreds-of-reports-of-overheating-fires-haiara-amazon-mitrytech-us-consumer-product-safety-commission-recall",
+   "effect": "under-$30 lines and the semi-solid-state finder: a reason to name brands and safety claims on budget pages"
+  },
+  {
+   "date": "2026-11-05",
+   "what": "Notebookcheck: UGREEN MagFlow Qi2.2 Slim 10,000 mAh (25 W wireless, 45 W wired, 13.9 mm) gets a Dark Cherry colour at $79.99.",
+   "source": "https://www.notebookcheck.net/Ugreen-launches-refreshed-slim-magnetic-power-bank-with-45W-fast-charging-support.1442928.0.html",
+   "effect": "qi2-2-25w-10000: a partner product with no record, $79.99 at us.ugreen.com today"
+  },
+  {
+   "date": "2026-11-04",
+   "what": "Macworld updates its laptop power bank guide with test scores and prices: EcoFlow RAPID Pro 27K at $89.99, UGREEN 145W at $59.98, Cuktech CP253L 20K at $27.45.",
+   "source": "https://www.macworld.com/article/2395511/best-laptop-power-bank.html",
+   "effect": "100wh-biggest-carry-on (EcoFlow now cheaper per Wh than AOHi), 140w-under-100, 20000mah-under-30"
+  },
+  {
+   "date": "2026-10-20",
+   "what": "Notebookcheck: Baseus PicoGo Air AM72 slim Qi2 bank (7.9 mm, up to 15 W wireless) listed on Amazon at $79.99 ahead of a late-November launch. baseus.com today titles it 'Qi2 5000mAh 25W' at $79.99, which conflicts on watts.",
+   "source": "https://www.notebookcheck.net/Super-slim-25W-Baseus-power-bank-with-Qi2-magnetic-charging-launches-earlier-than-expected.1429067.0.html",
+   "effect": "wireless axis: a new partner release with no record; settle 15 W or 25 W before it goes on any line"
+  },
+  {
+   "date": "2026-10-01",
+   "what": "Android Central (Namerah Saud Fatmi) hands-on with slim Qi2 banks: Baseus AM71 5,000 mAh, TORRAS MiniMag Pro, INIU SnapGo Air, ReelCharge ReelSafe.",
+   "source": "https://www.androidcentral.com/accessories/power-charging/i-tested-the-best-slim-qi2-power-banks-released-in-2026-baseus-torras-iniu-reelcharge",
+   "effect": "qi2-2-25w-10000 and semi-solid-state: a named reviewer for TORRAS and INIU weights and thickness, without measurements"
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Store prices read today differ from our records: TORRAS MiniMag Pro 10k $79.99 (was $72.00 on 2026-11-25); AOHi Black Warrior listing $89.99 (was $79.99 on 2026-11-17).",
+   "source": "https://torraslife.com/products/minimag-pro-power-bank-10k-mah",
+   "effect": "semi-solid-state and any under-$100 line carrying the Black Warrior: both link prices need a fresh cart test"
+  }
+ ],
+ "pages_to_fix": [
+  {
+   "page": "best-40000mah-power-bank-for-laptop",
+   "why": "40,000 mAh is not where anything changes. The real line is the 100-160 Wh band that needs airline approval (Macworld), and both products on it (UGREEN 153.6 Wh, AOHi 146 Wh) are defined by that. Rebuild the page on 160 Wh."
+  },
+  {
+   "page": "best-power-bank-allowed-on-plane",
+   "why": "Its cost-per-Wh comparison used EcoFlow RAPID Pro at $175.99. Macworld's guide shows $89.99 (read 2026-11-27), which would put EcoFlow at about $0.90 per Wh, under the AOHi Future Starship's $0.96 at $95.20. Verify at a retailer and re-rank. The page also lacks the China 3C rule."
+  },
+  {
+   "page": "best-qi2-2-25w-magnetic-power-bank",
+   "why": "The field has changed since 2026-11-11: Baseus AM71 10,000 mAh Qi2.2 ($44.87 on Amazon per Notebookcheck, 2026-11-26), Anker MagGo 2 Pro ($85.99 on Amazon), Baseus AM61 ($69.99) and UGREEN MagFlow Pro ($149.99) are on sale. The pick's price order needs re-checking."
+  },
+  {
+   "page": "best-20000mah-power-bank-under-50",
+   "why": "Macworld's tested budget 20,000 mAh banks are missing from the page's research: Cuktech CP253L (45 W, $27.45), Cuktech 15SE (65 W, $39.99, score 60%), Pisen Bolt 67W ($40.99, score 90%). INIU Cougar 65W is $46.99 today and has a Macworld score of 87%."
+  },
+  {
+   "page": "best-25000mah-power-bank-under-100",
+   "why": "AOHi Black Warrior's store listing is $89.99 today against $79.99 in our record; re-test the code. Two rivals are now under $100: EcoFlow RAPID Pro 27K ($89.99, Macworld) and UGREEN Nexode Pro 25,000 mAh 200W retractable ($89.99 on Amazon)."
+  },
+  {
+   "page": "minimag-pro-10k",
+   "why": "Store price is $79.99 today against $72.00 in the record (2026-11-25), so the $61.20 link price is stale until the cart test is repeated."
+  }
+ ],
+ "unsourced": [
+  "FAA's own wording of the 100 Wh and 101-160 Wh rules: faa.gov PackSafe pages returned HTTP 403 and ecfr.gov redirected to a block page. The Wh breakpoints rest on Engadget, Macworld and TSA.",
+  "ICAO's rule said to take effect 2026-03-27 (two power banks per passenger, no recharging in flight) and any US airline change in the last 60 days: seen only in travel-blog search results, no primary page opened.",
+  "Samsung's own statement of what 45 W Super Fast Charging 2.0 requires (PPS range, 5 A cable, supported phones): the Samsung US page opened carries the adapter name only.",
+  "Apple's statement of the iPhone 17 wired and Qi2.2 charging limits: not opened this session; the 40 W and 25 W figures in our records were not re-read.",
+  "The 20-30 W everyday-phone breakpoint: it comes from the ChatGPT chats in the brief; no reviewer page read today states it.",
+  "Nintendo Switch 2 charging watts and whether it needs a 15 V profile: 'best power bank for switch 2' is a suggested search, but no opened page gave a measured figure, so there is no line.",
+  "Wirecutter, The Verge, Wired and Tom's Guide buying guides: the first three could not be fetched and Tom's Guide returned navigation only.",
+  "Rivals for the AC-outlet line (ZeroKor R65, Daran R100, powkey HP500S) and the semi-solid-state line (Kuxiu S2/S3, BMX SolidSafe, Zens, Belkin BoostSolid): search results only.",
+  "Wall-plug power banks beyond Anker Nano 3-in-1 and Statik SmartCharge Pro: Amazon search returned nothing on three tries.",
+  "Which US-sold power banks carry the 3C mark: no maker or reviewer page states it.",
+  "Amazon listings and prices for INIU, Cuktech, Pisen, Reelcharge and EcoFlow RAPID Pro 27K: INIU prices are from iniushop.com; the others are Macworld widget prices, not retailer reads.",
+  "Launch dates for Anker MagGo 2 Pro and Nitecore NB10000 Gen4: both are on Amazon today, but no dated announcement was opened.",
+  "Macworld test scores for UGREEN 145W, UGREEN Nexode 130W/100W, Baseus Laptop Powerbank 100W 20K and Cuktech 20: they fell outside the text read.",
+  "CPSC's own notice for the HAIARA W5 PRO: the cpsc.gov URL tried returned 403; the figures are KATU's, and a search summary gave a conflicting count of 210,000 units."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 77,
+  "cost_usd_list": 5.0088503
+ },
+ "built": "2026-11-27",
+ "name": "power banks"
+}

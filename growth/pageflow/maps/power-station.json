@@ -1,0 +1,1875 @@
+{
+ "cluster": "power-station",
+ "summary": "Shoppers size the battery first (about 300 Wh for electronics, 1 kWh as the default, 2 kWh and up for a refrigerator through an outage), then check that continuous watts cover the largest appliance, then trade price against weight and whether the unit can take an extra battery. In the last 60 days EcoFlow shipped the DELTA 3000/3800 Gen4 and RIVER Gen4, and BLUETTI added the Elite 100 mini; Black Friday pricing has pushed tested 1 kWh stations to $360-$470 and a 3 kWh station to $899. Growatt's HELIOS 3600 went the other way, from $1,399 to $1,599, and several BLUETTI stations are pre-orders shipping December to February.",
+ "axes": [
+  {
+   "id": "capacity",
+   "label": "Battery size in watt-hours: how long it runs your things",
+   "kind": "number",
+   "unit": "Wh",
+   "rank": 1,
+   "why": "OutdoorGearLab gives 60% of its score to power output and measures delivered energy for each unit; ChatGPT sized the battery in 6 of 6 chats (project brief) and split picks at about 290 Wh, 1 kWh and 2 kWh. GearJunkie sets its price tiers by capacity (300-600 Wh budget, 1,000-2,000 Wh mid-tier).",
+   "sources": [
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "breakpoints": [
+    {
+     "value": "160",
+     "why": "TSA: spare lithium batteries go in carry-on only; 'with airline approval, passengers may also carry up to two spare larger lithium ion batteries (101-160 Wh)'. A station above 160 Wh cannot fly (read 2026-11-27).",
+     "source": "https://www.tsa.gov/travel/security-screening/whatcanibring/items/lithium-batteries-more-100-watt-hours"
+    },
+    {
+     "value": "300",
+     "why": "Phones-and-laptop class. OutdoorGearLab measured 260 Wh from the Jackery Explorer 300 and says a station this size suits blackouts of under an hour; GearJunkie's budget tier starts at 300 Wh (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "1024",
+     "why": "The default class. OutdoorGearLab measured 870-910 Wh from five stations rated 1,024-1,070 Wh, so a 1 kWh station delivers under 0.9 kWh (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "2000",
+     "why": "OutdoorGearLab: for electric camping 'you'll want at least a 2,000 Wh power station, and one with at least 2,000 AC watt support'. ChatGPT moved refrigerator-outage shoppers to 2 kWh (project brief).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "3072",
+     "why": "Home-backup class. GearJunkie's Best Home Backup pick is 3,072 Wh and ran a full-size fridge and a chest freezer together over 24-hour runs; EcoFlow's new DELTA 3000 Gen4 is the same size (read 2026-11-27).",
+     "source": "https://gearjunkie.com/technology/best-portable-power-stations"
+    },
+    {
+     "value": "5000",
+     "why": "The 5 kWh class is where single units carry 240 V and 7,200 W: Jackery's Explorer 5000 Plus page gives 7,200 W rated and both 120 V and 240 V (read 2026-11-27).",
+     "source": "https://www.jackery.com/products/jackery-explorer-5000-plus"
+    }
+   ]
+  },
+  {
+   "id": "watts",
+   "label": "Continuous AC output: the biggest appliance it can run",
+   "kind": "number",
+   "unit": "W",
+   "rank": 2,
+   "why": "GearJunkie weights power output most heavily (30%) and tells buyers to 'aim for at least a 2,000 W continuous inverter' and to buy an inverter '25% to 50% larger than the highest capacity appliance'. ChatGPT split picks at 300, 600, 1,500, 1,800, 2,000, 2,400 and 2,600 W (project brief).",
+   "sources": [
+    "https://gearjunkie.com/technology/best-portable-power-stations",
+    "https://en.wikipedia.org/wiki/NEMA_connector"
+   ],
+   "breakpoints": [
+    {
+     "value": "300",
+     "why": "Electronics only. GearJunkie's 300 W Jackery Explorer 300 tripped its protection in about 10 seconds on an electric fireplace or a skill saw (read 2026-11-27).",
+     "source": "https://gearjunkie.com/technology/best-portable-power-stations"
+    },
+    {
+     "value": "1800",
+     "why": "The standard US household outlet is NEMA 5-15, 15 A at 125 V; 15 A at 120 V is 1,800 W, so wall-outlet appliances top out here. GearJunkie: '1,800 W is as fast as you can get from a typical 15A wall outlet' (read 2026-11-27).",
+     "source": "https://en.wikipedia.org/wiki/NEMA_connector"
+    },
+    {
+     "value": "2000",
+     "why": "GearJunkie's stated minimum for most household appliances and power tools: 'at least a 2,000 W continuous inverter' (read 2026-11-27).",
+     "source": "https://gearjunkie.com/technology/best-portable-power-stations"
+    },
+    {
+     "value": "2400",
+     "why": "NEMA 5-20 is the 20 A household outlet; 20 A at 120 V is 2,400 W, the ceiling for one 20 A receptacle (read 2026-11-27).",
+     "source": "https://en.wikipedia.org/wiki/NEMA_connector"
+    },
+    {
+     "value": "3600",
+     "why": "NEMA TT-30 is 'a 120 V 30 A recreational vehicle standard'; 30 A at 120 V is 3,600 W, so a station under 3,600 W cannot feed a 30 A RV its full service (read 2026-11-27).",
+     "source": "https://en.wikipedia.org/wiki/NEMA_connector"
+    }
+   ]
+  },
+  {
+   "id": "price",
+   "label": "Price ceiling",
+   "kind": "price",
+   "unit": "$",
+   "rank": 3,
+   "why": "Google completes 'best portable power station under' with $500, $300, $100, $200, $1000, $400 and $150, in that order (read 2026-11-27). ChatGPT split two picks on a $71 difference (project brief). GearJunkie's rule of 'about $1 per watt-hour' is far above this week's prices.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "breakpoints": [
+    {
+     "value": "100",
+     "why": "Searched tier (Google suggestion). Only DC-only packs sit here: GEYOTO C260 from $99.99, EcoFlow TRAIL 200 DC $99 (sold out on EcoFlow's store today).",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "150",
+     "why": "Searched tier (Google suggestion). The first tier with an AC outlet and LiFePO4: ALLPOWERS VOLIX P300 at $139.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "200",
+     "why": "Searched tier (Google suggestion). The 288-299 Wh LiFePO4 class lands here.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "300",
+     "why": "Searched tier (Google suggestion). 500-770 Wh stations and 600 W outputs appear (Dabbsson 600L $299, Pecron E500LFP $269).",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "400",
+     "why": "Searched tier (Google suggestion). The first tier with a full 1 kWh, 1,800 W station (Pecron E1000LFP $399).",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "500",
+     "why": "Top searched tier (Google suggestion). The reviewer-picked 1 kWh stations sell here this week (Anker SOLIX C1000 Gen 2 $469.99).",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    },
+    {
+     "value": "1000",
+     "why": "Searched tier (Google suggestion). 2 kWh stations with 2,400-2,600 W fit, and one 3 kWh station does (Pecron F3000LFP $899).",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+    }
+   ]
+  },
+  {
+   "id": "weight",
+   "label": "Weight you can carry",
+   "kind": "number",
+   "unit": "lb",
+   "rank": 4,
+   "why": "OutdoorGearLab weighs every unit and gives portability 25% of its score; GearJunkie gives weight and form 25%. ChatGPT asked whether weight matters more than output in 4 of 6 chats (project brief).",
+   "sources": [
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "breakpoints": [
+    {
+     "value": "8",
+     "why": "One-hand class for a 300 Wh station: OutdoorGearLab weighed the Jackery Explorer 300 at 7.1 lb (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "25",
+     "why": "Where 1 kWh stations sit: OutdoorGearLab weighed five at 24.4-31.5 lb, with the Anker at 25.2 lb and the Jackery 1000 v2 at 24.4 lb (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "45",
+     "why": "2 kWh class: EcoFlow gives the DELTA 3 Max 20.3 kg (about 44.8 lb) and sells a detachable-wheels version (read 2026-11-27).",
+     "source": "https://us.ecoflow.com/products/delta-3-max-series-portable-power-station"
+    },
+    {
+     "value": "57",
+     "why": "3 kWh with handles and no wheels: the DELTA 3000 Gen4 is 57.3 lb, against 74 lb for GearJunkie's DELTA 3 Ultra Plus (pv magazine, 2026-11-06; read 2026-11-27).",
+     "source": "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/"
+    }
+   ]
+  },
+  {
+   "id": "expandable",
+   "label": "Takes an extra battery later",
+   "kind": "feature",
+   "unit": "",
+   "rank": 5,
+   "why": "ChatGPT asked 'Do you want to add battery capacity later?' in 6 of 6 chats and changed the pick on the answer (project brief). EcoFlow's store sells the DELTA 3 Plus as '1-5kWh expandable'.",
+   "sources": [
+    "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"
+   ],
+   "breakpoints": [
+    {
+     "value": "yes",
+     "why": "A fixed-capacity 1 kWh station cannot grow; an expandable one reaches about 5 kWh (EcoFlow DELTA 3 and DELTA 3 Plus, EcoFlow US store, read 2026-11-27).",
+     "source": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station"
+    }
+   ]
+  },
+  {
+   "id": "outlet",
+   "label": "Outlet type: 30 A RV plug or 240 V",
+   "kind": "fit",
+   "unit": "",
+   "rank": 6,
+   "why": "Google completes 'portable power station with' with '240v output' and '30 amp outlet' (read 2026-11-27). The plug decides whether an RV or a 240 V appliance can connect at all.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+    "https://en.wikipedia.org/wiki/NEMA_connector"
+   ],
+   "breakpoints": [
+    {
+     "value": "TT-30",
+     "why": "The 120 V 30 A RV standard used at RV parks; full service needs 3,600 W behind it.",
+     "source": "https://en.wikipedia.org/wiki/NEMA_connector"
+    },
+    {
+     "value": "240 V",
+     "why": "NEMA 14-30 (dryers, ranges), L14-30 (backup generators) and 14-50 (50 A RV shore power, EV charging) are 250 V connectors; a 120 V-only station cannot feed them.",
+     "source": "https://en.wikipedia.org/wiki/NEMA_connector"
+    }
+   ]
+  },
+  {
+   "id": "recharge",
+   "label": "Recharge speed from the wall and from solar",
+   "kind": "number",
+   "unit": "h",
+   "rank": 7,
+   "why": "GearJunkie gives charging speed 25% of its score and OutdoorGearLab 10%; OutdoorGearLab times a full wall charge on each unit. ChatGPT asked how the buyer will recharge in 3 of 6 chats (project brief).",
+   "sources": [
+    "https://gearjunkie.com/technology/best-portable-power-stations",
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+   ],
+   "breakpoints": [
+    {
+     "value": "1",
+     "why": "Under an hour to full separates the fast 1 kWh stations: OutdoorGearLab timed the Anker C1000 Gen 2 at 0.8 h, the DELTA 3 and DJI Power 1000 V2 at 0.9 h, and the BLUETTI Elite 100 V2 at 1.8 h (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "1800 W",
+     "why": "GearJunkie: '1,800 W is as fast as you can get from a typical 15A wall outlet', so a 3 kWh station cannot fill in under about 2 hours on one household circuit (read 2026-11-27).",
+     "source": "https://gearjunkie.com/technology/best-portable-power-stations"
+    }
+   ]
+  },
+  {
+   "id": "usable",
+   "label": "Energy that actually comes out, and idle drain",
+   "kind": "number",
+   "unit": "Wh",
+   "rank": 8,
+   "why": "OutdoorGearLab ranks on measured energy, not the label. GearJunkie tells buyers to cut rated capacity by about 25% when planning and measured about 6 W idle on the Anker SOLIX S2000.",
+   "sources": [
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://gearjunkie.com/technology/best-portable-power-stations",
+    "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/"
+   ],
+   "breakpoints": [
+    {
+     "value": "87%",
+     "why": "OutdoorGearLab measured 890 Wh from the 1,024 Wh Anker C1000 Gen 2 and BLUETTI Elite 100 V2, about 87% of the label (read 2026-11-27).",
+     "source": "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+    },
+    {
+     "value": "14 W",
+     "why": "EcoFlow's figure for the DELTA Gen4 with AC on and no load (3 W in standby); 14 W is 336 Wh a day, a third of a 1 kWh station (pv magazine, 2026-11-06; read 2026-11-27).",
+     "source": "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/"
+    }
+   ]
+  },
+  {
+   "id": "ups",
+   "label": "Switchover time when the grid drops",
+   "kind": "number",
+   "unit": "ms",
+   "rank": 9,
+   "why": "Makers sell the 10 ms figure as what keeps a NAS or server up: EcoFlow's DELTA 3 Max page says '10ms Auto-Switch: Fast enough to keep critical devices like NAS systems and servers running smoothly'. GearJunkie reports transfer times in its reviews.",
+   "sources": [
+    "https://us.ecoflow.com/products/delta-3-max-series-portable-power-station",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "breakpoints": [
+    {
+     "value": "10",
+     "why": "The figure makers and GearJunkie cite for computers and NAS (EcoFlow DELTA 3 Max, EcoFlow US store, read 2026-11-27). Growatt's HELIOS 3600 lists 15 ms; our AC180 record lists 20 ms.",
+     "source": "https://us.ecoflow.com/products/delta-3-max-series-portable-power-station"
+    }
+   ]
+  },
+  {
+   "id": "cycles",
+   "label": "Battery chemistry and cycle life",
+   "kind": "number",
+   "unit": "cycles",
+   "rank": 10,
+   "why": "GearJunkie: LFP 'can retain their lifespan through 3,000 to 6,000 charge cycles' against 'a lifespan of just 500-ish cycles' for NMC. Bob Vila says LFP has 'nearly twice the expected lifespan'. ChatGPT told a first-time buyer to look for LFP (project brief).",
+   "sources": [
+    "https://gearjunkie.com/technology/best-portable-power-stations",
+    "https://www.bobvila.com/reviews/best-portable-power-stations/"
+   ],
+   "breakpoints": [
+    {
+     "value": "3000",
+     "why": "The floor GearJunkie gives for LFP; an NMC station sits far below it (read 2026-11-27).",
+     "source": "https://gearjunkie.com/technology/best-portable-power-stations"
+    }
+   ]
+  },
+  {
+   "id": "jump",
+   "label": "Can jump-start a car",
+   "kind": "feature",
+   "unit": "",
+   "rank": 11,
+   "why": "Google completes 'portable power station with' with 'jump starter' (read 2026-11-27). Few stations have a jump-start port; VTOMAN's cable listing names the ones that do.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+    "https://www.vtoman.com/products/vtoman-jumper-cable-for-vtoman-power-station"
+   ],
+   "breakpoints": [
+    {
+     "value": "yes",
+     "why": "A '12V jump start port' on the station plus a VTOMAN jumper cable starts a 12 V vehicle (VTOMAN US store, read 2026-11-27).",
+     "source": "https://www.vtoman.com/products/vtoman-jumper-cable-for-vtoman-power-station"
+    }
+   ]
+  }
+ ],
+ "rules": "Capacity means rated watt-hours. Delivered AC energy runs about 85-89% of it (OutdoorGearLab measured 870-910 Wh from five stations rated 1,024-1,070 Wh), and GearJunkie plans on 75%. Output means continuous AC watts: BLUETTI's Power Lifting, EcoFlow's X-Boost and Growatt's Watt+ are modes for resistive loads and are not rated output. Cycle ratings compare only at the same end point (80%, 70% or 60%). A price is the maker's US store price on the day, with the link price beside it when a code was cart-tested. Black Friday prices this week sit far below list, so every figure needs its date. Pre-order status and ship date belong beside the price, since most BLUETTI stations here ship between December and February. Weight comes from a reviewer's scale when one exists (OutdoorGearLab weighs), otherwise from the maker. A TT-30 outlet on a station rated under 3,600 W does not deliver 30 A. 240 V means split-phase from one unit unless stated; 240 V from two paired units is a different answer. Bob Vila's table for the Elite 200 V2 disagrees with its own text, so its figures need the maker's page. OutdoorGearLab lists the Anker C1000 Gen 2 at 1,800 W while Anker rates 2,000 W.",
+ "field": [
+  {
+   "product": "BLUETTI Elite 10 mini",
+   "brand": "BLUETTI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+   "price": "$129.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "128 Wh",
+    "watts": "200 W",
+    "cycles": "3,000+ to 80%, LiFePO4",
+    "ups": "10 ms",
+    "recharge": "70 min (BLUETTI)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "ALLPOWERS VOLIX P300",
+   "brand": "ALLPOWERS",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station",
+   "price": "$139.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "256 Wh",
+    "watts": "300 W",
+    "cycles": "LiFePO4, no count on the page",
+    "recharge": "0-100% in 1 hour (ALLPOWERS)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 30 mini",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-30-mini",
+   "link": "program",
+   "url": "https://www.bluettipower.com/",
+   "price": "$199.00 ($189.05 through our link)",
+   "price_read": "2026-11-26",
+   "figures": {
+    "capacity": "288 Wh",
+    "watts": "300 W",
+    "cycles": "6,000+",
+    "ups": "under 10 ms"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 30 V2",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-30-v2",
+   "link": "program",
+   "url": "https://www.bluettipower.com/products/elite-30-v2-portable-power-station",
+   "price": "$299.99 ($285.00 through our link; colour variants $289.99)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "288 Wh",
+    "watts": "600 W",
+    "cycles": "3,000+",
+    "ups": "10 ms or less"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 100 mini",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-100-mini",
+   "link": "program",
+   "url": "https://www.bluettipower.com/products/elite-100-mini-portable-power-station",
+   "price": "$379.00 ($360.05 through our link)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,004.8 Wh",
+    "watts": "700 W",
+    "weight": "23.6 lb (10.7 kg, AndroidGuys 2026-11-26)",
+    "cycles": "6,000+"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "ALLPOWERS P1800",
+   "brand": "ALLPOWERS",
+   "ours": "allpowers-p1800-1024wh",
+   "link": "program",
+   "url": "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w",
+   "price": "$439.00 ($395.10 through our link)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "1,800 W",
+    "cycles": "3,000+",
+    "recharge": "0-80% in about 1 hour (ALLPOWERS)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Pecron E1000LFP",
+   "brand": "Pecron",
+   "ours": "",
+   "link": "none",
+   "url": "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh",
+   "price": "$399.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "1,800 W (3,000 W surge)",
+    "expandable": "yes, EP3800-48V battery listing names it"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Dabbsson 1000L",
+   "brand": "Dabbsson",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.dabbsson.com/products/1000l-portable-power-station",
+   "price": "$386.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,008 Wh",
+    "watts": "1,200 W",
+    "weight": "24 lb (Dabbsson)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Anker SOLIX C1000 Gen 2",
+   "brand": "Anker SOLIX",
+   "ours": "anker-solix-c1000-gen-2",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0FN7MSY4L",
+   "price": "$469.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "2,000 W (Anker); OutdoorGearLab lists 1,800 W",
+    "weight": "25.2 lb (OutdoorGearLab)",
+    "usable": "890 Wh (OutdoorGearLab)",
+    "recharge": "0.8 h (OutdoorGearLab)",
+    "expandable": "no"
+   },
+   "tested_by": [
+    "OutdoorGearLab: 890 Wh delivered, 25.2 lb, 0.8 h to charge, Best Buy award, https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "GearJunkie: Best Overall, 9.4/10, full wall charge in about 49 minutes, https://gearjunkie.com/technology/best-portable-power-stations"
+   ]
+  },
+  {
+   "product": "DJI Power 1000 V2",
+   "brand": "DJI",
+   "ours": "dji-power-1000-v2",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0H2MFBDZL",
+   "price": "$469.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "2,600 W (OutdoorGearLab table)",
+    "weight": "31.5 lb (OutdoorGearLab)",
+    "usable": "880 Wh (OutdoorGearLab)",
+    "recharge": "0.9 h (OutdoorGearLab)"
+   },
+   "tested_by": [
+    "OutdoorGearLab: 880 Wh delivered, 31.5 lb, 0.9 h to charge, https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+   ]
+  },
+  {
+   "product": "EcoFlow DELTA 3 Classic",
+   "brand": "EcoFlow",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "price": "$459.00 (EcoFlow store); $438.90 on Amazon, ASIN B0FQVC4RF5",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "1,800 W (3,600 W surge)",
+    "recharge": "0-80% in 45 min (EcoFlow)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "EcoFlow DELTA 3 Plus",
+   "brand": "EcoFlow",
+   "ours": "ecoflow-delta-3-plus-1024wh",
+   "link": "amazon",
+   "url": "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+   "price": "$649.00 (EcoFlow store); $719.00 on Amazon",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "1,800 W",
+    "expandable": "1-5 kWh (EcoFlow)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Jackery Explorer 1000 v2",
+   "brand": "Jackery",
+   "ours": "jackery-explorer-1000-v2",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0D7PPG25F",
+   "price": "$559.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,070 Wh",
+    "watts": "1,500 W",
+    "weight": "24.4 lb (OutdoorGearLab)",
+    "usable": "910 Wh (OutdoorGearLab)",
+    "recharge": "1.58 h (OutdoorGearLab)"
+   },
+   "tested_by": [
+    "OutdoorGearLab: 910 Wh delivered, 24.4 lb, 1.58 h to charge, https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+   ]
+  },
+  {
+   "product": "BLUETTI Elite 100 V2",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-100-v2",
+   "link": "program",
+   "url": "https://www.bluettipower.com/products/elite-100-v2-portable-power-station",
+   "price": "$549.00 ($521.55 through our link); pre-order, ships Dec 25, 2026",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,024 Wh",
+    "watts": "1,800 W",
+    "weight": "25.0 lb (OutdoorGearLab)",
+    "usable": "890 Wh (OutdoorGearLab)",
+    "recharge": "1.8 h (OutdoorGearLab)",
+    "expandable": "no"
+   },
+   "tested_by": [
+    "OutdoorGearLab: 890 Wh delivered, 25.0 lb, 1.8 h to charge, https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+   ]
+  },
+  {
+   "product": "ALLPOWERS R2500 V2",
+   "brand": "ALLPOWERS",
+   "ours": "allpowers-r2500-v2-1920wh",
+   "link": "program",
+   "url": "https://iallpowers.com/products/allpowers-r2500-v2-portable-power-station-2500w-1920wh",
+   "price": "$649.00 ($584.10 through our link); pre-order, ships Dec 4, 2026",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "1,920 Wh",
+    "watts": "2,500 W",
+    "ups": "15 ms",
+    "cycles": "3,500+"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Dabbsson 2000L",
+   "brand": "Dabbsson",
+   "ours": "dabbsson-2000l",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0DTTVWHBG",
+   "price": "$615.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "2,048 Wh",
+    "watts": "2,200 W",
+    "weight": "41 lb (Bob Vila)"
+   },
+   "tested_by": [
+    "Bob Vila (Rankin, Wolfe, Scalisi): ran a fridge and freezer 24 hours, wall recharge in just over 90 minutes, Best for Camping, https://www.bobvila.com/reviews/best-portable-power-stations/"
+   ]
+  },
+  {
+   "product": "Anker SOLIX S2000",
+   "brand": "Anker SOLIX",
+   "ours": "anker-solix-s2000",
+   "link": "program",
+   "url": "https://www.ankersolix.com/",
+   "price": "$649.99",
+   "price_read": "2026-11-21",
+   "figures": {
+    "capacity": "2,010 Wh",
+    "watts": "1,500 W",
+    "weight": "36 lb (GearJunkie); 35.7 lb (Anker)",
+    "usable": "idle about 6 W (GearJunkie)",
+    "cycles": "6,000 to 80%"
+   },
+   "tested_by": [
+    "GearJunkie: ran a refrigerator 34 hours, idle draw about 6 W, tripped on a planer of about 1,800 W, Best Watt-Hours-to-Weight, https://gearjunkie.com/technology/best-portable-power-stations"
+   ]
+  },
+  {
+   "product": "Growatt INFINITY 2000 PRO",
+   "brand": "Growatt",
+   "ours": "growatt-infinity-2000-pro",
+   "link": "program",
+   "url": "https://www.growattportable.com/products/growatt-infinity-2000-pro-portable-power-station",
+   "price": "$799.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "2,048 Wh",
+    "watts": "2,400 W",
+    "outlet": "TT-30",
+    "expandable": "to 6,144 Wh (extra battery out of stock today)",
+    "cycles": "4,000+"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 200 V2",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-200-v2",
+   "link": "program",
+   "url": "https://www.bluettipower.com/products/elite-200-v2-portable-power-station",
+   "price": "$899.00 ($854.05 through our link); pre-order, ships early January 2027",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "2,073.6 Wh",
+    "watts": "2,600 W",
+    "cycles": "6,000+ to 80%",
+    "expandable": "no"
+   },
+   "tested_by": [
+    "Bob Vila (Rankin, Wolfe, Scalisi): Best Overall, ran a fridge 30+ hours and a portable AC about 6 hours; its table gives 2,400 W, 2,048 Wh and 62.4 lb while its text says about 53 lb, https://www.bobvila.com/reviews/best-portable-power-stations/"
+   ]
+  },
+  {
+   "product": "EcoFlow DELTA 3 Max",
+   "brand": "EcoFlow",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://us.ecoflow.com/products/delta-3-max-series-portable-power-station",
+   "price": "$879.00 (DELTA 3 Max Plus $1,149.00)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "2,048 Wh",
+    "watts": "2,400 W (Plus: 3,000 W)",
+    "weight": "20.3 kg, about 44.8 lb (EcoFlow)",
+    "ups": "10 ms",
+    "expandable": "Plus: 2-10 kWh"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Pecron F3000LFP",
+   "brand": "Pecron",
+   "ours": "",
+   "link": "none",
+   "url": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "price": "$899.00 without cart; pre-order, ships mid-December",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "3,072 Wh",
+    "watts": "3,600 W",
+    "outlet": "'AC 30A Output' (Pecron)",
+    "expandable": "to 9,216 Wh",
+    "cycles": "3,500+ to 80%"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 300",
+   "brand": "BLUETTI",
+   "ours": "bluetti-elite-300",
+   "link": "program",
+   "url": "https://www.bluettipower.com/",
+   "price": "$1,099.00 ($1,044.05 through our link); pre-order, ships Dec 14, 2026",
+   "price_read": "2026-11-26",
+   "figures": {
+    "capacity": "3,014.4 Wh",
+    "watts": "2,400 W",
+    "outlet": "TT-30",
+    "cycles": "6,000+"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "EcoFlow DELTA 3000 Gen4",
+   "brand": "EcoFlow",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://us.ecoflow.com/products/delta-3000-gen4",
+   "price": "$1,299.00 (EcoFlow store and Amazon ASIN B0HLSH5GWK)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "3,072 Wh",
+    "watts": "3,600 W (7,200 W surge)",
+    "weight": "57.3 lb (pv magazine)",
+    "ups": "under 10 ms",
+    "usable": "14 W with AC on and no load (EcoFlow, via pv magazine)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "BLUETTI Elite 400",
+   "brand": "BLUETTI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+   "price": "$1,499.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "3,840 Wh",
+    "watts": "2,600 W"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Growatt HELIOS 3600",
+   "brand": "Growatt",
+   "ours": "growatt-helios-3600",
+   "link": "program",
+   "url": "https://www.growattportable.com/products/growatt-helios-3600-portable-power-station",
+   "price": "$1,599.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "capacity": "3,686 Wh",
+    "watts": "3,600 W",
+    "outlet": "TT-30; 240 V with two units and the hub",
+    "ups": "15 ms",
+    "cycles": "4,000+"
+   },
+   "tested_by": []
+  }
+ ],
+ "lines": [
+  {
+   "id": "under-150",
+   "ptype": "numbered",
+   "question": "best portable power station under $150",
+   "axes": {
+    "price": "150"
+   },
+   "why": "Google completes 'best portable power station under' with $150. It is the first tier where a LiFePO4 station with an AC outlet appears; below it the choices are DC-only packs.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station",
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station"
+   ],
+   "asked": "Google suggestion 'best portable power station under $150', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "ALLPOWERS VOLIX P300",
+     "why": "$139.00 for 256 Wh, a 300 W AC outlet and LiFePO4; ALLPOWERS gives 0-100% in 1 hour. The only station read today under $150 with both 250+ Wh and an AC outlet."
+    },
+    {
+     "product": "BLUETTI Elite 10 mini",
+     "why": "$129.99 for 128 Wh, 200 W AC, LiFePO4 rated 3,000+ cycles to 80% and 10 ms UPS; half the energy of the P300."
+    },
+    {
+     "product": "GEYOTO C260",
+     "why": "From $99.99 for 256 Wh LFP at 3.64 lb, but 100 W total over USB and DC with no AC outlet (GEYOTO release, 2026-11-02)."
+    }
+   ],
+   "ours": [
+    "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station",
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Neither of ours has a record. Cart-test DEALECTRIC10 on the P300 and DEALECTRIC on the Elite 10 mini; neither was tested on these products. EcoFlow TRAIL 300 DC (288 Wh, DC-only) is $158.07 on Amazon and $159 on EcoFlow's store (sold out), so it sits just over the line. No independent test of the P300 was found; its page gives no weight figure. /best-power-station-under-200 should carry both.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station, https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+    "demand": 0.009,
+    "value": 0.5,
+    "prior": 3.0,
+    "score": 0.764
+   }
+  },
+  {
+   "id": "under-100",
+   "ptype": "numbered",
+   "question": "best portable power station under $100",
+   "axes": {
+    "price": "100"
+   },
+   "why": "Google completes 'best portable power station under' with $100, third in its list. At this price the field is DC-only: no station read today has an AC outlet.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://www.prnewswire.com/news-releases/geyoto-launches-c260--a-3-64-pound-portable-power-station-designed-for-life-on-the-move-302926217.html",
+    "https://us.ecoflow.com/products/trail-series"
+   ],
+   "asked": "Google suggestion 'best portable power station under $100', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "GEYOTO C260",
+     "why": "From $99.99: 256 Wh LFP, 100 W total, 7 ports, 3.64 lb, no AC outlet; on Amazon US since 2026-11-01 (GEYOTO release)."
+    },
+    {
+     "product": "EcoFlow TRAIL 200 DC",
+     "why": "$99.00 for 192 Wh, DC-only; the variant is sold out on EcoFlow's US store today."
+    }
+   ],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "Only two candidates were read and neither has an independent test. Both would be Amazon links with no record (GEYOTO ASIN B0HHN66XW6 per its release; today's Amazon price was not read). A page here must say plainly that under $100 buys no AC outlet, and point to the $139 VOLIX P300 as the first station with one. Hold the page until a named test of the C260 exists.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "flight-160wh",
+   "ptype": "numbered",
+   "question": "which portable power station can I take on a plane (160 Wh or less)",
+   "axes": {
+    "capacity": "160"
+   },
+   "why": "TSA allows spare lithium batteries in carry-on only, and 'with airline approval, passengers may also carry up to two spare larger lithium ion batteries (101-160 Wh)'. A station above 160 Wh cannot fly.",
+   "sources": [
+    "https://www.tsa.gov/travel/security-screening/whatcanibring/items/lithium-batteries-more-100-watt-hours",
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station"
+   ],
+   "asked": "Google suggestions 'portable power station airplane' and 'portable power station flight', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+airplane",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "BLUETTI Elite 10 mini",
+     "why": "128 Wh with a 200 W AC outlet, LiFePO4 rated 3,000+ cycles to 80%, $129.99. It sits in the 101-160 Wh band, so it needs airline approval."
+    }
+   ],
+   "ours": [
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Only one qualifying station was sourced; the page needs at least a sub-100 Wh rival that flies without approval. Jackery's US store search returned only the carrying case for its Explorer 100 Plus today. BLUETTI's page has a FAQ 'Can I bring the Elite 10 on a plane?' whose answer did not load; read it. The Elite 30 models (288 Wh), TRAIL 200 DC (192 Wh) and GEYOTO C260 (256 Wh) are all over the limit, which is worth stating. Check overlap with /best-power-bank-with-ac-outlet-for-laptop.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 3.0,
+    "score": 0.75
+   }
+  },
+  {
+   "id": "jump-starter",
+   "ptype": "finder",
+   "question": "which portable power station has a jump starter for a car",
+   "axes": {
+    "jump": "yes"
+   },
+   "why": "VTOMAN's stations have a '12V jump start port' that starts a 12 V vehicle through VTOMAN's jumper cable. No station from the brands we link through a program was found with one.",
+   "sources": [
+    "https://www.vtoman.com/products/vtoman-jumper-cable-for-vtoman-power-station",
+    "https://www.vtoman.com/products/vtoman-jump-1800-portable-power-station",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+"
+   ],
+   "asked": "Google suggestion 'portable power station with jump starter', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VTOMAN Jump 1800",
+     "why": "$499.00 on VTOMAN's store, 1,800 W continuous and 3,600 W peak; the US jumper cable ($39.99) names it as compatible."
+    },
+    {
+     "product": "VTOMAN FlashSpeed 2400",
+     "why": "$645.99, sold 'with Jumper Cable' in the listing title; the US cable listing names it."
+    },
+    {
+     "product": "VTOMAN Jump 600X",
+     "why": "$199.00 on Amazon ($209.99 on VTOMAN's store), 299 Wh LiFePO4, 600 W; named with a jump start port on VTOMAN's Canada cable listing, not on the US one."
+    }
+   ],
+   "ours": [
+    "https://www.amazon.com/dp/B0BBDQ5NNN"
+   ],
+   "ours_rank": 3,
+   "covered_by": "",
+   "notes": "All three are Amazon links with no record; ASINs for the Jump 1800 and FlashSpeed 2400 still need finding. Traps: the Jump 1800 listing title says 1,408 Wh 'New Version' while its text says 1,548 Wh. The cable is sold separately for the Jump 1800. The US cable page lists only the Jump 1800 and FlashSpeed 2400, so confirm a US cable exists for the 600X. Jump amps and engine sizes were not sourced. The other finder pages here average 0.29 visits, so this is a low-cost test of a feature search suggests.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.amazon.com/dp/B0BBDQ5NNN",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 0.46,
+    "score": 0.069
+   }
+  },
+  {
+   "id": "1000wh-2000w",
+   "ptype": "numbered",
+   "question": "best 1000Wh power station with 2000W output",
+   "axes": {
+    "capacity": "1024",
+    "watts": "2000"
+   },
+   "why": "A standard 15 A outlet gives 1,800 W, and most 1 kWh stations stop there. GearJunkie tells buyers to 'aim for at least a 2,000 W continuous inverter' for most household appliances and power tools.",
+   "sources": [
+    "https://gearjunkie.com/technology/best-portable-power-stations",
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://en.wikipedia.org/wiki/NEMA_connector"
+   ],
+   "asked": "ChatGPT split its 1 kWh picks on output: 2,000 W for the default pick against 1,800 W for the cheaper and expandable ones (project brief, 6 chats). GearJunkie's inverter section gives the 2,000 W threshold, https://gearjunkie.com/technology/best-portable-power-stations",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker SOLIX C1000 Gen 2",
+     "why": "$469.99 on Amazon; 2,000 W per Anker. OutdoorGearLab measured 890 Wh, 25.2 lb and 0.8 h to charge; GearJunkie's Best Overall."
+    },
+    {
+     "product": "DJI Power 1000 V2",
+     "why": "$469.99 on Amazon; 2,600 W in OutdoorGearLab's table, 880 Wh measured, 31.5 lb, 0.9 h to charge."
+    },
+    {
+     "product": "OUPES Mega 1 Lite",
+     "why": "$439.00 on OUPES's store for 1,024 Wh and 2,000 W; no independent test read."
+    }
+   ],
+   "ours": [
+    "anker-solix-c1000-gen-2",
+    "dji-power-1000-v2",
+    "oupes-mega-1"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Our two 1 kWh program stations (ALLPOWERS P1800, BLUETTI Elite 100 V2) are 1,800 W and do not qualify; the winners are Amazon links. Trap: OutdoorGearLab's table lists the Anker at 1,800 W max AC while Anker rates 2,000 W and GearJunkie writes both 2,800 W and 2,000 W. Use Anker's US page. Our Mega 1 record is $509 on OUPES and $529 on Amazon; the cheaper Mega 1 Lite has no record. Dabbsson DBS1000 Pro (2,000 W) is $619. BackupPowerHub's tracker shows the Anker at $469.99 on Anker's own store, which would be a program link.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "anker-solix-c1000-gen-2, dji-power-1000-v2, oupes-mega-1",
+    "demand": 0.0,
+    "value": 0.88,
+    "prior": 3.0,
+    "score": 1.32
+   }
+  },
+  {
+   "id": "3000wh-under-1000",
+   "ptype": "numbered",
+   "question": "best 3000Wh power station under $1,000",
+   "axes": {
+    "capacity": "3072",
+    "price": "1000"
+   },
+   "why": "$1,000 is a searched price tier, and until this month it bought 2 kWh. One 3 kWh, 3,600 W station now sells under it, and two of ours sit $44-$55 over.",
+   "sources": [
+    "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+"
+   ],
+   "asked": "Google suggestion 'best portable power station under $1000', read 2026-11-27; crossing it with 3 kWh is our judgement, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "Pecron F3000LFP",
+     "why": "$899.00 without cart: 3,072 Wh, 3,600 W, 3,500+ cycles to 80%, expandable to 9,216 Wh. Pre-order, ships mid-December. The only one under $1,000."
+    },
+    {
+     "product": "BLUETTI Elite 300",
+     "why": "$1,044.05 through our link ($1,099 store): 3,014.4 Wh, 2,400 W, TT-30, 6,000+ cycles. $44 over the line; ships Dec 14, 2026."
+    },
+    {
+     "product": "ALLPOWERS R3500",
+     "why": "$1,055.12 through our link ($1,199 store): 3,168 Wh, 3,200 W. $55 over the line."
+    }
+   ],
+   "ours": [
+    "bluetti-elite-300",
+    "allpowers-r3500-3168wh"
+   ],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "On the line's own terms only the Pecron qualifies, and we have no Pecron link (not a partner; Amazon not checked). A page is honest only if it names the Pecron as the one that fits and shows ours as the nearest misses. Our pages on this figure (/best-3000wh-power-station, /best-power-station-under-1000) went up today with 0 visits; fold this into them before adding a page. The Pecron has no independent test read.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "under-200",
+   "ptype": "numbered",
+   "question": "best portable power station under $200",
+   "axes": {
+    "price": "200"
+   },
+   "why": "Google completes 'best portable power station under' with $200. The 288-299 Wh LiFePO4 class sells here this week.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://www.dabbsson.com/products/300e-portable-power-station"
+   ],
+   "asked": "Google suggestion 'best portable power station under $200', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "BLUETTI Elite 30 mini",
+     "why": "$189.05 through our link ($199 store): 288 Wh, 300 W, 6,000+ cycles, UPS under 10 ms, built-in 140 W USB-C cable."
+    },
+    {
+     "product": "VTOMAN Jump 600X",
+     "why": "$199.00 on Amazon: 299 Wh LiFePO4 with a 600 W outlet, double the others' output."
+    },
+    {
+     "product": "ALLPOWERS VOLIX P300",
+     "why": "$139.00: 256 Wh, 300 W, LiFePO4; $50-$60 cheaper than the 288 Wh class."
+    }
+   ],
+   "ours": [
+    "bluetti-elite-30-mini",
+    "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-power-station-under-200",
+   "notes": "Check the page published today carries the VOLIX P300 ($139) and BLUETTI Elite 10 mini ($129.99, 128 Wh), neither of which has a record. Dabbsson 300E is $199 (298 Wh, 300 W, 4,000 cycles per Dabbsson). No named test of any of these was read; the ranking rests on maker figures.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-power-station-under-200"
+   }
+  },
+  {
+   "id": "under-400",
+   "ptype": "numbered",
+   "question": "best portable power station under $400",
+   "axes": {
+    "price": "400",
+    "capacity": "1024"
+   },
+   "why": "Google completes 'best portable power station under' with $400. It is the first tier with a full 1 kWh, 1,800 W LiFePO4 station.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://www.pecron.com/products/pecron-e1000lfp-portable-power-station-2000w-1024wh",
+    "https://iallpowers.com/products/allpowers-p1800-portable-power-station-1024wh-1800w"
+   ],
+   "asked": "Google suggestion 'best portable power station under $400', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Pecron E1000LFP",
+     "why": "$399.00 with no code: 1,024 Wh, 1,800 W (3,000 W surge), and Pecron's EP3800-48V battery listing names it as expandable."
+    },
+    {
+     "product": "ALLPOWERS P1800",
+     "why": "$395.10 through our link, but $439.00 on the store without the code: 1,024 Wh, 1,800 W (3,600 W peak), 4 outlets."
+    },
+    {
+     "product": "Dabbsson 1000L",
+     "why": "$386.00: 1,008 Wh, 1,200 W, 24 lb per Dabbsson."
+    }
+   ],
+   "ours": [
+    "allpowers-p1800-1024wh",
+    "bluetti-elite-100-mini"
+   ],
+   "ours_rank": 2,
+   "covered_by": "best-1000wh-power-station-under-400",
+   "notes": "The P1800 qualifies only with code DEALECTRIC10; the page must say so. BLUETTI Elite 100 mini is the cheapest 1 kWh at $360.05 through our link and the lightest of ours at 23.6 lb, but 700 W. Pecron F1000LFP is $369 (960 Wh, 1,500 W). The Pecron URL slug says 2000w while the listing says 1,800 W. None of the three has a named test read today.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-1000wh-power-station-under-400"
+   }
+  },
+  {
+   "id": "under-500",
+   "ptype": "numbered",
+   "question": "best portable power station under $500",
+   "axes": {
+    "price": "500",
+    "capacity": "1024"
+   },
+   "why": "$500 is the first price Google suggests after 'best portable power station under'. This week it buys the 1 kWh station two named reviewers picked.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "asked": "Google suggestion 'best portable power station under $500', read 2026-11-27; ChatGPT told shoppers to check for the Anker at about $470 in 2 of 6 chats (project brief), https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker SOLIX C1000 Gen 2",
+     "why": "$469.99 on Amazon: OutdoorGearLab's Best Buy (890 Wh measured, 25.2 lb, 0.8 h) and GearJunkie's Best Overall (9.4/10)."
+    },
+    {
+     "product": "DJI Power 1000 V2",
+     "why": "$469.99 on Amazon: 2,600 W in OutdoorGearLab's table, 880 Wh measured, 31.5 lb."
+    },
+    {
+     "product": "EcoFlow DELTA 3 Classic",
+     "why": "$438.90 on Amazon ($459 on EcoFlow's store): 1,024 Wh, 1,800 W, 0-80% in 45 min per EcoFlow; ChatGPT's cheaper choice."
+    }
+   ],
+   "ours": [
+    "anker-solix-c1000-gen-2",
+    "dji-power-1000-v2",
+    "allpowers-p1800-1024wh"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-power-station-under-500",
+   "notes": "The win is an Amazon link. BackupPowerHub's tracker shows the Anker at $469.99 on Anker's US store today, so a rakuten:ankersolix record would move this to a program link. ALLPOWERS P1800 at $395.10 is the cheapest 1,800 W station through a program. DYNESS 1,536 Wh is $499.99 on Amazon with no test. The DELTA 3 Classic has no record; ASIN B0FQVC4RF5.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-power-station-under-500"
+   }
+  },
+  {
+   "id": "2000wh",
+   "ptype": "numbered",
+   "question": "best 2000Wh power station for a refrigerator in an outage",
+   "axes": {
+    "capacity": "2000",
+    "watts": "2000"
+   },
+   "why": "OutdoorGearLab sets the bar at 'at least a 2,000 Wh power station, and one with at least 2,000 AC watt support'. ChatGPT moved shoppers whose main goal is a refrigerator through an outage to 2 kWh.",
+   "sources": [
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station",
+    "https://www.bobvila.com/reviews/best-portable-power-stations/",
+    "https://gearjunkie.com/technology/best-portable-power-stations"
+   ],
+   "asked": "ChatGPT asked 'Is your main goal keeping a refrigerator running through an outage?' in 4 of 6 chats (project brief). Google suggests 'best portable power station for refrigerator', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+for+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Dabbsson 2000L",
+     "why": "$615.00 on Amazon: 2,048 Wh, 2,200 W. Bob Vila ran a fridge and freezer for 24 hours and recharged it in just over 90 minutes; 41 lb."
+    },
+    {
+     "product": "BLUETTI Elite 200 V2",
+     "why": "$854.05 through our link: 2,073.6 Wh, 2,600 W, 6,000+ cycles to 80%. Bob Vila's Best Overall, fridge 30+ hours. Pre-order, ships early January 2027."
+    },
+    {
+     "product": "Anker SOLIX S2000",
+     "why": "$649.99: 2,010 Wh. GearJunkie ran a refrigerator 34 hours and measured about 6 W idle, but 1,500 W tripped on a planer of about 1,800 W."
+    }
+   ],
+   "ours": [
+    "dabbsson-2000l",
+    "bluetti-elite-200-v2",
+    "anker-solix-s2000"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-2000wh-power-station",
+   "notes": "Also read today: Growatt INFINITY 2000 PRO $799 (2,400 W, TT-30), EcoFlow DELTA 3 Max $879 (2,400 W, 44.8 lb, 10 ms), Jackery Explorer 2000 v2 $999 (pre-order, ships by Dec 11), ALLPOWERS R2500 V2 $584.10 through our link (1,920 Wh, under the 2,000 Wh bar). An Elite 200 V2 bought today arrives in January, which matters for outage season. Use BLUETTI's page for its figures, not Bob Vila's table.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-2000wh-power-station"
+   }
+  },
+  {
+   "id": "expandable-1kwh",
+   "ptype": "finder",
+   "question": "which 1000Wh power station can add an extra battery later",
+   "axes": {
+    "capacity": "1024",
+    "expandable": "yes"
+   },
+   "why": "ChatGPT asked about adding capacity later in every chat and switched its pick on the answer. The default 1 kWh picks (Anker C1000 Gen 2, BLUETTI Elite 100 V2) are fixed-capacity.",
+   "sources": [
+    "https://us.ecoflow.com/products/delta-3-plus-portable-power-station",
+    "https://us.ecoflow.com/products/delta-3-portable-power-station",
+    "https://www.pecron.com/products/pecron-ep3800-48v-expansion-battery-3840wh-for-e1500lfp-e3600lfp-e1000lfp-e2400lfp-f3000lfp"
+   ],
+   "asked": "ChatGPT: 'Do you want to add battery capacity later?', asked in 6 of 6 chats (project brief)",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Pecron E1000LFP",
+     "why": "$399.00, the cheapest expandable 1 kWh read today; Pecron's EP3800-48V battery (3,840 Wh, $799) names it as compatible."
+    },
+    {
+     "product": "EcoFlow DELTA 3",
+     "why": "$579.00 on EcoFlow's store ($599 on Amazon): 1-5 kWh expandable. OutdoorGearLab measured 870 Wh and 28.1 lb."
+    },
+    {
+     "product": "EcoFlow DELTA 3 Plus",
+     "why": "$649.00 on EcoFlow's store ($719 on Amazon): 1-5 kWh expandable; ChatGPT's expandable pick."
+    }
+   ],
+   "ours": [
+    "ecoflow-delta-3-1024wh",
+    "ecoflow-delta-3-plus-1024wh"
+   ],
+   "ours_rank": 2,
+   "covered_by": "expandable-1kwh-lifepo4-power-station-add-a-battery-later",
+   "notes": "No program station of ours at 1 kWh expands; both of ours are Amazon links, and Amazon is $20-$70 above EcoFlow's store today. Also expandable per maker pages: Dabbsson DBS1000 Pro ($619, to 10.64 kWh), Growatt INFINITY 2000 PRO at 2 kWh ($799, but its extra battery is out of stock on Growatt's store). The EcoFlow DELTA 3 Classic is not expandable (our own research note); re-check.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /expandable-1kwh-lifepo4-power-station-add-a-battery-later"
+   }
+  },
+  {
+   "id": "30-amp-outlet",
+   "ptype": "finder",
+   "question": "which portable power station has a 30 amp RV outlet",
+   "axes": {
+    "outlet": "TT-30",
+    "watts": "3600"
+   },
+   "why": "TT-30 is the 120 V, 30 A RV plug. Full 30 A service is 3,600 W, so a TT-30 on a 2,400 W station runs the RV but not everything a 30 A pedestal would.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/NEMA_connector",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+    "https://www.growattportable.com/products/growatt-infinity-2000-pro-portable-power-station"
+   ],
+   "asked": "Google suggestion 'portable power station with 30 amp outlet', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Growatt INFINITY 2000 PRO",
+     "why": "$799.00, the cheapest station with a TT-30 read today: 2,048 Wh, 2,400 W (20 A worth)."
+    },
+    {
+     "product": "Pecron F3000LFP",
+     "why": "$899.00: 3,072 Wh and 3,600 W with 'AC 30A Output' per Pecron, the cheapest full 30 A. Pre-order, ships mid-December."
+    },
+    {
+     "product": "BLUETTI Elite 300",
+     "why": "$1,044.05 through our link: 3,014.4 Wh, TT-30, 2,400 W. Ships Dec 14, 2026."
+    }
+   ],
+   "ours": [
+    "growatt-infinity-2000-pro",
+    "bluetti-elite-300",
+    "bluetti-apex-200",
+    "growatt-helios-3600"
+   ],
+   "ours_rank": 1,
+   "covered_by": "solar-generator-for-an-rv-with-a-30-amp-plug",
+   "notes": "Our full-30 A options: Growatt HELIOS 3600 (3,600 W) is now $1,599, up from $1,399 on 2026-11-21, and BLUETTI Apex 200 (3,200 W, TT-30R) is $1,091.55 but ships mid-February 2027. Confirm the Pecron's 30 A outlet is a TT-30 receptacle; its page says only 'AC 30A Output'. Check /best-power-station-for-travel-trailer and /best-2kwh-power-station-for-rv for the old HELIOS price.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /solar-generator-for-an-rv-with-a-30-amp-plug"
+   }
+  },
+  {
+   "id": "240v-one-unit",
+   "ptype": "finder",
+   "question": "which portable power station has a 240V outlet",
+   "axes": {
+    "outlet": "240 V"
+   },
+   "why": "Dryers, ranges, well pumps and 50 A RV service use 250 V connectors (NEMA 14-30, L14-30, 14-50). A 120 V station cannot feed them, and some makers reach 240 V only by pairing two units.",
+   "sources": [
+    "https://en.wikipedia.org/wiki/NEMA_connector",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+    "https://www.naturesgenerator.com/products/lithium-6000-power-station"
+   ],
+   "asked": "Google suggestion 'portable power station with 240v output', read 2026-11-27; our /best-240v-portable-power-station drew 6 visits, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+with+",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Nature's Generator L6000",
+     "why": "$2,249.99: 6,000 W continuous at 120/240 V from one unit, 3,840 Wh. The cheapest single-unit 240 V read today."
+    },
+    {
+     "product": "Anker SOLIX S5000",
+     "why": "$2,499.99: 5,024 Wh, 4,500 W, L14-30R 240 V outlet. Our record shows a 20-21 week pre-order."
+    },
+    {
+     "product": "Jackery Explorer 5000 Plus",
+     "why": "$3,499.00 on Jackery's store and Amazon: 5,040 Wh, 7,200 W at 240 V."
+    }
+   ],
+   "ours": [
+    "natures-generator-l6000-expandable-power-station",
+    "anker-solix-s5000",
+    "jackery-explorer-5000-plus"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-240v-portable-power-station",
+   "notes": "BackupPowerHub's tracker shows the Anker F3800 Plus at $2,999.99 but sold out on Anker's store today. Growatt HELIOS 3600 x2 with the hub is $2,899 (paired-unit 240 V). EcoFlow TITAN 5000 Plus is $3,699 on Amazon. Nature's Generator also lists a refurbished L6000 at $1,799.99. Not verified: whether Pecron F5000LFP ($2,937, unavailable) and OUPES Guardian 6000 V2 ($2,699) deliver 240 V from one unit.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-240v-portable-power-station"
+   }
+  },
+  {
+   "id": "product-allpowers-volix-p300",
+   "ptype": "product",
+   "question": "ALLPOWERS VOLIX P300 (256 Wh, 300 W): what you get for $139",
+   "axes": {
+    "capacity": "256",
+    "watts": "300",
+    "price": "150"
+   },
+   "why": "The only station read today under $150 with an AC outlet, LiFePO4 cells and more than 250 Wh. It leads the under-$150 line and places on under-$200.",
+   "sources": [
+    "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station"
+   ],
+   "asked": "Google suggestions 'best portable power station under $150' and 'under $200', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+under+",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Store price $139.00 (compare-at $249), in stock, one variant. Cart-test DEALECTRIC10. ALLPOWERS gives 5 outlets, 0-100% in 1 hour, solar and car charging, '25% lighter'; the page gives no weight in pounds, no cycle count and no USB-C wattage. Read the manual. A $216.99 kit with a 100 W panel is also listed.",
+   "product": {
+    "brand": "ALLPOWERS",
+    "name": "VOLIX P300 Portable Power Station 300W 256Wh",
+    "url": "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station",
+    "variant": "Default Title",
+    "price": "$139.00",
+    "program": "cj:allpowers"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://iallpowers.com/products/allpowers-volix-p300-portable-power-station",
+    "demand": null,
+    "value": 3.0,
+    "prior": 0.35,
+    "score": 1.05
+   }
+  },
+  {
+   "id": "product-bluetti-elite-10-mini",
+   "ptype": "product",
+   "question": "BLUETTI Elite 10 mini (128 Wh, 200 W): the small station under the airline limit",
+   "axes": {
+    "capacity": "128",
+    "watts": "200",
+    "price": "150"
+   },
+   "why": "At 128 Wh it sits inside TSA's 101-160 Wh band, so it can fly with airline approval. It is the only AC-outlet station of a brand we link that can.",
+   "sources": [
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+    "https://www.tsa.gov/travel/security-screening/whatcanibring/items/lithium-batteries-more-100-watt-hours"
+   ],
+   "asked": "Google suggestions 'portable power station airplane' and 'portable power station flight', read 2026-11-27, https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=portable+power+station+airplane",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.bluettipower.com/products/elite-10-mini-portable-power-station"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "$129.99 in Deep Grey and Green; bundles with a 60 W panel $239 and a 100 W panel $368. BLUETTI gives LiFePO4 at 3,000+ cycles to 80%, 10 ms UPS, 1 AC and 5 DC outputs, 70-minute recharge. Weight and USB-C wattage did not load from the spec section; read them. Cart-test DEALECTRIC.",
+   "product": {
+    "brand": "BLUETTI",
+    "name": "Elite 10 Mini Power Station, 200W 128Wh",
+    "url": "https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+    "variant": "Deep Grey",
+    "price": "$129.99",
+    "program": "awin:bluetti_us"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.bluettipower.com/products/elite-10-mini-portable-power-station",
+    "demand": null,
+    "value": 3.0,
+    "prior": 0.35,
+    "score": 1.05
+   }
+  },
+  {
+   "id": "product-bluetti-elite-400",
+   "ptype": "product",
+   "question": "BLUETTI Elite 400 (3,840 Wh, 2,600 W) on its own, without a charger bundle",
+   "axes": {
+    "capacity": "3840",
+    "watts": "2600"
+   },
+   "why": "We list the Elite 400 only in two bundles at about $1,599. The station alone is $1,499 and ties for the most capacity read today under $1,500.",
+   "sources": [
+    "https://www.bluettipower.com/products/elite-400-portable-power-station",
+    "https://www.pecron.com/products/pecron-e3800lfp-portable-power-station-4200w-3840wh"
+   ],
+   "asked": "No search evidence for this model; it rests on our bundle records needing the base unit",
+   "hunch": true,
+   "top3": [],
+   "ours": [
+    "https://www.bluettipower.com/products/elite-400-portable-power-station"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "$1,499.00, in stock per the store; its compare-at is $1,399, lower than the price, so check whether it was just raised. Rivals at this size: Pecron E3800LFP $1,399 (3,840 Wh, 4,200 W, ships early January), EcoFlow DELTA 3800 Gen4 $1,699 (3,763 Wh, 3,600 W, 67.5 lb), Growatt HELIOS 3600 $1,599 (3,686 Wh, 3,600 W). On dollars per watt-hour it is not top three: BLUETTI's own Elite 300 and the ALLPOWERS R3500 are cheaper per Wh. Its page text was empty; weight, cycles and ship date need the spec sheet.",
+   "product": {
+    "brand": "BLUETTI",
+    "name": "Elite 400 Portable Power Station, 3,840Wh, 2,600W",
+    "url": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+    "variant": "Elite 400",
+    "price": "$1,499.00",
+    "program": "awin:bluetti_us"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.bluettipower.com/products/elite-400-portable-power-station",
+    "demand": null,
+    "value": 3.0,
+    "prior": 0.35,
+    "score": 0.588
+   }
+  },
+  {
+   "id": "product-bluetti-fridgepower",
+   "ptype": "product",
+   "question": "BLUETTI FridgePower (2,016 Wh, 1,800 W): the single unit made to sit beside a refrigerator",
+   "axes": {
+    "capacity": "2016",
+    "watts": "1800",
+    "ups": "10"
+   },
+   "why": "Keeping a refrigerator running was the question ChatGPT asked in 4 of 6 chats. We list six FridgePower bundles from $1,599.99 but not the $949 single unit.",
+   "sources": [
+    "https://www.bluettipower.com/products/fridgepower-battery-backup"
+   ],
+   "asked": "ChatGPT: 'Is your main goal keeping a refrigerator running through an outage?', 4 of 6 chats (project brief). Google suggests 'best portable power station for refrigerator', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+portable+power+station+for+",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.bluettipower.com/products/fridgepower-battery-backup"
+   ],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "$949.00 on BLUETTI's store; 'FridgePower + Display 1' is $999. Our bundle records give 2,016 Wh, 1,800 W (3,600 W peak), 10 ms switchover, 75 mm thick, and a Jan 11, 2027 ship date for the bundles; confirm the single unit's date. It costs $50 more than the Elite 200 V2 ($899; 2,073.6 Wh, 2,600 W), so the page must say what the form factor and battery add-ons buy. No independent test was read, so it does not yet place on the 2 kWh line.",
+   "product": {
+    "brand": "BLUETTI",
+    "name": "FridgePower",
+    "url": "https://www.bluettipower.com/products/fridgepower-battery-backup",
+    "variant": "",
+    "price": "$949.00",
+    "program": "awin:bluetti_us"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "product-anker-solix-c1000-gen-2-store",
+   "ptype": "product",
+   "question": "Anker SOLIX C1000 Gen 2 from Anker's own store instead of Amazon",
+   "axes": {
+    "capacity": "1024",
+    "watts": "2000",
+    "price": "500"
+   },
+   "why": "It wins our under-$500 and 1 kWh, 2,000 W lines and is ChatGPT's default pick. We link it only through Amazon, though Anker SOLIX is an approved program.",
+   "sources": [
+    "https://backuppowerhub.com/anker-solix-black-friday-deals/",
+    "https://www.outdoorgearlab.com/topics/camping-and-hiking/best-power-station"
+   ],
+   "asked": "ChatGPT named it best default in its chats and told shoppers to check the roughly $470 deal price (project brief)",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.ankersolix.com/"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "BackupPowerHub's tracker (updated 2026-11-27) shows $469.99 and in stock on Anker's US store, the same as Amazon today. The product URL was not found: Anker's store is not readable by storecheck and two guessed URLs returned 404. The same tracker lists C2000 Gen 2 at $849.99 and F3000 at $1,699.99, which also have no record. Confirm the store price on Anker's page before building.",
+   "product": {
+    "brand": "Anker SOLIX",
+    "name": "C1000 Gen 2 Portable Power Station, 1,024 Wh, 2,000 W",
+    "url": "https://www.ankersolix.com/",
+    "variant": "",
+    "price": "$469.99",
+    "program": "rakuten:ankersolix"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.ankersolix.com/",
+    "demand": null,
+    "value": 3.0,
+    "prior": 0.35,
+    "score": 1.05
+   }
+  },
+  {
+   "id": "product-ecoflow-delta-3000-gen4",
+   "ptype": "product",
+   "question": "EcoFlow DELTA 3000 Gen4 (3,072 Wh, 3,600 W): what changed from the DELTA 3 Ultra",
+   "axes": {
+    "capacity": "3072",
+    "watts": "3600",
+    "weight": "57"
+   },
+   "why": "A new release in the US since October 30, 2026: 3,072 Wh and 3,600 W at 57.3 lb with handles and no wheels, at $1,299.",
+   "sources": [
+    "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/",
+    "https://us.ecoflow.com/products/delta-3000-gen4"
+   ],
+   "asked": "New release (pv magazine, 2026-11-06). Our /which-ecoflow-power-station-to-buy page exists for shoppers asking which EcoFlow",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.amazon.com/dp/B0HLSH5GWK"
+   ],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "$1,299.00 on EcoFlow's store and on Amazon (ASIN B0HLSH5GWK, title read today). EcoFlow claims a refrigerator for up to 58 hours, UPS under 10 ms, 14 W with AC on and no load, 3 W standby, four charging methods, a warranty of up to 5 years; all are maker claims and no independent test was found. The DELTA 3 Ultra (our record, $1,369 on Amazon) is marked 'Limited Stock Remaining. No Restock Planned' on EcoFlow's store. Weight lead: 57.3 lb against 74 lb for the DELTA 3 Ultra Plus (GearJunkie).",
+   "product": {
+    "brand": "EcoFlow",
+    "name": "DELTA 3000 Gen4 Portable Power Station, 3,072 Wh, 3,600 W",
+    "url": "https://www.amazon.com/dp/B0HLSH5GWK",
+    "variant": "",
+    "price": "$1,299.00",
+    "program": "amazon.com"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "product-ecoflow-delta-3800-gen4",
+   "ptype": "product",
+   "question": "EcoFlow DELTA 3800 Gen4 (3,763 Wh, 3,600 W, expandable to 12 kWh)",
+   "axes": {
+    "capacity": "3763",
+    "watts": "3600",
+    "expandable": "yes"
+   },
+   "why": "The larger of EcoFlow's two new Gen4 stations, in the US since October 30, 2026: 3,763 Wh at 67.5 lb, expandable from 4 to 12 kWh, at $1,699.",
+   "sources": [
+    "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/",
+    "https://us.ecoflow.com/products/delta-3800-gen4"
+   ],
+   "asked": "New release (pv magazine, 2026-11-06)",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.amazon.com/dp/B0HLVRNZDC"
+   ],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "$1,699.00 on EcoFlow's store and on Amazon (ASIN B0HLVRNZDC). EcoFlow claims a refrigerator for up to 70 hours and six charging methods; maker claims only. Rivals read today: Pecron E3800LFP $1,399, BLUETTI Elite 400 $1,499, Growatt HELIOS 3600 $1,599. The Amazon listing shows 10,017 ratings, too many for a month-old product, so the listing is probably shared with older models; do not quote the rating.",
+   "product": {
+    "brand": "EcoFlow",
+    "name": "DELTA 3800 Gen4 Portable Power Station, 3,763 Wh, 3,600 W",
+    "url": "https://www.amazon.com/dp/B0HLVRNZDC",
+    "variant": "",
+    "price": "$1,699.00",
+    "program": "amazon.com"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "product-ecoflow-river-520-gen4",
+   "ptype": "product",
+   "question": "EcoFlow RIVER 520 Gen4 (512 Wh, 500 W, about 10 lb)",
+   "axes": {
+    "capacity": "512",
+    "watts": "500",
+    "weight": "10"
+   },
+   "why": "A new release, on US pre-sale since November 24, 2026: 512 Wh and 500 W at 4.6 kg, which EcoFlow calls the smallest and lightest in its class.",
+   "sources": [
+    "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/",
+    "https://us.ecoflow.com/products/river-520-gen-4"
+   ],
+   "asked": "New release (pv magazine, 2026-11-06)",
+   "hunch": false,
+   "top3": [],
+   "ours": [],
+   "ours_rank": 0,
+   "covered_by": "",
+   "notes": "$309.00 on EcoFlow's store (compare-at $569), listed as available. EcoFlow gives 1,000 W X-Boost, recharge in 50 minutes, 740 W total output, 6.6 W with AC on and 1 W standby (pv magazine). No Amazon ASIN was found, so there is no link yet. We have no station between 288 Wh and 1 kWh: BLUETTI's AC70 (768 Wh, $359) and AC70P are out of stock on BLUETTI's store. Rivals: Pecron E500LFP $269 (576 Wh, 600 W), Dabbsson 600L $299 (768 Wh, 600 W, 17.6 lb), EcoFlow RIVER 2 Max 500 $289.",
+   "product": {
+    "brand": "EcoFlow",
+    "name": "RIVER 520 Gen4 Portable Power Station, 512 Wh, 500 W",
+    "url": "https://us.ecoflow.com/products/river-520-gen-4",
+    "variant": "",
+    "price": "$309.00",
+    "program": "amazon.com"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-10-30",
+   "what": "EcoFlow DELTA Gen4 on sale in the US: DELTA 3000 Gen4 (3,072 Wh, 3,600 W, 57.3 lb, $1,299) and DELTA 3800 Gen4 (3,763 Wh, 67.5 lb, $1,699); 14 W with AC on and no load per EcoFlow (pv magazine, 2026-11-06)",
+   "source": "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/",
+   "effect": "Changes the 3 kWh lines (/best-3000wh-power-station, /best-3000w-power-station) and the weight and idle-draw figures there; two product lines."
+  },
+  {
+   "date": "2026-11-24",
+   "what": "EcoFlow RIVER Gen4 US pre-sale: RIVER 520 Gen4 (512 Wh, 500 W, 4.6 kg) at $309 on EcoFlow's store; RIVER 260 Gen4 (256 Wh, 300 W, just over 6 lb) has no US price in pv magazine",
+   "source": "https://www.pv-magazine.com/2026/11/06/ecoflow-launches-new-portable-power-station-series/",
+   "effect": "Small-station lines (under $300, under 10 lb); a product line."
+  },
+  {
+   "date": "2026-11-24",
+   "what": "BLUETTI Elite 100 mini announced: 1,004.8 Wh, 700 W, 10.7 kg (23.6 lb) (AndroidGuys, 2026-11-26); $379 on BLUETTI's US store today",
+   "source": "https://androidguys.com/news/bluetti-launches-the-elite-100-mini-its-smallest-1-kwh-portable-power-for-travel-and-home/",
+   "effect": "Lightest 1 kWh line and the under-$400 line; it is the cheapest 1 kWh through our link at $360.05."
+  },
+  {
+   "date": "2026-11-02",
+   "what": "GEYOTO C260 released: 256 Wh LFP, 100 W, 3.64 lb, no AC outlet, from $99.99 on Amazon US",
+   "source": "https://www.prnewswire.com/news-releases/geyoto-launches-c260--a-3-64-pound-portable-power-station-designed-for-life-on-the-move-302926217.html",
+   "effect": "Creates the under-$100 line."
+  },
+  {
+   "date": "2026-10-31",
+   "what": "GearJunkie updated its guide: Anker SOLIX C1000 Gen 2 Best Overall (9.4/10), Anker SOLIX S2000 Best Watt-Hours-to-Weight (fridge 34 hours, about 6 W idle), EcoFlow DELTA 3 Ultra Plus Best Home Backup",
+   "source": "https://gearjunkie.com/technology/best-portable-power-stations",
+   "effect": "A named test for our Anker SOLIX S2000 record; supports the under-$500 and 2 kWh rankings."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Price move: Growatt HELIOS 3600 is $1,599.00 on Growatt's store, up from $1,399.00 in our record of 2026-11-21; the two-unit hub bundle is unchanged at $2,899",
+   "source": "https://www.growattportable.com/products/growatt-helios-3600-portable-power-station",
+   "effect": "30-amp and 3 kWh lines: it no longer undercuts the Mango Power E ($1,499) or the BLUETTI Elite 400 ($1,499)."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Price move: Pecron F3000LFP (3,072 Wh, 3,600 W) at $899 on pre-order, the first 3 kWh station read under $1,000",
+   "source": "https://www.pecron.com/products/pecron-f3000lfp-portable-power-station-3600w-3072wh",
+   "effect": "3 kWh and under-$1,000 lines: undercuts our Elite 300 ($1,044.05) and R3500 ($1,055.12)."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Black Friday prices on tested 1 kWh stations: Anker SOLIX C1000 Gen 2 $469.99 and DJI Power 1000 V2 $469.99 on Amazon; EcoFlow DELTA 3 Classic $438.90 on Amazon and $459 on EcoFlow's store; Dabbsson 2000L $615 on Amazon",
+   "source": "https://us.ecoflow.com/products/delta-3-classic-portable-power-station",
+   "effect": "Under-$500 line: 2,000 W stations now fit. 2,000 Wh under $600 line: the Dabbsson 2000L is $15 over."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "EcoFlow's store marks the DELTA 3 Ultra 'Limited Stock Remaining. No Restock Planned'",
+   "source": "https://us.ecoflow.com/products/delta-3-ultra-series-portable-power-station",
+   "effect": "Our ecoflow-delta-3-ultra record and any page that picks it; the DELTA 3000 Gen4 replaces it."
+  }
+ ],
+ "pages_to_fix": [
+  {
+   "page": "best-solar-generators-60000w-60kw-60kwh-system-cost",
+   "why": "60,000 W is not a breakpoint on any figure found in reviewers' guides, search suggestions or ChatGPT's choices, and the page has 0 visits. Its number is not a real line."
+  },
+  {
+   "page": "best-2000wh-power-station",
+   "why": "The slug says 2000Wh and the title says 'Best 2000 watt portable power station'; watt-hours and watts are different lines. Prices moved too: Dabbsson 2000L is $615 on Amazon today, and the Elite 200 V2 ships in early January 2027."
+  },
+  {
+   "page": "best-2000wh-power-station-under-600",
+   "why": "No station of 2,000 Wh or more was read under $600 today: Dabbsson 2000L $615 (Amazon), Anker S2000 $649.99, and ALLPOWERS R2500 V2 at $584.10 is 1,920 Wh. Re-check the pick. The FOSSiBOT F2400 record (ASIN B0H4W51ZMH) now reads 'Fossibot F2400 pink' at $2,999 on Amazon and should come off any page."
+  },
+  {
+   "page": "best-3000wh-power-station",
+   "why": "Two new entrants change the order: Pecron F3000LFP at $899 (3,072 Wh, 3,600 W) and EcoFlow DELTA 3000 Gen4 at $1,299 (57.3 lb). Growatt HELIOS 3600 is now $1,599, not $1,399."
+  },
+  {
+   "page": "best-3000w-power-station",
+   "why": "Same changes: Pecron F3000LFP (3,600 W, $899), EcoFlow DELTA 3000 Gen4 (3,600 W, $1,299), and the HELIOS 3600 price rise to $1,599."
+  },
+  {
+   "page": "best-power-station-under-1000",
+   "why": "A 3 kWh station now fits under $1,000 (Pecron F3000LFP, $899), which changes the most-capacity answer; published today, so check before it is cited."
+  },
+  {
+   "page": "lightest-1000wh-lifepo4-power-station-for-car-camping",
+   "why": "New lighter candidates: Jackery HomePower 1000 Plus v2 at 23 lb 6.4 oz (GearJunkie; $749 on Jackery's store) and BLUETTI Elite 100 mini at 23.6 lb (AndroidGuys; $379). OutdoorGearLab weighed the Jackery 1000 v2 at 24.4 lb, not the 23.8 lb the maker gives."
+  },
+  {
+   "page": "best-1500wh-power-station-under-500",
+   "why": "The field sits on the line: DYNESS 1,536 Wh is $499.99 on Amazon, Pecron E1500LFP is $549, and VTOMAN's Jump 1800 is $499 with a title of 1,408 Wh and a description of 1,548 Wh. Re-read each price and capacity."
+  },
+  {
+   "page": "best-power-station-under-200",
+   "why": "Two partner-store products with no record belong on it: ALLPOWERS VOLIX P300 ($139, 256 Wh, 300 W) and BLUETTI Elite 10 mini ($129.99, 128 Wh, 200 W)."
+  },
+  {
+   "page": "bluetti-apex-200-vs-apex-300",
+   "why": "A search of BLUETTI's US store for 'Apex 300' returned only Apex 200 products today. Confirm the Apex 300 is still sold; the same check applies to /solar-generator-with-240v-outlet, which is built on the Apex 300 kit."
+  },
+  {
+   "page": "solar-generator-for-an-rv-with-a-30-amp-plug",
+   "why": "If it prices the Growatt HELIOS 3600 at $1,399, that is now $1,599; Pecron F3000LFP offers 3,600 W with a 30 A output at $899."
+  },
+  {
+   "page": "which-ecoflow-power-station-to-buy",
+   "why": "Published 2026-11-15, before the RIVER Gen4 pre-sale. Check it covers DELTA 3000 Gen4, DELTA 3800 Gen4 and RIVER 520 Gen4, and that the DELTA 3 Ultra is marked as not being restocked. Our record ecoflow-river-3-245wh (ASIN B0DB1S36YP) now reads as 'RIVER 2, 256Wh 300W' at $209 on Amazon."
+  }
+ ],
+ "unsourced": [
+  "Anker SOLIX's own product pages and prices: the store is not readable by storecheck (HTTP 404) and two guessed URLs returned 404; Anker store prices here come from BackupPowerHub's tracker dated 2026-11-27.",
+  "Tenergy's store (storecheck search returned HTTP 404) and Mango Power's store were not checked for products without a record.",
+  "The FAA PackSafe page (HTTP 403); the TSA page was used and it does not state the plain under-100 Wh rule.",
+  "A sub-100 Wh station for the flight line: Jackery's US store search returned only the carrying case for the Explorer 100 Plus.",
+  "Weights of the BLUETTI Elite 10 mini, Elite 300, Elite 400 and FridgePower, the ALLPOWERS VOLIX P300 and R3500, and the Pecron F3000LFP.",
+  "The BLUETTI Apex 200 on-sale date (2026-11-24) and the Goal Zero Yeti 3000X recall (2026-08-20): both appeared only in search results and the pages were not opened. No power station recall dated in the last 60 days turned up in two searches; CPSC's list itself was not opened.",
+  "Wirecutter's guide (fetch blocked) and Consumer Reports' ratings (paywalled).",
+  "VTOMAN jump-start amps, engine sizes, and whether a US jumper cable is sold for the Jump 600X; the VTOMAN FlashSpeed 1100 launch date.",
+  "Today's Amazon price for the GEYOTO C260 (an Amazon search did not return it), and Amazon ASINs for the EcoFlow RIVER 520 Gen4, VTOMAN Jump 1800 and FlashSpeed 2400.",
+  "Whether the Pecron F3000LFP's 30 A output is a TT-30 receptacle, and today's Pecron E2400LFP price.",
+  "Whether the OSCAL PowerMax 6000 gives 240 V from one unit. OSCAL's stations are out of stock on its store today; only the PowerMax 6000 + 400 W panel kit ($1,969.98) is available.",
+  "Search suggestions for capacity and wattage phrasings beyond 'portable power station 1000' (1000w, 1000wh, 10000w), and for expandable, UPS and weight phrasings; evidence for those axes is ChatGPT's choices in the project brief.",
+  "Independent tests of the ALLPOWERS VOLIX P300 and P1800, Pecron E1000LFP and F3000LFP, EcoFlow Gen4 models, BLUETTI Elite 100 mini and Elite 10 mini, and OUPES Mega 1 Lite; their rankings rest on maker figures."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 70,
+  "cost_usd_list": 5.584572
+ },
+ "built": "2026-11-27",
+ "name": "portable power stations"
+}

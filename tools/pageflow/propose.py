@@ -107,7 +107,7 @@ def gate_line(line: dict, cid: str, led: dict, with_demand: bool = True) -> dict
         return dict(g, passed=False, failed="uncovered", reason="covered by /" + line["covered_by"])
     if line["ptype"] != "product":
         for slug, p in led["pages"].items():
-            if p["cluster"] == cid and p["kind"] != "product" and max(similar(line["question"], p["title"]), similar(line["question"], slug)) >= 0.72:
+            if p["cluster"] == cid and p["kind"] != "product" and max(similar(line["question"], p["title"]), similar(line["question"], slug)) >= 0.85:   # a backstop for exact repeats only: one more word ("wireless") is another line
                 return dict(g, passed=False, failed="uncovered", reason="covered by /" + slug + " (title match)")
     dem, seen = (demand(line["question"]) if with_demand and line["ptype"] != "product" else (None, {}))
     if line.get("hunch") and dem is not None and dem <= 0:

@@ -160,7 +160,9 @@ def do_publish(run: str) -> dict:
     if sh("git", "rev-parse", "HEAD:worker/src/links-map.json").stdout.strip() != before:
         d = sh("bash", "worker/deploy.sh", timeout=900)
         out["worker"] = "deployed" if d.returncode == 0 else "deploy failed: " + (d.stderr or d.stdout)[-200:]
-    urls = [f"https://dealectric.com/{p}" for p in pages]
+    extra = [p for r in res for p in r.get("new_records") or []]   # product pages a comparison page's research added
+    out["new_records"] = extra
+    urls = [f"https://dealectric.com/{p}" for p in dict.fromkeys(pages + extra)]
     if urls:
         live = False
         for _ in range(40):   # GitHub Pages takes a few minutes; IndexNow only once the page answers

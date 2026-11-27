@@ -1,0 +1,2028 @@
+{
+ "cluster": "dash-cam",
+ "summary": "Dash cams are bought first by how many cameras record (front-only, front and rear, plus cabin, or four), then by a price tier and whether the car must be watched while parked; 4K versus 2K front video, 4G remote viewing and special cameras (infrared cabin, waterproof rear, telephoto) split the rest. In the last 60 days DDPAI launched the Z100 Master (3 Nov 2026), a 4K wide plus 2K telephoto front unit at $349 that undercuts VIOFO's A329T at $449.99, and Wolfbox opened a Kickstarter for a 4-camera mirror cam that ships in spring 2027. Prices read on 27 Nov 2026 put Miofive's dual-4K S1 Ultra at $107.99 and Redtiger's F77 at $189.99, both below the Vantrue S1 Pro Max 4K + 4K at $239.99, while Vantrue's prices are unchanged from 21 Nov.",
+ "axes": [
+  {
+   "id": "channels",
+   "label": "how many cameras record at once (front only, front and rear, plus cabin, four)",
+   "kind": "number",
+   "unit": "cameras",
+   "rank": 1,
+   "why": "DashCamTalk sorts its whole best list by channel count (best 1-channel, 2-channel, 3-channel, 4-channel), ChatGPT asked front-only or front and rear in 3 of 6 chats, and Google's second completion of 'best dash cam' is 'front and rear'. Our one page built on a bare channel count drew 13 visits against 1.94 site-wide for numbered pages.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20"
+   ],
+   "breakpoints": [
+    {
+     "value": "1",
+     "why": "Front only: the budget choice with no rear-window cable; DashCamTalk keeps separate 'Best 1-Channel Premium' and 'Best 1-Channel Value' categories.",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    },
+    {
+     "value": "2",
+     "why": "Front and rear is the default kit: DashCamTalk's 2-channel value and premium categories, and the completion 'best dash cam front and rear'.",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    },
+    {
+     "value": "3",
+     "why": "Adds a cabin camera (rideshare) or, on VIOFO's A329T, a telephoto; on the VIOFO A329S the front drops from 4K 60 fps to 4K 30 fps with three cameras.",
+     "source": "https://viofo.com/products/viofo-a329s-3ch-first-4k-front-2k-wide-210-fov-fisheye-cabin-2k-rear-dash-cam-with-starvis-2-sensor"
+    },
+    {
+     "value": "4",
+     "why": "Two cabin cameras (Vantrue N5S, DashCamTalk's only 4-channel pick) or true left and right side cameras (Botslab G980H 4-camera).",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    }
+   ]
+  },
+  {
+   "id": "price",
+   "label": "price of the kit",
+   "kind": "price",
+   "unit": "$",
+   "rank": 2,
+   "why": "Google completes 'best dash cam under' with six dollar tiers, and ChatGPT split its picks by price ($119.99, $229.99, $329.99, about $400).",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+   ],
+   "breakpoints": [
+    {
+     "value": "50",
+     "why": "Searched tier ('best dash cam under $50', third completion). Front-only 2K or budget-sensor 4K lives here: DDPAI Mini Pro 2K $39, 70mai M310 Plus 4K $39.89.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    },
+    {
+     "value": "75",
+     "why": "Searched tier ('best dash cam under $75'). First tier with GPS and 4K front-only kits: Miofive S1 $71.99, Vantrue Element 1 Lite $69.99.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    },
+    {
+     "value": "100",
+     "why": "The first completion ('best dash cam under $100'). Front and rear 4K kits now sit under it: Miofive S1 Pro $91.63, Redtiger F7N $85.49.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    },
+    {
+     "value": "150",
+     "why": "Searched tier ('best dash cam under 150'). Sony STARVIS 2 IMX678 4K front-only cams land here: Vantrue Element 1 Pro S $129.99, S1 Pro Max 1CH $135.99.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    },
+    {
+     "value": "200",
+     "why": "Searched tier ('best dash cam under 200', second completion). 4K front and rear with STARVIS 2: Vantrue S1 Pro Max 4K + 2.5K $199.99, DDPAI N5 Pro $179, 70mai A810S $159.99.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    },
+    {
+     "value": "300",
+     "why": "Searched tier ('best dash cam under $300'). The ceiling for 3- and 4-channel kits outside VIOFO: Vantrue N4 Pro S $279.99, N5S $293.99, 70mai T800 $299.99.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20"
+    }
+   ]
+  },
+  {
+   "id": "parking",
+   "label": "recording while the car is parked, and what that needs",
+   "kind": "feature",
+   "unit": "",
+   "rank": 3,
+   "why": "ChatGPT raised parked recording in all 6 chats; 'best dash cam with parking mode' is Google's first completion of 'best dash cam with'; DashCamTalk lists each pick's parking mode type and says buffered, low-power, radar or energy-saving modes matter more if the vehicle sits unattended.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20with%20",
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "breakpoints": [
+    {
+     "value": "hardwire kit",
+     "why": "Parking mode needs constant power, and the kit is usually extra: Vantrue's listing says the cam should be hardwired to use parking mode, kit sold separately; DDPAI charges $10 more for the hardwire-kit variant; Miofive's kit is $29.99.",
+     "source": "https://www.vantrue.com/products/vantrue-e1-lite"
+    },
+    {
+     "value": "buffered",
+     "why": "Buffered modes keep the seconds before the trigger. DashCamTalk marks the 70mai T800 'Non-Buffered' and most other picks 'Buffered'.",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    },
+    {
+     "value": "40 mA",
+     "why": "VIOFO's low-power impact detection on the A329S draws under 40 mA at 12.6 V and wakes in under 2 seconds (VIOFO's figures), which it says turns hours of parked coverage into days.",
+     "source": "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "radar",
+     "why": "Radar wakes the camera before impact at low standby draw. DashCamTalk lists the Thinkware U3000 Pro as 'Buffered, Radar'; DDPAI sells radar-accessory variants (N5 Pro Dual + radar, OBD and hardwire kit, $209).",
+     "source": "https://store.ddpai.com/products/n5-pro-dash-cam"
+    }
+   ]
+  },
+  {
+   "id": "front_res",
+   "label": "front camera resolution with all cameras recording",
+   "kind": "number",
+   "unit": "p",
+   "rank": 4,
+   "why": "ChatGPT asked in 4 of 6 chats whether plate detail is worth paying for 4K. DashCamTalk: 'A good 2K camera can be the value pick, while 4K is worth paying for when front detail and plate capture matter.'",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "breakpoints": [
+    {
+     "value": "1080",
+     "why": "Entry level: Vantrue Element 1 Lite at $69.99 records 1920 x 1080 at 30 fps.",
+     "source": "https://www.vantrue.com/products/vantrue-e1-lite"
+    },
+    {
+     "value": "1440",
+     "why": "2K, DashCamTalk's value pick level (VIOFO A119 Mini 2, IMX675) and ChatGPT's default (VIOFO A229 Plus, 2560 x 1440 front and rear).",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    },
+    {
+     "value": "2160",
+     "why": "4K: every DashCamTalk premium pick uses the 8 MP Sony STARVIS 2 IMX678; cheaper 4K cams use GalaxyCore GC8613 (70mai M310 Plus, A810 Lite).",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    }
+   ]
+  },
+  {
+   "id": "rear_res",
+   "label": "rear camera resolution",
+   "kind": "number",
+   "unit": "p",
+   "rank": 5,
+   "why": "ChatGPT told shoppers 'the rear remains 2K' on every two-camera pick; makers now sell 4K rears, and our dual-4K page exists on this figure.",
+   "sources": [
+    "https://viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor",
+    "https://www.vantrue.com/products/s1-pro-max-4k-4k"
+   ],
+   "breakpoints": [
+    {
+     "value": "1080",
+     "why": "Budget rear: Vantrue S1 Pro 2CH (2.5K + 1080P), Redtiger F7N.",
+     "source": "https://www.vantrue.com/products/sonnet-1-pro"
+    },
+    {
+     "value": "1440",
+     "why": "The level all of ChatGPT's two-camera picks share; VIOFO's rear is the 5 MP IMX675.",
+     "source": "https://viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "2160",
+     "why": "4K rear exists from $107.99 (Miofive S1 Ultra) but Miofive states the rear runs at 24 fps; Vantrue S1 Pro Max 4K + 4K uses IMX678 on both.",
+     "source": "https://www.miofive.com/products/miofive-s1-ultra-front-rear-dash-cam"
+    }
+   ]
+  },
+  {
+   "id": "lte",
+   "label": "4G connection for remote viewing and parking alerts",
+   "kind": "feature",
+   "unit": "",
+   "rank": 6,
+   "why": "Google completes 'best dash cam with' with remote viewing, cloud storage and no subscription; ChatGPT listed remote surveillance and cloud alerts as a purpose in every chat; Digital Camera World's 'Best for security' pick (Nextbase iQ) is chosen for its 4G connection.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20with%20",
+    "https://www.digitalcameraworld.com/buying-guides/best-dash-cam"
+   ],
+   "breakpoints": [
+    {
+     "value": "built-in 4G",
+     "why": "DDPAI sells 4G as a variant of the same camera: Z50 Pro Dual $119 against Dual 4G $159; N5 Pro Dual $179 against Dual 4G $209; Z90 Pro 2CH $269 against 2CH 4G $349.",
+     "source": "https://store.ddpai.com/products/z50-pro-4k-dash-cam"
+    },
+    {
+     "value": "add-on module",
+     "why": "Vantrue's 4G LTE module is $149.99 and fits the S1 Pro, N2X, E360, E360 ACE, S1 Pro Max, N4S, E1 Pro, N5S and N4 Pro S; its SIM comes with 300 MB and is topped up by the owner.",
+     "source": "https://www.vantrue.com/products/4g-lte-module-with-sim-card"
+    }
+   ]
+  },
+  {
+   "id": "sensor",
+   "label": "image sensor behind the resolution label",
+   "kind": "feature",
+   "unit": "",
+   "rank": 7,
+   "why": "DashCamTalk: 'Prioritize recent Sony STARVIS 2 sensors and proper HDR if night readability is important', and it lists the sensor for every pick.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "breakpoints": [
+    {
+     "value": "IMX678",
+     "why": "Sony STARVIS 2, 1/1.8 inch, 8 MP: the 4K sensor in all of DashCamTalk's premium picks.",
+     "source": "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "IMX675",
+     "why": "Sony STARVIS 2, 1/2.8 inch, 5 MP: the 2K sensor (VIOFO A119 Mini 2, VIOFO rears, Vantrue N5S).",
+     "source": "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "GC8613",
+     "why": "GalaxyCore 4K sensor in DashCamTalk's cheapest 4K picks (70mai M310 Plus 4K scored 6.8, A810 Lite 7.5).",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    }
+   ]
+  },
+  {
+   "id": "fps",
+   "label": "frame rate at the top resolution",
+   "kind": "number",
+   "unit": "fps",
+   "rank": 8,
+   "why": "ChatGPT set 4K 60 fps against 4K 30 fps with HDR in 3 of 6 chats (60 fps disables HDR on the VIOFO A329S).",
+   "sources": [
+    "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+   ],
+   "breakpoints": [
+    {
+     "value": "60",
+     "why": "Twice the frames for reading plates in motion. VIOFO's A329S does 4K 60 with one or two cameras and 4K 30 with three; the A119 Mini 2 does 2K 60 with HDR only at 30 fps.",
+     "source": "https://viofo.com/products/viofo-a119-mini-2-voice-control-2k-60fps-5ghz-wifi-dash-camera-with-sony-starvis-2-image-sensor-hdr-super-night-sensibility"
+    }
+   ]
+  },
+  {
+   "id": "storage",
+   "label": "largest card it takes, and built-in or external storage",
+   "kind": "number",
+   "unit": "GB",
+   "rank": 9,
+   "why": "ChatGPT split picks on microSD-only against optional SSD; our own research found hours of footage per card is what rival pages leave out.",
+   "sources": [
+    "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+   ],
+   "breakpoints": [
+    {
+     "value": "256",
+     "why": "Ceiling on Botslab's G980H 4K + 2K dual (64 GB card in the box, expandable to 256 GB).",
+     "source": "https://www.botslab.com/products/dash-cam-g980h"
+    },
+    {
+     "value": "512",
+     "why": "The common ceiling: VIOFO A329S, Miofive S1 line, DDPAI Z90 Pro.",
+     "source": "https://www.miofive.com/products/miofive-s1-ultra-front-rear-dash-cam"
+    },
+    {
+     "value": "1000",
+     "why": "1 TB cards: Vantrue N4S, N4 Pro S and N5S per Vantrue's listings; Rove R2-4K Dual Pro.",
+     "source": "https://www.vantrue.com/products/n4s"
+    },
+    {
+     "value": "4000 (SSD)",
+     "why": "VIOFO's A329S takes an external SSD up to 4 TB over USB 3.0.",
+     "source": "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "64 (built-in eMMC)",
+     "why": "DDPAI's Z90 Pro pairs 64 GB of built-in eMMC with a card up to 512 GB.",
+     "source": "https://store.ddpai.com/products/z90-pro"
+    }
+   ]
+  },
+  {
+   "id": "cabin_ir",
+   "label": "infrared cabin camera that records passengers at night",
+   "kind": "feature",
+   "unit": "",
+   "rank": 10,
+   "why": "'best dash cam for uber drivers' is a Google completion and ChatGPT listed rideshare and cabin recording as a purpose; DashCamTalk calls the Vantrue N5S's two interior cameras ideal for rideshare drivers.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20for%20",
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "breakpoints": [
+    {
+     "value": "IR LEDs",
+     "why": "Infrared LEDs let the cabin camera record in the dark: Vantrue OnDash N4 has 4 IR LEDs facing the cabin; VIOFO's A329S cabin camera is a 210 degree 2K fisheye with IR.",
+     "source": "https://www.vantrue.com/products/vantrue-n4"
+    }
+   ]
+  },
+  {
+   "id": "rear_waterproof",
+   "label": "rear camera that can be mounted outside the vehicle",
+   "kind": "fit",
+   "unit": "",
+   "rank": 11,
+   "why": "Google completes 'best dash cam for' with semi trucks, pickup trucks and trucks; these vehicles have no sheltered rear window, which is why VIOFO sells the A329SW.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20for%20",
+    "https://viofo.com/products/viofo-a329sw-2ch-4k-60fps-2k-waterproof-rear-camera-with-sony-starvis-2-sensor"
+   ],
+   "breakpoints": [
+    {
+     "value": "IP67",
+     "why": "Dust-tight and rated for water, so the rear camera can be mounted on a tailgate, box truck or trailer (VIOFO A329SW's rear camera).",
+     "source": "https://viofo.com/products/viofo-a329sw-2ch-4k-60fps-2k-waterproof-rear-camera-with-sony-starvis-2-sensor"
+    },
+    {
+     "value": "rear cable length",
+     "why": "Long vehicles need more than the stock cable: VIOFO offers 6, 8, 10, 15 and 20 m on the A329S 2CH; Vantrue sells a 29.5 ft cable for $15.99.",
+     "source": "https://www.vantrue.com/products/29-5ft-rear-camera-cable-for-n4-pro-s1-pro-e3"
+    }
+   ]
+  },
+  {
+   "id": "telephoto",
+   "label": "a second, zoomed lens that reads plates far ahead",
+   "kind": "feature",
+   "unit": "",
+   "rank": 12,
+   "why": "DashCamTalk has a 'Best License Plate Capture' category (VIOFO A329T); ChatGPT told shoppers a premium camera improves the odds if plate capture is the main goal.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/",
+    "https://viofo.com/products/viofo-a329t-2ch-4k-60fps-2k-telephoto-dashcam"
+   ],
+   "breakpoints": [
+    {
+     "value": "4x optical",
+     "why": "VIOFO's A329T telephoto is a separate 2K camera with a 35 degree field of view; DDPAI's Z100 Master (3 Nov 2026) builds a 2K, 86 mm-equivalent telephoto into the front unit and claims plates read at up to 60 m.",
+     "source": "https://finance.yahoo.com/technology/articles/ddpai-unveils-z100-master-sema-170000005.html"
+    }
+   ]
+  },
+  {
+   "id": "power_backup",
+   "label": "supercapacitor instead of a battery",
+   "kind": "feature",
+   "unit": "",
+   "rank": 13,
+   "why": "'best dash cam with super capacitor' is a Google completion; DashCamTalk: capacitor-based cameras are usually better suited to hot parked cars and long-term reliability. Most cams in the field have one, so it rarely decides a pick.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20with%20",
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "breakpoints": [
+    {
+     "value": "supercapacitor",
+     "why": "Maker operating range of -20 to 70 C on Botslab's G980H and Miofive's S1 Ultra; DashCamTalk notes the 70mai M310 Plus 4K has an internal battery and that the A810S replaced its battery with a capacitor.",
+     "source": "https://dashcamtalk.com/best-dash-cams/"
+    }
+   ]
+  },
+  {
+   "id": "mount_size",
+   "label": "where on the windshield the law lets it sit",
+   "kind": "fit",
+   "unit": "inch",
+   "rank": 14,
+   "why": "A legal limit, not a reviewer figure: California Vehicle Code 26708(b)(13) fixes where a video event recorder may be mounted. No line is drawn from it here because no product dimensions were gathered.",
+   "sources": [
+    "https://california.public.law/codes/vehicle_code_section_26708"
+   ],
+   "breakpoints": [
+    {
+     "value": "5",
+     "why": "California allows a recorder in a five-inch square in the lower corner nearest the driver, or in a five-inch square at the center top of the windshield.",
+     "source": "https://california.public.law/codes/vehicle_code_section_26708"
+    },
+    {
+     "value": "7",
+     "why": "California allows a seven-inch square in the lower corner farthest from the driver.",
+     "source": "https://california.public.law/codes/vehicle_code_section_26708"
+    }
+   ]
+  }
+ ],
+ "rules": "Channels means cameras recording at once, and every resolution or frame rate is stated for that mode: Vantrue's OnDash N4 is 4K only with the front camera alone and 1440p with three cameras, and VIOFO's A329S is 4K 60 fps with two cameras but 4K 30 fps with three. Labels are not comparable across makers. 2K is 2560 x 1440; Vantrue uses both 2.5K and 2.7K for 1944p fronts and 2.5K for a 1440p rear; DDPAI's 3K and Rove's own '4K Upscaled' are not 4K. A 4K claim is read with its sensor, since DashCamTalk separates Sony STARVIS 2 IMX678 cameras from GalaxyCore ones. Prices are for the exact variant: a store's search price is its cheapest variant, 4G and radar are variants on DDPAI, and parking mode needs a hardwire kit that is usually extra (DDPAI +$10, Miofive $29.99), while Redtiger and Botslab bundle cards or kits. A parking claim counts only with the mode named (buffered, low-power draw in mA, radar) and whose figure it is. A 4G comparison includes the data plan. DashCamTalk's scores and its forum measurements (EricSan, TonyM, rcg530) are the named figures for bitrate and frame rate; maker bitrates are not.",
+ "field": [
+  {
+   "product": "Vantrue S1 Pro Max 4K + 4K",
+   "brand": "Vantrue",
+   "ours": "vantrue-s1-pro-max-4k-4k",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/s1-pro-max-4k-4k",
+   "price": "$239.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "2160",
+    "sensor": "IMX678 front and rear",
+    "lte": "add-on module $149.99",
+    "storage": "1 TB card (our record, Vantrue)"
+   },
+   "tested_by": [
+    "EricSan and TonyM, DashCamTalk forum: 30 fps on each camera, 23.8 Mb/s each (our record, not re-opened today)"
+   ]
+  },
+  {
+   "product": "Vantrue S1 Pro Max 4K + 2.5K",
+   "brand": "Vantrue",
+   "ours": "vantrue-s1-pro-max-4k-2-5k",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/s1-pro-max-4k-2-5k",
+   "price": "$199.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "sensor": "IMX678 front",
+    "lte": "add-on module $149.99"
+   },
+   "tested_by": [
+    "EricSan, DashCamTalk forum: front 30 fps, 31.9 Mb/s after a late-2025 firmware (our record, not re-opened today)"
+   ]
+  },
+  {
+   "product": "Vantrue S1 Pro Max 1CH",
+   "brand": "Vantrue",
+   "ours": "vantrue-s1-pro-max-1ch",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/s1-pro-max-1ch",
+   "price": "$135.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "2160",
+    "sensor": "IMX678",
+    "storage": "1 TB card (our record, Vantrue)",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": [
+    "DashCamTalk: H.265 at 32.0 Mb/s on the front camera (our record, not re-opened today)"
+   ]
+  },
+  {
+   "product": "Vantrue Element 1 Pro S",
+   "brand": "Vantrue",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam",
+   "price": "$129.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "2160",
+    "sensor": "IMX678",
+    "parking": "ultra-low-power 24/7 parking mode, 1-second boot (Vantrue's listing; no mA figure given)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Vantrue Nexus 4 Pro S",
+   "brand": "Vantrue",
+   "ours": "vantrue-nexus-4-pro-s",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/n4-pro-s",
+   "price": "$279.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "3",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "cabin_ir": "yes, 4 IR LEDs (our record)",
+    "storage": "1 TB card",
+    "lte": "add-on module $149.99",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Vantrue Nexus 4S",
+   "brand": "Vantrue",
+   "ours": "vantrue-nexus-4s",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/n4s",
+   "price": "$199.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "3",
+    "front_res": "1944 (Vantrue's '2.7K')",
+    "rear_res": "1440",
+    "storage": "1 TB card",
+    "rear_waterproof": "IP67 rear per our record; not on the store text read today",
+    "lte": "add-on module $149.99"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Vantrue Nexus 5S",
+   "brand": "Vantrue",
+   "ours": "vantrue-nexus-5s",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/n5s",
+   "price": "$293.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "4",
+    "front_res": "1944",
+    "sensor": "4 x STARVIS 2",
+    "parking": "10 s buffered motion detection (Vantrue)",
+    "storage": "1 TB card",
+    "lte": "add-on module $149.99"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 4-Channel Premium, score 7.0, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "Vantrue OnDash N4",
+   "brand": "Vantrue",
+   "ours": "vantrue-ondash-n4",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/vantrue-n4",
+   "price": "$99.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "3",
+    "front_res": "1440 with three cameras; 2160 at 25 fps front alone",
+    "rear_res": "1080",
+    "cabin_ir": "yes, 4 IR LEDs",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Vantrue E360",
+   "brand": "Vantrue",
+   "ours": "vantrue-e360",
+   "link": "program",
+   "url": "https://www.vantrue.com/products/e360",
+   "price": "$139.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2 fisheye lenses, 210 degrees each",
+    "parking": "buffered motion detection (Vantrue)",
+    "lte": "add-on module $149.99"
+   },
+   "tested_by": [
+    "Notebookcheck: spec table, 5184 x 1944 stitched (our record, not re-opened today)"
+   ]
+  },
+  {
+   "product": "Vantrue Pilot 2",
+   "brand": "Vantrue",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.vantrue.com/products/pilot-2",
+   "price": "$399.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "4 (three optical cameras plus a thermal lens)",
+    "front_res": "1440"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI Z100 Master (Front & Rear)",
+   "brand": "DDPAI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://store.ddpai.com/products/z100-master",
+   "price": "$349.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2 (front unit holds a wide and a telephoto lens)",
+    "front_res": "2160",
+    "rear_res": "2160",
+    "sensor": "IMX678 front wide and rear",
+    "telephoto": "2K, 86 mm equivalent, 4x+ (DDPAI press release)",
+    "lte": "built-in 4G variant $419"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI Z50 Pro (Dual 4G GPS)",
+   "brand": "DDPAI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://store.ddpai.com/products/z50-pro-4k-dash-cam",
+   "price": "$159.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "lte": "built-in 4G; Front GPS $99, Dual GPS $119, Dual GPS + hardwire kit $129",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI N5 Pro (Dual)",
+   "brand": "DDPAI",
+   "ours": "ddpai-n5-pro",
+   "link": "program",
+   "url": "https://store.ddpai.com/products/n5-pro-dash-cam",
+   "price": "$179.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "fps": "3K 60 fps mode (our record)",
+    "storage": "64 GB eMMC + card to 512 GB (our record)",
+    "lte": "built-in 4G variant $209",
+    "parking": "radar accessory variant with OBD and hardwire kit $209; hardwire-kit variant $189"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI Z90 Pro (2CH)",
+   "brand": "DDPAI",
+   "ours": "ddpai-z90-pro",
+   "link": "program",
+   "url": "https://store.ddpai.com/products/z90-pro",
+   "price": "$269.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2 (3CH $329)",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "storage": "64 GB eMMC + card to 512 GB",
+    "lte": "built-in 4G variant $349 (3CH 4G $399)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI Mini Pro 2K",
+   "brand": "DDPAI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://store.ddpai.com/products/mini-pro-2k-dashcam",
+   "price": "$39.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "1440 (DDPAI's '2K')",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "DDPAI Mini Pro 4K",
+   "brand": "DDPAI",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://store.ddpai.com/products/mini-pro-4k",
+   "price": "$59.00",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "2160 by product name",
+    "parking": "hardwire-kit variant $69"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Botslab G980H 4-Camera",
+   "brand": "Botslab",
+   "ours": "botslab-g980h-4-camera-dash-cam",
+   "link": "program",
+   "url": "https://www.botslab.com/products/g980h-4-channel-dash-cam",
+   "price": "$234.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "4 (front, rear, left, right)",
+    "front_res": "3K (2880 x 1620 per our record)",
+    "rear_res": "1080",
+    "storage": "128 GB card included, up to 512 GB",
+    "power_backup": "supercapacitor, -20 to 70 C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Botslab G980H 4K + 2K Dual",
+   "brand": "Botslab",
+   "ours": "botslab-g980h-4k-2k-dual-dash-cam",
+   "link": "program",
+   "url": "https://www.botslab.com/products/dash-cam-g980h",
+   "price": "$133.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "sensor": "IMX415",
+    "storage": "64 GB card included, up to 256 GB",
+    "parking": "ACC hardwire kit required",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Thinkware U3000 Pro",
+   "brand": "Thinkware",
+   "ours": "thinkware-u3000-pro-2ch",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0FP137YT4",
+   "price": "$549.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "sensor": "IMX678",
+    "parking": "buffered and radar (DashCamTalk)"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 2-Channel Premium, score 6.7, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "VIOFO A329S 2CH",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor",
+   "price": "$459.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2 (1CH $379.99, 3CH $519.99)",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "fps": "60 at 4K with one or two cameras",
+    "sensor": "IMX678 front, IMX675 rear",
+    "parking": "low-power impact detection under 40 mA at 12.6 V (VIOFO)",
+    "storage": "512 GB card, SSD up to 4 TB"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 3-Channel Premium (A329S), score 7.5, https://dashcamtalk.com/best-dash-cams/",
+    "Digital Camera World: 'Best 4K' (Viofo A329 2CH), updated 28 Sep 2026, https://www.digitalcameraworld.com/buying-guides/best-dash-cam"
+   ]
+  },
+  {
+   "product": "VIOFO A329T 2CH",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a329t-2ch-4k-60fps-2k-telephoto-dashcam",
+   "price": "$449.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2 (front + telephoto; 3CH with rear $519.99)",
+    "front_res": "2160",
+    "telephoto": "2K, 4x optical, 35 degree field of view",
+    "fps": "60"
+   },
+   "tested_by": [
+    "DashCamTalk: Best License Plate Capture, score 7.5, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "VIOFO A329SW 2CH",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a329sw-2ch-4k-60fps-2k-waterproof-rear-camera-with-sony-starvis-2-sensor",
+   "price": "$459.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "rear_waterproof": "IP67 rear camera, hydrophobic lens coating"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "VIOFO A229 Plus 2CH",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a229-plus-2ch-front-and-rear-2k2k-hdr-5ghz-wi-fi-gps-voice-control-dual-dash-camera-with-sony-starvis-2-sensor",
+   "price": "$229.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "1440",
+    "rear_res": "1440",
+    "sensor": "IMX675 front and rear"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "VIOFO A229 Pro 2CH",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a229-pro-2ch-front-and-rear-4k-2k-hdr-dual-dash-cam-with-sony-starvis-2-sensors",
+   "price": "$349.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "sensor": "IMX678 front, IMX675 rear",
+    "parking": "buffered auto event detection with the HK4 kit, sold separately"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "VIOFO A119 Mini 2",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a119-mini-2-voice-control-2k-60fps-5ghz-wifi-dash-camera-with-sony-starvis-2-image-sensor-hdr-super-night-sensibility",
+   "price": "$159.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "1440",
+    "fps": "60 (HDR at 30)",
+    "sensor": "IMX675",
+    "power_backup": "supercapacitor",
+    "storage": "512 GB card"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 1-Channel Premium, score 8.0, lists it at $95.98, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "VIOFO A119M Pro",
+   "brand": "VIOFO",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://viofo.com/products/viofo-a119m-pro-4k-hdr-voice-control-dash-camera-with-sony-starvis-2-sensor",
+   "price": "$209.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "2160",
+    "sensor": "IMX678",
+    "storage": "512 GB card"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 1-Channel Premium, score 7.8, lists it at $132.99, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "70mai A810S",
+   "brand": "70mai",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://dashcamtalk.com/best-dash-cams/",
+   "price": "$159.99 (DashCamTalk's listed price; 70mai's US store could not be reached)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "sensor": "IMX678",
+    "parking": "buffered, timelapse",
+    "power_backup": "capacitor"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 2-Channel Value, score 7.7, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "70mai M310 Plus 4K",
+   "brand": "70mai",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://dashcamtalk.com/best-dash-cams/",
+   "price": "$39.89 (DashCamTalk's listed price)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "1",
+    "front_res": "2160",
+    "sensor": "GC8613",
+    "power_backup": "internal battery"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 1-Channel Value, score 6.8; no GPS, no screen, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "70mai T800",
+   "brand": "70mai",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://dashcamtalk.com/best-dash-cams/",
+   "price": "$299.99 (DashCamTalk's listed price)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "3",
+    "front_res": "2160",
+    "sensor": "IMX678",
+    "parking": "non-buffered"
+   },
+   "tested_by": [
+    "DashCamTalk: Best 3-Channel Value, score 7.3, https://dashcamtalk.com/best-dash-cams/"
+   ]
+  },
+  {
+   "product": "Miofive S1 Ultra",
+   "brand": "Miofive",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.miofive.com/products/miofive-s1-ultra-front-rear-dash-cam",
+   "price": "$107.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "2160",
+    "fps": "front 30, rear 24 (Miofive)",
+    "storage": "64 GB card included, up to 512 GB",
+    "parking": "needs the $29.99 hardwire kit or OBD cable",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": [
+    "rcg530, DashCamTalk forum: rear at 25 then 24 fps (our research lead, not re-opened today)"
+   ]
+  },
+  {
+   "product": "Miofive S1 Pro",
+   "brand": "Miofive",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.miofive.com/products/miofive-s1-pro-4k-2k-dual-dash-cam",
+   "price": "$91.63",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "storage": "32 GB card included, up to 512 GB",
+    "power_backup": "supercapacitor"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Redtiger F77",
+   "brand": "Redtiger",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.redtigercam.com/products/f77-starvis-2-4k-4k-dual-imx678-voice-control-5-8ghz-high-speed-wifi-dash-cam",
+   "price": "$189.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "2160",
+    "sensor": "IMX678 (Redtiger's listing)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Redtiger F7N",
+   "brand": "Redtiger",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.redtigercam.com/products/redtiger-f7n-4k-dual-front-and-rear-dash-cam-with-64gb-sd-card",
+   "price": "$85.49",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160 (Redtiger's label)",
+    "rear_res": "1080",
+    "rear_waterproof": "waterproof rear camera (Redtiger's listing; no IP rating in the text read)",
+    "parking": "hardwire kit included",
+    "storage": "64 GB card included"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Rove R2-4K Dual Pro",
+   "brand": "Rove",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.rovedashcam.com/products/rove-r2-4k-dual-pro-dash-cam",
+   "price": "$349.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "2160",
+    "rear_res": "1440",
+    "sensor": "IMX678 front, IMX675 rear",
+    "storage": "128 GB card included, up to 1 TB"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Rove R2-4K Dual",
+   "brand": "Rove",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.rovedashcam.com/products/rove-r2-4k-dual-dash-cam-front-and-rear-starvis-2-sensor-free-128gb-card-included-5g-wifi-up-to-20mb-s-fastest-download-speed-with-app-4k-2160p-fhd-dash-camera-for-cars-3-ips-24h-parking-mode",
+   "price": "$199.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "channels": "2",
+    "front_res": "'4K Upscaled' in Rove's own title",
+    "rear_res": "1080",
+    "storage": "128 GB card included"
+   },
+   "tested_by": []
+  }
+ ],
+ "lines": [
+  {
+   "id": "1-channel",
+   "ptype": "numbered",
+   "question": "best front only dash cam (1 channel)",
+   "axes": {
+    "channels": "1"
+   },
+   "why": "One camera is the budget choice with no rear-window cable, and DashCamTalk keeps two 1-channel categories whose picks split on 2K IMX675 against 4K IMX678. We have pages for 2, 3 and 4 channels but none for 1.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "asked": "ChatGPT asked 'Front-only, or front and rear coverage?' in 3 of 6 chats (brief); DashCamTalk's 'Best 1-Channel Premium' and 'Best 1-Channel Value' sections, https://dashcamtalk.com/best-dash-cams/",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A119 Mini 2",
+     "why": "DashCamTalk's top-scored front-only cam (8.0): 2K at 60 fps, IMX675, buffered parking, GPS, supercapacitor. $159.99 on viofo.com today; DashCamTalk lists $95.98."
+    },
+    {
+     "product": "VIOFO A119M Pro",
+     "why": "DashCamTalk 7.8: 4K IMX678, Wi-Fi 6, wedge body. $209.99 on viofo.com today; DashCamTalk lists $132.99."
+    },
+    {
+     "product": "Vantrue S1 Pro Max 1CH",
+     "why": "4K IMX678 at $135.99 with a named measurement (DashCamTalk: H.265, 32.0 Mb/s) and a 1 TB card limit."
+    }
+   ],
+   "ours": [
+    "vantrue-s1-pro-max-1ch",
+    "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam",
+    "vantrue-s1-pro-1ch",
+    "vantrue-element-1-lite",
+    "ddpai-n2-front-hardwire-kit"
+   ],
+   "ours_rank": 3,
+   "covered_by": "",
+   "notes": "The Vantrue Element 1 Pro S ($129.99, IMX678, Wi-Fi 6, ultra-low-power parking, no record yet) may be the better pick of ours than the S1 Pro Max 1CH; it has no named test in hand. VIOFO's price is in conflict: viofo.com's Shopify price for the A119 Mini 2 is $159.99 while the same page's text says $119.99 and DashCamTalk lists $95.98, so read the Amazon price before ranking on value. Cheaper tier: DDPAI Mini Pro 4K $59, Miofive S1 $71.99 (4K, GPS, 32 GB card), 70mai M310 Plus 4K $39.89 (DashCamTalk 6.8, GalaxyCore sensor, internal battery).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "vantrue-s1-pro-max-1ch, https://www.vantrue.com/products/element-1-pro-s-4k-dashcam, vantrue-s1-pro-1ch, vantrue-element-1-lite, ddpai-n2-front-hardwire-kit",
+    "demand": 0.0,
+    "value": 1.12,
+    "prior": 3.83,
+    "score": 1.287
+   }
+  },
+  {
+   "id": "built-in-4g",
+   "ptype": "finder",
+   "question": "which dash cam has built-in 4G LTE for remote viewing",
+   "axes": {
+    "lte": "built-in 4G"
+   },
+   "why": "4G is what lets a parked car send alerts and live view without the phone being in Wi-Fi range. It is built in on DDPAI's 4G variants from $159, and a $149.99 add-on module on Vantrue.",
+   "sources": [
+    "https://store.ddpai.com/products/z50-pro-4k-dash-cam",
+    "https://www.vantrue.com/products/4g-lte-module-with-sim-card",
+    "https://www.digitalcameraworld.com/buying-guides/best-dash-cam"
+   ],
+   "asked": "Google completes 'best dash cam with' with 'remote viewing', 'cloud storage' and 'no subscription', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20with%20 ; ChatGPT listed remote surveillance and remote parking alerts as a purpose in all 6 chats (brief)",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "DDPAI Z50 Pro Dual 4G GPS",
+     "why": "Cheapest built-in 4G kit read today: $159, 4K front plus rear, supercapacitor, Wi-Fi 6."
+    },
+    {
+     "product": "Nextbase iQ",
+     "why": "Digital Camera World's 'Best for security' (28 Sep 2026): a 4K cam whose 4G connection makes it an always-on security camera. Price and plan fees not read."
+    },
+    {
+     "product": "DDPAI N5 Pro Dual 4G",
+     "why": "$209: 4K front + 2K rear with 64 GB of built-in eMMC, $30 over the non-4G kit."
+    }
+   ],
+   "ours": [
+    "https://store.ddpai.com/products/z50-pro-4k-dash-cam",
+    "ddpai-n5-pro",
+    "ddpai-z90-pro",
+    "https://store.ddpai.com/products/z100-master"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Rank 1 is on price among kits read today, not on a test: no named reviewer measurement of DDPAI's 4G service was found. The page must source what DDPAI's data plan costs and what works without paying, and the same for Nextbase, BlackVue (DashCamTalk: Elite 9 has the strongest cloud capability, $424.99) and Thinkware. Other DDPAI 4G variants: Z90 Pro 2CH 4G $349, 3CH 4G $399; Z100 Master Front & Rear + 4G $419. Vantrue route: any supported cam plus the $149.99 module (S1 Pro 1CH $79.99 + module = $229.98); its SIM ships with 300 MB. Code SAVEBIGBF applied to DDPAI through our link per the record of 2026-11-21. Trap: the 4G variant is a different SKU from our N5 Pro and Z90 Pro records.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://store.ddpai.com/products/z50-pro-4k-dash-cam, ddpai-n5-pro, ddpai-z90-pro, https://store.ddpai.com/products/z100-master",
+    "demand": 0.0,
+    "value": 1.12,
+    "prior": 1.02,
+    "score": 0.571
+   }
+  },
+  {
+   "id": "telephoto",
+   "ptype": "finder",
+   "question": "which dash cam has a telephoto lens to read license plates",
+   "axes": {
+    "telephoto": "yes"
+   },
+   "why": "A wide lens shrinks a plate to a few pixels at distance; a second narrow lens (VIOFO: 4x optical, 35 degree view, 2K) keeps it readable. Two makers sell one, and DDPAI's arrived on 3 Nov 2026.",
+   "sources": [
+    "https://viofo.com/products/viofo-a329t-2ch-4k-60fps-2k-telephoto-dashcam",
+    "https://finance.yahoo.com/technology/articles/ddpai-unveils-z100-master-sema-170000005.html",
+    "https://store.ddpai.com/products/z100-master"
+   ],
+   "asked": "DashCamTalk's 'Best License Plate Capture' category, https://dashcamtalk.com/best-dash-cams/ ; ChatGPT asked 'Does license-plate or forward detail matter enough to pay for 4K?' in 4 of 6 chats (brief)",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329T",
+     "why": "DashCamTalk's license-plate pick (7.5). 4K 60 fps front + separate 2K telephoto, $449.99; with a rear camera (3CH) $519.99."
+    },
+    {
+     "product": "DDPAI Z100 Master",
+     "why": "4K wide + 2K 86 mm-equivalent telephoto in one front unit, plus a 4K IMX678 rear, $349. DDPAI claims plates read at up to 60 m; no named test yet."
+    },
+    {
+     "product": "VIOFO A229 Pro with telephoto add-on",
+     "why": "VIOFO lists a telephoto camera (RTC320) as an add-on for the A229 Pro front unit ($309.99 1CH); the add-on's price was not read."
+    }
+   ],
+   "ours": [
+    "https://store.ddpai.com/products/z100-master"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "The Z100 Master is $100.99 under the A329T 2CH and keeps a rear camera, where VIOFO's 2CH kit gives the second channel to the telephoto. Check on DDPAI's page: telephoto field of view, whether both front lenses and the rear record at once and at what frame rate, card limit and eMMC. DDPAI's standard hardwire kit excludes the Z100 Master; the hardwire-kit variant is $359. Related models at store.ddpai.com not opened: Z100 $169, Z100 Pro $249 (confirm whether either has the telephoto). Vantrue's 'PlatePix' on the N4 Pro S and Element 1 Pro S is a plate exposure mode, not a telephoto lens.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://store.ddpai.com/products/z100-master",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 1.02,
+    "score": 0.204
+   }
+  },
+  {
+   "id": "waterproof-rear",
+   "ptype": "finder",
+   "question": "which dash cam has a waterproof rear camera for a pickup or semi truck",
+   "axes": {
+    "rear_waterproof": "yes"
+   },
+   "why": "Pickups, box trucks and semis have no sheltered rear window, so the rear camera has to live outside. That needs an IP67 housing and a cable long enough for the vehicle.",
+   "sources": [
+    "https://viofo.com/products/viofo-a329sw-2ch-4k-60fps-2k-waterproof-rear-camera-with-sony-starvis-2-sensor",
+    "https://www.vantrue.com/products/waterproof-rear-camera"
+   ],
+   "asked": "Google completes 'best dash cam for' with 'semi trucks', 'pickup trucks' and 'trucks', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20for%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329SW 2CH",
+     "why": "IP67 2K IMX675 rear with hydrophobic coating, 4K 60 fps front, cable lengths sold for sedan to semi; $459.99."
+    },
+    {
+     "product": "Vantrue Nexus 4S",
+     "why": "3 channels at $199.99 with a 1440p rear our record gives as IP67 (RC09); Vantrue sells a 29.5 ft rear cable for $15.99."
+    },
+    {
+     "product": "Redtiger F7N",
+     "why": "$85.49 with a 1080p waterproof rear camera, hardwire kit and 64 GB card in the box (Redtiger's listing; no IP rating in the text read)."
+    }
+   ],
+   "ours": [
+    "vantrue-nexus-4s",
+    "vantrue-nexus-4-pro-s",
+    "vantrue-s1-pro-max-4k-2-5k"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Before writing, confirm on Vantrue's page or manual which kits ship the waterproof rear in the box and its IP rating: vantrue.com returned 429 on the N4S page today and the store text does not state it. Vantrue also sells a separate waterproof rear camera at $69.99 (mounts inside the rear window, above the plate or on the exterior; cable not included). Cable length decides semis: VIOFO sells 6 to 20 m on the A329S 2CH, Vantrue 29.5 ft. VIOFO's A329TW 3CH ($529.99) adds a telephoto. Wolfbox FlexPilot (Kickstarter, ships spring 2027) has IP67 cameras and cables to 15 m.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "vantrue-nexus-4s, vantrue-nexus-4-pro-s, vantrue-s1-pro-max-4k-2-5k",
+    "demand": 0.0,
+    "value": 0.57,
+    "prior": 1.02,
+    "score": 0.233
+   }
+  },
+  {
+   "id": "under-50",
+   "ptype": "numbered",
+   "question": "best dash cam under $50",
+   "axes": {
+    "price": "50",
+    "channels": "1"
+   },
+   "why": "$50 is a tier Google completes for this category. Under it the choice is a front-only cam: 2K with a supercapacitor, or 4K on a budget sensor with a battery.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20",
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "asked": "'best dash cam under $50' is the third completion of 'best dash cam under', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20under%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "70mai M310 Plus 4K",
+     "why": "DashCamTalk's Best 1-Channel Value (6.8) at $39.89: 4K GalaxyCore GC8613, buffered and timelapse parking; no GPS, no screen, internal battery."
+    },
+    {
+     "product": "DDPAI Mini Pro 2K",
+     "why": "$39: 2K, rotatable lens, Wi-Fi, supercapacitor (DDPAI's listing)."
+    },
+    {
+     "product": "DDPAI MINI2X 2K",
+     "why": "$49: 2K QHD, 5 GHz Wi-Fi, supercapacitor, low-energy parking monitoring (DDPAI's listing)."
+    }
+   ],
+   "ours": [
+    "https://store.ddpai.com/products/mini-pro-2k-dashcam",
+    "https://store.ddpai.com/products/mini2x-2k-dash-cam",
+    "https://store.ddpai.com/products/mini-pro-3k"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "No named test of the DDPAI Mini line was found; the honest edge to check is supercapacitor against the M310 Plus's battery, and whether the Mini Pro has GPS. A hardwire kit ($19.99 to $29.99 at DDPAI) puts every pick over $50 once parking is wanted. DDPAI Mini Pro 3K is $49 and Mini Pro 4K $59 ($69 with kit); their store text was empty. Price-crossed pages here drew 0 to 3 visits each in their first week, so this is a lower-yield line than the feature lines. The next searched tier is $75: Miofive S1 $71.99 (4K, GPS, card), Vantrue Element 1 Lite $69.99, DDPAI Mini Pro 4K $59.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://store.ddpai.com/products/mini-pro-2k-dashcam, https://store.ddpai.com/products/mini2x-2k-dash-cam, https://store.ddpai.com/products/mini-pro-3k",
+    "demand": 0.189,
+    "value": 0.5,
+    "prior": 3.83,
+    "score": 1.056
+   }
+  },
+  {
+   "id": "60fps",
+   "ptype": "numbered",
+   "question": "which dash cam records at 60 fps, and at what resolution",
+   "axes": {
+    "fps": "60"
+   },
+   "why": "60 fps halves the motion between frames, which helps freeze a passing plate, but only VIOFO's A329S reaches it at 4K, and there it turns HDR off. Others reach 60 only at 3K, 2K or 1440p.",
+   "sources": [
+    "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor",
+    "https://viofo.com/products/viofo-a119-mini-2-voice-control-2k-60fps-5ghz-wifi-dash-camera-with-sony-starvis-2-image-sensor-hdr-super-night-sensibility"
+   ],
+   "asked": "ChatGPT offered '4K/30fps with HDR for difficult lighting' against '4K/60fps for smoother daytime video (disables HDR)' in 3 of 6 chats (brief)",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329S",
+     "why": "The one true 4K 60 fps front read today, with one or two cameras ($379.99 1CH, $459.99 2CH); 4K 30 with three."
+    },
+    {
+     "product": "DDPAI N5 Pro",
+     "why": "3K 60 fps mode on a 4K + 2K kit at $179 (our record; DDPAI states '3K 60fps' on the sibling Z60 Pro listing)."
+    },
+    {
+     "product": "VIOFO A119 Mini 2",
+     "why": "2K at 60 fps front-only, with HDR only at 30 fps (VIOFO)."
+    }
+   ],
+   "ours": [
+    "ddpai-n5-pro",
+    "vantrue-s1-pro-1ch",
+    "vantrue-e360"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "No partner product records 4K at 60 fps, and the page should say so in its first lines. Check for each of ours whether 60 fps turns HDR off and whether the rear keeps recording: N5 Pro 3K60 (the N5 Pro store text was empty today), Vantrue S1 Pro 1440p60 as a separate menu mode (BlackboxMyCar, our record), Vantrue E360 1440p + 1440p at 60 (Notebookcheck, our record).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "ddpai-n5-pro, vantrue-s1-pro-1ch, vantrue-e360",
+    "demand": 0.0,
+    "value": 1.12,
+    "prior": 3.83,
+    "score": 1.716
+   }
+  },
+  {
+   "id": "1tb-card",
+   "ptype": "numbered",
+   "question": "which dash cam supports a 1TB SD card",
+   "axes": {
+    "storage": "1000"
+   },
+   "why": "Most dash cams stop at 512 GB. A 1 TB card doubles the hours kept before loop recording overwrites, which matters most with three or four cameras writing at once.",
+   "sources": [
+    "https://www.vantrue.com/products/n4s",
+    "https://www.rovedashcam.com/products/rove-r2-4k-dual-pro-dash-cam",
+    "https://viofo.com/products/viofo-a329s-2ch-4k-60fps-2k-hdr-dash-cam-with-sony-starvis-2-sensor"
+   ],
+   "asked": "ChatGPT split picks on 'microSD only' against 'optional external SSD support' (brief); our 3-channel and 4-channel research found rival pages give no hours of footage per card. No search completion was found for the 1 TB wording.",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "Vantrue S1 Pro Max 1CH",
+     "why": "Cheapest 1 TB-card cam in the field at $135.99 (card range 32 GB to 1 TB per Vantrue, our record); 4K IMX678."
+    },
+    {
+     "product": "Vantrue Nexus 4S",
+     "why": "1 TB card on a 3-channel kit at $199.99 (Vantrue's listing today); N4 Pro S ($279.99) and N5S ($293.99) also list 1 TB."
+    },
+    {
+     "product": "Rove R2-4K Dual Pro",
+     "why": "Up to 1 TB with a 128 GB card in the box; 4K + 2K; $349.99."
+    }
+   ],
+   "ours": [
+    "vantrue-s1-pro-max-1ch",
+    "vantrue-nexus-4s",
+    "vantrue-nexus-4-pro-s",
+    "vantrue-nexus-5s",
+    "vantrue-s1-pro-max-4k-4k"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "VIOFO's A329S answers the same need another way: 512 GB card plus an external SSD up to 4 TB. The page should carry hours per card from DashCamTalk bitrates, as our 3-channel page does. Vantrue's Nexus 5 (no S, $265.99) and S1 Pro stop at 512 GB.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "demand",
+    "reason": "a hunch, and no search suggestion completes the question"
+   }
+  },
+  {
+   "id": "product-z100-master",
+   "ptype": "product",
+   "question": "dash cam with a wide and a telephoto front lens, launched November 2026",
+   "axes": {
+    "telephoto": "yes",
+    "lte": "built-in 4G variant"
+   },
+   "why": "New release: DDPAI announced the Z100 Master at SEMA on 3 Nov 2026 with orders open the same day. It places second on the telephoto line at $349 against VIOFO's $449.99.",
+   "sources": [
+    "https://finance.yahoo.com/technology/articles/ddpai-unveils-z100-master-sema-170000005.html",
+    "https://store.ddpai.com/products/z100-master"
+   ],
+   "asked": "Covered as a launch by Digital Camera World ('This new dash cam is refreshingly innovative', title seen in search, not opened) and by DDPAI's SEMA release, https://finance.yahoo.com/technology/articles/ddpai-unveils-z100-master-sema-170000005.html",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "DDPAI Z100 Master",
+     "why": "4K wide (aperture switching F1.0 to F2.0) + 2K 86 mm-equivalent telephoto, IMX678 front and rear, HDR on all channels, 4G and GPS in the dock (DDPAI's release)."
+    }
+   ],
+   "ours": [
+    "https://store.ddpai.com/products/z100-master"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Variants today: Front & Rear $349; + hardwire kit $359; + 4G $419; Front, Rear & Cabin $419; + hardwire kit $429; + 4G $499. The store description was empty, so specs come from the press release only: storage and frame rates are open, and the 60 m plate claim is DDPAI's with no named test.",
+   "product": {
+    "brand": "DDPAI",
+    "name": "Z100 Master",
+    "url": "https://store.ddpai.com/products/z100-master",
+    "variant": "Z100 Master Front & Rear",
+    "price": "$349.00",
+    "program": "awin:ddpai"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://store.ddpai.com/products/z100-master",
+    "demand": null,
+    "value": 1.12,
+    "prior": 0.36,
+    "score": 0.323
+   }
+  },
+  {
+   "id": "product-element-1-pro-s",
+   "ptype": "product",
+   "question": "4K front only dash cam with low-power parking mode under $150",
+   "axes": {
+    "channels": "1",
+    "front_res": "2160",
+    "price": "150"
+   },
+   "why": "A partner-store product with no record: IMX678 4K front-only at $129.99, $6 under the S1 Pro Max 1CH, with Wi-Fi 6 and a low-power parking mode. It contends for third on the front-only line.",
+   "sources": [
+    "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam"
+   ],
+   "asked": "Places on the 1-channel line, which rests on DashCamTalk's 1-channel categories and ChatGPT's front-only choice",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Vantrue Element 1 Pro S",
+     "why": "IMX678 4K, Wi-Fi 6, 1-second boot, ultra-low-power 24/7 parking mode, PlatePix, dual-system GPS (Vantrue's listing)."
+    }
+   ],
+   "ours": [
+    "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam"
+   ],
+   "ours_rank": 3,
+   "covered_by": "",
+   "notes": "Needs from Vantrue's manual: parking draw in mA (to set against VIOFO's under 40 mA), card limit, supercapacitor, hardwire kit model. No named test in hand.",
+   "product": {
+    "brand": "Vantrue",
+    "name": "Element 1 Pro S",
+    "url": "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam",
+    "variant": "Default",
+    "price": "$129.99",
+    "program": "awin:vantrue"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.vantrue.com/products/element-1-pro-s-4k-dashcam",
+    "demand": null,
+    "value": 0.57,
+    "prior": 0.36,
+    "score": 0.123
+   }
+  },
+  {
+   "id": "product-z50-pro",
+   "ptype": "product",
+   "question": "cheapest 4K dash cam with built-in 4G",
+   "axes": {
+    "lte": "built-in 4G",
+    "front_res": "2160"
+   },
+   "why": "A partner-store product with no record that leads the built-in 4G line on price: $159 for the front and rear 4G kit.",
+   "sources": [
+    "https://store.ddpai.com/products/z50-pro-4k-dash-cam"
+   ],
+   "asked": "Leads the built-in 4G line, which rests on the 'remote viewing' and 'cloud storage' completions",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "DDPAI Z50 Pro",
+     "why": "4K, 3 inch screen, built-in 4G on the 4G variant, supercapacitor, Wi-Fi 6, GPS and ADAS (DDPAI's listing)."
+    }
+   ],
+   "ours": [
+    "https://store.ddpai.com/products/z50-pro-4k-dash-cam"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Variants today: Front GPS $99; Dual GPS $119; Dual GPS + hardwire kit $129; Dual 4G GPS $159. Needs: sensor, rear resolution, data plan terms.",
+   "product": {
+    "brand": "DDPAI",
+    "name": "Z50 Pro",
+    "url": "https://store.ddpai.com/products/z50-pro-4k-dash-cam",
+    "variant": "Z50 Pro Dual 4G GPS",
+    "price": "$159.00",
+    "program": "awin:ddpai"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://store.ddpai.com/products/z50-pro-4k-dash-cam",
+    "demand": null,
+    "value": 1.12,
+    "prior": 0.36,
+    "score": 0.403
+   }
+  },
+  {
+   "id": "product-pilot-2",
+   "ptype": "product",
+   "question": "dash cam with a thermal imaging camera",
+   "axes": {
+    "channels": "4"
+   },
+   "why": "The one dash cam in the field with a thermal lens, sold in a partner store at $399.99 with no record. It is not new (shown at CES 2026, reviewed in spring 2026).",
+   "sources": [
+    "https://www.vantrue.com/products/pilot-2"
+   ],
+   "asked": "No evidence gathered that shoppers ask for thermal dash cams; reviews by TechRadar, Notebookcheck and AppleInsider appeared in search but were not opened",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "Vantrue Pilot 2",
+     "why": "Three optical cameras (2K + 1080P + 2K) plus a thermal lens, 6.25 inch screen with CarPlay and Android Auto (Vantrue's listing)."
+    }
+   ],
+   "ours": [
+    "https://www.vantrue.com/products/pilot-2"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Open the TechRadar and Notebookcheck reviews for named measurements before committing. Low priority next to the Z100 Master.",
+   "product": {
+    "brand": "Vantrue",
+    "name": "Pilot 2",
+    "url": "https://www.vantrue.com/products/pilot-2",
+    "variant": "Default",
+    "price": "$399.99",
+    "program": "awin:vantrue"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.vantrue.com/products/pilot-2",
+    "demand": null,
+    "value": 0.57,
+    "prior": 0.36,
+    "score": 0.144
+   }
+  },
+  {
+   "id": "2-channel",
+   "ptype": "numbered",
+   "question": "best 2 channel dash cam (front and rear)",
+   "axes": {
+    "channels": "2"
+   },
+   "why": "Front and rear is the default kit: Google's second completion of 'best dash cam', and the level ChatGPT recommends unless budget forces front-only.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/",
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20"
+   ],
+   "asked": "'best dash cam front and rear', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329S 2CH",
+     "why": "4K 60 fps IMX678 + 2K IMX675, low-power parking, SSD support; $459.99. ChatGPT's premium pick; Digital Camera World's 'Best 4K' is the A329 2CH."
+    },
+    {
+     "product": "70mai A810S",
+     "why": "DashCamTalk's top-scored 2-channel (7.7): 4K IMX678, Wi-Fi 6, capacitor; listed at $159.99."
+    },
+    {
+     "product": "VIOFO A229 Plus 2CH",
+     "why": "2K + 2K IMX675 with HDR on both, $229.99; ChatGPT's default pick."
+    }
+   ],
+   "ours": [
+    "vantrue-s1-pro-max-4k-2-5k",
+    "ddpai-n5-pro",
+    "vantrue-s1-pro-max-4k-4k",
+    "botslab-g980h-4k-2k-dual-dash-cam"
+   ],
+   "ours_rank": 0,
+   "covered_by": "best-2-channel-dash-cam",
+   "notes": "None of ours is on DashCamTalk's 2-channel list. Ours compete on price for the sensor: S1 Pro Max 4K + 2.5K $199.99 (IMX678; EricSan's 31.9 Mb/s) and N5 Pro $179 store, $157.52 with code per our record. The 70mai price is DashCamTalk's; 70mai's store could not be read.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "ours",
+    "reason": "none of the products we link is in the top three"
+   }
+  },
+  {
+   "id": "3-channel",
+   "ptype": "numbered",
+   "question": "best 3 channel dash cam (front, cabin and rear)",
+   "axes": {
+    "channels": "3"
+   },
+   "why": "A third camera adds the cabin; the front often drops in frame rate or resolution with three recording.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/"
+   ],
+   "asked": "DashCamTalk's 'Best 3-Channel Value' and 'Best 3-Channel Premium' categories, https://dashcamtalk.com/best-dash-cams/ ; 'best dash cam for uber drivers' completion",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329S 3CH",
+     "why": "DashCamTalk 7.5: 4K 30 front, 2K 210 degree IR cabin, 2K rear, HDR on all three; $519.99 on viofo.com."
+    },
+    {
+     "product": "Vantrue Nexus 4 Pro S",
+     "why": "4K IMX678 front + 1080p IR cabin + 1440p rear, 1 TB card, $279.99. Not scored on DashCamTalk's list."
+    },
+    {
+     "product": "70mai T800",
+     "why": "DashCamTalk 7.3, 4K IMX678, listed at $299.99; parking mode non-buffered."
+    }
+   ],
+   "ours": [
+    "vantrue-nexus-4-pro-s",
+    "vantrue-nexus-4s",
+    "vantrue-ondash-n4",
+    "ddpai-z90-pro"
+   ],
+   "ours_rank": 2,
+   "covered_by": "best-3-channel-dash-cam",
+   "notes": "Rank 2 for the N4 Pro S is this map's reading of specs and price, not a reviewer's ranking: DashCamTalk places Vueroid S1 4K Infinite (7.3, $269.99) level with the T800. Re-check when a named test of the N4 Pro S is in hand. DDPAI Z90 Pro 3CH is $329 today.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-3-channel-dash-cam"
+   }
+  },
+  {
+   "id": "4-channel",
+   "ptype": "numbered",
+   "question": "best 4 channel dash cam",
+   "axes": {
+    "channels": "4"
+   },
+   "why": "Four cameras means either two cabin views or true left and right side cameras; few models exist.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/",
+    "https://www.botslab.com/products/g980h-4-channel-dash-cam"
+   ],
+   "asked": "13 visits to our page since 2026-11-14 (brief); DashCamTalk's 'Best 4-Channel Premium' category",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Vantrue Nexus 5S",
+     "why": "DashCamTalk's only 4-channel pick (7.0): four STARVIS 2 sensors, 10 s buffered parking, 1 TB card; $293.99."
+    },
+    {
+     "product": "Botslab G980H 4-Camera",
+     "why": "The side-facing kind: 3K front + 1080p rear, left and right, 128 GB card included; $234.99."
+    },
+    {
+     "product": "Vantrue Nexus 5",
+     "why": "Older four-camera kit (1944P + 3 x 1080P, 512 GB max) at $265.99."
+    }
+   ],
+   "ours": [
+    "vantrue-nexus-5s",
+    "botslab-g980h-4-camera-dash-cam",
+    "https://www.vantrue.com/products/nexus-5"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-4-channel-dash-cam",
+   "notes": "Wolfbox FlexPilot (4-camera mirror cam, Kickstarter from $569, ships spring 2027) is not buyable yet. Redtiger F17 Plus was not priced today.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-4-channel-dash-cam"
+   }
+  },
+  {
+   "id": "side-cameras",
+   "ptype": "finder",
+   "question": "which dash cam has side cameras that record the left and right",
+   "axes": {
+    "channels": "4"
+   },
+   "why": "On most 4-channel cams the side views come from cabin lenses on the windshield unit; separate left and right cameras are rare.",
+   "sources": [
+    "https://www.botslab.com/products/g980h-4-channel-dash-cam"
+   ],
+   "asked": "6 visits and 4 buy-link clicks on our page in its first week (brief)",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Botslab G980H 4-Camera",
+     "why": "Magnetic snap-on left and right cameras that swivel 90 degrees, 1080p each; $234.99."
+    }
+   ],
+   "ours": [
+    "botslab-g980h-4-camera-dash-cam"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-dash-cam-with-side-cameras",
+   "notes": "Add the Wolfbox FlexPilot as a coming rival (IP67 1080p side cameras, cables to 15 m, estimated spring 2027). Botslab also lists a G980H 4K 3-channel kit at $223.99 with one 120 degree side camera.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-dash-cam-with-side-cameras"
+   }
+  },
+  {
+   "id": "4k-front-4k-rear",
+   "ptype": "numbered",
+   "question": "best dash cam with 4K front and 4K rear",
+   "axes": {
+    "front_res": "2160",
+    "rear_res": "2160"
+   },
+   "why": "A 4K rear is new and uneven: some rears run at 24 fps and at lower bitrate than the front.",
+   "sources": [
+    "https://www.vantrue.com/products/s1-pro-max-4k-4k",
+    "https://www.miofive.com/products/miofive-s1-ultra-front-rear-dash-cam",
+    "https://www.redtigercam.com/products/f77-starvis-2-4k-4k-dual-imx678-voice-control-5-8ghz-high-speed-wifi-dash-cam"
+   ],
+   "asked": "'best 4k dash cam front and rear' is the first completion of 'best 4k dash cam', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%204k%20dash%20cam%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Vantrue S1 Pro Max 4K + 4K",
+     "why": "IMX678 front and rear, 30 fps on each camera (EricSan, our record); $239.99."
+    },
+    {
+     "product": "Redtiger F77",
+     "why": "Dual IMX678 4K + 4K at $189.99 (Redtiger's listing)."
+    },
+    {
+     "product": "Miofive S1 Ultra",
+     "why": "$107.99 with a 64 GB card; rear 4K at 24 fps by Miofive's own spec."
+    }
+   ],
+   "ours": [
+    "vantrue-s1-pro-max-4k-4k"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-dash-cam-4k-front-and-4k-rear",
+   "notes": "Rank 1 holds on rear frame rate and a named measurement, not on price: the S1 Ultra is $132 cheaper today. Miofive S1 Ultra II (dual IMX678, rear 24 fps) is $269.99. Our research says the F77 records only to internal eMMC; re-check.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-dash-cam-4k-front-and-4k-rear"
+   }
+  },
+  {
+   "id": "radar-parking",
+   "ptype": "finder",
+   "question": "which dash cam has radar parking mode",
+   "axes": {
+    "parking": "radar"
+   },
+   "why": "Radar lets the camera sleep at very low draw and wake before an impact, so the car can sit for days.",
+   "sources": [
+    "https://dashcamtalk.com/best-dash-cams/",
+    "https://store.ddpai.com/products/n5-pro-dash-cam"
+   ],
+   "asked": "ChatGPT raised parked recording in all 6 chats (brief); 'best dash cam with parking mode front and rear', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20with%20parking%20mode%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Thinkware U3000 Pro",
+     "why": "Radar built in (DashCamTalk: 'Buffered, Radar'), 4K IMX678 + 2K; $549.99 on Amazon today."
+    },
+    {
+     "product": "DDPAI N5 Pro Dual + Radar Accessory",
+     "why": "4K + 2K with radar, OBD and hardwire kit in the box for $209."
+    },
+    {
+     "product": "DDPAI N5 Dual 2026 + Radar Accessory",
+     "why": "4K + 1080p with the radar kit, $269 store price (our record of 2026-11-21)."
+    }
+   ],
+   "ours": [
+    "thinkware-u3000-pro-2ch",
+    "ddpai-n5-pro",
+    "ddpai-n5-dual-2026-radar-kit"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-dash-cam-with-radar-parking-mode",
+   "notes": "The N5 Pro radar variant ($209) is $60 under the N5 Dual 2026 radar kit in our record and has the 2K rear. No named measurement of DDPAI's radar draw was found; Thinkware's 7 mA is SafeDriveSolutions per our record.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-dash-cam-with-radar-parking-mode"
+   }
+  },
+  {
+   "id": "rideshare-ir-cabin",
+   "ptype": "finder",
+   "question": "which dash cam has an infrared cabin camera for rideshare drivers",
+   "axes": {
+    "cabin_ir": "yes",
+    "channels": "3"
+   },
+   "why": "Infrared LEDs are what let the cabin camera record passengers at night.",
+   "sources": [
+    "https://www.vantrue.com/products/vantrue-n4",
+    "https://viofo.com/products/viofo-a329s-3ch-first-4k-front-2k-wide-210-fov-fisheye-cabin-2k-rear-dash-cam-with-starvis-2-sensor"
+   ],
+   "asked": "'best dash cam for uber drivers', https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best%20dash%20cam%20for%20",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "VIOFO A329S 3CH",
+     "why": "2K 210 degree fisheye IR cabin camera on IMX675 with HDR; $519.99."
+    },
+    {
+     "product": "Vantrue Nexus 5S",
+     "why": "Two IR cabin cameras, front and rear seats; DashCamTalk calls them ideal for rideshare drivers; $293.99."
+    },
+    {
+     "product": "Vantrue Nexus 4 Pro S",
+     "why": "1080p IMX662 cabin with 4 IR LEDs behind a 4K front; $279.99."
+    }
+   ],
+   "ours": [
+    "vantrue-nexus-5s",
+    "vantrue-nexus-4-pro-s",
+    "vantrue-nexus-4s",
+    "vantrue-ondash-n4"
+   ],
+   "ours_rank": 2,
+   "covered_by": "best-dash-cam-for-rideshare-drivers",
+   "notes": "Budget end: Vantrue OnDash N4 $99.99 (4 IR LEDs), Redtiger VP20 $114.99 (2.5K IR cabin).",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-dash-cam-for-rideshare-drivers"
+   }
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-11-03",
+   "what": "DDPAI launched the Z100 Master at SEMA: 4K wide + 2K 86 mm-equivalent telephoto in one front unit, IMX678 front and rear, 4G and GPS in the dock; orders opened the same day. On store.ddpai.com today from $349.",
+   "source": "https://finance.yahoo.com/technology/articles/ddpai-unveils-z100-master-sema-170000005.html",
+   "effect": "Opens the telephoto line to a partner product and adds a product line; second built-in 4G flagship for the 4G line."
+  },
+  {
+   "date": "2026-11-23",
+   "what": "Wolfbox announced the FlexPilot, a 4-camera mirror dash cam with movable IP67 cameras (up to two 4K IMX678 and two 1080p), on Kickstarter 17 Nov to 31 Dec 2026 from $569, shipping estimated early spring 2027.",
+   "source": "https://www.prnewswire.com/news-releases/wolfbox-launches-flexpilot-a-4-channel-mirror-dash-cam-with-customizable-camera-placement-302948118.html",
+   "effect": "A coming rival on the 4-channel, side-camera and waterproof-rear lines; not buyable now, so no ranking changes."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Price read: Miofive S1 Ultra (4K + 4K, 64 GB card) $107.99 against a compare-at of $159.99; Miofive S1 Pro (4K + 2K) $91.63; Redtiger F77 (4K + 4K) $189.99; Redtiger F7N $85.49.",
+   "source": "https://www.miofive.com/products/miofive-s1-ultra-front-rear-dash-cam",
+   "effect": "Undercuts our picks on the dual-4K and 4K front and rear lines and on the under-$100 and under-$150 pages."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Price read: DDPAI N5 Pro Dual + Radar Accessory (radar, OBD and hardwire kit) $209; N5 Pro Dual 4G $209; N5 Pro Dual unchanged at $179.",
+   "source": "https://store.ddpai.com/products/n5-pro-dash-cam",
+   "effect": "Radar parking line: a 4K + 2K radar kit $60 under the N5 Dual 2026 radar kit in our record."
+  },
+  {
+   "date": "2026-09-28",
+   "what": "Digital Camera World updated its guide: Garmin Dash Cam X310 best overall, Garmin Mini 3 best mini, Viofo A329 2CH best 4K, Nextbase iQ best for security, Nextbase Piqo best cheap.",
+   "source": "https://www.digitalcameraworld.com/buying-guides/best-dash-cam",
+   "effect": "Names the rivals we cannot link except through Amazon on the front-only and built-in 4G lines."
+  }
+ ],
+ "pages_to_fix": [
+  {
+   "page": "best-360-degree-dash-cam-under-250",
+   "why": "$250 is not a tier shoppers search: Google completes 'best dash cam under' with $50, $75, $100, 150, 200 and $300. The Vantrue E360 is $139.99 and the Botslab G980H 4-camera $234.99, so $200 or $300 would be real lines."
+  },
+  {
+   "page": "best-4k-front-and-rear-dash-cam-under-250",
+   "why": "Same $250 problem. Also re-check the picks against today's prices: Miofive S1 Ultra $107.99 and Redtiger F77 $189.99 (both 4K + 4K), Miofive S1 Pro $91.63 (4K + 2K)."
+  },
+  {
+   "page": "best-dash-cam-4k-front-and-4k-rear",
+   "why": "Re-check prices: Miofive S1 Ultra is $107.99 today (rear 24 fps per Miofive), Redtiger F77 $189.99, Miofive S1 Ultra II $269.99, against Vantrue S1 Pro Max 4K + 4K $239.99."
+  },
+  {
+   "page": "best-3-channel-dash-cam-under-100",
+   "why": "The line holds one product by a cent: Vantrue OnDash N4 at $99.99. The nearest rivals read today are over the line (Redtiger VP20 $114.99, Redtiger F17 $129.99), so the page has no real comparison under $100."
+  },
+  {
+   "page": "best-4-channel-dash-cam-under-200",
+   "why": "The Botslab G980H 4-camera is $234.99 in the store today; it is under $200 only through code AA18 ($192.70 per our record of 2026-11-26). The page should state that the answer depends on the code."
+  },
+  {
+   "page": "best-dash-cam-with-radar-parking-mode",
+   "why": "Check the DDPAI pick: N5 Pro Dual + Radar Accessory is $209 today with a 2K rear, against the N5 Dual 2026 radar kit at $269 with a 1080p rear in our record."
+  },
+  {
+   "page": "best-front-and-rear-dash-cam-under-150",
+   "why": "Re-check against kits read today: Miofive S1 Ultra $107.99 (4K + 4K), Miofive S1 Pro $91.63 (4K + 2K), Redtiger F7N $85.49 (kit and card included), DDPAI Z50 Pro Dual GPS $119, 70mai A810 Lite $79.99 (DashCamTalk 7.5)."
+  },
+  {
+   "page": "best-dash-cam-under-100",
+   "why": "Re-check against Miofive S1 Pro $91.63 and S1 $71.99, Redtiger F7N $85.49, DDPAI Z50 Pro Front GPS $99 and Mini Pro 4K $59, none of which is in our records."
+  },
+  {
+   "page": "best-4k-dash-cam-under-200",
+   "why": "Partner products with no record now sit on this line: Vantrue Element 1 Pro S $129.99 (IMX678), DDPAI Z50 Pro Dual GPS $119 and Dual 4G $159."
+  }
+ ],
+ "unsourced": [
+  "Vortex Radar (403), Wirecutter, Car and Driver and CNN Underscored (fetch refused), Tom's Guide, TechRadar and BlackboxMyCar (page body cut off before the picks): their current picks and criteria were not read; they appear only through ChatGPT's citations in the brief.",
+  "70mai US store prices: us.70mai.com did not resolve and the Amazon search returned nothing, so 70mai prices are DashCamTalk's listed prices read today.",
+  "Garmin X310 and Mini 3 and Nextbase iQ prices and subscription fees: the garmin.com and nextbase.com URLs tried returned 404, so these products are left out of the field.",
+  "What DDPAI's 4G data plan costs and what works without paying; the top-up price of Vantrue's LTE SIM after its 300 MB; prices of BlackVue and Thinkware LTE variants (thinkware.com returned 429).",
+  "A named reviewer's test of the DDPAI Z100 Master, its telephoto field of view, storage and frame rates; the store description was empty and the press release gives no storage figure.",
+  "Specs of the DDPAI Mini Pro 3K and 4K and the N5 Pro's 60 fps mode from DDPAI's own page: the store text for those listings was empty.",
+  "Vantrue's own statement of the IP rating of the N4S and N4 Pro S rear cameras, and which kits ship the waterproof rear in the box (vantrue.com returned 429; the store text does not say).",
+  "The real price of the VIOFO A119 Mini 2 and A119M Pro: viofo.com shows $159.99 and $209.99, the Mini 2 page text says $119.99, DashCamTalk lists $95.98 and $132.99; Amazon was not read.",
+  "Dash cam recalls or standard changes in the last 60 days: one search returned only vehicle rear-view camera recalls.",
+  "Porsche's new dashcam and Toyota's built-in dash cam (November 2026) were seen in search results only and not opened, so they are not listed as news.",
+  "Products with a wireless rear camera ('best dash cam with wireless rear camera' is a Google completion): not researched within the call budget, so no line is drawn.",
+  "Body dimensions of any product, needed to draw a line from California's 5-inch and 7-inch mounting squares."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 71,
+  "cost_usd_list": 5.0228856
+ },
+ "built": "2026-11-27",
+ "name": "dash cams"
+}
