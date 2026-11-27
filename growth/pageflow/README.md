@@ -63,9 +63,11 @@ and new clusters (`tier` in `clusters.json`).
 ## One run (`run.py daily`)
 
     sense    ledger -> ask (when the choices are 30+ days old) -> map for the clusters that are due -> gates -> queue
-    build    plan -> 2 plain ChatGPT chats per question -> harvest -> openness gate -> research (six angle agents,
-             compose, verify: tools/abpage.py) -> Amazon links -> apply (validation, pick check, fastloop check, build,
-             local commit) -> product records -> close (results back to the queue and the map)
+    build    plan -> product records (one researched record per product line) -> re-read of our own products on
+             their stores (tools/upkeep: records and every page that mentions a changed one) -> 2 plain ChatGPT chats
+             per question -> harvest -> openness gate -> research (six angle agents, compose, verify: tools/abpage.py)
+             -> Amazon links -> apply (validation, pick check, fastloop check, build, local commit) -> close (results
+             back to the queue and the map)
     publish  merge main, rebuild, push, Worker deploy when the link map changed, IndexNow
     retire   advance the retire states (below)
 
@@ -78,7 +80,7 @@ By hand:
     python3.12 tools/pageflow/ask.py run <cluster>
     python3.12 tools/pageflow/maps.py build <cluster> [--force] | show <cluster>
     python3.12 tools/pageflow/propose.py gate <cluster> | queue | pick <n>
-    python3.12 tools/pageflow/driver.py plan|chats|harvest|keep|research|links|apply|products|close|status <run>
+    python3.12 tools/pageflow/driver.py plan|products|fresh|chats|harvest|keep|research|links|apply|close|status <run>
     python3.12 tools/pageflow/run.py daily [--pages 3] [--clusters 1] [--cluster <id>] [--publish]
     python3.12 tools/pageflow/retire.py report
 

@@ -13,9 +13,10 @@ due, gates their lines, builds the best few and reports. A run in which no line 
               proven clusters first): the choices ChatGPT offers shoppers (ask.py, when older than ASK_DAYS), then the
               decision map (maps.py: reviews, releases, breakpoints, the field, our products' honest places);
            3. gates (propose.py): real, ours in the top three, uncovered, demand; scored by prior x demand x value.
-  build    plan (the next --pages lines by score, 70/20/10 across proven / adjacent / new clusters) -> two plain ChatGPT
-           chats per question -> harvest -> openness gate -> research (six angles, compose, verify) -> Amazon links ->
-           apply (validation, pick check, fastloop check, build, local commit) -> product records -> close.
+  build    plan (the next --pages lines by score, 70/20/10 across proven / adjacent / new clusters) -> product records
+           -> re-read of our own products (tools/upkeep) -> two plain ChatGPT chats per question -> harvest -> openness
+           gate -> research (six angles, compose, verify) -> Amazon links -> apply (validation, pick check, fastloop
+           check, build, local commit) -> close.
   publish  only with --publish, or when growth/pageflow/AUTOPUBLISH exists: merge main, rebuild, push, deploy the Worker
            when the link map changed, IndexNow for the new pages. Without it the run stops after research: drafts only.
   retire   the retire rule's states advance (retire.py); nothing is retired while growth/pageflow/RETIRE_ON is absent.
@@ -108,6 +109,10 @@ def build(run: str, pages: int, cluster: str | None, publish: bool) -> dict:
     if not qs:
         say("nothing queued: no page is built in this run")
         return out
+    if publish and any(q["ptype"] == "product" for q in qs):   # new records first, so the pages researched next can use them
+        step("products", run, timeout=3 * 3600)
+    if publish:
+        step("fresh", run, timeout=2 * 3600)   # our own prices and stock, re-read before any page is researched
     if any(q["ptype"] != "product" for q in qs):
         step("chats", run, timeout=3 * 3600)
         step("harvest", run)
@@ -117,8 +122,6 @@ def build(run: str, pages: int, cluster: str | None, publish: bool) -> dict:
     if publish:
         if any(q["ptype"] != "product" for q in qs):
             step("apply", run, timeout=4 * 3600)
-        if any(q["ptype"] == "product" for q in qs):
-            step("products", run, timeout=3 * 3600)
         step("close", run)
         out.update(do_publish(run))
     else:

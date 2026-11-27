@@ -3,6 +3,7 @@
 research method that already builds our pages (tools/abpage.py by way of growth/focus/open-pages/openpage.py).
 
     python3.12 tools/pageflow/driver.py plan <run> [--n 6] [--cluster <id>]   # pick queued lines -> runs/<run>/questions.json
+    python3.12 tools/pageflow/driver.py fresh <run>            # re-read our own products on their stores (tools/upkeep)
     python3.12 tools/pageflow/driver.py chats <run>            # two plain ChatGPT chats per question (Agent Chrome)
     python3.12 tools/pageflow/driver.py harvest <run>          # what ChatGPT searched, got and cited, per question
     python3.12 tools/pageflow/driver.py keep <run>             # the openness gate: drop lines its results already answer
@@ -199,6 +200,32 @@ def _patch() -> None:
 _patch()
 
 
+# ---------------------------------------------------------------- our own products, re-read before the research
+
+def fresh(run: str) -> int:
+    """Re-read the products this run's lines rest on, on their stores, before any page is researched: the pages print
+    our prices from the records, and a map often finds a record a sale has overtaken. tools/upkeep does the live read,
+    corrects the records and every page that mentions a changed product, and commits locally (catalog-upkeep skill)."""
+    recs = {p["slug"] for p in C.records() if p.get("program") != "amazon:us"}
+    slugs = set()
+    for q in questions(run):
+        m = C.jload(C.MAPS / f"{q['cid']}.json") or {}
+        slugs |= {o for o in q.get("ours", []) if o in recs}
+        slugs |= {f["ours"] for f in m.get("field", []) if f.get("ours") in recs}
+        if q["ptype"] == "product":   # the records this run just added: their store pages often refuse an agent's fetch (429)
+            dr = C.jload(rdir(run) / "products" / q["slug"] / "draft.json") or {}
+            slugs |= {p["slug"] for p in dr.get("products", []) if p["slug"] in recs}
+    done = C.jload(rdir(run) / "fresh.json") or {"slugs": []}
+    todo = sorted(slugs - set(done["slugs"]))
+    if not todo:
+        print("no record to re-read")
+        return 0
+    r = subprocess.run(["python3.12", str(ROOT / "tools/upkeep/run.py"), "--slugs", ",".join(todo), "--no-push", "--max-research", "3"], cwd=ROOT)
+    if r.returncode == 0:
+        C.jsave(rdir(run) / "fresh.json", {"date": C.today(), "slugs": sorted(set(done["slugs"]) | set(todo))})
+    return r.returncode
+
+
 # ---------------------------------------------------------------- chats, and the openness gate
 
 def chats(run: str, n: int = 2) -> int:
@@ -281,7 +308,9 @@ the record, in the third person, for a shopper:
 - summary: two or three sentences: what it is, the figures that decide it, and what a named reviewer measured if one did;
 - fit: who it suits, and who should pick something else (name one of the products we link when it fits them better);
 - caveats: the limits the maker states and what is not in the box; warranty and returns from the store's own pages, with the date read.
-If the product is sold out with no date, is not the product the map describes, or is not on that program's store, return status "skip".""",
+If the product is sold out with no date, is not the product the map describes, or is not on that program's store, return status "skip".
+Everything in the record is written for the shopper. Never put a note about your own reading in it ("the page could not be
+opened", an HTTP code): what you could not read goes in "unread", and the flow re-reads the store page in a browser afterwards.""",
         f"## Today\n{A.today()}",
         f"## {c['name'].capitalize()} we already link\n" + C.ours_table(q["cid"]),
         "## Approved programs\n" + "\n".join(f"{k}: {v}" for k, v in gappage.programs().items() if k == p.get("program")),
@@ -291,7 +320,7 @@ If the product is sold out with no date, is not the product the map describes, o
  "products": [{"slug": "<brand-model-words, lowercase and hyphens>", "brand": "", "program": "", "category": "", "name": "", "model": "", "url": "",
                "price": 0.0, "list_price": null, "in_stock": true, "verified": "YYYY-MM-DD", "cart_variant": "<variant id when the listing has several>",
                "specs": [["label", "value"]], "warranty": "", "returns": "", "summary": "", "fit": "", "caveats": [""]}],
- "sources": [["<claim>", "<url>"]]}""",
+ "sources": [["<claim>", "<url>"]], "unread": ["<what you could not open or confirm on the maker's page>"]}""",
     ])
 
 
@@ -414,6 +443,8 @@ def main() -> int:
     folders = register(run)
     if cmd == "chats":
         return chats(run)
+    if cmd == "fresh":
+        return fresh(run)
     if cmd == "keep":
         k = keep(run)
         for f, v in k["folders"].items():
