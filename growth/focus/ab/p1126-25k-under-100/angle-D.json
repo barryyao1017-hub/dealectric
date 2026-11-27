@@ -1,0 +1,179 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the 140 W these banks advertise exists only as the 28 V × 5 A level USB PD 3.1 added, so it needs a 240 W-rated cable and a laptop that takes 28 V, and on the UGREEN 145W it falls to 100 W once a second device is plugged in.",
+ "standout": 2,
+ "standout_why": "Compared against Dupple (cited), both Powerbanks.fyi pages (one cited) and the Android Central review. Dupple only says of the UGREEN 145W that 'A 0.5 m 240 W USB-C cable is included' at $79.99, and does not mention PD version, PPS or multi-port power drop. Powerbanks.fyi says nothing about cables, PD version or port splits for any 25,000 mAh bank. ChatGPT's own answer says the UGREEN needs 'separate charging cables' without saying which rating. None gives the 28 V rule or the 100 W + 45 W split. TechRadar's body, Best Buy, the INIU collection and the UGREEN collection page could not be read (truncated, timeout, HTTP 429), so standout is judged without them.",
+ "decides": "It confirms the UGREEN 145W as the under-$100 pick for a 16-inch MacBook Pro or other 140 W laptop, with conditions: use a 240 W cable (UGREEN US lists one at $13.99, or the bank + 240 W cable bundle at $75.98, both under $100) and charge the laptop alone on USB-C1. For laptops that fast-charge at 96 W or less (Apple lists 96 W for the 14-inch MacBook Pro and 70 W for MacBook Air), the 140 W port adds nothing over a 100 W bank, so weight, built-in cables or price should decide. Samsung owners should note Android Central found no 25 W / 45 W PPS charging on its 2023 unit, though UGREEN's sheet lists PPS.",
+ "candidates": [
+  "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+  "UGREEN 145W Power Bank + 240W USB-C Cable Bundle",
+  "UGREEN Nexode 200W 25000mAh",
+  "Baseus EnerFill FC41 25000mAh 145W",
+  "INIU Cougar P63 25000mAh 100W",
+  "Anker Laptop Power Bank 25K 165W",
+  "AOHi Black Warrior 25200mAh 170W"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "Why 140 W needs PD 3.1 (USB-IF's words)",
+   "value": "\"New 28V, 36V, and 48V fixed voltages enable up to 140W, 180W and 240W power levels, respectively.\" Before that, \"USB PD was limited to 100W using a solution based on 20V using USB Type-C cables rated at 5A.\"",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-26",
+   "note": "Arithmetic: 20 V × 5 A = 100 W; 28 V × 5 A = 140 W. Current stays at 5 A, so the extra 40 W comes only from the 28 V level."
+  },
+  {
+   "product": "general",
+   "label": "Cable requirement above 100 W (USB-IF's words)",
+   "value": "\"The USB Type-C specification has also been updated to Release 2.1 to define 240W cable requirements\"; the page describes \"delivering up to 240W of power over full featured USB Type-C cable and connector.\"",
+   "source": "https://www.usb.org/usb-charger-pd",
+   "source_title": "USB Charger (USB Power Delivery) | USB-IF",
+   "read": "2026-11-26",
+   "note": "This page does not spell out that a 100 W cable caps a 140 W port at 100 W; that sentence was not sourced (see unsourced)."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "USB-C1 output levels, maker's spec sheet",
+   "value": "5V-3A, 9V-3A, 12V-3A, 15V-3A, 20V-5A, 28V-5A, 140W Max",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack | UGREEN US",
+   "read": "2026-11-26",
+   "note": "Technical Specifications on UGREEN US's bundle page for the same bank, read through storecheck.py search output because the standalone product page returned HTTP 429. 140 W is offered only at 28 V; at 20 V the port tops out at 100 W. The page's feature heading reads \"PD3.1 140w\"."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "Other ports, input and capacity, maker's spec sheet",
+   "value": "USB-C2 65W Max (20V-3.25A); USB-A 22.5W Max (10V-2.25A); USB-C1 input 65W Max (20V-3.25A); 25,000mAh/3.6V/90Wh (TYP)",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack | UGREEN US",
+   "read": "2026-11-26",
+   "note": "Same spec block as above. 90 Wh is under the 100 Wh carry-on line the task brief cites."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "PD 3.1 and PPS as UGREEN prints them",
+   "value": "\"USB-C1 Input Protocols: PD3.1/PPSPD3.0/PD2.0/FCP/AFC/BC1.2/5V Adaptive\"; \"USB-C1/C2 Output Protocols: PD3.0/PD2.0/QC3.0/QC2.0/FCP/AFC/APPLE 5V2.4A/BC1.2/5V Adaptive/PPS\"",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack | UGREEN US",
+   "read": "2026-11-26",
+   "note": "This likely explains the reviewer disagreement in the desk notes: the sheet prints PD3.1 on the input line and only PD3.0/PD2.0 on the output line, yet lists a 28V-5A output, a level USB-IF says PD 3.1 introduced. PPS is on the output line with no voltage or current range."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "Output with two or three devices (Android Central, Harish Jonnalagadda)",
+   "value": "USB-C1 + USB-C2: 100W + 45W (145W max); USB-C1 + USB-A: 100W + 18W (118W max); all three: 115W max",
+   "source": "https://www.androidcentral.com/accessories/review-ugreen-145w-25000mah-power-bank-review",
+   "source_title": "Review: UGREEN 145W is the only 25,000mAh power bank you'll ever need | Android Central",
+   "read": "2026-11-26",
+   "note": "Review dated 27 July 2023, quoting the port table. So the 140 W level is single-port only. For all three ports the review prints \"100W + 15W (115W Max)\", which leaves the per-port split unclear."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "PPS with Samsung phones (Android Central, Harish Jonnalagadda)",
+   "value": "\"doesn't work with Samsung's Super Fast Charging 2.0 tech, so you don't get PPS charging at 25W or 45W\"",
+   "source": "https://www.androidcentral.com/accessories/review-ugreen-145w-25000mah-power-bank-review",
+   "source_title": "Review: UGREEN 145W is the only 25,000mAh power bank you'll ever need | Android Central",
+   "read": "2026-11-26",
+   "note": "2023 unit. It conflicts with the PPS entry on UGREEN's current output-protocol line. The same review says \"you get a USB-C to USB-C cable in the box\" without its wattage, and gives the weight as 510 g."
+  },
+  {
+   "product": "general",
+   "label": "What a 16-inch MacBook Pro needs to fast charge (Apple)",
+   "value": "\"140W USB-C Power Adapter + USB-C to MagSafe 3 Cable\", or \"140W USB-C Power Adapter + 240W USB-C Charge Cable for MacBook Pro (16-inch, Nov 2023) or later\"",
+   "source": "https://support.apple.com/en-us/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-26",
+   "note": "Page dated November 05, 2026. A 16-inch model from 2021 to early 2023 gets 140 W only through MagSafe 3; over plain USB-C the 240 W cable route is listed for Nov 2023 or later models."
+  },
+  {
+   "product": "general",
+   "label": "MacBooks that fast-charge below 140 W (Apple)",
+   "value": "14-inch MacBook Pro (2021 or later): 96 W adapter with USB-C to MagSafe 3 or USB-C charge cable; MacBook Air (2022 or later): 70 W adapter (67 W on 13.6-inch models)",
+   "source": "https://support.apple.com/en-us/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-26",
+   "note": "Apple lists 96 W and 70 W adapters among the fast-charge options, which a 100 W port covers. These laptops gain nothing from a 140 W port."
+  },
+  {
+   "product": "UGREEN 145W 25000mAh 3-Port Power Bank (PB205)",
+   "label": "Price, bank alone, UGREEN US",
+   "value": "$59.98 (list $99.99), in stock",
+   "source": "https://us.ugreen.com/products/ugreen-145w-power-bank-for-laptop",
+   "source_title": "UGREEN 145W 25000mAh 3-Port Power Bank | UGREEN US",
+   "read": "2026-11-26",
+   "note": "From storecheck.py search of us.ugreen.com (the product endpoint returned HTTP 429). Black Friday week price."
+  },
+  {
+   "product": "UGREEN 145W Power Bank + 240W USB-C Cable Bundle",
+   "label": "Price, bank with 240 W cable, UGREEN US",
+   "value": "$75.98 (list $125.98), in stock",
+   "source": "https://us.ugreen.com/products/145w-power-bank-240w-cable-bundle",
+   "source_title": "UGREEN 145W Power Bank + 240W USB-C Cable Bundle | UGREEN US",
+   "read": "2026-11-26",
+   "note": "From storecheck.py search. Our table carries $84.99 (read 2026-11-11), so the record needs updating. Bank alone plus the $13.99 cable is $59.98 + $13.99 = $73.97, $2.01 less than the bundle, if the $13.99 variant is the same cable."
+  },
+  {
+   "product": "UGREEN 240W PD3.1 USB C to USB C Cable",
+   "label": "Price of a 240 W cable, UGREEN US",
+   "value": "$13.99, in stock",
+   "source": "https://us.ugreen.com/products/ugreen-240w-pd3-1-usb-c-to-usb-c-cable",
+   "source_title": "UGREEN 240W PD3.1 USB C to USB C Cable | UGREEN US",
+   "read": "2026-11-26",
+   "note": "From storecheck.py search; this is the price of the variant the search returned, and its length was not read."
+  },
+  {
+   "product": "UGREEN 145W Power Bank + 100W cable 2-pack bundle",
+   "label": "Price of the bundle whose cables do not carry 140 W",
+   "value": "$75.98 (list $111.43), with two 3.3 ft 100 W USB-C cables",
+   "source": "https://us.ugreen.com/products/ugreen-100w-25000mah-for-laptop-3-ports-power-bank-bundle",
+   "source_title": "(Bundle) 145W Power Bank + 3.3FT 100W USB-C Cable 2 Pack | UGREEN US",
+   "read": "2026-11-26",
+   "note": "Same price as the 240 W-cable bundle. A cable rated 100 W is the 20 V × 5 A level per the USB-IF text above, so this bundle suits laptops at 100 W or less, not the 140 W use."
+  },
+  {
+   "product": "UGREEN Nexode 200W 25000mAh",
+   "label": "Price of bank + 240 W cable bundle, UGREEN US",
+   "value": "$84.98 (list $145.98), in stock; bank alone listed at $129.99",
+   "source": "https://us.ugreen.com/products/200w-power-bank-240w-cable-bundle",
+   "source_title": "UGREEN 200W Power Bank + 240W USB-C Cable Bundle | UGREEN US",
+   "read": "2026-11-26",
+   "note": "From storecheck.py search. Listed price only; the code in our table was not tested on the bundle."
+  },
+  {
+   "product": "Baseus EnerFill FC41 25000mAh 145W",
+   "label": "Store price and built-in cables, Baseus US",
+   "value": "$79.99 (list $89.99), in stock; page headings include \"Built-in Dual cables\", \"Charge 4 Devices\", \"Pass-through Charging\", \"Air Travel Compliant\"",
+   "source": "https://www.baseus.com/products/enerfill-fc41-power-bank-with-cables-25000mah-145w",
+   "source_title": "Baseus EnerFill FC41 Power Bank with Cables 25000mAh 145W | Baseus",
+   "read": "2026-11-26",
+   "note": "From storecheck.py search; only headings came back, no per-cable wattage. Built-in cables would remove the cable-rating question, but which cable or port gives 140 W was not readable today."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages say about the UGREEN 145W's cable",
+   "value": "Dupple: \"A 0.5 m 240 W USB-C cable is included\", at $79.99 on Nov 10, 2026",
+   "source": "https://dupple.com/blog/best-power-bank-2026",
+   "source_title": "Best Power Bank 2026: Laptop Packs Under 100 Wh | Dupple",
+   "read": "2026-11-26",
+   "note": "Rival comparison only. Dupple's $79.99 does not match the $59.98 standalone price read today, so it may describe a cable-bundled listing. ChatGPT's answer says the opposite (\"you need separate charging cables\")."
+  }
+ ],
+ "unsourced": [
+  "Which cable, and at what wattage, ships in the box of the $59.98 standalone UGREEN 145W on UGREEN US today: us.ugreen.com, ugreen.com and ugreen.com/en-ca product pages all returned HTTP 429. A search summary suggested the Canadian page lists a 1.64 ft 100 W cable, but I did not open that page, so it is not reported as a finding.",
+  "UGREEN's own two-port and three-port power split for the 145W bank (the 'Two Ports' / 'All Ports' sections of the US page, HTTP 429); only Android Central's 2023 table is sourced.",
+  "A USB-IF sentence stating outright that a 100 W (5 A, non-EPR) cable holds a 140 W port to 100 W and a 3 A cable to 60 W: the USB-IF cable power-rating PDF I tried returned 404.",
+  "Per-cable and per-port wattage, PD version and multi-device split for the Baseus EnerFill FC41 25K 145W from Baseus's page (WebFetch got HTTP 429; the store search returned headings only).",
+  "Mechanism specs (max single-port watts, PD version, in-box cable rating) for the INIU Cougar P63, Anker Laptop Power Bank 25K 165W, AOHi Black Warrior, EcoFlow RAPID 25K and Sharge HyperTower 170: not opened within the call budget (iniushop.com returned HTTP 429).",
+  "The FAA PackSafe wording for the 100 Wh carry-on rule: faa.gov/hazmat/packsafe/lithium-batteries returned HTTP 403, so the 100 Wh line here rests on the task brief, not a page I opened.",
+  "Rival pages I could not read: TechRadar AU best power banks (cited; body truncated to navigation), the Best Buy UGREEN 145W listing (cited; timeout), the UGREEN US and INIU collection pages (cited; not opened / HTTP 429).",
+  "ChargerLAB's protocol readout for the UGREEN 145W: its January 5, 2023 teardown lists the chips and BAK 21700 cells but no detected PD 3.1 / PPS levels and no cable details.",
+  "Rated capacity at 5 V for the UGREEN 145W: the spec block read today gives only 25,000mAh/3.6V/90Wh (TYP)."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 29,
+  "cost_usd_list": 2.679811000000001
+ }
+}
