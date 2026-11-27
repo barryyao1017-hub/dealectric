@@ -2152,7 +2152,8 @@ def pick_line(c):
     # listing); that pick links the seller's own page
     if c.get("keep_pick") and first.get("url"):   # accuracy first (Barry 11-12): the seller's own page
         u = html.escape(first["url"])
-        line = (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {html.escape(first["brand"])}\'s site: '
+        seller = html.escape(first["seller"]) if first.get("seller") else html.escape(first["brand"]) + "'s site"   # a dealer's page when it beats the maker (11-27: DJI at Micro-Tools)
+        line = (f' · Pick: {html.escape(first["brand"] + " " + first["model"])}, on {seller}: '
                 f'<a href="{u}" rel="nofollow noopener">{u}</a>')
         if c.get("buy_by_name"):   # open2 run: the pick has no link of ours, so name the best row we do link, as other pages do
             nxt = next((r for r in c["rows"][1:] if r.get("slug")), None)
