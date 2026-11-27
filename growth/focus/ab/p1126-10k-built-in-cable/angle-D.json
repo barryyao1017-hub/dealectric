@@ -1,0 +1,133 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states what Samsung's 45 W mode asks of the source in Samsung's own figures: its 45 W adapter (EP-T4510) offers PPS 3.3-11.0 V at 4.05 A, above the 3 A that the fixed 9 V / 15 V steps reach, and ships with a 5 A cable.",
+ "standout": 1,
+ "standout_why": "Compared against Talk Android (no PPS, volt/amp lines, 5 A cable or two-device split; only 'Baseus lists PD, QC and Samsung Super Fast Charging support'), Pickstead (has a PPS table of 3-11 V at 2.72 A and a 24 W two-device total, but for the 30 W Anker A1259, not a 45 W bank), Anker's best-power-bank blog (only '45W max output when charging Samsung devices and 40W max for the iPhone 17 series') and Anker's own A1638 page, which is a cited result and already carries the 22.5 W split. So the split is not new; only the Samsung-side figures are. The part that would decide the pick, each bank's PPS amp ceiling, could not be read: us.ugreen.com, uk.ugreen.com, baseus.com and iniushop.com returned HTTP 429 on every attempt today. TechRadar's body came back truncated, and PopSci, PowerBankOnline, iTechGuides, Today, NYMag, Best Buy and the other uncited results were not opened.",
+ "decides": "It does not yet change the pick. It sharpens ChatGPT's 'verify PPS' caveat into a test: for a Galaxy Ultra, a 45 W bank needs a PPS line above 3 A at about 10-11 V, and a built-in cable removes the 5 A cable question only if the bank publishes that line. Of the candidates, only Anker's A1638 was readable at the maker today: its spec lines top out at 3 A and show no PPS range, while its support article says Galaxy S and Z phones get up to 45 W over PPS. The UGREEN and Baseus PPS ranges are still unread at the maker; Notebookcheck and Best Batteries only say 'PPS' with no amps. Two side findings: Samsung's own pages do not state the page brief's '10 V / 4.5 A' figure, and Anker's A1638 was $45.99 today, not the $59.99 ChatGPT showed.",
+ "candidates": [
+  "UGREEN Nexode Pro 10000mAh 45W Built-in Cable",
+  "Baseus EnerFill FC11 10000mAh 45W (dual built-in cables)",
+  "Baseus EnerFill FC41 10000mAh 67W (dual built-in cables)",
+  "Anker Nano 10K 45W Retractable (A1638)",
+  "INIU 10000mAh 45W built-in cable (the bank ChatGPT called Pawsible Slim 10K 45W)",
+  "Anker Zolo 10K 30W (A1688)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "PPS output of Samsung's own 45 W adapter (EP-T4510)",
+   "value": "PPS 3.3-21.0 V: 4.05 A at 3.3-11.0 V, 2.8 A at 3.3-16.0 V, 2.1 A at 3.3-21.0 V; fixed steps 9 V / 15 V at 3 A, 20 V at 2.25 A",
+   "source": "https://www.samsung.com/hk_en/mobile-accessories/45w-power-adapter-black-ep-t4510xbeggb",
+   "source_title": "45W PD Power Adapter T4510 (With 5A USB-C to USB-C cable) | Samsung Hong Kong",
+   "read": "2026-11-26",
+   "note": "Arithmetic: 11.0 V x 4.05 A = 44.55 W, and 9 V x 3 A = 27 W, so the 45 W phone mode sits on the PPS line above 3 A. Box contents: 'Power Adapter, USB-C to USB-C 5A Cable, Quick Start Guide'. The page does not say the 5 A cable is required. Hong Kong page, not US."
+  },
+  {
+   "product": "general",
+   "label": "Which Samsung devices take 45 W (Super Fast Charging 2.0)",
+   "value": "'SFC 2.0(45W) is available on Galaxy S20 Ultra, Note10+, Tab S7+ and higher.'",
+   "source": "https://www.samsung.com/hk_en/mobile-accessories/45w-power-adapter-black-ep-t4510xbeggb",
+   "source_title": "45W PD Power Adapter T4510 (With 5A USB-C to USB-C cable) | Samsung Hong Kong",
+   "read": "2026-11-26",
+   "note": "Samsung footnote; it adds that charging speed may vary by device and cable."
+  },
+  {
+   "product": "general",
+   "label": "Samsung's stated requirement for Super Fast Charging 2.0",
+   "value": "'Super Fast Charging (SFC) 2.0 requires a USB Power Delivery (PD) 3.0 compatible device supporting Direct Charging.' and 'To optimize results, use genuine Samsung 5A cables provided in the original packaging.'",
+   "source": "https://www.samsung.com/ie/mobile-accessories/45w-power-adapter-black-usb-c-ep-t4511xbeggb/",
+   "source_title": "45W Super Fast Charger 2.0 (EP-T4511) | Samsung Ireland",
+   "read": "2026-11-26",
+   "note": "This newer EP-T4511 page lists a different PPS line: 5.0-20.0 V at 2.25 A, with fixed 9 V / 15 V at 3 A and 20 V at 2.25 A. Samsung's two 45 W adapters therefore publish different PPS tables, and neither page states 10 V / 4.5 A. Ireland page, not US."
+  },
+  {
+   "product": "Anker Nano 10K 45W Retractable (A1638)",
+   "label": "Output lines for the built-in cable and USB-C port",
+   "value": "5 V 3 A / 9 V 3 A / 10 V 2.25 A / 15 V 3 A / 20 V 2.25 A (45 W max); no PPS range listed on the page",
+   "source": "https://www.anker.com/products/a1638-10k-45w-power-bank?variant=45218250064022",
+   "source_title": "Anker Nano Power Bank (10K, 45W, Built-In Retractable USB-C Cable) - Anker US",
+   "read": "2026-11-26",
+   "note": "Every listed line stops at 3 A. The page also says 'Only the USB-C port / cable supports 45W max output for Samsung and 40W max output for iPhone 17 series.' This page is a cited ChatGPT result."
+  },
+  {
+   "product": "Anker Nano 10K 45W Retractable (A1638)",
+   "label": "Output when more than one device is connected",
+   "value": "Cable + USB-C port: 22.5 W max (15 W cable, 7.5 W port); cable + USB-C port + USB-A: 22.5 W max (7.5 W each)",
+   "source": "https://www.anker.com/products/a1638-10k-45w-power-bank?variant=45218250064022",
+   "source_title": "Anker Nano Power Bank (10K, 45W, Built-In Retractable USB-C Cable) - Anker US",
+   "read": "2026-11-26",
+   "note": "Plugging in a second device drops the cable from 45 W to 15 W. Already on a cited result, so not new to ChatGPT's results."
+  },
+  {
+   "product": "Anker Nano 10K 45W Retractable (A1638)",
+   "label": "Recharge input, cable as input, cable length, weight",
+   "value": "Input 30 W max through the USB-C cable or port (5 V 3 A / 9 V 3 A / 12 V 2.5 A / 15 V 2 A); cable 2.3 ft; 0.51 lb; 3.21 x 1.99 x 1.42 in; total capacity 10,000 mAh",
+   "source": "https://www.anker.com/products/a1638-10k-45w-power-bank?variant=45218250064022",
+   "source_title": "Anker Nano Power Bank (10K, 45W, Built-In Retractable USB-C Cable) - Anker US",
+   "read": "2026-11-26",
+   "note": "The built-in cable is listed as an input path, so it can recharge the bank. Anker notes the cable length 'is estimated and not marked on the product' and says the cable is 'tested to withstand 20,000 bends and 20,000 pulls'. No Wh figure on the page."
+  },
+  {
+   "product": "Anker Nano 10K 45W Retractable (A1638)",
+   "label": "Price at Anker US",
+   "value": "$45.99 (list $59.99), in stock, estimated delivery 3-7 business days",
+   "source": "https://www.anker.com/products/a1638-10k-45w-power-bank?variant=45218250064022",
+   "source_title": "Anker Nano Power Bank (10K, 45W, Built-In Retractable USB-C Cable) - Anker US",
+   "read": "2026-11-26",
+   "note": "ChatGPT's card showed $59.99. Black Friday week price; the page text I read gave no sale end date."
+  },
+  {
+   "product": "Anker Nano 10K 45W Retractable (A1638)",
+   "label": "Which phones draw what, per Anker support",
+   "value": "Samsung Galaxy S and Z series: PPS, up to 45 W; iPhone 16 series: PD, about 30-35 W; iPhone 15 Pro / 14 Pro / 13 Pro Max: 27 W; Pixel 6 to 9 Pro: 18-30 W",
+   "source": "https://service.anker.com/article-description/Understanding-the-Maximum-Charging-Power-of-Anker-Nano-Power-Bank-10K-45W-Built-In-Retractable-USB-C-Cable",
+   "source_title": "Understanding the Maximum Charging Power of Anker Nano Power Bank (10K, 45W, Built-In Retractable USB-C Cable) - Anker Support",
+   "read": "2026-11-26",
+   "note": "Read as a summary of Anker's table, not verbatim; re-open before quoting. Anker says phones cut power above about 80% charge and when hot. It gives no PPS volt/amp range."
+  },
+  {
+   "product": "UGREEN Nexode Pro 10000mAh 45W Built-in Cable",
+   "label": "Outputs and protocols as reported by Notebookcheck (Polly Allcock, 2026-04-23)",
+   "value": "Built-in 22 cm braided USB-C cable and the USB-C port each up to 45 W; USB-A up to 22.5 W; 'supports various fast charging standards, including Xiaomi's 55W protocol, PD, QC and PPS'; 249 g; 90.3 x 50.5 x 33.5 mm",
+   "source": "https://www.notebookcheck.net/Ugreen-New-version-of-Nexode-Pro-Power-Bank-with-integrated-cable-on-the-way.1281475.0.html",
+   "source_title": "Ugreen: New version of Nexode Pro Power Bank with integrated cable on the way - Notebookcheck News",
+   "read": "2026-11-26",
+   "note": "News report of specs, not a measurement. No PPS amp range, no combined wattage with two or three devices, no input wattage. The $54.99 it quotes is from April and is not today's price."
+  },
+  {
+   "product": "Baseus EnerFill FC11 10000mAh 45W (dual built-in cables)",
+   "label": "Specs as reported by Best Batteries (Guillaume Hoarau, 2026-09-07)",
+   "value": "Up to 45 W over USB PD with PPS; USB-A 22.5 W; USB-C input up to 30 W; 203 g (7.2 oz); 110 x 68 x 18 mm; Baseus states real-world output of 5,500-6,500 mAh",
+   "source": "https://en.best-batteries.com/reviews/baseus-fc11-10000-45w/",
+   "source_title": "Baseus FC11 10000 45W review: output and limits - Best Batteries",
+   "read": "2026-11-26",
+   "note": "Not measured: the reviewer writes 'No independent measurement specific to this 10,000 mAh version.' It gives no PPS range and no split figure, only that 'total available power is shared between the ports in use rather than adding up', and does not say whether the built-in cables can recharge the bank. The 37 Wh it gives is the reviewer's own conversion at 3.7 V, not a Baseus figure."
+  },
+  {
+   "product": "general",
+   "label": "What the rival pages state on this mechanism",
+   "value": "Talk Android: no PPS, volt/amp lines, 5 A cable or two-device split for any of its six banks. Pickstead: PPS '3 to 11 V at up to 2.72 A' and a 24 W (5 V 4.8 A) two-device total, for the 30 W Anker A1259 only.",
+   "source": "https://www.talkandroid.com/533287-built-in-cable-power-banks-10k/",
+   "source_title": "The Best 10,000mAh Power Banks With Built-in USB-C Cables, From $25 - Talk Android",
+   "read": "2026-11-26",
+   "note": "Pickstead read the same day at https://pickstead.com/us/guides/anker-nano-power-bank-10k-built-in-cable-review/. Talk Android says the Anker and INIU cables also recharge the bank; it lists the UGREEN at $54.99 and the INIU at $29.99, both October prices and not re-read."
+  }
+ ],
+ "unsourced": [
+  "UGREEN Nexode Pro 10K 45W at the maker: PPS volt/amp range, combined output with two or three devices, recharge input, Wh, whether the cable recharges the bank, and today's price. us.ugreen.com returned HTTP 429 on four attempts (storecheck and direct) and uk.ugreen.com also 429; the Amazon listing returned 503.",
+  "Baseus EnerFill FC11 10K 45W and FC41 10K 67W at the maker: per-cable output lines, PPS range, output when both cables are in use, whether the cables are inputs, cable length, and today's price. baseus.com returned HTTP 429 on every attempt.",
+  "INIU 10,000 mAh 45 W built-in-cable bank: which model ChatGPT's 'Pawsible Slim 10K 45W' is (a search snippet points to P41L-E2, not opened), its output lines, PPS range, and today's price. iniushop.com returned HTTP 429; the INIU cable-ready series page I did open lists no price or specs and does not name 'Pawsible Slim'.",
+  "Anker A1638 PPS volt/amp range: not on the US product page or in the support article as read; the A1638 user guide was not opened.",
+  "Anker Zolo 10K 30W (A1688) output lines and two-device split: the URL I guessed returned 404 and I did not search further.",
+  "Samsung stating '10 V / 4.5 A' for 45 W charging: neither Samsung page I opened states it (they give 4.05 A at 3.3-11 V and 2.25 A at 5-20 V); the figure appeared only in a search snippet of a GSMArena article I did not open.",
+  "USB-IF's own text that current above 3 A needs a 5 A electronically marked cable: not opened.",
+  "Maker Wh figure for any of the candidates: Anker's A1638 page gives only 10,000 mAh.",
+  "A US samsung.com page for the 45 W adapter: I read the Hong Kong and Ireland pages only."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 36,
+  "cost_usd_list": 2.6716548000000007
+ }
+}
