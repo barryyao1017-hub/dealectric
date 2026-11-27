@@ -1,0 +1,100 @@
+{
+ "angle": "D",
+ "gap": "No result ChatGPT got states that the MacBook Air only fast-charges from a 70 W or higher USB PD source (Apple) and takes in about 71 W at most (ChargerLAB, 15-inch M2 Air), so what decides the pick is whether the laptop output stays at 70 W or more once a phone is plugged in: the UGREEN 130W keeps 100 W on USB-C1, while the Baseus FC41 20K 100W drops to 65 W.",
+ "standout": 2,
+ "standout_why": "Compared against Macworld's UGREEN 130W review (cited) and both Best Batteries pages' review (in the results, not cited); us.ugreen.com returned HTTP 429 on every attempt today, so the cited maker page was not read. Macworld gives the UGREEN port split (100 W + 30 W, 15 W shared with three devices) and 56% in 30 minutes on a MacBook Air M3; Best Batteries gives the same split, a thermal step-down to 65 W at 34% left under a constant 100 W load, and 54.8-64.7 Wh delivered. Neither states Apple's 70 W fast-charge line, the Air's own intake ceiling, any rival bank's split, or the cable current limit. Part of the mechanism (the UGREEN split and step-down) is already there, so this is 2, not 3.",
+ "decides": "Confirms the UGREEN Nexode 20,000 mAh 130W as the pick: its USB-C1 stays at 100 W with a phone on USB-C2 (Macworld), above Apple's 70 W line, and Macworld measured 56% in 30 minutes on an Air M3. The Baseus FC41 20K 100W wins only the built-in-cable, laptop-alone segment: Notebookcheck reports one cable at up to 65 W with the other three outputs sharing 15 W once several devices are connected, which is under Apple's 70 W line. A 130 W or 140 W rating adds nothing for the Air itself, since ChargerLAB saw about 71 W from Apple's 96 W and 140 W adapters. One caveat for the page: Best Batteries saw the UGREEN fall to 65 W at 34% left under a constant 100 W load, so the last third of the bank may not fast-charge.",
+ "candidates": [
+  "UGREEN Nexode Power Bank 20000mAh 130W",
+  "Baseus EnerFill FC41 Digital Display Power Bank 20000mAh 100W",
+  "UGREEN Nexode Power Bank 20000mAh 100W (cable bundle)"
+ ],
+ "findings": [
+  {
+   "product": "general",
+   "label": "MacBook Air (M5) fast-charge requirement, Apple's words",
+   "value": "\"Fast-charge capable with 70W or higher USB PD power source\"; 13-inch battery 53.8 Wh, 15-inch 66.5 Wh; in the box: \"40W Dynamic Power Adapter with 60W Max\"",
+   "source": "https://www.apple.com/macbook-air/specs/",
+   "source_title": "MacBook Air - Tech Specs - Apple",
+   "read": "2026-11-26",
+   "note": "The page covers the Apple M5 models, both sizes. The included adapter tops out at 60 W, so the Air does not fast-charge from its own charger."
+  },
+  {
+   "product": "general",
+   "label": "Apple's fast-charge adapter list for MacBook Air (2022 or later)",
+   "value": "140 W, 96 W or 70 W USB-C Power Adapter with a USB-C to MagSafe 3 Cable or USB-C charge cable; 67 W on 13.6-inch models only; \"up to 50 percent in around 30 minutes\"",
+   "source": "https://support.apple.com/102378",
+   "source_title": "Fast charge your MacBook Air or MacBook Pro - Apple Support",
+   "read": "2026-11-26",
+   "note": "Page shows Published Date November 05, 2026. It names no third-party adapters or power banks; the only third-party item is a display \"capable of delivering 85W\". A 65 W port is below every listed option."
+  },
+  {
+   "product": "general",
+   "label": "MacBook Air maximum charging input, measured",
+   "value": "About 71 W from Apple's 96 W and 140 W adapters; limited to 70 W on a 70 W charger and 35 W on the 35 W charger",
+   "source": "https://chargerlab.com/charging-review-of-new-apple-15-inch-macbook-air-2",
+   "source_title": "Charging Review of New Apple 15-inch MacBook Air (A2941) - ChargerLAB",
+   "read": "2026-11-26",
+   "note": "ChargerLAB, published July 5, 2023, on the 15-inch Air A2941 (2023 model): \"We tried Apple 96W and 140W, the power is only about 71W, which should be the maximum input power of this laptop.\" On the 70 W charger the peak was about 67 W at 35 minutes and a full charge took 2 h 19 min. This is not a measurement of the M4 or M5 Air."
+  },
+  {
+   "product": "general",
+   "label": "USB-C cable power classes (USB-IF)",
+   "value": "Every USB-C to USB-C cable must be labelled 60 W or 240 W; a 60 W cable is one \"that supports 20V at 3A\"",
+   "source": "https://www.usb.org/cable_connector",
+   "source_title": "Cables and Connectors | USB-IF",
+   "read": "2026-11-26",
+   "note": "Arithmetic: 70 W at 20 V is 3.5 A, which is over the 3 A of a 60 W cable, so a 60 W cable holds a 100 W port to 60 W at 20 V, under Apple's 70 W line. The 3.5 A figure and the 60 W cap are my inference from the cable class; the USB-IF page does not say that a 5 A cable is required. A bank with a built-in 100 W cable avoids the question."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W",
+   "label": "Port split with a second and third device",
+   "value": "USB-C1 100 W + USB-C2 30 W = 130 W with two devices; with three devices USB-C2 and USB-A are throttled to a shared 15 W",
+   "source": "https://www.macworld.com/article/2448503/powerful-power-bank-in-brick-design-ugreen-nexode-power-bank-20000-mah-in-test.html",
+   "source_title": "Nexode Power Bank 20000mAh (130W) review: Compact, lightweight MacBook battery pack | Macworld",
+   "read": "2026-11-26",
+   "note": "Macworld: \"the USB-C1 alone can output a maximum of 100W and the USB-C2 30W.\" The laptop port stays at 100 W with a phone on USB-C2."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W",
+   "label": "MacBook Air charge in 30 minutes, measured",
+   "value": "56% on a MacBook Air M3 from USB-C1",
+   "source": "https://www.macworld.com/article/2448503/powerful-power-bank-in-brick-design-ugreen-nexode-power-bank-20000-mah-in-test.html",
+   "source_title": "Nexode Power Bank 20000mAh (130W) review: Compact, lightweight MacBook battery pack | Macworld",
+   "read": "2026-11-26",
+   "note": "Macworld's measurement; the review does not say whether the Air was 13- or 15-inch. It beats Apple's \"up to 50 percent in around 30 minutes\". The box includes a short charging cable whose rating Macworld does not give."
+  },
+  {
+   "product": "UGREEN Nexode Power Bank 20000mAh 130W",
+   "label": "Output step-down and delivered energy, measured",
+   "value": "Fell to 65 W with 34% of charge left, after about 22 min of a constant-load test; 54.8 Wh delivered at 100 W, 54.8-64.7 Wh depending on the power drawn",
+   "source": "https://us.best-batteries.com/reviews/ugreen-nexode-20000-130w/",
+   "source_title": "Ugreen Nexode 20000 130W: Review, Real Wh and Limits - Best Batteries",
+   "read": "2026-11-26",
+   "note": "Best Batteries calls the cause thermal and says the allocation between ports is fixed. It also reports 45 W \"until the end\" in a test on two real laptops, which it does not name. No test at the Air's roughly 70 W draw was found. This page was already in ChatGPT's results."
+  },
+  {
+   "product": "Baseus EnerFill FC41 Digital Display Power Bank 20000mAh 100W",
+   "label": "Port split with several devices connected",
+   "value": "\"one USB-C cable offers up to 65W, with the remaining three outputs sharing 15W\"; alone, each USB-C cable and the USB-C port give up to 100 W; 65 W input; 15.1 oz (~428 g)",
+   "source": "https://www.notebookcheck.net/Baseus-releases-new-20K-power-bank-with-display-in-US.1162642.0.html",
+   "source_title": "Baseus releases new 20K power bank with display in US - Notebookcheck",
+   "read": "2026-11-26",
+   "note": "Notebookcheck (Polly Allcock, 2025-11-13, updated 2026-02-17), a news report of Baseus's figures, not a bench test. 65 W is under Apple's 70 W fast-charge line, so the Air fast-charges from this bank only when nothing else is plugged in. baseus.com returned HTTP 429 today, so this was not checked on the maker's page."
+  }
+ ],
+ "unsourced": [
+  "UGREEN 130W on the maker's page: today's price, Wh, weight, the rating of the included cable and the temperature-protection wording. us.ugreen.com returned HTTP 429 on six attempts (storecheck and direct fetch); the $54.99 in the brief was not re-read by me.",
+  "Baseus FC41 20K 100W on the maker's page: price, Wh and the port-split table. baseus.com returned HTTP 429 on four attempts.",
+  "UGREEN Nexode 20,000 mAh 100W (the bundle we link): what USB-C1 gives once USB-C2 is in use. The maker page was unreachable and no reviewer page was opened.",
+  "A measured maximum charging input for the M4 or M5 MacBook Air. ChargerLAB's only opened test is the 2023 15-inch Air; a UGREEN blog cites a ChargerLAB 13-inch M4 test, but I did not open the original.",
+  "A USB-IF sentence stating that current above 3 A needs an electronically marked 5 A cable. The usb.org cable page gives only the 60 W / 240 W classes, and the USB-IF press release PDF could not be read as text.",
+  "Any maker statement on whether the MacBook charges the power bank instead (power-role swap on the bidirectional USB-C1 port). Not researched within the call budget."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 26,
+  "cost_usd_list": 2.4553650999999994
+ }
+}
