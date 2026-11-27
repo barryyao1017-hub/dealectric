@@ -18,10 +18,12 @@ them; and, for a product shoppers can't get soon, one researched alternative tha
 
 ## When and where it runs
 
-Sundays, as a stage of the daily cart sweep (`tools/codesweep.sh`, launchd 06:37, in `~/code/dealectric`), after the
-code tests and gap mining. No new scheduled task. It is a long job (the reads alone take about 40 minutes for ~750
-products in three tabs; research and page rewrites add more), and caffeinate keeps the Mac awake. Create
-`growth/stock/UPKEEP_OFF` to skip it. By hand: `python3.12 tools/upkeep/run.py [--brands A,B] [--slugs x,y] [--no-push]`.
+Sundays at 10:00, from the Claude scheduled task `dealectric-weekly-upkeep` (Barry, 2026-11-27: visible in the app's
+Scheduled list, and a Claude session supervises the run), after the daily cart sweep (launchd 06:37). It works in a
+fresh worktree of origin/main and rebases before it pushes. The app must be open: a run due while it is closed starts
+when it opens. It is a long job (the reads alone take about 40 minutes for ~750
+products in three tabs; research and page rewrites add more), and caffeinate keeps the Mac awake. Pause it in the app's
+Scheduled list. By hand: `python3.12 tools/upkeep/run.py [--brands A,B] [--slugs x,y] [--no-push]`.
 
 ## Each run (`tools/upkeep/run.py`)
 

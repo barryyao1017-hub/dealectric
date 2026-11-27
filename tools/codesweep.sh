@@ -20,7 +20,7 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   # A paced sweep can outlast a day's gap (a hand run at 03:30 was still going at 06:37 on 11-26). The reset below
   # would pull the clone out from under it, so a run that finds another sweep or its gap-mining tail still going
   # stops here.
-  if pgrep -f "tools/codesweep.py|growth/evals/gapmine.py daily|tools/gappage.py next|tools/upkeep/run.py" >/dev/null; then
+  if pgrep -f "tools/codesweep.py|growth/evals/gapmine.py daily|tools/gappage.py next" >/dev/null; then
     echo "another sweep is still running; skipping this run so the reset does not touch its clone"
     end 4
   fi
@@ -72,18 +72,7 @@ LOG="$LOG_DIR/dealectric-codesweep.log"
   else
     echo "gapmine skipped: sweep exit $rc or src/docs not clean"
   fi
-  # Weekly catalog upkeep for every brand (Barry 2026-11-27; growth/stock/README.md): on Sundays, after the code tests,
-  # read every listed product, update records and every page that mentions a changed one, keep alternatives right,
-  # rebuild, commit, push, deploy and check links. A long job (hours); caffeinate keeps the Mac awake. Off while
-  # growth/stock/UPKEEP_OFF exists. It starts from GitHub's main so it includes the sweep's and gapmine's pushes.
-  if [ "$(date +%u)" = "7" ] && [ ! -f "$REPO/growth/stock/UPKEEP_OFF" ] && [ "$rc" -eq 0 ]; then
-    echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) upkeep start"
-    if git fetch -q origin main && git reset -q --hard origin/main; then
-      /usr/bin/caffeinate -i python3.12 "$REPO/tools/upkeep/run.py"; u=$?
-    else
-      u=9; echo "upkeep: could not take origin/main"
-    fi
-    echo "===== $(date -u +%Y-%m-%dT%H:%M:%SZ) upkeep end (exit $u)"
-  fi
+  # The weekly catalog upkeep (tools/upkeep/run.py) runs from its own Claude scheduled task, dealectric-weekly-upkeep
+  # (Sundays 10:00; Barry 2026-11-27), not from here. It works in its own worktree and rebases before it pushes.
   end $rc
 } >>"$LOG" 2>&1

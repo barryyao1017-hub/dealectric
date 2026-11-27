@@ -25,5 +25,5 @@ before acting. In short:
   the link map changed, check `/go/` links with `curl -A dealectric-linkcheck-bot` (302 expected).
 
 Tools: `python3.12 tools/upkeep/run.py [--brands A,B] [--slugs x,y] [--no-push] [--max-research N]` runs it all;
-`read.py`, `classify.py`, `apply.py`, `alts.py`, `pages.py` are its steps. The sweep runs it on Sundays
-(`tools/codesweep.sh`); `growth/stock/UPKEEP_OFF` pauses it.
+`read.py`, `classify.py`, `apply.py`, `alts.py`, `pages.py` are its steps. The Claude scheduled task
+`dealectric-weekly-upkeep` runs it on Sundays at 10:00.

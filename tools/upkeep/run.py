@@ -3,7 +3,8 @@
 page that mentions a changed product, keep each sold-out or long-pre-order product's alternative right, rebuild,
 commit, deploy and check the links, and write the week's report for the daily update.
 
-Run by tools/codesweep.sh once a week (Sundays), after the daily code tests, in the sweep's clone. By hand:
+Run once a week (Sundays 10:00) by the Claude scheduled task dealectric-weekly-upkeep, in a fresh worktree of
+origin/main, after the daily code sweep. By hand:
     python3.12 tools/upkeep/run.py [--brands BLUETTI,OSCAL] [--slugs a,b] [--no-push] [--max-research 15] [--tabs 3]
 --no-push: everything up to and including the local commit; nothing is pushed or deployed (a test run).
 """
@@ -189,9 +190,25 @@ def main(argv: list[str]) -> int:
         log("--no-push: stopping before push and deploy")
         return 0
     p = sh(["git", "push", "-q", "origin", "HEAD:main"])
-    if p.returncode != 0:
-        log("push failed: " + p.stderr[-500:])
-        return 1
+    if p.returncode != 0:   # main moved during the run (the daily sweep, another session): rebase, rebuild, retry once
+        sh(["git", "fetch", "-q", "origin", "main"])
+        rb = sh(["git", "rebase", "-q", "origin/main"])
+        if rb.returncode != 0:
+            sh(["git", "checkout", "-q", "--theirs", "--", "docs", "worker/src"])
+            sh(["git", "add", "docs", "worker/src"])
+            rb = sh(["git", "-c", "core.editor=true", "rebase", "--continue"])
+        if rb.returncode != 0:
+            sh(["git", "rebase", "--abort"])
+            log("push failed and the rebase onto origin/main did not apply: " + (rb.stdout + rb.stderr)[-500:])
+            return 1
+        b2 = sh(["python3.12", "tools/repolock.py", "run", "upkeep", "--", "python3.12", "src/build.py"], timeout=3600)
+        if b2.returncode == 0 and sh(["git", "status", "--porcelain", "--", "docs", "worker/src", "growth/stock/page-index.json"]).stdout.strip():
+            sh(["git", "add", "docs", "worker/src", "growth/stock/page-index.json"])
+            sh(["git", "commit", "-q", "-m", f"upkeep: rebuild after rebase {today}\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"])
+        p = sh(["git", "push", "-q", "origin", "HEAD:main"])
+        if p.returncode != 0:
+            log("push failed after rebase: " + p.stderr[-500:])
+            return 1
     if sh(["git", "diff", "--quiet", "HEAD~1", "HEAD", "--", "worker/src/links-map.json"]).returncode != 0:
         d = sh(["bash", "worker/deploy.sh"], timeout=600)
         log("worker deploy: " + (d.stdout + d.stderr).strip()[-200:])
