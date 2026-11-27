@@ -287,6 +287,12 @@ def main() -> int:
     for (src, slug), k in Counter((c["utm_source"], c["slug"]) for c in agent_w).most_common(8):
         print(f"  {k:3d}  {src}  /go/{slug}")
     print(f"\nSweep: {sweep_health(today)} ({SWEEP_LOG})")
+    try:   # the page flow's own lines (growth/pageflow/README.md, DLC-369): last run, queue, how its pages read, retire states
+        sys.path.insert(0, str(Path(__file__).resolve().parent / "pageflow"))
+        import run as _pageflow
+        print("\nPage flow (new pages from the cluster maps):\n" + _pageflow.summary())
+    except Exception as e:  # noqa: BLE001  (never let this section break the update)
+        print(f"\nPage flow: not read ({e})")
     return 0
 
 

@@ -189,6 +189,34 @@ def write_report(run: str) -> str:
     return text
 
 
+def summary() -> str:
+    """The lines tools/dailyupdate.py prints: the last run, the queue, how the flow's pages read, the retire states."""
+    rows = [json.loads(x) for x in LOG.read_text().splitlines() if x.strip()] if LOG.exists() else []
+    led = C.jload(C.LEDGER) or {"pages": {}, "built": "?"}
+    q = (C.jload(C.QUEUE) or {"items": []})["items"]
+    flow = {s: p for s, p in led["pages"].items() if p.get("line")}
+    old = [p for p in flow.values() if (p["age"] or 0) >= 14]
+    out = []
+    if rows:
+        last = rows[-1]
+        b = last.get("build") or {}
+        built = ", ".join(f"/{p}" for p in b.get("built") or []) or "no page"
+        out.append(f"  last run {last['run']} ({'published' if last.get('publish') else 'drafts only'}): {built}"
+                   + (f"; skipped {len(b['skipped'])}" if b.get("skipped") else "") + (f"; {b['error']}" if b.get("error") else ""))
+        for r in (last.get("sense") or {}).get("refreshed", []):
+            out.append(f"  map refreshed: {r['cluster']} ({r['lines']} lines, {r['queued']} queued, {r['news']} news items)")
+    else:
+        out.append("  no run logged yet")
+    out.append(f"  queue: {sum(1 for i in q if i['status'] == 'queued')} lines queued of {len(q)} gated; "
+               f"maps: {len(list(C.MAPS.glob('*.json')))} of {len(C.clusters())} clusters")
+    out.append(f"  pages built by the flow: {len(flow)}; of the {len(old)} that are 14+ days old, {sum(1 for p in old if p['v14'])} had a shopper "
+               f"visit in their first 14 days (ledger {led['built']})")
+    st = C.jload(R.STATE) or {"pages": {}}
+    n = lambda s: sum(1 for v in st["pages"].values() if v.get("state") == s)   # noqa: E731
+    out.append(f"  retire rule {'on' if R.SWITCH.exists() else 'off'}: {n('rework')} at zero awaiting a rework, {n('reworked')} reworked, {n('due')} due")
+    return "\n".join(out)
+
+
 def log(entry: dict) -> None:
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a") as f:

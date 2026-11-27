@@ -73,6 +73,24 @@ def _options_text(cid: str) -> str:
         + ("\nFigures it used to split its picks: " + "; ".join(o.get("split_by") or []) if o.get("split_by") else "")
 
 
+def _research_text(led: dict, cid: str, cap: int = 7000) -> str:
+    """Our own research on this cluster's pages (growth/focus/ab/library.json, all six angle reports per page): what each
+    page found that its rivals lacked. The map agent reads it as leads: a figure that decided a page is a figure buyers use."""
+    lib = (C.jload(C.ROOT / "growth/focus/ab/library.json") or {"pages": []})["pages"]
+    mine = {s for s, p in led["pages"].items() if p["cluster"] == cid}
+    out, size = [], 0
+    for e in lib:
+        if e.get("slug") not in mine or e.get("history"):
+            continue
+        gaps = [f"{a['angle']}: {a.get('gap', '')[:260]}" for a in e.get("angles", []) if a.get("status") == "ok" and a.get("gap")]
+        line = f"/{e['slug']} (angle used: {e.get('used')}): {str(e.get('why_used') or '')[:320]}" + ("\n   other angles: " + " | ".join(gaps[:3]) if gaps else "")
+        if size + len(line) > cap:
+            break
+        out.append(line)
+        size += len(line)
+    return "\n".join(out)
+
+
 def _prev_text(prev: dict | None) -> str:
     if not prev:
         return ""
@@ -131,6 +149,8 @@ Rules for lines:
         "## Our pages in this cluster and what shoppers did with them (visits since 2026-10-28, from assistants' links)\n" + _pages_text(led, cid),
         "## Visits per page by page type in this cluster\n" + _scores_text(led, cid),
         "## Choices ChatGPT offered shoppers on broad questions about this category\n" + _options_text(cid),
+        ("## Our own research on this cluster's pages (what each page found that the pages ChatGPT cited lacked; leads, re-check before use)\n"
+         + _research_text(led, cid)) if _research_text(led, cid) else "",
         _prev_text(prev),
         "## Output JSON\n" + SCHEMA % {"cid": cid},
     ] if x)

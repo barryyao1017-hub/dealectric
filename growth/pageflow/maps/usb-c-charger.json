@@ -1,0 +1,1353 @@
+{
+ "cluster": "usb-c-charger",
+ "summary": "Shoppers pick a USB-C charger by the device it must feed: the watts that device accepts first, then what the laptop port keeps once a phone is plugged in, then price and extras such as a retractable cable or a display. Since September 2026 the phone tier has moved from 30-45 W to 60 W with a protocol condition: Apple says iPhone 18 Pro needs a 60 W-capable charger with AVS and USB-PD 3.2, and the Galaxy S26 Ultra needs PPS at 20 V/3 A, so wattage alone no longer settles the phone question. In the last 60 days UGREEN added AVS to its $39.99 Nexode Air 65W, Baseus launched the 100 W PicoGo Pro AH22, Twelve South launched a 65 W retractable charger with UK/EU plugs, and Black Friday put the Anker Prime 100W at $39.99 on Amazon.",
+ "axes": [
+  {
+   "id": "watts",
+   "label": "Most watts one port gives one device",
+   "kind": "number",
+   "unit": "W",
+   "rank": 1,
+   "why": "ChatGPT split its picks by watts in 5 of 6 chats (30, 45, 65/67, 100, 100+). Android Authority's guide ranks on output per port, and Apple publishes a fast-charge wattage for each iPhone and MacBook.",
+   "sources": [
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/",
+    "https://www.engadget.com/best-fast-chargers-140011033.html",
+    "https://support.apple.com/en-us/102574",
+    "https://support.apple.com/en-us/102378"
+   ],
+   "breakpoints": [
+    {
+     "value": "20",
+     "why": "Apple: iPhone 17e and iPhone Air fast charge (50% in around 30 minutes) with 20 W or higher.",
+     "source": "https://support.apple.com/en-us/102574"
+    },
+    {
+     "value": "40",
+     "why": "Apple: iPhone 17, 17 Pro and 17 Pro Max reach 50% in around 20 minutes with 40 W or higher.",
+     "source": "https://support.apple.com/en-us/102574"
+    },
+    {
+     "value": "60",
+     "why": "Apple: iPhone 18 Pro and Pro Max reach 50% in around 15 minutes only with a 60 W-capable adapter that uses AVS and supports USB-PD 3.2. Android Authority: Galaxy S26 Ultra's 60 W needs PPS with 20 V/3 A from one port.",
+     "source": "https://support.apple.com/en-us/102574"
+    },
+    {
+     "value": "65",
+     "why": "The tier ChatGPT gives for a phone, tablet and thin laptop; searched as 'best 65w usb c charger for laptop'.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+65w+usb+c+charger+"
+    },
+    {
+     "value": "70",
+     "why": "Apple: MacBook Air (2022 or later) fast charges with 70 W, 96 W or 140 W adapters; 67 W counts only for the 13.6-inch models.",
+     "source": "https://support.apple.com/en-us/102378"
+    },
+    {
+     "value": "100",
+     "why": "USB-IF: before PD 3.1, USB PD stopped at 100 W (20 V over a 5 A cable). Apple: the 14-inch MacBook Pro fast charges at 96 W or 140 W, so the 100 W class is the first that qualifies.",
+     "source": "https://www.usb.org/usb-charger-pd"
+    },
+    {
+     "value": "140",
+     "why": "Apple: the 16-inch MacBook Pro fast charges only with 140 W. USB-IF: the 28 V fixed voltage enables 140 W.",
+     "source": "https://support.apple.com/en-us/102378"
+    },
+    {
+     "value": "240",
+     "why": "USB-IF: the 48 V fixed voltage enables 240 W, the top of USB PD.",
+     "source": "https://www.usb.org/usb-charger-pd"
+    }
+   ]
+  },
+  {
+   "id": "protocol",
+   "label": "Whether the charger speaks the mode the phone needs for top speed (AVS, PPS)",
+   "kind": "feature",
+   "unit": "",
+   "rank": 2,
+   "why": "ChatGPT raised PPS or a proprietary protocol in 3 of 6 chats ('wattage alone won't establish compatibility'). Apple now names AVS as a condition, and Android Authority says the S26 Ultra's 20 V PPS mode is less common than PPS itself.",
+   "sources": [
+    "https://support.apple.com/en-us/102574",
+    "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/",
+    "https://9to5mac.com/2026/09/10/how-to-fast-charge-iphone-18-pro/"
+   ],
+   "breakpoints": [
+    {
+     "value": "AVS at 60 W",
+     "why": "Apple: a third-party adapter must be 60 W-capable, use AVS and support USB-PD 3.2 for iPhone 18 Pro's 15-minute tier. 9to5Mac: a 96 W or 140 W MacBook charger lacks AVS.",
+     "source": "https://support.apple.com/en-us/102574"
+    },
+    {
+     "value": "PPS 20 V / 3 A",
+     "why": "Android Authority (Robert Triggs): the S26 Ultra needs a USB PD 3.1 charger with PPS and 20 V/3 A from a single port; it measured 42 minutes to full on Samsung's 60 W adapter.",
+     "source": "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/"
+    },
+    {
+     "value": "PD 3.1 28 V",
+     "why": "USB-IF: the 28 V fixed voltage is what delivers 140 W; a PD 3.0 charger tops out at 100 W.",
+     "source": "https://www.usb.org/usb-charger-pd"
+    }
+   ]
+  },
+  {
+   "id": "split",
+   "label": "Watts the laptop port keeps when a second device is plugged in",
+   "kind": "number",
+   "unit": "W",
+   "rank": 3,
+   "why": "Android Authority lists power splitting as a ranking criterion and prints each pick's split. ChatGPT separated its picks by split (45+20, 65+30, 65+35).",
+   "sources": [
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "breakpoints": [
+    {
+     "value": "45",
+     "why": "65-67 W chargers fall to about 45 W on the laptop port with a second device. Android Authority gives 45/12/10 W for the Anker Prime 67W with three devices.",
+     "source": "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+    },
+    {
+     "value": "65",
+     "why": "100 W chargers keep a 65 W laptop at full speed with a phone attached. Android Authority gives 65/35 W for the Anker Prime 100W.",
+     "source": "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+    },
+    {
+     "value": "100",
+     "why": "Two 100 W laptops at once needs 200 W total and two ports at the pre-PD 3.1 ceiling of 100 W each.",
+     "source": "https://www.usb.org/usb-charger-pd"
+    }
+   ]
+  },
+  {
+   "id": "price",
+   "label": "Price today",
+   "kind": "price",
+   "unit": "$",
+   "rank": 4,
+   "why": "ChatGPT attached a price to every pick and framed steps as 'save money' or 'the extra $10'. Engadget and Android Authority print a price per pick.",
+   "sources": [
+    "https://www.engadget.com/best-fast-chargers-140011033.html",
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "breakpoints": [
+    {
+     "value": "20",
+     "why": "Engadget's phone-only pick (Anker Nano 30W) is described as under $20.",
+     "source": "https://www.engadget.com/best-fast-chargers-140011033.html"
+    },
+    {
+     "value": "39",
+     "why": "MacRumors gives $39 for Apple's own 40W Dynamic Power Adapter with 60W Max, the reference a third-party iPhone 18 Pro charger is weighed against.",
+     "source": "https://www.macrumors.com/2026/09/17/iphone-18-pro-max-charging-speed-test/"
+    },
+    {
+     "value": "60",
+     "why": "Android Authority lists $59.99 MSRP for three of its picks (Anker Prime 67W, Baseus Enercore CJ11 67W, Google Pixel Flex 67W).",
+     "source": "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+    }
+   ]
+  },
+  {
+   "id": "cable",
+   "label": "Built-in retractable USB-C cable",
+   "kind": "feature",
+   "unit": "",
+   "rank": 5,
+   "why": "'best usb c charger with retractable cable' is the first completion Google offers after 'with'. Android Authority's travel pick (Baseus Enercore CJ11 67W) is a retractable-cable charger.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+with+",
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "breakpoints": [
+    {
+     "value": "60 W through the cable",
+     "why": "Most built-in cables carry 60 W (20 V/3 A); UGREEN's 100W retractable model is rated 100 W through the cable (Dealectric record).",
+     "source": "https://us.ugreen.com/products/ugreen-100w-retractable-gan-charger"
+    }
+   ]
+  },
+  {
+   "id": "display",
+   "label": "Screen that shows the watts each port is giving",
+   "kind": "feature",
+   "unit": "",
+   "rank": 6,
+   "why": "'best usb c charger with display' is a Google completion. Engadget notes the display on two of its picks.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+with+",
+    "https://www.engadget.com/best-fast-chargers-140011033.html"
+   ],
+   "breakpoints": []
+  },
+  {
+   "id": "plugs",
+   "label": "Swappable US, UK and EU plugs in the box",
+   "kind": "feature",
+   "unit": "",
+   "rank": 7,
+   "why": "Our page on this drew 2 visits. Google completes 'best 100w usb c travel charger', and Twelve South launched a 65 W charger with UK and EU adapters on 2026-11-06.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+100w+usb+c+charger+",
+    "https://9to5mac.com/2026/11/06/twelve-south-retractable-usb-c-charger/"
+   ],
+   "breakpoints": []
+  },
+  {
+   "id": "ports",
+   "label": "Number of USB-C ports",
+   "kind": "number",
+   "unit": "ports",
+   "rank": 8,
+   "why": "ChatGPT sorted its picks into one USB-C (phone only), two USB-C plus USB-A (everyday 65-67 W) and at least two USB-C (laptop and phone). Android Authority lists port count and type as a criterion.",
+   "sources": [
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "breakpoints": [
+    {
+     "value": "2",
+     "why": "Two USB-C ports is the minimum for a laptop and a phone at once; Google completes 'best 65w dual usb c charger'.",
+     "source": "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+65w+usb+c+charger+"
+    }
+   ]
+  },
+  {
+   "id": "size",
+   "label": "Size and weight for a bag",
+   "kind": "number",
+   "unit": "g",
+   "rank": 9,
+   "why": "Google completes 'best compact 100w usb c charger' and 'best small 65w usb c charger'. Android Authority prints weight and dimensions for its picks.",
+   "sources": [
+    "https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+100w+usb+c+charger+",
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "breakpoints": []
+  }
+ ],
+ "rules": "A charger's headline watts is its total; the figure that decides a purchase is what one port gives one device, and what that port keeps once a second device is plugged in. Researchers should take the split from the maker's output table or a named test (Android Authority prints splits), never from the headline. For phones, the phone maker's statement counts: Apple's support page for iPhone (60 W-capable, AVS, USB-PD 3.2 for iPhone 18 Pro) and Android Authority's S26 Ultra test (PPS at 20 V/3 A). A 100 W or 140 W charger without AVS does not give an iPhone 18 Pro its top tier, and a '65 W PPS' charger may stop at 45 W on a Samsung. For laptops, Apple's MacBook page sets 70, 96 and 140 W; 140 W needs PD 3.1 at 28 V. Traps: 'dynamic 45-60 W' is a maker's phrase and is not proof of AVS; AVS claims need the maker's spec sheet or a ChargerLAB test; Amazon titles omit model numbers, so the ASIN must be matched to the model; Black Friday prices read on 2026-11-27 will lapse.",
+ "field": [
+  {
+   "product": "Apple 40W Dynamic Power Adapter with 60W Max (A3351)",
+   "brand": "Apple",
+   "ours": "",
+   "link": "none",
+   "url": "https://www.apple.com/shop/product/MGKN4AM/A/40w-dynamic-power-adapter-with-60w-max",
+   "price": "$39",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "60 max",
+    "protocol": "AVS (Apple names it as the adapter for iPhone 18 Pro's 15-minute tier)",
+    "price": "$39 per MacRumors 2026-09-17; Apple's page showed no price to the fetcher"
+   },
+   "tested_by": [
+    "MacRumors, reporting a Xiaobai's Tech Reviews video with an unnamed 'capable charger': iPhone 18 Pro Max peaked at 52 W, 50% in 15 minutes, full in 55 minutes, https://www.macrumors.com/2026/09/17/iphone-18-pro-max-charging-speed-test/"
+   ]
+  },
+  {
+   "product": "UGREEN Nexode Air 65W USB-C Charger (AVS version)",
+   "brand": "UGREEN",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug",
+   "price": "$39.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65",
+    "protocol": "AVS, PPS, PD (Notebookcheck)",
+    "ports": "1 USB-C (BGR)",
+    "size": "1.22 x 1.30 x 1.59 in, foldable prongs (Notebookcheck)",
+    "cable": "USB-C cable in the box, not built in"
+   },
+   "tested_by": [
+    "Notebookcheck (Elvis Shida, 2026-10-07): news report, no measurements; states AVS added and $39.99 in the US, https://www.notebookcheck.net/Ugreen-releases-upgraded-compact-65W-charger-with-AVS-support.1416858.0.html",
+    "BGR (Joshua Hawkins, 2026-09-19): lists it as an AVS charger for iPhone 18 Pro 'per third-party testing', https://www.bgr.com/2262970/best-60w-fast-chargers-for-iphone-18-series/"
+   ]
+  },
+  {
+   "product": "ESR Xtend 45W Retractable Charger (2D001)",
+   "brand": "ESR",
+   "ours": "esr-xtend-45w-retractable-charger",
+   "link": "program",
+   "url": "https://www.esrgear.com/products/white-45w-avs-gan-retractable-wall-charger-us-plug-xtend",
+   "price": "$42.99 ($32.25 with code ESR25CB per our record)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "45 rated; 'dynamic 45-60W' for one device (ESR)",
+    "protocol": "PD 3.2 AVS and PPS (ESR)",
+    "cable": "built-in retractable, 3.1 ft",
+    "ports": "cable + 1 USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Belkin UltraCharge Retractable 67W GaN Wall Charger (WCH022)",
+   "brand": "Belkin",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0GSSFH23R",
+   "price": "$29.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "67 per port alone (BGR)",
+    "protocol": "SPR AVS on WCH022 only (BGR)",
+    "cable": "built-in retractable, 3.3 ft (BGR)",
+    "ports": "cable + 1 USB-C"
+   },
+   "tested_by": [
+    "BGR (2026-09-19): states only model WCH022 is known to support SPR AVS, $39.99 then, https://www.bgr.com/2262970/best-60w-fast-chargers-for-iphone-18-series/"
+   ]
+  },
+  {
+   "product": "Baseus PicoGo Pro AH22 100W 3-Port Charger with Digital Display",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w",
+   "price": "$59.99 (Amazon B0HB4ZPDF4: $39.70)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "100 from one port (BGR)",
+    "protocol": "AVS, USB PD 3.2 (BGR)",
+    "ports": "3 USB-C",
+    "display": "yes: per-device charging rate, device recognition, Turbo and Gentle modes (9to5Google)"
+   },
+   "tested_by": [
+    "9to5Google (Ben Schoon, 2026-11-23): a Galaxy Z Fold 8 at about 65% settled around 28 W; Gentle mode holds about 15 W, https://9to5google.com/2026/11/23/baseus-picogo-pro-usb-c-hands-on/"
+   ]
+  },
+  {
+   "product": "Anker Prime Charger 100W 3-Port (ASIN B0CZ6LXL8R)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0CZ6LXL8R",
+   "price": "$39.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "100",
+    "split": "65 + 35 with two devices; 45 + 30 + 12 with three (Android Authority)",
+    "ports": "2 USB-C + 1 USB-A"
+   },
+   "tested_by": [
+    "Android Authority: 'best multiport'; efficiency 93% in the text and 91.05% in its table; MSRP $84.99, https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ]
+  },
+  {
+   "product": "Anker 67W 3-Port GaN Wall Charger (ASIN B0C4YTB56H; believed to be the Prime 67W)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0C4YTB56H",
+   "price": "$32.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "67 total, 65 on the top port (Android Authority, for the Prime 67W)",
+    "split": "45 + 12 + 10 with three devices (Android Authority)",
+    "ports": "2 USB-C + 1 USB-A",
+    "size": "161 g, 49.6 x 45.6 x 61.5 mm (Android Authority)"
+   },
+   "tested_by": [
+    "Android Authority: 'best overall'; 93% efficiency, https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ]
+  },
+  {
+   "product": "Anker Nano Smart Display Charger 45W (ASIN B0HGQ3VMVB)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0HGQ3VMVB",
+   "price": "$25.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "45",
+    "display": "yes",
+    "ports": "1 USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Anker Nano Charger Neo, Dynamic 45W-65W (ASIN B0H7C7BH83)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0H7C7BH83",
+   "price": "$15.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65 max ('Dynamic 45W - 65W' in the listing title)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Anker 65W Max 3-Port USB-C Charger (ASIN B09C5RG6KV)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B09C5RG6KV",
+   "price": "$22.77",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65",
+    "ports": "3"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 100W 4-Port GaN Charger",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-100w-4-port-gan-charger",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/100w-3c1a-gan-fast-charger",
+   "price": "$54.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "100 (C1 or C2)",
+    "split": "65 + 30 (maker's table, Dealectric record)",
+    "ports": "3 USB-C + 1 USB-A",
+    "protocol": "UGREEN's bundle listing reads 'PPS 25W'",
+    "size": "235 g, 2.72 x 2.72 x 1.3 in (UGREEN bundle listing)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-100w-retractable-cable-charger",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-100w-retractable-gan-charger",
+   "price": "$49.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "100",
+    "cable": "built-in retractable, 2.5 ft, 100 W",
+    "split": "cable 65 + USB-C1 30 (Hi-Tech Century test, Dealectric record)",
+    "ports": "cable + 2 USB-C + 1 USB-A"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 65W Charger with Retractable USB-C Cable (X605)",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-65w-retractable-cable-charger",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-65w-retractable-cable-gan-charger-3port",
+   "price": "$41.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65",
+    "cable": "built-in retractable, 2.3 ft, 60 W",
+    "split": "about 45 + 20 (Dealectric record)",
+    "protocol": "PPS 5-21 V (Dealectric record)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 65W 3-Port Travel Charger with US/UK/EU Plugs",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-65w-travel-charger-us-uk-eu",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-65w-nexode-gan-usb-c-3-port-charger-with-us-uk-eu-plug-for-travel",
+   "price": "$44.98 ($42.99 with code UL90409 per our record)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65",
+    "plugs": "US, UK, EU heads in the box",
+    "protocol": "PPS 3.3-21 V 3 A (Dealectric record)",
+    "ports": "2 USB-C + 1 USB-A"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Twelve South Cablesnap 65W Retractable USB-C Charger",
+   "brand": "Twelve South",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://9to5mac.com/2026/11/06/twelve-south-retractable-usb-c-charger/",
+   "price": "$49.99 (launch price reported 2026-11-06; Amazon listing not read)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "65 shared",
+    "cable": "built-in retractable, 29 in",
+    "plugs": "folding US plug, UK and EU adapters included",
+    "ports": "cable + 1 USB-C + 1 USB-A (18 W)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode Pro 160W 5-Port GaN Charger",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-pro-160w-5-port",
+   "link": "program",
+   "url": "https://us.ugreen.com/products/ugreen-nexode-pro-160w-usb-c-charger",
+   "price": "$89.99 ($56.99 with code UL65636 per our record)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140 (C1 or C2)",
+    "ports": "4 USB-C + 1 USB-A",
+    "display": "yes",
+    "size": "about 360 g, 76 x 76 x 36 mm (Notebookcheck, Dealectric record)"
+   },
+   "tested_by": [
+    "ChargerLAB lists an iPhone 18 Pro Max AVS compatibility test of this charger; the result was not readable, https://www.chargerlab.com/charging-compatibility-test-of-iphone-18-pro-max-1/"
+   ]
+  },
+  {
+   "product": "Anker Prime 160W 3-Port GaN Charger with Smart Display (A2687)",
+   "brand": "Anker",
+   "ours": "anker-prime-160w-3-port-a2687",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0F9NK4M7Q",
+   "price": "$99.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140 from any port alone",
+    "ports": "3 USB-C",
+    "display": "yes",
+    "size": "220 g, 65 x 52 x 35 mm (Dealectric record)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "AOHi The Youth 140W PD 3.1 GaN 3-Port Charger",
+   "brand": "AOHi",
+   "ours": "aohi-the-youth-140w-pd3-1-3-port-charger",
+   "link": "program",
+   "url": "https://www.iaohi.com/products/aohi-140w-pd3-1-gan-3-port-fast-charger-the-youth",
+   "price": "$59.99 ($48.00 with code 20AUTUMN per our record)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140 (USB-C1 alone)",
+    "split": "65 + 65 (Dealectric record)",
+    "ports": "2 USB-C + 1 USB-A"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Baseus PicoGo AH11 140W 4-Port Fast Charger",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.baseus.com/products/picogo-ah11-fast-charger-3c-u-140w",
+   "price": "$55.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140",
+    "ports": "3 USB-C + 1 USB-A",
+    "display": "yes (power, temperature)"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Anker 140W Max 4-Port GaN Charger with Smart Display (ASIN B0DFCH3C4W)",
+   "brand": "Anker",
+   "ours": "",
+   "link": "amazon",
+   "url": "https://www.amazon.com/dp/B0DFCH3C4W",
+   "price": "$59.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140",
+    "ports": "3 USB-C + 1 USB-A (Engadget)",
+    "display": "yes"
+   },
+   "tested_by": [
+    "Engadget (updated 2026-02-05): a pick, no measurements, https://www.engadget.com/best-fast-chargers-140011033.html"
+   ]
+  },
+  {
+   "product": "UGREEN Nexode 200W 4-Port GaN Charger",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-200w-4-port-charger",
+   "link": "program",
+   "url": "https://us.ugreen.com/",
+   "price": "$67.99 (Dealectric record)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "140 (one port, PD 3.1)",
+    "split": "100 + 100 (UGREEN's page, Dealectric record)",
+    "ports": "3 USB-C + 1 USB-A"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode 500W 6-Port Desktop Charger",
+   "brand": "UGREEN",
+   "ours": "ugreen-nexode-500w-6-port-desktop-charger",
+   "link": "program",
+   "url": "https://us.ugreen.com/",
+   "price": "$249.99 ($199.99 with code UL55549 per our record)",
+   "price_read": "2026-11-26",
+   "figures": {
+    "watts": "240 (USB-C1)",
+    "ports": "5 USB-C + 1 USB-A",
+    "size": "about 150 x 119 x 61 mm (Android Authority); 4.8 lb (Engadget)"
+   },
+   "tested_by": [
+    "Android Authority: 'best desktop'; notes the four 100 W ports share circuitry, https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ]
+  },
+  {
+   "product": "Baseus EnerFill FE22 GaN6 70W 3-Port Charger",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://www.baseus.com/products/enerfill-fe22-gan-fast-charger-2c-u-70w",
+   "price": "$39.99",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "70",
+    "ports": "2 USB-C + 1 USB-A"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "UGREEN Nexode Air 45W USB-C Charger",
+   "brand": "UGREEN",
+   "ours": "",
+   "link": "store-no-record",
+   "url": "https://us.ugreen.com/products/nexode-air-usb-c-charger-45w-gan-foldable-plug",
+   "price": "$15.19 (compare-at $24.99)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "45",
+    "ports": "1 USB-C"
+   },
+   "tested_by": []
+  },
+  {
+   "product": "Baseus Enercore CJ11 67W Retractable Charger",
+   "brand": "Baseus",
+   "ours": "",
+   "link": "none",
+   "url": "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/",
+   "price": "$59.99 (MSRP per Android Authority; not found in today's Baseus store search)",
+   "price_read": "2026-11-27",
+   "figures": {
+    "watts": "67",
+    "cable": "built-in retractable",
+    "ports": "cable + 2 USB-C"
+   },
+   "tested_by": [
+    "Android Authority: 'best for travel'; no efficiency figure given, https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "id": "iphone-18-pro-60w-avs",
+   "ptype": "finder",
+   "question": "Which USB-C chargers fast charge an iPhone 18 Pro at the full 60 W (the ones with AVS)?",
+   "axes": {
+    "watts": "60",
+    "protocol": "AVS at 60 W"
+   },
+   "why": "Apple says iPhone 18 Pro and Pro Max reach 50% in around 15 minutes only on its 40W Dynamic Power Adapter (60W max) or a third-party adapter that is 60 W-capable, uses AVS and supports USB-PD 3.2. 9to5Mac notes a 96 W or 140 W MacBook charger lacks AVS.",
+   "sources": [
+    "https://support.apple.com/en-us/102574",
+    "https://9to5mac.com/2026/09/10/how-to-fast-charge-iphone-18-pro/",
+    "https://www.bgr.com/2262970/best-60w-fast-chargers-for-iphone-18-series/"
+   ],
+   "asked": "Google completes 'best usb c charger for iphone 18 pro max' and 'fastest usb c charger for iphone' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+iphone+18+). BGR ran '4 Of The Best 60W Fast-Charging Adapters For The iPhone 18 Pro Series' on 2026-09-19.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Apple 40W Dynamic Power Adapter with 60W Max",
+     "why": "The adapter Apple's own 15-minute claim names; $39 per MacRumors."
+    },
+    {
+     "product": "UGREEN Nexode Air 65W (AVS version)",
+     "why": "65 W with AVS per Notebookcheck and BGR, $39.99 on UGREEN's US store today, 1.22 x 1.30 x 1.59 in, cable in the box."
+    },
+    {
+     "product": "Belkin UltraCharge Retractable 67W (WCH022)",
+     "why": "SPR AVS per BGR, 3.3 ft built-in cable plus a USB-C port, $29.99 on Amazon today."
+    }
+   ],
+   "ours": [
+    "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug",
+    "esr-xtend-45w-retractable-charger"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Confirm AVS on UGREEN's own page before publishing (it returned 429 today); the store may sell both old and AVS stock under one listing. ESR Xtend 45W ($32.25 through our link) claims PD 3.2 AVS and 'dynamic 45-60W' but has no independent test; it enters the top three if a ChargerLAB result confirms it. Check the Belkin ASIN is WCH022. Anker Nano Charger Neo ($15.99 on Amazon) is titled 'Dynamic 45W-65W' but AVS was not confirmed. ChargerLAB's per-charger tests with the iPhone 18 Pro Max (overview dated 2026-10-30) are the best evidence. Trap: MacRumors reports a 52 W peak, not a steady 60 W.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug, esr-xtend-45w-retractable-charger",
+    "demand": 0.0,
+    "value": 0.3,
+    "prior": 0.69,
+    "score": 0.083
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "laptop-and-phone-65w-split",
+   "ptype": "numbered",
+   "question": "Best USB-C charger for a laptop and phone at the same time that still gives the laptop 65 W",
+   "axes": {
+    "split": "65",
+    "watts": "100"
+   },
+   "why": "A 65-67 W charger drops the laptop port to about 45 W once a phone is plugged in; a 100 W charger keeps 65 W on it. Android Authority gives 65/35 W for the Anker Prime 100W and 45/12/10 W for the Prime 67W.",
+   "sources": [
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/"
+   ],
+   "asked": "Google completes 'best usb c charger for laptop and phone' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+). ChatGPT asked 'Will you charge the laptop and phone at the same time?' and split its picks by 45+20, 65+30 and 65+35.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Prime Charger 100W",
+     "why": "65 + 35 W with two devices (Android Authority); $39.99 on Amazon today against the $84.99 MSRP Android Authority lists."
+    },
+    {
+     "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+     "why": "Cable 65 W + USB-C 30 W (Hi-Tech Century test in our record); $49.99 with the cable built in."
+    },
+    {
+     "product": "UGREEN Nexode 100W 4-Port GaN Charger",
+     "why": "65 + 30 W (maker's table in our record); 3 USB-C + USB-A; $54.99."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-100w-retractable-cable-charger",
+    "ugreen-nexode-100w-4-port-gan-charger"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Anker's $39.99 is a Black Friday price (ChatGPT cited $69.99 list and a November 23 deal at $39.99); at list price the UGREEN pair lead on price. Baseus PicoGo Pro AH22 100W ($59.99 store, $39.70 Amazon) and Baseus EnerFill FE11 100W ($49.99) are partner-store candidates whose two-port split was not read. Check whether /best-usb-c-charger-for-laptop already states these splits.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "ugreen-nexode-100w-retractable-cable-charger, ugreen-nexode-100w-4-port-gan-charger",
+    "demand": 0.0,
+    "value": 0.42,
+    "prior": 1.84,
+    "score": 0.309
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "140w-macbook-pro-16",
+   "ptype": "numbered",
+   "question": "Best 140 W USB-C charger for a 16-inch MacBook Pro",
+   "axes": {
+    "watts": "140",
+    "protocol": "PD 3.1 28 V"
+   },
+   "why": "Apple lists only 140 W for fast charging the 16-inch MacBook Pro (50% in around 30 minutes), and USB-IF ties 140 W to the 28 V fixed voltage of PD 3.1. A 100 W charger cannot do it.",
+   "sources": [
+    "https://support.apple.com/en-us/102378",
+    "https://www.usb.org/usb-charger-pd"
+   ],
+   "asked": "Google completes 'best usb c charger for macbook pro' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+). ChatGPT named a tier 'needs 90-140W under load' and offered no product for it.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN Nexode Pro 160W 5-Port",
+     "why": "Two 140 W ports, display, $56.99 through our link (store $89.99); about 360 g per Notebookcheck."
+    },
+    {
+     "product": "AOHi The Youth 140W",
+     "why": "140 W from USB-C1, 65 + 65 W with two laptops, $48.00 with our code (store $59.99)."
+    },
+    {
+     "product": "Anker Prime 160W 3-Port",
+     "why": "140 W from any of three ports alone, 220 g, $99.99 on Amazon today."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-pro-160w-5-port",
+    "aohi-the-youth-140w-pd3-1-3-port-charger",
+    "anker-prime-160w-3-port-a2687"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Also at this tier today: Baseus PicoGo AH11 140W $55.99 and Baseus EnerFill FH11 140W $59.99 (partner store, no record), Anker 140W 4-port with display $59.99 on Amazon, UGREEN Nexode 200W $67.99. Apple's page says the 16-inch model needs a MagSafe 3 cable or a 240 W USB-C cable for 140 W, so the page must name the cable. The AOHi code last passed on another product on 2026-11-10; retest it.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "ugreen-nexode-pro-160w-5-port, aohi-the-youth-140w-pd3-1-3-port-charger, anker-prime-160w-3-port-a2687",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 1.84,
+    "score": 0.46
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "two-laptops-100w",
+   "ptype": "numbered",
+   "question": "USB-C charger that charges two laptops at 100 W each at the same time",
+   "axes": {
+    "split": "100",
+    "watts": "100"
+   },
+   "why": "100 W is the most a pre-PD 3.1 port can give (20 V, 5 A cable per USB-IF), so two laptops at full speed need 200 W total with two ports holding 100 W together.",
+   "sources": [
+    "https://www.usb.org/usb-charger-pd"
+   ],
+   "asked": "Our page on this line drew 3 visits from assistants since 2026-11-03, the most in the cluster.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN Nexode 200W 4-Port",
+     "why": "100 + 100 W from two USB-C ports per UGREEN's page (our record); $67.99."
+    },
+    {
+     "product": "UGREEN Nexode 500W 6-Port Desktop",
+     "why": "240 W on C1 plus 100 W ports; $199.99 with our code. Android Authority notes the four 100 W ports share circuitry."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-200w-4-port-charger",
+    "ugreen-nexode-500w-6-port-desktop-charger"
+   ],
+   "ours_rank": 1,
+   "covered_by": "usb-c-charger-two-laptops-100w",
+   "notes": "No third product was sourced. UGREEN Nexode Pro 300W 8-port ($199.99 on UGREEN's store, no record) and Anker's 250 W Prime are the candidates; read their two-port tables.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /usb-c-charger-two-laptops-100w"
+   }
+  },
+  {
+   "id": "retractable-cable",
+   "ptype": "finder",
+   "question": "Which USB-C wall chargers have a built-in retractable cable, and how many watts does the cable carry?",
+   "axes": {
+    "cable": "built-in retractable"
+   },
+   "why": "A built-in cable removes the separate cable, but most carry 60 W (20 V/3 A) and are under 3 ft, so cable watts and length are what separate them.",
+   "sources": [
+    "https://www.androidauthority.com/i-tested-over-30-usb-c-wall-chargers-3496950/",
+    "https://9to5mac.com/2026/11/06/twelve-south-retractable-usb-c-charger/"
+   ],
+   "asked": "Google's first completion after 'best usb c charger with' is 'retractable cable'; 'usb c charger with retractable cable' also appears (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+with+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN Nexode 100W Charger with Retractable USB-C Cable",
+     "why": "The only one read with 100 W through the cable; 2.5 ft; $49.99."
+    },
+    {
+     "product": "ESR Xtend 45W Retractable Charger",
+     "why": "3.1 ft cable, AVS and up to 60 W for one device per ESR; $32.25 through our link."
+    },
+    {
+     "product": "Baseus Enercore CJ11 67W",
+     "why": "Android Authority's 'best for travel' pick; 67 W, cable plus 2 USB-C; $59.99 MSRP."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-100w-retractable-cable-charger",
+    "esr-xtend-45w-retractable-charger",
+    "ugreen-nexode-65w-retractable-cable-charger"
+   ],
+   "ours_rank": 1,
+   "covered_by": "",
+   "notes": "Other rivals today: Belkin 67W retractable $29.99 on Amazon (3.3 ft per BGR), Twelve South Cablesnap 65W $49.99 (29 in, UK/EU adapters), UGREEN Nexode 45W retractable $28.49 and 65W retractable $41.99 on UGREEN's store. The Baseus CJ11 did not appear in today's Baseus store search; check whether we can link it. /best-usb-c-charger-with-block-and-cable is a different question and has 0 visits.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "ugreen-nexode-100w-retractable-cable-charger, esr-xtend-45w-retractable-charger, ugreen-nexode-65w-retractable-cable-charger",
+    "demand": 0.0,
+    "value": 0.42,
+    "prior": 0.69,
+    "score": 0.145
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "travel-plugs-65w",
+   "ptype": "numbered",
+   "question": "Best 65 W travel charger with US, UK and EU plugs in the box",
+   "axes": {
+    "watts": "65",
+    "plugs": "US, UK, EU"
+   },
+   "why": "65 W is the thin-laptop tier ChatGPT uses, and swappable plugs replace a separate travel adapter.",
+   "sources": [
+    "https://9to5mac.com/2026/11/06/twelve-south-retractable-usb-c-charger/"
+   ],
+   "asked": "Our page on this line drew 2 visits since 2026-11-03. Google completes 'best 100w usb c travel charger' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+100w+usb+c+charger+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "UGREEN Nexode 65W 3-Port Travel Charger with US/UK/EU Plugs",
+     "why": "65 W from either USB-C port, PPS 3.3-21 V 3 A, three heads; $42.99 with our code (store $44.98 today)."
+    },
+    {
+     "product": "Twelve South Cablesnap 65W",
+     "why": "New on 2026-11-06: 29 in retractable cable, folding US plug, UK and EU adapters; $49.99 at launch."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-65w-travel-charger-us-uk-eu"
+   ],
+   "ours_rank": 1,
+   "covered_by": "best-65w-travel-charger-interchangeable-plugs",
+   "notes": "No third product of this exact form was sourced. TESSAN's 65W GaN Universal Travel Adapter WTA09 ($22.99 on tessan.com) is a different form (universal adapter with AC outlets, 65 W from one USB-C). Read the Cablesnap's Amazon price and its two-device split.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "uncovered",
+    "reason": "covered by /best-65w-travel-charger-interchangeable-plugs"
+   }
+  },
+  {
+   "id": "galaxy-s26-ultra-60w-pps",
+   "ptype": "finder",
+   "question": "Which USB-C chargers charge a Galaxy S26 Ultra at its full 60 W?",
+   "axes": {
+    "watts": "60",
+    "protocol": "PPS 20 V / 3 A"
+   },
+   "why": "Android Authority's Robert Triggs found the S26 Ultra needs a USB PD 3.1 charger with PPS and 20 V/3 A from a single port, and that the 20 V mode is less common than PPS itself. On Samsung's 60 W adapter the phone peaked at 60 W for about 2 minutes and filled in 42 minutes.",
+   "sources": [
+    "https://www.androidauthority.com/galaxy-s26-ultra-60w-tested-3653581/"
+   ],
+   "asked": "Google completes 'best usb c charger for samsung' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+). ChatGPT said 'for a Samsung phone, verify the charger's PPS profile supports that model's maximum speed' in 3 of 6 chats.",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Samsung 60W Power Adapter",
+     "why": "The only charger Android Authority tested: 60 W peak, about 48 W sustained, 42 minutes to full."
+    },
+    {
+     "product": "UGREEN Nexode 65W 3-Port Travel Charger with US/UK/EU Plugs",
+     "why": "PPS 3.3-21 V at 3 A on the USB-C ports per our record, which covers 20 V/3 A on paper; $42.99 with our code."
+    }
+   ],
+   "ours": [
+    "ugreen-nexode-65w-travel-charger-us-uk-eu"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Only Samsung's adapter is tested. The UGREEN placing rests on the maker's PPS range; a page needs a measured result or UGREEN's spec PDF. The UGREEN Nexode 100W 4-port is probably out: its bundle listing reads 'PPS 25W'. Read the Samsung adapter's price. Trap: Android Authority says a 5 A cable does not charge faster; Samsung's bundled 3 A cable is enough.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "ugreen-nexode-65w-travel-charger-us-uk-eu",
+    "demand": 0.0,
+    "value": 0.42,
+    "prior": 0.69,
+    "score": 0.116
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "charger-with-display",
+   "ptype": "finder",
+   "question": "Which USB-C chargers have a display that shows the watts going to each device?",
+   "axes": {
+    "display": "yes"
+   },
+   "why": "A display is the only way to see, without a meter, whether a phone or laptop is getting the watts the charger promises. 9to5Google's Ben Schoon watched a phone settle at about 28 W on the Baseus AH22's screen.",
+   "sources": [
+    "https://9to5google.com/2026/11/23/baseus-picogo-pro-usb-c-hands-on/",
+    "https://www.engadget.com/best-fast-chargers-140011033.html"
+   ],
+   "asked": "Google completes 'best usb c charger with display' and 'usb c charger with display' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+with+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Nano Smart Display Charger 45W",
+     "why": "Cheapest read with a display: $25.99 on Amazon, one port, phone tier."
+    },
+    {
+     "product": "Baseus PicoGo Pro AH22 100W",
+     "why": "100 W, 3 USB-C; per-device rate, device recognition, Gentle and Turbo modes (9to5Google); $59.99 at Baseus, $39.70 on Amazon."
+    },
+    {
+     "product": "UGREEN Nexode Pro 160W 5-Port",
+     "why": "140 W tier with a display at $56.99 through our link."
+    }
+   ],
+   "ours": [
+    "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w",
+    "ugreen-nexode-pro-160w-5-port",
+    "anker-prime-160w-3-port-a2687"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "The ranking is the cheapest display charger per power tier (45, 100, 140+ W); what each screen shows was read only for the AH22. Others today: Anker 100W Smart Display $45.99 and Anker 140W $59.99 on Amazon, UGREEN Nexode Pro 100W 4-port with Smart Display $64.99, Baseus PicoGo AH11 140W $55.99, Anker Prime 160W $99.99. Finder pages have 0 visits in this cluster; the search completion is the reason to try.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w, ugreen-nexode-pro-160w-5-port, anker-prime-160w-3-port-a2687",
+    "demand": 0.0,
+    "value": 0.42,
+    "prior": 0.69,
+    "score": 0.116
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "phone-charger-under-20",
+   "ptype": "numbered",
+   "question": "Best USB-C phone charger under $20",
+   "axes": {
+    "price": "20",
+    "watts": "30-45"
+   },
+   "why": "Engadget's phone-only pick is described as under $20, and ChatGPT's phone-only tier was the $12.99-$15.99 Anker Nano 30W. Today 45 W chargers sell under that line.",
+   "sources": [
+    "https://www.engadget.com/best-fast-chargers-140011033.html",
+    "https://support.apple.com/en-us/102574"
+   ],
+   "asked": "ChatGPT offered 'just for your phone' in 4 of 6 chats with a $12.99-$15.99 pick ('save money'). Google completes 'best usb c charger for iphone' first (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+).",
+   "hunch": false,
+   "top3": [
+    {
+     "product": "Anker Nano Charger Neo, Dynamic 45W-65W",
+     "why": "65 W max by its title; $15.99 on Amazon today."
+    },
+    {
+     "product": "UGREEN Nexode Air 45W",
+     "why": "45 W, foldable plug; $15.19 on UGREEN's US store today (compare-at $24.99)."
+    },
+    {
+     "product": "UGREEN Uno 30W",
+     "why": "30 W; $18.02 on Amazon today."
+    }
+   ],
+   "ours": [
+    "https://us.ugreen.com/products/nexode-air-usb-c-charger-45w-gan-foldable-plug"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "All three are sale prices read on Black Friday; reread before publishing. Android Authority's value pick, the Anker Nano 3 30W (27 W over PPS, 89.3% efficiency, 74 g, $22.99 MSRP), was not priced today. Under $20 no charger read here is confirmed for iPhone 18 Pro's AVS tier; say so and link the AVS line. Our Amazon Basics 12W USB-A ($9.39) is not a fast charger.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://us.ugreen.com/products/nexode-air-usb-c-charger-45w-gan-foldable-plug",
+    "demand": 0.0,
+    "value": 0.5,
+    "prior": 1.84,
+    "score": 0.368
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "macbook-air-70w",
+   "ptype": "numbered",
+   "question": "Best USB-C charger for a MacBook Air that fast charges it (70 W or more)",
+   "axes": {
+    "watts": "70"
+   },
+   "why": "Apple lists 70 W, 96 W or 140 W adapters for fast charging the MacBook Air (50% in around 30 minutes) and counts 67 W only for the 13.6-inch models, so the common 65 W charger sits just under Apple's line.",
+   "sources": [
+    "https://support.apple.com/en-us/102378"
+   ],
+   "asked": "Google completes 'best usb c charger for macbook air' (https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=best+usb+c+charger+for+). That shoppers choose between 65 and 70 W is our reading.",
+   "hunch": true,
+   "top3": [
+    {
+     "product": "Anker Prime Charger 100W",
+     "why": "Clears 70 W with room for a phone (65 + 35 W, Android Authority); $39.99 on Amazon today."
+    },
+    {
+     "product": "Baseus EnerFill FE22 70W",
+     "why": "Exactly Apple's 70 W figure, 2 USB-C + USB-A; $39.99 on Baseus' store."
+    },
+    {
+     "product": "Anker 100W Max 3-Port with Smart Display",
+     "why": "100 W with a display; $45.99 on Amazon today."
+    }
+   ],
+   "ours": [
+    "https://www.baseus.com/products/enerfill-fe22-gan-fast-charger-2c-u-70w",
+    "ugreen-nexode-100w-retractable-cable-charger"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "No measured gap between 65 W and 70 W on a MacBook Air was sourced; without one the page should state Apple's line and not promise a time saved. Read the FE22's single-port figure on Baseus' output table (the store text says 70 W). At list prices our UGREEN 100W models ($49.99-$54.99) compete.",
+   "product": {
+    "brand": "",
+    "name": "",
+    "url": "",
+    "variant": "",
+    "price": "",
+    "program": ""
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": false,
+    "failed": "demand",
+    "reason": "a hunch, and no search suggestion completes the question"
+   }
+  },
+  {
+   "id": "product-baseus-picogo-pro-ah22",
+   "ptype": "product",
+   "question": "Is the new 100 W three-port charger with a display and AVS worth buying for a laptop and an iPhone 18 Pro?",
+   "axes": {
+    "watts": "100",
+    "protocol": "AVS at 60 W",
+    "display": "yes"
+   },
+   "why": "9to5Google reported its launch on 2026-11-23. BGR lists it as a 100 W charger with AVS and USB PD 3.2, which Apple requires for iPhone 18 Pro's 15-minute tier.",
+   "sources": [
+    "https://9to5google.com/2026/11/23/baseus-picogo-pro-usb-c-hands-on/",
+    "https://www.bgr.com/2262970/best-60w-fast-chargers-for-iphone-18-series/",
+    "https://support.apple.com/en-us/102574"
+   ],
+   "asked": "New release covered by 9to5Google and BGR; it sits on two searched features, 'best usb c charger with display' and 'best usb c charger for iphone 18 pro max'.",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Places second on the display line. Baseus' store is $59.99 with no discount while Amazon is $39.70 (9to5Google cites code BSAH22PR5), so the honest link today may be Amazon. Per-port maximums and the two- and three-port split were not read (product page returned 429). BGR listed the AH22 on 2026-09-19 while 9to5Google dates the launch to 2026-11-23; settle the date. A 'Dark Cherry Edition' is listed at the same price.",
+   "product": {
+    "brand": "Baseus",
+    "name": "PicoGo Pro AH22 Digital Display 3-Port Fast Charger 100W",
+    "url": "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w",
+    "variant": "standard colour, US plug",
+    "price": "$59.99",
+    "program": "awin:baseus_us"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://www.baseus.com/products/picogo-ah22-digital-display-fast-charger-3c-100w",
+    "demand": null,
+    "value": 0.3,
+    "prior": 0.29,
+    "score": 0.07
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  },
+  {
+   "id": "product-ugreen-nexode-air-65w-avs",
+   "ptype": "product",
+   "question": "Does the small 65 W charger with AVS give an iPhone 18 Pro its fastest charge?",
+   "axes": {
+    "watts": "65",
+    "protocol": "AVS at 60 W"
+   },
+   "why": "Notebookcheck reported on 2026-10-07 that UGREEN added AVS to the Nexode Air 65W at $39.99, a dollar above Apple's own 60 W-max adapter and with a cable in the box.",
+   "sources": [
+    "https://www.notebookcheck.net/Ugreen-releases-upgraded-compact-65W-charger-with-AVS-support.1416858.0.html",
+    "https://www.bgr.com/2262970/best-60w-fast-chargers-for-iphone-18-series/",
+    "https://support.apple.com/en-us/102574"
+   ],
+   "asked": "BGR's first pick for iPhone 18 Pro 60 W charging; Google completes 'best usb c charger for iphone 18 pro max'.",
+   "hunch": false,
+   "top3": [],
+   "ours": [
+    "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug"
+   ],
+   "ours_rank": 2,
+   "covered_by": "",
+   "notes": "Second on the iPhone 18 Pro AVS line. Confirm on UGREEN's page that the US store listing is the AVS version (BGR gives model X860) and read the weight. Notebookcheck's piece is a news report, so a ChargerLAB result or our own reading of the spec sheet is needed for the AVS voltage range.",
+   "product": {
+    "brand": "UGREEN",
+    "name": "Nexode Air USB-C Charger (65W, GaN, Foldable Plug)",
+    "url": "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug",
+    "variant": "AVS version (X860 per BGR), US plug",
+    "price": "$39.99",
+    "program": "cj:ugreen"
+   },
+   "first_seen": "2026-11-27",
+   "gate": {
+    "date": "2026-11-27",
+    "passed": true,
+    "ours": "https://us.ugreen.com/products/nexode-air-usb-c-charger-65w-gan-foldable-plug",
+    "demand": null,
+    "value": 0.42,
+    "prior": 0.29,
+    "score": 0.097
+   },
+   "status": "building",
+   "run": "2026-11-27-pf-usb-c-charger"
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-11-23",
+   "what": "Baseus PicoGo Pro AH22 launched: 100 W, 3 USB-C, display with per-device rates; $59.99 list, $39.70 on Amazon for Black Friday (9to5Google, Ben Schoon).",
+   "source": "https://9to5google.com/2026/11/23/baseus-picogo-pro-usb-c-hands-on/",
+   "effect": "New partner-store product for the display line and the laptop-and-phone line; product line added."
+  },
+  {
+   "date": "2026-11-06",
+   "what": "Twelve South Cablesnap 65W launched: retractable 29 in cable, USB-C and USB-A ports, folding US plug with UK and EU adapters, $49.99 on Amazon (9to5Mac, Chance Miller).",
+   "source": "https://9to5mac.com/2026/11/06/twelve-south-retractable-usb-c-charger/",
+   "effect": "New rival on travel-plugs-65w (our covered page) and on retractable-cable."
+  },
+  {
+   "date": "2026-10-30",
+   "what": "ChargerLAB published its iPhone 18 Pro Max charging compatibility test and a series of per-charger AVS tests, including the UGREEN Nexode Pro 160W.",
+   "source": "https://www.chargerlab.com/charging-compatibility-test-of-iphone-18-pro-max-1/",
+   "effect": "The measured evidence for the protocol axis and the iPhone 18 Pro line; results still to be read."
+  },
+  {
+   "date": "2026-10-22",
+   "what": "Apple's iPhone fast-charge support page (published 2026-10-22) states iPhone 18 Pro needs a 60 W-capable adapter with AVS and USB-PD 3.2 for 50% in around 15 minutes; iPhone 17 needs 40 W or higher.",
+   "source": "https://support.apple.com/en-us/102574",
+   "effect": "Sets the 60 W and AVS breakpoints; a plain 65 W or 100 W charger no longer wins the iPhone line."
+  },
+  {
+   "date": "2026-10-22",
+   "what": "Anker Laptop Charger Pro (100 W, one USB-C port, display showing power and temperature) set to go on sale 2026-10-22 after a delay from September (gagadget, 2026-10-18).",
+   "source": "https://gagadget.com/en/730603-ankers-new-charger-extends-laptop-battery-life-by-40-with-smart-charging-tech/",
+   "effect": "New single-port rival at the 100 W tier and on the display line; price not read."
+  },
+  {
+   "date": "2026-10-07",
+   "what": "UGREEN released an upgraded Nexode Air 65W with AVS, $39.99 in the US (Notebookcheck, Elvis Shida).",
+   "source": "https://www.notebookcheck.net/Ugreen-releases-upgraded-compact-65W-charger-with-AVS-support.1416858.0.html",
+   "effect": "Gives a partner brand a top-three place on the iPhone 18 Pro AVS line; product line added."
+  },
+  {
+   "date": "2026-11-27",
+   "what": "Price moves read today: Anker Prime 100W $39.99 on Amazon (Android Authority lists $84.99 MSRP); UGREEN Nexode Air 45W $15.19 on UGREEN's store; TESSAN Vertical GaN Desktop Power Hub 65W $21.99 on tessan.com (our record: $37.99 on 2026-11-07); UGREEN 65W retractable $41.99 (record $39.99); UGREEN 65W travel $44.98 (record $49.99); UGREEN 100W + cables bundle $50.33 (record $59.99).",
+   "source": "https://www.amazon.com/dp/B0CZ6LXL8R",
+   "effect": "Anker takes first on laptop-and-phone-65w-split while the deal lasts; four of our records need a price reread."
+  }
+ ],
+ "pages_to_fix": [
+  {
+   "page": "best-usb-c-charger-for-laptop",
+   "why": "'Laptop' carries no breakpoint. Shoppers and ChatGPT split laptops at 65 W, 100 W and 140 W, and Apple's MacBook page sets 70, 96 and 140 W. 0 visits since 2026-11-06. Rebuild it around those values or let the numbered lines here replace it."
+  },
+  {
+   "page": "best-usb-c-charger-with-block-and-cable",
+   "why": "0 visits. The searched built-in-cable feature is 'retractable cable' (Google's first completion), and a cable in the box is not a feature few products have. Re-angle it to the retractable-cable line or fold it in."
+  },
+  {
+   "page": "best-65w-travel-charger-interchangeable-plugs",
+   "why": "Twelve South's Cablesnap 65W (2026-11-06, $49.99, retractable cable plus UK/EU adapters) is a new rival to add. UGREEN's store price for our pick read $44.98 today against $49.99 in the record."
+  },
+  {
+   "page": "ugreen-nexode-pro-vs-anker-prime-160w",
+   "why": "Reread prices: Anker Prime 160W was $99.99 on Amazon today and has no price in our record. ChargerLAB now lists an AVS test of the Nexode Pro 160W with the iPhone 18 Pro Max that the page should cite once read."
+  },
+  {
+   "page": "best-power-strip-with-usb-ports",
+   "why": "If it lists the TESSAN Vertical GaN Desktop Power Hub, the store price read $21.99 today against $37.99 in our record; the same applies to any other page showing that product."
+  },
+  {
+   "page": "bluetooth-speaker-for-pc",
+   "why": "Filed in the USB-C charger cluster but is not a charger page; it belongs in another cluster's map."
+  }
+ ],
+ "unsourced": [
+  "Tom's Hardware, Wirecutter and CNN Underscored charger guides: the pages returned no article body, a block and HTTP 451, so their picks and criteria are not used.",
+  "PhoneArena's iPhone 18 Pro Max charging test (HTTP 403) and ChargerLAB's per-charger AVS results (only headlines loaded): no measured watts for any third-party charger on an iPhone 18 Pro.",
+  "AVS on the maker's own page for the UGREEN Nexode Air 65W and Baseus PicoGo Pro AH22, plus the AH22's per-port and multi-port split: both product pages returned HTTP 429. The AVS statements rest on Notebookcheck and BGR.",
+  "Whether the Anker Nano Charger Neo (45-65 W) supports AVS: seen only in a search summary and the Amazon title.",
+  "Apple's US store price for the 40W Dynamic Power Adapter with 60W Max: the page showed no price; $39 is MacRumors' figure from 2026-09-17.",
+  "Samsung 60W Power Adapter price, and any measured test of a third-party charger at 60 W on a Galaxy S26 Ultra.",
+  "Weights and dimensions for most 65 W and 100 W chargers, so the searched 'best compact 100w usb c charger' and 'best small 65w usb c charger' could not be ranked and are not listed as lines.",
+  "Today's price and partner-store listing for the Baseus Enercore CJ11 67W, the Anker Nano 30W and the Twelve South Cablesnap; anker.com's store search returned HTTP 404, so all Anker prices are Amazon's.",
+  "Whether Amazon ASINs B0C4YTB56H (Anker 67W) and B0GSSFH23R (Belkin 67W retractable) are the Prime 67W and WCH022 models: the titles do not state model numbers.",
+  "Charger recalls in the last 60 days: one search found no dated CPSC recall of a USB-C wall charger in October or November 2026; CPSC's list itself was not opened.",
+  "Anker Nano 70W three-port (pink, Europe) and UGREEN Nexode Pro 45W in Burgundy: seen in search results only, not opened, so not listed as news.",
+  "Two-port output tables for the UGREEN Nexode Pro 300W and Anker Prime 250W, the candidates for third place on the two-laptops line.",
+  "What each of our existing pages currently says: page contents were not opened, so covered_by and pages_to_fix rest on titles and visit counts."
+ ],
+ "_meta": {
+  "model": "claude-fable-5-2",
+  "effort": "high",
+  "turns": 70,
+  "cost_usd_list": 4.0658754
+ },
+ "built": "2026-11-27",
+ "name": "USB-C chargers"
+}

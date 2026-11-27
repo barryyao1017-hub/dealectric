@@ -51,8 +51,9 @@ def _host(u: str) -> str:
 
 
 def ours_exist(line: dict, cid: str) -> tuple[bool, str]:
-    recs = {p["slug"]: p for p in C.records(cid)}
-    stores = {_host(v.split("store ")[-1]) for v in C.cluster_programs(cid).values()}
+    import gappage
+    recs = {p["slug"]: p for p in C.records()}
+    stores = {_host(v.split("store ")[-1]) for v in gappage.programs().values() if "store " in v}   # any approved program's store
     good = []
     for o in line.get("ours") or []:
         if o in recs:
@@ -67,9 +68,10 @@ def ours_exist(line: dict, cid: str) -> tuple[bool, str]:
 
 def demand(question: str) -> tuple[float, dict]:
     import gapmine
-    variants = [question.lower()]
-    if not variants[0].startswith("best "):
-        variants.append("best " + variants[0])
+    q0 = re.sub(r"\s+", " ", question.lower().replace("-", " ").replace("?", "")).strip()   # suggestions write "usb c", not "usb-c"
+    variants = [q0] + ([question.lower()] if question.lower() != q0 else [])
+    if not q0.startswith("best "):
+        variants.append("best " + q0)
     best, seen = 0.0, {}
     for q in variants:
         d = gapmine.depth(q)
@@ -81,7 +83,7 @@ def demand(question: str) -> tuple[float, dict]:
 
 def value(line: dict, cid: str) -> float:
     import brandvalue as V
-    recs = {p["slug"]: p for p in C.records(cid)}
+    recs = {p["slug"]: p for p in C.records()}
     names = [recs[o]["brand"] for o in line.get("ours") or [] if o in recs] or [(line.get("product") or {}).get("brand") or ""]
     f = max((V.factor(V.brand(n)) for n in names if n), default=V.factor(None))
     return round(min(max(f / 300.0, 0.3), 3.0), 2)   # 1.0 = a $300 ticket with no code; clipped so value orders, never decides alone
